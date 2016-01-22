@@ -1,0 +1,3531 @@
+HTML header: <title>dCache 2.9 Release Notes</title>
+             <!--#include virtual="/template/default-head.shtml" -->
+             <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+             <!-- Bootstrap -->
+             <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"/>
+             <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css"/>
+             <!--link type="text/css" rel="stylesheet" href="jquery.tocify.css" /-->
+             <style type="text/css">
+             body {
+                 padding-top: 20px;
+             }
+             @media (max-width: 767px) {
+                 #toc {
+                     position: relative;
+                     width: 100%;
+                     margin: 0px 0px 20px 0px;
+                 }
+             }
+             @media print {
+                 #toc {
+                     display: none;
+                 }
+             }
+             table.table {
+                 font-size: 12px;
+             }
+             </style>
+
+<div class="container">
+<div id="banner">
+   <div id="bird_large">
+      <img src="/images/dcache-banner.png" class="bird"></img>
+   </div>
+   <div id="sidebar-b">
+      <span class="dcache-nav-bar">
+      <a href="/index.shtml">home</a>
+      |
+      <a href="/news.shtml">news</a>
+      |
+      <a href="/manuals/index.shtml">documentation</a>
+      |
+      <a href="/downloads/IAgree.shtml">downloads</a>
+      |
+      <a href="/feedback.shtml">feedback</a>
+      | 
+      <a href="/manuals/googlesearch.shtml">search</a>
+      |
+      <a href="/imprint.shtml">imprint&#160;</a>
+      </span>
+   </div>
+</div>
+<div id="content">
+
+<div class="row">
+
+<div class="page-header">
+<h1>What's new in dCache 2.9<br/>
+<small>The release notes</small></h1>
+<address>
+<strong>Authors</strong><br/>
+Gerd Behrmann  &lt;behrmann@ndgf.org&gt;<br/>
+Paul Millar  &lt;paul.millar@desy.de&gt;
+</address>
+</div>
+
+
+## Executive summary
+
+* Reduces chimera overhead on file creation and file open.
+
+* New database connection pool for more robust database interaction.
+
+* Supports NFS 4 (without parallel NFS)
+
+* DCAP clients can now be forced to do I/O through a mounted NFS 4 file system.
+
+* Much improved performance and standard compliance for NFS 4.
+
+* Improves support for meta data in FTP.
+
+* Improves FTP client compatibility.
+
+* Implements FTP delayed passive, allowing IPv6 FTP transfers without proxying.
+
+* New pool manager partition for transfer buffers (e.g. import and export pools).
+
+* Improves ROOT compatibility for HTTP access.
+
+* GridSite delegation support for SRM.
+
+* Unique TURLs for SRM upload for improved error handling.
+
+* Improves transfer protocol negotiation for SRM.
+
+* Reduces impact of SRM restart.
+
+* Improves protocol support for xrootd.
+
+* More flexible tape integration.
+
+## Incompatibilities
+
+* The `spacemanager` database schema has changed. Changes are
+  automatically applied after upgrade. Downgrade is not possible
+  without rolling back the schema changes. See the section on the
+  `spacemanager` service for details.
+
+* The `chimera` database schema has changed. Changes are automatically
+  applied during upgrade. Downgrade is not possible without rolling
+  back the schema changes. See the section on _chimera_ for details.
+
+* The new property `dcache.upload-directory` may have to be defined on
+  upgrade. Read the section on the `srm` service for further details.
+
+* Third party plugins that provide custom service definitions may have
+  to be updated to be compatible with dCache 2.9.
+
+* SRM uploads that are not finalized by submitting a `srmPutDone` will
+  be deleted. The `srmPutDone` message is required by the SRM standard
+  and standard compliant clients will not have a problem with
+  this. The file is not available for reading until `srmPutDone` has
+  been issued.
+
+* IPv6 support is enabled by default. 
+
+* Tape integration was rewritten. Classic HSM scripts continue to be
+  supported, however the pool setup file should be regenerated after
+  upgrade. See the section on the `pool` service for details.
+
+* The HSM cleaner is enabled by default.
+
+
+
+## Release 2.9.27
+
+### Changes affecting multiple services
+
+dCache uses a standard format to monitor the performance of various
+components: in the srm door to record how quickly SRM requests are
+processed (`print srm counters` command), the generic cell message
+monitoring (`monitoring info` command), and pnfsmanager service (the
+"Statistics" section in `info`).  This release fixes a rounding error
+that prevents these statistics from including long-lived requests.
+
+### pinmanager
+
+The pinmanager service has the `ls` command that allows the admin to
+limit the results to a specific pin or all pins against some PNFS-ID.
+This release fixes listing by pin id.
+
+### srm
+
+This release fixes the srm service so it cancels corresponding
+pinmanager requests when an SRM client aborts a bring-online request.
+
+
+### Changelog 2.9.26..2.9.27
+
+<!-- git log 2.9.26..2.9.27 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[cf4affe](https://github.com/dcache/dcache/commit/cf4affeacddee14ef3e158f9fdd79f5f2a3ee3f5)
+:   [maven-release-plugin] prepare release 2.9.27
+
+[3e12a3b](https://github.com/dcache/dcache/commit/3e12a3b3775972d53e9651cd512720a1fafc25b7)
+:   common: Fix division by zero regression in gauges
+
+[71adc02](https://github.com/dcache/dcache/commit/71adc027946bcae2c860d3ff172e866de983a567)
+:   common: Fix rounding error in request gauge
+
+[7bfd5c7](https://github.com/dcache/dcache/commit/7bfd5c73d2533bfab61efc939ef286f41caab48f)
+:   srm: Abort pinning when cancelling bring-online requests
+
+[7d8dff4](https://github.com/dcache/dcache/commit/7d8dff4fdb1d3e2190a98d6b9dab746e0bd91547)
+:   pinmanager: Fix listing by id
+
+[ccaba7e](https://github.com/dcache/dcache/commit/ccaba7e6cdf659e356e8491e5af0059bd6301c41)
+:   system-test: add missing dCache disposible CA certificate
+
+[0098f1d](https://github.com/dcache/dcache/commit/0098f1ddf0934732504e6a143e121b7dc6f43ef1)
+:   system-test: add regenerated host and user credentials
+
+[bfef06f](https://github.com/dcache/dcache/commit/bfef06f16d4be6257e2de5fe2fc7cd5a115f9268)
+:   [maven-release-plugin] prepare for next development iteration
+
+## Release 2.9.26
+
+### dcap
+
+Update dcap door to avoid possible NullPointerException when describing
+an error to the client.
+
+
+### Changelog 2.9.25..2.9.26
+
+<!-- git log 2.9.25..2.9.26 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[047ce71](https://github.com/dcache/dcache/commit/047ce716df5accb5576c63a16729b1f8a8c8e59a)
+:   [maven-release-plugin] prepare release 2.9.26
+
+[a397d8a](https://github.com/dcache/dcache/commit/a397d8aa3184164af586de302239bb751f5623b5)
+:   dcap: do not call toString() on error object
+
+[250326f](https://github.com/dcache/dcache/commit/250326fa22b6ca67ff70915d05da53a6596f36c7)
+:   [maven-release-plugin] prepare for next development iteration
+
+## Release 2.9.25
+
+### pool
+
+When a client reads a file, the pool reads blocks of data from the
+local filesystem.  When reading such a block, the pool could receive
+fewer bytes than requested.  Previously, the pool assumed that this
+only happens when the end-of-file is reached; however, this is not
+guaranteed.  Should this assumption be violated then the data sent to
+the client will be corrupt.  In practise, the pool's assumption is
+true for Linux and local filesystems; however, the code has been
+updated to remove this theoretical cause of corruption.
+
+
+### Changelog 2.9.24..2.9.25
+
+<!-- git log 2.9.24..2.9.25 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[38602db](https://github.com/dcache/dcache/commit/38602db218075b0af92a8335c619b8eb668ed332)
+:   [maven-release-plugin] prepare release 2.9.25
+
+[65fe614](https://github.com/dcache/dcache/commit/65fe6148a88b59972122631a9f50ef68f17706d0)
+:   pool: Fix read corruption in HTTP mover
+
+[5cdae6e](https://github.com/dcache/dcache/commit/5cdae6e30aca24d05475fd6cc2c3933661a06a7d)
+:   [maven-release-plugin] prepare for next development iteration
+
+## Release 2.9.24
+
+### Changes affecting multiple services
+
+If a bug is found in dCache then it should be logged.  For the older
+admin commands, an uninformative message was logged.
+
+Previously, if a bug was discovered when starting up a service dCache
+would abort starting up with a non-informative log message.  Now, the
+stack-trace is logged.
+
+### pnfsmanager
+
+When writing into dCache with SRM, the Access Latency (AL) and
+Retential Policy (RP) may be specified or omitted.  Additionally, the
+client may specify a space reservation into which the file should be
+written.  If the client specifies both, they must match.
+
+In dCache, there are three mechanisms to support a client that
+specifies neither AL/RP nor space reservation: the directory can have
+`AccessLatency` and `RetentialPolicy` tags, the directory can have the
+`WriteToken` tag, there are a system-wide default AL/RP values.
+
+Previously, dCache would reject uploads where the user-supplied AL/RP
+information does not match the AccessLatency/RetentialPolicy tags,
+despite the latter being intended as default values.
+
+With this release, if the client specifies neither space token, AL or
+RP then the directory tags will be used.  If a directory specifies
+both `WriteToken` and `AccessLatency`/`RetentionPolicy` tags, then
+these have to be consistent.  If the directory conains a `WriteToken`
+tag and the client specifies AL/RP, then the client specified values
+have to be consistent with the `WriteToken` tag.
+
+### pool
+
+
+When attempting to upgrade non-precious and non-cached files (e.g. a
+file marked `broken`), the receiving end of the migration module would
+answer twice: first (correctly) with a failure and then (incorrectly)
+with a success.  This is now fixed.
+
+
+### Changelog 2.9.23..2.9.24
+
+<!-- git log 2.9.23..2.9.24 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[a51dd3a](https://github.com/dcache/dcache/commit/a51dd3a27ac2a860f7682fc4970077071264b098)
+:   [maven-release-plugin] prepare release 2.9.24
+
+[5d6fd19](https://github.com/dcache/dcache/commit/5d6fd1966580db7c45f7b51b600ef6be44755e51)
+:   cells: log bugs found by CellShell
+
+[c02aeaa](https://github.com/dcache/dcache/commit/c02aeaaae3a45bc5403ff917c547886fbbcab07f)
+:   cells: fix how bugs are reported from ac_ command.
+
+[255fa85](https://github.com/dcache/dcache/commit/255fa858621f8600896931307b8ce1c3b3520127)
+:   pool: Fix bug in migration module upgrade logic
+
+[e51c5b2](https://github.com/dcache/dcache/commit/e51c5b2d767d26a9a4dfc8f1168b2a2143453554)
+:   pnfsmanager: Fix upload to space token that conflicts with AL and RP tags
+
+[7d30b6a](https://github.com/dcache/dcache/commit/7d30b6acacf9308be41476561e7b60f9bbcb05fc)
+:   [maven-release-plugin] prepare for next development iteration
+
+## Release 2.9.23
+
+### Changes affecting multiple services
+
+Various scripts, including the `dcache` command, invoke the `java`
+command with a list of directories in which Java should look for
+support libraries.  Previously, the current working directory was
+(mistakenly) included in that list.  This could lead to odd behaviour;
+one particular example is running a `dcache database` command from the
+`/etc/dcache` directory.  This release fixes this problem by excluding
+the current directory.
+
+When there is some problem in the communication between domains and
+error message is logged.  Previously the explanation for the problem
+was logged as "null".  With this release, a more descriptive
+explanation is provided.
+
+### spacemanager
+
+Fixed the `ls spaces` and `ls files` commands so they do not fail if
+there is a reservation without an owner.
+
+
+### Changelog 2.9.22..2.9.23
+
+<!-- git log 2.9.22..2.9.23 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[e02cb1c](https://github.com/dcache/dcache/commit/e02cb1c562d90a72235758c123a07e2e11b81e50)
+:   [maven-release-plugin] prepare release 2.9.23
+
+[d776ce6](https://github.com/dcache/dcache/commit/d776ce6ce16efb02a4e9d2512d3b677f94af12fa)
+:   spacemanager: Fix NPE in listing space reservations
+
+[0af6f6e](https://github.com/dcache/dcache/commit/0af6f6e1ba06dc71245fc85432c10b191168e2e7)
+:   tunnel: use toString if IOException#getMessage returns null
+
+[0256405](https://github.com/dcache/dcache/commit/0256405376d75d70d80ea6da00c044463ac45949)
+:   Exclude cwd from classpath
+
+[7af5f04](https://github.com/dcache/dcache/commit/7af5f049e24e395a6b0354676ac8b4528719f631)
+:   [maven-release-plugin] prepare for next development iteration
+
+## Release 2.9.22
+
+### Changes affecting multiple services
+
+This patch fixes a race condition in Chimera that affects the nfs door
+and the pnfsmanager service.  The effect is that, if two clients
+attempt to delete the same target (a file, link or directory) at the
+same time then the nlink count for the parent directory is decreased
+twice.  "At the same time" means within the time taken to process the
+deletion; this is instance-specific but should be much less than 1 ms
+for well-configured systems.  Sites can repare any incorrect nlinks
+with the following SQL:
+
+    UPDATE t_inodes SET inlink = (
+        SELECT COUNT(*) FROM t_dirs  WHERE t_inodes.ipnfsid = t_dirs.iparent
+    ) WHERE itype = 16384;
+
+This is safe to run on a running production instance, but may take
+some time and will affect dCache's responsiveness while running.
+
+### gplazma
+
+The description for how to migrate away from using the forbidden
+`useGPlazmaAuthorizationModule` and `useGPlazmaAuthorizationCell`
+properties had caused confusion.  The description has now been updated
+to be more explicit.
+
+### httpd
+
+Fix filtering boxes and sorting on Pool Admin, Pool Usage, Poolgroups,
+Space Tokens and Tape Transfer Queue.
+
+### srm
+
+Uploading a file with SRM involves three steps: preparing for the
+upload (`srmPrepareToPut`), uploading the file, marking the upload
+finished (`srmPutDone`).  The third step can fail but previously the
+response from dCache is always `Upload failed.`.  With this release, a
+meaningful error message is returned.
+
+
+### Changelog 2.9.21..2.9.22
+
+<!-- git log 2.9.21..2.9.22 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[273a6bd](https://github.com/dcache/dcache/commit/273a6bde5f1617918190b446e25958c92f76dc1f)
+:   [maven-release-plugin] prepare release 2.9.22
+
+[2dfe39a](https://github.com/dcache/dcache/commit/2dfe39af31ff0394f02738f6944eb41900a2d9fb)
+:   gplazma: update error message for forbidden properties
+
+[fd03121](https://github.com/dcache/dcache/commit/fd031219699336862f4d1b6291a440a8ff7c9a00)
+:   (2.9) webadmin: make jquery selector specific to individual tables
+
+[d826d12](https://github.com/dcache/dcache/commit/d826d1248a6d4d9a255e9360cd1e2776a2286b51)
+:   (2.9) webadmin: restore missing components to respect jquery script options
+
+[cc7d855](https://github.com/dcache/dcache/commit/cc7d85544e97990f8511a73f63d5794c24c89363)
+:   srm: include the reason why upload failed
+
+[4ee0db1](https://github.com/dcache/dcache/commit/4ee0db16a21205a36a3c73ab5400a2aef7c5754e)
+:   chimera: fix race condition on remove
+
+[344adbd](https://github.com/dcache/dcache/commit/344adbdeae3efc5471df8761cb4a5b7a59f765ca)
+:   webadmin: ensure unique id attributes for all (currently) tested UI elements
+
+[159a2dc](https://github.com/dcache/dcache/commit/159a2dcbace01ad7fecddbce7d4c281bcba0a3f1)
+:   [maven-release-plugin] prepare for next development iteration
+
+## Release 2.9.21
+
+### ftp
+
+Fix default value for `ftp.authz.readonly` for plain (unencrypted)
+doors.  This restores the default value to the dCache v2.6 default
+value of `true`.
+
+The response from the plain (unencrypted) ftp door if the user
+specifies the wrong password is badly formed.  Althogh it is possible
+that some clients are robust against such incorrect responses, with
+this release the ftp door responds correctly.
+
+### webdav
+
+Fixes a bug where, if a double-slash is present, all parts of the path
+leading up to the double-slash are ignored; for example, with the bug,
+a path like `/a/b//c/d` is handled as if `/c/d` was specified.  With
+this release, double-slashes are treated like single slashes; the
+above example is handled as if `/a/b/c/d` was specified.
+
+Fix the NullPointerException triggered if client attempts to upload a
+file as a child of some existing file.
+
+
+### Changelog 2.9.20..2.9.21
+
+<!-- git log 2.9.20..2.9.21 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[9a9624d](https://github.com/dcache/dcache/commit/9a9624d3d8e0a38b872cd67856ec69835545b78e)
+:   [maven-release-plugin] prepare release 2.9.21
+
+[c258357](https://github.com/dcache/dcache/commit/c258357cc40e7c1b575f0d6d6334ebe4ee5f3a8e)
+:   ftp: fix response if user fails to authenticate to weak FTP door
+
+[6ae35be](https://github.com/dcache/dcache/commit/6ae35beebd6bd0dc9354998713b7e7e42903ee40)
+:   ftp: fix invalid default for ftp.authz.readonly property
+
+[ac12004](https://github.com/dcache/dcache/commit/ac12004f5dd0cad198cd6df78b6bb1effd35f647)
+:   webdav: fix double-slash bug by upgrading to patched milton
+
+[1add5a4](https://github.com/dcache/dcache/commit/1add5a4860f345f8b50c29f7e306a63a01f1d6c1)
+:   webdav: fix NullPointerException when PUT as a child of a file
+
+[050ff78](https://github.com/dcache/dcache/commit/050ff786776c7ce2e12d6785e9ac51bedbbd0def)
+:   [maven-release-plugin] prepare for next development iteration
+
+## Release 2.9.20
+
+### Changes affecting multiple services
+
+Previously releases of dCache claimed to support Java-8; however, this
+is not true.  For Java-8 support, sites must upgrade to dCache v2.10
+or newer.
+
+### httpd
+
+Fix two minor issues when authenticating with the webadmin interface:
+"unauthorised access" and being redirected to the home page.  The
+unauthorised access error can occur when selecting "Login" under the
+bird logo (top right corner); this is now fixed.  The redirection
+problem occurs when selecting a tab that requires administrative
+privileges while not logged in; this redirects the browser to the
+login page.  Previously, after a successful login, the browser was
+redirected to the home page.  Now the browser is redirected to the
+selected tab.
+
+### webdav
+
+A previous bug-fix release fixed how dCache responds when the client
+attempts to `DELETE` a non-existent file.  Unfortunately, this
+triggered a different problem where such activity results in a
+stack-trace that starts `java.lang.ClassCastException:
+java.lang.String cannot be cast to javax.security.auth.Subject`.  This
+second problem is now fixed.
+
+
+### Changelog 2.9.19..2.9.20
+
+<!-- git log 2.9.19..2.9.20 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[6639259](https://github.com/dcache/dcache/commit/6639259f37ae52a314bdd3108410af98df026aed)
+:   [maven-release-plugin] prepare release 2.9.20
+
+[d29b079](https://github.com/dcache/dcache/commit/d29b07924fcd423df8ff6a15dccdadfa323e56c3)
+:   Disallow Java 8
+
+[e4428e0](https://github.com/dcache/dcache/commit/e4428e046e2633d09495b3d96d66cc612d1312af)
+:   webdav: Alternative to fixing return code of DELETE of absent file
+
+[5b1a81e](https://github.com/dcache/dcache/commit/5b1a81eaee153dfe23b7a2eb0944751078635e83)
+:   (2.9) webadmin: fix login redirect bug
+
+[7fe25d4](https://github.com/dcache/dcache/commit/7fe25d44a872183a4b47ae47e16c21570cba94a9)
+:   [maven-release-plugin] prepare for next development iteration
+
+## Release 2.9.19
+
+### Changes affecting multiple services
+
+It is possible that a sudden burst of activity from many clients
+exceeds dCache capacity to queue such requests.  Although dCache is
+designed to degrade gracefully under such circumstances, there existed
+the possibility of certain requests becoming stuck or memory leaking.
+This is now fixed.
+
+### info-provider
+
+In previous releases, the info-provider assumed the broker domain is
+`dCacheDomain`.  This assumption has been removed.
+
+### nfs
+
+Upgrade to nfs4j v0.8.5.  This fixes export file parsing if a host is
+mentioned multiple times; note `localhost` must now have an explicit
+entry in the exports file.  This also fixes a deadlock when closing a
+file on a busy dCache instance.
+
+### pnfsmanager
+
+Fix NullPointerException when a file is stored in a directory with an
+empty tag.
+
+### pool
+
+Upon reloading the pool configuration an error is produced when an
+nearline storage was already defined in the existing
+configuration.  This is now fixed.
+
+A recent release fixed a bug that caused
+`pool.mover.ftp.allow-incoming-connections` to be ignored.  Fixing
+that bug revealed another that caused the property to have the
+opposite effect.  This is now fixed.
+
+dCache pool configuration allows passing (fixed) arguments to the HSM
+script.  In earlier releases, these arguments were supplied to the
+script in an arbitrary order.  While HSM scripts should not depend on
+the order, they might; so, with this release, the order is preserved.
+
+### webdav
+
+Although dCache behaves correctly if the client interrupts a proxied
+transfer; however, this is logged as a bug.  This is now fixed.
+
+
+### Changelog 2.9.18..2.9.19
+
+<!-- git log 2.9.18..2.9.19 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[16a165b](https://github.com/dcache/dcache/commit/16a165b0da7ff0157c67c7ea3b0335d0a9c14b32)
+:   [maven-release-plugin] prepare release 2.9.19
+
+[ab8e906](https://github.com/dcache/dcache/commit/ab8e90658ccf9ac631d46b0b81910a552e8bc55c)
+:   webdav: don't log a stack-track when proxy transfer is interrupted
+
+[fc0dd3c](https://github.com/dcache/dcache/commit/fc0dd3c352c5d99f6f8dd2e32f72bfc157adc68e)
+:   info-provider: remove dCacheDomain assumption.
+
+[9d5724f](https://github.com/dcache/dcache/commit/9d5724f823f279507fda76687146009ffb3e51d4)
+:   Fix compilation with Java 7
+
+[b5f3b1c](https://github.com/dcache/dcache/commit/b5f3b1c9e4fe215edb159110ab81cbe399910b1d)
+:   cells: Fix message timeout in case of thread pool overflows
+
+[048f4da](https://github.com/dcache/dcache/commit/048f4da4c20e2474937117725c27454fb63f90f3)
+:   libs: pull grizzly-framework-2.3.12 for nfs4j
+
+[bbccfd9](https://github.com/dcache/dcache/commit/bbccfd959ff4400ff9d8fccc4f9941a97f821efd)
+:   chimera: handle NULL field of directory tags
+
+[98a595b](https://github.com/dcache/dcache/commit/98a595b5441ed046c2a7703c1b6ca143760cdc1b)
+:   pool: Fix regression preventing configuration to be reloaded
+
+[fd20bb6](https://github.com/dcache/dcache/commit/fd20bb6221879c92fd6b89b987bcb7b1b5b35632)
+:   (2.9) gitignore additions for IntelliJ
+
+[8c33655](https://github.com/dcache/dcache/commit/8c33655c7877684dea0b8a9662cfb27abb5794b4)
+:   libs: update to nfs4j-0.8.5
+
+[3c778f1](https://github.com/dcache/dcache/commit/3c778f10421c44a459c044ddf7ab06dba2443e96)
+:   pool: Fix regression causing FTP movers to default to proxy mode
+
+[1392a58](https://github.com/dcache/dcache/commit/1392a58cbf9b81d38fe3e09d8a8dfff905195f2a)
+:   pool: Preserve HSM option ordering
+
+[c91e5f3](https://github.com/dcache/dcache/commit/c91e5f3216de54b6ed3c34e6530b29a2db42a941)
+:   [maven-release-plugin] prepare for next development iteration
+
+## Release 2.9.18
+
+### Changes affecting multiple services
+
+Although dCache system configuration property names do not contain
+spaces, it is possible to define such properties.  Previously, doing
+so breaks the `dcache` command.  This is now fixed.
+
+If the number of concurrent connections is set to `-1` then the ftp
+and dcap doors will leak memory, eventually triggering an
+out-of-memory error that will restart the domain.  This is now fixed.
+
+### admin
+
+Fix erronous reporting of bugs when the user supplies incorrect
+arguments to an admin command.
+
+### dcap
+
+Fix regression against v2.6 and earlier dCache in how gsidcap doors
+are known to SRM and how they are published in BDII/GLUE.
+
+### ftp
+
+The ftp door supports the `HELP` command as some clients use this
+commands output to discover if certain optional functionality is
+available.  This release fixes the output from this command.
+
+### pool
+
+Improve which interface the ftp mover selects when the client is
+redirected to the pool.  In particular, the door will only redirect
+the client if the IP protocol matches (IPv4 vs IPv6); for example, if
+a client connects with IPv6 and the pool has no IPv6 address then the
+door will now proxy the data connection.
+
+The `pool.mover.ftp.allow-incoming-connections` property had no
+effect.  This is now fixed.
+
+Improve shutdown of nearline storage subsystem; now dCache will
+attempt to cancel all ongoing activity before shutting down the pool.
+The previous asynchronous approach could lead to
+`IllegalStateException` being logged if the pool was busy at that
+time.
+
+### spacemanager
+
+Adjust spacemanager schema migration to be aware of earlier dCache
+bugs and to work-around site-local indexes that clash with new indexes
+that dCache needs.
+
+### srm
+
+Previously, if the SRM client requests listing a directory, specifies
+a non-zero offset and does not limit the response size then dCache
+would fail this request with an IllegalArgumentException.  This is now
+fixed.
+
+### webdav
+
+With the recent upgrade of the Milton library some new behaviour was
+introduced.  One example is that, under certain circumstances (and to
+support certain clients) the Milton library returns a `401` (not
+authorised) when attempting to delete a non-existing file.
+Unfortunately, this change then broke ATLAS clients.  This patch
+updates dCache so it returns `404` (not found) under these
+circumstances.
+
+Fix the response when a client requests a byte-range beyond the end of
+a file.  This is necessary for compatibly with ARC clients.
+
+
+### Changelog 2.9.17 to 2.9.18
+
+<!-- git log 2.9.17..2.9.18 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[4dc77ac](https://github.com/dcache/dcache/commit/4dc77accd83187b43b85cd012ef81c1a4dc19911)
+:   [maven-release-plugin] prepare release 2.9.18
+
+[5c91187](https://github.com/dcache/dcache/commit/5c91187257d0bc046d9a271fb9ed9481b7704eec)
+:   webdav: Fix reported content length for partial GETs
+
+[34efc53](https://github.com/dcache/dcache/commit/34efc53359965ec5d1549635e5c068b79e9c10a1)
+:   webdav: Fix return code on DELETE of absent file
+
+[97622d9](https://github.com/dcache/dcache/commit/97622d9adb0e01494f5bdb7ea02a132ecad166d7)
+:   srm: fix semi-infinite ls range with non-zero offset
+
+[9c416b2](https://github.com/dcache/dcache/commit/9c416b2057a7354a93ff8f0916516934d72f5cbe)
+:   pool: Partially fix interface selection for FTP mover
+
+[5ff1529](https://github.com/dcache/dcache/commit/5ff15294f8e0a8a606f91f8ebcc600dcc8d61841)
+:   pool: Fix typo that breaks pool.mover.ftp.allow-incoming-connections
+
+[12a1086](https://github.com/dcache/dcache/commit/12a10863bbb5b0330d05b47d5aa6fe9adcce829f)
+:   shell: fix shell oracle for configuration keys with a space
+
+[8f2a131](https://github.com/dcache/dcache/commit/8f2a131f31ca06f33c94e0144e5c0b4b68ba641c)
+:   ftp: fix help output
+
+[a20e635](https://github.com/dcache/dcache/commit/a20e635fb145d029c30bc39fdb0c2cc341645abe)
+:   dcap: Fix regression in published protocol family
+
+[6b27f82](https://github.com/dcache/dcache/commit/6b27f8210ec7fbe15e04d6b91c358cab32b8fb44)
+:   loginmanager: Fix leak caused by absent child limit
+
+[c904227](https://github.com/dcache/dcache/commit/c904227295ccd2ca5366723250a25e5e34a161d7)
+:   pool: Fix shutdown of nearline storage subsystem
+
+[a9a4700](https://github.com/dcache/dcache/commit/a9a470006ae9161744e9c6aece046baecc95b90f)
+:   spacemanager: Fix null constraints and other schema migration issues
+
+[4830544](https://github.com/dcache/dcache/commit/48305441818d7ba9defaae83e20a3e2fbd621709)
+:   admin: Fix error reporting
+
+[20dbb7a](https://github.com/dcache/dcache/commit/20dbb7a64bdabbcce7b03b360e89cb3c8d40b877)
+:   [maven-release-plugin] prepare for next development iteration
+
+## Release 2.9.17
+
+### pool
+
+The NFS specification allows the server to specify multiple addresses
+when telling the client where to connect; for example, specifying both
+an IPv4 and an IPv6 address, or both addresses for multi-homed
+machines.  This requires the client to choose the appropriate
+interface.  For Scientific Linux 6, the kernel client will always use
+the first supplied address in the list and fail if it cannot access
+the pool with that address.  With this release, pools will order the
+list, using heuristics to select which IPv4 address is "correct" and
+list it first.
+
+### poolmanager
+
+With previous dCache versions, the WAAS selection algorithm had a bug
+where it could (mistakenly) consider pools full if all pools had very
+fresh files.  This is fixed with this release.
+
+### spacemanager
+
+Fix various issues to improve the robustness of spacemanager: handle
+failed uploads correctly, handle files deleted during upload
+correctly, increase robustness against dCache loosing (internal)
+messages.
+
+### webdav
+
+Upgrade to Milton v2.6.  This fixes the buffering problem where a
+proxied vector read request results in the entire file being written
+to a `tmp` directory and not deleted.  With this release, requests for
+100 kiB or less data result in no data being written to disk; requests
+for more than 100 kiB are still written to disk, but only the data
+needed to satisfy the request is stored and the file is deleted once
+the response has been sent.  Some issues persist: data isn't deleted
+if there is a failure sending it to the client and the whole file is
+requested from the pool.
+
+
+### Changelog 2.9.16 to 2.9.17
+
+<!-- git log 2.9.16..2.9.17 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[1477be1](https://github.com/dcache/dcache/commit/1477be1633e3a91a0da50b009114d133c4a5a68c)
+:   [maven-release-plugin] prepare release 2.9.17
+
+[c3d30aa](https://github.com/dcache/dcache/commit/c3d30aade8d1807db4605cbf011a8ed58c228aeb)
+:   poolmanager: Fix full pool detection for WASS
+
+[04841d4](https://github.com/dcache/dcache/commit/04841d4e3e88c15fbd4c3ad213a941e74aa26321)
+:   Upgrade to Milton 2.6
+
+[f400a57](https://github.com/dcache/dcache/commit/f400a5717d422c8981206ba843615964de592ff7)
+:   pool: reorder ip addresses returned to NFS client
+
+[1d27710](https://github.com/dcache/dcache/commit/1d27710db4366b3899a58707996987563a479ec7)
+:   spacemanager: Fix various error recovery scenarios
+
+[f9b7139](https://github.com/dcache/dcache/commit/f9b71397918d8f778f569fe3915230f663babb1a)
+:   [maven-release-plugin] prepare for next development iteration
+
+## Release 2.9.16
+
+### Changes affecting multiple services
+
+Restarting a domain within an active dCache instance can lead to a
+domain receiving messages for a cell as it is starting.  Strict
+control is require to avoid the cell attempting to process messages
+before it is ready.  This release fixes one place where this control
+was missed, which could lead to a `NullPointerException`.  While this
+problem can affect any core dCache service, it was noticed with the
+spacemanager service.
+
+### httpd
+
+dCache versions including and after 2.11.0, 2.10.9, 2.9.12, 2.8.16,
+2.7.21 and 2.6.36 required sites to delete existing RRD files when
+upgrading; i.e., run the command `rm -f /var/lib/dcache/plots/*.rrd`
+when the domain hosting the `httpd` service is stopped.  This release
+reverts that change, but requires sites that have already upgraded to
+repeat the `rm` command.  Sites upgrading from an earlier dCache
+version do not need to delete anything.
+
+Fix a potential `NullPointerException` in `poolCollector`.
+
+### nfs
+
+Protect against a `NullPointerException` if the client attempts to
+read the contents of a file's level where that level exists in the
+database but contains a Nil value.  This does not happen under normal
+circumstances.
+
+### pool
+
+The Berkeley DB, which may be used to store file metadata on the pool,
+does not like being interrupted.  The pool tries hard to avoid
+interrupting reading or writing; this release fixes one place that
+slipped through.
+
+Fix regression in the output from the info command: it did not include
+statistics about the number of HSM requests and HSM timeouts.  Also
+fixes how active HSM jobs are counted: cancelled jobs are still active
+until the underlying job as ended.
+
+
+### Changelog 2.9.15 to 2.9.16
+
+<!-- git log 2.9.15..2.9.16 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[ad2863a](https://github.com/dcache/dcache/commit/ad2863a0a1ebaa4ad19e1f1f4aae3cfa131e4b37)
+:   [maven-release-plugin] prepare release 2.9.16
+
+[2eb29b8](https://github.com/dcache/dcache/commit/2eb29b8a9830977cf26c536f9054895ed9b506fa)
+:      imera: protect against NPE in FsSqlDriver#read
+
+[4fca3c4](https://github.com/dcache/dcache/commit/4fca3c4b819c4da3cfff54e99a5cee7dc29127cd)
+:   pool: Restore flush and stage stats in info
+
+[12496d6](https://github.com/dcache/dcache/commit/12496d639778aa2d9fd3241568fa68430d3aae61)
+:   Fix NPE in cell initialization
+
+[99a8479](https://github.com/dcache/dcache/commit/99a8479d3653328a6a33ddaca4be05b6375568bc)
+:   Fix NPE in httpd service
+
+[fdda8bf](https://github.com/dcache/dcache/commit/fdda8bf884bf4c860747a25d1072ef5d410e5215)
+:   pool: Avoid interrupting Berkeley DB in migration module server
+
+[47a5c36](https://github.com/dcache/dcache/commit/47a5c36f59dd1d731191af9d5065d9f4858b54b2)
+:   dcache-webadmin: revert rrd data source names
+
+[17b04cc](https://github.com/dcache/dcache/commit/17b04cc25cd246cf2e23439bc0ba38c79fc06464)
+:   [maven-release-plugin] prepare for next development iteration
+
+## Release 2.9.15
+
+### alarms
+
+Fix minor corruption at beginning of the alarms defaults file.
+
+### httpd
+
+In previous versions of dCache, the webadmin war file is automatically
+unpacked.  This has been problematic as a dCache upgrade did not
+always trigger updating the unpacked webadmin, resulting in dCache
+running the older webadmin.  With this release, dCache no longer
+unpacks the war file; the `webadminWarunpackdir` and
+`httpd.container.webapps.tmp-dir` properties are now obsolete.
+
+### Changelog from 2.9.14 to 2.9.15
+
+<!-- git log 2.9.14..2.9.15 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[1354cc5](https://github.com/dcache/dcache/commit/1354cc5686a4377186fcc90d1753d2a1051b19dc)
+:   [maven-release-plugin] prepare release 2.9.15
+
+[6e0bee1](https://github.com/dcache/dcache/commit/6e0bee163f90625fb396c65dad0a9343417e4382)
+:   alarms.properties fix accidental header corruption
+
+[256b40d](https://github.com/dcache/dcache/commit/256b40dd25c3ddcbfd164af63399794322793e82)
+:   [maven-release-plugin] prepare for next development iteration
+
+[daf71ba](https://github.com/dcache/dcache/commit/daf71ba5b6c3edf848d543dfd4d56538748df553)
+:   (2.9) dcache-webadmin: change Jetty setting so .war is not unpacked
+
+
+
+## Release 2.9.14
+
+### Changes affecting multiple services
+
+A bug was discovered that resulted in the nlink count becoming
+negative.  While wrong, this had a knock-on effect that prevented
+pnfsmanager and nfs services from listing the affected directory.
+With this release, directory listing are robust against such problems.
+
+### alarms
+
+Fix alarm definition that triggers when the pool discovers a file with
+the wrong checksum.  Previously it mistakenly triggered if an upload
+was incomplete.
+
+### nfs
+
+Update nfs4j to v0.8.3.  This brings some small performance benefits
+when listing a directory and for reading data through NFS v3.
+
+Fix bug where, when a client read activity is proxied, the
+corresponding dcap mover wasn't removed if client didn't wait for the
+queued mover to start.  Previously, such movers would accumulate on
+the pool.
+
+### pnfsmanager
+
+Prevent attempts to remove the `.` and `..` directories.
+
+### webadmin
+
+Display the command's output in the cell admin page to use a monospace
+font.
+
+Remove a javascript error due to missing clojure dependency.
+
+Sending commands in cell admin page is fixed.
+
+### Changelog from 2.9.13 to 2.9.14
+
+<!-- git log 2.9.13..2.9.14 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[2f4d1e4](https://github.com/dcache/dcache/commit/2f4d1e4863d7b8a4028728d193c77e7b964456fd)
+:   [maven-release-plugin] prepare release 2.9.14
+
+[9dc9a7e](https://github.com/dcache/dcache/commit/9dc9a7e3649c56323a865b584d866b329f6ee924)
+:   webadmin: Fix ClassCastException in cell admin
+
+[09888d6](https://github.com/dcache/dcache/commit/09888d6a92bc42252f7c0168df1b6983e8fd1277)
+:   alarms:  fix regex for checksum alarm
+
+[2329345](https://github.com/dcache/dcache/commit/23293454b019a75033a81f37e3b4d728845828e4)
+:   webadmin: remove redundant head element in alarms panel html
+
+[045091a](https://github.com/dcache/dcache/commit/045091afbcc127e8a67fc51561933bcfc8790e80)
+:   dcache-webadmin: change output field of cell admin page to monospace font
+
+[29251e9](https://github.com/dcache/dcache/commit/29251e9618337c69f26482bbf5f94e518b032d2b)
+:   (2.11) dcache-webadmin: eliminate clojure dependency
+
+[eec425b](https://github.com/dcache/dcache/commit/eec425bfb19accad219991b8b1bad1416002659a)
+:   nfs-proxy: kill mover if we get a timeout on redirect
+
+[a2c27f1](https://github.com/dcache/dcache/commit/a2c27f1bc58d11d7e18e62889f30dfca9ab2a121)
+:   libs: update to nfs4j-0.8.3
+
+[b44bc21](https://github.com/dcache/dcache/commit/b44bc21cc900332df5503aad78b0c6ad7e4a409f)
+:   chimera: protect list initialization from FS inconsistencies
+
+[b773683](https://github.com/dcache/dcache/commit/b7736834f3769876b68d401d5d63482b3b893bb2)
+:   webadmin: tidy up unavailable page slightly
+
+[2cdcfc4](https://github.com/dcache/dcache/commit/2cdcfc458f648b07b20b35b2ae44921215c0e9e4)
+:   chimera: prevent attempts to remove '.' and '..'
+
+[0db8034](https://github.com/dcache/dcache/commit/0db80347b00e87a83f5dbfbd985dc6e1d39a9385)
+:   [maven-release-plugin] prepare for next development iteration
+
+
+
+## Release 2.9.13
+
+### Fixes affecting multiple services
+
+Update `dcache check-config` to print an error if site-local
+configuration contains scoped properties: one that contain a '/'
+character.
+
+### httpd
+
+Fix pool queue plots in webadmin.
+
+### nfs
+
+Performance improvements.
+
+### pnfsmanager
+
+Fix the message reported when moving (or renaming) a file or directory
+and certain problems were found: the destination directory isn't a
+directory, the source doesn't exist, or overwriting with different
+types (e.g., overwriting a directory with a file).
+
+Fail requests earlier that plan to upload a file if that file's path
+already exists as a directory.  Previously, dCache would fail such
+uploads after the file was upload (during srmPutDone).  With this
+release, dCache will fail during srmPrepareToPut instead.
+
+### poolmanager
+
+If a site using WAAS specifies too large a Space Cost Factor then the
+algorithm used for write pool selection breaks down, logging
+"Unreachable statement." Starting with this release, a warning is
+logged indicating the cause of the problem.
+
+### srm
+
+The `srm.enable.space-reservation.implicit` property is now marked
+forbidden.  This means a dCache instance with this property configured
+will not start.  Consider the
+`spacemanager.enable.unreserved-uploads-to-linkgroups` property
+instead.
+
+### Changelog from 2.9.12 to 2.9.13
+
+<!-- git log 2.9.12..2.9.13 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[f1f9b72](https://github.com/dcache/dcache/commit/f1f9b72b232057fba31485c55b40ed1b2bdd2c0a)
+:   [maven-release-plugin] prepare release 2.9.13
+
+[34a56eb](https://github.com/dcache/dcache/commit/34a56ebc854f9d7bae2e60e4244687c198203874)
+:   chimera: Add messages to JdbcFs#move exceptions
+
+[1a93191](https://github.com/dcache/dcache/commit/1a9319150e8c803e25da4b03d8ad334b864a66f9)
+:   poolmanager: Warn when spacecostfactor is too big
+
+[d265156](https://github.com/dcache/dcache/commit/d265156bb79d04c55a596397e39c383b3876ee60)
+:   pnfsmanager: Check file type before overwrite
+
+[d2fe485](https://github.com/dcache/dcache/commit/d2fe485d39f2d1a7ecae1ea3cea6df81796673f5)
+:   check-config: Produce error when using scoped properties
+
+[635f30a](https://github.com/dcache/dcache/commit/635f30a7c5fe3c33cc299e058adcc1cd95a026c1)
+:   srm: Mark srm.enable.space-reservation.implicit forbidden
+
+[709a549](https://github.com/dcache/dcache/commit/709a5496b8154d11ab355b5fe0bb431cd935e7bf)
+:   (2.9) pool queue plots - fix partial package refactoring and neglected removal of jndi arguments
+
+[b4ab18b](https://github.com/dcache/dcache/commit/b4ab18bb37e3fb0befe01ad1ede49ee2bbc82055)
+:   pom: update to nfs4j-0.8.2
+
+[bd8c1be](https://github.com/dcache/dcache/commit/bd8c1be55beba5b9681fd506adef30225c7457a4)
+:   [maven-release-plugin] prepare for next development iteration
+
+
+
+## Release 2.9.12
+
+### Fixes affecting multiple services
+
+Running the `eval` admin command so it returns a non-zero return-code
+would respond indicating that a bug had been found.  This has been
+fixed.
+
+An named environment may be executed and can contain a reference to
+itself.  If this recursion is unchecked, eventually memory is
+exhausted and the domain would restart. Now an error is logged and the
+domain is not killed.
+
+Previously, some exceptions were logged with the wrong cell context or
+without any context.  This has been fixed.
+
+### billing
+
+Billing records issued by doors never included the file's size.  This
+is now fixed for all doors except NFS.
+
+### gplazma
+
+The xacml plugin now supports the gums server returning GID values.
+
+### pool
+
+Fix internal copying of files (triggered by the SRM `copy` command) so
+they respect the LAN port range.
+
+Fix migration module's random pool selection so that it does not
+select pools that are full.
+
+Fix NullPointerException triggered when using migration module's
+proportional pool selection and all pools are full.
+
+The `rep ls` command can calculate per-storage-class statistics.  This
+release fixes a problem where files without a storage-info would
+trigger an IllegalStateException when calculating these statistics.
+
+Fix sweeping of files without a storage-info.  Previously an
+IllegalStateException was thrown; this could be triggered by the admin
+interface or by the sweeper.
+
+Fix a problem where the pool would register free space before actually
+deleting the file from the file system; for a brief moment, the pool
+would appear to have more free space that is actually available.
+
+Periodically, pools check that dCache's internal accounting of total
+and free capacity does not exceed the OS supplied values for the
+partition (i.e., the output from the `df` command); if they do then
+the dCache internal accounting is adjusted to match.  The dCache.org
+team have observed that, after a file is deleted, some seconds may
+elapse before the corresponding extra free capacity is reported by the
+OS.  To protect pools from this effect, the total and free capacity
+check is suppressed for 60 seconds after a file was deleted.
+
+### spacemanager
+
+If a transient deadlock resolution error occurs, unconditionally retry
+the operation and do not log it.  Such errors are part of RDBMS design
+when resolving concurrent updates.
+
+### srm
+
+Fix the srm service's admin interface `ls` command so that listed jobs
+can optionally include only those that have failed, have completed or
+were cancelled.
+
+### webadmin
+
+Webadmin periodically creates billing graphs by querying the billing
+service for the information it needs.  Previously, if this query
+failed (e.g., the billing service was restarted or failed to start
+first) then no further billing graphs are generated and a domain
+restart is needed.  As a result of this work, the properties
+`poolqplots.refresh-interval`, `poolqplots.refresh-interval-unit`,
+`httpd.plots.pool-queue.refresh` and
+`httpd.plots.pool-queue.refresh.unit` are no longer supported.  The
+`httpd.plots.pool-queue.min-time-step` and
+`httpd.plots.pool-queue.min-time-step.unit` properties now also cover
+this configuration.
+
+### Changelog from 2.9.11 to 2.9.12
+
+<!-- git log 2.9.11..2.9.12 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[f83516c](https://github.com/dcache/dcache/commit/f83516c0f12f49a2697ca07999a4dec237669415)
+:   [maven-release-plugin] prepare release 2.9.12
+
+[9414bdf](https://github.com/dcache/dcache/commit/9414bdf1dabd349e2323147fb026806947221a19)
+:   gplazma-xacml: Add handling of GID returned by GUMS in gPlazma2 XACML plugin
+
+[26d72d7](https://github.com/dcache/dcache/commit/26d72d78a8c67aa6d9854a566ee080a4d7dd7b27)
+:   chimera: fix unit tests
+
+[671c821](https://github.com/dcache/dcache/commit/671c8214ec20c31993460c0fa65025fd20b6c1be)
+:   pool: Fix pool size health check in case of asynchronous release of space
+
+[c4323d1](https://github.com/dcache/dcache/commit/c4323d19191a94e347cb19f86919ab82a1e7c4c1)
+:   spacemanager: Suppress transient deadlock resolution errors
+
+[556ee8f](https://github.com/dcache/dcache/commit/556ee8f134ef8790f4d1450195c153a2c29f80e1)
+:   pool: Fix race leading to false positices in pool size health checks
+
+[43fc3b4](https://github.com/dcache/dcache/commit/43fc3b4f759dcc7ab2fbb6b95ee6d300bfe256c3)
+:   pool: Fix ISE in CacheEntryImpl#toString
+
+[ab3e5b8](https://github.com/dcache/dcache/commit/ab3e5b8dd40f7d4553701ec872d0d2451795ccff)
+:   pool: Fix ISE in 'rep ls'
+
+[35c97d2](https://github.com/dcache/dcache/commit/35c97d2f95b2def3ab8682f0f80bb7c8bab39e5e)
+:   Made PoolQueuePlotData enum compatible with java 8.
+
+[ffaddad](https://github.com/dcache/dcache/commit/ffaddad463b95a8def56a2a3f9be0333609800ee)
+:   (2.9) webadmin: fix exit login in billing refresh loop
+
+[d64ce31](https://github.com/dcache/dcache/commit/d64ce31ee8dafab41c11a44e4b88467995f78bd3)
+:   Marked refresh properties obsolete.
+
+[001429e](https://github.com/dcache/dcache/commit/001429ef80fe2acbbb502e6c55881b8450913399)
+:   cell: Log exceptions within the correct cell context
+
+[985dd21](https://github.com/dcache/dcache/commit/985dd21b9b029fded48d4c4e5d3197ea5794a5cb)
+:   pool: Fix pool selection bugs in migration module
+
+[85cb091](https://github.com/dcache/dcache/commit/85cb091acb947f4c8d6643c9cf09b6278063b9a7)
+:   billing: Add file size to request records
+
+[8850768](https://github.com/dcache/dcache/commit/8850768f2952af3e097498a2714a86cd4e4ab002)
+:   (2.9) webadmin: minor improvements to rrd4j-based pool-queue plots
+
+[2a880f7](https://github.com/dcache/dcache/commit/2a880f79685cca666ba9db9ea1ba732dcbb11529)
+:   pool: Respect LAN port range for internal srmcp transfers
+
+[7959ee7](https://github.com/dcache/dcache/commit/7959ee76152f70c0549c66d764f611c160f7e4a1)
+:   srm: Fix listing of failed, done and cancelled jobs
+
+[f35d56c](https://github.com/dcache/dcache/commit/f35d56ca00fbf8303910598284fe28973d862db3)
+:   cell: Prevent interpreter stack overflow from killing the domain
+
+[30d4605](https://github.com/dcache/dcache/commit/30d460540aa3f7c44b82fb43ec2131b6d954a354)
+:   cell: Declassify eval failure as a bug
+
+[d325f02](https://github.com/dcache/dcache/commit/d325f02e22b67852fdf0016876eb5d009bb8b21e)
+:   [maven-release-plugin] prepare for next development iteration
+
+
+## Release 2.9.11
+
+### Fixes affecting multiple services
+
+The nfs and srm both cache replies from gPlazma to increase the speed
+of authenticating and identifying the user.  Previously transient
+errors when communicating with gPlazma were also cached, delaying the
+recovery time from such errors.  Now, such errors are not cached.
+
+Update the comments within the configuration property files to reflect
+the new configuration property names.
+
+Fix OpenMQ communications to use new configuration property names.
+
+### dcap
+
+Fix opening a file when space-manager enabled.
+
+### nfs
+
+No longer trigger an NullPointerException when opening the
+`.(parent)()` dot-command file in Chimera's root directory.
+
+The `dcache ports` command now shows the NFS port based on the new
+configuration properties.
+
+### pool
+
+Fix a race-condition when a user starts uploading a file that should
+go to tape, deletes the file before the write is completed, then
+cancels the file upload.  Previously, there was a risk that the pool
+fails to delete the uploaded data.
+
+Fix Berkley DB usage when an HSM operation is cancelled to avoid an
+error logged as:
+
+    InterruptedException may cause incorrect internal state, unable to
+    continue. Environment is invalid and must be closed.
+
+Fix xrootd support for vector read.  The problem was discovered with
+ROOT v6, which reports errors like `Single readv transfer is too
+large`.
+
+Fix the dcap mover to use the new `pool.mover.dcap.port` configuration
+property.
+
+### srm
+
+Fix cleaning of upload directories for expired uploads after service
+restart.
+
+### xrootd
+
+Fix problems when calculating a response to the kXR_set request.  If
+encountered, the problem results in the following being logged, where
+'nnn' in 'xrootd-disk-nnn' is some integer number:
+
+    Uncaught exception in thread xrootd-disk-nnn java.lang.IllegalStateException: null
+
+### Changelog from 2.9.10 to 2.9.11
+
+<!-- git log 2.9.10..2.9.11 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[550ec26](https://github.com/dcache/dcache/commit/550ec26041475586c6bd05bde8ecd02c859b21ac)
+:   [maven-release-plugin] prepare release 2.9.11
+
+[d7f2d5c](https://github.com/dcache/dcache/commit/d7f2d5c4691f0d60bb9ec03395c5c4ed0e31491d)
+:   ftp: Fix root path validation for upload directory
+
+[04c9e10](https://github.com/dcache/dcache/commit/04c9e1000d787c3b7d7fda5e98b2d49f09df4dcd)
+:   dcap: fix interaction with Spacemanager
+
+[b378eb9](https://github.com/dcache/dcache/commit/b378eb91ae326f227fdbe0e4aaba26a6fbde3e8a)
+:   xrootd: Upgrade to xrootd4j 1.3.5
+
+[fc0562e](https://github.com/dcache/dcache/commit/fc0562ee499183fbdee500aa5f675ceb36f81032)
+:   pool: Prevent interruption of replica deletion during HSM flush
+
+[9a11bcb](https://github.com/dcache/dcache/commit/9a11bcb91e490f84a3c7255c7ffc8dd9ff1a837e)
+:   pool: Fix HSM cancellation
+
+[0efcf8f](https://github.com/dcache/dcache/commit/0efcf8fa41f485273dbcce66456dcf56fa84a627)
+:   The gPlazma cache used by NFS and SRM caches both positive and negative replies. Unfortunately it also caches failures to communicate with gPlazma. This means that a transient timeout would be cached too, thus increasing the effect of the transient error.
+
+[7e1a676](https://github.com/dcache/dcache/commit/7e1a676ced6b866364b316e5dd1d2b8dee6cca68)
+:   pool: Fix xrootd vector read limits
+
+[3eb760b](https://github.com/dcache/dcache/commit/3eb760b3dca2fbac0fde87a1b7f7122964985cd9)
+:   chimera: fix NPE on '.(parent)()' for root inode
+
+[83dabd5](https://github.com/dcache/dcache/commit/83dabd554c6524f584341c51403a66e52c5240b6)
+:   srm-client: Fix logback configuration
+
+[24eadff](https://github.com/dcache/dcache/commit/24eadff06914074f35ac469c48c05fbf58a035c9)
+:   srm: Fix asynchroneous job storage leak
+
+[15348a0](https://github.com/dcache/dcache/commit/15348a04dea31966c04014788fa0dac83e2e0047)
+:   configuration: adjust references to deprecated properties
+
+[52d4116](https://github.com/dcache/dcache/commit/52d4116677f08df121eafc5f379fc79dd8044d13)
+:   unittests: increase timeouts and fix race in DiskSpaceAllocatorTest
+
+[5464c99](https://github.com/dcache/dcache/commit/5464c99dfd6124cc8709a7785d7cb1bb8b1f77a1)
+:   [maven-release-plugin] prepare for next development iteration
+
+
+
+## Release 2.9.10
+
+### Fixes affecting multiple services
+
+In some cases, dCache would log the wrong cause of an internal
+failure.  This has been fixed.
+
+Two problems are fixed that affected those services that make use of
+the grid trust store (/etc/grid-security/certificates): gplazma, srm,
+gsiftp, webdav and xrootd:
+
+* When a CA is found not to have a signing-policy file, subsequent
+  attempts to discover a signing-policy file will automatically
+  fail for one hour.  Previously, if any CA was removed since the
+  service started then certain CAs (those using UTF-8 encoded
+  subject RDNs) would be placed in this not-found cache by
+  mistake.  This resulted users with certificates from such CAs
+  would succeed the first time they used dCache but all subsequent
+  attempts would fail until the cache expires or the trust-store
+  is refreshed.
+
+* A minor memory leak is fixed.  The amount of memory leaked was
+  proportial to the number of different CAs in use.
+
+Two problems are fixed that affected services providing GSI or plain
+SSL authentication using the jGlobus library:
+
+* dCache now supports TLS v1.2 clients when using GSI or plain SSL
+  using the jGlobus library.
+
+* Signal end-of-stream when remote sends a CLOSE notification.
+  The remote party normally sends a CLOSE notification before
+  terminating the TCP connection, typically send from server to
+  client.  Previously, receiving such a notification was treated
+  as an error.
+
+Fixed thread safetly of timestamp formatting, principally used in
+logging and generating the output of admin commands.
+
+### billing
+
+Fixes a bug where the bytes read graph can show inflated values.
+
+### nfs
+
+Fix permission check when client requests a list of some directory's
+contents.
+
+Add support for mounting when the server-side mount-point is a
+sym-link.
+
+### srm
+
+Fix the lifetime of the response when client makes a successful
+request for a reservation with infinite lifetime.
+
+Fix incomplete restore of "ready queued" jobs.  After restarting the
+srm service, any jobs in this state RQUEUED would not be handled
+correctly.  This has been fixed.
+
+Allow srm to start if there were active bring-online requests when the
+service was stopped.
+
+Fix the `set max ready get` command in the admin interface.
+
+Fix a problem where, if a client aborts an upload shortly after
+initiating the upload then the server blocks all activity for a
+timeout period.  The SRM will eventually recover but, during this
+period, it appears deadlocked.
+
+### chimera
+
+The chimera shell failed to interpret the creation time flag when
+choosing which time should be displayed in directory listing.
+
+
+### Changelog from 2.9.9 to 2.9.10
+
+<!-- git log 2.9.9..2.9.10 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[676caee](https://github.com/dcache/dcache/commit/676caeeb37c29028da8f79600323d8d13ea50330)
+:   [maven-release-plugin] prepare release 2.9.10
+
+[9c9a614](https://github.com/dcache/dcache/commit/9c9a614c8adce03f0246ca64fea4cce0278bb220)
+:   common: Fix race condition in AtomicCounter unit test
+
+[a663f44](https://github.com/dcache/dcache/commit/a663f44d7e6e0bd2e6ca2abf60d13dc6fb3d8115)
+:   Add missing import
+
+[d442963](https://github.com/dcache/dcache/commit/d442963812ff46d6efeae4059a4a67d78b051f2f)
+:   srm: Fix deadlock like bug
+
+[655f568](https://github.com/dcache/dcache/commit/655f568bc12080c6a82ebd244413d18569e88402)
+:   billing plots: use 'transferred' rather than 'size' for bytes
+
+[b9ddd09](https://github.com/dcache/dcache/commit/b9ddd0916348f38b309cdcce5e4985c7903999f8)
+:   srm: Fix reporting of infinite space lifetime
+
+[9a59574](https://github.com/dcache/dcache/commit/9a59574cadd4fc31f0e142bcaf60f623ec510523)
+:   chimera: Fix creation time flag in ls command
+
+[c0960b0](https://github.com/dcache/dcache/commit/c0960b0f8727cfe9d0c7c4d952c62285d56b1484)
+:   Fix CacheException references in error messages
+
+[58902cd](https://github.com/dcache/dcache/commit/58902cd51b79061c9818eb1f8d41bc1791cf6028)
+:   libs: update jglobus to 2.0.6-rc8.d
+
+[c00f2ec](https://github.com/dcache/dcache/commit/c00f2ecaabff5489db53ce17403718b261aa6f6a)
+:   srm: Fix incomplete restore of "ready queued" jobs
+
+[0ff73d0](https://github.com/dcache/dcache/commit/0ff73d089abf209f7efe7c4c4bfef79f94d30ef7)
+:   Avoid thread-unsafe use of SimpleDateFormatter
+
+[7bc2fc3](https://github.com/dcache/dcache/commit/7bc2fc3e7dfe809ee10893bf4f48ecd73f158046)
+:   srm: Fix set max ready get command
+
+[1ad3bd1](https://github.com/dcache/dcache/commit/1ad3bd1532679c1423ed6086a706449acc01479a)
+:   libs: update to jglobus-2.0.6-rc7.d
+
+[01d61f2](https://github.com/dcache/dcache/commit/01d61f20ec1da9c60a6f4e23475ecc3d9d801dae)
+:   libs: update to nfs4j-0.8.1
+
+[65a248a](https://github.com/dcache/dcache/commit/65a248abeec0261c75498b7996ac2eca17084919)
+:   [maven-release-plugin] prepare for next development iteration
+
+[c60ec10](https://github.com/dcache/dcache/commit/c60ec10864d9b669f701b51df53bc5eff9aadff7)
+:   build: Update to findbugs 3
+
+
+
+## Release 2.9.9
+
+### pnfsmanager
+
+Previously, the automatic schema management for Chimera failed to
+create an index on the `iparent` column of `t_dirs` table.  The lack
+of this index results in deletions becoming progressively slower as
+dCache stores more files.  If your dCache instance was created with
+dCache v2.3.0 or newer then it is likely affected by this problem.
+Instances created with an earlier version are not affected.  The
+pnfsmanager service will check for the index when it starts and add
+the index if it is missing.  Alternatively, the check may be performed
+manually using the `dcache database update` command.
+
+### pool
+
+This release fixes several issues with the sweeper:
+
+- Previously, the sweeper consumed considerable amount of memory while
+  freeing up space; in the worse case, this could result in the domain
+  running out of memory and restarting; this has been fixed.
+
+- The `sweeper ls` command would make the pool unresponsive while the
+  output is generated; now, running this command no longer prevents
+  the pool from taking on more work.
+
+- As the `sweeper purge`, `sweeper free` and `rep rmclass` commands
+  can take a long time to finish, the admin interface does not wait
+  for them to finish; instead, a quick response is returned and the
+  command continues in the background.  Previously there was no
+  indication when such commands had finished; now, the pool will log
+  when the command has completed.
+
+- The pool logs regular sweeper operations at lower priority; this
+  makes the pool logs less noisy when operating under normal
+  conditions.
+
+### poolmanager
+
+In previous versions, poolmanager would log a stack-trace if a user
+attempts to open a file for reading and no read pool could be found
+because a unit failed to match.  Now the failure is logged as a normal
+message.
+
+### xrootd
+
+The xrootd door now informs billing when a user uses the xrootd
+protocol to delete a file.
+
+### gplazma
+
+The ldap plugin allows a door to request converting a uid or gid back
+to a username; currently, only the nfs door makes use of this
+functionality, when generating a directory list.  In previous dCache
+releases, the plugin behaved incorrectly if the uid or gid is unknown;
+this is now fixed.
+
+
+
+### Changelog from 2.9.8 to 2.9.9
+
+<!-- git log 2.9.8..2.9.9 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[965cf4f](https://github.com/dcache/dcache/commit/965cf4fae0aafa68bf6dcbdc33d56a1225314947)
+:   [maven-release-plugin] prepare release 2.9.9
+
+[d1c4a76](https://github.com/dcache/dcache/commit/d1c4a76723b7621df4d07a99a97c28578d3e0433)
+:   chimera: mark as-run if i_dirs_ipnfsid exists
+
+[1943248](https://github.com/dcache/dcache/commit/194324876a9f603d176ab702762ba200fb0ee2b0)
+:   solaris: fix solaris package script and add work-around for pkgmk bug
+
+[29a8de4](https://github.com/dcache/dcache/commit/29a8de4f6bc50a6fbb82ea46606ca35bc9a6d0cd)
+:   chimera: create missing index i_dirs_iparent
+
+[8aaa6da](https://github.com/dcache/dcache/commit/8aaa6da3e174714e6f0433a12a598d62bf7bc7f2)
+:   pool: Resolve high memory usage and other issues in sweeper
+
+[03a161d](https://github.com/dcache/dcache/commit/03a161de7a53e84a9d62c619c83f9aced04c74e1)
+:   info: Fix HashMap ordering assumption in unit test
+
+[c69cb9d](https://github.com/dcache/dcache/commit/c69cb9d8e30e9643fcf9f4fc2c501f51aa7f3bb6)
+:   Make JDK byte code verification bug workaround Java 8 compatible
+
+[47b6e56](https://github.com/dcache/dcache/commit/47b6e5634ae72dc758ab860a0abd8979ba883b9a)
+:   gplazma: Fix JVM implementation dependency in unit test
+
+[fc992b9](https://github.com/dcache/dcache/commit/fc992b94b0838c84510d8358baf58f3bd4c57672)
+:   poolmanager: Suppress stack trace in case of unmatch units
+
+[5b25913](https://github.com/dcache/dcache/commit/5b2591393a3886b67f16f84b8629f37f143b23e6)
+:   xrootd: Add billing entry on delete
+
+[b2ea7ff](https://github.com/dcache/dcache/commit/b2ea7ffe86c46cd1ec2542bf672e2fe6d67cd0ae)
+:   bugfix: fix reverseMap not throwing NoSuchPrincipalExceptions
+
+[07f3b1f](https://github.com/dcache/dcache/commit/07f3b1f479cabd41dd66472fc499b315f77b811a)
+:   [maven-release-plugin] prepare for next development iteration
+
+
+
+## Release 2.9.8
+
+### Cell startup
+
+Fix potential dead-lock when a dCache domain is starting.  The problem
+is triggered when a cell receives a message while initialising.  If
+dCache is started "from cold" then this cannot happen.  However, if a
+domain that contains well-known cell restarts while the rest of dCache
+is operational then the problem could be triggered.  For example, if a
+door domain ran out of memory then there is a small risk that the
+domain would not restart correctly.  The problem was present since
+dCache v2.8.0 and is fixed with this release.
+
+### Changelog from 2.9.7 to 2.9.8
+
+<!-- git log 2.9.7..2.9.8 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[8a0d7e8](https://github.com/dcache/dcache/commit/8a0d7e8ca22facb54858567efdc9c217a10a1a6f)
+:   [maven-release-plugin] prepare release 2.9.8
+
+[03204ef](https://github.com/dcache/dcache/commit/03204ef1eec2087d3b6faae3ea3614238e0f76c6)
+:   cells: Fix deadlock during startup
+
+[0f49bf4](https://github.com/dcache/dcache/commit/0f49bf4779ad7785fe4a32180a87d416934a054c)
+:   [maven-release-plugin] prepare for next development iteration
+
+
+
+## Release 2.9.7
+
+### Packaging
+
+Add python-psycopg2 as recommended dependency to debian package; it's
+needed by the dcache-star command.
+
+### alarms
+
+The alert should be generated if a pool's background checksum scanning
+("scrubbing") discovers a broken file.  With this release, such alerts
+are now generated.
+
+### dcap
+
+When the client authenticates via GSI, the dcap door will check the
+user certificate (generally, a voms-proxy certificate) to extract the
+DN and primary FQAN.  To do this, it needs to know where the trusted
+CAs and trusted VOMS server identities are stored; these are typically
+`/etc/grid-security/certificates` and `/etc/grid-security/vomsdir`
+respectively.  Previously, dcap ignored the `dcap.authn.capath` and
+`dcap.authn.vomsdir` properties.  With this release, these properties
+are honoured.
+
+### pool
+
+If a stage requests has been forwarded to the nearline subsystem and
+the file is deleted then the stage request is now cancelled.
+
+Nearline storage configuration is now applied atomically rather than
+one attribute at a time.
+
+The maximum number of concurrent nearline operations may be adjusted
+using the `hsm set` admin command.  If the concurrency is increased
+then previous versions would only start additional activity as more
+requests are received.  This has been fixed so increasing the
+concurrency limit will immediately start more activity if there is any
+backlog of requests.
+
+
+### poolmanager
+
+Stage and pool-to-pool transfers, triggered by poolmanager, are
+monitored by poolmanager querying the source pool to check if the
+request is still active.  In previous versions of dCache, for n
+transfers from a pool, this monitoring generated O(n*n) of network
+traffic.  In particular, poolmanager's monitoring of bulk staging
+requests can result in sufficient network traffic between the pool and
+poolmanager that other dCache activity is impacted.  With this
+release, the monitoring traffic is reduced in general, most
+prominently for large concurrent activity, such as bulk stage
+requests.
+
+The `rc destroy` command has been removed.  The implementation was
+incomplete and the operation was dangerous.
+
+If the door resubmits a request to poolmanager that triggers staging
+of a file, poolmanager uses additional memory while waiting for the
+stage to complete.  For bulk staging, this additional memory usage can
+be significant, potentially resulting in poolmanager exhausting the
+available memory.  This release updates poolmanager so a door
+resubmitting a stage request does not increase the memory footprint of
+poolmanager.
+
+The poolmanager has an incomplete feature called 'clumping'.  This is
+where poolmanager can handle multiple select-pool-for-read requests
+for the same file as a single request.  There is a hard-coded clumping
+limit that prevents too many files from being handled together; this
+allows poolmanager to choose an alternative pool when staging or
+replicating to make the file available.  Once this limit is reached,
+subsequent open requests for the same file will fail in poolmanager.
+Doors handle this failure differently; the xrootd and webdav doors
+propagates this failure back to the client, while the dcap and ftp
+doors will resubmit the request to poolmanager.  This release
+increases the clumping limit from 1 to 20; it also changes the
+behaviour of the doors so all will retry the pool-selection if the
+clumping limit is reached.  This fixes the 'request clumping limit
+reached' failures.
+
+This release fixes a race-condition between two clients opening the
+same file.  Previously, if poolmanager starts processing the second
+open request as it is finishing processing the first then there is a
+tiny chance that the second request is lost.
+
+
+### srm
+
+The srm service will check the user certificate (generally a
+voms-proxy certificate) to extract the DN and primary FQAN.  To do
+this, the srm service needs to know where the trusted CAs and trusted
+VOMS server identities are stored; these are typically
+`/etc/grid-security/certificates` and `/etc/grid-security/vomsdir`
+respectively.  Previously the SRM ignored the `srm.authn.capath`
+property and there was no way to configure the trusted VOMS server
+identity path.  With this release, the `srm.authn.capath` is
+honoured and the `srm.authn.vomsdir` property is introduced.
+
+When the SRM server sends an asychronous response to the client, the
+client must make subsequent queries to check if the request has
+completed.  Part of each response is a hint suggesting for how long
+the client should wait before querying for a progress update.  Prior
+to dCache v2.9, the srm service provided this hint where subsequent
+responses suggested a longer wait time.  With v2.9, this feature was
+lost, resulting in the SRM client hammering the srm service.  This has
+been fixed.
+
+### Changelog from 2.9.6 to 2.9.7
+
+<!-- git log 2.9.6..2.9.7 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[f870af1](https://github.com/dcache/dcache/commit/f870af163ed08b3b176ecb33d1d15eea75d21755)
+:   [maven-release-plugin] prepare release 2.9.7
+
+[4b41502](https://github.com/dcache/dcache/commit/4b41502057ea5b2a1f6c2785898aea684f5f8d5e)
+:   build: add work-around for JDK bug and PowerMock
+
+[d1af046](https://github.com/dcache/dcache/commit/d1af0461114a079c070b2f7303cc3b9972ba42b1)
+:   pool: Fix concurrency settings for script nearline storage
+
+[406da03](https://github.com/dcache/dcache/commit/406da03e4a58b1f65908e6304cb8437886c152bc)
+:   poolmanager: Fix 'request clumping limit reached' failures
+
+[c48cf23](https://github.com/dcache/dcache/commit/c48cf230ac8ddeb817a804cf0d4322d6a03d7031)
+:   poolmanager: Avoid request leak
+
+[ce74569](https://github.com/dcache/dcache/commit/ce745691d337d379075ed736d21690433c46ed79)
+:   poolmanager: Fix excessive p2p and stage alive checks
+
+[8dcf7f5](https://github.com/dcache/dcache/commit/8dcf7f5c1e73fae2b5b9148142d63198bb87ac09)
+:   srm: Restore estimated wait time update
+
+[82e885c](https://github.com/dcache/dcache/commit/82e885cdb4f2f95def25b6dafc23c6cc5a31f5d5)
+:   pool: Fix several minor issues in nearline storage subsystem
+
+[e526b93](https://github.com/dcache/dcache/commit/e526b93a9a50c76eaa0105c05cbf1525b6d8b83b)
+:   srm,dcap: Use configured vomsdir and capath
+
+[f9df2b1](https://github.com/dcache/dcache/commit/f9df2b10a5d0352690e5ce3794188a32794146cd)
+:   srm-client: by default only delegate for srmcp with 3rd-party copies
+
+[ae6d7a5](https://github.com/dcache/dcache/commit/ae6d7a5ab64bb1a290b5bbaf933b2c00a10b03f0)
+:   alarms: Fix checksum alarm filter.
+
+[d07d31d](https://github.com/dcache/dcache/commit/d07d31dac16e39de599334aa7a9dc0ddfd1a1e96)
+:   deb: Add python-psycopg2 as a recommended dependency
+
+[fae3266](https://github.com/dcache/dcache/commit/fae3266d8c2ec9b3f2fe77c1c203cd6a06002f9e)
+:   delegation-shell: generate delegated credential of correct type
+
+[dfd8b1e](https://github.com/dcache/dcache/commit/dfd8b1e6045e14daf0c27a97aa0a7d3ca9bf4fd0)
+:   [maven-release-plugin] prepare for next development iteration
+
+
+## Release 2.9.6
+
+### webadmin
+
+Fixes a regression that prevented the admin from deleting alerts in
+the alarm system.
+
+Improve esthetics of the pool queue plot grid.
+
+### pool
+
+Fixes a problem where, under specific circumstances, a pool with a
+file's data will erroneously claim it does not have that file's data.
+This problem occurs only if an HTTP or xrootd client attempts to read
+a file immediately after uploading it; it does not affect other
+protocols.  If a client triggers the problem then PnfsManager
+will remove the pool as the location of the file's data with two
+consequences: first, the file cannot be read; second, the orphaned
+entry will not be removed if the file is deleted.  With this release,
+the problem is fixed; we recommend running the 'pnfs register' command
+on all pools as a precaution against orphaned entries.
+
+### info-provider
+
+Suppress publishing NFS door endpoints.  Publishing these endpoints
+can result in sites failing functional tests since dCache running an
+NFS endpoint does not mean that files are accessible from the test
+machine.
+
+### Changelog from 2.9.5 to 2.9.6
+
+<!-- git log 2.9.5..2.9.6 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[01ed787](https://github.com/dcache/dcache/commit/01ed787dfafd0e20cb154aa60d2c5aafcb60ec89)
+:   [maven-release-plugin] prepare release 2.9.6
+
+[4a767f6](https://github.com/dcache/dcache/commit/4a767f634c6970ab95f64e32917005e28f40bf18)
+:   Suppress nfs' file protocol from being published
+
+[b8feb9f](https://github.com/dcache/dcache/commit/b8feb9f9a846ab9c7d5c8f0dd92a425d0f4cab24)
+:   pool: Fix race condition that leads to orphaned files
+
+[794d35e](https://github.com/dcache/dcache/commit/794d35e099abcfc2ba6ebb36e177a8878dccaebb)
+:   dcache-webadmin: fix pool queue plot grid placeholder image
+
+[93027a4](https://github.com/dcache/dcache/commit/93027a4da94bc3d957a2c5d35a002e7f0b01af22)
+:   (2.9) webadmin: fix regression in alarm deletion filter
+
+[e1d7f61](https://github.com/dcache/dcache/commit/e1d7f6102d9c5e51a0201cd042abf9c9ad3a721f)
+:   cells: remove System time dependency in unit-test
+
+[06ac76f](https://github.com/dcache/dcache/commit/06ac76f899a60f4df70f69740c5d10731b35be2f)
+:   [maven-release-plugin] prepare for next development iteration
+
+
+## Release 2.9.5
+
+### ftp
+
+  Fix globus-url-copy hanging on proxied passive-mode connections when
+  the mover is killed.  In addition to reported the error on the
+  control channel, the ftp door now also closes the data channel to
+  force globus-url-copy to fail such transfers.
+
+  Fix the control channel responses for LIST, NLST and MLSD commands;
+  the broken response prevented Globus (formally GlobusOnline) from
+  listing directories.
+
+
+### pool
+
+  The background checksum scanner now treats files that cannot be
+  accessed as an error rather than skipping them.
+
+  Update the compatibility script-based HSM module to be more
+  compatible with the HSM interface in earlier versions of dCache.
+
+  Fix the response headers when HTTP clients (such as Davix) make a
+  request for multiple fragments of a file.
+
+### srm
+
+  Remove a race-condition where aborting an upload at the wrong moment
+  resulted in dCache failing to remove the temporary upload directory.
+
+  Fix issue where pools can appear to be offline on lightly loaded systems.
+
+  Increase scalability of SRM by allowing work to spread over more CPU
+  cores during file upload and download.
+
+### pnfsmanager
+
+  For systems using enstore, fix restoring of files with filenames
+  that contain a '+' in the filename.
+
+### xrootd
+
+  Honour the WriteToken directory tag and implicit reservation when
+  writing data.
+
+  Fix issue where pools can appear to be offline on lightly loaded systems.
+
+### nfs
+
+  Honour the WriteToken directory tag and implicit reservation when
+  writing data.
+
+### pinmanager
+
+  Fix issue where pools can appear to be offline on lightly loaded systems.
+
+### spacemanager
+
+  Fix issue where pools can appear to be offline on lightly loaded systems.
+
+
+
+
+### Changelog from 2.9.4 to 2.9.5
+
+<!-- git log 2.9.4..2.9.5 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[c64705d](https://github.com/dcache/dcache/commit/c64705d5c34ad1ff8f34286c9ec35701ac052e8c)
+:   pool: log with error if checksum scanner gets an IO error
+
+[9457a17](https://github.com/dcache/dcache/commit/9457a1700676d75add0762ba8eb61fddebbf2161)
+:   ftp: Close passive port on failure
+
+[6dc0d49](https://github.com/dcache/dcache/commit/6dc0d49f3f0474f7a35c33732633a5ba381ca0e2)
+:   srm: Cancel upload path if request was aborted
+
+[e70b06c](https://github.com/dcache/dcache/commit/e70b06c0f7109dd7c87e00aae9b76ae9c8e96f03)
+:   ftp: fix LIST, NLST and MLSD cmd-channel output
+
+[b4c17f3](https://github.com/dcache/dcache/commit/b4c17f32470f064f568e973c92c7d08bfc3c0c3d)
+:   pool: Fix regressions in new HSM subsystem
+
+[4d34c55](https://github.com/dcache/dcache/commit/4d34c5504603b1be32f5a01a911ee77b28ee9328)
+:   Fix ArrayIndexOutOfBoundsException when processing multiple surls invoking srmget.
+
+[66839ee](https://github.com/dcache/dcache/commit/66839ee13ef73e59d8cc594c4689d28ba3b7bc5f)
+:   Fix issue with incorrect determination of whether or not a string is encoded by replacing URLDecoder with import org.springframework.web.util.UriUtils as the fo
+
+[bfc8a79](https://github.com/dcache/dcache/commit/bfc8a7991c19b101a50827dc07f39bb7941a2226)
+:   http: fix multipart response size
+
+[8d08231](https://github.com/dcache/dcache/commit/8d0823108b35fa497332dcc64de1d049c380e8d0)
+:   xrootd,nfs: Add support for space management
+
+[310268b](https://github.com/dcache/dcache/commit/310268b33b80a8c263732908bdf11df18758937c)
+:   pinmanager,srm,spacemanager,xrootd: Fix pool monitor expiration
+
+[f407ca3](https://github.com/dcache/dcache/commit/f407ca36543cb9de6cb281b05007f5fd8ed27c45)
+:   srm: Fix lock congestion
+
+[16a6444](https://github.com/dcache/dcache/commit/16a6444791adbe726c0e378a061443384c2666af)
+:   [maven-release-plugin] prepare for next development iteration
+
+
+
+## Release 2.9.4
+
+### xrootd
+
+Fix redirection to IPv6 pools.
+
+Report read requests that suffer a permission denied failure as "Read
+permission denied" rather than "Write permission denied".
+
+To allow xrootd plugins to intercept and translate errors.
+
+Update dCache responses to avoid intermittent failures with xrdfs.
+
+### webadmin
+
+Fix login bug that results in Access Denied page.
+
+### dcap
+
+Provide more robust cleanup if there is a problem after the client
+finishes reading or writing data.  The symptom is an increasing number
+of "active transfers" reported in the web monitoring pages.
+Eventually, the httpd and webadmin services consume all available
+memory and the domain(s) hosting them will die with an
+OutOfMemoryError.
+
+### Scripts
+
+Update dCache scripts to allow running with Java 8 runtime.
+
+### Changelog from 2.9.3 to 2.9.4
+
+<!-- git log 2.9.1..2.9.2 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[c63e827](https://github.com/dcache/dcache/commit/c63e82755714efaebfb67f1075e24353d08d2652)
+:   [maven-release-plugin] prepare release 2.9.4
+
+[cc2eb38](https://github.com/dcache/dcache/commit/cc2eb38d62388fe7f8a5e36be46e2aa99057b66c)
+:   xrootd: Quote IPv6 addresses in kXR_redirect replies
+
+[356d360](https://github.com/dcache/dcache/commit/356d360ec825d57992993005cdb1bf45cb684161)
+:   xrootd: Fix error message for read patch check
+
+[4c961c6](https://github.com/dcache/dcache/commit/4c961c63af7f6a92df96437c93fbf9708dfba123)
+:   dcache-webadmin: fix login redirect bug which misleadingly results in Access Denied Page
+
+[5621b2e](https://github.com/dcache/dcache/commit/5621b2efeba277e452569b933f6c9cd644284212)
+:   xrootd: Upgrade to xrootd4j 1.3.3
+
+[7ab97da](https://github.com/dcache/dcache/commit/7ab97dabc49275f2a79f18926cb1d4ba272d6806)
+:   scripts: allow java8 runtime
+
+[8772b25](https://github.com/dcache/dcache/commit/8772b2534d1f0c03822b94c9b272b3db6dfe8291)
+:   dcap: ensure that we remove session on DoorTransferFinishedMessage
+
+[5ac7a33](https://github.com/dcache/dcache/commit/5ac7a332d4be7112f626e46c3cad58a6219e86a3)
+:   [maven-release-plugin] prepare for next development iteration
+
+
+
+## Release 2.9.3
+
+### spacemanager
+
+Fix the column formatting for various admin commands should one of the
+numerical values be negative.
+
+### srm
+
+Fix a null-pointer exception triggered by a client querying a request
+that survived an SRM restart.
+
+Update the SRM to use the SRM-specific configuration property
+('srm.enable.space-reservation') rather than the generic property
+('dcache.enable.space-reservation').  As the default value for
+srm.enable.space-reservation is the value of
+dcache.enable.space-reservation, this change should not affect sites.
+
+### cleaner
+
+Fix the shutdown sequence of cleaner to ensure quick and clean shutdown.
+
+### ftp
+
+Don't export child doors.  When a client connects, the ftp door
+creates a child cell that handles the client requests.  Changes in 2.7
+meant that these child cells mistakenly became well-known cells.  This
+is now fixed.
+
+### dcap
+
+Don't export child doors.  When a client connects, the dcap door
+creates a child cell that handles the client requests.  Changes in 2.7
+meant that these child cells mistakenly became well-known cells.  This
+is now fixed.
+
+### info-provider
+
+Update the use of xmllint to include the '--noent' option; mitigation
+against CVE-2014-0191 resulted in xmllint behaving differently
+when '--noent' is omitted.
+
+### libraries
+
+Update jGlobus version.  This results in better error reporting for
+FTP transfers and X.509 certificates with a comma in the DN are
+handled correctly.
+
+### Changelog from 2.9.2 to 2.9.3
+
+<!-- git log 2.9.1..2.9.2 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[208eb38](https://github.com/dcache/dcache/commit/208eb3868070ac41f4830ededbb956ef39f6d7fa)
+:   [maven-release-plugin] prepare release 2.9.3
+
+[dd94fc0](https://github.com/dcache/dcache/commit/dd94fc04587c8a30a3f1db06ef1fe1fc94e2d15d)
+:   info-provider: fix works-by-accent bug when importing dCache config
+
+[7f5e292](https://github.com/dcache/dcache/commit/7f5e292c691866d2052098031a72b1118a78081a)
+:   pom: update jglobus library
+
+[d8bd7f2](https://github.com/dcache/dcache/commit/d8bd7f2fbb369a2d1a59c05f361e4a9d80ca548a)
+:   srm: Use srm.enable.space-reservation rather than dcache.enable.space-reservation
+
+[01da41f](https://github.com/dcache/dcache/commit/01da41f3675768c917b4e6ae30fb45aaf8f82c8f)
+:   Fix rendering of negative numbers in columm layout
+
+[1340c0d](https://github.com/dcache/dcache/commit/1340c0de6c3db0487fe90f137086770c92da7760)
+:   srm: Fix NPE
+
+[efb1cb9](https://github.com/dcache/dcache/commit/efb1cb931944d0b806f8dea2e16af4c5e8b9d3c4)
+:   ftp,dcap: Don't export child doors
+
+[945dc8d](https://github.com/dcache/dcache/commit/945dc8d6d02638912757f06d33f7fcc810fa0554)
+:   cleaner: Shut down timer thread
+
+[5618794](https://github.com/dcache/dcache/commit/56187948e930693abff06e665c85b0ffb773c979)
+:   [maven-release-plugin] prepare for next development iteration
+
+
+
+## Release 2.9.2
+
+### httpd
+
+Prevent reading of configuration files.
+
+### srm
+
+Fix how the status of requests that can contain multiple files (Get,
+Put, Ls, BringOnline, Copy) are calculated and avoid "illegal state
+transition" errors that are sometimes logged.
+
+Clean up correctly when a client deletes a file that is being uploaded
+(thereby cancelling any concurrent uploads) by deleting the temporary
+upload directory.
+
+Fix how a request is reported to the client after it times out, so the
+value follows the SRM specification.  This also fixes some of the
+logged "illegal state transition" errors.
+
+Ensure that request history information is listed chronologically.
+
+Avoid deadlocking should either a client tries to pin files or if the
+SRM attempts to retry pinning a file, while the SRM is updating its
+knowledge of the pools.
+
+### xrootd
+
+When logging a transfer, place a colon between the version and the client IP address.
+
+### pnfsmanager
+
+Don't log "duplicate key" errors if the error is understood.
+
+### messaging
+
+Report correct statistics about messages even after a cell's message
+queue overflows.
+
+### pool
+
+Make pools more robust against the unexpected.  Files that appear
+unexpectedly (e.g., an HSM script delivers a file after dCache has
+cancelled the request) do not trigger the pool from disabling itself
+but are deleted; requests to create a file that already exists trigger
+re-registration of that file in pnfsmanager.
+
+Log a stack-trace for pool-to-pool transfers that encounter an extreme
+problem with the virtual machine.
+
+Fix the ordering of arguments when invoking an HSM script to be
+compatible with pre-2.9 versions of dCache.
+
+### webdav
+
+Work-around bug in StringTemplate library that can result in
+NullPointerException being logged when generating an error response
+for the client.
+
+### pnfsmanager
+
+Fix uploads through SRM if the client supplies the file's expected
+size and fix an internal cache that allows database-overhead to be
+avoided.
+
+### Changelog from 2.9.1 to 2.9.2
+
+<!-- git log 2.9.1..2.9.2 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[68836e1](https://github.com/dcache/dcache/commit/68836e1898d1940ec0913a997d19fe257c643e05)
+:   [maven-release-plugin] prepare release 2.9.2
+
+[fec4353](https://github.com/dcache/dcache/commit/fec4353b0033f63f4af8e3b7f96a676454751048)
+:   httpd: Fix a couple of bugs
+
+[caf0a5f](https://github.com/dcache/dcache/commit/caf0a5f73bbba92e5eadc0905ce57d15d40ee1d9)
+:   srm: Avoid duplicate status code update on status query
+
+[4862f03](https://github.com/dcache/dcache/commit/4862f034f3a833690cec06388d077cf3bc4a41c0)
+:   xrootd: split protocol name form the client IP in XrootdProtocolInfo
+
+[e982836](https://github.com/dcache/dcache/commit/e982836243addca9121c4b434a40f3d0623c72d4)
+:   chimera: Fix duplicate key supression
+
+[4420364](https://github.com/dcache/dcache/commit/44203646a795b9bcb4c530a5c1208a26d91e80ff)
+:   Revert "srm: Drop fail fast for protocol checks"
+
+[e8dae00](https://github.com/dcache/dcache/commit/e8dae009a857f89c7c49414f0d93b733134d438a)
+:   srm: Fix request cancellation due to SURL deletion
+
+[f3bddc5](https://github.com/dcache/dcache/commit/f3bddc50b515945fd0b8e7c2ae51601725270dea)
+:   srm: Fix request expiration
+
+[197b22a](https://github.com/dcache/dcache/commit/197b22afece956d73eb56c252f75e7c892911194)
+:   cells: Fix message counting in case of queue overflow
+
+[aed3ae7](https://github.com/dcache/dcache/commit/aed3ae790d70428b20f11c6badbbabb1dcb50063)
+:   pool: Improve how we deal with unexpected files in pools
+
+[4af53d0](https://github.com/dcache/dcache/commit/4af53d02c243db60ba86bdd6c9e101f2784aeb0f)
+:   pool: Fix error handling in staging code
+
+[7582b00](https://github.com/dcache/dcache/commit/7582b00669e657705c2c38ad5b4864ef81ceb1f7)
+:   pool: Log P2P fatal errors with stack trace
+
+[dc9384e](https://github.com/dcache/dcache/commit/dc9384ee71d02b0b20865bfb9f8a6a2bc1d7cc23)
+:   srm: Fix transition ordering for restored requests
+
+[f4467a7](https://github.com/dcache/dcache/commit/f4467a79e10091596a4f0973acb618b588e166b7)
+:   hsm scripts: fix command and options order
+
+[7631420](https://github.com/dcache/dcache/commit/7631420848363a25e4d63b86ac23d522dbc69222)
+:   webdav: work-around race-condition in StringTemplate library
+
+[50708a4](https://github.com/dcache/dcache/commit/50708a4fdaa52a9ea056566b5b36ff7d86c178eb)
+:   systemtest: regenerate host credentials, add user credentials
+
+[249ac36](https://github.com/dcache/dcache/commit/249ac368681fab6fcb9c47ee93ef36238ca6b8d3)
+:   srm: Fix deadlock in pinning
+
+[2eb3a5e](https://github.com/dcache/dcache/commit/2eb3a5e69249d960da59033e009e6c5e82cd00bc)
+:   srm: Schedule resubmit of pin request to avoid deadlock
+
+[7d73630](https://github.com/dcache/dcache/commit/7d736302bcfab75459ec9519afda4abdb5fd93b0)
+:   srm: Drop fail fast for protocol checks
+
+[a5e3e46](https://github.com/dcache/dcache/commit/a5e3e4693ae23e611d0ad733146cbe45ed46670a)
+:   pnfsmanager: Fix expected size extraction and tag caching
+
+[5fa84b0](https://github.com/dcache/dcache/commit/5fa84b0d775ea50cdc952ccbddb4de25c304a14a)
+:   fhs: Use gzip compression for deb package
+
+[1e67db1](https://github.com/dcache/dcache/commit/1e67db1c6304fd280f7462943d3fb408f2b4724e)
+:   [maven-release-plugin] prepare for next development iteration
+
+
+## Release 2.9.1
+
+### alarms
+
+Add missing configuration elements and documentation to support
+sending an email when an alert is received.
+
+### statistics
+
+Fix NullPointerException in statistics service
+
+### Changelog from 2.9.0 to 2.9.1
+
+[f9a18f0](https://github.com/dcache/dcache/commit/f9a18f097f3cc7a0304c5a914ca3dfda6371c5f4)
+:   [maven-release-plugin] prepare release 2.9.1
+
+[cdd8be0](https://github.com/dcache/dcache/commit/cdd8be00ef797fa6b2d9845d4858c1753b97f545)
+:   dcache alarms: add missing configuration elements and documentation for SMTP appender
+
+[a6a0d97](https://github.com/dcache/dcache/commit/a6a0d9781585725ace49eddd632648b5fe1ff207)
+:   statistics: Fix NPE
+
+[3e85c8f](https://github.com/dcache/dcache/commit/3e85c8f548234028f2118b0f41799e40c99510a5)
+:   [maven-release-plugin] prepare for next development iteration
+
+
+## Release 2.9.0
+
+### Changes affecting several services
+
+#### Libraries
+
+Removed the _saxon_ library from the dCache classpath. Removed the
+_xalan_ XSLT library from dCache as the library is included in all
+Java 7 JVMs.
+
+Upgraded _Netty_ from version 3.6.5 to 3.9.0. This I/O library is used
+by xrootd doors and to support xrootd and http data transfers in
+pools. Consult the [Netty news
+archive](http://netty.io/news/index.html) for information about Netty
+bug fixes.
+
+Upgraded _Jetty_ from version 8.1.13 to 8.1.14. This embedded
+webserver is used by the `webdav` and `srm` doors, and the `httpd`
+service.
+
+Upgraded the _PostgreSQL JDBC driver_ from version 9.3-1100 to 9.3-1101.
+
+Upgraded the _Berkeley DB_ library from version 5.0.97 to
+5.0.103. This embedded database library is used by pools to store meta
+data. Please consult the [change
+log](http://docs.oracle.com/cd/E17277_02/html/changelog.html) for
+details about bugs fixed in this release (you can ignore the
+information about disk format changes - those only apply when
+upgrading from older versions of the library).
+
+Upgraded the _Bouncy Castle Security Provider_ from version 1.43 to 1.45. This
+library is used by most certificate related code in dCache.
+
+#### chimera
+
+A schema change to the `t_inodes` table will cause the first start of
+`pnfsmanager` to take a while. Large sites are encouraged to time the
+schema change on a clone of the database before upgrading the
+production system. Due to these changes, dCache cannot be downgraded
+without rolling back the schema changes using one of the `dcache
+database rollback` commands with a 2.9 dCache and __only then__
+downgrading dCache. The schema change was necessary to fix issues with
+inode cache invalidation.
+
+File creation and file open overhead has been reduced.
+
+Fixed error reporting for hard link creation.
+
+Changed registration of file locations to avoid integrity constraint
+warnings in the PostgreSQL log file.
+
+Fixed a bug that would cause sockets to be interpreted as directories.
+
+The `chimera` command line interface was extended with a `mv` command
+and new time stamp options for the `ls` command.
+
+
+#### Messaging
+
+The cell message passing system has been refactored. This is an internal change
+and mostly invisible. If messages are monitored using the events log files, you
+will notice that the _blocking_ mode is no longer used.
+
+#### Plugin compatibility
+
+An internal change to how we implement dCache services in the Spring
+framework breaks compatibility with third party plugins providing
+custom services implemented with Spring. Plugin providers should
+update their plugin to match the changes in
+[b7234ee](https://github.com/dcache/dcache/commit/b7234eeeb827edd86a9a520af9c4f4bdc7ed8e69).
+
+#### Databases
+
+The BoneCP database connection pool library has been replaced with
+HikariCP. HikariCP is more maintained, smaller and faster. We also
+hope it is more robust.
+
+HikariCP has slightly different controls for adjusting the database
+connection pool.  While BoneCP partitioned connections, HikariCP has
+no such concept.  HikariCP also maintains a minimum number of idle
+connections; this is in contrast to the minimum number of connections
+that BoneCP maintains.  Sites that have tuned their data connections
+should note these differences and adjust their configuration
+accordingly.
+
+The *.db.driver configuration properties have been marked
+obsolete. The proper driver is now automatically discovered from the
+JDBC URI. Only JDBC 4 compliant database drivers are supported (this
+is only relevant if you install a custom JDBC driver).
+
+The liquibase database schema management library has been updated to
+version 3.1.1. Version 3.1 adds support for generating SQL scripts
+without a live database connection. Details about this feature can be
+found in the [Liquibase documentation](http://www.liquibase.org/documentation/offline.html). There
+is no wrapper for this functionality in dCache, so this is to be
+considered for expert use only.
+
+Added the `dcache database showUpdateSQL` command to output the SQL
+that would be executed if `dcache database update` was executed. The
+emitted SQL may be applied manually to the database, so updating the
+schema.
+
+#### Packaging
+
+Tarball packages no longer have a trailing `-1` in the file name or
+base directory name.
+
+#### Command line tools
+
+Startup speed of several command line tools has been improved.
+
+#### IPv6
+
+dCache now supports IPv6 by default.  It still prefers using IPv4
+addresses on dual-stack machines (those with both IPv4 and IPv6
+addresses) so the impact should be minor. However, the change does
+mean that services will now also listen on IPv6 interfaces. To disable
+this, define
+
+    dcache.java.options.extra=-Djava.net.preferIPv4Stack=true
+
+in your configuration.
+
+### Changes to services
+
+#### loginbroker
+
+Loginbroker now supports registering the root directory of doors. As a
+consequence SRM no longer needs to be configured with the root paths
+of each door and the properties `srm.service.webdav.root` and
+`srm.service.xrootd.root` are obsolete.
+
+#### billing
+
+Billing information as published by several services has been
+completed to reduce the number of values marked as _Unknown_ in the
+billing log files. The fix was made in the services publishing billing
+information. Thus only services updated to 2.9 publish complete
+information.
+
+The billing indexer was extended with the `-f` option to the find
+command. It allows search strings to be read from a file, enabling
+efficient billing entry lookup for a collection of files.
+
+#### info
+
+Add additional attributes to the `domain.<domain-name>.static` node,
+including information on the OS and the JVM.
+
+
+#### nfs
+
+Added new export options `dcap` and `no_dcap`. The former is the
+default while the latter hides the `.(get)(cursor)` dot command that
+DCAP clients use to detect an NFS-mounted dCache.  Using `no_dcap`
+will force DCAP clients to read data through NFS instead of through
+DCAP.
+
+A new command has been added to the NFS dot-command set to allow users
+to pin and unpin files.  Files which are not on disk will be brought
+on line when pinned. The command takes the following form:
+
+    touch ".(fset)(filename)(pin|stage|bringonline)(duration)([SECONDS|MINUTES|HOURS|DAYS])"
+
+The variants of the third argument are equivalent in effect. The last
+argument is optional and defaults to SECONDS. A duration value of 0
+will unpin the file.  The command does not allow the user to pin the
+file indefinitely as the duration value must be a positive integer.
+
+Three new properties associated with the configuration of the
+pinmanager have been added to nfs.properties:
+`nfs.service.pinmanager`, `nfs.service.pinmanager.timeout` and
+`nfs.service.pinmanager.timeout.unit`.
+
+
+Server side attribute caching drastically improves performance for
+some workloads.  Three new attributes have been added to configure the
+cache: `nfs.namespace-cache.time`, `nfs.namespace-cache.time.unit` and
+`nfs.namespace-cache.size`.
+
+A large number of fixes to improve logging, protocol compliance, error
+handling and performance have been implemented.
+
+Adds support for NFS v4.0.  Note that there is no parallel NFS (pNFS)
+extension for NFS v4.0; therefore, the NFS door will act as a proxy.
+This means that all data will flow through the door for clients using
+NFS v4.0.
+
+#### alarms
+
+Improved logging and handling of configuration errors.
+
+
+#### ftp
+
+Added support for the [RFC 3659](https://tools.ietf.org/html/rfc3659)
+`CREATE` fact to report file creation time in directory listings.
+
+Added support for the `MFMT`, `MFCT` and `MFF` commands as described
+in this [internet
+draft](http://tools.ietf.org/html/draft-somers-ftp-mfxx-04).
+
+Added support for the `UNIX.ctime` and `UNIX.atime` facts.
+
+Improved compatibility with the ncftp client by adding a leading zero
+to the value of the `mode` fact.
+
+Added support for the `HELP` and `SITE HELP` commands as defined in [RFC
+959](https://www.ietf.org/rfc/rfc959.txt). This improves compatibility
+with some clients.
+
+dCache user accounts can be configured with a personal root and home
+directory. How these are interpreted depends on the door and protocol
+used. For FTP, the account root directory forms the root of the name
+space and the home directory is the initial directory of the FTP
+session. For other doors, a configuration property usually defines a
+directory to export as the root of that door, and the account root
+directory is used as an additional authorization check to prevent
+users from accessing any directory outside their root. This behaviour
+is now configurable for the FTP door using the new `ftp.root`
+property. If left empty, the per account root is used as before. If
+set to a path, that path is exported as the root of the door.
+
+Added FTP protocol request logging to the access log files. The access
+logs were introduced in dCache 2.8, but initial support was limited to
+SRM. In dCache 2.9 the FTP door logs every command interaction to
+these log files. The access logs are automatically compressed each
+night and deleted after one month.
+
+Added a workaround that selects the MD5 checksum algorithm when a file
+is written by Globus Online.  This allows such transfers to succeed
+with integrety checking.
+
+Added support for Globus delayed passive. This is an alternative to
+using GridFTP v2 GETPUT. It allows the data channel to be created
+directly between the client and the pool. In contrast to GridFTP v2,
+delayed passive supports IPv6. Note that current clients often default
+to disabling delayed passive, even when delayed passive is
+implemented.  If the client connects to the door using IPv4 and the
+pool does not support IPv4, then the data connection is proxied
+through the door. Similarly, if the client connects to the door using
+IPv6 and the pool does not support IPv6, then the data connection is
+proxied through the door. This is the case even when the client is
+dual stacked. Like with GridFTP v2, use of direct data channels is
+subject to the `ftp.proxy.on-passive` and `ftp.proxy.on-active`
+properties.
+
+
+#### poolmanager
+
+A new partition type, `buffer`, was added that is intended for pools
+used as transfer buffers. This new partition type chooses a pool based
+on a weighted random selection, with weights derived from the pools'
+load only.  Free space has no effect as all pools with sufficient
+space to store the file are considered. This partition type is
+suitable for pools which do not hold files permanently, such as import
+and export pools.
+
+The `wass` partition type is not suited for this use case, as `wass`
+prioritizes balancing free space over load.
+
+The `buffer` partition type respects the _mover cost factor_ and
+_performance cost factor_ settings, using an interpretation similar to
+`wass`.
+
+
+#### pool
+
+Disabled statistics files for Berkeley DB meta data backend. These
+statistics files consumed disk space, which would periodically prompt
+the pool to generate a warning as it adjusted for the unexpected loss
+of storage capacity.
+
+The time format of the `sweeper ls -l` command has been changed to
+conform to [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601).
+
+Improved thread termination during pool shutdown.
+
+
+Modified permanent migration jobs to react to access time and sticky
+flag changes. Thus migration jobs that filter by access time or sticky
+flags may now pick up files when access time or sticky flags change.
+
+##### HTTP mover
+
+Implemented limited support for the `HEAD` HTTP method.
+
+##### FTP mover
+
+The listening socket of a passive FTP data channel is now bound to a
+single address rather than the wildcard address. The FTP protocol only
+allows a single address to be returned to the client, so there is no
+point in binding to the wildcard address. Binding to the wildcard
+address had the problem that it could succeed even if the port on the
+specific address returned to the client was already open. The change
+does have observable effects in that previously the pool would submit
+a hostname back to the door and the door would do a DNS lookup to find
+the address to send to the client. Now the pool sends an IP address.
+
+The TCP accept backlog for FTP passive data channels has been
+increased.  This reduces the risk of rejected connections during a
+surge of activity.
+
+##### Nearline storage
+
+The nearline storage support has been rewritten. Nearline storages are
+supported through drivers. These drivers can be packaged and shipped
+as dCache plugins. A driver that supports the classic HSM scripts is
+shipped with dCache and will be used by default for existing setups.
+
+Nearline storage drivers solve many issues of the classic HSM scripts:
+
+* A callout to an external script for every invocation was a
+  performance issue, as such a callout to an external interpreter was
+  associated with considerable overhead.
+
+* A callout to an external script was a tape efficiency issue, as it
+  would limit the number of concurrent callouts due to allocating a
+  process and four Java threads for every file. Thus one had to
+  balance how many processes and threads the host could handle with
+  how large batches one could submit to the tape system.
+
+* The stage queue was limited to available disk capacity, as the pool
+  had to reserve space for the file before calling the script. Thus the
+  tape reodering queue was limited by disk space.
+
+
+A nearline storage driver is written in JVM-supported language (for
+example, Java, Scala or Groovy) and is executed within dCache. This
+avoids the overhead from calling out to an external script. Request
+queuing is dealt with by the driver, which allows the driver to
+reorder requests in a way that optimizes tape access.
+
+Since nearline storage request queuing is now no longer part of
+dCache, the maximum active requests limits are no longer reported to
+`poolmanager`. For some drivers, such a limit may not even exist. Pool
+selection has been updated to no longer rely on these values.
+
+
+The `hsm` family of commands in the `pool` service have been updated
+to allow the nearline driver to be specified when defining a new
+nearline storage. The new `hsm create` command is used to define the
+nearline storage, while the `hsm set` command has been updated to
+allow the driver to be configured.
+
+dCache ships with a number of nearline storage drivers. These are
+explained in the following sections.
+
+
+###### script driver
+
+dCache ships with a driver called `script`. This driver performs a
+callout to the classic HSM integration script. The driver accepts a
+number of arguments, settable through the `hsm set` command:
+
+-command
+: The path to the script.
+
+-c:gets
+: Maximum number of concurrent reads.
+
+-c:puts
+: Maximum number of concurrent writes.
+
+-c:removes 
+: Maximum number of concurrent removes.
+
+To provide backwards compatibility with existing setups, the `script`
+driver is the default. During intialization, the `rh set max active`,
+`st set max active` and `rm set max active` commands are translated to
+configuration parameters for instances of the `script` driver. Support
+for these commands is however deprecated and it is recommended that
+the pool setup file is regenerated using the `save` command.
+
+###### copy driver
+
+The `copy` driver is similar to the classic hsmcp script. It copies
+files between the pool and some other directory. It accepts a single
+configuration property:
+
+-directory
+: The path of the directory into which files are copied.
+
+
+###### link driver
+
+Similar to the `copy` driver, but creates hard links rather than
+copying files. The directory in which hard links are created must be
+on the same file system as the pool's data directory.  Like the `copy`
+driver, the `link` driver only accepts a single configuration property:
+
+-directory
+: The path of the directory within which hard links are created.
+
+###### tar driver
+
+This is an experimental driver, provided mostly as a demonstration
+right now. The driver bundles files into tarballs and stores those in
+a configurable directory. The driver does currently not support
+removing files.
+
+-directory
+: The path of the directory within which tarball files are created.
+
+
+#### srm
+
+##### Miscellaneous
+
+BringOnline requests, as well as get and put requests for which a
+transfer URL (TURL) was already prepared, now survive an `srm`
+restart.
+
+The database code was updated to avoid warnings about duplicate key
+violations in the PostgreSQL log file during startup.
+
+The SRM list response has been fixed such that the status of failed or
+unprocessed SURLs is included.
+
+Failure reporting for SRM v1 requests has been improved.
+
+`srm` shutdown was improved to avoid errors about unterminated threads
+in log files. Additionally, the service now waits for up to three
+seconds for database updates to finish before shutting down.
+
+Culling of jobs in the database is now limited to a single thread to
+reduce the impact on regular operation.
+
+The `ThreadManager` cell has been eliminated. The following new
+properties have been introduced instead:
+`srm.cell.limits.message.threads.min`,
+`srm.cell.limits.message.threads.max`,
+`srm.cell.limits.message.threads.max-idle-time`,
+`srm.cell.limits.message.threads.max-idle-time.unit`,
+`srm.cell.limits.message.queue.max`. The defaults will suffice for
+most deployments.
+
+
+The output of the `ls` command in the `srm` admin interface has been
+cleaned up.
+
+##### Absolute FTP TURLs
+
+The SRM protocol allows the client to negotiate a transfer URL (TURL)
+for uploading or downloading a file. TURLs for FTP transfers are
+defined in [RFC 1738](http://www.ietf.org/rfc/rfc1738.txt). According
+to the standard, they are to be interpreted relative to the user's
+login directory (home directory) and not relative to the root
+directory.
+
+The 'srm' service in previous versions of dCache generated TURLs
+relative to the root directory.  This will not work as expected for
+RFC 1738-compliant clients if the user has a home directory other
+than '/'.
+
+This problem has now been fixed and the returned TURL will work for
+users with a non-root home directory. Unfortuantely neither JGlobus
+nor Globus interpret RFC 1738 correctly. As a workaround we now
+generate TURLs with an extra leading / in the path. This provides the
+correct behaviour with FTP clients typically used for SRM, but would
+fail if a standard compliant client would be used.
+
+##### Root path aware transfer protocol negotiation
+
+When negotiating a TURL, the `srm` service must choose from a list of
+protocols provided by the client. dCache will use the list of doors
+registered with the loginbroker to determine supported protocols. If
+doors are configured to use different root directories, not all doors
+may be able to serve a file. This is now taken into account when
+choosing the transfer protocol to use.
+
+##### GridSite compatible delegation
+
+Support for GridSite delegation v2.0.0 was added.  The endpoint is run
+as part of the SRM service and has the path `/srm/delegation`.  The
+GridSite delegation endpoint allows a user to delegate a credential,
+discover the remaining lifetime of any delegated credential and
+destroy delegated credentials.  Those credentials delegated via GSI
+(typically as part of an SRM operation) will have the delegated ID of
+_gsi_.  Using this, a client may query the lifetime of any already
+delegated credential and delete credentials delegated via SRM
+operations.
+
+A delegation client that allows scripted and console-based interaction
+with GridSite endpoints has been implemented. The client is released
+independently, as part of the dCache srm client package.
+
+##### Unique write TURLs
+
+Until version 2.9, the dCache `srm` service has acted as a redirector
+for regular dCache doors. That means that the TURLs generated by the
+`srm` service have been the same URLs you would have used to access
+those files without SRM.
+
+With dCache 2.9 this has changed and, for uploads, each TURL is now
+unique.  The uploaded file remains invisible to users using non-SRM
+protocols until the upload is committed by the SRM client calling
+srmPutDone.
+
+SRM upload requests have a finite lifetime; if the SRM client does not
+call srmPutDone in time, the request will timeout.  Should this
+happen, any file uploaded using the corresponding TURL will be deleted
+and any subsequent attempt to upload to the TURL will fail.
+
+There are many reasons for making this change. To name a few:
+
+* The expected file size, access latency and retention policy provided
+  by the SRM client could not be supported without enabling the
+  `spacemanager` service. These parameters are now respected even without
+  space management.
+
+* Failure recovery was difficult, as dCache could never be certain
+  whether a file uploaded through a door happened as part of the SRM
+  upload or was done by another non-SRM client that incidentally
+  uploaded a file to the same path at the same time.
+
+* If an SRM upload was aborted and retried, we could not prevent the
+  first client from completing the second upload as we always generated
+  the same TURL. Thus we couldn't properly isolate the two uploads from
+  each other.
+
+* Since the only way to bind file size, space token, access latency
+  and retention policy to a file before upload was through the
+  `spacemanager` service, space reservations were bound to paths. Such
+  reservations would prevent the `srm` from creating concurrent
+  uploads to the same SURL, but to work correctly, the two services
+  had to agree on the state. Wherever there is distributed state,
+  there is a risk that the state is inconsistent. This problem was at
+  the heart of the _"Already have 1 record(s)"_ errors.
+
+
+To generate unique write TURLs, the `srm` creates a unique upload
+directory for each upload. After the transfer completes, the file is
+moved to the target path and the upload directory is
+deleted. Parameters like expected file size, access latency, retention
+policy and space token are bound to the directory using Chimera
+directory tags.
+
+By default, these temporary upload directories are created under the
+`/upload` directory. Chimera automatically creates this directory the
+first time it is needed. Ownership and permissions are set such that
+nobody can list the directory and thus nobody can discover the
+temporary upload directories.
+
+__IMPORTANT__: If the transfer doors used for `srm` do no export the
+`/upload` directory, the `dcache.upload-directory` property has to be
+altered to a path that is exported by the doors. A typical site value
+would be `/pnfs/example.org/data/upload`. This property has to be set
+for `pnfsmanger` and all doors used for SRM transfers. In the unlikely
+event that you cannot find a directory visible through all doors used
+by the `srm`, you have to introduce special door instances only used
+for SRM transfers. Such doors can be configured to only export the
+upload base directory.
+
+
+The `srm.enable.space-reservation.implicit` and
+`srmImplicitSpaceManagerEnabled` properties are obsolete. To allow uploads to
+links in link groups outside a space reservation, enable
+`spacemanager.enable.unreserved-uploads-to-linkgroups` in
+`spacemanager`. That property deprecates
+`spacemanager.enable.reserve-space-for-non-srm-transfers`. The
+property `srm.enable.space-reservation.strict` is obsolete too as it
+did not have any effect.
+
+
+#### spacemanager
+
+Due to the changes to the `srm` service, several features of
+`spacemanager` are no longer needed and have been removed. The
+relevant options have been removed from the admin shell interface.
+
+Upon upgrade, the space manager database schema is changed: The
+`pnfspath`, `expirationtime` and `deleted` columns are dropped from
+the `srmspacefile` table. State value 0 is no longer used in the
+`srmspacefile` table. The `freespaceinbytes` column is replaced by
+`availablespaceinbytes` in the `srmlinkgroup` table.
+
+Due to these changes, dCache cannot be downgraded without rolling back
+the schema changes using one of the `dcache database rollback`
+commands with a 2.9 dCache and __only then__ downgrading dCache.
+
+#### pnfsmanager
+
+The service was extended with a feature to generate temporary upload
+paths. This is an internal change that is used by the `srm` service to
+generate unique write TURLs.
+
+#### cleaner
+
+The HSM cleaner is enabled by default. It used to be disabled by
+default because traditionally PNFS setups all had custom solutions for
+how to remove files from tape. Now that cleaning from tape is an
+integral part of dCache and PNFS is no longer supported, having the
+HSM cleaner work out of the box is a sensible default. It can be
+disabled by setting:
+
+    cleaner.enable.hsm = false
+
+#### admin
+
+dCache is in the middle of a transition between two frameworks for
+implementing the command line commands available through the `admin`
+service shell. 
+
+The newer of these frameworks provides much nicer help output. This
+output has been improved to include a description of the arguments
+accepted by a command and the default values for arguments and
+options. This information is only available for commands implemented
+using the new command framework.
+
+Many of the commands shared between services have been ported to the
+new command framework.
+
+The `say` and `exec context` commands are no longer available from
+cells other than the `System` cell.
+
+Several admin commands primarily intended for internal use by dCache
+return array data. Executing these commands through the admin
+interface resulted in only an internal object reference. Now the array
+content is output.
+
+#### xrootd
+
+Added suport for the `kXR_locate`, `kXR_query`, and `kXR_set` xrootd
+commands.
+
+Improved thread pool termination on door shutdown.
+
+#### transfermanager
+
+There is no longer a requirement that this service is hosted in the
+same domain as the `srm` service.
+
+Error log messages have been simplified.
+
+#### gplazma
+
+##### LDAP
+
+The LDAP plugin now allows the connection URL to defined by setting
+`gplazma.ldap.url`. The properties `gplazma.ldap.server` and
+`gplazma.ldap.port` are deprecated.
+
+### Changelog from 2.8.0 to 2.9.0
+
+<!-- git log REV..2.9 -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[8e7eba6](https://github.com/dcache/dcache/commit/8e7eba6e2f87d7f0d3e2a0e732fe3616441a317c)
+:   pool: Report correct client IP to billing for passive FTP transfers
+
+[5dd65b3](https://github.com/dcache/dcache/commit/5dd65b36af85bb7c66f0a1c54e5f01df8de8e9db)
+:   srm: Fix race condition in listing
+
+[1b0f1a0](https://github.com/dcache/dcache/commit/1b0f1a0fb4fc62b548fc131065a658b33e74f100)
+:   poolmanager: Fix infinite loop in lru partition type
+
+[24ab8b6](https://github.com/dcache/dcache/commit/24ab8b6450b36efc0c0ddb69f6abf930c078d191)
+:   gplazma-nis: pulgin must fail if no matching principal found
+
+[16b2edd](https://github.com/dcache/dcache/commit/16b2edde6f6de9c5710368d218c618843a5fb621)
+:   nfs: do not use CDC as try-with-resource
+
+[99d3d1e](https://github.com/dcache/dcache/commit/99d3d1e9d7ce3863bc1974d0cc3b4a6fb4fe2a63)
+:   databases: update hikari minimum connection configuration
+
+[1a6ae5b](https://github.com/dcache/dcache/commit/1a6ae5b1f8c8332ec3ffbf5d197da29edf28ad5d)
+:   nfs4: do not log stacktrace on IO errors
+
+[9eb2d0e](https://github.com/dcache/dcache/commit/9eb2d0e5a16903fe92eaca47696567cb32679f99)
+:   poolmanager,pool: Fix precision underflow in WASS
+
+[318eb9c](https://github.com/dcache/dcache/commit/318eb9c9e3e410900f6e2683feee90cc6b6f6f18)
+:   scripts: fix host-credential generation
+
+[2f0997e](https://github.com/dcache/dcache/commit/2f0997eba1f777ed835317a55616002e2f2f5810)
+:   pool: Rewrite of HSM interface
+
+[820d1e9](https://github.com/dcache/dcache/commit/820d1e90944df7c62550bce69b099bb98f0d203d)
+:   Generify CDC executor decorators
+
+[7fba48d](https://github.com/dcache/dcache/commit/7fba48d9f41089f5d920b135fd4a3f2cfd0101e1)
+:   pool: Let HsmStorageHandler2#store accept more than one file
+
+[004d4d0](https://github.com/dcache/dcache/commit/004d4d0c47c10461e3d18549537a05e47078bd08)
+:   Update libraries to the latest releases
+
+[b72f2b5](https://github.com/dcache/dcache/commit/b72f2b5283c7a1f3bdd7b7f2c7e5313802a1dff2)
+:   ftp: Implement delayed passive and enable redirect FTP for IPv6
+
+[db0e2f3](https://github.com/dcache/dcache/commit/db0e2f3b371ce033f7344a77e49786ef22df6ad2)
+:   Enable IPv6 stack by default
+
+[9f0a1ab](https://github.com/dcache/dcache/commit/9f0a1abf06c4b20ff25082c487862ec21e79c0d2)
+:   TransferManager: fix error-handling
+
+[702feeb](https://github.com/dcache/dcache/commit/702feebde96b32c3e61ee89d1d76225cb6ccb525)
+:   nfs: use vfs cache
+
+[0e2fbbe](https://github.com/dcache/dcache/commit/0e2fbbee40d1e36992664bf1b3c0d245916c1d60)
+:   libs: use nfs 0.8.0
+
+[768470d](https://github.com/dcache/dcache/commit/768470ddcc3526654c8ce954353852b1186285f1)
+:   chimera: fix behavior on create of '.(fset)' files
+
+[0c96cca](https://github.com/dcache/dcache/commit/0c96ccab8569de5838843b7120787d40ee1a90f1)
+:   srm: tidy up toString methods
+
+[4fd65b8](https://github.com/dcache/dcache/commit/4fd65b8c3d874f4a8d46a80ffc77d3a3b96217e4)
+:   info-provider: fix capitalisation of SRM in ControlProtocol
+
+[a506324](https://github.com/dcache/dcache/commit/a5063244e4c299f25d616943de2c5d4c2e871e65)
+:   libs: update to nfs4j-0.7.5
+
+[8b79285](https://github.com/dcache/dcache/commit/8b79285e8ff97eb1e3267addc90553c35d9fb84d)
+:   scripts: fix shell-specific expansion
+
+[49cb42c](https://github.com/dcache/dcache/commit/49cb42c883c17f081c863ee76402aaee201aeb9d)
+:   srm/transfermanager: make errors less noisy
+
+[092c797](https://github.com/dcache/dcache/commit/092c797f6069a67516daced7eb06fa97bcc10e9f)
+:   srm/transfermanager: make errors less noisy
+
+[000773d](https://github.com/dcache/dcache/commit/000773d364ede3ffe21fcbf6b78cf40722c45ca4)
+:   srm: tidy up SRM CopyRequest and CopyFileRequest classes
+
+[5c82e13](https://github.com/dcache/dcache/commit/5c82e13a610a7ebd4c41894059ab2dd12755515e)
+:   ftp: fix unit tests so they run on IPv4-only machine
+
+[e740767](https://github.com/dcache/dcache/commit/e740767ce64e2198308e3aa21aa9fca3624a5e8d)
+:   Kill workers when calling BoundedExecutor#shutdownNow
+
+[155c918](https://github.com/dcache/dcache/commit/155c9186df514d2fcce0ab02f9afc91f9c67c237)
+:   Merge remote-tracking branch 'upstream/master' into ldap-use-url/master
+
+[e9b7e51](https://github.com/dcache/dcache/commit/e9b7e51e1abb49932bfb91eedd96b4719395d5ba)
+:   srm: fix stored diff so that the Solaris 'patch' command works
+
+[5882be5](https://github.com/dcache/dcache/commit/5882be5681626b9abec3f79e76a9c2ff967c2cdd)
+:   gplazma2-ldap: use url rather than host+port
+
+[c04dea8](https://github.com/dcache/dcache/commit/c04dea8536deae38abfd40c026bdc09c682e577b)
+:   chimera: introduce inode generation number
+
+[c0f05a8](https://github.com/dcache/dcache/commit/c0f05a827b501251ea8088ac18b6fec00b2759bb)
+:   scripts: add database updateSQL command
+
+[f145450](https://github.com/dcache/dcache/commit/f14545083788591618037bf68cc7ad376f665874)
+:   admin: Fix help on error
+
+[3283fb0](https://github.com/dcache/dcache/commit/3283fb0d1d6c5ccda15fc73cc9ded39abe28e751)
+:   ftp: add work-around for GlobusOnline uploads
+
+[5ccbc24](https://github.com/dcache/dcache/commit/5ccbc24604c17f8b0bdac6c64273196547750271)
+:   ftp: fix CKSM command for files with white-space
+
+[debd98f](https://github.com/dcache/dcache/commit/debd98f08cdae3b1c49a33257e00106136e42126)
+:   info: add potentially useful static information
+
+[8e84d93](https://github.com/dcache/dcache/commit/8e84d9329db68f75dfd907616d5b6695c9d2457e)
+:   info: remove emi.version from non-EMI dCache releases
+
+[bfd7687](https://github.com/dcache/dcache/commit/bfd768749fb9288fabfe2e1f04471c2b3e79cb1d)
+:   pool: Let permanent migration jobs react to access and sticky changes
+
+[f66ae63](https://github.com/dcache/dcache/commit/f66ae63f84a2a2ac3d648aa72c21e11981bfa5f4)
+:   admin: Add array output
+
+[1987725](https://github.com/dcache/dcache/commit/1987725b9aa0bb145cc470517f7c8fcba5eca438)
+:   cells: Add help command to System cell
+
+[fa19746](https://github.com/dcache/dcache/commit/fa19746f785ba87c36f7cf3edac2236ea2ea9df4)
+:   transfermanagers: Fix multi-domain issue
+
+[990f351](https://github.com/dcache/dcache/commit/990f351623c4b4329c1a793d2a6da05ab94de504)
+:   gplazma-nis: suppress annoying error message
+
+[13f3750](https://github.com/dcache/dcache/commit/13f37509ba3e4c0c4549127188d804fa58452290)
+:   ftp: add logging when client disconnects
+
+[9a20adc](https://github.com/dcache/dcache/commit/9a20adc24325aeb5dfd965263fc0f466d3db6252)
+:   cells: Fix message timeout
+
+[c09d854](https://github.com/dcache/dcache/commit/c09d8546b466f2d87f6984bfabe4a631c0b3573c)
+:   admin: Fix cd to System cell
+
+[4602713](https://github.com/dcache/dcache/commit/46027137d70a6626763df92f428146e47b62a456)
+:   pkg: fix solaris packaging
+
+[eb5600d](https://github.com/dcache/dcache/commit/eb5600d26b797587bd2b6ed480450210b2451c35)
+:   ftp: add support for updating atime
+
+[75682ae](https://github.com/dcache/dcache/commit/75682ae52feadb61dc86236f3bc2a18b58b4d620)
+:   Fix CellStub callback.
+
+[e5a79ab](https://github.com/dcache/dcache/commit/e5a79ab437d8ad8c33df47097b9fa5f883184be2)
+:   pnfsmanager: Fix tag handling in upload path creation
+
+[5911c11](https://github.com/dcache/dcache/commit/5911c11f637795b338bdc856da31fefd933cb91a)
+:   billing: Add -f option to dcache billing command
+
+[2cf7540](https://github.com/dcache/dcache/commit/2cf75407b2c01bd03bbf0f18e015789907cf3067)
+:   chimera: do not explicitly update parent's mtime on create/remove
+
+[d7c72d4](https://github.com/dcache/dcache/commit/d7c72d4bd0ef3dc131ca923a02dca64bdb40382a)
+:   spacemanager: Another hsqldb schema management fix
+
+[9ff6642](https://github.com/dcache/dcache/commit/9ff66429ba8e07eec8b703dac8d19b577cd1804e)
+:   Fix executor flaws
+
+[6b45326](https://github.com/dcache/dcache/commit/6b4532658777fff3c357c8158136a5ee8f4b9537)
+:   Make RemotePoolMonitor asynchronous
+
+[cabc9b7](https://github.com/dcache/dcache/commit/cabc9b7573d55042fad0b6669ebbfc79b11a4a12)
+:   srm: Avoid loading the same job multiple times
+
+[834a73f](https://github.com/dcache/dcache/commit/834a73f94cbcacf801ab20473953148da9dbd930)
+:   spacemanager: Fix DB trigger migration
+
+[7b0b285](https://github.com/dcache/dcache/commit/7b0b2855837218c1e826a0c7e29a3593afb10170)
+:   nfs4: add support for WRITE with proxy IO
+
+[060f6c9](https://github.com/dcache/dcache/commit/060f6c91c3e1069730c14c52f585d0a8b7607579)
+:   nfs4: refactor proxy io adapter
+
+[468ecc6](https://github.com/dcache/dcache/commit/468ecc6eb2c4ef1bb5a097edc9d9f50a38be3e9e)
+:   nfs4: implement write for DcapChannel
+
+[05adb25](https://github.com/dcache/dcache/commit/05adb250e2dd75f48af4fb76e438d17b5f267998)
+:   nfs4: reuse existing mover if client comes with the same state id
+
+[780ae6e](https://github.com/dcache/dcache/commit/780ae6e47201c25529c7954fd13969451e27827a)
+:   srm: fix bring-online rescheduling on restart
+
+[268de60](https://github.com/dcache/dcache/commit/268de60ab7abdd041791d286c7360719c7ef1283)
+:   srm: fix unit-tests after recent update
+
+[49d96a5](https://github.com/dcache/dcache/commit/49d96a53857a4623ba7989b387e42f58bd78c69a)
+:   srm: fix restore so jobs for other schedulers are not restored
+
+[6b2f769](https://github.com/dcache/dcache/commit/6b2f7690ca1caa667338d56864f5b26f5f27a4ff)
+:   srm: Added missing import
+
+[233a8e7](https://github.com/dcache/dcache/commit/233a8e7ddd19ab26e4a71e0c8a5522f7829ca1cc)
+:   srm: Break cyclic dependencies
+
+[72b3d4d](https://github.com/dcache/dcache/commit/72b3d4d2c734f873d5226b24c7445c21fe2f253a)
+:   xrootd: Shutdown channel factory on shutdown
+
+[8d4b4bd](https://github.com/dcache/dcache/commit/8d4b4bd7adf6f85989d21a4b3a7c71f1ea987f3c)
+:   srm: Fix scheduling period for expiration task
+
+[da0fa23](https://github.com/dcache/dcache/commit/da0fa237ab13d7ea7e15d7b5cabb2e78e4ee7599)
+:   srm: allow jobs in RQUEUED and READY states to survive restart
+
+[079b681](https://github.com/dcache/dcache/commit/079b681ed2c15461ada74ef214359665096145a3)
+:   chimera: fix NPE if mkdir fails with permission denied
+
+[e14f2c2](https://github.com/dcache/dcache/commit/e14f2c270a04e0fc5856af4799dc8fdfb4bf197a)
+:   srm: add description of job states
+
+[a6a5407](https://github.com/dcache/dcache/commit/a6a5407f8dcb220ee385bccf5effd703cca6f125)
+:   srm: fix restore from database
+
+[5905060](https://github.com/dcache/dcache/commit/59050604ce07acb2f6e391591ab26482db3a74bc)
+:   srm: Improve database initialization and shutdown
+
+[8743668](https://github.com/dcache/dcache/commit/8743668029429a80905f0a9bb80afaf30a1f179b)
+:   srm: Add error message to an IllegalArgumentException
+
+[5c94086](https://github.com/dcache/dcache/commit/5c9408666e71d78cc8d427ab5cc56ea648d772a6)
+:   pool: Controlled termination of thread pools during pool shutdown
+
+[5d49667](https://github.com/dcache/dcache/commit/5d49667bb4752edaffad586625542f17fa60a5c9)
+:   poolmanager: Get rid of ThreadPool interface
+
+[51561af](https://github.com/dcache/dcache/commit/51561af9925a7a01ca7b17ca1b9b8111c2f175e9)
+:   Get rid of callback executor in CellNucleus
+
+[896a7ad](https://github.com/dcache/dcache/commit/896a7ad2d5b667a86a49b29c47ae49947c9c08d9)
+:   srm: Get rid of ThreadManager
+
+[f570ca7](https://github.com/dcache/dcache/commit/f570ca7c6370f11bb0f338badd818fa52ac7b9f9)
+:   nfs4: update stateid on read with proxy adapter
+
+[848ff79](https://github.com/dcache/dcache/commit/848ff7985c8ff8d6cb354d1e02213b51e83f340a)
+:   Revert "poolmanager: Get rid of ThreadPool interface"
+
+[d06eb68](https://github.com/dcache/dcache/commit/d06eb680ecb31c79edca2889724824b9aeccc7ca)
+:   poolmanager: Get rid of ThreadPool interface
+
+[9e92fd4](https://github.com/dcache/dcache/commit/9e92fd48c3e977a6980b27cc83ffc61c43142b0c)
+:   srm: Terminate db threads on shutdown
+
+[ca3f244](https://github.com/dcache/dcache/commit/ca3f2447a8a4f2658dd37d94efced5e68f691b78)
+:   billing: Make indexer case insensitive
+
+[d0e45fa](https://github.com/dcache/dcache/commit/d0e45fa3f8734040401d0197ee70140a6975ebec)
+:   srm: Restore RESTORED state
+
+[7e6df20](https://github.com/dcache/dcache/commit/7e6df2048c31c62cbd75b0aac0c1817b048f3faa)
+:   pool: Avoid memory exhaustion problems on write with xrootd and http
+
+[a5b01e4](https://github.com/dcache/dcache/commit/a5b01e4a15f473c8c7c02205cbc1d4ee01151e04)
+:   pool: Fix lock problems in xrootd and http movers
+
+[86f3486](https://github.com/dcache/dcache/commit/86f3486ed721d89dc712413115d66f6f878aa5cd)
+:   ftp: add read-only support for ctime and atime
+
+[5d6ae37](https://github.com/dcache/dcache/commit/5d6ae37253b02da408f75e22c2fd3dbcccdce363)
+:   logback: add comment about bugs in 1.1.1 to poms
+
+[9c19cca](https://github.com/dcache/dcache/commit/9c19cca2296ff9ec3a7183f4213a08ab8674b261)
+:   pnfsmanager: Clean up cleaner by making use of new CellStub features
+
+[09a2ba9](https://github.com/dcache/dcache/commit/09a2ba9ee0f31cbb40481fca5a790522598cc8a5)
+:   Mock CellEndpoint rather than CellAdapter in HsmRestoreTest
+
+[40ef881](https://github.com/dcache/dcache/commit/40ef8819ff05fdae0d6e52c0c4c9b3f2a22830c2)
+:   Get rid of support for synchronous messages in CellNucleus
+
+[6cbd994](https://github.com/dcache/dcache/commit/6cbd994e7a2e68d34543cc461467e37ac6a2bb6b)
+:   loginbroker: Fix login broker registration retry
+
+[c1de9d8](https://github.com/dcache/dcache/commit/c1de9d89fbe8bdf7a1e86fb7a107f28a48af247c)
+:   chimera: allow updating the creation time
+
+[669659b](https://github.com/dcache/dcache/commit/669659bd1d695ff37326a0aa127341ba9fd50f25)
+:   remote logging: add empty string defense to remote server wrapper
+
+[58fe22e](https://github.com/dcache/dcache/commit/58fe22e37ccd0f705c454fad7b6853bd74a3bf51)
+:   logback: correct MDC dependency in appender
+
+[5211277](https://github.com/dcache/dcache/commit/5211277cff019b4566a9903801a985d6beecf655)
+:   srm: remove unused state
+
+[5bd41ca](https://github.com/dcache/dcache/commit/5bd41caaf8ee35bdd1a1dd1ac179b882ff69726f)
+:   srm: refactor SchedulerFactory
+
+[3744980](https://github.com/dcache/dcache/commit/3744980cdded54f9b380c6c19ba08f81e08c708c)
+:   delegation: add support for GridSite
+
+[f35bf9b](https://github.com/dcache/dcache/commit/f35bf9bd2ac568eab462ea03d927956ff4a3db5d)
+:   libraries: update bouncy-castle
+
+[522e734](https://github.com/dcache/dcache/commit/522e734b1cb70f9967ac96f06e45f58b4b4e6c8b)
+:   srm: fix race condition if stop is called too soon after start
+
+[bf1bb73](https://github.com/dcache/dcache/commit/bf1bb73c559e9968901e83fec886a0cf23e2a0ed)
+:   Get rid of more uses of CellNucleus#send methods
+
+[5ed882c](https://github.com/dcache/dcache/commit/5ed882c6cd56bd9cdc50a9017a2cb74047e00607)
+:   Avoid direct use of CellAdapter#sendMessage
+
+[1e70679](https://github.com/dcache/dcache/commit/1e706795bfe43482d949c5dc1102fb7e513227c9)
+:   Remove direct calls of CellEndpoint#sendAndWait outside cells module
+
+[54e1d97](https://github.com/dcache/dcache/commit/54e1d97a940756683ac8cef5d08bb45fb7dffb08)
+:   Layer synchronous CellStub use on top of async code
+
+[b45667f](https://github.com/dcache/dcache/commit/b45667f163561e61d6d306a684ec0ff78d3e307f)
+:   Delete obsolete code
+
+[0e81660](https://github.com/dcache/dcache/commit/0e81660899948515babb9f0dfbb13b99c34d9c6d)
+:   Add transparent retry support to async use of CellStub
+
+[ef9ebc5](https://github.com/dcache/dcache/commit/ef9ebc5803babab620a21b2507b351be4bcf2915)
+:   Eliminate some direct use of AbstractCellComponent#send
+
+[60ec6f7](https://github.com/dcache/dcache/commit/60ec6f76efdc3b4211358d6e70b1de96fe32578d)
+:   Refactor CellStub
+
+[6fe60cc](https://github.com/dcache/dcache/commit/6fe60cce6df5d4327eea455bb0e7093bd7b320f8)
+:   Rename one-way CellStuf#send to notify
+
+[b3a7f60](https://github.com/dcache/dcache/commit/b3a7f601f431967dc3118998bab935ae67111686)
+:   srm: Replace pin and unpin callbacks with ListenableFuture
+
+[8040e1e](https://github.com/dcache/dcache/commit/8040e1ec8c639824ec283b4d2a4dc4b135cc6186)
+:   http: add minimal HEAD support in the mover
+
+[618a4d6](https://github.com/dcache/dcache/commit/618a4d6dbf181a369a9a33f3fa0f3fccf603044e)
+:   spacemanager: Remove obsolete features
+
+[7fb85dc](https://github.com/dcache/dcache/commit/7fb85dc9c2e9db4cb2b4dffc4dd45663591900b7)
+:   srm: Generate unique write TURLs
+
+[58e3a3f](https://github.com/dcache/dcache/commit/58e3a3faa7522e7c4267d5288a595cbd18d6413f)
+:   Auto indented file to clean up inconsistencies
+
+[0d9b0fc](https://github.com/dcache/dcache/commit/0d9b0fcbb76798d11c3479ca4c3e2fe64e22ed05)
+:   pnfsmanager: Add support for temporary upload paths
+
+[a000a73](https://github.com/dcache/dcache/commit/a000a7301b9ef31bfc35d184d367bf98f3344784)
+:   http: adjust unit test to multirage changes
+
+[ef2091a](https://github.com/dcache/dcache/commit/ef2091a9130cc0206e2534685b34ea5d6abe5590)
+:   nfs: return NFSERR_IO is we detect broken file on tape
+
+[5c9b6b8](https://github.com/dcache/dcache/commit/5c9b6b8a0f7c07e5aa06867c3bf2b9718fb13884)
+:   ftp: add support for MFMT, MFCT and MFF commands
+
+[f8d6408](https://github.com/dcache/dcache/commit/f8d6408f9bf3c905742b41d78b3b3fdef39bef22)
+:   alarms: add logging and peaceful exit for logback startup errors
+
+[702c68b](https://github.com/dcache/dcache/commit/702c68b36d369876a70a5ef8cf81dded9cf740ec)
+:   http: fix multipart reply
+
+[1d711d3](https://github.com/dcache/dcache/commit/1d711d3c860195d380e4e6242f13fb94bf0d50fd)
+:   srm: Fix compatibility with PostgreSQL 8.4
+
+[89d0fdf](https://github.com/dcache/dcache/commit/89d0fdf8c9a236402d9a914bbc2dc7bb223823bb)
+:   ftp: fix printing of UNIX.Mode fact
+
+[ac9a2b9](https://github.com/dcache/dcache/commit/ac9a2b9a9f96c37f5aafdae0657b96b90b1cc258)
+:   ftp: add logging to access log file
+
+[94afd50](https://github.com/dcache/dcache/commit/94afd505e224ee84215892dcfcf375ad50341f0b)
+:   ftp: add support for HELP and SITE HELP commands
+
+[206160a](https://github.com/dcache/dcache/commit/206160a03e09560d3d2aae929f5afc6ab910b94e)
+:   logback: revert to 1.0.12
+
+[0efb799](https://github.com/dcache/dcache/commit/0efb799dba55d2b88dab52f340147b9f1a279f70)
+:   http: fix mocking of Netty in unit-tests
+
+[a6c8a3a](https://github.com/dcache/dcache/commit/a6c8a3aed4a5a959a7dd82d5c48a33e333f5b3cc)
+:   nfs: do not label pnfsid and client ip in NDC
+
+[cead0f5](https://github.com/dcache/dcache/commit/cead0f525042d665252285375d2cbbc34c7186e2)
+:   core: update PoolPassiveIoFileMessage to provide boot verifier
+
+[0d31355](https://github.com/dcache/dcache/commit/0d3135574ee8bd0f4ca1d39ac9afe2ec115f01af)
+:   Upgrade third party libraries
+
+[19bdad9](https://github.com/dcache/dcache/commit/19bdad9c99e043d88641e11aadce1ecf6f4624d3)
+:   xrootd,httpd,pool: Upgrade to Netty 3.9.0
+
+[bbd7877](https://github.com/dcache/dcache/commit/bbd7877ccf4c1d06c37e72432fc6573e3f10acdf)
+:   system-test: Explicitly disable GridFTP 2 in tests
+
+[baff93a](https://github.com/dcache/dcache/commit/baff93afad3518e64ab0075904fedba0b7612d48)
+:   pool: Fix pf command regression
+
+[e3ac8f6](https://github.com/dcache/dcache/commit/e3ac8f69bd2e42b33066d169b6dd7ff95f476a6e)
+:   spacemanager: Fix database sequence initialization
+
+[0b8f0cd](https://github.com/dcache/dcache/commit/0b8f0cd8cff6b50de1446f0ba2960ce705379486)
+:   srm: Make FTP TURLs absolute
+
+[844ee81](https://github.com/dcache/dcache/commit/844ee81477efe2c758912b2efae6d30d037f1f3e)
+:   ftp: Make root path behaviour configurable
+
+[ef8ef96](https://github.com/dcache/dcache/commit/ef8ef96c690b3f005c4388e404f2fc7faf8f6993)
+:   Allow retry on transient transfer failures
+
+[a816ba1](https://github.com/dcache/dcache/commit/a816ba11326a9610d7d94664a7a9547dca1e70c2)
+:   srm-client: Do not retry on permanent FTP failures
+
+[3158ca2](https://github.com/dcache/dcache/commit/3158ca2f03b6bda16c1723d52873882b86721454)
+:   pnfsmanager: Fix compatibility with 2.6 pools
+
+[93fe751](https://github.com/dcache/dcache/commit/93fe7514823281aaa22bdafca005dec602effa6d)
+:   ftp: Fix race condition in command dispatching
+
+[cbadbf7](https://github.com/dcache/dcache/commit/cbadbf70d1c4585248052e9b757f920127935ca8)
+:   ftp: Give io thread pool a name
+
+[76e9ae4](https://github.com/dcache/dcache/commit/76e9ae4ec0c7e2f07a9f0a3a4f3b5a62763a3360)
+:   chimera: Avoid integrity constraint violations on registering locations
+
+[71d15f9](https://github.com/dcache/dcache/commit/71d15f93ba3ff0401c25130fd6ddd6e379cb34c6)
+:   srm: Avoid duplicate key violations on startup
+
+[2b6a29f](https://github.com/dcache/dcache/commit/2b6a29f7f948e43e2dab847e5e0d4a88740435de)
+:   ssh1: Fix session instantiation
+
+[465705b](https://github.com/dcache/dcache/commit/465705ba177ac75bfc247f4798778d3d2e631edd)
+:   ssh1: Fix typo in service batch file
+
+[1393be6](https://github.com/dcache/dcache/commit/1393be62f302ff186bffebb2b959233f089b8343)
+:   ftp: add support for the CREATE fact
+
+[db108eb](https://github.com/dcache/dcache/commit/db108ebb4a33b1a5ee6642de69950166623abda0)
+:   system-test: Enabled tiered compilation
+
+[832b1d1](https://github.com/dcache/dcache/commit/832b1d1eb5c3a1283fa469d8fc7fdf4668ef0e1b)
+:   Improve startup speed of tools
+
+[76223fb](https://github.com/dcache/dcache/commit/76223fbe5ca2cd9a787e3798bfe476d58e84cdfb)
+:   srm-client: Improve startup time
+
+[ad823f4](https://github.com/dcache/dcache/commit/ad823f45f0778004db52b196f3504c5b79872455)
+:   Convert tabs to spaces
+
+[a31b513](https://github.com/dcache/dcache/commit/a31b5139eaf5050c7c5420682494bc4996bcfb6f)
+:   billing: Initialize all fields in billing records
+
+[4f79cb3](https://github.com/dcache/dcache/commit/4f79cb3dbd2e7662da7f73dacae68a8f129b5101)
+:   pool: Fix logging context for thread pool
+
+[f437cac](https://github.com/dcache/dcache/commit/f437caccca66b3055a2196aa4579ef28460bfd59)
+:   pool: Use FireAndForgetTask instead of custom class
+
+[b8108fe](https://github.com/dcache/dcache/commit/b8108fecaa3308f435d1c8a77d4c7814a42a1644)
+:   chimera: fix inode type detection
+
+[773611e](https://github.com/dcache/dcache/commit/773611e3eeab472824549167d5f577edbd74b88f)
+:   srm: Include failed or unprocessed surls in list response
+
+[1987331](https://github.com/dcache/dcache/commit/1987331c7249d1c2811238b6fd44804ef5f90687)
+:   Add missing newline when quitting shell applications
+
+[e01bb75](https://github.com/dcache/dcache/commit/e01bb75259d8126955b28969ec9e0a40aa9ab966)
+:   Upgrade to HikariCP 1.3.2
+
+[401321e](https://github.com/dcache/dcache/commit/401321e3d5aa0a531ac0b69328b3c310633cc5d2)
+:   xrootd: Upgrade to xrootd4j 1.3.1
+
+[eb58014](https://github.com/dcache/dcache/commit/eb58014e08caa9b63c25f976fa72c103dc21145e)
+:   srm: Add SRM status code to SRMException
+
+[de267dc](https://github.com/dcache/dcache/commit/de267dc944aa9788494c6737a27ad9d059a297a4)
+:   srm: Various minor refactorings
+
+[d321353](https://github.com/dcache/dcache/commit/d321353b83b0ccb09db89af7451c26ee7c239e4b)
+:   srm: Take root path into account when selecting protocol
+
+[4e82995](https://github.com/dcache/dcache/commit/4e82995ed8bea1d3692439dd1b2e2a9382b839df)
+:   chimera: fix create link on existing object
+
+[2775f0c](https://github.com/dcache/dcache/commit/2775f0c8f98bc3f57c61a96759597f0d3d09d9f0)
+:   packaging: remove '-1' from tarball
+
+[50440d2](https://github.com/dcache/dcache/commit/50440d24a73201a03bfe57bef77c125d20854221)
+:   srm: simply job.setState
+
+[9f18e80](https://github.com/dcache/dcache/commit/9f18e8085f9456364cfd38f0147f634cb2a5ac99)
+:   gss: tidy up FQAN-extraction
+
+[e4f8fc5](https://github.com/dcache/dcache/commit/e4f8fc5c9528e40ca7e27083c6ae92a38d5a9de0)
+:   nfs: fix NPE on door reboot
+
+[53a6ccb](https://github.com/dcache/dcache/commit/53a6ccbb4df70d2185e754fb990ce36d49f5a873)
+:   nfs: remove unused exception declaration
+
+[e55e234](https://github.com/dcache/dcache/commit/e55e2344f4d9d218bb43f1f96299b7e1accbee0f)
+:   Convert tabs to space
+
+[af49653](https://github.com/dcache/dcache/commit/af4965395a84c9efbbaada2ee3e35256d9f1bf59)
+:   chimera: Minor refactoring of tag reading code
+
+[5d30def](https://github.com/dcache/dcache/commit/5d30defb0c641cade1963f860fbe1ea9142c7e0a)
+:   loginbroker: Register root path of doors
+
+[29e6e8d](https://github.com/dcache/dcache/commit/29e6e8d2c94272b0b9a2ea645fbf988001584ce3)
+:   Update to liquibase 3.1.1
+
+[227a73c](https://github.com/dcache/dcache/commit/227a73cb02eec26ef5692e5230cd05729bf50a45)
+:   chimera: Add mv to chimera shell
+
+[7e516df](https://github.com/dcache/dcache/commit/7e516df626977241271855398249cd75bffe65e3)
+:   srm,srm-client: Report failure for failed SRM v1 transfers
+
+[77a0166](https://github.com/dcache/dcache/commit/77a01664be2866ea35831cddeb91b126f9eb3b73)
+:   poolmanager: Add partition for transfer buffers
+
+[880920e](https://github.com/dcache/dcache/commit/880920ebb2df42347e72c52f275ad306cc3082c4)
+:   use ISO 8601 time format in sweeper ls -l output
+
+[051be99](https://github.com/dcache/dcache/commit/051be99cfb4c92c9b8375e76893a6d7390dee871)
+:   srm-client: fix adler32
+
+[ce18915](https://github.com/dcache/dcache/commit/ce18915725b315b132116b83d3842246cf7275fc)
+:   pool: fix lost space messages (and cause)
+
+[ed34406](https://github.com/dcache/dcache/commit/ed34406c21ee00df834237b0716570568e6db584)
+:   srmclient: fix support for URLs with IPv6 address
+
+[15a5d33](https://github.com/dcache/dcache/commit/15a5d339d5d2f38315d8548d5759181b1c8bf755)
+:   chimera: Optimize read of file and directory attributes
+
+[7eec2be](https://github.com/dcache/dcache/commit/7eec2be9574553a1442010d1ca8e3a13c53c48ab)
+:   system-test: Fix wrong path in hostCredentials script
+
+[2dd9d0e](https://github.com/dcache/dcache/commit/2dd9d0e7e27cef2c31df37fd9c80474b25c36d82)
+:   pool: Bind FTP data channel to single interface
+
+[f66153d](https://github.com/dcache/dcache/commit/f66153d9d6759a51d89915b455a24d91c077f1fb)
+:   spacemanager: Replace freespaceinbytes with availablespaceinbytes in link group table
+
+[758f19e](https://github.com/dcache/dcache/commit/758f19e1cc401a81516b82a289d01eecf931ace7)
+:   spacemanager: Set file to TRANSFERRING on accept file request message
+
+[6b07486](https://github.com/dcache/dcache/commit/6b0748663d83c52d3ccf5826dc9015ffd8e19f08)
+:   src: split nfs code info a dedicated module
+
+[546074d](https://github.com/dcache/dcache/commit/546074ddba55f749c33f371722632d8fe939ae5b)
+:   chimera: change FileSystemProvider#move() return value meaning
+
+[1287a28](https://github.com/dcache/dcache/commit/1287a28a057c233b9e9c7d93876e4593d50343f4)
+:   chimera: fix transaction leak
+
+[fb72047](https://github.com/dcache/dcache/commit/fb72047265ae500fbdad0d26eef35d0028781339)
+:   libs: update nfs to 0.7.4
+
+[119ecfe](https://github.com/dcache/dcache/commit/119ecfe92c1a69925ad31934f7517421e3f74405)
+:   chimera: fix rename into a file
+
+[6250598](https://github.com/dcache/dcache/commit/6250598677f3a3edccabfed9a28368b6d02db764)
+:   cells: move command support into commons-cli and create skeleton CLI client
+
+[67eaf90](https://github.com/dcache/dcache/commit/67eaf90e5e652efa342934b1ad31a5ef73824b4d)
+:   libraries: update Hikari to v1.3.0
+
+[3fee37e](https://github.com/dcache/dcache/commit/3fee37ed7575f74c92caf27e0e086c278e15a284)
+:   nfs4: remove dead class
+
+[6e7943f](https://github.com/dcache/dcache/commit/6e7943fe960f165ab9474188c59c79bc6f61c64a)
+:   nfs-proxy: fix logging CDC
+
+[9f78b39](https://github.com/dcache/dcache/commit/9f78b39ca1aac8418e9adea9c1ab219316178ce8)
+:   nfs4: clean failed request from pending queue
+
+[2a0723b](https://github.com/dcache/dcache/commit/2a0723b5b4af71eabf2d16e82f46f265ca27c754)
+:   nfs-proxy: use sessionId provided by Transfer class
+
+[3aadb92](https://github.com/dcache/dcache/commit/3aadb927ad328b16ff851181fdc0ac90bb91b1e8)
+:   nfs-proxy: fix logging
+
+[8fe71fa](https://github.com/dcache/dcache/commit/8fe71fad07d4193df01e44729b84e8ad3d1e154e)
+:   system-test: Add support for compatibility testing releases
+
+[dfa9c12](https://github.com/dcache/dcache/commit/dfa9c1207ea5a24a1e9b52690e6aceda8fd2d8c2)
+:   pool: Increase TCP backlog for FTP mover
+
+[6589114](https://github.com/dcache/dcache/commit/6589114056a3b4040eec9cb7729bd0cd837cf4da)
+:   ftp: Auto indent data channel code
+
+[f29613b](https://github.com/dcache/dcache/commit/f29613b1859c22b99abbcd3de063a15fd7a01831)
+:   nfs-proxy: add support for open-less read requests
+
+[eaf12dd](https://github.com/dcache/dcache/commit/eaf12ddeaac7fb2e2eb0d49717b32db37680a175)
+:   Revert "nfs-proxy: add support for open-less read requests"
+
+[20d0df6](https://github.com/dcache/dcache/commit/20d0df608cfc2b236e3b054cfc2fcb4de5b51278)
+:   nfs-proxy: add support for open-less read requests
+
+[9841b1a](https://github.com/dcache/dcache/commit/9841b1a4264b1ab36e72d8951f5a7d82cbb2eb44)
+:   Log fatal errors when fetching pool monitor
+
+[18e90f3](https://github.com/dcache/dcache/commit/18e90f3571bb727c93f8dd219a0260a32e638db9)
+:   gplazma-xacml: remove dependency on org.apache.xalan
+
+[0350958](https://github.com/dcache/dcache/commit/0350958d6ad7d3d9b60b7cb43d277c5b99022a1c)
+:   Revert "Revert "packages, fhs: fix saxon includes/excludes expression""
+
+[71de63c](https://github.com/dcache/dcache/commit/71de63c00e30933bfceb6d60ad4f017a6c82694f)
+:   gplazma2-xacml: revert version of opensaml
+
+[09108b7](https://github.com/dcache/dcache/commit/09108b7af9b8b61b0961abd871f89a219a89811b)
+:   xrootd: Add support for kXR_locate, kXR_query and kXR_set
+
+[ca34bf8](https://github.com/dcache/dcache/commit/ca34bf8b0f024af3676aba97c86994f014a137a0)
+:   dcache-webadmin, alarms: remove required annotations from datastore setters
+
+[2661256](https://github.com/dcache/dcache/commit/2661256b5b470d275b7cd89ab181f607a9e4d59c)
+:   dcache-core, alarms: restore xml connector to initialization properties
+
+[358648b](https://github.com/dcache/dcache/commit/358648b0c13fe7e553de43125f7c355938e67732)
+:   Revert "packages, fhs: fix saxon includes/excludes expression"
+
+[9ddc482](https://github.com/dcache/dcache/commit/9ddc482591a557ef2b363b9c6738dd2007879ff6)
+:   packages, fhs: fix saxon includes/excludes expression
+
+[05cb3fc](https://github.com/dcache/dcache/commit/05cb3fcab635d741210801efbcc39bd2590dead1)
+:   pool: Fix access time update
+
+[68055d4](https://github.com/dcache/dcache/commit/68055d49528c12e714928c0d83418798fb8cf793)
+:   xrootd: Upgrade to xrootd4j v1.2.4
+
+[1c05dce](https://github.com/dcache/dcache/commit/1c05dce34852df1622fb95a07bfeb11124e32e77)
+:   chimera: Add time options to ls command
+
+[77c17d3](https://github.com/dcache/dcache/commit/77c17d31ca23338fea3d6dc7b605372b4c5147d8)
+:   chimera: Add help command in shell
+
+[d50ddc2](https://github.com/dcache/dcache/commit/d50ddc2b8b90663f91db443bece2ea11d3283570)
+:   chimera: Fix option parsing in FsFactory
+
+[ef153ef](https://github.com/dcache/dcache/commit/ef153eff5cd742c39e9683638c5738a339028e36)
+:   core, billing: remove unit test
+
+[2d14212](https://github.com/dcache/dcache/commit/2d14212ba231232090277b767b7e3352d60474d1)
+:   libs: update to bugfix nfs4j-0.7.3
+
+[363cca6](https://github.com/dcache/dcache/commit/363cca684ed6506db1228badabef9865e0830685)
+:   billing,webadmin,alarms: Use HikariCP
+
+[772b9d9](https://github.com/dcache/dcache/commit/772b9d9064b567cf979c58b12f1ded803714b681)
+:   Use HikariCP connection pool in most services
+
+[b84b3fa](https://github.com/dcache/dcache/commit/b84b3fa2fe66b44a9f24dcdeda8cc344780f492b)
+:   dcache-core, alarms: remove postgresql precondition on schema
+
+[9ea839f](https://github.com/dcache/dcache/commit/9ea839f6ba19d489d1f5f8287fc24cea13df8393)
+:   webadmin: Inject service configuration into Spring environment
+
+[b7234ee](https://github.com/dcache/dcache/commit/b7234eeeb827edd86a9a520af9c4f4bdc7ed8e69)
+:   Use Spring's Environment and PropertySource feature to inject configuration
+
+[47b841f](https://github.com/dcache/dcache/commit/47b841fa7ca27f3f6c82dc8135a15ed8b5450bf4)
+:   Drop JDBC driver properties
+
+[0c41bc1](https://github.com/dcache/dcache/commit/0c41bc148c6e743e9df3373a3c7846c5dd36cc79)
+:   Add alarms and transfermanager database to system-test setup
+
+[a6bb4b0](https://github.com/dcache/dcache/commit/a6bb4b079662d48a74558fc3c7188beb4db15ece)
+:   libs: update nfs code to 0.7.2
+
+[3dee982](https://github.com/dcache/dcache/commit/3dee98213f75ebd100e81c7ee9e129b7decd2b73)
+:   httpd: revert datanucleus-xml version (pom.xml)
+
+[79d9b47](https://github.com/dcache/dcache/commit/79d9b47c96140eb70d8bdc66e9af45b376f49504)
+:   chimera-nfs: add bringonline command to ".(fset)"
+
+[739be39](https://github.com/dcache/dcache/commit/739be39923495560b9f519b2b21b3cd118167da8)
+:   system-test: Add utility to start HSQLDB Swing Console
+
+[514cc1d](https://github.com/dcache/dcache/commit/514cc1dcfd323c52151152e18b6ac1d0f540c2cb)
+:   Use annotated command syntax for most shared commands
+
+[92645b9](https://github.com/dcache/dcache/commit/92645b9146cf9f9f3b862459efb958951fc07376)
+:   Include arguments and default values in admin command help output
+
+[b25f8df](https://github.com/dcache/dcache/commit/b25f8dfbc214d09ae62be3da0a8f16f1c283c612)
+:   chimera: Optimized creation time column changeset
+
+[ed919cf](https://github.com/dcache/dcache/commit/ed919cf0eb99da85d594ebbc4d27fba6b1c9d09e)
+:   dcache-webadmin: fix ArrayIndexOutOfBounds exception in ListView (Tape Transfers page)
+
+[e0c5433](https://github.com/dcache/dcache/commit/e0c54332e7099c9063471fc611db3e18903599e1)
+:   ftp: Reenable support for RFC 2428
+
+[cfe60f0](https://github.com/dcache/dcache/commit/cfe60f08ee34e6b8f4b3d6838dd385ac7335a2bd)
+:   cells: remove conflict between CellAdapter and CellShell
+
+[0920e5a](https://github.com/dcache/dcache/commit/0920e5ad23cbecc4484e75dc4610825653149331)
+:   srm-client: switch to common Args
+
+[2bd7d37](https://github.com/dcache/dcache/commit/2bd7d370b75f4d09641fa98b6033ae986fe8ebc8)
+:   utils: move Args class into commons
+
+[acdad0f](https://github.com/dcache/dcache/commit/acdad0f1513b1eb0ea5383d8761efc2b85ce01b6)
+:   Update branch ready for the 2.9 branch
+
+
+</div>
+</div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js" type="text/javascript"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js" type="text/javascript"></script>

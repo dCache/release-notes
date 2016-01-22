@@ -1,0 +1,52 @@
+/* Coloring */
+
+h1,h2 { color: #0c3764 }
+h3,h4,h5 { color: #000 }
+
+.negligible { 
+  color: #a6a8ad; 
+}
+.stable {
+  text-decoration:line-through 
+}
+
+/*
+.stable { color: #a6a8ad; }
+*/
+
+/* Fonts */
+
+dt { font-style: italic }
+
+.changelog {
+  font-family: monospace;
+  color: #444;
+}
+
+div#important
+{
+color: #800;
+font-weight: bold
+}
+
+/* TOC */
+div#toc ul {
+    list-style: none;
+}
+div#toc ul li ul {
+    margin-bottom: 0.75em;
+}
+div#toc ul li ul li ul {
+    margin-bottom: 0.25em;
+}
+
+/* Columns */
+
+.two-columns {
+  -moz-column-count:2;
+  -moz-column-rule: dotted grey 1pt;
+  -webkit-column-count: 2;
+  -webkit-column-rule: dotted grey 1pt;
+  column-count: 2;
+  column-rule: dotted grey 1pt;
+}

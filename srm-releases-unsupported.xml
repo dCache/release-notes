@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!-- $Id: srm-releases.xml 1066 2012-05-24 antje $ -->
+
+<download-page title="SRM releases">
+<!--  <title>SRM releases</title> -->
+
+  <series id="srm-client">
+    <title>SRM Client</title>
+
+    <description>
+      <p>
+        The SRM client programs are available as a separate package.
+        These packages provide support for interacting with dCache
+        using the SRM interface.  These tools may also be used with
+        other storage systems that provide an SRM interface.  The SRM
+        client is released independently to the dCache server
+        releases.
+      </p>
+    </description>
+
+
+    <releases>
+      <name>dCache SRM Client VERSION</name>
+
+      <version-prefix>2.</version-prefix>
+      <notes-url>release-notes-VERSION.html</notes-url>
+      <download-url-prefix>dcache-srmclient-VERSION.</download-url-prefix>
+
+
+      <release version="1.1-1.el5.x86_64">
+	<date>13.01.2012</date>
+	<package name="rpm">
+	  <download-url>rpm</download-url>
+	  <md5sum>cf32bd16d915d18f28ff620a6d027d02</md5sum>
+          <notes-url>dcache-srmclient-2.1.1.release-notes.shtml</notes-url>
+	</package>
+      </release>
+      <release version="1.1-1.el6.x86_64">
+	<date>13.01.2012</date>
+	<package name="rpm">
+	  <download-url>rpm</download-url>
+	  <md5sum>778ac0bd8705b11bf7519cb6a7e2373d</md5sum>
+          <notes-url>dcache-srmclient-2.1.1.release-notes.shtml</notes-url>
+	</package>
+      </release>
+    </releases>
+
+    <releases>
+      <name>dCache SRM Client VERSION</name>
+
+      <version-prefix>1.9.</version-prefix>
+      <notes-url>release-notes-VERSION.html</notes-url>
+      <download-url-prefix>dcache-srmclient-VERSION.</download-url-prefix>
+
+      <release version="5-23">
+	<date>03.12.2010</date>
+
+	<package name="rpm">
+	  <download-url>noarch.rpm</download-url>
+	  <md5sum>a742813ebadf83437aa0a621f73d313a</md5sum>
+          <notes-url>dcache-srmclient-1.9.5-23.release-notes.html</notes-url>
+	</package>
+      </release>
+
+      <release version="5-16">
+	<date>04.03.2010</date>
+
+	<package name="rpm">
+	  <download-url>noarch.rpm</download-url>
+	  <md5sum>995617b4ed92e0efff8d728455353027</md5sum>
+          <notes-url>dcache-srmclient-1.9.5-16.release-notes.html</notes-url>
+	</package>
+
+      </release>
+      <release version="5-3" >
+	<date>09.10.2009</date>
+
+	<package name="rpm">
+	  <download-url>noarch.rpm</download-url>
+	  <md5sum>2104ae16611b76a28f0a25ada1d5a5d3</md5sum>
+          <notes-url>dcache-srmclient-1.9.5-3.release-notes.html</notes-url>
+	</package>
+
+      </release>
+
+      <release version="5-2">
+	<date>08.10.2009</date>
+
+	<package name="rpm">
+	  <download-url>noarch.rpm</download-url>
+	  <md5sum>cf1762d85372f68063ece57742385b05</md5sum>
+          <notes-url>dcache-srmclient-1.9.5-2.release-notes.html</notes-url>
+	</package>
+
+      </release>
+      <release version="5-1" >
+	<date>02.10.2009</date>
+
+	<package name="rpm">
+	  <download-url>noarch.rpm</download-url>
+	  <md5sum>88537e682dd2da8628124b36a31576df</md5sum>
+          <notes-url>dcache-srmclient-1.9.5-1.release-notes.html</notes-url>
+	</package>
+
+      </release>
+    </releases>
+  </series>
+
+</download-page>
