@@ -172,14 +172,6 @@
       select="concat('downloads/1.9/index.shtml#',../version-prefix,@version)"/></guid>   
       
       
-<!-- 
-      <guid>&guid-prefix;<xsl:value-of
-      select="concat('downloads/1.9/index.shtml#',$version)"/></guid>      
--->      
-<!--      
-      <guid>&guid-prefix;<xsl:value-of select="concat(../../@id,'/',$version)"/></guid>
--->      
-
       <title>Release of <xsl:value-of select="$name"/></title>
 
       <pubDate>
@@ -202,11 +194,6 @@
 	notes&lt;/a> or visit the
 	&lt;a
 	href="<xsl:value-of select="'&base-uri;'"/>">download page&lt;/a>.
-	
-<!--	
-	&lt;a
-	href="<xsl:value-of select="$release-anchor-url"/>">download page&lt;/a>.
--->	
 	
 	&lt;hr>
 	The &lt;a href="http://www.dcache.org">dCache.org&lt;/a> team.
