@@ -149,6 +149,45 @@ Highlights from this release:
   SRM requests will be lost from the database. Third party scripts
   that access the SRM database directly may have to be updated.
 
+## Release 2.14.9
+
+### nfs
+
+This release includes the PNFS-ID in the door's logging output when
+proxying data movement.
+
+Fix infinite loop for a specific failure mode when writing data into
+dCache: with this release, dCache will indicate a permanent error.
+
+### spacemanager
+
+Spacemanager backs off when it encounters a problem writing to the
+database.  Previously, if the problem was due to deadlocks then the
+two tasks involved are delayed by the same amount, which means it is
+possible that subsequent attempt will also deadlock.  This release
+randomises the delay to reduce the likelihood of this problem
+occuring.
+
+
+### Changelog 2.14.8..2.14.9
+
+<!-- git log 2.14.8..2.14.9 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[0fd5707](https://github.com/dcache/dcache/commit/0fd570718c462e00e9e91c72e33b1369641465a5)
+:   [maven-release-plugin] prepare release 2.14.9
+
+[1c93e26](https://github.com/dcache/dcache/commit/1c93e26483bf591200328a7281480a03f0db65c0)
+:   spacemanager: Randomize backoff in case of transient errors
+
+[bb84805](https://github.com/dcache/dcache/commit/bb84805faea82818eb03f3ef4b8f00a099aa4f8d)
+:   nfs-proxy: include file's pnfsid into debug context
+
+[70403d9](https://github.com/dcache/dcache/commit/70403d94d9c3200bf05db8c419339e9e70f440e0)
+:   nfs: convert FILE_IN_CACHE into NFS_EIO
+
+[27d3f09](https://github.com/dcache/dcache/commit/27d3f0906895262d76f611a41c822419b73368cf)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.14.8
 
 ### pool

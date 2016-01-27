@@ -144,6 +144,31 @@ Hightlights from this release:
   Previous releases of dCache always used the WAN port range.  Note
   that the xrootd mover port range is configurable with this release.
 
+## Release 2.12.32
+
+### spacemanager
+
+Spacemanager backs off when it encounters a problem writing to the
+database.  Previously, if the problem was due to deadlocks then the
+two tasks involved are delayed by the same amount, which means it is
+possible that subsequent attempt will also deadlock.  This release
+randomises the delay to reduce the likelihood of this problem
+occuring.
+
+
+### Changelog 2.12.31..2.12.32
+
+<!-- git log 2.12.31..2.12.32 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[a6ae924](https://github.com/dcache/dcache/commit/a6ae9244a192ab05fefa0d7a7ac4a69058ce3e2e)
+:   [maven-release-plugin] prepare release 2.12.32
+
+[f828a77](https://github.com/dcache/dcache/commit/f828a77fc13ec174f8bf871fc44b3d8251959f8e)
+:   spacemanager: Randomize backoff in case of transient errors
+
+[995bb3a](https://github.com/dcache/dcache/commit/995bb3a4c7461376cb13a980f341cb063b583944)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.12.31
 
 ### pool

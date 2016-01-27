@@ -102,6 +102,40 @@ Paul Millar  &lt;paul.millar@desy.de&gt;
   xrootd is now consistent with information recorded for other
   protocol transfers.
 
+## Release 2.10.52
+
+### pool
+
+Revert Netty version back to v3.9.9.  A previous release upgraded the
+version of Netty, but this appears to have introduced problems for
+some HTTP transfers where the pools run out of memory.
+
+### spacemanager
+
+Spacemanager backs off when it encounters a problem writing to the
+database.  Previously, if the problem was due to deadlocks then the
+two tasks involved are delayed by the same amount, which means it is
+possible that subsequent attempt will also deadlock.  This release
+randomises the delay to reduce the likelihood of this problem
+occuring.
+
+
+### Changelog 2.10.51..2.10.52
+
+<!-- git log 2.10.51..2.10.52 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[770e638](https://github.com/dcache/dcache/commit/770e638063cbcb1ce83d04678916a8c625511eea)
+:   [maven-release-plugin] prepare release 2.10.52
+
+[985cbae](https://github.com/dcache/dcache/commit/985cbae610e69b45f307fa84bc135a531c86db4e)
+:   pool: revert Netty back to v3.9.9
+
+[b3edbfc](https://github.com/dcache/dcache/commit/b3edbfca66d5e84bac9273069ede24e312fec44c)
+:   spacemanager: Randomize backoff in case of transient errors
+
+[82c9902](https://github.com/dcache/dcache/commit/82c9902700ce292a4f1482a53dfd55e8f0e959aa)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.10.51
 
 ### xrootd

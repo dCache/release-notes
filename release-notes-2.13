@@ -137,6 +137,39 @@ Highlights from this release:
   required upon upgrading, but downgrading is not possible without
   explicitly converting the format.
 
+## Release 2.13.20
+
+### nfs
+
+This release includes the PNFS-ID in the door's logging output when
+proxying data movement.
+
+### spacemanager
+
+Spacemanager backs off when it encounters a problem writing to the
+database.  Previously, if the problem was due to deadlocks then the
+two tasks involved are delayed by the same amount, which means it is
+possible that subsequent attempt will also deadlock.  This release
+randomises the delay to reduce the likelihood of this problem
+occuring.
+
+
+### Changelog 2.13.19..2.13.20
+
+<!-- git log 2.13.19..2.13.20 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[7007e1d](https://github.com/dcache/dcache/commit/7007e1d22609f30e64a65604fe144592ee5a02be)
+:   [maven-release-plugin] prepare release 2.13.20
+
+[fd4c7ea](https://github.com/dcache/dcache/commit/fd4c7eae31150aa1d76575ae8e242ab3b4e66c57)
+:   spacemanager: Randomize backoff in case of transient errors
+
+[e24f480](https://github.com/dcache/dcache/commit/e24f4807cc14d677f608093211a48767af9d4949)
+:   nfs-proxy: include file's pnfsid into debug context
+
+[ddda974](https://github.com/dcache/dcache/commit/ddda974444166237c995d3887a85c2802965cb60)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.13.19
 
 ### pool

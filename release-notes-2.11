@@ -98,6 +98,40 @@ All properties marked forbidden or obsolete are now no longer
 recognised by dCache.  All properties that were deprecated in 2.10 are
 now marked forbidden.
 
+## Release 2.11.43
+
+### pool
+
+Revert Netty version back to v3.9.9.  A previous release upgraded the
+version of Netty, but this appears to have introduced problems for
+some HTTP transfers where the pools run out of memory.
+
+### spacemanager
+
+Spacemanager backs off when it encounters a problem writing to the
+database.  Previously, if the problem was due to deadlocks then the
+two tasks involved are delayed by the same amount, which means it is
+possible that subsequent attempt will also deadlock.  This release
+randomises the delay to reduce the likelihood of this problem
+occuring.
+
+
+### Changelog 2.11.42..2.11.43
+
+<!-- git log 2.11.42..2.11.43 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[ccf844b](https://github.com/dcache/dcache/commit/ccf844b4267fac4e6215d3cf61f15f0a05acb89c)
+:   [maven-release-plugin] prepare release 2.11.43
+
+[3e6242d](https://github.com/dcache/dcache/commit/3e6242d321b36c6463256d21d1d6ee3ec3eda2a3)
+:   pool: revert Netty back to v3.9.9
+
+[11b4e4b](https://github.com/dcache/dcache/commit/11b4e4b959a9b069653f3cbf303b2377331a5d98)
+:   spacemanager: Randomize backoff in case of transient errors
+
+[74e6bf0](https://github.com/dcache/dcache/commit/74e6bf00059aaf979f6694bf13826a9d8b81cc36)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.11.42
 
 ### xrootd
