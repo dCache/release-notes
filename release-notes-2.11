@@ -98,6 +98,36 @@ All properties marked forbidden or obsolete are now no longer
 recognised by dCache.  All properties that were deprecated in 2.10 are
 now marked forbidden.
 
+## Release 2.11.44
+
+### Changes affecting multiple services
+
+Sometimes when a cell start up was interrupted an error message was logged as a bug. This is now fixed.  
+
+### info-provider
+
+The GLUE infomation provider supplies information about the dCache instance, which is important for the clients in WLCG area.
+Because in dCache different doors can have different roots, clients may need to adjust their path when accessing dCache through different doors.
+The info-provider is updated so that a new **path root**  property is provided.  This allows clients to modify paths, as necessary.  Note that
+the SRM door already supports this translation when redirecting clients for transfers.
+
+
+### Changelog 2.11.43..2.11.44
+
+<!-- git log 2.11.43..2.11.44 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[9476747](https://github.com/dcache/dcache/commit/9476747740312c79cbbfa2108c08c11eaad27483)
+:   [maven-release-plugin] prepare release 2.11.44
+
+[6746bd6](https://github.com/dcache/dcache/commit/6746bd62b7a27c3ed25b9315f2497bc81b73d067)
+:   info-provider: publish door root path
+
+[20e2d4d](https://github.com/dcache/dcache/commit/20e2d4d86cc3def116d6d4f626fd5c83762c07e2)
+:   cells: Suppress illegal state exception during initialization
+
+[a5c6109](https://github.com/dcache/dcache/commit/a5c6109dba3a0df4aa03b773b4c736b395169948)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.11.43
 
 ### pool

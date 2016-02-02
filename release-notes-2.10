@@ -102,6 +102,36 @@ Paul Millar  &lt;paul.millar@desy.de&gt;
   xrootd is now consistent with information recorded for other
   protocol transfers.
 
+## Release 2.10.53
+
+### Changes affecting multiple services
+
+Sometimes when a cell start up was interrupted an error message was logged as a bug. This is now fixed.  
+
+### info-provider
+
+The GLUE infomation provider supplies information about the dCache instance, which is important for the clients in WLCG area.
+Because in dCache different doors can have different roots, clients may need to adjust their path when accessing dCache through different doors.
+The info-provider is updated so that a new **path root**  property is provided.  This allows clients to modify paths, as necessary.  Note that
+the SRM door already supports this translation when redirecting clients for transfers.
+
+
+### Changelog 2.10.52..2.10.53
+
+<!-- git log 2.10.52..2.10.53 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[627dfda](https://github.com/dcache/dcache/commit/627dfdaa6f5ee4654c7cb4b25f1e9ac85ab37f5b)
+:   [maven-release-plugin] prepare release 2.10.53
+
+[1e40f5f](https://github.com/dcache/dcache/commit/1e40f5f7f10667c22d041362a0e8187602ebdb94)
+:   info-provider: publish door root path
+
+[902503e](https://github.com/dcache/dcache/commit/902503e0cfc27cbf5a7c09be14f565915d16b2ff)
+:   cells: Suppress illegal state exception during initialization
+
+[8e7fbb8](https://github.com/dcache/dcache/commit/8e7fbb84b35ebc3d409952828f6427c2c9f695a4)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.10.52
 
 ### pool

@@ -149,6 +149,45 @@ Highlights from this release:
   SRM requests will be lost from the database. Third party scripts
   that access the SRM database directly may have to be updated.
 
+## Release 2.14.10
+
+### Changes affecting multiple services
+
+Sometimes when a cell start up was interrupted an error message was logged as a bug. This is now fixed.  
+
+### info-provider
+
+The GLUE infomation provider supplies information about the dCache instance, which is important for the clients in WLCG area.
+Because in dCache different doors can have different roots, clients may need to adjust their path when accessing dCache through different doors.
+The info-provider is updated so that a new **path root**  property is provided.  This allows clients to modify paths, as necessary.  Note that
+the SRM door already supports this translation when redirecting clients for transfers.
+
+### pool
+
+Transfers into or out of dCache that do not go through the client ("3rd-party transfers") may be
+initiated through srm and webdav doors.  This release fixes allows `https` transfers without any
+X.509 credential.
+
+
+### Changelog 2.14.9..2.14.10
+
+<!-- git log 2.14.9..2.14.10 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[174e0bd](https://github.com/dcache/dcache/commit/174e0bd3e9ef1dad17c54772454399854a75a9ea)
+:   [maven-release-plugin] prepare release 2.14.10
+
+[d67f620](https://github.com/dcache/dcache/commit/d67f620ccaa431fb7959243da86cc003932917dc)
+:   info-provider: publish door root path
+
+[84acc3c](https://github.com/dcache/dcache/commit/84acc3c0b2abb041dc7475e53ce7150cebb3ffaa)
+:   cells: Suppress illegal state exception during initialization
+
+[eda4a70](https://github.com/dcache/dcache/commit/eda4a707911a194d5c5086d389f5da6266a9ef43)
+:   pool: fix HTTPS third-party transfers without X.509 credential
+
+[34703bf](https://github.com/dcache/dcache/commit/34703bf3f87b2e12b883830422cbdb4a97584627)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.14.9
 
 ### nfs
