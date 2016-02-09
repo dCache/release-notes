@@ -137,6 +137,33 @@ Highlights from this release:
   required upon upgrading, but downgrading is not possible without
   explicitly converting the format.
 
+## Release 2.13.22
+
+### alarms
+
+On heavily loaded systems creating alarms at very high frequencies and with comparatively slow databases for alarm logging, components ran out of memory and blocked. This release introduces a mechanism that will drop alarm messages that would cause the system to fail, ensuring continued operation. Note that no messages that are critical to system operation will ever be dropped by this change.
+
+### nfs
+
+Pinning files is now a non-blocking operation. For files stored on tape, this should result in a more responsive system behaviour, avoiding NFS blocking in situations with many concurrent pin requests.
+
+
+### Changelog 2.13.21..2.13.22
+
+<!-- git log 2.13.21..2.13.22 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[bb355ba](https://github.com/dcache/dcache/commit/bb355ba5a1fc68421960d2a02e8cb49a4de9a081)
+:   [maven-release-plugin] prepare release 2.13.22
+
+[71dca46](https://github.com/dcache/dcache/commit/71dca461feffa7470cb48896345ab8a1582b86aa)
+:   (2.13) alarms: change executor to have bounded queue and discard events on overrun
+
+[5f257a0](https://github.com/dcache/dcache/commit/5f257a026f40817271e943d43ae8edd48c7c9686)
+:       nfs: use noitify instead of blocking sendAndWait when          sending pin/unpin messages via touch ".(get)(<file_name>)(pin)"          command
+
+[898fc95](https://github.com/dcache/dcache/commit/898fc95b42a73d61765016ddabc5e4dc249bc484)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.13.21
 
 ### Changes affecting multiple services

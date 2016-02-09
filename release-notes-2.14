@@ -149,6 +149,33 @@ Highlights from this release:
   SRM requests will be lost from the database. Third party scripts
   that access the SRM database directly may have to be updated.
 
+## Release 2.14.11
+
+### alarms
+
+On heavily loaded systems creating alarms at very high frequencies and with comparatively slow databases for alarm logging, components ran out of memory and blocked. This release introduces a mechanism that will drop alarm messages that would cause the system to fail, ensuring continued operation. Note that no messages that are critical to system operation will ever be dropped by this change.
+
+### nfs
+
+Pinning files is now a non-blocking operation. For files stored on tape, this should result in a more responsive system behaviour, avoiding NFS blocking in situations with many concurrent pin requests.
+
+
+### Changelog 2.14.10..2.14.11
+
+<!-- git log 2.14.10..2.14.11 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[1e2eb2c](https://github.com/dcache/dcache/commit/1e2eb2c03c3bc74af254b7eb4d89883363002922)
+:   [maven-release-plugin] prepare release 2.14.11
+
+[cdee225](https://github.com/dcache/dcache/commit/cdee225dad336b8612e75cdabcc98b09c0fa8715)
+:   (2.14) alarms: change executor to have bounded queue and discard events on overrun
+
+[755f85c](https://github.com/dcache/dcache/commit/755f85c05f3d2f057ab438fcfe803a7cfe9039ca)
+:       nfs: use noitify instead of blocking sendAndWait when          sending pin/unpin messages via touch ".(get)(<file_name>)(pin)"          command
+
+[7868f81](https://github.com/dcache/dcache/commit/7868f81c6f430cd109707f144946fbe2b85bb50a)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.14.10
 
 ### Changes affecting multiple services

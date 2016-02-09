@@ -98,6 +98,29 @@ All properties marked forbidden or obsolete are now no longer
 recognised by dCache.  All properties that were deprecated in 2.10 are
 now marked forbidden.
 
+## Release 2.11.45
+
+### nfs
+
+Pinning files is now a non-blocking operation. For files stored on tape, this should result in a more responsive system behaviour, avoiding NFS blocking in situations with many concurrent pin requests.
+
+
+### Changelog 2.11.44..2.11.45
+
+<!-- git log 2.11.44..2.11.45 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[9474044](https://github.com/dcache/dcache/commit/94740448a404c454436cf9341d06e3ca6c82a3a0)
+:   [maven-release-plugin] prepare release 2.11.45
+
+[8074557](https://github.com/dcache/dcache/commit/8074557686b89407429c451d336411457600ab79)
+:   adapt 3eab402754b814f681a14d296d808031b05f2737 to 2.11 branch code
+
+[9115ff4](https://github.com/dcache/dcache/commit/9115ff4beedffece4dfcf11b7a0dbea8a7e30a72)
+:       nfs: use noitify instead of blocking sendAndWait when          sending pin/unpin messages via touch ".(get)(<file_name>)(pin)"          command
+
+[1970035](https://github.com/dcache/dcache/commit/1970035a2bc31e1f9a63dc5a613ff9bf3482dc27)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.11.44
 
 ### Changes affecting multiple services

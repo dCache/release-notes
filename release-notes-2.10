@@ -102,6 +102,29 @@ Paul Millar  &lt;paul.millar@desy.de&gt;
   xrootd is now consistent with information recorded for other
   protocol transfers.
 
+## Release 2.10.54
+
+### nfs
+
+Pinning files is now a non-blocking operation. For files stored on tape, this should result in a more responsive system behaviour, avoiding NFS blocking in situations with many concurrent pin requests.
+
+
+### Changelog 2.10.53..2.10.54
+
+<!-- git log 2.10.53..2.10.54 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[c27ed41](https://github.com/dcache/dcache/commit/c27ed41511b109fa597a98d9a126260d448a4c8d)
+:   [maven-release-plugin] prepare release 2.10.54
+
+[7b3c317](https://github.com/dcache/dcache/commit/7b3c317ebc9257bc84b1cd7de1877bf8334d0941)
+:   adapted commit 3eab402754b814f681a14d296d808031b05f2737 for 2.10 branch
+
+[e83c140](https://github.com/dcache/dcache/commit/e83c1403bf3bdea51098497cb2e6faa37a83458f)
+:       nfs: use noitify instead of blocking sendAndWait when          sending pin/unpin messages via touch ".(get)(<file_name>)(pin)"          command
+
+[c00a14b](https://github.com/dcache/dcache/commit/c00a14b67964d1b2e8042ef6665539c3095cc629)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.10.53
 
 ### Changes affecting multiple services

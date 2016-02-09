@@ -144,6 +144,39 @@ Hightlights from this release:
   Previous releases of dCache always used the WAN port range.  Note
   that the xrootd mover port range is configurable with this release.
 
+## Release 2.12.34
+
+### alarms
+
+On heavily loaded systems creating alarms at very high frequencies and with comparatively slow databases for alarm logging, components ran out of memory and blocked. This release introduces a mechanism that will drop alarm messages that would cause the system to fail, ensuring continued operation. Note that no messages that are critical to system operation will ever be dropped by this change.
+
+### nfs
+
+Pinning files is now a non-blocking operation. For files stored on tape, this should result in a more responsive system behaviour, avoiding NFS blocking in situations with many concurrent pin requests.
+
+
+### Changelog 2.12.33..2.12.34
+
+<!-- git log 2.12.33..2.12.34 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[3244337](https://github.com/dcache/dcache/commit/32443376b64d85eace9b563f85adf8bb9eb906c0)
+:   [maven-release-plugin] prepare release 2.12.34
+
+[d939fe24](https://github.com/dcache/dcache/commit/d939fe245b9f274e1778d7643b15a21f5757b716)
+:   Revert "(2.12) alarms: change executor to have bounded queue and discard events on overrun"
+
+[d077daa](https://github.com/dcache/dcache/commit/d077daaeb9a40d06a1bf11edef82e1ec1362883b)
+:   (2.12) alarms: change executor to have bounded queue and discard events on overrun
+
+[02f9d10](https://github.com/dcache/dcache/commit/02f9d1046aae728d21baa6741d985a8c6d32ad47)
+:   adjust commit 5acde923f467ec3e391988ecd1dac05163dbbb1b to 2.12 branch code
+
+[5acde92](https://github.com/dcache/dcache/commit/5acde923f467ec3e391988ecd1dac05163dbbb1b)
+:       nfs: use noitify instead of blocking sendAndWait when          sending pin/unpin messages via touch ".(get)(<file_name>)(pin)"          command
+
+[beadc49](https://github.com/dcache/dcache/commit/beadc49e588e0bf34156c65ec4ca542644c481c7)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.12.33
 
 ### Changes affecting multiple services
