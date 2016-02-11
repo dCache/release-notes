@@ -26,11 +26,9 @@ length=${#Version[@]}
 #echo "length of array = $length"
 #echo ${Version[length-1]}
 
-header_195_1912="<a href=\"/manuals/releasenotes.shtml\">release notes</a>
-   | Book:
-   <a href=\"/manuals/Book-1.9.5\"> 1.9.5</a>,
-   1.9.12 (<a href=\"/manuals/Book-1.9.12\">opt</a>, <a href=\"/manuals/Book-1.9.12/index-fhs.shtml\">FHS</a>),"   
-headerend="| <a href=\"http://trac.dcache.org/trac.cgi/wiki\">Wiki</a>
+header_start="<a href=\"/manuals/releasenotes.shtml\">release notes</a>
+   | Book: "
+header_end="| <a href=\"http://trac.dcache.org/trac.cgi/wiki\">Wiki</a>
    | <a href=\"/manuals/FAQ.shtml\">Q&amp;A</a>
    <img src=\"/images/black_bg.png\" width=\"100%\" height=\"1\" alt=\"black_bg\" border=\"0\" />"
 
@@ -43,122 +41,20 @@ headerend="| <a href=\"http://trac.dcache.org/trac.cgi/wiki\">Wiki</a>
 
 headerdocsoverview=""
 
-for ((i=$length-1; i>0; i--));
+for ((i=$length; i>0; i--));
 do
-headerdocsoverview="$headerdocsoverview${Version[i-1]} (<a href=\"/manuals/Book-${Version[i-1]}/index-fhs.shtml\">FHS</a>),\n"
-
+    if [ $i -ne $length ]; then
+	headerdocsoverview="$headerdocsoverview, "
+    fi
+    headerdocsoverview="$headerdocsoverview<a href=\"/manuals/Book-${Version[i-1]}/index-fhs.shtml\">${Version[i-1]}</a>"
 done
 
 echo "     create ../../template/frags/header-docs-overview.shtml"
-# delete the line <a href=\"/manuals/Book-1.9.5\">1.9.5</a>,
-# when 1.9.5 should not be in header anymore
-# delete the line 1.9.12 (<a href="/manuals/Book-1.9.12">opt</a>, <a href="/manuals/Book-1.9.12/index-fhs.shtml">FHS</a>),
-# when 1.9.12 should not be in header anymore
 echo -ne "<div class=\"book-navi\">
-   $header_195_1912
+   $header_start
    $headerdocsoverview
-   $headerend
+   $header_end
 </div>" >../../template/frags/header-docs-overview.shtml
-
-
-
-#*************************************************************************************************
-#           delete this section when 1.9.5 should not be in header anymore                       *
-#*************************************************************************************************
-#
-# create file
-# ../../template/frags/header-docs-1.9.5.shtml
-#This file needs to be changed for each new release.
-
-headerdocsversion=""
-
-     for ((i=$length-1; i>0; i--));  
-     do
-	       headerdocsversion="$headerdocsversion \n${Version[i-1]} (<a href=\"/manuals/Book-${Version[i-1]}/index-fhs.shtml\">FHS</a>),"
-
-     done
-
-
-     echo "     create ../../template/frags/header-docs-1.9.5.shtml"
-
-	 echo -ne "<div class=\"book-navi\">
-   <a href=\"/manuals/releasenotes.shtml\">release notes</a>
-   | Book:
-   <span class=\"activ\">1.9.5</span>,
-   1.9.12 (<a href=\"/manuals/Book-1.9.12\">opt</a>, <a href=\"/manuals/Book-1.9.12/index-fhs.shtml\">FHS</a>),
-           $headerdocsversion
-           $headerend
-</div>" >../../template/frags/header-docs-1.9.5.shtml
-
-
-#
-#*************************************************************************************************
-#            delete the above section when 1.9.5 should not be in header anymore                 *
-#*************************************************************************************************
-
-
-
-
-#**************************************************************************************************
-#           delete this section when 1.9.12 should not be in header anymore                       *
-#**************************************************************************************************
-#
-# create file
-# ../../template/frags/header-docs-1.9.12-opt.shtml
-#This file needs to be changed for each new release.
-#
-headerdocsversion=""
-
-     for ((i=$length-1; i>0; i--));  
-       do
-	       headerdocsversion="$headerdocsversion \n${Version[i-1]} (<a href=\"/manuals/Book-${Version[i-1]}/index-fhs.shtml\">FHS</a>),"
-
-     done
-
-
-     echo "     create ../../template/frags/header-docs-1.9.12-opt.shtml"
-
-	 echo -ne "<div class=\"book-navi\">
-   <a href=\"/manuals/releasenotes.shtml\">release notes</a>
-   | Book:
-   <a href=\"/manuals/Book-1.9.5\">1.9.5</a>,
-           <span class=\"activ\">1.9.12</span> (<span class=\"activ\">opt</span>, <a href=\"/manuals/Book-1.9.12/index-fhs.shtml\">FHS</a>),
-           $headerdocsversion
-           $headerend
-</div>" >../../template/frags/header-docs-1.9.12-opt.shtml
-
-
-#
-# create file
-# ../../template/frags/header-docs-1.9.12-fhs.shtml
-#This file needs to be changed for each new release.
-
-headerdocsversion=""
-
-
-     for ((i=$length-1; i>0; i--));  
-       do
-	       headerdocsversion="$headerdocsversion \n${Version[i-1]} (<a href=\"/manuals/Book-${Version[i-1]}/index-fhs.shtml\">FHS</a>),"
-
-     done
-
-
-     echo "     create ../../template/frags/header-docs-1.9.12-fhs.shtml"
-
-	 echo -ne "<div class=\"book-navi\">
-   <a href=\"/manuals/releasenotes.shtml\">release notes</a>
-   | Book:
-   <a href=\"/manuals/Book-1.9.5\">1.9.5</a>,
-   <span class=\"activ\">1.9.12</span> (<a href=\"/manuals/Book-1.9.12\">opt</a>, <span class=\"activ\">FHS</span>),
-           $headerdocsversion
-           $headerend
-</div>" >../../template/frags/header-docs-1.9.12-fhs.shtml
-
-
-#*************************************************************************************************
-#            delete the above section when 1.9.12 should not be in header anymore                 *
-#*************************************************************************************************
-
 
 
 
@@ -170,30 +66,26 @@ headerdocsversion=""
 #********************************************************************************************
 
 headerdocsversion=""
-#   for ((j=$length; j>0; j--));  use when 1.9.12 should not be in header anymore
-   for ((j=$length-1; j>0; j--));   # delete when 1.9.12 should not be in header anymore
-     do
-     for ((i=$length-1; i>0; i--));  
-       do
+for ((j=$length; j>0; j--)); do
+    for ((i=$length; i>0; i--)); do
 
-       if [ "$j" = "$i" ];
-	   then
-	       headerdocsversion="$headerdocsversion<span class=\"activ\">${Version[i-1]}</span> <span class=\"activ\">(FHS)</span>,\n"
+	if [ $i -ne $length ]; then
+	    headerdocsversion="$headerdocsversion, "
+	fi
 
-       else
-	       headerdocsversion="$headerdocsversion${Version[i-1]} (<a href=\"/manuals/Book-${Version[i-1]}/index-fhs.shtml\">FHS</a>),\n"
+	if [ "$j" = "$i" ]; then
+	    headerdocsversion="$headerdocsversion<span class=\"activ\">${Version[i-1]}</span>"
 
-       fi
-
+	else
+	    headerdocsversion="$headerdocsversion<a href=\"/manuals/Book-${Version[i-1]}/index-fhs.shtml\">${Version[i-1]}</a>"
+	fi
      done
 
      echo "     create ../../template/frags/header-docs-${Version[j-1]}-fhs.shtml"
-# delete the line <a href=\"/manuals/Book-1.9.5\">1.9.5</a>,
-# when 1.9.5 should not be in header anymore
     echo -ne "<div class=\"book-navi\">
-           $header_195_1912 
+           $header_start
            $headerdocsversion
-           $headerend
+           $header_end
 </div>" >../../template/frags/header-docs-${Version[j-1]}-fhs.shtml
 
 
