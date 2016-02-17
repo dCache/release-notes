@@ -149,6 +149,82 @@ Highlights from this release:
   SRM requests will be lost from the database. Third party scripts
   that access the SRM database directly may have to be updated.
 
+## Release 2.14.12
+
+### Changes affecting multiple services
+
+Several cases of slow performance were reported while deleting
+directory in Chimera.  This is now fixed.
+
+### pool
+
+dCache `pool yaml` command dumps the meta data of a pool using the
+human an machine readable YAML format.  A regression causing a null
+pointer exception has been fixed.
+
+When command execution to migrate files between pools (e.g. `migration
+concurrency` or `migration copy`) is interrupted due to the failure to
+find migration job the returned error message is considered as a bug.
+This is now fixed so that a new message is returned indicating that
+the job being requested does not exist.
+
+### srm
+
+When file upload is cancelled the value of temporary upload path
+tracked by SRM could be a value different from a regular path, either
+because it was changed outside of dCache, or it contains entries from
+a very old version of dCache. This could result in data loss while
+canceling upload.  The current release fixed a potential data loss
+scenario.
+
+### statistics
+
+The statistics service creates static HTML pages that describe dCache
+usage over time as simple files that the webadmin service can
+serve. This includes information about pools and store-units.  The
+problem is that the statistics webpages do not show information about
+any pool or store-unit that contains a `/` in the name.  This is now
+fixed.  A side-effect is that the history of any pool or store-unit
+containing a `^` in the name is lost.
+
+### xrootd
+
+In XRootd Protocol Specification `kXR_dirlist` request is used to list
+the contents of a directory. XRootd version 3.0.0 introduced the
+`kXR_dstat` option to the `kXR_dirlist` command which returns stat
+information for each entry.  The new release adds support for
+`kXR_dstat` in dCache.  Note that for VOs that rely on token
+authorization, this is a requirement for functional verbose listing.
+
+
+### Changelog 2.14.11..2.14.12
+
+<!-- git log 2.14.11..2.14.12 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[a5fc47c](https://github.com/dcache/dcache/commit/a5fc47c8085e300069edce002b2317fd63a620af)
+:   [maven-release-plugin] prepare release 2.14.12
+
+[9a67073](https://github.com/dcache/dcache/commit/9a670731d278b17f2f86e3e6336977ccf6e17c45)
+:   xrootd: Add kXR_dstat support
+
+[c2e7620](https://github.com/dcache/dcache/commit/c2e7620ec6774aaf8e44f6453ecb1f65b9c380c1)
+:   chimera: Alter statistics target for t_tags(itagid)
+
+[f41c5c2](https://github.com/dcache/dcache/commit/f41c5c2898fdb3953c04fc43acbdb4155b06a4dd)
+:   srm: Add safe-guard against invalid file ID in put requests
+
+[0a10e60](https://github.com/dcache/dcache/commit/0a10e60f091a440bc0ccec30e829e98ca7ab7683)
+:   pool: Don't consider failure to find migration job a bug
+
+[fe3bc12](https://github.com/dcache/dcache/commit/fe3bc12f72d71419fe9ebb6033f6b6a8ffbe0f33)
+:   statistics: encode '/' in filenames
+
+[53d31a4](https://github.com/dcache/dcache/commit/53d31a40a9520430e7584c78d2f416152af9791f)
+:   [maven-release-plugin] prepare for next development iteration
+
+[07d5b22](https://github.com/dcache/dcache/commit/07d5b227ade985eabd85edf6942865a0ce39027b)
+:   pool: Fix NPE in pool yaml tool
+
 ## Release 2.14.11
 
 ### alarms

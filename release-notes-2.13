@@ -137,6 +137,70 @@ Highlights from this release:
   required upon upgrading, but downgrading is not possible without
   explicitly converting the format.
 
+## Release 2.13.23
+
+### Changes affecting multiple services
+
+Several cases of slow performance were reported while deleting
+directory in Chimera.  This is now fixed.
+
+### pool
+
+dCache `pool yaml` command dumps the meta data of a pool using the
+human an machine readable YAML format.  A regression causing a null
+pointer exception has been fixed.
+
+When command execution to migrate files between pools (e.g. `migration
+concurrency` or `migration copy`) is interrupted due to the failure to
+find migration job the returned error message is considered as a bug.
+This is now fixed so that a new message is returned indicating that
+the job being requested does not exist.
+
+### srm
+
+When file upload is cancelled the value of temporary upload path
+tracked by SRM could be a value different from a regular path, either
+because it was changed outside of dCache, or it contains entries from
+a very old version of dCache. This could result in data loss while
+canceling upload.  The current release fixed a potential data loss
+scenario.
+
+### statistics
+
+The statistics service creates static HTML pages that describe dCache
+usage over time as simple files that the webadmin service can
+serve. This includes information about pools and store-units.  The
+problem is that the statistics webpages do not show information about
+any pool or store-unit that contains a `/` in the name.  This is now
+fixed.  A side-effect is that the history of any pool or store-unit
+containing a `^` in the name is lost.
+
+
+### Changelog 2.13.22..2.13.23
+
+<!-- git log 2.13.22..2.13.23 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[893f893](https://github.com/dcache/dcache/commit/893f893de50c309c5ec910c94d68b68e7e3ec8bf)
+:   [maven-release-plugin] prepare release 2.13.23
+
+[9fea1cc](https://github.com/dcache/dcache/commit/9fea1ccdb3ade3d46b79a2921b165a37520d966e)
+:   chimera: Alter statistics target for t_tags(itagid)
+
+[3dd6d29](https://github.com/dcache/dcache/commit/3dd6d29a38d28005f4736f9422a33b1a972f84ee)
+:   srm: Add safe-guard against invalid file ID in put requests
+
+[815a0d8](https://github.com/dcache/dcache/commit/815a0d85e18317439cb851a0df62a7b90b937e75)
+:   pool: Don't consider failure to find migration job a bug
+
+[9813dcc](https://github.com/dcache/dcache/commit/9813dccdae45c1b53f23c59427b49873255cf2fe)
+:   statistics: encode '/' in filenames
+
+[24832ea](https://github.com/dcache/dcache/commit/24832eae9c644eef53009750904b39c817944ffb)
+:   [maven-release-plugin] prepare for next development iteration
+
+[98c6971](https://github.com/dcache/dcache/commit/98c6971716cd50589c4ffac02752d63a1f9a1ba0)
+:   pool: Fix NPE in pool yaml tool
+
 ## Release 2.13.22
 
 ### alarms

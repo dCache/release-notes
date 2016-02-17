@@ -144,6 +144,75 @@ Hightlights from this release:
   Previous releases of dCache always used the WAN port range.  Note
   that the xrootd mover port range is configurable with this release.
 
+## Release 2.12.35
+
+### Changes affecting multiple services
+
+Several cases of slow performance were reported while deleting
+directory in Chimera.  This is now fixed.
+
+### alarms
+
+On heavily loaded systems creating alarms at very high frequencies and
+with comparatively slow databases for alarm logging, components ran
+out of memory and blocked. This release introduces a mechanism that
+will drop alarm messages that would cause the system to fail, ensuring
+continued operation. Note that no messages that are critical to system
+operation will ever be dropped by this change.
+
+### pool
+
+When command execution to migrate files between pools (e.g. `migration
+concurrency` or `migration copy`) is interrupted due to the failure to
+find migration job the returned error message is considered as a bug.
+This is now fixed so that a new message is returned indicating that
+the job being requested does not exist.
+
+### srm
+
+When file upload is cancelled the value of temporary upload path
+tracked by SRM could be a value different from a regular path, either
+because it was changed outside of dCache, or it contains entries from
+a very old version of dCache. This could result in data loss while
+canceling upload.  The current release fixed a potential data loss
+scenario.
+
+### statistics
+
+The statistics service creates static HTML pages that describe dCache
+usage over time as simple files that the webadmin service can
+serve. This includes information about pools and store-units.  The
+problem is that the statistics webpages do not show information about
+any pool or store-unit that contains a `/` in the name.  This is now
+fixed.  A side-effect is that the history of any pool or store-unit
+containing a `^` in the name is lost.
+
+
+### Changelog 2.12.34..2.12.35
+
+<!-- git log 2.12.34..2.12.35 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[80e19a0](https://github.com/dcache/dcache/commit/80e19a0b0f482b1702c84efc659e0695cb9f7542)
+:   [maven-release-plugin] prepare release 2.12.35
+
+[f4ef746](https://github.com/dcache/dcache/commit/f4ef74668783242b73c4d9c6f501489f41a738d7)
+:   chimera: Alter statistics target for t_tags(itagid)
+
+[48f67ab](https://github.com/dcache/dcache/commit/48f67ab96bf414f5428a3d917926742200817cd5)
+:   srm: Add safe-guard against invalid file ID in put requests
+
+[f6e25e6](https://github.com/dcache/dcache/commit/f6e25e63dff96af2ecd6c383286001a7fae5dcb1)
+:   pool: Don't consider failure to find migration job a bug
+
+[3456532](https://github.com/dcache/dcache/commit/3456532b94a975ee02c3f1bac2d4983249432f99)
+:   statistics: encode '/' in filenames
+
+[0996385](https://github.com/dcache/dcache/commit/0996385614f5d6b0464b953ee43bd5d423e38c73)
+:       2.12 alarms: change executor to have bounded queue and discard events on overrun
+
+[0b1ceec](https://github.com/dcache/dcache/commit/0b1ceecf96a4dd82b9dcd3f22f4ff3a09dcaac08)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.12.34
 
 ### alarms

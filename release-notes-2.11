@@ -98,6 +98,63 @@ All properties marked forbidden or obsolete are now no longer
 recognised by dCache.  All properties that were deprecated in 2.10 are
 now marked forbidden.
 
+## Release 2.11.46
+
+### Changes affecting multiple services
+
+Several cases of slow performance were reported while deleting
+directory in Chimera.  This is now fixed.
+
+### pool
+
+When command execution to migrate files between pools (e.g. `migration
+concurrency` or `migration copy`) is interrupted due to the failure to
+find migration job the returned error message is considered as a bug.
+This is now fixed so that a new message is returned indicating that
+the job being requested does not exist.
+
+### srm
+
+When file upload is cancelled the value of temporary upload path
+tracked by SRM could be a value different from a regular path, either
+because it was changed outside of dCache, or it contains entries from
+a very old version of dCache. This could result in data loss while
+canceling upload.  The current release fixed a potential data loss
+scenario.
+
+### statistics
+
+The statistics service creates static HTML pages that describe dCache
+usage over time as simple files that the webadmin service can
+serve. This includes information about pools and store-units.  The
+problem is that the statistics webpages do not show information about
+any pool or store-unit that contains a `/` in the name.  This is now
+fixed.  A side-effect is that the history of any pool or store-unit
+containing a `^` in the name is lost.
+
+
+### Changelog 2.11.45..2.11.46
+
+<!-- git log 2.11.45..2.11.46 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[3a6fb84](https://github.com/dcache/dcache/commit/3a6fb84798566e084ce6d6d9f629fe44b1019ecf)
+:   [maven-release-plugin] prepare release 2.11.46
+
+[311c77b](https://github.com/dcache/dcache/commit/311c77b758c8f5bbe555f40955f36e4201bcd948)
+:   chimera: Alter statistics target for t_tags(itagid)
+
+[e180fa7](https://github.com/dcache/dcache/commit/e180fa7de2e618299e1f5914b2160326d6147898)
+:   srm: Add safe-guard against invalid file ID in put requests
+
+[fecb34d](https://github.com/dcache/dcache/commit/fecb34d804ebb0e460b34d0e1f9ead15ffe25f71)
+:   pool: Don't consider failure to find migration job a bug
+
+[b1cde64](https://github.com/dcache/dcache/commit/b1cde64fc24d1dfd169a9f85add0a8aa7039e7bf)
+:   statistics: encode '/' in filenames
+
+[ecdf23d](https://github.com/dcache/dcache/commit/ecdf23d54a4a246c75135203fb08098e675b4837)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.11.45
 
 ### nfs
