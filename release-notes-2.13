@@ -143,7 +143,7 @@ Highlights from this release:
 
 With this release, PnfsManager adds safety checks rejecting invalid upload paths that SRM might erroneously supply. This release hardens an installation against possible bugs triggering data loss.
 
-This release adds a sanity check to file uploads using SRM. Client-supplied file sizes and checksums of uploaded files are compared with the transferred file. Mismatches will be reported to the SRM client tools, which should in turn consider the transfer as failed. For cases where those metadata are not supplied, see the similar change to SRM below.
+This release adds a check that detects failed or incomplete SRM uploads and prevents the file from being committed to its final path. Common symptoms of this bug were zero sized files that experiment catalogues registered as successfully uploaded.
 
 ### pool
 
@@ -155,7 +155,7 @@ Increased performance and resilience in situations where NFS clients send many r
 
 ### srm
 
-This release adds a sanity check to file uploads using SRM. The test is designed to detect files that were corrupted during the transfer, for transfers where the client does not supply any metadata for validation (see also the similar change to PnfsManager above). 
+This release adds a check to detect broken uploads using SRM during the final stage of file transmission. While it causes transfers to take a little more time, resilience against upload failures is increased.
 
 ### webdav
 
