@@ -98,6 +98,38 @@ All properties marked forbidden or obsolete are now no longer
 recognised by dCache.  All properties that were deprecated in 2.10 are
 now marked forbidden.
 
+## Release 2.11.47
+
+### pnfsmanager
+
+With this release, PnfsManager adds safety checks rejecting invalid upload paths that SRM might erroneously supply. This release hardens an installation against possible bugs triggering data loss.
+
+This release adds a sanity check to file uploads using SRM. Client-supplied file sizes and checksums of uploaded files are compared with the transferred file. Mismatches will be reported to the SRM client tools, which should in turn consider the transfer as failed. For cases where those metadata are not supplied, see the similar change to SRM below.
+
+### srm
+
+This release adds a sanity check to file uploads using SRM. The test is designed to detect files that were corrupted during the transfer, for transfers where the client does not supply any metadata for validation (see also the similar change to PnfsManager above). 
+
+
+### Changelog 2.11.46..2.11.47
+
+<!-- git log 2.11.46..2.11.47 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[56d90b3](https://github.com/dcache/dcache/commit/56d90b3ec3b3d9f2a8c371863bb0dba04a65d749)
+:   [maven-release-plugin] prepare release 2.11.47
+
+[271fa08](https://github.com/dcache/dcache/commit/271fa086aafb62e89b48a12fb7e2c4722f737249)
+:   srm: Check for broken files during srmPutDone
+
+[33713a7](https://github.com/dcache/dcache/commit/33713a7d6975233bd7660e784c56d5bbb364b7a3)
+:   pnfsmanager: Check file size and upload completion when committing temporary upload paths
+
+[11931a0](https://github.com/dcache/dcache/commit/11931a001fddc49f37c1c95a040cb3d6b2ab0d88)
+:   pnfsmanager: Protect against erroneous upload paths
+
+[d9e2e57](https://github.com/dcache/dcache/commit/d9e2e5733ef82e177b51721aa4bc6561e2aafdc2)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.11.46
 
 ### Changes affecting multiple services

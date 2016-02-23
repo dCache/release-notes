@@ -149,6 +149,62 @@ Highlights from this release:
   SRM requests will be lost from the database. Third party scripts
   that access the SRM database directly may have to be updated.
 
+## Release 2.14.13
+
+### pnfsmanager
+
+With this release, PnfsManager adds safety checks rejecting invalid upload paths that SRM might erroneously supply. This release hardens an installation against possible bugs triggering data loss.
+
+This release adds a sanity check to file uploads using SRM. Client-supplied file sizes and checksums of uploaded files are compared with the transferred file. Mismatches will be reported to the SRM client tools, which should in turn consider the transfer as failed. For cases where those metadata are not supplied, see the similar change to SRM below.
+
+### pool
+
+This patch improves support for HTTP Keep-Alive connections. On closing a connection, in accordance with RFC 2616, an HTTP header indicating closure of the connection is sent out.
+
+On highly loaded systems, DNS slowdowns could lead to pools and/or domains becoming unresponsive. This fix increases resilience against DNS problems.
+
+Increased performance and resilience in situations where NFS clients send many requests at once.
+
+### srm
+
+This release adds a sanity check to file uploads using SRM. The test is designed to detect files that were corrupted during the transfer, for transfers where the client does not supply any metadata for validation (see also the similar change to PnfsManager above). 
+
+### webdav
+
+dCache has supported 3rd-party HTTP push requests for WebDAV for some time. This release adds support for 3rd-party HTTP pull requests. 
+
+
+### Changelog 2.14.12..2.14.13
+
+<!-- git log 2.14.12..2.14.13 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[c0a3ec5](https://github.com/dcache/dcache/commit/c0a3ec5fc30f464c555326180cc0a3be7aeb5c84)
+:   [maven-release-plugin] prepare release 2.14.13
+
+[8762d5e](https://github.com/dcache/dcache/commit/8762d5ea63a35eeaa92934f2e42b8dcbbd9f5746)
+:   pool: send connection header when closing a connection.
+
+[410ef0f](https://github.com/dcache/dcache/commit/410ef0fed597790f9632ab270a74edf6f14c6c4d)
+:   pool: Avoid lock contention on DNS lookup in p2p component
+
+[7186416](https://github.com/dcache/dcache/commit/71864167506c9cee36e7a71b5eae0ce1010a1596)
+:   srm: Check for broken files during srmPutDone
+
+[7a6f5a6](https://github.com/dcache/dcache/commit/7a6f5a67789f743c6e79e48d8cd3400d379abe35)
+:   pnfsmanager: Check file size and upload completion when committing temporary upload paths
+
+[6084a86](https://github.com/dcache/dcache/commit/6084a86e33cdcbb17e8bb692b086df671af54b44)
+:   pnfsmanager: Protect against erroneous upload paths
+
+[ab69eac](https://github.com/dcache/dcache/commit/ab69eac2089b1da9260d2466856ba7ceaddde22a)
+:   pool: use "same thread strategy" for nfs movers
+
+[d43f045](https://github.com/dcache/dcache/commit/d43f0458cfe22bfb3bcee90c8b1e6a9d43fec59d)
+:   webdav: add support for 3rd-party HTTP pull
+
+[ec8ce92](https://github.com/dcache/dcache/commit/ec8ce9222f89c4efe5a293de92b4f4021fefb19a)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.14.12
 
 ### Changes affecting multiple services

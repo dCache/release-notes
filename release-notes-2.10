@@ -102,6 +102,38 @@ Paul Millar  &lt;paul.millar@desy.de&gt;
   xrootd is now consistent with information recorded for other
   protocol transfers.
 
+## Release 2.10.56
+
+### pnfsmanager
+
+With this release, PnfsManager adds safety checks rejecting invalid upload paths that SRM might erroneously supply. This release hardens an installation against possible bugs triggering data loss.
+
+This release adds a sanity check to file uploads using SRM. Client-supplied file sizes and checksums of uploaded files are compared with the transferred file. Mismatches will be reported to the SRM client tools, which should in turn consider the transfer as failed. For cases where those metadata are not supplied, see the similar change to SRM below.
+
+### srm
+
+This release adds a sanity check to file uploads using SRM. The test is designed to detect files that were corrupted during the transfer, for transfers where the client does not supply any metadata for validation (see also the similar change to PnfsManager above). 
+
+
+### Changelog 2.10.55..2.10.56
+
+<!-- git log 2.10.55..2.10.56 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[60d6f92](https://github.com/dcache/dcache/commit/60d6f925b6962e9a98f4738a08e0cf653f70d19f)
+:   [maven-release-plugin] prepare release 2.10.56
+
+[0f3e6d7](https://github.com/dcache/dcache/commit/0f3e6d7ec6d936deabc4ab28315176767c18e2db)
+:   srm: Check for broken files during srmPutDone
+
+[f9b2635](https://github.com/dcache/dcache/commit/f9b26351467b9dca56058715e68c94db37137cfe)
+:   pnfsmanager: Check file size and upload completion when committing temporary upload paths
+
+[a99b248](https://github.com/dcache/dcache/commit/a99b248da103a2066b563fb9159438911d9ab024)
+:   pnfsmanager: Protect against erroneous upload paths
+
+[f5b9fc4](https://github.com/dcache/dcache/commit/f5b9fc467d2537de712098f08101acf5a82fc25d)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.10.55
 
 ### Changes affecting multiple services
