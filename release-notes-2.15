@@ -1,4 +1,5 @@
 HTML header: <title>dCache 2.15 Release Notes</title>
+             <!--#include virtual="/template/default-head.shtml" -->
              <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
              <!-- Bootstrap -->
              <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
@@ -7,6 +8,11 @@ HTML header: <title>dCache 2.15 Release Notes</title>
                    integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous"/>
              <!--link type="text/css" rel="stylesheet" href="jquery.tocify.css" /-->
              <style type="text/css">
+             h5 {
+                 font-size: 15px;
+                 font-style: italic;
+                 margin-top: 20px;
+             }
              body {
                  padding-top: 20px;
              }
@@ -25,6 +31,30 @@ HTML header: <title>dCache 2.15 Release Notes</title>
              </style>
 
 <div class="container">
+<div id="banner">
+   <div id="bird_large">
+      <img src="/images/dcache-banner.png" class="bird"></img>
+   </div>
+   <div id="sidebar-b">
+      <span class="dcache-nav-bar">
+      <a href="/index.shtml">home</a>
+      |
+      <a href="/news.shtml">news</a>
+      |
+      <a href="/manuals/index.shtml">documentation</a>
+      |
+      <a href="/downloads/IAgree.shtml">downloads</a>
+      |
+      <a href="/feedback.shtml">feedback</a>
+      |
+      <a href="/manuals/googlesearch.shtml">search</a>
+      |
+      <a href="/imprint.shtml">imprint&#160;</a>
+      </span>
+   </div>
+</div>
+<div id="content">
+
 <div class="row">
 
 <div class="page-header">
@@ -1188,6 +1218,7 @@ configuration properties and introduced a new one:
 
 
 
+</div>
 </div>
 </div>
 
