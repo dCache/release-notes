@@ -472,6 +472,27 @@ configuration properties and introduced a new one:
 
 <!-- git log 2.14.0..2.15.0 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
 
+[63630d4](https://github.com/dcache/dcache/commit/63630d4206cc953f8afc0c8f5ccca321674be8a1)
+:   pool: Replace -si option with -storage in rep ls
+
+[0eda17d](https://github.com/dcache/dcache/commit/0eda17d39242dfe4d9d578ac9abc9bd8b5718d03)
+:   gplazma: Mark gplazma.cell.limits.threads as deprecated
+
+[7b5ff39](https://github.com/dcache/dcache/commit/7b5ff397779be6045e3c5e2dd83a93f9e412f9ea)
+:   spacemanager: Fix pool monitor fetch race during startup
+
+[60945bf](https://github.com/dcache/dcache/commit/60945bfd7f0efb26e0db9bc2010d196947f2432c)
+:   doors: Fix contention point and race in login broker publishing
+
+[c324557](https://github.com/dcache/dcache/commit/c32455735cb98e5fe7a642d86cde7bca81887134)
+:   Revert "webapi: Rest embedded server using Jersey 2."
+
+[24d4999](https://github.com/dcache/dcache/commit/24d4999a6ab3240f217531ae81572792227295dc)
+:   [maven-release-plugin] prepare branch 2.15
+
+[4b2cd8c](https://github.com/dcache/dcache/commit/4b2cd8c72949de174e6d9900b63b8bf10b2450c1)
+:   ftp: fix directory listing on '/'
+
 [ea71188](https://github.com/dcache/dcache/commit/ea7118835adf08c12c910a36ed1e34d036dfc86e)
 :   pool: Avoid lock contention on DNS lookup in p2p component
 
