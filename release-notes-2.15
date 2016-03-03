@@ -472,6 +472,30 @@ configuration properties and introduced a new one:
 
 <!-- git log 2.14.0..2.15.0 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
 
+[6df3b7e](https://github.com/dcache/dcache/commit/6df3b7eb82983be5af148b4e1acaf086a8519913)
+:   [maven-release-plugin] prepare release 2.15.0
+
+[8042240](https://github.com/dcache/dcache/commit/8042240e8b5179331bb0386cc5bf8459def414b0)
+:   nfs: notify billing on file removes
+
+[7863afc](https://github.com/dcache/dcache/commit/7863afca3b3f3289fe5809bea194462c3e4f5431)
+:   Fix compatibility issues with ctlcluster
+
+[6a8a59f](https://github.com/dcache/dcache/commit/6a8a59f173490ea011ffca34a0ac51ad27fbd7a7)
+:   poolmanager: Acquire read lock when serializing cost module and partition manager
+
+[7cfe9ea](https://github.com/dcache/dcache/commit/7cfe9ea7ca5efd234ccfda868cdfa0a94b9a0169)
+:   poolmanager: Fix race condition in pool selection unit
+
+[d181c22](https://github.com/dcache/dcache/commit/d181c226231e862d6c2c6e5da7e408e6372ba166)
+:   webdav: fix 404 error if attempting to delete a nonexistent file
+
+[a18b99a](https://github.com/dcache/dcache/commit/a18b99a0930bc4cd01f66871c6d7e127b8e12051)
+:   poolmanager: Make pm set accept all options
+
+[81c3be3](https://github.com/dcache/dcache/commit/81c3be3a635c20e17c495e6a2c68b62fb47516a4)
+:   pool: Fix obsoletion of pp set pnfs timeout command
+
 [63630d4](https://github.com/dcache/dcache/commit/63630d4206cc953f8afc0c8f5ccca321674be8a1)
 :   pool: Replace -si option with -storage in rep ls
 
