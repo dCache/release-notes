@@ -143,7 +143,9 @@ Highlights from this release:
 
 Fixes a race condition and a responsiveness issue in doors.
 
-### poolFix
+### pool
+
+Fix regression introduced by single thread model.
 
 ### spacemanager
 
