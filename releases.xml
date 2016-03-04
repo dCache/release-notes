@@ -195,9 +195,8 @@
        <download-url-prefix>repo/2.15/dcache</download-url-prefix>
        <notes-url>release-notes-2.15.shtml</notes-url>
        <version-prefix>2.15.</version-prefix>
-    </releases>
-
-      <release version="0" recommended="1">
+      
+       <release version="0" recommended="1">
         <date>4.3.2016</date>
         <package name="Debian package">
           <download-url>_VERSION-1_all.deb</download-url>
@@ -216,6 +215,7 @@
           <md5sum>0253c02525cb69d15df4a2ee9d15c913</md5sum>
         </package>
       </release>
+    </releases>
    </series>
 
   <series id="server-2.14">
