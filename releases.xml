@@ -198,7 +198,27 @@
       <notes-url>release-notes-2.14.shtml</notes-url>
       <version-prefix>2.14.</version-prefix>
 
-      <release version="13" recommended="1">
+      <release version="14" recommended="1">
+        <date>4.3.2016</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>95830d8fdfaedee080e1095f8f7b2954</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>6936b5953e8a72ca59fd84a04cadeb49</md5sum>
+        </package>
+        <package name="Solaris package">
+          <download-url>-VERSION-1.pkg</download-url>
+          <md5sum>c5da5302399c20e89ad042ebb09ec3d1</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>0241ef94cc6bcaf0e08aad5b4433bf56</md5sum>
+        </package>
+      </release>
+
+      <release version="13">
         <date>23.2.2016</date>
         <package name="Debian package">
           <download-url>_VERSION-1_all.deb</download-url>
@@ -511,7 +531,27 @@
       <notes-url>release-notes-2.13.shtml</notes-url>
       <version-prefix>2.13.</version-prefix>
 
-      <release version="24" recommended="1">
+      <release version="25" recommended="1">
+        <date>4.3.2016</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>2eaf4c34f52145ce2602b9b7b35784a0</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>000e8e40116abaa41d70e28b262c33c1</md5sum>
+        </package>
+        <package name="Solaris package">
+          <download-url>-VERSION-1.pkg</download-url>
+          <md5sum>cd0fd19188aa83ef0ec3136ebdb4baed</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>30eeec48aaf214a6d261d520d5d05729</md5sum>
+        </package>
+      </release>
+
+      <release version="24">
         <date>23.2.2016</date>
         <package name="Debian package">
           <download-url>_VERSION-1_all.deb</download-url>
