@@ -166,6 +166,59 @@
     </ul>
     <br/>
   </preamble>
+  <series id="server-2.15">
+   <title>server 2.15.x</title>
+   <description>
+      <p>
+        In addition to the usual improvements and bug fixes, dCache
+        2.15 features the following highlights:
+      </p>
+
+      <ul>
+          <li>Improved glob patterns,</li>
+          <li>More robust handling of over load situations,</li>
+          <li>fsck for Chimera on upgrade,</li>
+          <li>Reduced storage requirements for Chimera,</li>
+          <li>Chimera can store multiple checksum for a file,</li>
+          <li>Admin shell documentation updates,</li>
+          <li>gPlazma restriction attributes,</li>
+          <li>Set ACLs through DCAP.</li>
+          <li>Pool startup improvements.</li>
+      </ul>
+
+      <p>
+          dCache v2.15 requires a JVM supporting Java v8.
+      </p>
+    </description>
+    <releases>
+       <name>dCache VERSION</name>
+       <download-url-prefix>repo/2.15/dcache</download-url-prefix>
+       <notes-url>release-notes-2.15.shtml</notes-url>
+       <version-prefix>2.15.</version-prefix>
+    </releases>
+
+      <release version="0" recommended="1">
+        <date>4.3.2016</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>2e5b8402894437072c8a8ba5fe5ab5a0</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>b64dd2ef538fed789760720ae200fd0d</md5sum>
+        </package>
+        <package name="Solaris package">
+          <download-url>-VERSION-1.pkg</download-url>
+          <md5sum>5722df503c741a23ce6adb525f252696</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>0253c02525cb69d15df4a2ee9d15c913</md5sum>
+        </package>
+      </release>
+
+      
+   </series>
 
   <series id="server-2.14">
     <title>server 2.14.x</title>
