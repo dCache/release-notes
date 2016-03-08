@@ -94,6 +94,65 @@ Highlights from this release:
   enforced. Clients that relied on these not being enforced will
   fail after upgrade.
 
+## Release 2.15.1
+
+### ftp
+
+On very short transfers, two internal messages could occasionally arrive in the wrong order. This would cause clients to see the "226 Transfer complete." message without the "150 Opening BINARY data connection for" immediate reply. This rare issue is now fixed.
+### pnfsmanager
+
+Billing entries for SRM uploads recently lost the storage class part of the entry. This update fixes that issue.
+We observed an error caused by the parallel execution of two uploads, both trying to create the same (previously non-existing) directory). This modification fixes the underlying race condition, allowing such transfers to succeed.
+### pool
+
+Fixed a regression introduced in 2.13 in which internal options like -c:puts were erroneously included to the call out to the HSM script.
+### poolmanager
+
+This modification fixes a race condition in pool manager that could theoretically have provided erroneous data to pin manager, space manager, srm, xrootd and webdav.
+The pool selection unit allows multiple links with different priorities to be defined. By default, fallback to a lower priority link is only allowed when pools with higher priority links are inaccessible. For read an option exists to allow fallback on high load too, but until now, there was no option to fallback on write when target pools have no free space.
+Pool manager wass partitions now support the -fallback-onspace option to enable fallback to lower priority links when all available pools in higher priority links are full.
+### srm
+
+When writing to a path /a/b/c, if b exists and is a file, SRM currently returns SRM_INTERNAL_ERROR. This modification changes that behaviour so that the more appropriate status SRM_INVALID_PATH is returned.
+During SRM-based operations, some sites reported problems with the delegation of user credentials. This modification remedies those problems, while at the same time reducing the CPU usage of establishing 3rd-party SRM connections.
+
+### Changelog 2.15.0..2.15.1
+
+<!-- git log 2.15.0..2.15.1 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[6bb347b](https://github.com/dcache/dcache/commit/6bb347bbf2498401f43a188431b1b51963792f77)
+:   [maven-release-plugin] prepare release 2.15.1
+
+[931ace3](https://github.com/dcache/dcache/commit/931ace318d6d996ec2b41d815a67d0a1c79b162c)
+:   poolmanager: Fixed typo
+
+[28c1ddf](https://github.com/dcache/dcache/commit/28c1ddf9cebcb0a11b8d53c379133096d13d43af)
+:   pnfsmanager: Fix regression in SRM billing entries
+
+[c8ba614](https://github.com/dcache/dcache/commit/c8ba6143d812cd9ea70f0636855002c281a7ce70)
+:   poolmanager: Allow fallback on write when pools are full
+
+[dd01e17](https://github.com/dcache/dcache/commit/dd01e17eb36f355b73370a5452ed723b22b1a71b)
+:   pool: Fix filtering of options in script HSM driver
+
+[c0f3612](https://github.com/dcache/dcache/commit/c0f3612fe342edaca6e3d64a59645dd37a2d5fa1)
+:   srm: Disable delegation on srmCopy to or from other SRMs
+
+[1687e21](https://github.com/dcache/dcache/commit/1687e210622bb2fdb36074927cb75035dfba665d)
+:   srm: Return SRM_INVALID_PATH when target directory is a file
+
+[1b8e541](https://github.com/dcache/dcache/commit/1b8e541008d2a4e7cd0ed9bccca2fae5e442d29a)
+:   pnfsmanager: Fix race leading to transaction failures in Chimera
+
+[c396f2d](https://github.com/dcache/dcache/commit/c396f2d820ba211e1ab31993b8914f972fd3afe7)
+:   [maven-release-plugin] prepare for next development iteration
+
+[fa8fc98](https://github.com/dcache/dcache/commit/fa8fc9894339023fc19aa195b1108a96cf351f37)
+:   ftp: Fix race on short transfers
+
+[c0af0f1](https://github.com/dcache/dcache/commit/c0af0f1760140b842ee976e3670e8c9fc7cb6a29)
+:   poolmanager: Acquire read lock when serializing pool selection unit
+
 ## Release 2.15.0
 
 

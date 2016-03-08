@@ -144,6 +144,38 @@ Hightlights from this release:
   Previous releases of dCache always used the WAN port range.  Note
   that the xrootd mover port range is configurable with this release.
 
+## Release 2.12.37
+
+### pnfsmanager
+
+Billing entries for SRM uploads recently lost the storage class part of the entry. This update fixes that issue.
+### poolmanager
+
+This modification fixes a potential race condition in pool manager.
+
+### webdav
+
+This modification corrects the error reporting under WebDAV. When attempting to delete a non-existing file, unauthenticated users receive a 401 Unauthorized response, while authenticated users receive a 404 Not Found response.
+
+### Changelog 2.12.36..2.12.37
+
+<!-- git log 2.12.36..2.12.37 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[73b31fe](https://github.com/dcache/dcache/commit/73b31fe69749034c9a31898b5061fe9b3b7280ff)
+:   [maven-release-plugin] prepare release 2.12.37
+
+[2e08c79](https://github.com/dcache/dcache/commit/2e08c79c4c37288b2351bfa34016de7505667780)
+:   pnfsmanager: Fix regression in SRM billing entries
+
+[21b78f3](https://github.com/dcache/dcache/commit/21b78f36bbe1c38e774ffa3a050689a1cbe36e06)
+:   poolmanager: Fix race condition in pool selection unit
+
+[5d3ae1a](https://github.com/dcache/dcache/commit/5d3ae1acc7766b086f35d50999d726d37a22af57)
+:   webdav: fix 404 error if attempting to delete a nonexistent file
+
+[f180f26](https://github.com/dcache/dcache/commit/f180f26ea87d24d2777713caf3254e6853743eea)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.12.36
 
 ### pnfsmanager

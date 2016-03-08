@@ -98,6 +98,38 @@ All properties marked forbidden or obsolete are now no longer
 recognised by dCache.  All properties that were deprecated in 2.10 are
 now marked forbidden.
 
+## Release 2.11.48
+
+### pnfsmanager
+
+Billing entries for SRM uploads recently lost the storage class part of the entry. This update fixes that issue.
+### poolmanager
+
+This modification fixes a potential race condition in pool manager.
+
+### webdav
+
+This modification corrects the error reporting under WebDAV. When attempting to delete a non-existing file, unauthenticated users receive a 401 Unauthorized response, while authenticated users receive a 404 Not Found response.
+
+### Changelog 2.11.47..2.11.48
+
+<!-- git log 2.11.47..2.11.48 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[c7fa199](https://github.com/dcache/dcache/commit/c7fa1991c4a378f7e716a4c72cb4ab91673c6c6b)
+:   [maven-release-plugin] prepare release 2.11.48
+
+[489bbcb](https://github.com/dcache/dcache/commit/489bbcb1a602a9acf13b01ed2e8c6ea3327f6d42)
+:   pnfsmanager: Fix regression in SRM billing entries
+
+[db0f3f1](https://github.com/dcache/dcache/commit/db0f3f1e1952d1cd7b691ee3d9db1677132b9069)
+:   poolmanager: Fix race condition in pool selection unit
+
+[ba9df79](https://github.com/dcache/dcache/commit/ba9df79abbe9575f06a5fa116a4fde206fea8b64)
+:   webdav: fix 404 error if attempting to delete a nonexistent file
+
+[ad5442d](https://github.com/dcache/dcache/commit/ad5442d78548d89c0ac89b568e11ef5c77bc0a2d)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.11.47
 
 ### pnfsmanager

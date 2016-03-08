@@ -137,6 +137,78 @@ Highlights from this release:
   required upon upgrading, but downgrading is not possible without
   explicitly converting the format.
 
+## Release 2.13.26
+
+### ftp
+
+On very short transfers, two internal messages could occasionally arrive in the wrong order. This would cause clients to see the "226 Transfer complete." message without the "150 Opening BINARY data connection for" immediate reply. This rare issue is now fixed.
+### pnfsmanager
+
+Billing entries for SRM uploads recently lost the storage class part of the entry. This update fixes that issue.
+We observed an error caused by the parallel execution of two uploads, both trying to create the same (previously non-existing) directory). This modification fixes the underlying race condition, allowing such transfers to succeed.
+### pool
+
+Fixed a regression introduced in 2.13 in which internal options like -c:puts were erroneously included to the call out to the HSM script.
+### poolmanager
+
+This modification fixes a potential race condition in pool manager.
+
+This modification fixes a race condition in pool manager that could theoretically have provided erroneous data to pin manager, space manager, srm, xrootd and webdav.
+This modification fixes a race condition in pool manager that could theoretically have provided erroneous data to pin manager, space manager, srm, xrootd and webdav.
+### scripts
+
+The ctlcluster utility is now fully supported under Linux. 
+### srm
+
+When writing to a path /a/b/c, if b exists and is a file, SRM currently returns SRM_INTERNAL_ERROR. This modification changes that behaviour so that the more appropriate status SRM_INVALID_PATH is returned.
+During SRM-based operations, some sites reported problems with the delegation of user credentials. This modification remedies those problems, while at the same time reducing the CPU usage of establishing 3rd-party SRM connections.
+### webdav
+
+This modification corrects the error reporting under WebDAV. When attempting to delete a non-existing file, unauthenticated users receive a 401 Unauthorized response, while authenticated users receive a 404 Not Found response.
+
+### Changelog 2.13.25..2.13.26
+
+<!-- git log 2.13.25..2.13.26 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[0318b25](https://github.com/dcache/dcache/commit/0318b25b30783161807c0e3fda3d313da9a0d4f7)
+:   [maven-release-plugin] prepare release 2.13.26
+
+[2d9ae01](https://github.com/dcache/dcache/commit/2d9ae01c18c1a6a8140709e014cf284b1b6eb52e)
+:   pnfsmanager: Fix regression in SRM billing entries
+
+[57ec6b2](https://github.com/dcache/dcache/commit/57ec6b2461e3acbd07776bf98ad3ddbea700336a)
+:   pool: Fix filtering of options in script HSM driver
+
+[6699508](https://github.com/dcache/dcache/commit/6699508356e802e5aa4870a446c9d801a49e0fa2)
+:   pnfsmanager: Fix race leading to transaction failures in Chimera
+
+[6f92a2b](https://github.com/dcache/dcache/commit/6f92a2b9c5149bcd100bc588b02b62cbb52a8832)
+:   srm: Disable delegation on srmCopy to or from other SRMs
+
+[7e61671](https://github.com/dcache/dcache/commit/7e61671c891b0f316eb564e7f9a1e6df2ad2f25c)
+:   srm: Return SRM_INVALID_PATH when target directory is a file
+
+[461aa36](https://github.com/dcache/dcache/commit/461aa36f26aa1eb1f64e6a616010af3cdada34b7)
+:   ftp: Fix race on short transfers
+
+[979a710](https://github.com/dcache/dcache/commit/979a710f46d59a1c7d2968d6f5bec97f54aed2c5)
+:   [maven-release-plugin] prepare for next development iteration
+
+[7ff568d](https://github.com/dcache/dcache/commit/7ff568d3c2d7b7c11d79541ef6eaf29f21aedbca)
+:   Fix compatibility issues with ctlcluster
+
+[70ece68](https://github.com/dcache/dcache/commit/70ece6867a719a8588ca1be4a8d3b4502a9c25cf)
+:   poolmanager: Acquire read lock when serializing cost module and partition manager
+
+[e71f5df](https://github.com/dcache/dcache/commit/e71f5dfdbee0a0531834f86a17e4563629648fb9)
+:   poolmanager: Acquire read lock when serializing pool selection unit
+
+[9fac027](https://github.com/dcache/dcache/commit/9fac027c3fb75e6637bb064438679990153d3c17)
+:   poolmanager: Fix race condition in pool selection unit
+
+[ec574b5](https://github.com/dcache/dcache/commit/ec574b575109cab51abdfcf90e0e54f4346b611f)
+:   webdav: fix 404 error if attempting to delete a nonexistent file
+
 ## Release 2.13.25
 
 ### doors

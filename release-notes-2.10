@@ -102,6 +102,38 @@ Paul Millar  &lt;paul.millar@desy.de&gt;
   xrootd is now consistent with information recorded for other
   protocol transfers.
 
+## Release 2.10.57
+
+### pnfsmanager
+
+Billing entries for SRM uploads recently lost the storage class part of the entry. This update fixes that issue.
+### poolmanager
+
+This modification fixes a potential race condition in pool manager.
+
+### webdav
+
+This modification corrects the error reporting under WebDAV. When attempting to delete a non-existing file, unauthenticated users receive a 401 Unauthorized response, while authenticated users receive a 404 Not Found response.
+
+### Changelog 2.10.56..2.10.57
+
+<!-- git log 2.10.56..2.10.57 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[66254ce](https://github.com/dcache/dcache/commit/66254ce7e1f88deebc7a21d883ab75d03efd7aca)
+:   [maven-release-plugin] prepare release 2.10.57
+
+[b3aa010](https://github.com/dcache/dcache/commit/b3aa010c7539ad1a13d2340df6463f8be9de674e)
+:   pnfsmanager: Fix regression in SRM billing entries
+
+[18d6a05](https://github.com/dcache/dcache/commit/18d6a05bd60839edd42341a74641437d74e89d6e)
+:   poolmanager: Fix race condition in pool selection unit
+
+[bd0791c](https://github.com/dcache/dcache/commit/bd0791c6391bab40599c89cde4afdb8529430655)
+:   webdav: fix 404 error if attempting to delete a nonexistent file
+
+[aa6eef6](https://github.com/dcache/dcache/commit/aa6eef64623263f60d75edda7feaab1fe0a625e9)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.10.56
 
 ### pnfsmanager
