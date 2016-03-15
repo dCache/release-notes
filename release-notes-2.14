@@ -149,6 +149,26 @@ Highlights from this release:
   SRM requests will be lost from the database. Third party scripts
   that access the SRM database directly may have to be updated.
 
+## Release 2.14.16
+
+### chimera
+
+Fix a regression causing directories to inherit ACLs as if they were files rather than directories. Soon we will provide a procedure to clean-up already existing wrongly inherited directories.
+
+
+### Changelog 2.14.15..2.14.16
+
+<!-- git log 2.14.15..2.14.16 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[7b3dc90](https://github.com/dcache/dcache/commit/7b3dc9088b897a138b89670c105a677ba4957b4b)
+:   [maven-release-plugin] prepare release 2.14.16
+
+[189fd27](https://github.com/dcache/dcache/commit/189fd27d28c5b5ebbc534e988378cc522ec3b8ac)
+:   chimera: Fix regression in inheriting ACLs on directory creation
+
+[75a76a4](https://github.com/dcache/dcache/commit/75a76a49676d3e43202b8439d0055a225c11c6e5)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.14.15
 
 ### ftp

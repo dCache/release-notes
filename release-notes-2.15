@@ -94,6 +94,60 @@ Highlights from this release:
   enforced. Clients that relied on these not being enforced will
   fail after upgrade.
 
+## Release 2.15.2
+
+### admin
+
+A fix of a bug which caused the `set breakeven`  command not to accept zero.
+
+### chimera
+
+Fix a regression causing directories to inherit ACLs as if they were files rather than directories. Soon we will provide a procedure to clean-up already existing wrongly inherited directories.
+
+### ftp
+
+Several problems with restrictions are fixed.
+### pnfsmanager
+
+Directory items with the restriction preventing READ_METADATA activity were not omitted in a directory listing. 
+This is now fixed.
+
+### srm
+
+Previous version of dCache could not reload information about previous or ongoing SRM transactions; this prevented the ls command from functioning and prevented SRM from starting if there were ongoing activity when dCache was shut down. This is now fixed. 
+
+
+### Changelog 2.15.1..2.15.2
+
+<!-- git log 2.15.1..2.15.2 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[ed2fd16](https://github.com/dcache/dcache/commit/ed2fd16c37739fe652bdeaa7f9888d2536cccb59)
+:   [maven-release-plugin] prepare release 2.15.2
+
+[4e372a5](https://github.com/dcache/dcache/commit/4e372a5b17314bb7322da5ec1a18e9f7f88984ef)
+:   chimera: Fix regression in inheriting ACLs on directory creation
+
+[efe2293](https://github.com/dcache/dcache/commit/efe22933c73913f3101510f3f0dc5528791e2765)
+:   pools: fix bug in set breakeven command
+
+[ce09f29](https://github.com/dcache/dcache/commit/ce09f29ef86827d4ba917e185841382990ea4ab6)
+:   authorisation: reintroduce ReadOnly class
+
+[75a735a](https://github.com/dcache/dcache/commit/75a735ae18232552e313361a5e1be0ab92d88604)
+:   ftp: fix several problems with restrictions
+
+[9737ecc](https://github.com/dcache/dcache/commit/9737ecc12a59bba178d8487c1e95d0c118c12edc)
+:   PnfsManager: fix restriction to prevent directory items
+
+[c82a1ba](https://github.com/dcache/dcache/commit/c82a1bae8567519852c39863f9677af9ca26ef2f)
+:   srm-client: Fix type mismatch in third party copy client
+
+[1f08d34](https://github.com/dcache/dcache/commit/1f08d342ce9e52969e6399b99762e5b50c37d478)
+:   srm-client: Fix type error when aborting copy requests
+
+[871d15a](https://github.com/dcache/dcache/commit/871d15a60ccd7e2f68ef185bae947f7cb0426f0d)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.15.1
 
 ### ftp
