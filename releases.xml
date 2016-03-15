@@ -187,13 +187,6 @@
       </ul>
 
       <p>
-          <em>Please note that there is currently an issue with both 2.15.0 and 2.15.1 that may
-	  cause problems when upgrading older existing installations. Fresh installations are not
-	  affected. A fix will be contained in 2.15.2, and we suggest that, if you want to upgrade
-	  an existing installation, you should wait until that release.</em>
-      </p>
-
-      <p>
           dCache v2.15 requires a JVM supporting Java v8.
       </p>
     </description>
