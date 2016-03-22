@@ -149,6 +149,61 @@ Highlights from this release:
   SRM requests will be lost from the database. Third party scripts
   that access the SRM database directly may have to be updated.
 
+## Release 2.14.17
+
+### cells
+
+LoginManager would occasionally generate error messages similar to "Discarding listening on $LOCATION 53684' because its age of 18721640 ms exceeds its time to live of 4500 ms.". This was due to erroneous reuse of old message envelopes in the internal messaging. This change fixes that problem.
+
+This change addresses a potential problem in which messages sent between cells in the same domain could appear older than they are and thus would risk being discarded due to the time-to-live being expired.
+
+Contains corrections to cells logging. The routing manager pinboard now shows information previously logged to various other cells.
+
+### nfs
+
+This change avoids ERR_PERM errors on NFS writes in situations where NFS doors do not receive redirect messages within the allowed timeframe. 
+
+### pool
+
+This patch avoids errors occuring when mover doors would not receive a start mover request within the allowed timeframe, providing more robustness on heavily loaded instances.
+
+### srm
+
+A Tier-1 site reported problems with a major WLCG VO's read requests. Investigating the source of the problems showed that the srm_ifce library, used by the (outdated) GFAL v1 and the (supported) GFAL v2 SRM libraries, drastically limits the permitted lifetime of requests without providing admins any way to configure this. 
+
+For sites seeing errors related to desiredTotalRequestTime being exceeded, this change provides the new configuration option srm.request.maximum-client-assumed-bandwidth in srm.properties as a work-around. 
+
+Sites not observing such errors do not need to change anything with regard to this value.
+
+
+### Changelog 2.14.16..2.14.17
+
+<!-- git log 2.14.16..2.14.17 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[441214c](https://github.com/dcache/dcache/commit/441214cdb9bc1b752ae7622473d0e3f1487b3840)
+:   [maven-release-plugin] prepare release 2.14.17
+
+[b13fa36](https://github.com/dcache/dcache/commit/b13fa3606fd3b00840a7729ef6639532c3a3de6b)
+:   srm: add short request lifetime work-around
+
+[99bb9c0](https://github.com/dcache/dcache/commit/99bb9c037d0bd75e74be5566aeb8c67c38dc80fd)
+:   cells: Set correct logging context in cell callbacks
+
+[317c4af](https://github.com/dcache/dcache/commit/317c4afe8ace97505eb851cb7da596c40e6815a6)
+:   cells: Improve robustness of message time to live
+
+[1284b71](https://github.com/dcache/dcache/commit/1284b71f4d24e592d8cb633496138b8306fca3a2)
+:   cells: Fix erroneous reuse of message envelope in location manager registration
+
+[1827932](https://github.com/dcache/dcache/commit/18279326cc3ed49cfa5531140f5161067ab4276a)
+:   nfs: try to re-use transfer class on client retry
+
+[0f6d8a6](https://github.com/dcache/dcache/commit/0f6d8a60a8626daa405b807677f44d42c1546467)
+:   pool: handle duplicated start mover requests
+
+[a8d4ca0](https://github.com/dcache/dcache/commit/a8d4ca0b3ede5675233697c013bf0eecca0bdfb2)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.14.16
 
 ### chimera

@@ -137,6 +137,70 @@ Highlights from this release:
   required upon upgrading, but downgrading is not possible without
   explicitly converting the format.
 
+## Release 2.13.28
+
+### cells
+
+LoginManager would occasionally generate error messages similar to "Discarding listening on $LOCATION 53684' because its age of 18721640 ms exceeds its time to live of 4500 ms.". This was due to erroneous reuse of old message envelopes in the internal messaging. This change fixes that problem.
+
+This change addresses a potential problem in which messages sent between cells in the same domain could appear older than they are and thus would risk being discarded due to the time-to-live being expired.
+
+Contains corrections to cells logging. The routing manager pinboard now shows information previously logged to various other cells.
+
+### nfs
+
+This change avoids ERR_PERM errors on NFS writes in situations where NFS doors do not receive redirect messages within the allowed timeframe. 
+
+### pool
+
+This patch avoids errors occuring when mover doors would not receive a start mover request within the allowed timeframe, providing more robustness on heavily loaded instances.
+
+### srm
+
+A Tier-1 site reported problems with a major WLCG VO's read requests. Investigating the source of the problems showed that the srm_ifce library, used by the (outdated) GFAL v1 and the (supported) GFAL v2 SRM libraries, drastically limits the permitted lifetime of requests without providing admins any way to configure this. 
+
+For sites seeing errors related to desiredTotalRequestTime being exceeded, this change provides the new configuration option srm.request.maximum-client-assumed-bandwidth in srm.properties as a work-around. 
+
+Sites not observing such errors do not need to change anything with regard to this value.
+
+
+### Changelog 2.13.27..2.13.28
+
+<!-- git log 2.13.27..2.13.28 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[7f928ca](https://github.com/dcache/dcache/commit/7f928caa4afe1fb0a4a262582911c94f77ab0e39)
+:   [maven-release-plugin] prepare release 2.13.28
+
+[05c6c5e](https://github.com/dcache/dcache/commit/05c6c5e12384dacff3e361866dce2926313ea258)
+:   srm: add short request lifetime work-around
+
+[ff4ab79](https://github.com/dcache/dcache/commit/ff4ab791eddcffed537a60ee31e07d28f223d9a2)
+:   chimera: Fix regression in inheriting ACLs on directory creation (HSQLDB)
+
+[036e91c](https://github.com/dcache/dcache/commit/036e91c2e4dfb2ae4d378b90f3467dd24c9cfc31)
+:   cells: Set correct logging context in cell callbacks
+
+[8e94b3f](https://github.com/dcache/dcache/commit/8e94b3f5b252445e5a5996b6ad624d1af01c65d0)
+:   cells: Improve robustness of message time to live
+
+[91a35b7](https://github.com/dcache/dcache/commit/91a35b7d82b3e3838a37857e2d83957a799b14ed)
+:   cells: Fix erroneous reuse of message envelope in location manager registration
+
+[12e857d](https://github.com/dcache/dcache/commit/12e857d5ea45a40b6a190fdcf0cf8fff9392163b)
+:   nfs: try to re-use transfer class on client retry
+
+[f8c9721](https://github.com/dcache/dcache/commit/f8c972197d603c29fe6cc029065c7c91ab8ec95a)
+:   pool: handle duplicated start mover requests
+
+[b016214](https://github.com/dcache/dcache/commit/b0162149cf6faab4fc41253c7da68287a925f083)
+:   pool: java8 into IoQueueManager
+
+[e91ad9a](https://github.com/dcache/dcache/commit/e91ad9a66b7671722e50eb6cf3fb7e53f662ca41)
+:   pool: simplify pool queues
+
+[5d4b3a0](https://github.com/dcache/dcache/commit/5d4b3a0f2d7a25f40cb7e0da37145d0a5959dc6e)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.13.27
 
 ### chimera

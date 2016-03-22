@@ -94,6 +94,47 @@ Highlights from this release:
   enforced. Clients that relied on these not being enforced will
   fail after upgrade.
 
+## Release 2.15.3
+
+### cells
+
+LoginManager would occasionally generate error messages similar to "Discarding listening on $LOCATION 53684' because its age of 18721640 ms exceeds its time to live of 4500 ms.". This was due to erroneous reuse of old message envelopes in the internal messaging. This change fixes that problem.
+
+This change addresses a potential problem in which messages sent between cells in the same domain could appear older than they are and thus would risk being discarded due to the time-to-live being expired.
+
+Contains corrections to cells logging. The routing manager pinboard now shows information previously logged to various other cells.
+
+### srm
+
+A Tier-1 site reported problems with a major WLCG VO's read requests. Investigating the source of the problems showed that the srm_ifce library, used by the (outdated) GFAL v1 and the (supported) GFAL v2 SRM libraries, drastically limits the permitted lifetime of requests without providing admins any way to configure this. 
+
+For sites seeing errors related to desiredTotalRequestTime being exceeded, this change provides the new configuration option srm.request.maximum-client-assumed-bandwidth in srm.properties as a work-around. 
+
+Sites not observing such errors do not need to change anything with regard to this value.
+
+
+### Changelog 2.15.2..2.15.3
+
+<!-- git log 2.15.2..2.15.3 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[a2362e7](https://github.com/dcache/dcache/commit/a2362e77f258da50205ab4e73e811c582389bcb4)
+:   [maven-release-plugin] prepare release 2.15.3
+
+[8e0537a](https://github.com/dcache/dcache/commit/8e0537afb29f9009d3a001dc65bf9effce1f4af4)
+:   srm: add short request lifetime work-around
+
+[e2e0441](https://github.com/dcache/dcache/commit/e2e0441b694ee1133ce73bf9bd59e0f59fc5240c)
+:   cells: Set correct logging context in cell callbacks
+
+[f0dc019](https://github.com/dcache/dcache/commit/f0dc0193a302935cfa7f2f10b275bc7524fe706a)
+:   cells: Improve robustness of message time to live
+
+[ec33e37](https://github.com/dcache/dcache/commit/ec33e37305f0a5ad238e501197a1ed068854523f)
+:   cells: Fix erroneous reuse of message envelope in location manager registration
+
+[277a9c3](https://github.com/dcache/dcache/commit/277a9c3a1102c68ed0137bc07d5b277500b7adb0)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.15.2
 
 ### admin

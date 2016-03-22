@@ -98,6 +98,45 @@ All properties marked forbidden or obsolete are now no longer
 recognised by dCache.  All properties that were deprecated in 2.10 are
 now marked forbidden.
 
+## Release 2.11.49
+
+### cells
+
+LoginManager would occasionally generate error messages similar to "Discarding listening on $LOCATION 53684' because its age of 18721640 ms exceeds its time to live of 4500 ms.". This was due to erroneous reuse of old message envelopes in the internal messaging. This change fixes that problem.
+
+This change addresses a potential problem in which messages sent between cells in the same domain could appear older than they are and thus would risk being discarded due to the time-to-live being expired.
+
+### srm
+
+A Tier-1 site reported problems with a major WLCG VO's read requests. Investigating the source of the problems showed that the srm_ifce library, used by the (outdated) GFAL v1 and the (supported) GFAL v2 SRM libraries, drastically limits the permitted lifetime of requests without providing admins any way to configure this. 
+
+For sites seeing errors related to desiredTotalRequestTime being exceeded, this change provides the new configuration option srm.request.maximum-client-assumed-bandwidth in srm.properties as a work-around. 
+
+Sites not observing such errors do not need to change anything with regard to this value.
+
+
+### Changelog 2.11.48..2.11.49
+
+<!-- git log 2.11.48..2.11.49 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[f526620](https://github.com/dcache/dcache/commit/f5266206fea57041d7077d5adeb8b3390a5873a3)
+:   [maven-release-plugin] prepare release 2.11.49
+
+[1bdc3e9](https://github.com/dcache/dcache/commit/1bdc3e91d5fec21b9b3684c7dd4b252c4759ef48)
+:   srm: add short request lifetime work-around
+
+[5577ba2](https://github.com/dcache/dcache/commit/5577ba2e622763c4f065130b541ce0c0c0e6ba1b)
+:   chimera: Fix regression in inheriting ACLs on directory creation (HSQLDB)
+
+[0992e32](https://github.com/dcache/dcache/commit/0992e322cbc618a46c530d3e4e66ff7c3ef2dd9d)
+:   cells: Improve robustness of message time to live
+
+[b46ca1a](https://github.com/dcache/dcache/commit/b46ca1a6bff83d08b705c15cadfedc8f16b805d8)
+:   cells: Fix erroneous reuse of message envelope in location manager registration
+
+[60bef1d](https://github.com/dcache/dcache/commit/60bef1d4658459d51bd10c530855ef800d0b86b4)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.11.48
 
 ### pnfsmanager
