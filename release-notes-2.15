@@ -94,6 +94,159 @@ Highlights from this release:
   enforced. Clients that relied on these not being enforced will
   fail after upgrade.
 
+## Release 2.15.4
+
+### Changes affecting multiple services
+
+Fixes a bug in which a host name set in `*.net.listen properties` was not preserved
+when publishing a door or generating SURLs.
+
+When building rpm files a package `which` is now explicitly required as a dependency.
+
+### cells
+
+This change fixes a bug in routing manager that would leave orphaned topic routes in
+dCache domain.
+
+### pool
+
+The nearline storage subsystem has a thread pool for various tasks. Some
+of these tasks are blocking. Since the
+thread pool is unlimited, a high inflow of new requests can cause the
+thread pool to grow rapidly and even exceed thread limitations. In that
+case the pool dies.
+In the current release a new `pool.limits.nearline-threads` property is introduced 
+which allow to limit the number of threads used by the nearline storage subsystem. Note that, the default is
+30 threads. 
+
+
+### Changelog 2.15.3..2.15.4
+
+<!-- git log 2.15.3..2.15.4 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[5592581](https://github.com/dcache/dcache/commit/5592581d666d544f6d726ed01c42589a0e6a1323)
+:   [maven-release-plugin] prepare release 2.15.4
+
+[0aa6954](https://github.com/dcache/dcache/commit/0aa69547ac56089a7330c42c6493afcd5d184453)
+:   pool: Fix regression breaking hopping mananger
+
+[6470425](https://github.com/dcache/dcache/commit/647042502361c3b37729c17348c88fdf5602b460)
+:   fix regression from 859431218e3d7cdddcf906144c1b8928bb625fed
+
+[11f8a33](https://github.com/dcache/dcache/commit/11f8a3357c74379e12cd2d1522ca68d881bbd636)
+:   cells: Fix route removal in routing manager
+
+[4e8a009](https://github.com/dcache/dcache/commit/4e8a009d09b5b5f16c95e4d6fb3408de99d7f8ef)
+:   rpm: explicit requre 'which` package
+
+[b912cba](https://github.com/dcache/dcache/commit/b912cbadfa0e5bd74f024418e8a606ccdce787ce)
+:   doors: Preserve name when publishing the address of doors
+
+[63824c7](https://github.com/dcache/dcache/commit/63824c723f0ee3dd005be6d1298f930f906f0597)
+:   [maven-release-plugin] prepare for next development iteration
+
+## Release 2.15.4
+
+### Changes affecting multiple services
+
+Fixes a bug in which a host name set in `*.net.listen properties` was not preserved
+when publishing a door or generating SURLs.
+
+When building rpm files a package `which` is now explicitly required as a dependency.
+
+### cells
+
+This change fixes a bug in routing manager that would leave orphaned topic routes in
+dCache domain.
+
+### pool
+
+The nearline storage subsystem has a thread pool for various tasks. Some
+of these tasks are blocking. Since the
+thread pool is unlimited, a high inflow of new requests can cause the
+thread pool to grow rapidly and even exceed thread limitations. In that
+case the pool dies.
+In the current release a new `pool.limits.nearline-threads` property is introduced 
+which allow to limit the number of threads used by the nearline storage subsystem. Note that, the default is
+30 threads. 
+
+
+### Changelog 2.15.3..2.15.4
+
+<!-- git log 2.15.3..2.15.4 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[5592581](https://github.com/dcache/dcache/commit/5592581d666d544f6d726ed01c42589a0e6a1323)
+:   [maven-release-plugin] prepare release 2.15.4
+
+[0aa6954](https://github.com/dcache/dcache/commit/0aa69547ac56089a7330c42c6493afcd5d184453)
+:   pool: Fix regression breaking hopping mananger
+
+[6470425](https://github.com/dcache/dcache/commit/647042502361c3b37729c17348c88fdf5602b460)
+:   fix regression from 859431218e3d7cdddcf906144c1b8928bb625fed
+
+[11f8a33](https://github.com/dcache/dcache/commit/11f8a3357c74379e12cd2d1522ca68d881bbd636)
+:   cells: Fix route removal in routing manager
+
+[4e8a009](https://github.com/dcache/dcache/commit/4e8a009d09b5b5f16c95e4d6fb3408de99d7f8ef)
+:   rpm: explicit requre 'which` package
+
+[b912cba](https://github.com/dcache/dcache/commit/b912cbadfa0e5bd74f024418e8a606ccdce787ce)
+:   doors: Preserve name when publishing the address of doors
+
+[63824c7](https://github.com/dcache/dcache/commit/63824c723f0ee3dd005be6d1298f930f906f0597)
+:   [maven-release-plugin] prepare for next development iteration
+
+## Release 2.15.4
+
+### Changes affecting multiple services
+
+Fixes a bug in which a host name set in `*.net.listen properties` was not preserved
+when publishing a door or generating SURLs.
+
+When building rpm files a package `which` is now explicitly required as a dependency.
+
+### cells
+
+This change fixes a bug in routing manager that would leave orphaned topic routes in
+dCache domain.
+
+### pool
+
+The nearline storage subsystem has a thread pool for various tasks. Some
+of these tasks are blocking. Since the
+thread pool is unlimited, a high inflow of new requests can cause the
+thread pool to grow rapidly and even exceed thread limitations. In that
+case the pool dies.
+In the current release a new `pool.limits.nearline-threads` property is introduced 
+which allow to limit the number of threads used by the nearline storage subsystem. Note that, the default is
+30 threads. 
+
+
+### Changelog 2.15.3..2.15.4
+
+<!-- git log 2.15.3..2.15.4 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[5592581](https://github.com/dcache/dcache/commit/5592581d666d544f6d726ed01c42589a0e6a1323)
+:   [maven-release-plugin] prepare release 2.15.4
+
+[0aa6954](https://github.com/dcache/dcache/commit/0aa69547ac56089a7330c42c6493afcd5d184453)
+:   pool: Fix regression breaking hopping mananger
+
+[6470425](https://github.com/dcache/dcache/commit/647042502361c3b37729c17348c88fdf5602b460)
+:   fix regression from 859431218e3d7cdddcf906144c1b8928bb625fed
+
+[11f8a33](https://github.com/dcache/dcache/commit/11f8a3357c74379e12cd2d1522ca68d881bbd636)
+:   cells: Fix route removal in routing manager
+
+[4e8a009](https://github.com/dcache/dcache/commit/4e8a009d09b5b5f16c95e4d6fb3408de99d7f8ef)
+:   rpm: explicit requre 'which` package
+
+[b912cba](https://github.com/dcache/dcache/commit/b912cbadfa0e5bd74f024418e8a606ccdce787ce)
+:   doors: Preserve name when publishing the address of doors
+
+[63824c7](https://github.com/dcache/dcache/commit/63824c723f0ee3dd005be6d1298f930f906f0597)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.15.3
 
 ### cells
