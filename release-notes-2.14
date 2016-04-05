@@ -151,10 +151,12 @@ Highlights from this release:
 
 ## Release 2.14.18
 
-### Changes affecting multiple services
+### doors
 
 Fixes a bug in which a host name set in `*.net.listen properties` was not preserved
 when publishing a door or generating SURLs.
+
+### Changes affecting multiple services
 
 When building rpm files a package `which` is now explicitly required as a dependency.
 
@@ -285,7 +287,7 @@ which allow to limit the number of threads used by the nearline storage subsyste
 :   cells: Fix route removal in routing manager
 
 [488d51f](https://github.com/dcache/dcache/commit/488d51f0e22ed43ca10adc44728b9eaf4ba1d981)
-:   rpm: explicit requre 'which` package
+:   rpm: explicitly require `which` package
 
 [9cd14bc](https://github.com/dcache/dcache/commit/9cd14bc8b29c0cf0430ca0610d8601373477f6c9)
 :   doors: Preserve name when publishing the address of doors

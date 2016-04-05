@@ -198,33 +198,6 @@ which allow to limit the number of threads used by the nearline storage subsyste
 [e0a1ea8](https://github.com/dcache/dcache/commit/e0a1ea8b4f982c22f0f3cdf199e578f65c2bebec)
 :   [maven-release-plugin] prepare for next development iteration
 
-## Release 2.12.39
-
-### pool
-
-The nearline storage subsystem has a thread pool for various tasks. Some
-of these tasks are blocking. Since the
-thread pool is unlimited, a high inflow of new requests can cause the
-thread pool to grow rapidly and even exceed thread limitations. In that
-case the pool dies.
-In the current release a new `pool.limits.nearline-threads` property is introduced 
-which allow to limit the number of threads used by the nearline storage subsystem. Note that, the default is
-30 threads. 
-
-
-### Changelog 2.12.38..2.12.39
-
-<!-- git log 2.12.38..2.12.39 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
-
-[e2d6cba](https://github.com/dcache/dcache/commit/e2d6cba86d2db721ba380b89b002f9f31e68727a)
-:   [maven-release-plugin] prepare release 2.12.39
-
-[3d71337](https://github.com/dcache/dcache/commit/3d713373e5f3f358f4e0b913a95a4990e043b45f)
-:   pool: Fix regression breaking hopping mananger
-
-[e0a1ea8](https://github.com/dcache/dcache/commit/e0a1ea8b4f982c22f0f3cdf199e578f65c2bebec)
-:   [maven-release-plugin] prepare for next development iteration
-
 ## Release 2.12.38
 
 ### cells

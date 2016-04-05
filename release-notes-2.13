@@ -139,10 +139,12 @@ Highlights from this release:
 
 ## Release 2.13.29
 
-### Changes affecting multiple services
+### doors
 
 Fixes a bug in which a host name set in `*.net.listen properties` was not preserved
 when publishing a door or generating SURLs.
+
+### Changes affecting multiple services
 
 When building rpm files a package `which` is now explicitly required as a dependency.
 
@@ -177,7 +179,7 @@ which allow to limit the number of threads used by the nearline storage subsyste
 :   cells: Fix route removal in routing manager
 
 [3934813](https://github.com/dcache/dcache/commit/3934813faa55f345e90395e2587194133ac3dd4c)
-:   rpm: explicit requre 'which` package
+:   rpm: explicitly require `which` package
 
 [01417c5](https://github.com/dcache/dcache/commit/01417c58e680bc675281afcd122c4d4b9f78bc38)
 :   doors: Preserve name when publishing the address of doors
@@ -185,101 +187,6 @@ which allow to limit the number of threads used by the nearline storage subsyste
 [ef453fd](https://github.com/dcache/dcache/commit/ef453fd483a55dfdbc7ad22e2a0e25bb82587909)
 :   [maven-release-plugin] prepare for next development iteration
 
-## Release 2.13.29
-
-### Changes affecting multiple services
-
-Fixes a bug in which a host name set in `*.net.listen properties` was not preserved
-when publishing a door or generating SURLs.
-
-When building rpm files a package `which` is now explicitly required as a dependency.
-
-### cells
-
-This change fixes a bug in routing manager that would leave orphaned topic routes in
-dCache domain.
-
-### pool
-
-The nearline storage subsystem has a thread pool for various tasks. Some
-of these tasks are blocking. Since the
-thread pool is unlimited, a high inflow of new requests can cause the
-thread pool to grow rapidly and even exceed thread limitations. In that
-case the pool dies.
-In the current release a new `pool.limits.nearline-threads` property is introduced 
-which allow to limit the number of threads used by the nearline storage subsystem. Note that, the default is
-30 threads. 
-
-
-### Changelog 2.13.28..2.13.29
-
-<!-- git log 2.13.28..2.13.29 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
-
-[f1ab4b1](https://github.com/dcache/dcache/commit/f1ab4b1b68b24ceb43a4628c8efd7a85c76142ed)
-:   [maven-release-plugin] prepare release 2.13.29
-
-[f53bfb4](https://github.com/dcache/dcache/commit/f53bfb46f02dc159b831114438e6419c740c45ba)
-:   pool: Fix regression breaking hopping mananger
-
-[3ee2582](https://github.com/dcache/dcache/commit/3ee2582e84f4375ff04b941e638f92ec6f35f843)
-:   cells: Fix route removal in routing manager
-
-[3934813](https://github.com/dcache/dcache/commit/3934813faa55f345e90395e2587194133ac3dd4c)
-:   rpm: explicit requre 'which` package
-
-[01417c5](https://github.com/dcache/dcache/commit/01417c58e680bc675281afcd122c4d4b9f78bc38)
-:   doors: Preserve name when publishing the address of doors
-
-[ef453fd](https://github.com/dcache/dcache/commit/ef453fd483a55dfdbc7ad22e2a0e25bb82587909)
-:   [maven-release-plugin] prepare for next development iteration
-
-## Release 2.13.29
-
-### Changes affecting multiple services
-
-Fixes a bug in which a host name set in `*.net.listen properties` was not preserved
-when publishing a door or generating SURLs.
-
-When building rpm files a package `which` is now explicitly required as a dependency.
-
-### cells
-
-This change fixes a bug in routing manager that would leave orphaned topic routes in
-dCache domain.
-
-### pool
-
-The nearline storage subsystem has a thread pool for various tasks. Some
-of these tasks are blocking. Since the
-thread pool is unlimited, a high inflow of new requests can cause the
-thread pool to grow rapidly and even exceed thread limitations. In that
-case the pool dies.
-In the current release a new `pool.limits.nearline-threads` property is introduced 
-which allow to limit the number of threads used by the nearline storage subsystem. Note that, the default is
-30 threads. 
-
-
-### Changelog 2.13.28..2.13.29
-
-<!-- git log 2.13.28..2.13.29 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
-
-[f1ab4b1](https://github.com/dcache/dcache/commit/f1ab4b1b68b24ceb43a4628c8efd7a85c76142ed)
-:   [maven-release-plugin] prepare release 2.13.29
-
-[f53bfb4](https://github.com/dcache/dcache/commit/f53bfb46f02dc159b831114438e6419c740c45ba)
-:   pool: Fix regression breaking hopping mananger
-
-[3ee2582](https://github.com/dcache/dcache/commit/3ee2582e84f4375ff04b941e638f92ec6f35f843)
-:   cells: Fix route removal in routing manager
-
-[3934813](https://github.com/dcache/dcache/commit/3934813faa55f345e90395e2587194133ac3dd4c)
-:   rpm: explicit requre 'which` package
-
-[01417c5](https://github.com/dcache/dcache/commit/01417c58e680bc675281afcd122c4d4b9f78bc38)
-:   doors: Preserve name when publishing the address of doors
-
-[ef453fd](https://github.com/dcache/dcache/commit/ef453fd483a55dfdbc7ad22e2a0e25bb82587909)
-:   [maven-release-plugin] prepare for next development iteration
 
 ## Release 2.13.28
 
