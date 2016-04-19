@@ -149,6 +149,61 @@ Highlights from this release:
   SRM requests will be lost from the database. Third party scripts
   that access the SRM database directly may have to be updated.
 
+## Release 2.14.19
+
+### chimera
+
+An internal database trigger was updated to insert data in the correct table, fixing a problem with the Enstore client.
+
+When accessing a file for reading, the atime value must be updated. Previously, due to an error, the ctime (intended to reflect the time of changes to file attributes) was also changed. This update corrects that problem.
+
+### http
+
+In order to increase the performance of the Billing system, reverse DNS lookups were removed from the code. While this will result in IP addresses representing hosts in the billing file, DNS performance no longer impacts overall system performance.
+
+### many
+
+When representing checksums in the admin interface and configuration files, checksums are now presented in an improved format.
+
+### pool
+
+The nearline storage subsystem uses thread pools to manage its workload. Since some tasks are blocking, very high activity can cause these thread pools to grow beyond effective sizes. This may even lead to the pool becoming unresponsive.
+
+This change introduces a new configuration property, "pool.limits.nearline-threads", which limits the thread pool size. The default value, 30, is chosen to be sufficient for almost all imaginable use cases while at the same time avoiding potential problems with resource exhaustion.
+
+### srm
+
+Due to a timing issue, an initial service announcement in the SRM was sent before any listeners could register for those announcements. Thus, upon startup, a delivery error would be logged. With this patch, sending of the initial message is delayed until after the registration of listeners, and the irrelevant error messages are avoided.
+
+
+### Changelog 2.14.18..2.14.19
+
+<!-- git log 2.14.18..2.14.19 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[f27d953](https://github.com/dcache/dcache/commit/f27d95395978fbe348e371acb1b5a9a79c7e7d5c)
+:   [maven-release-plugin] prepare release 2.14.19
+
+[a10ce6c](https://github.com/dcache/dcache/commit/a10ce6c743bc8d1878fbb5868d72e06f80e90ac0)
+:   chimera : fix trigger that populates data in t_locationinfo and t_inodes on insert or update of t_level_4
+
+[cc07d28](https://github.com/dcache/dcache/commit/cc07d28962b711a7ef709eb21633c72447c0ba3f)
+:   common: fix ChecksumType.toString()
+
+[c80ef7e](https://github.com/dcache/dcache/commit/c80ef7e80d87587d6a6ddfddd8766f436f6b438e)
+:   http: avoid dns reverse lookup on HttpProtocolInfo#toString()
+
+[3343fde](https://github.com/dcache/dcache/commit/3343fde7804604317c6de96d67e42cbdb8daf97f)
+:   chimera: do not update ctime on atime only attribute update
+
+[e411aae](https://github.com/dcache/dcache/commit/e411aaefa4d053431d02cc83577c2c4c2c68fffb)
+:   [maven-release-plugin] prepare for next development iteration
+
+[d101c0d](https://github.com/dcache/dcache/commit/d101c0d56cf71244af61f633444273716526ec8f)
+:   srm: Delay announcing credential service after cell start
+
+[d76de7f](https://github.com/dcache/dcache/commit/d76de7f95c210d91bbc495b744b7cf9faec15944)
+:   pool: Improve scalability of nearline storage subsystem
+
 ## Release 2.14.18
 
 ### doors

@@ -98,6 +98,26 @@ All properties marked forbidden or obsolete are now no longer
 recognised by dCache.  All properties that were deprecated in 2.10 are
 now marked forbidden.
 
+## Release 2.11.50
+
+### many
+
+When representing checksums in the admin interface and configuration files, checksums are now presented in an improved format.
+
+
+### Changelog 2.11.49..2.11.50
+
+<!-- git log 2.11.49..2.11.50 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[919e8dc](https://github.com/dcache/dcache/commit/919e8dc4b9833376d06670658af3c2b3fc2287a5)
+:   [maven-release-plugin] prepare release 2.11.50
+
+[a18e783](https://github.com/dcache/dcache/commit/a18e783fd51059b5992924c13aecbe94823da071)
+:   common: fix ChecksumType.toString()
+
+[d18016b](https://github.com/dcache/dcache/commit/d18016bb7695cff1ac4545bcef1ce93cea40c107)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.11.49
 
 ### cells

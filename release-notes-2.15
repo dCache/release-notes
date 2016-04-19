@@ -94,6 +94,78 @@ Highlights from this release:
   enforced. Clients that relied on these not being enforced will
   fail after upgrade.
 
+## Release 2.15.5
+
+### chimera
+
+An internal database trigger was updated to insert data in the correct table, thus fixing a problem with the Enstore client.
+
+When accessing a file for reading, the atime value must be updated. Previously, due to an error, the ctime (intended to reflect the time of changes to file attributes) was also changed. This update corrects that problem.
+
+### http
+
+In order to increase the performance of the Billing system, reverse DNS lookups were removed from the code. While this will result in IP addresses representing hosts in the billing file, DNS performance no longer impacts overall system performance.
+
+### many
+
+When representing checksums in the admin interface and configuration files, checksums are now presented in an improved format.
+
+### nfs
+
+This change fixes a NullPointerException that could occur upon file removals when using NFSv3.
+
+Using NFS, a client will poll actively while a file is not available. In order to increase overall system performance, this change introduces a fail-fast behaviour in case the requested file is not available on disk. This will result in more responsive NFS doors from a users' perspective.
+
+### pool
+
+The nearline storage subsystem uses thread pools to manage its workload. Since some tasks are blocking, very high activity can cause these thread pools to grow beyond effective sizes. This may even lead to the pool becoming unresponsive.
+
+This change introduces a new configuration property, "pool.limits.nearline-threads", which limits the thread pool size. The default value, 30, is chosen to be sufficient for almost all imaginable use cases while at the same time avoiding potential problems with resource exhaustion.
+
+### srm
+
+This update fixes a regression that caused the SRM to hang during startup. The root cause was a problem in cell lifecycle communications.
+
+Due to a timing issue, an initial service announcement in the SRM was sent before any listeners could register for those announcements. Thus, upon startup, a delivery error would be logged. With this patch, sending of the initial message is delayed until after the registration of listeners, and the irrelevant error messages are avoided.
+
+
+### Changelog 2.15.4..2.15.5
+
+<!-- git log 2.15.4..2.15.5 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[ca0b125](https://github.com/dcache/dcache/commit/ca0b125c32d3c7aafe4025721eccb69db640ff8a)
+:   [maven-release-plugin] prepare release 2.15.5
+
+[397284e](https://github.com/dcache/dcache/commit/397284e75cbbca0b51d8e2661826d7853142d7f4)
+:   nfs: fix NPE when remove sent to billing
+
+[877f954](https://github.com/dcache/dcache/commit/877f954172ae055c4ff0345feb755cb6f2212326)
+:   nfs: fail quickly if we know that file is offline or lost
+
+[bd6538f](https://github.com/dcache/dcache/commit/bd6538f6636016213a2b6c5e9cad8fd4ab864f49)
+:   srm: Fix regression in SRM startup
+
+[9417720](https://github.com/dcache/dcache/commit/9417720fdef9aa19e257e95271295d61e2b40adc)
+:   chimera : fix trigger that populates data in t_locationinfo and t_inodes on insert or update of t_level_4
+
+[0da59ab](https://github.com/dcache/dcache/commit/0da59ab52f6c5de66f8f071cc24e07d069b66b57)
+:   common: fix ChecksumType.toString()
+
+[835dc43](https://github.com/dcache/dcache/commit/835dc43665ef88d602ea121bc60e3cfae89c4dd4)
+:   http: avoid dns reverse lookup on HttpProtocolInfo#toString()
+
+[73de63d](https://github.com/dcache/dcache/commit/73de63d01d6527f656770acdd9d5bae476db0d66)
+:   chimera: do not update ctime on atime only attribute update
+
+[e416dc0](https://github.com/dcache/dcache/commit/e416dc00bc008910dd9b21fa309605c206c9c317)
+:   [maven-release-plugin] prepare for next development iteration
+
+[87162fd](https://github.com/dcache/dcache/commit/87162fd9ff210a238ff37245420fd3f6e6abb73a)
+:   srm: Delay announcing credential service after cell start
+
+[e2642dc](https://github.com/dcache/dcache/commit/e2642dc3c147a52721e1431d030864fd9a027607)
+:   pool: Improve scalability of nearline storage subsystem
+
 ## Release 2.15.4
 
 ### doors

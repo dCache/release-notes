@@ -144,6 +144,26 @@ Hightlights from this release:
   Previous releases of dCache always used the WAN port range.  Note
   that the xrootd mover port range is configurable with this release.
 
+## Release 2.12.40
+
+### many
+
+When representing checksums in the admin interface and configuration files, checksums are now presented in an improved format.
+
+
+### Changelog 2.12.39..2.12.40
+
+<!-- git log 2.12.39..2.12.40 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[5b217ac](https://github.com/dcache/dcache/commit/5b217ac516d235706539a53584846b21bebb2688)
+:   [maven-release-plugin] prepare release 2.12.40
+
+[e02ef32](https://github.com/dcache/dcache/commit/e02ef32891bc4695b504db690e0c9c1c4abd683f)
+:   common: fix ChecksumType.toString()
+
+[1de77dd](https://github.com/dcache/dcache/commit/1de77dd6817e70b48442b06c34deed0907b25fc4)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.12.39
 
 ### pool

@@ -102,6 +102,26 @@ Paul Millar  &lt;paul.millar@desy.de&gt;
   xrootd is now consistent with information recorded for other
   protocol transfers.
 
+## Release 2.10.59
+
+### many
+
+When representing checksums in the admin interface and configuration files, checksums are now presented in an improved format.
+
+
+### Changelog 2.10.58..2.10.59
+
+<!-- git log 2.10.58..2.10.59 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[6f9dd3f](https://github.com/dcache/dcache/commit/6f9dd3f6c2d3c0063d5e2e34fb2e02e3356200b4)
+:   [maven-release-plugin] prepare release 2.10.59
+
+[78df3e6](https://github.com/dcache/dcache/commit/78df3e69203a5c6f19505e5ebb2ad59148f2c8ae)
+:   common: fix ChecksumType.toString()
+
+[967f410](https://github.com/dcache/dcache/commit/967f4106a07cd7451abc2712fbe6995f572fd6b9)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.10.58
 
 ### cells
