@@ -120,7 +120,7 @@ Using NFS, a client will poll actively while a file is not available. In order t
 
 The nearline storage subsystem uses thread pools to manage its workload. Since some tasks are blocking, very high activity can cause these thread pools to grow beyond effective sizes. This may even lead to the pool becoming unresponsive.
 
-This change introduces a new configuration property, "pool.limits.nearline-threads", which limits the thread pool size. The default value, 30, is chosen to be sufficient for almost all imaginable use cases while at the same time avoiding potential problems with resource exhaustion.
+This change introduces a new configuration property, `pool.limits.nearline-threads`, which limits the thread pool size. The default value, 30, is chosen to be sufficient for almost all imaginable use cases while at the same time avoiding potential problems with resource exhaustion.
 
 ### srm
 
@@ -181,17 +181,6 @@ When building rpm files a package `which` is now explicitly required as a depend
 
 This change fixes a bug in routing manager that would leave orphaned topic routes in
 dCache domain.
-
-### pool
-
-The nearline storage subsystem has a thread pool for various tasks. Some
-of these tasks are blocking. Since the
-thread pool is unlimited, a high inflow of new requests can cause the
-thread pool to grow rapidly and even exceed thread limitations. In that
-case the pool dies.
-In the current release a new `pool.limits.nearline-threads` property is introduced 
-which allow to limit the number of threads used by the nearline storage subsystem. Note that, the default is
-30 threads. 
 
 
 ### Changelog 2.15.3..2.15.4
@@ -1550,5 +1539,6 @@ configuration properties and introduced a new one:
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" type="text/javascript"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
         integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
 
 <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js" type="text/javascript"></script>
