@@ -200,15 +200,19 @@
         <date>19.4.2016</date>
         <package name="Debian package">
           <download-url>_VERSION-1_all.deb</download-url>
-          <md5sum>b8ad3b88cbd278ed93a0601a5abc8de7</md5sum>
+          <md5sum>5881038df8aaa550ac07466703790e88</md5sum>
         </package>
         <package name="rpm">
           <download-url>-VERSION-1.noarch.rpm</download-url>
-          <md5sum>2251bc151f874692bdab70748a10d18d</md5sum>
+          <md5sum>579b67830fb970020041fa62d058bdfe</md5sum>
+        </package>
+        <package name="Solaris package">
+          <download-url>-VERSION-1.pkg</download-url>
+          <md5sum>568aff89f862628fdc04a13a75199e56</md5sum>
         </package>
         <package name="tgz">
           <download-url>-VERSION.tar.gz</download-url>
-          <md5sum>d04eec37b7c0327fe7c486e01820b81a</md5sum>
+          <md5sum>2cbdf66d7007764a53d60c63bf0abea8</md5sum>
         </package>
       </release>
 
