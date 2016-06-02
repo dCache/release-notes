@@ -149,6 +149,123 @@ Highlights from this release:
   SRM requests will be lost from the database. Third party scripts
   that access the SRM database directly may have to be updated.
 
+## Release 2.14.20
+
+### Changes affecting multiple services
+
+Fixed an issue with the dcache heap `dump command` when called with a simple file name as the output path. 
+In this case the dump could in some cases be written to a different directory while the script claimed the dump had failed.
+The dcache dump heap command has a `--force` option for cases in which the
+JVM is unresponsive. This option was ignored for processes not running
+as root.
+This is fixed now.
+### cells
+
+Fixed a problem causing FTP and DCAP per connection instances to subscribe
+to topics they should not subscribe to. This reduces overhead caused by
+routing updates.
+Fixes a problem during shutdown in which communication tunnels between
+domains were shut down too early.
+Fixed an issue that would cause log messages in which placeholders had
+not been replaced with actual values.
+A bouncing message bug in System cell is fixed.
+### pnfsmanager
+
+Setting atime-gap to -1 (default value) should disable file's last access time updates. 
+Nevertheless, this was not the case and atime update was always enabled. 
+This is fixed now and file's last access time can be disabled as described in the documentation.
+### pool
+
+Fixes an issue with pools becoming unresponsive in case of slow DNS reverse
+lookups.
+Fix race condition in request scheduler.
+If FTP clients disconnect mid-transfer, pools log a DoorTransferFinished delivery failure as the door is gone.
+This is fixed now and log messages like `Failed to deliver DoorTransferFinishedMessage message` are suppressed in pools.
+When cancelling a job in a state that doesn't allow cancellation, an illegal
+state exception is thrown. This was logged as a bug.
+This is now fixed.
+Pool to pool transfers are supposed to be cancellable, but was not working as the `HttpURLConnection` does not appear 
+to react to thread interrupt. This could lead to migration job and rebalance job cancellation appearing to hang.
+This is now fixed.
+Fixes several performance regressions in pools that reduced mover creation rate
+and could cause pools to become unresponsive due to lock contention.
+### srm
+
+Fixed a bug that caused delivery failures of credential service announcements
+to be logged.
+The `ls -completed=n` command has been observed to fail with
+SRMInvalidRequestException.
+This is fixed now and the 
+output format of listing list requests has been changed to match that
+of other requests.
+
+### Changelog 2.14.19..2.14.20
+
+<!-- git log 2.14.19..2.14.20 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[84328f0](https://github.com/dcache/dcache/commit/84328f03d78442e75b6f8aa37be8230faa810f92)
+:   [maven-release-plugin] prepare release 2.14.20
+
+[f92cdcc](https://github.com/dcache/dcache/commit/f92cdcc805265f492725744c881f439185127feb)
+:   srm: Fix listing of completed list requests
+
+[2aeec7f](https://github.com/dcache/dcache/commit/2aeec7f6629bfb746f0f2fdf39249673ad8d48e4)
+:   dcache: fix heap dump to simple file names
+
+[786ebc6](https://github.com/dcache/dcache/commit/786ebc6f4ba32ad0e18d5f93af8940ba84455ea2)
+:   script: Make dump heap --force work for non-root processes
+
+[0f82952](https://github.com/dcache/dcache/commit/0f82952a6b4f99684fef559cf1e5e9ac2137f094)
+:   script: Add missing she-bang
+
+[c22210d](https://github.com/dcache/dcache/commit/c22210d3dfd495b289ddc4b9b692780cfc2dfafd)
+:   pool: Fix p2p cancellation
+
+[dc08cb7](https://github.com/dcache/dcache/commit/dc08cb7d2d8508eba0a7aea2ad7813ebe1f1807c)
+:   srm: Do not expose TURL before request is ready
+
+[0cebf53](https://github.com/dcache/dcache/commit/0cebf53579876f133a5669b630a7f733bd07c88b)
+:   pool: Don't log illegal state exception on migration job cancellation as a bug
+
+[d37fde7](https://github.com/dcache/dcache/commit/d37fde7ec9e9a4bb289e2fe27d4ea0d9572ee098)
+:   pool: Reduce lock contention on mover creation
+
+[435cc50](https://github.com/dcache/dcache/commit/435cc5010ff645a924ddc10f3ffea48482728312)
+:   pool: Fix race condition in request scheduler
+
+[0d50cd3](https://github.com/dcache/dcache/commit/0d50cd331da718f65f4da52b2879b4c888044176)
+:   pool: Avoid reverse DNS lookup in HTTP mover
+
+[159eea7](https://github.com/dcache/dcache/commit/159eea743b144cdff3c8ca80cc9509a3027800e4)
+:   billing: additional fixes to insert triggers
+
+[ec3ac5d](https://github.com/dcache/dcache/commit/ec3ac5df026ab7f4c19cc5315f5574af9f5e35e5)
+:   pool: Suppress logging of delivery failure of DoorTransferFinished
+
+[e782584](https://github.com/dcache/dcache/commit/e78258489eefd8a78196c2d82df5581b158b3d8f)
+:   system-test: update disposable-CA generated credentials
+
+[a34cfee](https://github.com/dcache/dcache/commit/a34cfee9bc7b8ee73f6397d4efc33b9495152045)
+:   pnfsmanager: fix atime update regression
+
+[b7aef46](https://github.com/dcache/dcache/commit/b7aef46d495800943ea6aafffa060e801fa3163d)
+:   cells: Fix logging formatting string
+
+[91fc2e0](https://github.com/dcache/dcache/commit/91fc2e0a937183bbb08cf5d6df33ba1a18f9afa5)
+:   cells: Avoid bouncing message on no-route errors in System cell
+
+[ec75096](https://github.com/dcache/dcache/commit/ec7509652db8ca540b3442405dab246384a9a922)
+:   srm: Suppress message delivery failures for credential service announcements
+
+[3559ff9](https://github.com/dcache/dcache/commit/3559ff96bb2e911a84e467102839fa944ebda365)
+:   cells: Fix tunnel shutdown order
+
+[07350e6](https://github.com/dcache/dcache/commit/07350e6673795c213c4fa0a5d5d25928f40e73f0)
+:   cells: Do not subscribe to topics in per-session door instances
+
+[b403160](https://github.com/dcache/dcache/commit/b403160d8b3900ed619bb6a01d4e110646cb1114)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.14.19
 
 ### chimera

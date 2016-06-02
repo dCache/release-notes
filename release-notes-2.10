@@ -102,6 +102,54 @@ Paul Millar  &lt;paul.millar@desy.de&gt;
   xrootd is now consistent with information recorded for other
   protocol transfers.
 
+## Release 2.10.60
+
+### Changes affecting multiple services
+
+Fixed an issue with the dcache heap `dump command` when called with a simple file name as the output path. 
+In this case the dump could in some cases be written to a different directory while the script claimed the dump had failed.
+The dcache dump heap command has a `--force` option for cases in which the
+JVM is unresponsive. This option was ignored for processes not running
+as root.
+This is fixed now.
+### cells
+
+A bouncing message bug in System cell is fixed.
+### pool
+
+Fix race condition in request scheduler.
+
+### Changelog 2.10.59..2.10.60
+
+<!-- git log 2.10.59..2.10.60 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[40e95fd](https://github.com/dcache/dcache/commit/40e95fd39c8b598553f45c3a0ae8213424a2ac9d)
+:   [maven-release-plugin] prepare release 2.10.60
+
+[1a19fdd](https://github.com/dcache/dcache/commit/1a19fdd523c990c8428522417416309e87312da3)
+:   dcache: fix heap dump to simple file names
+
+[619d06f](https://github.com/dcache/dcache/commit/619d06fb828940f8c0c52a39b45de5a3e5f0eb2d)
+:   script: Make dump heap --force work for non-root processes
+
+[ead548d](https://github.com/dcache/dcache/commit/ead548d057e9552c1beac66f42353edc677e9b37)
+:   srm: Do not expose TURL before request is ready
+
+[6196710](https://github.com/dcache/dcache/commit/61967102d238d72ae692884444b9b2e3200ad056)
+:   pool: Fix race condition in request scheduler
+
+[b560f4e](https://github.com/dcache/dcache/commit/b560f4e6c471ae6fc1361a15fce166ff563acfd4)
+:   billing: additional fixes to insert triggers
+
+[1aba4b3](https://github.com/dcache/dcache/commit/1aba4b388776c2f0036deb97b814a7ba2715520d)
+:   system-test: update disposable-CA generated credentials
+
+[fef3b09](https://github.com/dcache/dcache/commit/fef3b0956c23e4212c59452ec91268d9ed90a7c5)
+:   cells: Avoid bouncing message on no-route errors in System cell
+
+[770e269](https://github.com/dcache/dcache/commit/770e269b1decb14ed91df0539cbac870465f7ac9)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.10.59
 
 ### many

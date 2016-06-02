@@ -196,7 +196,27 @@
        <notes-url>release-notes-2.15.shtml</notes-url>
        <version-prefix>2.15.</version-prefix>
       
-       <release version="5" recommended="1">
+       <release version="6" recommended="1">
+        <date>2.6.2016</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>a77141309b50016e8599f82ad0f0cd4b</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>59722b39eedb276fd0bc4121d09f98f0</md5sum>
+        </package>
+        <package name="Solaris package">
+          <download-url>-VERSION-1.pkg</download-url>
+          <md5sum>af494f6774717f6ef788fdde419e92a8</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>4c195fc46638e0c598f1708e2f914ed3</md5sum>
+        </package>
+      </release>
+
+      <release version="5">
         <date>19.4.2016</date>
         <package name="Debian package">
           <download-url>_VERSION-1_all.deb</download-url>
@@ -349,7 +369,27 @@
       <notes-url>release-notes-2.14.shtml</notes-url>
       <version-prefix>2.14.</version-prefix>
 
-      <release version="19" recommended="1">
+      <release version="20" recommended="1">
+        <date>2.6.2016</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>07a6994a623f633fd2764da2819c316d</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>47c83219d953f06844d0cbd4cef40524</md5sum>
+        </package>
+        <package name="Solaris package">
+          <download-url>-VERSION-1.pkg</download-url>
+          <md5sum>b0a79acb56494e609cb2c56b0c270528</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>b89853416d9e4495db3a21fcd1dfebf3</md5sum>
+        </package>
+      </release>
+
+      <release version="19">
         <date>19.4.2016</date>
         <package name="Debian package">
           <download-url>_VERSION-1_all.deb</download-url>
@@ -774,7 +814,27 @@
       <notes-url>release-notes-2.13.shtml</notes-url>
       <version-prefix>2.13.</version-prefix>
 
-      <release version="30" recommended="1">
+      <release version="31" recommended="1">
+        <date>2.6.2016</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>0762f039d6f1af4d60298d071e729caf</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>b6609422f3f14cebb189040dae0b13bd</md5sum>
+        </package>
+        <package name="Solaris package">
+          <download-url>-VERSION-1.pkg</download-url>
+          <md5sum>16b6a810fe4f97b9b9228f676dc29b74</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>c2976067fa90cd781e82ccc94def52b3</md5sum>
+        </package>
+      </release>
+
+      <release version="30">
         <date>19.4.2016</date>
         <package name="Debian package">
           <download-url>_VERSION-1_all.deb</download-url>
@@ -1388,7 +1448,27 @@
       <notes-url>release-notes-2.12.shtml</notes-url>
       <version-prefix>2.12.</version-prefix>
 
-      <release version="40" recommended="1">
+      <release version="41" recommended="1">
+        <date>2.6.2016</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>c15dfb9d6a6e30182271c5f4b8a7c391</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>eb7edf678e332c1057ee8a9c1ef6554c</md5sum>
+        </package>
+        <package name="Solaris package">
+          <download-url>-VERSION-1.pkg</download-url>
+          <md5sum>fe16d8c3e6abe56660771b159516bfe8</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>753fe217e5d805363765b06e5ed8c595</md5sum>
+        </package>
+      </release>
+
+      <release version="40">
         <date>19.4.2016</date>
         <package name="Debian package">
           <download-url>_VERSION-1_all.deb</download-url>
@@ -2131,7 +2211,27 @@
       <notes-url>release-notes-2.11.shtml</notes-url>
       <version-prefix>2.11.</version-prefix>
 
-      <release version="50" recommended="1">
+      <release version="51" recommended="1">
+        <date>2.6.2016</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>778ad234187aa73367c731c8f05338e7</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>81a3428f0f6c3cb6592ff1161a791706</md5sum>
+        </package>
+        <package name="Solaris package">
+          <download-url>-VERSION-1.pkg</download-url>
+          <md5sum>c076f29bdd76311a590df775a4ea7dcc</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>019bf2b10da12bf28d02e30575c1d591</md5sum>
+        </package>
+      </release>
+
+      <release version="50">
         <date>19.4.2016</date>
         <package name="Debian package">
           <download-url>_VERSION-1_all.deb</download-url>
@@ -3013,7 +3113,27 @@
       <notes-url>release-notes-2.10.shtml</notes-url>
       <version-prefix>2.10.</version-prefix>
 
-      <release version="59" recommended="1">
+      <release version="60" recommended="1">
+        <date>2.6.2016</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>042e7ec21e6df39f37b30e262dac5d0b</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>a10921b50ca6d1d9dfbf39f07c041d2e</md5sum>
+        </package>
+        <package name="Solaris package">
+          <download-url>-VERSION-1.pkg</download-url>
+          <md5sum>cacf05ed690f3acb69ccb4eb99198c95</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>5eeb6f43f3f68c5eded04c6ca4121785</md5sum>
+        </package>
+      </release>
+
+      <release version="59">
         <date>19.4.2016</date>
         <package name="Debian package">
           <download-url>_VERSION-1_all.deb</download-url>

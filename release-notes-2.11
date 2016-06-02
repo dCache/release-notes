@@ -98,6 +98,54 @@ All properties marked forbidden or obsolete are now no longer
 recognised by dCache.  All properties that were deprecated in 2.10 are
 now marked forbidden.
 
+## Release 2.11.51
+
+### Changes affecting multiple services
+
+Fixed an issue with the dcache heap `dump command` when called with a simple file name as the output path. 
+In this case the dump could in some cases be written to a different directory while the script claimed the dump had failed.
+The dcache dump heap command has a `--force` option for cases in which the
+JVM is unresponsive. This option was ignored for processes not running
+as root.
+This is fixed now.
+### cells
+
+A bouncing message bug in System cell is fixed.
+### pool
+
+Fix race condition in request scheduler.
+
+### Changelog 2.11.50..2.11.51
+
+<!-- git log 2.11.50..2.11.51 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[010e44f](https://github.com/dcache/dcache/commit/010e44f0fda51fd2b2ea539923179964f4ae58e3)
+:   [maven-release-plugin] prepare release 2.11.51
+
+[a6949c5](https://github.com/dcache/dcache/commit/a6949c58ed93dd496926231a7bed57ec4669f365)
+:   dcache: fix heap dump to simple file names
+
+[8080ee3](https://github.com/dcache/dcache/commit/8080ee36c547be40f2d02cebff12e6ac56291939)
+:   script: Make dump heap --force work for non-root processes
+
+[c5a1f6d](https://github.com/dcache/dcache/commit/c5a1f6d7378935ed62e715dbed37450a914d5aa9)
+:   billing: additional fixes to insert triggers
+
+[9dcb113](https://github.com/dcache/dcache/commit/9dcb11374bff49f3085369e5715437016db2f2b4)
+:   srm: Do not expose TURL before request is ready
+
+[0038371](https://github.com/dcache/dcache/commit/00383710e81e3d022ab150a1f439cd2cbd1bd41f)
+:   pool: Fix race condition in request scheduler
+
+[44c2af1](https://github.com/dcache/dcache/commit/44c2af1d881538c35853e410b16fed45e78e147f)
+:   system-test: update disposable-CA generated credentials
+
+[c4f72e7](https://github.com/dcache/dcache/commit/c4f72e7ef0630fc2d6bff74f18c2e8fd39dc25d7)
+:   cells: Avoid bouncing message on no-route errors in System cell
+
+[4e11bbe](https://github.com/dcache/dcache/commit/4e11bbeceb1837d8c3bd218f2b1d81404ef6ea48)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.11.50
 
 ### many

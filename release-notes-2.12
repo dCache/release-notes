@@ -144,6 +144,72 @@ Hightlights from this release:
   Previous releases of dCache always used the WAN port range.  Note
   that the xrootd mover port range is configurable with this release.
 
+## Release 2.12.41
+
+### Changes affecting multiple services
+
+Fixed an issue with the dcache heap `dump command` when called with a simple file name as the output path. 
+In this case the dump could in some cases be written to a different directory while the script claimed the dump had failed.
+The dcache dump heap command has a `--force` option for cases in which the
+JVM is unresponsive. This option was ignored for processes not running
+as root.
+This is fixed now.
+### cells
+
+A bouncing message bug in System cell is fixed.
+### pnfsmanager
+
+Setting atime-gap to -1 (default value) should disable file's last access time updates. 
+Nevertheless, this was not the case and atime update was always enabled. 
+This is fixed now and file's last access time can be disabled as described in the documentation.
+### pool
+
+Fix race condition in request scheduler.
+### srm
+
+The `ls -completed=n` command has been observed to fail with
+SRMInvalidRequestException.
+This is fixed now and the 
+output format of listing list requests has been changed to match that
+of other requests.
+
+### Changelog 2.12.40..2.12.41
+
+<!-- git log 2.12.40..2.12.41 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[881c125](https://github.com/dcache/dcache/commit/881c1252e960c2ea932743900e7018e4850131b2)
+:   [maven-release-plugin] prepare release 2.12.41
+
+[feba897](https://github.com/dcache/dcache/commit/feba89762907e0e4e1b0e77053167874994e3a1e)
+:   srm: Fix listing of completed list requests
+
+[a2f72b2](https://github.com/dcache/dcache/commit/a2f72b24b8996537aac3a979dceb8c01f10c1ccb)
+:   dcache: fix heap dump to simple file names
+
+[6fa86bf](https://github.com/dcache/dcache/commit/6fa86bf25f41aa769befa91287252ae727dd8388)
+:   script: Make dump heap --force work for non-root processes
+
+[80d6737](https://github.com/dcache/dcache/commit/80d6737829242ba32ffe92e70c9c00ec3dc12dd6)
+:   srm: Do not expose TURL before request is ready
+
+[199ec29](https://github.com/dcache/dcache/commit/199ec29d5582d96766c8f0686ff36fc75d72f92d)
+:   pool: Fix race condition in request scheduler
+
+[73cbf17](https://github.com/dcache/dcache/commit/73cbf175cba7c2215eafccd0fd132a2c0b740560)
+:   billing: additional fixes to insert triggers
+
+[eaaacca](https://github.com/dcache/dcache/commit/eaaaccaa85903a0c1c840f7e2bbedbb9f91af12d)
+:   system-test: update disposable-CA generated credentials
+
+[2c42840](https://github.com/dcache/dcache/commit/2c42840e58b10ea24d5b7f77bfe176fbe6651f5e)
+:   pnfsmanager: fix atime update regression
+
+[8ad5df0](https://github.com/dcache/dcache/commit/8ad5df0d1e97a765e2de1261988e0029d0e41cb2)
+:   cells: Avoid bouncing message on no-route errors in System cell
+
+[b470500](https://github.com/dcache/dcache/commit/b470500057d76c8389314abc78039815ce5ead89)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.12.40
 
 ### many
