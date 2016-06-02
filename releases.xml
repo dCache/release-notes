@@ -198,7 +198,6 @@
         <release>
         </release>
       
-    </releases>
 
       <release version="0" recommended="1">
         <date>2.6.2016</date>
@@ -220,7 +219,7 @@
         </package>
       </release>
 
-      
+    </releases>  
   </series>
 
   <series id="server-2.15">
