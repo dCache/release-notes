@@ -199,6 +199,28 @@
         </release>
       
     </releases>
+
+      <release version="0" recommended="1">
+        <date>2.6.2016</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>05ef1390d78f0824703b1417c549c850</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>820fda1559c57ea873bbcfffcfae787f</md5sum>
+        </package>
+        <package name="Solaris package">
+          <download-url>-VERSION-1.pkg</download-url>
+          <md5sum>307ea0feaf2da050ddb7c4ffc61bd0da</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>6035522f0879bdd5aa8e45808808b039</md5sum>
+        </package>
+      </release>
+
+      
   </series>
 
   <series id="server-2.15">
