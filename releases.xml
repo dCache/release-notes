@@ -166,6 +166,41 @@
     </ul>
     <br/>
   </preamble>
+
+  <series id="server-2.16">
+   <title>server 2.16.x</title>
+   <description>
+      <p>
+        In addition to the usual improvements and bug fixes, dCache
+        2.16 features the following highlights:
+      </p>
+
+      <ul>
+          <li>New experimental RESTful API.</li>
+          <li>New experimental end user web interface called dCacheView.</li>
+          <li>New experimental support for redundant cell communication using multiple message brokers.</li>
+          <li>New resilience service for managing file replicas. Will eventually replace the replica manager.</li>
+          <li>New experimental support for replicable services.</li>
+          <li>Scalable SRM frontend service.</li>
+          <li>Limited OpenID Connect support.</li>
+      </ul>
+
+      <p>
+          dCache v2.16 requires a JVM supporting Java v8.
+      </p>
+    </description>
+
+    <releases>
+        <name>dCache VERSION</name>
+        <download-url-prefix>repo/2.16/dcache</download-url-prefix>
+        <notes-url>release-notes-2.16.shtml</notes-url>
+        <version-prefix>2.16.</version-prefix>
+        <release>
+        </release>
+      
+    </releases>
+  </series>
+
   <series id="server-2.15">
    <title>server 2.15.x</title>
    <description>
