@@ -159,36 +159,47 @@ The dcache dump heap command has a `--force` option for cases in which the
 JVM is unresponsive. This option was ignored for processes not running
 as root.
 This is fixed now.
+
 ### cells
 
 Fixed a problem causing FTP and DCAP per connection instances to subscribe
 to topics they should not subscribe to. This reduces overhead caused by
 routing updates.
+
 Fixes a problem during shutdown in which communication tunnels between
 domains were shut down too early.
+
 Fixed an issue that would cause log messages in which placeholders had
 not been replaced with actual values.
+
 A bouncing message bug in System cell is fixed.
+
 ### pnfsmanager
 
 Setting atime-gap to -1 (default value) should disable file's last access time updates. 
 Nevertheless, this was not the case and atime update was always enabled. 
 This is fixed now and file's last access time can be disabled as described in the documentation.
+
 ### pool
 
 Fixes an issue with pools becoming unresponsive in case of slow DNS reverse
 lookups.
+
 Fix race condition in request scheduler.
+
 If FTP clients disconnect mid-transfer, pools log a DoorTransferFinished delivery failure as the door is gone.
 This is fixed now and log messages like `Failed to deliver DoorTransferFinishedMessage message` are suppressed in pools.
 When cancelling a job in a state that doesn't allow cancellation, an illegal
 state exception is thrown. This was logged as a bug.
 This is now fixed.
+
 Pool to pool transfers are supposed to be cancellable, but was not working as the `HttpURLConnection` does not appear 
 to react to thread interrupt. This could lead to migration job and rebalance job cancellation appearing to hang.
 This is now fixed.
+
 Fixes several performance regressions in pools that reduced mover creation rate
 and could cause pools to become unresponsive due to lock contention.
+
 ### srm
 
 Fixed a bug that caused delivery failures of credential service announcements

@@ -104,51 +104,69 @@ The dcache dump heap command has a `--force` option for cases in which the
 JVM is unresponsive. This option was ignored for processes not running
 as root.
 This is fixed now.
+
 ### cells
 
 Fixed a problem causing FTP and DCAP per connection instances to subscribe
 to topics they should not subscribe to. This reduces overhead caused by
 routing updates.
+
 Fixes a problem during shutdown in which communication tunnels between
 domains were shut down too early.
+
 Fixed an issue that would cause log messages in which placeholders had
 not been replaced with actual values.
+
 A bouncing message bug in System cell is fixed.
+
 ### chimera
 
 Sql statement is fixed to use correct field.
+
 ### pnfsmanager
 
 Reduces transaction length of flush processing in pnfs manager.
+
 Setting atime-gap to -1 (default value) should disable file's last access time updates. 
 Nevertheless, this was not the case and atime update was always enabled. 
 This is fixed now and file's last access time can be disabled as described in the documentation.
+
 This release reintroduces multiple pnfs manager queues - one per thread - to avoid possible
 lock contention in chimera. Please note, that this realease reintroduces as well request folding.
+
 ### pool
 
 Fixes an issue with pools becoming unresponsive in case of slow DNS reverse
 lookups.
+
 Fix race condition in request scheduler.
+
 Fixes a couple of regressions in the pool meta data utilities. The `dcache pool
 convert` command now opens the source database in read-only mode, preventing 
 that the source is modified. Both the `dcache pool yaml` and `dcache pool
 convert` commands now work without accessing the data files, making them faster 
 and allowing them to be used without the data files being present.
+
 If FTP clients disconnect mid-transfer, pools log a DoorTransferFinished delivery failure as the door is gone.
 This is fixed now and log messages like `Failed to deliver DoorTransferFinishedMessage message` are suppressed in pools.
+
 When cancelling a job in a state that doesn't allow cancellation, an illegal
 state exception is thrown. This was logged as a bug.
 This is now fixed.
+
 Pool to pool transfers are supposed to be cancellable, but was not working as the `HttpURLConnection` does not appear 
 to react to thread interrupt. This could lead to migration job and rebalance job cancellation appearing to hang.
 This is now fixed.
+
 Fixed a race condition in pool startup that could lead to invalid link
 counts, resulting in premature deletion of files still open.
+
 Fixes several performance regressions in pools that reduced mover creation rate
 and could cause pools to become unresponsive due to lock contention.
+
 Fixed a problem in which the meta data store was not closed properly
 in the `dcache pool convert` and `dcache pool yaml` utilities.
+
 ### poolmanager
 
 The rebalancer commands used blocking sequential messaging to all pools
@@ -156,6 +174,7 @@ in a pool group from the main pool manager message thread. This blocked
 all pool manager cell communication for the duration of the rebalancer
 commands during the start and cancellation.
 This is fixed now.
+
 ### srm
 
 Fixed a bug that caused delivery failures of credential service announcements
@@ -165,12 +184,14 @@ SRMInvalidRequestException.
 This is fixed now and the 
 output format of listing list requests has been changed to match that
 of other requests.
+
 ### srmclient
 
 The SRM client scripts support discovering necessary paths by
 navigating relative to the script's path. This technique does not work
 with `RHEL-7` since they have `/bin` as a symbolic link to `/usr/bin`.
 This is fixed in this release and SRM client scripts work on `SL-7`, `CENTOS-7`, `RHEL-7`.
+
 ### webdav
 
 Http Basic Authentication was broken and was not triggering a browser
