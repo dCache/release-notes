@@ -111,6 +111,49 @@ HTML header: <title>dCache 2.16 Release Notes</title>
 * Sites with a custom `httpd.conf` configuration will have to adjust
   this upon upgrade to inject the cell address of the `info` service.
 
+## Release 2.16.1
+
+### billing
+
+Fixes a regression that made using the billing system with an HSQLDB
+backend impossible. Since that backend can only be used for testing
+purposes, the impact of this regression was low.
+
+The data used to create the 24 hour billing overviews is aggregated
+in hourly intervals before creating the plots. However, if there is
+very high activity on the system during an entire 24 hour period,
+there have occasionally been timeouts when querying the database for
+this aggregate data. This patch makes the data aggregation more robust
+against such situations, resulting in lower latency for histogram
+generation and no more timeouts.
+
+### gplazma
+
+Previously, attempts to authenticate users against an htpasswd entry
+that was malformed resulted in a stack trace. This patch modifies
+the error handling so that only a detailed error message
+("Bad entry in file: hash does not start '$1$' or '$apr1$") is logged.
+
+
+### Changelog 2.16.0..2.16.1
+
+<!-- git log 2.16.0..2.16.1 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[de72dba](https://github.com/dcache/dcache/commit/de72dbae7eda95d7dbc32eeb88933167a00d4fa9)
+:   [maven-release-plugin] prepare release 2.16.1
+
+[0b85b5d](https://github.com/dcache/dcache/commit/0b85b5de5a88141a6562a96100e0f217b98b02ae)
+:   (2.16) billing: use in-memory buffer for hourly aggregate data
+
+[43b3e55](https://github.com/dcache/dcache/commit/43b3e55d27020ebb9918b48c1ef8f0d53b91c275)
+:   billing : fix issue wih HSQLDB backend
+
+[edc52da](https://github.com/dcache/dcache/commit/edc52da7bae60c27f3841fe80baa59d235a82ba4)
+:   [maven-release-plugin] prepare for next development iteration
+
+[b788188](https://github.com/dcache/dcache/commit/b7881888a86dd9c8c741c141bedfc8593895a4f8)
+:   gplazma: don't generate a stack-trace if htaccess is malformed
+
 ## Release 2.16.0
 
 #### Introduced Apache ZooKeeper as an external coordination service

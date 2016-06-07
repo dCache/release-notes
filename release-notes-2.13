@@ -137,6 +137,42 @@ Highlights from this release:
   required upon upgrading, but downgrading is not possible without
   explicitly converting the format.
 
+## Release 2.13.32
+
+### billing
+
+The data used to create the 24 hour billing overviews is aggregated
+in hourly intervals before creating the plots. However, if there is
+very high activity on the system during an entire 24 hour period,
+there have occasionally been timeouts when querying the database for
+this aggregate data. This patch makes the data aggregation more robust
+against such situations, resulting in lower latency for histogram
+generation and no more timeouts.
+
+### gplazma
+
+Previously, attempts to authenticate users against an htpasswd entry
+that was malformed resulted in a stack trace. This patch modifies
+the error handling so that only a detailed error message
+("Bad entry in file: hash does not start '$1$' or '$apr1$") is logged.
+
+
+### Changelog 2.13.31..2.13.32
+
+<!-- git log 2.13.31..2.13.32 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[f3609fe](https://github.com/dcache/dcache/commit/f3609fe72ebd2090831fbc0927d752db3053b3ed)
+:   [maven-release-plugin] prepare release 2.13.32
+
+[15b85b6](https://github.com/dcache/dcache/commit/15b85b6c4d450d41e89718f89a6cd575d8b5a93f)
+:   (2.13) billing: use in-memory buffer for hourly aggregate data
+
+[fd0e96b](https://github.com/dcache/dcache/commit/fd0e96bf6a662b2dcb34b3285fc993a1efbb92c0)
+:   [maven-release-plugin] prepare for next development iteration
+
+[b9b2e8c](https://github.com/dcache/dcache/commit/b9b2e8c34d218702ef0ead5fa0bf53ecd83f7103)
+:   gplazma: don't generate a stack-trace if htaccess is malformed
+
 ## Release 2.13.31
 
 ### Changes affecting multiple services

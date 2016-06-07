@@ -94,6 +94,54 @@ Highlights from this release:
   enforced. Clients that relied on these not being enforced will
   fail after upgrade.
 
+## Release 2.15.7
+
+### billing
+
+The data used to create the 24 hour billing overviews is aggregated
+in hourly intervals before creating the plots. However, if there is
+very high activity on the system during an entire 24 hour period,
+there have occasionally been timeouts when querying the database for
+this aggregate data. This patch makes the data aggregation more robust
+against such situations, resulting in lower latency for histogram
+generation and no more timeouts.
+
+### core
+
+The Online Certificate Status Protocol (OCSP) is used to query status
+information about certificates during authentication. dCache supports
+this protocol, but relies on a functioning OCSP server for it to work
+properly. This patch changes the default OCSP mode for dCache to IGNORE,
+effectively disabling it, which is helpful for sites without a
+working OCSP server in place.
+
+### gplazma
+
+Previously, attempts to authenticate users against an htpasswd entry
+that was malformed resulted in a stack trace. This patch modifies
+the error handling so that only a detailed error message
+("Bad entry in file: hash does not start '$1$' or '$apr1$") is logged.
+
+
+### Changelog 2.15.6..2.15.7
+
+<!-- git log 2.15.6..2.15.7 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[3eb5e44](https://github.com/dcache/dcache/commit/3eb5e44ffe56dbd540bb406e1e5ba1162e461cf6)
+:   [maven-release-plugin] prepare release 2.15.7
+
+[a420be7](https://github.com/dcache/dcache/commit/a420be7f11d3ac420c765553a1224574ae33092c)
+:   (2.15) billing: use in-memory buffer for hourly aggregate data
+
+[ec99c04](https://github.com/dcache/dcache/commit/ec99c04ab931ceffebf08118005fb0555740fddb)
+:   Disable OCSP by default
+
+[7ada35e](https://github.com/dcache/dcache/commit/7ada35e6f23b0a958d9642751a55101dbf6be6f9)
+:   [maven-release-plugin] prepare for next development iteration
+
+[d9674a0](https://github.com/dcache/dcache/commit/d9674a0f5df60c366fd9805280165fa5b0c9464e)
+:   gplazma: don't generate a stack-trace if htaccess is malformed
+
 ## Release 2.15.6
 
 ### Changes affecting multiple services
