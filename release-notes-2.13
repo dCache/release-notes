@@ -313,7 +313,7 @@ When representing checksums in the admin interface and configuration files, chec
 
 The nearline storage subsystem uses thread pools to manage its workload. Since some tasks are blocking, very high activity can cause these thread pools to grow beyond effective sizes. This may even lead to the pool becoming unresponsive.
 
-This change introduces a new configuration property, "pool.limits.nearline-threads", which limits the thread pool size. The default value, 30, is chosen to be sufficient for almost all imaginable use cases while at the same time avoiding potential problems with resource exhaustion.
+This change introduces a new configuration property, `pool.limits.nearline-threads`, which limits the thread pool size. The default value, 30, is chosen to be sufficient for almost all imaginable use cases while at the same time avoiding potential problems with resource exhaustion.
 
 ### srm
 
@@ -363,15 +363,8 @@ dCache domain.
 
 ### pool
 
-The nearline storage subsystem has a thread pool for various tasks. Some
-of these tasks are blocking. Since the
-thread pool is unlimited, a high inflow of new requests can cause the
-thread pool to grow rapidly and even exceed thread limitations. In that
-case the pool dies.
-In the current release a new `pool.limits.nearline-threads` property is introduced 
-which allow to limit the number of threads used by the nearline storage subsystem. Note that, the default is
-30 threads. 
-
+A regression caused pools to fail, reporting an IllegalArgumentException, when 
+replication manager was enabled. This patch fixes that problem.
 
 ### Changelog 2.13.28..2.13.29
 
