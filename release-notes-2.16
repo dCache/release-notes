@@ -143,7 +143,8 @@ these. Consequently, this patch lowers the log level for the
 related error messages to reflect that their causes are 
 harmless.
 
-Fixed a staging problem.
+Fixed a staging problem that would lead to failures in 
+nearline COPY operations.
 
 Improved efficiency for pools under high resilience load.
 
