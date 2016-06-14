@@ -149,6 +149,66 @@ Highlights from this release:
   SRM requests will be lost from the database. Third party scripts
   that access the SRM database directly may have to be updated.
 
+## Release 2.14.22
+
+### admin
+
+First observed on Ubuntu Xenial, dCache fails to install on modern 
+Linux distributions due to the short key length of the SSH 1 keys 
+generated in the post install script. This patch removes those keys
+and their generation code. dCache has been supporting only modern 
+key formats for quite some time now, so this change should not have
+any impact on users.
+
+### pool
+
+When creating movers, some error conditions are expected to 
+occur and dCache is designed to transparently recover from 
+these. Consequently, this patch lowers the log level for the
+related error messages to reflect that their causes are 
+harmless.
+
+Fixed a staging problem.
+
+### srm
+
+Some race conditions during SRM startup were fixed. Those race conditions
+could potentially have lead to failures to expire jobs and to wrong job 
+counts in the SRM schedulers.
+
+### webdav
+
+Until now, trying to access a file for which the client was not authorized
+would generate a reply with a status code 200 OK, but an empty body, rather
+than an error page. This patch corrects that behaviour and also improves
+exception handling for that case.
+
+
+### Changelog 2.14.21..2.14.22
+
+<!-- git log 2.14.21..2.14.22 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[1472172](https://github.com/dcache/dcache/commit/1472172b3593ef47923ddff60751920846b171e2)
+:   [maven-release-plugin] prepare release 2.14.22
+
+[ae318fc](https://github.com/dcache/dcache/commit/ae318fc4700a8b87b33957aef37a0e9447e9b6ea)
+:   admin: Drop old ssh 1 keys
+
+[4831b01](https://github.com/dcache/dcache/commit/4831b01b818d18b6035b6222f48da77b6633299c)
+:   pool: Lower log level of certain failures to create mover
+
+[9eb8dd0](https://github.com/dcache/dcache/commit/9eb8dd08f973dbc5d893ad0cb7e38f7d3b7c97d8)
+:   pool: fix staging for CopyNearlineStorage
+
+[a890967](https://github.com/dcache/dcache/commit/a8909679ebb09f8dd8e320b7b738c7e3a55fc88d)
+:   webdav: Fix error reporting when client is unauthorized
+
+[e7135f5](https://github.com/dcache/dcache/commit/e7135f5fc36df901e799bf3d29fd0455c63da552)
+:   srm: Fix job expiration during service startup
+
+[ab3a2dd](https://github.com/dcache/dcache/commit/ab3a2dd532c60b383e0a6cae7e3336bd6a396512)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.14.21
 
 ### billing

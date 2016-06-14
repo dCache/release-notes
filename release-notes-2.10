@@ -102,6 +102,27 @@ Paul Millar  &lt;paul.millar@desy.de&gt;
   xrootd is now consistent with information recorded for other
   protocol transfers.
 
+## Release 2.10.61
+
+### pnfsmanager
+
+Fixed a problem in pnfsmanager that prevented the use of
+chimera.db.password.file.
+
+
+### Changelog 2.10.60..2.10.61
+
+<!-- git log 2.10.60..2.10.61 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[53a6ba9](https://github.com/dcache/dcache/commit/53a6ba94e4d051f0bf41dfde9413b8fd00fb2148)
+:   [maven-release-plugin] prepare release 2.10.61
+
+[4700ae2](https://github.com/dcache/dcache/commit/4700ae2dc8c01d7c4b32a2a3d462ca80c991a203)
+:   pnfsmanager: Fix chimera.db.password.file support
+
+[a381b7e](https://github.com/dcache/dcache/commit/a381b7e91d0e67040b5355c53f5dcfa7a0e34c28)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.10.60
 
 ### Changes affecting multiple services

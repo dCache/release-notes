@@ -111,6 +111,139 @@ HTML header: <title>dCache 2.16 Release Notes</title>
 * Sites with a custom `httpd.conf` configuration will have to adjust
   this upon upgrade to inject the cell address of the `info` service.
 
+## Release 2.16.2
+
+### admin
+
+First observed on Ubuntu Xenial, dCache fails to install on modern 
+Linux distributions due to the short key length of the SSH 1 keys 
+generated in the post install script. This patch removes those keys
+and their generation code. dCache has been supporting only modern 
+key formats for quite some time now, so this change should not have
+any impact on users.
+
+### frontend
+
+Removed unnecessary login prompts from dCacheView.
+
+### pool
+
+This change provides more detailed internal error reporting on P2P 
+transfer failures, supporting the new resilience manager in its decisions.
+
+This patch corrects the pools' reporting behaviour when trying to access
+a broken replica. In that case, pools would previously report that the
+replica is locked which usually indicates that retrying will eventually allow
+the request to succeed. This change supports the operation of the new 
+resilience manager.
+
+When creating movers, some error conditions are expected to 
+occur and dCache is designed to transparently recover from 
+these. Consequently, this patch lowers the log level for the
+related error messages to reflect that their causes are 
+harmless.
+
+Fixed a staging problem.
+
+Improved efficiency for pools under high resilience load.
+
+The `queue activate` command was accidentally renamed `queue setIncluded`. This patch corrects the command name.
+
+### resilience
+
+When a p2p copy fails because it is trying to access a source
+file before the pool repository has completed processing it,
+the client receives a "Source pool failure (File is incomplete)"
+error. Previously, the resilience manager would incorrectly 
+consider this situation as an error requiring a retry from a
+different data source. This patch corrects that mistake.
+
+This change improves the efficiency of resilience manager by avoiding repeated
+attempts to read from a location in case it is the only one available.
+
+Improved exception handling in the resilience manager.
+
+### REST-API
+
+Previously, the REST interface did not provide a reliable way to
+check whether credentials supplied by a user also led to that 
+user being authenticated. With this change, clients can discover 
+information such as whether or not a username+password combination 
+is valid and which uid and gid(s) the user has.
+
+In order to improve operation of dCacheView, this patch introduces 
+new corrected error codes for situations where users try to query
+resources they are not allowed to.
+
+### srm
+
+Some race conditions during SRM startup were fixed. Those race conditions
+could potentially have lead to failures to expire jobs and to wrong job 
+counts in the SRM schedulers.
+
+### webdav
+
+Until now, trying to access a file for which the client was not authorized
+would generate a reply with a status code 200 OK, but an empty body, rather
+than an error page. This patch corrects that behaviour and also improves
+exception handling for that case.
+
+
+### Changelog 2.16.1..2.16.2
+
+<!-- git log 2.16.1..2.16.2 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[7553257](https://github.com/dcache/dcache/commit/7553257797c73870975364fac97780a12caa8d8b)
+:   [maven-release-plugin] prepare release 2.16.2
+
+[870abc0](https://github.com/dcache/dcache/commit/870abc09ef6f27cca24b2204d4161087eb0ac3e0)
+:   restful: add ability to discover information about current user
+
+[aba7f76](https://github.com/dcache/dcache/commit/aba7f7603db49bf9425ac06e6eaf230320ddb258)
+:   resilience: fix classification of file incomplete and other errors
+
+[cf682b0](https://github.com/dcache/dcache/commit/cf682b024ea7a5a861ff13ac2969f86a5c11a98a)
+:   pool: Don't use transient error for a broken file
+
+[d2a63bd](https://github.com/dcache/dcache/commit/d2a63bdeff032db75f0f8ed9725bf9ab9d879d2f)
+:   admin: Drop old ssh 1 keys
+
+[1245be2](https://github.com/dcache/dcache/commit/1245be281288d0e8e6e267da7eebfd70c6ecb00c)
+:   pool: Add error codes to p2p failures
+
+[0ec3315](https://github.com/dcache/dcache/commit/0ec3315c70ea9c605a4f1939b38a8bd9bd3a7689)
+:   pool: Make final state update after upload atomic
+
+[f4e6b26](https://github.com/dcache/dcache/commit/f4e6b266fe02629a02f469f3a66ad903c882eddb)
+:   pool: Lower log level of certain failures to create mover
+
+[4687641](https://github.com/dcache/dcache/commit/468764138fdecf9ac61274cdaa15e476c58259b6)
+:   pool: fix staging for CopyNearlineStorage
+
+[e571099](https://github.com/dcache/dcache/commit/e57109989b253f73cd027481bdd2055598e9de3d)
+:   REST-api: fix permission denied.
+
+[1044919](https://github.com/dcache/dcache/commit/104491917e4abf4d0ea7d23b867587f5ca564e99)
+:   frontend: remove prompt login onloading dCacheView
+
+[9674b36](https://github.com/dcache/dcache/commit/9674b365597ad05a9384f1797e37327af2bfebb1)
+:   resilience: add checked location selection exception
+
+[12168e6](https://github.com/dcache/dcache/commit/12168e69f5d8dfb1d1d3f73d7c7875aa4f3224f6)
+:   resilience: fail when source retry is requested with only one possible source
+
+[7a5cd64](https://github.com/dcache/dcache/commit/7a5cd64f6c836415bcb1775ffb7a7e3a9a5fb6f2)
+:   pools: restore correct command names
+
+[f125cd1](https://github.com/dcache/dcache/commit/f125cd1ec6582845387c2cf6e2626ed71ac12626)
+:   webdav: Fix error reporting when client is unauthorized
+
+[e2d6f8b](https://github.com/dcache/dcache/commit/e2d6f8bcc77889aafb7eead2b945c276a1aecaba)
+:   srm: Fix job expiration during service startup
+
+[f9c4cf2](https://github.com/dcache/dcache/commit/f9c4cf2f89cce8ac1714ff41505018e7ab48fc13)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.16.1
 
 ### billing

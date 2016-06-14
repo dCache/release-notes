@@ -94,6 +94,66 @@ Highlights from this release:
   enforced. Clients that relied on these not being enforced will
   fail after upgrade.
 
+## Release 2.15.8
+
+### admin
+
+First observed on Ubuntu Xenial, dCache fails to install on modern 
+Linux distributions due to the short key length of the SSH 1 keys 
+generated in the post install script. This patch removes those keys
+and their generation code. dCache has been supporting only modern 
+key formats for quite some time now, so this change should not have
+any impact on users.
+
+### pool
+
+When creating movers, some error conditions are expected to 
+occur and dCache is designed to transparently recover from 
+these. Consequently, this patch lowers the log level for the
+related error messages to reflect that their causes are 
+harmless.
+
+Fixed a staging problem.
+
+### srm
+
+Some race conditions during SRM startup were fixed. Those race conditions
+could potentially have lead to failures to expire jobs and to wrong job 
+counts in the SRM schedulers.
+
+### webdav
+
+Until now, trying to access a file for which the client was not authorized
+would generate a reply with a status code 200 OK, but an empty body, rather
+than an error page. This patch corrects that behaviour and also improves
+exception handling for that case.
+
+
+### Changelog 2.15.7..2.15.8
+
+<!-- git log 2.15.7..2.15.8 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[025b55f](https://github.com/dcache/dcache/commit/025b55f720f8e1bfdabe52e0d0fc60c9e2b5b73b)
+:   [maven-release-plugin] prepare release 2.15.8
+
+[9d057c8](https://github.com/dcache/dcache/commit/9d057c829506806ed145bda7d69be6f56cfd4a80)
+:   admin: Drop old ssh 1 keys
+
+[bb3fa82](https://github.com/dcache/dcache/commit/bb3fa821b3df5a73f204e787955a4911558c381b)
+:   pool: Lower log level of certain failures to create mover
+
+[bc9ff2a](https://github.com/dcache/dcache/commit/bc9ff2ade2b29f02f572e676fc262f94eeafa0b4)
+:   pool: fix staging for CopyNearlineStorage
+
+[451f627](https://github.com/dcache/dcache/commit/451f627b0c1cc49966b1b79e6e0acbcd1433ce9a)
+:   webdav: Fix error reporting when client is unauthorized
+
+[c39599a](https://github.com/dcache/dcache/commit/c39599a4d38bf8f3c00a9710008f452cf5aa8c23)
+:   srm: Fix job expiration during service startup
+
+[b966e09](https://github.com/dcache/dcache/commit/b966e0905449835cb62f3ca0f1d189ef90f8c5cc)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.15.7
 
 ### billing
