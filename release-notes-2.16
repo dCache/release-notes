@@ -126,6 +126,16 @@ any impact on users.
 
 Removed unnecessary login prompts from dCacheView.
 
+Previously, the REST interface did not provide a reliable way to
+check whether credentials supplied by a user also led to that 
+user being authenticated. With this change, clients can discover 
+information such as whether or not a username+password combination 
+is valid and which uid and gid(s) the user has.
+
+In order to improve operation of dCacheView, corrected error codes are
+introduced for situations where users try to query resources they 
+are not allowed to.
+
 ### pool
 
 This change provides more detailed internal error reporting on P2P 
@@ -163,18 +173,6 @@ This change improves the efficiency of resilience manager by avoiding repeated
 attempts to read from a location in case it is the only one available.
 
 Improved exception handling in the resilience manager.
-
-### REST-API
-
-Previously, the REST interface did not provide a reliable way to
-check whether credentials supplied by a user also led to that 
-user being authenticated. With this change, clients can discover 
-information such as whether or not a username+password combination 
-is valid and which uid and gid(s) the user has.
-
-In order to improve operation of dCacheView, this patch introduces 
-new corrected error codes for situations where users try to query
-resources they are not allowed to.
 
 ### srm
 
