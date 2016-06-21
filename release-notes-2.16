@@ -111,6 +111,119 @@ HTML header: <title>dCache 2.16 Release Notes</title>
 * Sites with a custom `httpd.conf` configuration will have to adjust
   this upon upgrade to inject the cell address of the `info` service.
 
+## Release 2.16.3
+
+### admin
+
+The admin door now generates SSH keys to ensure compatibility with OpenSSH 7. Additionally,
+a new property `admin.paths.host-keys` was introduced in the admin.properties file, 
+allowing to specify the location of keys.
+
+### build
+
+A `code coverage` profile was added to the build system to check the coverage of our unit tests.
+The coverage analysis uses JaCoCo as the technical foundation.
+
+### cells
+
+This release improves local message delivery.
+
+A bug was fixed that caused delivery of messages to cells to fail
+if the cell name was different from the cell service name.
+
+### frontend
+
+The login behaviour of the WebDAV frontend was changed. Now, if a user presents 
+invalid credentials, the login attempt will fail and result in a 401 status code.
+Previously, that case was treated as if the user had not presented any credentials
+at all.
+
+Normally, users get prompted for authentication when interacting with the WebDAV interface.
+This is not desirable for AJAX requests coming from the web frontend. With this release,
+Javascript can submit AJAX requests with username 'anonymous' to
+achieve desired anonymous interaction without the browser prompting the
+user for credentials if it turns out authentication is required.
+
+### pool
+
+A minor documentation error for the `rep ls` command was fixed.
+
+### resilience
+
+The behaviour of resilience manager was improved to allow easier operation in cases 
+where a pool needs to be intentionally taken offline. Previously, a bug prevented
+resilience from fully taking into account pools which were deliberately 'excluded' 
+by the administrator. The redundant `pool suppress resilience` 
+command on the pools has been removed; `pool exclude $POOLNAME` is the replacement.
+Excluded pools are now correctly handled by resilience manager, and any marking of 
+pools as excluded will survive a restart of the resilience manager.
+
+### script
+
+When a pool's metadata conversion operations would fail, an error caused
+a script to report successful conversions. This error has been fixed now.
+
+### webdav
+
+There are WebDAV clients that do not send a `User-Agent` header along with 
+their requests. dCache's WebDAV code has been updated to avoid 
+NullPointerExceptions occuring in those cases.
+
+### zookeeper
+
+There was a race condition when creating log directories on a system using
+a local Zookeeper service. In rare cases, this led to messages stating
+	(System) [] URL [file:/usr/share/dcache/services/zookeeper.batch]: line 42: Command failed ((3) Unable to create data directory /var/lib/dcache/zookeeper/version-2; caused by: Unable to create data directory /var/lib/dcache/zookeeper/version-2)
+and dCache not starting successfully. 
+This race condition has now been fixed, and the log file creation is thus reliable now.
+
+
+### Changelog 2.16.2..2.16.3
+
+<!-- git log 2.16.2..2.16.3 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[e36c8a0](https://github.com/dcache/dcache/commit/e36c8a05198421b94a1c3eb116e4e9acda1087bf)
+:   [maven-release-plugin] prepare release 2.16.3
+
+[2a3a3ba](https://github.com/dcache/dcache/commit/2a3a3babe1db3b71e2d98adac36c23f24d68466d)
+:   webdav: avoid NPE if client fails to send a User-Agent header
+
+[3b3bf36](https://github.com/dcache/dcache/commit/3b3bf36eea604e25af9a979e87cb7e9e5bf2a487)
+:   cells: Allow local delivery of messages through queue routes
+
+[3cce13c](https://github.com/dcache/dcache/commit/3cce13c1782a2a87b02d0f701ed028d54899f7d3)
+:   zookeeper: avoid race in creating log directories
+
+[77e5f86](https://github.com/dcache/dcache/commit/77e5f86e1946190cd3b721ee63c78d38c8071f48)
+:   build: add code-coverage reports
+
+[2f4cd02](https://github.com/dcache/dcache/commit/2f4cd02705fac7dc6f7afcd3bb19aeb4c7eec3fe)
+:   cells: Fix local delivery to queues
+
+[04a194f](https://github.com/dcache/dcache/commit/04a194f91e1d1cc7d96dc9f75662e99d243a6f97)
+:   pool: Report file in transient state as locked when setting sticky flag
+
+[bdcef9d](https://github.com/dcache/dcache/commit/bdcef9d358afac048b71037cae5dc6916879e6ef)
+:   admin: Fix compatibility with OpenSSH 7
+
+[aa30ef9](https://github.com/dcache/dcache/commit/aa30ef94cb04dfee963a369a3211338c971f34bf)
+:   pool: Fix documentation error for -storage option of rep ls command
+
+[0193cf3](https://github.com/dcache/dcache/commit/0193cf3eb21d8c3f6d4b246e37a35c5e8cf17faf)
+:   script: Do not claim success if meta data conversion failed
+
+[0f749a8](https://github.com/dcache/dcache/commit/0f749a8ecd94a24e5a24ec155566f74c5132780b)
+:   frontend: add support for user 'anonymous'
+
+[6bc8178](https://github.com/dcache/dcache/commit/6bc817827884b4e9bcd620312e1c1b855ee11250)
+:   resilience: fix incomplete behavior for pools intentionally marked "excluded"
+
+[da3f0a3](https://github.com/dcache/dcache/commit/da3f0a3945e142e5b2aef595b03b407752d30b6a)
+:   frontend: always fail request if wrong credentials are presented
+
+[b197331](https://github.com/dcache/dcache/commit/b197331ccb425bb2671334718e7fd5af27cbfec7)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.16.2
 
 ### admin

@@ -94,6 +94,52 @@ Highlights from this release:
   enforced. Clients that relied on these not being enforced will
   fail after upgrade.
 
+## Release 2.15.9
+
+### admin
+
+The admin door now generates SSH keys to ensure compatibility with OpenSSH 7. Additionally,
+a new property `admin.paths.host-keys` was introduced in the admin.properties file, 
+allowing to specify the location of keys.
+
+### pool
+
+A minor documentation error for the `rep ls` command was fixed.
+
+### script
+
+When a pool's metadata conversion operations would fail, an error caused
+a script to report successful conversions. This error has been fixed now.
+
+### webdav
+
+There are WebDAV clients that do not send a `User-Agent` header along with 
+their requests. dCache's WebDAV code has been updated to avoid 
+NullPointerExceptions occuring in those cases.
+
+
+### Changelog 2.15.8..2.15.9
+
+<!-- git log 2.15.8..2.15.9 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[29c349e](https://github.com/dcache/dcache/commit/29c349e479b203223c848e17500b365f101b4f95)
+:   [maven-release-plugin] prepare release 2.15.9
+
+[5370f74](https://github.com/dcache/dcache/commit/5370f740e5f80aaeacbeea937ec623d1995d57b2)
+:   webdav: avoid NPE if client fails to send a User-Agent header
+
+[90cba25](https://github.com/dcache/dcache/commit/90cba25650b8287075379d0b3901abd9e0629c2e)
+:   admin: Fix compatibility with OpenSSH 7
+
+[0f98c97](https://github.com/dcache/dcache/commit/0f98c97d7be86a16a38b09fda32c63e1aead51f5)
+:   pool: Fix documentation error for -storage option of rep ls command
+
+[bb0a6aa](https://github.com/dcache/dcache/commit/bb0a6aa13d5fbbf6ce49907f4c9432cf29c13acb)
+:   script: Do not claim success if meta data conversion failed
+
+[de3207f](https://github.com/dcache/dcache/commit/de3207fafab529e80788e1c303f8edbff54b03a8)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.15.8
 
 ### admin

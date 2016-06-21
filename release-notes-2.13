@@ -137,6 +137,36 @@ Highlights from this release:
   required upon upgrading, but downgrading is not possible without
   explicitly converting the format.
 
+## Release 2.13.34
+
+### admin
+
+The admin door now generates SSH keys to ensure compatibility with OpenSSH 7. Additionally,
+a new property `admin.paths.host-keys` was introduced in the admin.properties file, 
+allowing to specify the location of keys.
+
+### script
+
+When a pool's metadata conversion operations would fail, an error caused
+a script to report successful conversions. This error has been fixed now.
+
+
+### Changelog 2.13.33..2.13.34
+
+<!-- git log 2.13.33..2.13.34 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[6648594](https://github.com/dcache/dcache/commit/6648594436355b8f9f53fc06cd139def12553dc9)
+:   [maven-release-plugin] prepare release 2.13.34
+
+[a28fd19](https://github.com/dcache/dcache/commit/a28fd19710ce46a49e94d4644e9c65e445389813)
+:   admin: Fix compatibility with OpenSSH 7
+
+[685c80d](https://github.com/dcache/dcache/commit/685c80dabdd258af0bc8640c296ff456da9a4952)
+:   script: Do not claim success if meta data conversion failed
+
+[7bf4f5a](https://github.com/dcache/dcache/commit/7bf4f5a953c384a066acb5c2d514e1ecfc4cd3db)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.13.33
 
 ### admin
