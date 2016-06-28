@@ -197,7 +197,23 @@
         <version-prefix>2.16.</version-prefix>
       
 
-      <release version="3" recommended="1">
+      <release version="4" recommended="1">
+        <date>28.6.2016</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>b613340a18e66c7615bcc58ded1bfbb6</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>016920b1970524e06a97f16f0b55f434</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>010fc09e2701f982eeb64bbbbbb77942</md5sum>
+        </package>
+      </release>
+
+      <release version="3">
         <date>21.6.2016</date>
         <package name="Debian package">
           <download-url>_VERSION-1_all.deb</download-url>
@@ -310,7 +326,23 @@
        <notes-url>release-notes-2.15.shtml</notes-url>
        <version-prefix>2.15.</version-prefix>
       
-       <release version="9" recommended="1">
+       <release version="10" recommended="1">
+        <date>28.6.2016</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>87ebb481f062e31d189af9ab76481262</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>e3619d814505d0a2f2457fd7467b3f0b</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>9c45847243fb8b575e836112e9d70497</md5sum>
+        </package>
+      </release>
+
+      <release version="9">
         <date>21.6.2016</date>
         <package name="Debian package">
           <download-url>_VERSION-1_all.deb</download-url>

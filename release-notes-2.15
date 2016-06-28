@@ -94,6 +94,13 @@ Highlights from this release:
   enforced. Clients that relied on these not being enforced will
   fail after upgrade.
 
+## Release 2.15.10
+
+### Changes affecting multiple services
+
+Fix security vulnerability.  Affects following services: dcap, ftp,
+srm, transfermanagers, webdav and xrootd.
+
 ## Release 2.15.9
 
 ### admin

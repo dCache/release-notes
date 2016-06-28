@@ -111,6 +111,13 @@ HTML header: <title>dCache 2.16 Release Notes</title>
 * Sites with a custom `httpd.conf` configuration will have to adjust
   this upon upgrade to inject the cell address of the `info` service.
 
+## Release 2.16.4
+
+### Changes affecting multiple services
+
+Fix security vulnerability.  Affects following services: dcap, ftp,
+srm, transfermanagers, webdav and xrootd.
+
 ## Release 2.16.3
 
 ### admin
