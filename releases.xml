@@ -207,6 +207,10 @@
           <download-url>-VERSION-1.noarch.rpm</download-url>
           <md5sum>016920b1970524e06a97f16f0b55f434</md5sum>
         </package>
+        <package name="Solaris package">
+          <download-url>-VERSION-1.pkg</download-url>
+          <md5sum>023cbaff0f6903aad9deddcbdbd2fd38</md5sum>
+        </package>
         <package name="tgz">
           <download-url>-VERSION.tar.gz</download-url>
           <md5sum>010fc09e2701f982eeb64bbbbbb77942</md5sum>
@@ -335,6 +339,10 @@
         <package name="rpm">
           <download-url>-VERSION-1.noarch.rpm</download-url>
           <md5sum>e3619d814505d0a2f2457fd7467b3f0b</md5sum>
+        </package>
+        <package name="Solaris package">
+          <download-url>-VERSION-1.pkg</download-url>
+          <md5sum>2fc47de4aeb0e3f9250e89685fed3a9b</md5sum>
         </package>
         <package name="tgz">
           <download-url>-VERSION.tar.gz</download-url>
