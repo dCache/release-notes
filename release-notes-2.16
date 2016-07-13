@@ -117,7 +117,7 @@ HTML header: <title>dCache 2.16 Release Notes</title>
 
 A change to the alarms system improves handling of alarms with unset types.
 
-### dcache-restful-api
+### frontend 
 
 Users can query existing Quality of Services, for example, storage requirements such as flexible allocation of disk or tape storage space. Possibility to  query QoS for the specified file object.
 
