@@ -111,6 +111,199 @@ HTML header: <title>dCache 2.16 Release Notes</title>
 * Sites with a custom `httpd.conf` configuration will have to adjust
   this upon upgrade to inject the cell address of the `info` service.
 
+## Release 2.16.5
+
+### alarms
+
+A change to the alarms system improves handling of alarms with unset types.
+
+### dcache-restful-api
+
+Users can query existing Quality of Services, for example, storage requirements such as flexible allocation of disk or tape storage space. Possibility to  query QoS for the specified file object.
+
+### httpd
+
+
+An improvement to error checking avoids an unnecessary NullPointerException being logged.
+
+### nfs
+
+A race condition in the NFS door that could result in the creation of
+multiple inconsistent copies of a file being uploaded has been fixed.
+
+### pool
+
+A regression was fixed that caused the `jtm go` command to occasionally not work.
+
+When a transfer's status is queried before the transfer is initiated,
+which can occasionally happen for queued requests, Exceptions were logged. 
+This behaviour has now been corrected, providing more robust operation.
+
+Permanent migration jobs were persisted in the pool setup file. The current release fixes  a problem causing permanent migration jobs to be duplicated
+if the pool setup file was reloaded.
+
+Several race conditions in the pool's migration module are fixed now.
+
+A regression prevented queues to be set to not handle any jobs at all. The fix allows to pass a limit of 0 to `mover set max active`.
+
+A regression was fixed that caused pools to "leak" movers if those were cancelled
+while still being queued.
+
+### resilience
+
+Until now, a check was in place that made it impossible to link resilient storage units to non-resilient pool groups. This constraint has now been removed in order to accommodate use cases 
+such as writing to a "staging" pool and then transferring from there to a resilient pool.
+
+A potential race condition in Resilience Manager has been fixed.
+
+File operations run concurrently, but are serialized with respect to
+pnfsid. For any logical file, only one copy or remove is thus allowed
+to run at a given time. In situations with several concurrent scans,
+this update improves the handling of metadata on the affected files.
+
+Removing pools from a resilient group is now handled in a more robust manner.
+
+File operations run concurrently, but are serialized with respect to
+pnfsid. For any logical file, only one copy or remove is thus allowed
+to run at a given time. In situations with several concurrent scans,
+this update improves the handling of metadata on the affected files.
+
+A minor bug in target selection for a corner case has been resolved.
+
+Resilience Manager now implements improved checks when determining whether or not a pool needs scanning after a state change.
+
+Pools which were once resilient, but for which resilience has been deactivated,
+no longer stick around in the operation map and thus disappear from the "pool ls" listing.
+
+After the initial commit of Resilience, some classes were renamed to use "File"
+rather than "Pnfs" as a more proper designation. With this release, all such occurences have been renamed.
+
+### spacemanager
+
+Fixes a compatibility problem with NFS in which space manager would fail with
+a duplicate key error.
+
+### srm
+
+A hint to describe the necessity to include escaping has been added.
+
+The current release adds small fixes to SRM shell.
+
+The current release adds small fixes to SRM shell.
+
+The current release fixes issues in which the use of SRM third party copy operations could cause
+the SRM cell to become unresponsive, possibly even run out of memory.
+
+
+### Changelog 2.16.4..2.16.5
+
+<!-- git log 2.16.4..2.16.5 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[e81cf7b](https://github.com/dcache/dcache/commit/e81cf7bb5b4256636d363cd5112277b1a6b28258)
+:   [maven-release-plugin] prepare release 2.16.5
+
+[2cdc7b9](https://github.com/dcache/dcache/commit/2cdc7b9d0327c1ab80375c45fa7c429be21a9b5f)
+:   pom: use project.version instead of derived dcache.version
+
+[0926362](https://github.com/dcache/dcache/commit/0926362083b0cea95ac6dc5583e84f91de31d238)
+:   pool: Cancel permanent migration jobs when reload pool setup file
+
+[0dd0545](https://github.com/dcache/dcache/commit/0dd0545ed7bd509697576dc579e0d8ac2841cf3e)
+:   archetypes: Adjust version numbers to match parent artifact
+
+[92982a2](https://github.com/dcache/dcache/commit/92982a2fddd50688107cea238e29e0be77405f46)
+:   dcache-restful-api: fix data type for cdmi_geographic_placement
+
+[b3e362c](https://github.com/dcache/dcache/commit/b3e362c0c3333c819cc91a6fd310db77ca4caf35)
+:   resilience: eliminate unnecessary update calls and fix synchronization of file op registration
+
+[ff437ee](https://github.com/dcache/dcache/commit/ff437ee65dae29870087f49ff73e03baf4e623b3)
+:   dcache-restful-api: RestfulAPI for QoS(CDMI) get current QoS for the specified file
+
+[02bfe0f](https://github.com/dcache/dcache/commit/02bfe0fd90e4f7a4313eadd5f531ad1e20137086)
+:   dcache-restful-api: RestfulAPI for QoS(CDMI)
+
+[89781d2](https://github.com/dcache/dcache/commit/89781d2a61e71b606164c6b2f8175058b9a06fcd)
+:   srm: add hint to escape IDs
+
+[283456b](https://github.com/dcache/dcache/commit/283456bf59d087b453629bd38abd34ec229db74e)
+:   archetype: Add archetype for creating nearline storage plugins
+
+[a70e0b7](https://github.com/dcache/dcache/commit/a70e0b725cbcf5960a31602ae01afdaefb957739)
+:   nfs: Fix race condition in transfer startup
+
+[7328a70](https://github.com/dcache/dcache/commit/7328a702505dc63979aa28cb6ce07553ae4434e3)
+:   common-cli: Fix compatibility with Java 7
+
+[7c802fe](https://github.com/dcache/dcache/commit/7c802fe0c156f88226bd9b76fa6793a2350f74e2)
+:   SrmShell.java: changed 'rw--' to 'rw-' in case TPermissionMode._RW
+
+[ed7e347](https://github.com/dcache/dcache/commit/ed7e3478a2a411af7a6fc822336f0ac383c8e46a)
+:   SrmShell.java: changed 'rx-' to 'r-x'
+
+[6c9f639](https://github.com/dcache/dcache/commit/6c9f6399560505f1c65cd52dd96b029308db82c4)
+:   info: fix broken unit-test
+
+[1c01d12](https://github.com/dcache/dcache/commit/1c01d125e5285872f71954d7b5ca242203d59c02)
+:   srm: Resolve message thead blocking issues with SRM third party copy
+
+[da1240c](https://github.com/dcache/dcache/commit/da1240c50120b0ea597039b1eefcc6f0a74df90d)
+:   restful-api: make exception and error handling resful
+
+[085afd7](https://github.com/dcache/dcache/commit/085afd730da668fcb014f9b4bcadf096d2870a19)
+:   spacemanager: Work around for doors resubmitting PoolAcceptFileMessage
+
+[8a6210b](https://github.com/dcache/dcache/commit/8a6210b21e1e0095c362761887d5916504508620)
+:   pool: Fix several race conditions in migration module
+
+[6193fe1](https://github.com/dcache/dcache/commit/6193fe1116ff6c17b547d2bfa69cf995f6a1223c)
+:   pool: Fix regression in mover set max active command
+
+[8b71c93](https://github.com/dcache/dcache/commit/8b71c933e6f1612812c6425c171ffc342e76ce76)
+:   pool: Fix mover leak
+
+[5a44dd2](https://github.com/dcache/dcache/commit/5a44dd2ee3e249080d32d474ca5bc1a23709b332)
+:   pool: Fix synchronization regression in jtm
+
+[70fa317](https://github.com/dcache/dcache/commit/70fa317106c05969cc955de8cbcf2c2324efc055)
+:   pool: avoid NPE when querying status of a 3rd-party HTTP transfer
+
+[1af8be6](https://github.com/dcache/dcache/commit/1af8be6c9e3f83e83d4786cb28eec2578f86bc16)
+:   resilience: finish the renaming of 'pnfs(id) operation' to 'file operation'
+
+[4649224](https://github.com/dcache/dcache/commit/4649224ab95091a6d5a84cf2887940cd93408a9f)
+:   [maven-release-plugin] prepare for next development iteration
+
+[2750d1e](https://github.com/dcache/dcache/commit/2750d1eb4b79379d84b02137c09b8b375133819f)
+:   resilience: repair (subtle) bug in target selection
+
+[6dbbdcb](https://github.com/dcache/dcache/commit/6dbbdcb22396204dee21d74ea9e23433edf19d16)
+:   resilience: fix error in file operation updating
+
+[5f4239b](https://github.com/dcache/dcache/commit/5f4239b2242cdd0e5db7b6699310e2634d964150)
+:   resilience: fix the way removal of a pool from a resilient group is handled
+
+[eb8f5c3](https://github.com/dcache/dcache/commit/eb8f5c31cd0fc473b1fdf6115b0237140a10f2ac)
+:   resilience: fix several related bugs in transition checking when scheduling scans
+
+[f987f5e](https://github.com/dcache/dcache/commit/f987f5ed7f4514185ee88274e6ed3b4d4dec8f9d)
+:   resilience: remove restriction on storage unit linkage
+
+[bedc68c](https://github.com/dcache/dcache/commit/bedc68cf281e1d93dc4c4e08f0e9205d5a5b7ea0)
+:   resilience: remove pool from operation table when it has been removed from a resilient group
+
+[6db604c](https://github.com/dcache/dcache/commit/6db604ce9184102aa8b56011a32d62098770631a)
+:   resilience: allow file consumer to propagate Exception
+
+[dcb4de1](https://github.com/dcache/dcache/commit/dcb4de1a0e89819d1780731e7ec91794e876718a)
+:   httpd: change condition from numeric inequality to non-null check on TransferInfo value
+
+[8a497a4](https://github.com/dcache/dcache/commit/8a497a4a87c0db6822b289d755b53abf5be11c13)
+:   alarms: fix NPE in type setter
+
+[9db791d](https://github.com/dcache/dcache/commit/9db791d9b6e0d9a2079f846f04ee682b1cedd978)
+:   chimera: update unit-test to log ChimeraFsExceptions
+
 ## Release 2.16.4
 
 ### Changes affecting multiple services

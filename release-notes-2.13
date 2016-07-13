@@ -137,6 +137,78 @@ Highlights from this release:
   required upon upgrading, but downgrading is not possible without
   explicitly converting the format.
 
+## Release 2.13.35
+
+### alarms
+
+A change to the alarms system improves handling of alarms with unset types.
+
+### nfs
+
+A race condition in the NFS door that could result in the creation of
+multiple inconsistent copies of a file being uploaded has been fixed.
+
+### pool
+
+When a transfer's status is queried before the transfer is initiated,
+which can occasionally happen for queued requests, Exceptions were logged. 
+This behaviour has now been corrected, providing more robust operation.
+
+Several race conditions in the pool's migration module are fixed now.
+
+A regression was fixed that caused pools to "leak" movers if those were cancelled
+while still being queued.
+
+### spacemanager
+
+Fixes a compatibility problem with NFS in which space manager would fail with
+a duplicate key error.
+
+### srm
+
+A hint to describe the necessity to include escaping has been added.
+
+The current release fixes issues in which the use of SRM third party copy operations could cause
+the SRM cell to become unresponsive, possibly even run out of memory.
+
+
+### Changelog 2.13.34..2.13.35
+
+<!-- git log 2.13.34..2.13.35 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[c5efd10](https://github.com/dcache/dcache/commit/c5efd10683e9a8b7a144556d2476ceee509afc15)
+:   [maven-release-plugin] prepare release 2.13.35
+
+[d93faa9](https://github.com/dcache/dcache/commit/d93faa98041bb9425f823a01c00fb340cd159b59)
+:   srm: add hint to escape IDs
+
+[9f0a13b](https://github.com/dcache/dcache/commit/9f0a13bb0183c7ce9596dcd31a43f12faa99883c)
+:   nfs: Fix race condition in transfer startup
+
+[1dde23d](https://github.com/dcache/dcache/commit/1dde23d89ad232f14936764176929de04788e02b)
+:   info: fix broken unit-test
+
+[0eec340](https://github.com/dcache/dcache/commit/0eec34071d7652b27992ac29b4f8518e7f08a0e0)
+:   srm: Resolve message thead blocking issues with SRM third party copy
+
+[45dfaf4](https://github.com/dcache/dcache/commit/45dfaf4014642bb6eb86f37c2571be37923cfcf4)
+:   spacemanager: Work around for doors resubmitting PoolAcceptFileMessage
+
+[39a82e1](https://github.com/dcache/dcache/commit/39a82e1ca8a25bd5fd50ece2a481418a689a78be)
+:   pool: Fix several race conditions in migration module
+
+[5cbe420](https://github.com/dcache/dcache/commit/5cbe420675eec03a3fee6ddfca2e88e8e2b5cf60)
+:   pool: Fix mover leak
+
+[2e2895e](https://github.com/dcache/dcache/commit/2e2895ea769820f2f9f2b922e4002ff0869b5495)
+:   pool: avoid NPE when querying status of a 3rd-party HTTP transfer
+
+[7be8cc2](https://github.com/dcache/dcache/commit/7be8cc2b6e491aa2ee6d350321013c0c00938c65)
+:   alarms: fix NPE in type setter
+
+[ab980e6](https://github.com/dcache/dcache/commit/ab980e66a60970c3e85ca6e70e42684c2de5b451)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.13.34
 
 ### admin

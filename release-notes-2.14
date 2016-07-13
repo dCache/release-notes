@@ -149,6 +149,88 @@ Highlights from this release:
   SRM requests will be lost from the database. Third party scripts
   that access the SRM database directly may have to be updated.
 
+## Release 2.14.24
+
+### alarms
+
+A change to the alarms system improves handling of alarms with unset types.
+
+### nfs
+
+A race condition in the NFS door that could result in the creation of
+multiple inconsistent copies of a file being uploaded has been fixed.
+
+### pool
+
+A regression was fixed that caused the `jtm go` command to occasionally not work.
+
+When a transfer's status is queried before the transfer is initiated,
+which can occasionally happen for queued requests, Exceptions were logged. 
+This behaviour has now been corrected, providing more robust operation.
+
+Several race conditions in the pool's migration module are fixed now.
+
+A regression prevented queues to be set to not handle any jobs at all. The fix allows to pass a limit of 0 to `mover set max active`.
+
+A regression was fixed that caused pools to "leak" movers if those were cancelled
+while still being queued.
+
+### spacemanager
+
+Fixes a compatibility problem with NFS in which space manager would fail with
+a duplicate key error.
+
+### srm
+
+A hint to describe the necessity to include escaping has been added.
+
+The current release fixes issues in which the use of SRM third party copy operations could cause
+the SRM cell to become unresponsive, possibly even run out of memory.
+
+
+### Changelog 2.14.23..2.14.24
+
+<!-- git log 2.14.23..2.14.24 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[912669a](https://github.com/dcache/dcache/commit/912669a4735be35593f668736a63ae8b3b79d16a)
+:   [maven-release-plugin] prepare release 2.14.24
+
+[a7c5866](https://github.com/dcache/dcache/commit/a7c58666fc3323066511e6289a0aa72b4aeecba1)
+:   srm: add hint to escape IDs
+
+[45c4db9](https://github.com/dcache/dcache/commit/45c4db949c386d0c197eb4f6da1a48fb440e2561)
+:   nfs: Fix race condition in transfer startup
+
+[17e0259](https://github.com/dcache/dcache/commit/17e0259c8df17918224721794c0efde8857f89bf)
+:   info: fix broken unit-test
+
+[15aa4b1](https://github.com/dcache/dcache/commit/15aa4b1435af5ed6f511ec310e15a3d9201c0618)
+:   srm: Resolve message thead blocking issues with SRM third party copy
+
+[7d3d568](https://github.com/dcache/dcache/commit/7d3d56882e8d0d050a8f3f40ea4c4027a7b46d2e)
+:   spacemanager: Work around for doors resubmitting PoolAcceptFileMessage
+
+[f67c8a0](https://github.com/dcache/dcache/commit/f67c8a0178bcd46ace2a33ca53e20cfba0c46b8b)
+:   pool: Fix several race conditions in migration module
+
+[5874750](https://github.com/dcache/dcache/commit/5874750b972dded5b55e080eb18c251215a60459)
+:   pool: Fix regression in mover set max active command
+
+[79cfa23](https://github.com/dcache/dcache/commit/79cfa235f92df66edd70583408ad24d3da252d8f)
+:   pool: Fix mover leak
+
+[9042ba0](https://github.com/dcache/dcache/commit/9042ba0e7108ad070c2a4d28111c877e160f4207)
+:   pool: Fix synchronization regression in jtm
+
+[e48472c](https://github.com/dcache/dcache/commit/e48472cb49a8bd955ada7047c321eb86fa6366a9)
+:   pool: avoid NPE when querying status of a 3rd-party HTTP transfer
+
+[2d97cdf](https://github.com/dcache/dcache/commit/2d97cdf11436f8f03da34ef990ef3b8b4da14153)
+:   alarms: fix NPE in type setter
+
+[b7ebe35](https://github.com/dcache/dcache/commit/b7ebe358da180f911da9f019d40c3efb79ba31ba)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.14.23
 
 ### admin
