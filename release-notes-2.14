@@ -149,6 +149,26 @@ Highlights from this release:
   SRM requests will be lost from the database. Third party scripts
   that access the SRM database directly may have to be updated.
 
+## Release 2.14.25
+
+### gplazma@-argus
+
+Fixed a problem with the gPlazma argus plugin that caused it to fail with a ClassNotFoundException.
+
+
+### Changelog 2.14.24..2.14.25
+
+<!-- git log 2.14.24..2.14.25 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[bafb5a4](https://github.com/dcache/dcache/commit/bafb5a451a891d9f5ae0fe96397d437f3aca03c8)
+:   [maven-release-plugin] prepare release 2.14.25
+
+[03ec581](https://github.com/dcache/dcache/commit/03ec581e3f36e349ee410f1c19a3b4a330062d86)
+:   gplazma2-argus: Update to Argus client 2.2.0 to fix dependency on VOMS library
+
+[2478dd6](https://github.com/dcache/dcache/commit/2478dd6d670f25bc79c19a189f3a60f74a1cf779)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.14.24
 
 ### alarms

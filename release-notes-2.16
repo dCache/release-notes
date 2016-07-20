@@ -111,6 +111,44 @@ HTML header: <title>dCache 2.16 Release Notes</title>
 * Sites with a custom `httpd.conf` configuration will have to adjust
   this upon upgrade to inject the cell address of the `info` service.
 
+## Release 2.16.6
+
+### frontend
+
+Users can query Qos for file objects. The current release  provides rest-api call to change QoS for files. 
+
+The current release added several enhancements to dcache-view.
+
+### gplazma@-argus
+
+Fixed a problem with the gPlazma argus plugin that caused it to fail with a ClassNotFoundException.
+
+
+### Changelog 2.16.5..2.16.6
+
+<!-- git log 2.16.5..2.16.6 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[256f750](https://github.com/dcache/dcache/commit/256f750768fc88f4d60dbb015427e8824736ed7a)
+:   [maven-release-plugin] prepare release 2.16.6
+
+[fa9e8c2](https://github.com/dcache/dcache/commit/fa9e8c2b466b99326298a965492a3c7c6f2aad8b)
+:   dcache-restful-api: RestfulAPI for QoS(CDMI) CHANGE current QoS for the specified file
+
+[a6a02a2](https://github.com/dcache/dcache/commit/a6a02a202fce69856c78edff81748562b2dac01d)
+:   packages/dcache-view: depolyment of dcache-view through nexus
+
+[9169cbf](https://github.com/dcache/dcache/commit/9169cbf38c00090170fbbae8dc95b16df922c62c)
+:   dcache-nearline-plugin-archetype: Include correct service loader definition
+
+[00cf3a9](https://github.com/dcache/dcache/commit/00cf3a98b04f9f8a75baa0cc8938892924d3870a)
+:   frontend/dcache-restful-api: remove www-authenticate header
+
+[6c01567](https://github.com/dcache/dcache/commit/6c01567a33c591b41939bc157452ec54f672b56f)
+:   gplazma2-argus: Update to Argus client 2.2.0 to fix dependency on VOMS library
+
+[f084045](https://github.com/dcache/dcache/commit/f0840456f3ea74101c0c30dff8f03558637a1e75)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.16.5
 
 ### alarms
