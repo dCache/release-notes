@@ -139,7 +139,7 @@ Highlights from this release:
 
 ## Release 2.13.36
 
-### gplazma@-argus
+### gplazma2-argus
 
 Fixed a problem with the gPlazma argus plugin that caused it to fail with a ClassNotFoundException.
 
