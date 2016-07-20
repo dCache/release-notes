@@ -119,7 +119,7 @@ Users can query Qos for file objects. The current release  provides rest-api cal
 
 The current release added several enhancements to dcache-view.
 
-### gplazma22argus
+### gplazma2-argus
 
 Fixed a problem with the gPlazma argus plugin that caused it to fail with a ClassNotFoundException.
 
