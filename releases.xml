@@ -197,7 +197,27 @@
         <version-prefix>2.16.</version-prefix>
       
 
-      <release version="6" recommended="1">
+      <release version="7" recommended="1">
+        <date>2.8.2016</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>cad3bc9108adb95632eb42a8f802af63</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>f833adea44d1483b9215850f6ef01326</md5sum>
+        </package>
+        <package name="Solaris package">
+          <download-url>-VERSION-1.pkg</download-url>
+          <md5sum>dbaad7d8b28815fb6c649346eeb5cabb</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>d3e2dceb331ab23c0268d9c196e077a4</md5sum>
+        </package>
+      </release>
+
+      <release version="6">
         <date>20.7.2016</date>
         <package name="Debian package">
           <download-url>_VERSION-1_all.deb</download-url>
@@ -370,7 +390,27 @@
        <notes-url>release-notes-2.15.shtml</notes-url>
        <version-prefix>2.15.</version-prefix>
       
-       <release version="12" recommended="1">
+       <release version="13" recommended="1">
+        <date>2.8.2016</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>936e914dbafaabe8648c9a116fb4ac09</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>9e6d600968cb52754c9b95544752fb81</md5sum>
+        </package>
+        <package name="Solaris package">
+          <download-url>-VERSION-1.pkg</download-url>
+          <md5sum>18a5c15929bff12796e65f1b454fa83d</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>bcb0f9a060b269bae92b3cfa9cfcb797</md5sum>
+        </package>
+      </release>
+
+      <release version="12">
         <date>20.7.2016</date>
         <package name="Debian package">
           <download-url>_VERSION-1_all.deb</download-url>
@@ -663,7 +703,23 @@
       <notes-url>release-notes-2.14.shtml</notes-url>
       <version-prefix>2.14.</version-prefix>
 
-      <release version="25" recommended="1">
+      <release version="26" recommended="1">
+        <date>2.8.2016</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>66a96a6bde98333fff1636f84497de2c</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>6fd5ac28924a0c123b51eec205cb7975</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>124e1bb2da0f8f5fa2d9fe72400b9c70</md5sum>
+        </package>
+      </release>
+
+      <release version="25">
         <date>20.7.2016</date>
         <package name="Debian package">
           <download-url>_VERSION-1_all.deb</download-url>
@@ -1208,7 +1264,23 @@
       <notes-url>release-notes-2.13.shtml</notes-url>
       <version-prefix>2.13.</version-prefix>
 
-      <release version="36" recommended="1">
+      <release version="37" recommended="1">
+        <date>2.8.2016</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>4b47c1ade521f2f4378ba8fb76896827</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>7d88bf49706bcbeb37e04947ebc2276f</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>8d0d1c0a649bd6fbec76a4c0a4777eb5</md5sum>
+        </package>
+      </release>
+
+      <release version="36">
         <date>20.7.2016</date>
         <package name="Debian package">
           <download-url>_VERSION-1_all.deb</download-url>
