@@ -111,6 +111,82 @@ HTML header: <title>dCache 2.16 Release Notes</title>
 * Sites with a custom `httpd.conf` configuration will have to adjust
   this upon upgrade to inject the cell address of the `info` service.
 
+## Release 2.16.8
+
+### billing
+
+Deployments may use more than one billing service. In such a deployment one may want all instances to log the same billing messages. This may be achieved by treating 'billing' as a topic rather than a named queue. 
+
+The `billing.cell.subscribe` property was added, allowing the billing service to subscribe to PubSub topics.
+
+### cells
+
+If the `create` command in CellShell fails because of unreadable setup files, it throws an IOException. This was incorrectly reported as a bug. Reporting has been corrected now.
+
+In rare cases, active transfers would show up with an incorrect state in the active transfers page of the admin backend. This was fixed, so that ransfers which are staging from non-DCAP doors are correctly indicated (in yellow) on the active transfers page, instead of showing up as "No Mover found" (in red).
+
+### common
+
+If there is an IOException when trying to read a setup file, the corresponding file name is now listed in the error message.
+
+### dcache-nearline-spi
+
+Since AbstractBlockingNearlineStorage is a useful baseclass for third party nearline storage implementations, it was made available as part of the dcache-nearline-spi artifact.
+
+### poolmanager
+
+An issue with PoolManager prevented it from delivering correct cost estimates. This was fixed, resulting in improved estimations of pool load.
+
+### srm
+
+The error messages for aborted srmRM uploads were improved. Instead of just stating "Upload aborted because the file was deleted by another request", the message now includes the session ID of the remove request. This ID can be used by admins to find the remove request in the SRM access log.
+
+### srmclient
+
+Mac OS-X BSD has an implementation of readlink that doesn't support the -f option. A recent upgrade to SRM Client used that option, so a workaround was necessary. This release fixes the issue, and SRM Client works again on MacOS.
+
+### transfermanager
+
+Due to a regression, 3rd-party WebDAV transfers would show a NullPointerException in transfer manager, although they completed correctly. This problem was fixed, and the progress report information is correct again. 
+
+
+### Changelog 2.16.7..2.16.8
+
+<!-- git log 2.16.7..2.16.8 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[47dfc4f](https://github.com/dcache/dcache/commit/47dfc4f4a508e5ad94cf19ce4eb9011da76b9da1)
+:   [maven-release-plugin] prepare release 2.16.8
+
+[531ab45](https://github.com/dcache/dcache/commit/531ab457d09b3778a75940da3d8eca7b62071222)
+:   srm: Include session identifier in error message when srmRm aborts an upload
+
+[284a31e](https://github.com/dcache/dcache/commit/284a31eb52fcec6b017c3cddfbe2100055c6f04e)
+:   billing: Expose property to subscribe to topics
+
+[486f797](https://github.com/dcache/dcache/commit/486f79731a2d66a8570aeda6aaa755483452e293)
+:   dcache-nearline-spi: Move AbstractBlockingNearlineStorage to dcache-nearline-spi
+
+[5fbd3e3](https://github.com/dcache/dcache/commit/5fbd3e3eed68cde327d50f2ead56078ae9487bed)
+:   cells: IOException is not a bug in create command
+
+[b58a557](https://github.com/dcache/dcache/commit/b58a55744e5d3c0ac295582336537da66f887a41)
+:   transfermanager: fix querying of 3rd-party transfer
+
+[0da9df7](https://github.com/dcache/dcache/commit/0da9df7040e69825f4fcc72a885a4d57b72671dc)
+:   common: include filename in error message
+
+[c391fdd](https://github.com/dcache/dcache/commit/c391fddf82c9bcb79335f87e7007acb7ae77c89e)
+:   srmclient: do not rely on -f option of readlink
+
+[52a709b](https://github.com/dcache/dcache/commit/52a709b9766fc4c8de1eab75062c71b5e89da36b)
+:   poolmanager: Fix incorrect correction of pool cost
+
+[4fd3879](https://github.com/dcache/dcache/commit/4fd387984429d82bf48f8b36812f74cfb96826cb)
+:   cells: handle empty string pool value on staging in TransferObserver
+
+[c5c9607](https://github.com/dcache/dcache/commit/c5c9607b85f6981ec0876797530c5fe5e65fc4e8)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.16.6
 
 ### frontend

@@ -149,6 +149,45 @@ Highlights from this release:
   SRM requests will be lost from the database. Third party scripts
   that access the SRM database directly may have to be updated.
 
+## Release 2.14.27
+
+### cells
+
+If the `create` command in CellShell fails because of unreadable setup files, it throws an IOException. This was incorrectly reported as a bug. Reporting has been corrected now.
+
+In rare cases, active transfers would show up with an incorrect state in the active transfers page of the admin backend. This was fixed, so that ransfers which are staging from non-DCAP doors are correctly indicated (in yellow) on the active transfers page, instead of showing up as "No Mover found" (in red).
+
+### common
+
+If there is an IOException when trying to read a setup file, the corresponding file name is now listed in the error message.
+
+### poolmanager
+
+An issue with PoolManager prevented it from delivering correct cost estimates. This was fixed, resulting in improved estimations of pool load.
+
+
+### Changelog 2.14.26..2.14.27
+
+<!-- git log 2.14.26..2.14.27 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[23263d1](https://github.com/dcache/dcache/commit/23263d1decebf78b766936bad9018f555c86145b)
+:   [maven-release-plugin] prepare release 2.14.27
+
+[a61373e](https://github.com/dcache/dcache/commit/a61373ef8547e0f629bbcba6a60753e1ad365367)
+:   cells: IOException is not a bug in create command
+
+[8bf50db](https://github.com/dcache/dcache/commit/8bf50db977fc563f2feee1eb20c8a0b29242a560)
+:   common: include filename in error message
+
+[f0d2757](https://github.com/dcache/dcache/commit/f0d275713f9c030af0b71d9930cae518c317c903)
+:   poolmanager: Fix incorrect correction of pool cost
+
+[3e656bf](https://github.com/dcache/dcache/commit/3e656bf4061021a56415c1916e7d1597ad5ec6cd)
+:   cells: handle empty string pool value on staging in TransferObserver
+
+[13bd117](https://github.com/dcache/dcache/commit/13bd1179e8db31950b90e51a087b85fc2bb411b0)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.14.25
 
 ### gplazma2-argus

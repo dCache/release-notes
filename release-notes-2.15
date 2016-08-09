@@ -94,6 +94,45 @@ Highlights from this release:
   enforced. Clients that relied on these not being enforced will
   fail after upgrade.
 
+## Release 2.15.14
+
+### cells
+
+If the `create` command in CellShell fails because of unreadable setup files, it throws an IOException. This was incorrectly reported as a bug. Reporting has been corrected now.
+
+In rare cases, active transfers would show up with an incorrect state in the active transfers page of the admin backend. This was fixed, so that ransfers which are staging from non-DCAP doors are correctly indicated (in yellow) on the active transfers page, instead of showing up as "No Mover found" (in red).
+
+### common
+
+If there is an IOException when trying to read a setup file, the corresponding file name is now listed in the error message.
+
+### poolmanager
+
+An issue with PoolManager prevented it from delivering correct cost estimates. This was fixed, resulting in improved estimations of pool load.
+
+
+### Changelog 2.15.13..2.15.14
+
+<!-- git log 2.15.13..2.15.14 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[c2bee26](https://github.com/dcache/dcache/commit/c2bee264dc2f34facd24fd2a455e58422bc0da6d)
+:   [maven-release-plugin] prepare release 2.15.14
+
+[ecbdabc](https://github.com/dcache/dcache/commit/ecbdabcfc870281b9276dca7ae3f91c2895a87ec)
+:   cells: IOException is not a bug in create command
+
+[c73bfee](https://github.com/dcache/dcache/commit/c73bfee474b2be39e81956f291ba7177d99cd735)
+:   common: include filename in error message
+
+[b1120b1](https://github.com/dcache/dcache/commit/b1120b1bb5666be309bae532ce175263355b6dc9)
+:   poolmanager: Fix incorrect correction of pool cost
+
+[ac5b994](https://github.com/dcache/dcache/commit/ac5b994ae0e33f47846b9eef6109c85b274e7f0c)
+:   cells: handle empty string pool value on staging in TransferObserver
+
+[949d236](https://github.com/dcache/dcache/commit/949d236513cf544b254b71edb7cc1185d5a31773)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.15.12
 
 ### gplazma2-argus
