@@ -137,6 +137,29 @@ Highlights from this release:
   required upon upgrading, but downgrading is not possible without
   explicitly converting the format.
 
+## Release 2.13.39
+
+### ftp
+
+The Apache Commons FtpClient can issue the LIST command with the
+non-standard `-a` option. Which was  causing dCache to switch
+output format from the long (`ls -l`-like) to the short (`ls`-like)
+response. This is fixed now and dCache is more compatible with Apache Commons FtpClient.
+
+
+### Changelog 2.13.38..2.13.39
+
+<!-- git log 2.13.38..2.13.39 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[a18bd39](https://github.com/dcache/dcache/commit/a18bd393ee22a821bcc90f10019862d0baa52add)
+:   [maven-release-plugin] prepare release 2.13.39
+
+[e19c303](https://github.com/dcache/dcache/commit/e19c303a40f39ab06b7fe19cbde4c3073d64c2d6)
+:   ftp: improve compatibility with Apache Commons FtpClient
+
+[361870a](https://github.com/dcache/dcache/commit/361870ad6f1bc4cf83778fb4e37153494a3b3063)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.13.38
 
 ### cells

@@ -111,6 +111,44 @@ HTML header: <title>dCache 2.16 Release Notes</title>
 * Sites with a custom `httpd.conf` configuration will have to adjust
   this upon upgrade to inject the cell address of the `info` service.
 
+## Release 2.16.9
+
+### Changes affecting multiple services
+
+
+The current release fixes compatibility with OpenSSH 7.2.
+
+### dcache-restful-api
+
+The current release addes a restfull call to change  the QoS of a file  from `disk+tape` to `tape`.
+
+### ftp
+
+The Apache Commons FtpClient can issue the LIST command with the
+non-standard `-a` option. Which was  causing dCache to switch
+output format from the long (`ls -l`-like) to the short (`ls`-like)
+response. This is fixed now and dCache is more compatible with Apache Commons FtpClient.
+
+
+### Changelog 2.16.8..2.16.9
+
+<!-- git log 2.16.8..2.16.9 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[e9d5186](https://github.com/dcache/dcache/commit/e9d5186592061eefdde8d88d79d5884292ffc595)
+:   [maven-release-plugin] prepare release 2.16.9
+
+[3efac50](https://github.com/dcache/dcache/commit/3efac50a87969216627ece3e296fe061a94cde1e)
+:   dcache-restful-api/pinmanager: modify  current QoS fom disk+tape to tape
+
+[ae798a6](https://github.com/dcache/dcache/commit/ae798a67cbb608d4e1e1ebdf8eb6c19148029ada)
+:   ftp: improve compatibility with Apache Commons FtpClient
+
+[4bacfe0](https://github.com/dcache/dcache/commit/4bacfe0b5ca41c7769cdf7ffe6084d52e47f106e)
+:   Upgrade to CANL 2.1 and BC 1.50
+
+[2cb69bd](https://github.com/dcache/dcache/commit/2cb69bd14c1190377fad72d80e933d6517a8bbaf)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.16.8
 
 ### billing
