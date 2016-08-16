@@ -120,7 +120,7 @@ The current release fixes compatibility with OpenSSH 7.2.
 
 ### dcache-restful-api
 
-The current release addes a restfull call to change  the QoS of a file  from `disk+tape` to `tape`.
+The current release adds a restfull call to change  the QoS of a file  from `disk+tape` to `tape`.
 
 ### ftp
 
