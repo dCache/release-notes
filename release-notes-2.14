@@ -149,6 +149,40 @@ Highlights from this release:
   SRM requests will be lost from the database. Third party scripts
   that access the SRM database directly may have to be updated.
 
+## Release 2.14.29
+
+### billing
+
+When using the `dcache billing` command with a non-default date format in the billing file, an unneccessary stack trace was printed. This has been corrected.
+
+### srm
+
+The SRM should periodically (by default every 10 minutes) delete obsolete historic data (older than 10 days by default) from the database. For cases where there are problems with that process, error logging and robustness against temporary database problems have been improved.
+
+### webadmin
+
+The Wicket library used by dCache internally issued warnings about upcoming naming changes. Those cluttered the log files, and are silenced from the current version on.
+
+
+### Changelog 2.14.28..2.14.29
+
+<!-- git log 2.14.28..2.14.29 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[acc657b](https://github.com/dcache/dcache/commit/acc657bde05a398bc72e1b51d8342a49c0289c6c)
+:   [maven-release-plugin] prepare release 2.14.29
+
+[aafe0bd](https://github.com/dcache/dcache/commit/aafe0bd6194a0e123d08d2d246b3cbe26423006c)
+:   srm: make out-of-date historic data deletion more robust
+
+[189dbd0](https://github.com/dcache/dcache/commit/189dbd0f513c9d75d1cd5c34f69f43d1668e7522)
+:   webadmin: silence warning about future change in wicket
+
+[745d1bc](https://github.com/dcache/dcache/commit/745d1bc3309576be1fbc7aed93b3a1308b042976)
+:   [maven-release-plugin] prepare for next development iteration
+
+[fd1d0a8](https://github.com/dcache/dcache/commit/fd1d0a8d992125e4d10659d4a582ea9a3aca9f50)
+:   billing: Removing erroneous stack trace output
+
 ## Release 2.14.28
 
 ### ftp

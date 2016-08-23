@@ -111,6 +111,70 @@ HTML header: <title>dCache 2.16 Release Notes</title>
 * Sites with a custom `httpd.conf` configuration will have to adjust
   this upon upgrade to inject the cell address of the `info` service.
 
+## Release 2.16.10
+
+### billing
+
+Formatting strings for the billing system have been extended to allow the names of the cell and cell domain to be addressed directly. Those names are accessible using `$cellName.cell$`and `$cellName.domain$`, respectively. This allows greater flexibility when creating informative messages. No existing formatting strings are affected by this change.
+
+When using the `dcache billing` command with a non-default date format in the billing file, an unneccessary stack trace was printed. This has been corrected.
+
+### cells
+
+The handling of failures during cell startup was improved.
+
+Fixed a RejectedExecutionException that could occur during shutdown.
+
+### srm
+
+The SRM should periodically (by default every 10 minutes) delete obsolete historic data (older than 10 days by default) from the database. For cases where there are problems with that process, error logging and robustness against temporary database problems have been improved.
+
+### webadmin
+
+The Wicket library used by dCache internally issued warnings about upcoming naming changes. Those cluttered the log files, and are silenced from the current version on.
+
+### zookeeper
+
+A race condition caused Zookeeper to report non-critical CancelledKeyException instances on shutdown. This has been fixed, streamlining the shutdown and reducing operationally irrelevant log entries.
+
+Previously, when shutting down dCache, the zookeeper cell was sufficiently slow that
+it required the System cell to explicitly interrupt still running threads. The shutdown has been accelerated, resulting also in less operationally irrelevant stack traces and errors reported in the process.
+
+
+### Changelog 2.16.9..2.16.10
+
+<!-- git log 2.16.9..2.16.10 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[598fea8](https://github.com/dcache/dcache/commit/598fea82415cf461a4dc8a308c265af325c58ae1)
+:   [maven-release-plugin] prepare release 2.16.10
+
+[c7f5145](https://github.com/dcache/dcache/commit/c7f5145d3b604a39f0a703d3b8d48cd486a569aa)
+:   srm: make out-of-date historic data deletion more robust
+
+[7220392](https://github.com/dcache/dcache/commit/7220392870b43ea7ee055c68cab2b52c57b89c1a)
+:   cells: Do not call shutdown from message thread
+
+[392ade9](https://github.com/dcache/dcache/commit/392ade9277237bcb23face4953123b11c0d38dcc)
+:   zookeeper: avoid one race in shutdown
+
+[3d2d2d1](https://github.com/dcache/dcache/commit/3d2d2d1fd3b0045937df878f2060e0302e81f94f)
+:   zookeeper: work-around slow shutdown of SessionTrackerImpl
+
+[78679bc](https://github.com/dcache/dcache/commit/78679bcb2b116446a384815047c53ea2d6c52ac0)
+:   webadmin: silence warning about future change in wicket
+
+[43a7fae](https://github.com/dcache/dcache/commit/43a7faebf46b33b7650f610742c2a0a7c6459713)
+:   [maven-release-plugin] prepare for next development iteration
+
+[263e224](https://github.com/dcache/dcache/commit/263e2243da0d878fb3bf8c528bfab6a489876e13)
+:   cells: Fix RejectedExecutionException during shutdown
+
+[cc3155a](https://github.com/dcache/dcache/commit/cc3155a647a5a7bca2f7cf1f7d93e8d3b01d8242)
+:   billing: Removing erroneous stack trace output
+
+[7a6b7e0](https://github.com/dcache/dcache/commit/7a6b7e0f0555bba569be3a099b1f2cfcae71f929)
+:   billing: Wrap cellName attribute to allow access to the cell and domain components
+
 ## Release 2.16.9
 
 ### Changes affecting multiple services

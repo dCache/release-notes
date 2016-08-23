@@ -137,6 +137,33 @@ Highlights from this release:
   required upon upgrading, but downgrading is not possible without
   explicitly converting the format.
 
+## Release 2.13.40
+
+### billing
+
+When using the `dcache billing` command with a non-default date format in the billing file, an unneccessary stack trace was printed. This has been corrected.
+
+### srm
+
+The SRM should periodically (by default every 10 minutes) delete obsolete historic data (older than 10 days by default) from the database. For cases where there are problems with that process, error logging and robustness against temporary database problems have been improved.
+
+
+### Changelog 2.13.39..2.13.40
+
+<!-- git log 2.13.39..2.13.40 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[e3f3e15](https://github.com/dcache/dcache/commit/e3f3e15ba70c6cd6daa5546b675db48a142b069e)
+:   [maven-release-plugin] prepare release 2.13.40
+
+[d01040a](https://github.com/dcache/dcache/commit/d01040abf654899f0cdae81e29be23efca4c27b0)
+:   srm: make out-of-date historic data deletion more robust
+
+[19ce372](https://github.com/dcache/dcache/commit/19ce3721c3e66990542b2c4d8572c2078d23f2e3)
+:   [maven-release-plugin] prepare for next development iteration
+
+[4470b99](https://github.com/dcache/dcache/commit/4470b99a1aab1748e817735ba0a2c3d0ef2513ee)
+:   billing: Removing erroneous stack trace output
+
 ## Release 2.13.39
 
 ### ftp
