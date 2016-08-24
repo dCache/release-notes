@@ -190,6 +190,26 @@ An issue with PoolManager prevented it from delivering correct cost estimates. T
 [949d236](https://github.com/dcache/dcache/commit/949d236513cf544b254b71edb7cc1185d5a31773)
 :   [maven-release-plugin] prepare for next development iteration
 
+## Release 2.15.13
+
+### alarms
+
+Log entries that were promoted to alarm status and that show up in the webadmin table can now contain more detailed information.
+
+
+### Changelog 2.15.12..2.15.13
+
+<!-- git log 2.15.12..2.15.13 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[28777b7](https://github.com/dcache/dcache/commit/28777b709ede6401116f4904c9bdea17be454b62)
+:   [maven-release-plugin] prepare release 2.15.13
+
+[372a696](https://github.com/dcache/dcache/commit/372a69688985c935ec2f07c1fb6748a03e480ec9)
+:   alarms: add ndc info to alarm info
+
+[c663871](https://github.com/dcache/dcache/commit/c6638717f14bc612273b33cb3893920298a714b5)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.15.12
 
 ### gplazma2-argus

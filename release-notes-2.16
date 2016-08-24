@@ -289,6 +289,32 @@ Due to a regression, 3rd-party WebDAV transfers would show a NullPointerExceptio
 [c5c9607](https://github.com/dcache/dcache/commit/c5c9607b85f6981ec0876797530c5fe5e65fc4e8)
 :   [maven-release-plugin] prepare for next development iteration
 
+## Release 2.16.7
+
+### alarms
+
+Log entries that were promoted to alarm status and that show up in the webadmin table can now contain more detailed information.
+
+
+### Changelog 2.16.6..2.16.7
+
+<!-- git log 2.16.6..2.16.7 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[ea871c1](https://github.com/dcache/dcache/commit/ea871c15fb4667fdb390dcc27afc382d1eb32b82)
+:   [maven-release-plugin] prepare release 2.16.7
+
+[332cd22](https://github.com/dcache/dcache/commit/332cd2251c4e5dca29203acf61a16b6412ace481)
+:   Fixed package on NDC import.
+
+[3348eb3](https://github.com/dcache/dcache/commit/3348eb3c72b8e3ec9d2af6376e49010af214ea70)
+:   alarms: add ndc info to alarm info
+
+[b5fd159](https://github.com/dcache/dcache/commit/b5fd159e303d5ca1fd05429d84ff8213b7fe8d1d)
+:   resilience: fix alarm log level
+
+[eb95101](https://github.com/dcache/dcache/commit/eb9510128df2c413da24eb6033d164eb10145e65)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.16.6
 
 ### frontend
