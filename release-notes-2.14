@@ -149,6 +149,33 @@ Highlights from this release:
   SRM requests will be lost from the database. Third party scripts
   that access the SRM database directly may have to be updated.
 
+## Release 2.14.30
+
+### chimera
+
+Chimera occasionally suffered from (operationally irrelevant) IllegalStateExceptions. Those are now avoided.
+
+### doors
+
+Doors could get stuck temporarily if a file was deleted during pool selection. This has been fixed, and in such cases, transfers are now aborted properly.
+
+
+### Changelog 2.14.29..2.14.30
+
+<!-- git log 2.14.29..2.14.30 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[1aa2fcb](https://github.com/dcache/dcache/commit/1aa2fcb24e7e6064554fd18308de1bf119f5d76f)
+:   [maven-release-plugin] prepare release 2.14.30
+
+[15daf6d](https://github.com/dcache/dcache/commit/15daf6d97484304933f6bf2727ca27c073b929d6)
+:   doors: Abort transfer if file is deleted during pool selection
+
+[726b7a8](https://github.com/dcache/dcache/commit/726b7a8c3f9387bda5ec6a469fe42a9389d3c845)
+:   chimera: Fix IllegalStateException in inode cache
+
+[08823f2](https://github.com/dcache/dcache/commit/08823f2906e4239854b54e31a107203ac78918fc)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.14.29
 
 ### billing

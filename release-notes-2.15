@@ -94,6 +94,33 @@ Highlights from this release:
   enforced. Clients that relied on these not being enforced will
   fail after upgrade.
 
+## Release 2.15.17
+
+### chimera
+
+Chimera occasionally suffered from (operationally irrelevant) IllegalStateExceptions. Those are now avoided.
+
+### doors
+
+Doors could get stuck temporarily if a file was deleted during pool selection. This has been fixed, and in such cases, transfers are now aborted properly.
+
+
+### Changelog 2.15.16..2.15.17
+
+<!-- git log 2.15.16..2.15.17 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[1990b83](https://github.com/dcache/dcache/commit/1990b83782725aec2344e7177fb070e673ea31e3)
+:   [maven-release-plugin] prepare release 2.15.17
+
+[f6d6640](https://github.com/dcache/dcache/commit/f6d664032e17441ce875cc1245ccd736c985e5a0)
+:   doors: Abort transfer if file is deleted during pool selection
+
+[e739915](https://github.com/dcache/dcache/commit/e7399159c07e49de994ca0048cc02388bae14c3d)
+:   chimera: Fix IllegalStateException in inode cache
+
+[212287f](https://github.com/dcache/dcache/commit/212287fa8ec47545a90e6d893bfdbca618d0560f)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.15.16
 
 ### billing
