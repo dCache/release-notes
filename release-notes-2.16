@@ -111,6 +111,70 @@ HTML header: <title>dCache 2.16 Release Notes</title>
 * Sites with a custom `httpd.conf` configuration will have to adjust
   this upon upgrade to inject the cell address of the `info` service.
 
+## Release 2.16.12
+
+### alarms
+
+Alarm email notifications are now sent only on the first occurrence
+of given alarm (i.e., for that alarm instance's unique ID).
+
+If an alarm has been closed and not deleted,
+but then occurs again, the counter for receiving that alarm
+is now reset to 1, in order to treat this as a new (set of)
+occurrences, and to guarantee a new notification will be sent.
+
+### cells
+
+Several bugs related to cell shutdown were fixed in this release. 
+Most noticeably, tunnel connections could appear to fail, which has been corrected.
+
+### webadmin
+
+Due to an implementation detail in a library used for the webadmin pages, filtering 
+tables was a bit unintuitive until now: A filter that was set in a certain table column would
+reappear on tables in other browser windows if they had similar columns. 
+
+This behaviour was corrected, and tables on different pages exposed simultaneously in different
+browser tabs are now filtered independently. However, the fix also has the side effect that
+now with page reloads and form submissions the filters are cleared. Any commands, however, will 
+always be issued correctly.
+
+Filtering rows in webadmin tables could occasionally lead to unintuitive behaviour with regard to selections:
+Filtering a table and hiding rows may be included in a "select all" or "deselect all" operation.
+This was fixed, and selection/Deselection of hidden rows is now prevented.
+
+Issues with filter boxes disappearing or filters resetting have been solved by disabling
+AJAX auto refresh for the affected pages.
+
+
+### Changelog 2.16.11..2.16.12
+
+<!-- git log 2.16.11..2.16.12 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[63ccd34](https://github.com/dcache/dcache/commit/63ccd34d717571f7613a755077934d040d7718b3)
+:   [maven-release-plugin] prepare release 2.16.12
+
+[762f772](https://github.com/dcache/dcache/commit/762f772b4ce257e9d724662f42f3369dae10b162)
+:   cells: Backport fixes for cell shutdown
+
+[775d5af](https://github.com/dcache/dcache/commit/775d5af5f374f5ad073077d4ecab803ea6edfedd)
+:   dcache-webadmin: synchronize client-side filtering with server-side selection of rows on pages using picnet table filters
+
+[92e5f39](https://github.com/dcache/dcache/commit/92e5f3960b452f426872e2a7e6e5a319d731d5ff)
+:   alarms: reset count history on reopened alarm
+
+[e3e9bbb](https://github.com/dcache/dcache/commit/e3e9bbbc889bcb0b7bcf458f200e17d4fcb604ee)
+:   dcache-webadmin: disable saving table filter settings to browser cookies
+
+[5fe3119](https://github.com/dcache/dcache/commit/5fe31191869360f7d461b0d0d4e3b048cd011c08)
+:   dcache-webadmin: disable AJAX autorefresh on pages using picnet table filter library
+
+[331c196](https://github.com/dcache/dcache/commit/331c1966e201283cbbf054477bbadd3b7c45cbfd)
+:   alarms: only send email on first alarm occurrence
+
+[8378505](https://github.com/dcache/dcache/commit/83785051fddbdc5f01480603548bcb684195e51c)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.16.11
 
 ### chimera

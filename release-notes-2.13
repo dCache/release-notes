@@ -137,6 +137,62 @@ Highlights from this release:
   required upon upgrading, but downgrading is not possible without
   explicitly converting the format.
 
+## Release 2.13.42
+
+### alarms
+
+Alarm email notifications are now sent only on the first occurrence
+of given alarm (i.e., for that alarm instance's unique ID).
+
+If an alarm has been closed and not deleted,
+but then occurs again, the counter for receiving that alarm
+is now reset to 1, in order to treat this as a new (set of)
+occurrences, and to guarantee a new notification will be sent.
+
+### webadmin
+
+Due to an implementation detail in a library used for the webadmin pages, filtering 
+tables was a bit unintuitive until now: A filter that was set in a certain table column would
+reappear on tables in other browser windows if they had similar columns. 
+
+This behaviour was corrected, and tables on different pages exposed simultaneously in different
+browser tabs are now filtered independently. However, the fix also has the side effect that
+now with page reloads and form submissions the filters are cleared. Any commands, however, will 
+always be issued correctly.
+
+Filtering rows in webadmin tables could occasionally lead to unintuitive behaviour with regard to selections:
+Filtering a table and hiding rows may be included in a "select all" or "deselect all" operation.
+This was fixed, and selection/Deselection of hidden rows is now prevented.
+
+Issues with filter boxes disappearing or filters resetting have been solved by disabling
+AJAX auto refresh for the affected pages.
+
+
+### Changelog 2.13.41..2.13.42
+
+<!-- git log 2.13.41..2.13.42 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[656c953](https://github.com/dcache/dcache/commit/656c953ae9be92bbb142c3659c595d9b1e58842f)
+:   [maven-release-plugin] prepare release 2.13.42
+
+[8a40cf9](https://github.com/dcache/dcache/commit/8a40cf9aacc9f2acf988149ad0fd5313b90ee986)
+:   dcache-webadmin: synchronize client-side filtering with server-side selection of rows on pages using picnet table filters
+
+[36e489d](https://github.com/dcache/dcache/commit/36e489dacf0afb68ec13f71b04157ba4e4620af7)
+:   alarms: reset count history on reopened alarm
+
+[7e6854c](https://github.com/dcache/dcache/commit/7e6854cdf44de3c79496e91a47858c29213b6e89)
+:   dcache-webadmin: disable saving table filter settings to browser cookies
+
+[d5aa421](https://github.com/dcache/dcache/commit/d5aa4216e0dbb63b9b1cb4372d0dc5a723c4f396)
+:   dcache-webadmin: disable AJAX autorefresh on pages using picnet table filter library
+
+[0740b36](https://github.com/dcache/dcache/commit/0740b36e508b0bd23cdf6eeffa77aa9acd1bcf5c)
+:   alarms: only send email on first alarm occurrence
+
+[0496445](https://github.com/dcache/dcache/commit/04964455a2e095a13dc4af05d037742364471f27)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.13.41
 
 ### chimera
