@@ -74,7 +74,21 @@
 	    <notes-url>srmclient-VERSION.shtml</notes-url>
 	    <download-url-prefix>../repo/</download-url-prefix>
 
-	    <release version="2.10.7" recommended="1">
+	    <release version="2.16.12" recommended="1">
+	        <date>12.9.2016</date>
+
+		<package name="rpm">
+		    <download-url>2.16/dcache-srmclient-VERSION-1.noarch.rpm</download-url>
+		    <md5sum>469d39dd293dd123ed007115fde8877d</md5sum>
+		</package>
+
+		<package name="tar.gz">
+		    <download-url>2.16/srm-client-VERSION.tar.gz</download-url>
+		    <md5sum>83be1cdc6d96700c6f5751b7f825afee</md5sum>
+		</package>
+	    </release>
+
+	    <release version="2.10.7">
 		<date>10.10.2014</date>
 		<package name="rpm">
 		    <download-url>2.10/dcache-srmclient-VERSION-1.noarch.rpm</download-url>
