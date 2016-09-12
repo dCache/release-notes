@@ -79,12 +79,12 @@
 
 		<package name="rpm">
 		    <download-url>2.16/dcache-srmclient-VERSION-1.noarch.rpm</download-url>
-		    <md5sum>469d39dd293dd123ed007115fde8877d</md5sum>
+		    <md5sum>16bceee7d3b7dd500ddedf3ae8011f30</md5sum>
 		</package>
 
 		<package name="tar.gz">
 		    <download-url>2.16/srm-client-VERSION.tar.gz</download-url>
-		    <md5sum>83be1cdc6d96700c6f5751b7f825afee</md5sum>
+		    <md5sum>4e0223ff512957129592d60f7e258198</md5sum>
 		</package>
 	    </release>
 
