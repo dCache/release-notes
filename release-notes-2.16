@@ -111,6 +111,53 @@ HTML header: <title>dCache 2.16 Release Notes</title>
 * Sites with a custom `httpd.conf` configuration will have to adjust
   this upon upgrade to inject the cell address of the `info` service.
 
+## Release 2.16.13
+
+### commons
+
+The \s admin command uses the toString method to serialise the requested
+so that the remote cell may correctly parse it. This did not always
+work: '=' characters in arguments were escaped but not unescaped;
+arguments that start with a '-' character were not escaped; empty words
+were lost. In the current release this is fixed and \s command works  as  expected.
+
+### dcache
+
+The current release fixes  a regression in which the exit code of check-config would
+always be zero even when errors were detected.
+
+### doors
+
+The current release fixes  a bug that cost pool manager to adjust cost estimates on the wrong
+mover queue when selecting pools.
+
+### srmclient
+
+The current release adds support in srmfs for uploading and downloading files.
+
+
+### Changelog 2.16.12..2.16.13
+
+<!-- git log 2.16.12..2.16.13 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[4e572ab](https://github.com/dcache/dcache/commit/4e572abbb003e4b5405c4e99d895476b468ee840)
+:   [maven-release-plugin] prepare release 2.16.13
+
+[ed3b2a7](https://github.com/dcache/dcache/commit/ed3b2a74db65c3953f79a461123983ca8a0c2633)
+:   srmclient: add support in srmfs for uploading and downloading files
+
+[3951b1b](https://github.com/dcache/dcache/commit/3951b1b2d76632453064319b651b794d5668903a)
+:   dcache: Generate proper exit code for check-config command
+
+[fcba804](https://github.com/dcache/dcache/commit/fcba8042085c2a3cd572664e8274a1599f3cc19e)
+:   commons: fix Args string parsing and toString method
+
+[d81194b](https://github.com/dcache/dcache/commit/d81194bf2adef37606cf02ace81626e293557946)
+:   doors: Include IO queue in pool selection request
+
+[fa2b249](https://github.com/dcache/dcache/commit/fa2b249d8b50fd2927376dcedb002e97c5201d6a)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.16.12
 
 ### alarms

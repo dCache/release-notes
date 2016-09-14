@@ -149,6 +149,38 @@ Highlights from this release:
   SRM requests will be lost from the database. Third party scripts
   that access the SRM database directly may have to be updated.
 
+## Release 2.14.32
+
+### commons
+
+The \s admin command uses the toString method to serialise the requested
+so that the remote cell may correctly parse it. This did not always
+work: '=' characters in arguments were escaped but not unescaped;
+arguments that start with a '-' character were not escaped; empty words
+were lost. In the current release this is fixed and \s command works  as  expected.
+
+### dcache
+
+The current release fixes  a regression in which the exit code of check-config would
+always be zero even when errors were detected.
+
+
+### Changelog 2.14.31..2.14.32
+
+<!-- git log 2.14.31..2.14.32 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[3f9b3d3](https://github.com/dcache/dcache/commit/3f9b3d3ba085a82965d00ba3211fdfbf60a1082d)
+:   [maven-release-plugin] prepare release 2.14.32
+
+[b74342f](https://github.com/dcache/dcache/commit/b74342f36f817f3447ef9f8e421f7081aeeac6eb)
+:   dcache: Generate proper exit code for check-config command
+
+[9336cda](https://github.com/dcache/dcache/commit/9336cdad7f7f0c65c8270f975fd751780b8b6751)
+:   commons: fix Args string parsing and toString method
+
+[f0a6386](https://github.com/dcache/dcache/commit/f0a6386f552acdd2575ed4d25e82339fcd8f44d9)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.14.31
 
 ### alarms

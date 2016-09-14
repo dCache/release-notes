@@ -137,6 +137,38 @@ Highlights from this release:
   required upon upgrading, but downgrading is not possible without
   explicitly converting the format.
 
+## Release 2.13.43
+
+### commons
+
+The \s admin command uses the toString method to serialise the requested
+so that the remote cell may correctly parse it. This did not always
+work: '=' characters in arguments were escaped but not unescaped;
+arguments that start with a '-' character were not escaped; empty words
+were lost. In the current release this is fixed and \s command works  as  expected.
+
+### dcache
+
+The current release fixes  a regression in which the exit code of check-config would
+always be zero even when errors were detected.
+
+
+### Changelog 2.13.42..2.13.43
+
+<!-- git log 2.13.42..2.13.43 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[cb2a342](https://github.com/dcache/dcache/commit/cb2a3423238c2d753bd0373c8c437cbfb6ecec19)
+:   [maven-release-plugin] prepare release 2.13.43
+
+[c92dd9d](https://github.com/dcache/dcache/commit/c92dd9d4c1be6274117e652089e65665a9de8222)
+:   dcache: Generate proper exit code for check-config command
+
+[c1505b5](https://github.com/dcache/dcache/commit/c1505b556240547236e2dc094798eb3d2636cf21)
+:   commons: fix Args string parsing and toString method
+
+[ac47c18](https://github.com/dcache/dcache/commit/ac47c183e48b39a67c0980eb3d35237d9974e921)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.13.42
 
 ### alarms
