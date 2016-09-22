@@ -94,6 +94,32 @@ Highlights from this release:
   enforced. Clients that relied on these not being enforced will
   fail after upgrade.
 
+## Release 2.15.20
+
+### cells
+
+In rare cases, an interrupt needed to cleanly shut down the location manager connector would not arrive. This issue was corrected, ensuring more reliable behaviour on cell shutdown.
+
+Fixed a problem in which threads could inappropriately be created as daemon threads,
+causing problems in killing those threads when the cell shuts down.
+
+
+### Changelog 2.15.19..2.15.20
+
+<!-- git log 2.15.19..2.15.20 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[df65480](https://github.com/dcache/dcache/commit/df654801634d7a30e3852c70f4cc8b36fe37b951)
+:   [maven-release-plugin] prepare release 2.15.20
+
+[17a58ad](https://github.com/dcache/dcache/commit/17a58adfeaf86226659297177d3a24e9ea221a14)
+:   cells: Fix lost interrupt exception
+
+[4192d80](https://github.com/dcache/dcache/commit/4192d805d5a10cd51e1d4b8ea559f263f6e915cf)
+:   cells: Ensure that newly created threads are non-daemon normal priority threads
+
+[9af1181](https://github.com/dcache/dcache/commit/9af1181e94c1c679b0cc472ace1bb16048adb53e)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.15.19
 
 ### commons

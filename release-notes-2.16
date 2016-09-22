@@ -111,6 +111,107 @@ HTML header: <title>dCache 2.16 Release Notes</title>
 * Sites with a custom `httpd.conf` configuration will have to adjust
   this upon upgrade to inject the cell address of the `info` service.
 
+## Release 2.16.14
+
+### cells
+
+The current release fixes a race condition through which routes to non-existing cells could be set up.
+
+A race condition could lead to default routes pointing to tunnels that no longer exist. This has been fixed.
+
+In rare cases, an interrupt needed to cleanly shut down the location manager connector would not arrive. This issue was corrected, ensuring more reliable behaviour on cell shutdown.
+
+Fixed a problem with phantom tunnel connectors causing tunnel connections between
+satellite and core domains to be reestablished about every 10 seconds.
+
+A regression in which cell startup failures were not propagated to
+the starting component was fixed. As with the related fixes, this
+provides more robust cell lifecycle changes.
+
+Fixed a problem in which threads could inappropriately be created as daemon threads,
+causing problems in killing those threads when the cell shuts down.
+
+Fixed a race that could lead to corrupted state in the routing manager.
+
+### srmclient
+
+Previously, sending SIGKILL to srmclient did not properly terminate the process. This was mainly caused by bash not propagating SIGKILL to child processes. This has been worked around, and SIGKILL now works as expected against srmclient.
+
+When used against a server that responds asynchronuously, the stat command would never terminate. This behaviour was changed by introducing a short delay between successive retries, making stat more robust.
+
+Currently dCache distinguishes between SURLs that have a port number and
+those that do not; therefore `srmrm srm://srm.example.org/file-1` will not
+abort an upload issued with `srmcp file:///path/to/local-file
+srm://srm.example.org/file-1`.
+
+This has been changed, so that srmclient can now be used to upload files to a port-less SURL.
+
+Error messages for srmclient were improved by adding more detailed information about `stat` and `ls` failures.
+
+The -debug option of srmclient now provides much more useful output.
+
+### webdav
+
+Currently, the WebDAV door returns a 401 status on permission problems even when the
+user is authenticated.  This results in clients prompting users to
+reauthenticate whenever the client makes a request that is denied for
+authorisation reasons. Since this is not in line with the generally accepted
+meaning of the status codes (401 standing for "please try again, but with Authorization header" and 403 for "please don't try again, admin intervention needed"), the behaviour of the door was changed. 
+
+Note: If any installation used the fact that dCache returned the wrong
+status-code as a "hackish" mechanism to clear the browser's BASIC credential cache
+(e.g., to "log out"), this is no longer possible. 
+
+
+### Changelog 2.16.13..2.16.14
+
+<!-- git log 2.16.13..2.16.14 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[61b5d7f](https://github.com/dcache/dcache/commit/61b5d7f9d303b97199c6ce0a79f95586d31a9083)
+:   [maven-release-plugin] prepare release 2.16.14
+
+[d2199bf](https://github.com/dcache/dcache/commit/d2199bf3bb3515244e1f8a2d5c95df13c1210a85)
+:   srmclient: fix async stat command
+
+[42e33ac](https://github.com/dcache/dcache/commit/42e33ac11a4620d9fbd914eb439a58dae04bf702)
+:   srmclient: fix error message for ls
+
+[e0708ce](https://github.com/dcache/dcache/commit/e0708ce328979b43a59936f286bb834e3d55b131)
+:   srmclient: refrain from adding default port to SURL in srmcp
+
+[a4d9895](https://github.com/dcache/dcache/commit/a4d989544d20eab870b3e5261c1e6006e2b8a96c)
+:   srmclient: fix -debug mode
+
+[f0f86b8b7](https://github.com/dcache/dcache/commit/f0f86b8b7c58d36e733e6be9cc86aba82676b52f)
+:   srmclient: support SIGKILL
+
+[a0e5ae1](https://github.com/dcache/dcache/commit/a0e5ae164377ca00435ce574bd789dfe5453b1f5)
+:   cells: Remove race in routing manager
+
+[cc8364f](https://github.com/dcache/dcache/commit/cc8364f339b73eeb742f9f88804420bfea88ec98)
+:   cells: Fix lost interrupt exception
+
+[9c64caf](https://github.com/dcache/dcache/commit/9c64cafd3e8d0da1fd8e3fbb0a7f165d347dfe4a)
+:   cells: Ensure that newly created threads are non-daemon normal priority threads
+
+[27caf3c](https://github.com/dcache/dcache/commit/27caf3c965900f7ccb2457ba695a17d33c86e918)
+:   webdav: fix Unauthorized vs Forbidden response
+
+[5b86a5d](https://github.com/dcache/dcache/commit/5b86a5d9e972dc9c45db93a564f953c545f9c92c)
+:   cells: Propagate startup failures to caller
+
+[090e6f9](https://github.com/dcache/dcache/commit/090e6f95622b1746439765c759d9a0d5f7032d5c)
+:   cells: Fix race when adding routes
+
+[422d9e5](https://github.com/dcache/dcache/commit/422d9e5e55f6d0a3bfca92bee70f07e7ca3f959d)
+:   cells: Remove delayed default route if tunnel shuts down
+
+[03019d0](https://github.com/dcache/dcache/commit/03019d0c02d0382e1f772c26ec2730c566bff50c)
+:   cells: Fix race in cell shutdown
+
+[72ff73c](https://github.com/dcache/dcache/commit/72ff73c05979d6e43b9d3ada157835d250a8f99c)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.16.13
 
 ### commons
