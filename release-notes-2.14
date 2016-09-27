@@ -149,6 +149,46 @@ Highlights from this release:
   SRM requests will be lost from the database. Third party scripts
   that access the SRM database directly may have to be updated.
 
+## Release 2.14.34
+
+### commons
+
+If dCache's internal ShellApplication framework detects a critical behaviour
+that might indicate a bug in the application, error messages now include
+an explicit request to send a mail to the developers and more relevant
+information for assessing and reproducing the situation.
+
+### gplazma2
+
+This release fixes a small bug in GPlazma which inappropriately 
+tried to handle non-DN subjects in x509 certificates.
+These will usually fail in gPlazma anyway, but the reported error 
+was confusing.
+
+### srm
+
+Handling of DNS names without trailing dots in certificates has been made more robust and universal.
+
+
+### Changelog 2.14.33..2.14.34
+
+<!-- git log 2.14.33..2.14.34 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[fc15abe](https://github.com/dcache/dcache/commit/fc15abe5c9aeb572ffb0f6202bf4637a63e2a515)
+:   [maven-release-plugin] prepare release 2.14.34
+
+[a70b77c](https://github.com/dcache/dcache/commit/a70b77c95cb19e19ea08bdc4ee7a3dfee32f49ef)
+:   commons: log bugs with stack-trace and instructions
+
+[6f5294f](https://github.com/dcache/dcache/commit/6f5294fab9eb99f44c6e3e664391325dcb15a1a0)
+:   gplazma2-xacml: remove erroneous creation of placeholder extensions
+
+[014ce27](https://github.com/dcache/dcache/commit/014ce278d44ac9c25ebf19c58675f902239325d8)
+:   [maven-release-plugin] prepare for next development iteration
+
+[849c1b8](https://github.com/dcache/dcache/commit/849c1b8ec43dd672f3c443ac837ec72e041019bb)
+:   srm: remove trailing dot from reverse lookup result
+
 ## Release 2.14.33
 
 ### cells

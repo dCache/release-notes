@@ -94,6 +94,46 @@ Highlights from this release:
   enforced. Clients that relied on these not being enforced will
   fail after upgrade.
 
+## Release 2.15.21
+
+### commons
+
+If dCache's internal ShellApplication framework detects a critical behaviour
+that might indicate a bug in the application, error messages now include
+an explicit request to send a mail to the developers and more relevant
+information for assessing and reproducing the situation.
+
+### gplazma2
+
+This release fixes a small bug in GPlazma which inappropriately 
+tried to handle non-DN subjects in x509 certificates.
+These will usually fail in gPlazma anyway, but the reported error 
+was confusing.
+
+### srm
+
+Handling of DNS names without trailing dots in certificates has been made more robust and universal.
+
+
+### Changelog 2.15.20..2.15.21
+
+<!-- git log 2.15.20..2.15.21 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[b1fa6b1](https://github.com/dcache/dcache/commit/b1fa6b1a10f3fc47d785e7f0d6427051816da1ac)
+:   [maven-release-plugin] prepare release 2.15.21
+
+[0ad1442](https://github.com/dcache/dcache/commit/0ad144259e0c7f30b17ac5ee25db146e9e805b59)
+:   commons: log bugs with stack-trace and instructions
+
+[3972ba3](https://github.com/dcache/dcache/commit/3972ba32639f57a2591e08c088f97c79a09b0f97)
+:   gplazma2-xacml: remove erroneous creation of placeholder extensions
+
+[bf793d3](https://github.com/dcache/dcache/commit/bf793d3c87fa1dd15f37905b950cddb84a82bbcd)
+:   [maven-release-plugin] prepare for next development iteration
+
+[3855287](https://github.com/dcache/dcache/commit/3855287bbb9cd6c9dd32a0fd3ff24cbc9aaace6f)
+:   srm: remove trailing dot from reverse lookup result
+
 ## Release 2.15.20
 
 ### cells

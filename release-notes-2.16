@@ -111,6 +111,82 @@ HTML header: <title>dCache 2.16 Release Notes</title>
 * Sites with a custom `httpd.conf` configuration will have to adjust
   this upon upgrade to inject the cell address of the `info` service.
 
+## Release 2.16.15
+
+### commons
+
+If dCache's internal ShellApplication framework detects a critical behaviour
+that might indicate a bug in the application, error messages now include
+an explicit request to send a mail to the developers and more relevant
+information for assessing and reproducing the situation.
+
+### gplazma2
+
+This release fixes a small bug in GPlazma which inappropriately 
+tried to handle non-DN subjects in x509 certificates.
+These will usually fail in gPlazma anyway, but the reported error 
+was confusing.
+
+### srm
+
+Handling of DNS names without trailing dots in certificates has been made more robust and universal.
+
+### srmclient
+
+SRM client gained limited UNIX-like commands for navigating file systems.
+From this release on, it offers the `lpwd`, `lcd`, `lls`, `lrm`, `lrmdir`, 
+`lmkdir` and `lmv` commands, which work similar to the corresponding 
+UNIX commands that do not use the 'l'-prefix.
+
+The `get`and `put` commands have been updated and do now resolve 
+local paths relative to the local current working directory.
+
+A new `prompt` command allows users to modify their prompt.
+
+This means that users are now able to modify their local directory when preparing for
+upload/download to an SRM endpoint.  The local directories for uploads
+and downloads may also be modified.
+
+The handling of empty directories in SRM's `ls` has been improved.
+
+srmfs checks whether a user can change into a given SURL, but did 
+previously not handle cases gracefully where the server declined
+such a request. This behaviour has been improved.
+
+Error messages for SRM client are now more informative.
+
+
+### Changelog 2.16.14..2.16.15
+
+<!-- git log 2.16.14..2.16.15 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[69dc991](https://github.com/dcache/dcache/commit/69dc991a209c64d172c8cc72a6cb3c88cdbad26e)
+:   [maven-release-plugin] prepare release 2.16.15
+
+[5822e1c](https://github.com/dcache/dcache/commit/5822e1cecde8e2c2c1fec77045be60594521aac3)
+:   srmclient: update checkPermissions to be more robust
+
+[7f3b41a](https://github.com/dcache/dcache/commit/7f3b41a7f8694f23d5d243c3ec2a32e9d23b1700)
+:   srmclient: print friendly message on SRMException
+
+[aa609fd](https://github.com/dcache/dcache/commit/aa609fd5bba98db24aca732c5ef12d3131913d3e)
+:   srmclient: update ls to be more robust
+
+[71d02ee](https://github.com/dcache/dcache/commit/71d02eecc626f6502fff1bf83d06b674df646ac8)
+:   commons: log bugs with stack-trace and instructions
+
+[c463889](https://github.com/dcache/dcache/commit/c4638890aba6926a534821affdd488e46ac6c598)
+:   gplazma2-xacml: remove erroneous creation of placeholder extensions
+
+[f104955](https://github.com/dcache/dcache/commit/f104955338d8423f451c63f07258a0eee5e80e18)
+:   srmclient: implement useful subset of local filesystem commands
+
+[b6141f0](https://github.com/dcache/dcache/commit/b6141f02f1149d7560a9aa5618770653e1ccc5c4)
+:   [maven-release-plugin] prepare for next development iteration
+
+[13056cb](https://github.com/dcache/dcache/commit/13056cba5d413499d13540413acffad832fd21a3)
+:   srm: remove trailing dot from reverse lookup result
+
 ## Release 2.16.14
 
 ### cells
