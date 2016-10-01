@@ -68,43 +68,275 @@ HTML header: <title>dCache 3.0 Release Notes</title>
 
 ## Incompatibilities
 
+- Compatibility with pools older than 2.16 has been dropped.
 
 ## Release 3.0
 
-#### 
+The most obvious change is that the major version number has been
+incremented. This marks the transition to a new versioning scheme that
+better reflects our existing release and compatibility policy.
 
-- [Enable automatic detection of Postgresql master](http://github.com/dcache/dcache/commit/b43a7059fac47aa3b94d76059d1fef69dcb6816e)
-- [Mark deprecated properties obsolete](http://github.com/dcache/dcache/commit/459680da7cb95dd5496e8da9106c4090a10aa18c)
-- [Upgrade to CANL 2.1 and BC 1.50](http://github.com/dcache/dcache/commit/c68b78162c6a96f8d7bd5f082a7bf2d09ed8785b)
-- [admin: Deprecate DSA keys](http://github.com/dcache/dcache/commit/ca60c8761f674893c455da47d6dc1c8f122a7033)
+Once a year, dCache.org releases a golden release. The golden release
+maintains compatibility with pools of the previous golden release and
+any version inbetween. The release after the golden release drops
+compatibility with pools olden than the golden release just before it.
+
+The new versioning scheme reflects the incompatibility by incrementing
+the major version number in the release *after* a golden release. Thus
+the golden release marks the last release of a particular major
+version.
+
+Like before, patch level releases are identified by a third number in
+the version.
+
+As always, this dCache release contain many internal changes, many
+performance improvements and many cosmetic changes that will not be
+explicitly described in the release notes. The changelog at the end
+contains the complete list.
+
+As always in a release after a golden release (i.e an x.0 release in
+the new versioning scheme), configuration properties previously marked
+obsolete have been dropped. Configuration properties previously marked
+deprecated are now obsolete. You should run `dcache check-config`
+before upgrading and fix any warnings. Rerun `dcache check-config`
+after upgrading.
+
+The following are noteworthy changes or changes that you as an admin
+should now about when upgrading. The changes are described in no
+particular order.
+
+#### admin: no longer supports DSA keys
+
+Upon upgrade, the post installation script will automatically generate
+RSA keys instead. Your ssh client may warn you about the changed
+server key. The `admin.paths.dsa-host-key.private` and
+`admin.paths.dsa-host-key.public` properties are obsolete.
+
+#### Automatic detection of current PostgreSQL master
+
+The `dcache.db.host` and derived properties now accept a comma
+separated list of host named when using with PostgreSQL. This is
+intended for use with a cluster of PostgreSQL servers using streaming
+replication. The JDBC driver automatically detects the current master
+server and uses that one. In case a slave is promoted to a new master,
+the JDBC driver automatically discovers and reconnects to the new
+master without requiring a dCache restart.
+
+#### Updated to caNl 2.1
+
+Although this change should be transparent, the update of the Common
+Authentication Library, the Bouncy Castle cryptographic library, the
+ARGUS library, and the VOMS library is a critical change and you never
+know if this breaks something. Keep an eye out for CA or client
+problems.
+
+On the positive side, this upgrade allowed us to update the Apache
+SSHD library which hopefully fixes some compatibility problems
+observed with some Python SSH library.
+
+
+#### billing: empty format strings suppresses output
+
+Previously, if a formatting string was undefind, billing records would
+be logged using a default format. This has been changed such that
+billing records with an undefined or empty formatting string are not
+added to the billing file. This allows specific record types to be
+suppressed.
+
+#### billing: make billing files self-describing
+
+Upon startup or when rolling over to a new billing file, the billing
+service now output formatting instructions in the biling file. These
+are lines starting with `##` followed by the message type and the
+configured formatting string.
+
+Third party parsers may make use of the same instructions to recognize
+the format. At the very least, third party parsers should be updated
+to ignore lines starting with a hash symbol.
+
+
+The billing indexing utility has been updated to recognize this
+formatting instructions and thus can parse the billing files even when
+the output format is changed and billing files thus contain a mix of
+different formats.
+
+Configuration properties with the common prefix
+`billing.parser.format` were added to define the default format to
+expect for old billing files without formatting instructions. Thus the
+output format can be changed while still maintaining compatibility
+with old billing files.
+
+#### billing: expose full address in billing record
+
+Previously, some billing records were logged with a full cell address
+while others only included a cell name. The default format retains
+this behaviour, however the full cell address is now exposed in the
+formatting string. The cell name and domain name are also exposed
+separately, making it possible to output these as separate
+fields. Check the instructions in `billing.properties` for details.
+
+#### billing: make service replicable
+
+It is now possible to add multiple billing services if all components
+(including pools) have been updated to version 3.0. All instances of
+billing receive all billing records.
+
+Introduced `dcache.queue.billing` and `dcache.topic.billing`
+properties and marked `dcache.service.billing` obsolete.
+
+#### Setup files are now restricted to setup commands
+
+The setup files of various services, in particular `poolmanager.conf`
+and `setup` on pools, are now restricted to setup commands. These are
+the commands the services themselves use when generating the setup
+files. Previously any cell command could be included, even though the
+command would be lost when the setup file was regenerated.
+
+
+#### Setup file syntax is now checked before it is loaded
+
+When reloading a setup file at runtime using the `reload` command, the
+file is now checked for syntactic errors before being applied to the
+running service. If an error is found, the file is not loaded and the
+service is unaffected. Previously, such errors would leave the service
+in an inoperable state.
+
+
+#### Legacy cell topology support has been dropped
+
+dCache 2.16 introduced the use of ZooKeeper for discovery topology as
+well as the use of core domains as message brokers and sattelite
+domains as domains connecting to the core domains. For backwards
+compatibility, 2.16 included the legacy UDP discovery service in
+`dCacheDomain` and `dCacheDomain` was a core domain by default.
+
+This UDP service is no longer included and compatibility with pools
+older than 2.16 has been dropped. `dCacheDomain` no longer defaults to
+being a core domain and it in fact no longer a special name - you may
+call it whatever you like.
+
+This however means that unless you define some domain as a core
+domain, none of your dCache domains will be connected and you will be
+left with an inporative dCache. If you haven't already done so in
+2.16, upon upgrade designate one of your domains as a core domain by
+defining `dcache.broker.scheme = core` for it. Your former
+`dCacheDomain` would be an obvious candidate for such a domain.
+
+#### Lots of improvements to service lifecycle management
+
+We made lots of changes to the life cycle of dCache cells. These
+changes are mostly internal, but the short story is that we try to
+improve how dCache starts and in particular how it can cleanly shut
+down.
+
+In the past, clean shutdown wasn't all that important as the service
+would be inoperable anyway when shut down. With the addition of high
+availability deployments, this assumption is no longer true and we
+would like to be able to shut down cleanly. The goal has not been
+achieved yet in dCache 3.0, as there are still plenty of issues
+causing exception on shutdown, but the situation should be better than
+in previous releases.
+
+As an admin, the obvious change you will observe is that the errors
+you see in the log files have changed. In particular we log more stack
+traces when detecting errors and we log cells that shut down slowly;
+even though slow shutdown isn't necessarily an error as many services
+now do more work while trying to shut down cleanly.
+
+
+#### New wire protocol for cell communication
+
+A new wire protocol for the interdomain TCP connections used for cell
+communication has been introduced. This protocol has lower
+overhead. Connections with 2.16 domains are detected automatically and
+the old protocol is used as a fallback.
+
+#### dcap: fewer threads and faster
+
+The DCAP door was refactored. Compared to the earlier version it got:
+
+- about half the number of threads than before,
+- reuse of threads to reduce the overhead,
+- detects client disconnects even if the door is busy,
+- the legacy feature to block a DCAP door by defining the 'dcapLock' entry
+  in the domain context has been removed.
+
+#### poolmanager: Persits setup file in ZooKeeper
+
+The pool manager setup is now preserved accross restarts even without
+saving the setup to disk. This is achieved by persisting the setup in
+ZooKeeper whenever it changes. Upon restarting, the setup is loaded
+back from ZooKeeper.
+
+The consequence is that `poolmanager.conf` is now only loaded when
+either no setup can be found in ZooKeeper, or when the admin
+explicitly uses the `reload` command. Restarting pool manager will not
+reload `poolmanager.conf`. As before, the `save` command is used to
+update `poolmanager.conf` and the file is not updated automatically.
+
+This feature forms the basis of synchronizing the setup between
+multiple instances of the pool manager in a high availability
+deployment of dCache: Whenever the setup changes in one pool manager,
+the setup is stored in ZooKeeper and other instances discover the
+change and apply the updated setup locally.
+
+
+#### spacemanager: improved latency on non-spacemager transfers
+
+Space manager is sort of a proxy for pool manager. When enabled, doors
+send requests they usually would send to pool manager to space manager
+instead. This had the effect of adding a litte extra latency to all
+transfers, even read and unmanaged transfers.
+
+The interaction between pool manager, space manager and doors has been
+heavily refactored. One consequence is that the space manager can
+inject its own behaviour into the doors. This allows the requests to
+be sent directly to pool manager if it can be determined that space
+manager is not involved in the procesing.
+
+
+#### pool: log why a mover is killed
+
+The pool was extended with suppor for injecting a message when killing
+a mover. Components and services that kill movers make use of this
+feature to document why the mover was killed. This information is
+included in billing and depending on the protocol it may also be
+propagated to the client.
+
+#### ftp: port door to Netty
+
+Netty is an non-blocking I/O framework used by xrootd doors and for
+xrootd and http movers in pools. In dCache 3.0 ftp doors make use of
+Netty too. This is pretty much transparent, but it will allows the
+door to scale to more concurrent connections with lower resource
+usage.
+
+By the way, we also upgraded to Netty 4.1 with buffer pooling enabled
+- this should reduce Java garbage collection overhead.
+
+#### ftp: Cancel upload if SRM invalidates TURL
+
+Previous, when the transfer URL generated by the SRM was invalidated,
+either because it expired, the request was aborted, or the SURL was
+deleted, the underlying FTP upload would be allowed to continue. The
+upload would eventually fail when the last byte had been transfered,
+wasting bandwidth and generating a misleading error.
+
+
+This has been changed such that the SRM will kill an FTP upload when
+it invalidates a TURL.
+
+
+
+
+
+
 - [alarms: convert log entry handling to use plugin extensions](http://github.com/dcache/dcache/commit/4e58e4c6377cd2ad3575975bef63c935fdd0760f)
 - [alarms: force alarms-only-option](http://github.com/dcache/dcache/commit/39306c2e6b0ca019296d6910c9672d6cd3fb6d5b)
-- [billing: Do not log record if format string is empty or undefined](http://github.com/dcache/dcache/commit/17556819468a3c40f0a99eff00d064aaa3c0fcab)
-- [billing: Expose property to subscribe to topics](http://github.com/dcache/dcache/commit/76cde04b0d3fb63eb3fffe3ab66c8ef8f2c505b8)
-- [billing: Extend billing parser to recognize formatting headers](http://github.com/dcache/dcache/commit/4f68ccb9ba8655a608b7aa15e36d37302d4a2f79)
-- [billing: Harmonize representation of cell name](http://github.com/dcache/dcache/commit/860122710279ef7444822b6dc4554e2a3f3f74e1)
-- [billing: Make billing text files self describing with format headers](http://github.com/dcache/dcache/commit/dd1f4932c5d61ffa8889af31ef230faf4c5a673a)
-- [billing: Make service replicable](http://github.com/dcache/dcache/commit/73d67b87b9683214bbcdfea1d73bc27475c7e6f2)
-- [cell: Only implement CellSetupProvider if needed](http://github.com/dcache/dcache/commit/94c738fd719a889d45a95068e1270c6202976ef5)
-- [cells: Check setup file syntax before applying it to the running cell](http://github.com/dcache/dcache/commit/adb5c04c42d31f709b37f15bfe877ddafabc2ec0)
-- [cells: Drop legacy cells communication](http://github.com/dcache/dcache/commit/ddfdbd0d49657dc9ac3a7039c9baca5999acfdfe)
-- [cells: Guarantee event order for cell even listeners](http://github.com/dcache/dcache/commit/03afafa15b8b54a2b5b49f30a14dd9e8a1210e60)
-- [cells: Log killer threads too when cell shutdown is slow](http://github.com/dcache/dcache/commit/83c62cab5a8ee32a41b5c6e4dd6a82d866992f14)
-- [cells: Log when cells have to interrupt threads to shut them down](http://github.com/dcache/dcache/commit/4a2f9789b89b690a1498d4d1ffa783ca380036b0)
-- [cells: Lowered log level of failure to deliver delivery failure notifications](http://github.com/dcache/dcache/commit/eb31c0e2b0e0aa857cbf2c5c9597d811deadd1da)
-- [cells: New wire and payload protocols for cell message](http://github.com/dcache/dcache/commit/032f833c2a9481855fe262c5b1d3b9619168e02d)
 - [ceph: make configurable rados pool name](http://github.com/dcache/dcache/commit/9582a7107c5a56ff533d93cf120f0f1c6c9ba8f8)
 - [dcache-restful-api: change protocol to HTTP](http://github.com/dcache/dcache/commit/f356de5326df4de0a473a913f4850609954d210e)
-- [dcache: Allow UniversalSpringCell to persist setup in zookeeper](http://github.com/dcache/dcache/commit/16e72bc4d0a678cc0bfa356b2ffca6a6ffeeb26a)
-- [dcache: Isolate setup file processing from primary cells command interpreter](http://github.com/dcache/dcache/commit/f2f35f131916e576034d1c8d4e26a384c562f148)
-- [dcap: Port DCAP door to the LineBasedDoor](http://github.com/dcache/dcache/commit/1a60fc09dfdb840d22b4147c7562d610857dbd7e)
 - [dcap: bump max command size sent by client to 8MB](http://github.com/dcache/dcache/commit/5d0825d197d13c0cc18c625e3ebdf023f96491cf)
-- [doors: Announce to login broker subscribers when a door is shutting down](http://github.com/dcache/dcache/commit/d16926e6c7b83a70c7c207984db32db2c47c7a70)
-- [doors: Update doors to use PoolManagerHandler](http://github.com/dcache/dcache/commit/0b94ca041c657858cef2cb0e24d27e03a5ec2de7)
-- [doors: include explanation when killing mover](http://github.com/dcache/dcache/commit/7318a65f1398a0f1bd205002ab69af178fee0947)
 - [ftp: Add support for the HAProxy Proxy Protocol](http://github.com/dcache/dcache/commit/9854e5d6924992d087edd8637daf10f10d2ff612)
-- [ftp: Port FTP door to Netty](http://github.com/dcache/dcache/commit/4a8bc2939f04d480c77c722053ae72628d51b5ff)
-- [ftp: add support for SRM cancelling an active upload](http://github.com/dcache/dcache/commit/00d782e879d61fadd814b0135d22928b567bef93)
 - [gplazma: Make gplazma.x509.use-policy-principals obsolete](http://github.com/dcache/dcache/commit/b40b8bdc1a16d1eae0ca6ab723bd8484a2aa9b20)
 - [httpd: Introduce topic for discovering services to monitor](http://github.com/dcache/dcache/commit/92b22f794d80e1a7b295286e1e8ecaff152a1d8a)
 - [mespace/chimera: allow optionally disable move to directory having differnt storage class (and cache class)](http://github.com/dcache/dcache/commit/09abff118fa2a255d77568e213ddf558584f7432)
