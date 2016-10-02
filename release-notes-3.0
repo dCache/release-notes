@@ -64,13 +64,50 @@ HTML header: <title>dCache 3.0 Release Notes</title>
 
 ## Highlights
 
-
+- Experimental CEPH support.
+- Automatic detection of PostgreSQL master.
+- Self describing billing files.
+- Pool manager setup is stored in ZooKeeper.
+- Pool manager read-only state is stored in setup file and ZooKeeper.
+- New performance cost calculation for improved stability of hot spot replication.
+- Allow batching of flush to tape to be "disabled". 
+- Allow polling HSM scripts.
+- Mover queues can be created at runtime.
+- Abort upload when SRM TURL is invalidated.
+- Allow xrootd clients to select mover queues.
+- Support the HAProxy proxy protocol.
+- Production ready support for high availability deployments.
 
 ## Incompatibilities
 
 - Compatibility with pools older than 2.16 has been dropped.
+- Properties marked deprecated in 2.16 are now obsolete.
+- Several deprecated or obsolete admin commands have been
+  removed.
+- The admin door no longer supports DSA keys.
+- The billing service no longer output records for 
+  which no format string was defined.
+- The pool manager and pool configuration files now only
+  support the commands considered setup commands.
+- Support for the legacy UDP discovery service used in 
+  2.15 and earlier has been dropped.
+- dCacheDomain no longer default are core domain.
+- DCAP doors no longer supportthe `dcapLock` feature to
+  halt new requests.
+- Pool manager now automatically persists its setup in ZooKeeper
+  uses it after a restart rather than `poolmanager.conf`.
+- The way pool manager calculates performance cost has changed 
+  and cost limits in pool manager may have to be retuned.
+- The pool to pool client queue in pools no longer has a
+  configurable limit.
+- Return code 72 is now a special value for HSM scripts.
+- The failure semantics for empty uploads has changed.
+- The `https-jglobus` value has been removed for the 
+  `webdav.authn.protocol` property.
 
-- [webdav,frontend: Drop support for https-jglobus](http://github.com/dcache/dcache/commit/2c8ee66e6ea405926dc9bc91f200300735c574b4)
+## Acknowledgments
+
+Thanks to Onno Zweers for several contributions to this release.
 
 ## Release 3.0.0
 
@@ -517,10 +554,9 @@ allowing the file data to be stored in CEPH. The meta data is kept in
 the traditional Berkeley DB format.
 
 See the documentation of the `pool.backend` property for choosing an
-alternative backend. It has to be stressed that this is considered an
-experimental feature. The more encouraging news is maybe that this
-shows that it is fairly easy to hook alternate storage backends
-into dCache.
+alternative backend. Several CEPH related properties starting with
+`pool.backend.ceph` have been added. Consult the documentation in
+`pool.properties` for details.
 
 One consequence of the change is that HSM drivers can no longer expect
 replicas to be stored as files on the local file system. Instead
@@ -529,6 +565,10 @@ drivers or HSM scripts, this should be taken into
 consideration. Backwards compatibility is however important to the
 dCache team and as long as a local file system is used, the HSM driver
 and HSM scripts are passed a regular path rather than a URI.
+
+It has to be stressed that CEPH support is considered an experimental
+feature. The more encouraging news is maybe that this shows that it is
+fairly easy to hook alternate storage backends into dCache.
 
 
 #### pool: sorted listing of movers
@@ -646,9 +686,41 @@ subscribing to the topic.
 
 
 
+#### Production ready support for high availability deployments
+
+As may have been obvious from several of the changes above, lots of
+work went into enabling high availability (HA) deployments with
+dCache. Some benefits of such a deployment are:
+
+- No single point of failures
+- Rolling updates
+- Horizontal scaling
+- Symmetric deployments
+
+For most parts, there isn't much to configure for an HA deployment as
+one can simply deploy several instances of the various services. There
+are however several pitfalls, e.g. which databases should be shared
+and which should not. Available documentation should be studied
+carefully and any deployment should be tested before it is rolled out
+on the production system.
+
+Several external components are required for a true HA deployment to
+load balance between doors (e.g. HAProxy) and handle HA for PostgreSQL
+(repmgr).
+
+Also, there are still a few components that do not handle redundant
+deployments well, eg. resilience and replica manager. It may be argued
+that redundancy of these components is not essential. 
+
+Controlled draining of services is currently not automated and
+requires some knowledge of the inner workings of dCache. Although
+support for HA may be production ready, it should currently be
+considered an expert feature.
+
+
+
 - [alarms: convert log entry handling to use plugin extensions](http://github.com/dcache/dcache/commit/4e58e4c6377cd2ad3575975bef63c935fdd0760f)
 - [alarms: force alarms-only-option](http://github.com/dcache/dcache/commit/39306c2e6b0ca019296d6910c9672d6cd3fb6d5b)
-- [ceph: make configurable rados pool name](http://github.com/dcache/dcache/commit/9582a7107c5a56ff533d93cf120f0f1c6c9ba8f8)
 - [dcache-restful-api: change protocol to HTTP](http://github.com/dcache/dcache/commit/f356de5326df4de0a473a913f4850609954d210e)
 - [dcap: bump max command size sent by client to 8MB](http://github.com/dcache/dcache/commit/5d0825d197d13c0cc18c625e3ebdf023f96491cf)
 - [gplazma: Make gplazma.x509.use-policy-principals obsolete](http://github.com/dcache/dcache/commit/b40b8bdc1a16d1eae0ca6ab723bd8484a2aa9b20)
@@ -656,7 +728,6 @@ subscribing to the topic.
 - [nfs4: autodiscover nfsv4 domain used by idmapper](http://github.com/dcache/dcache/commit/05f327a3160857716b55305442346a86e4f191c7)
 - [nfs: add support for flexfile layout type](http://github.com/dcache/dcache/commit/8a8a2abc648f99f519b420d04d07119d41b81422)
 - [pool: close dcap accepter thread and server socket after client connects](http://github.com/dcache/dcache/commit/135522e3b97a059d021b29a9e07b7445aa7b6e4d)
-- [poolmanager.properties: mentioned creation of .bak file](http://github.com/dcache/dcache/commit/8c2b57f18c5c12169ba316e8f62aa2ed208be56a)
 - [restful-api: add create, move and rename resources](http://github.com/dcache/dcache/commit/91d183227dd04796c197b3edbda83bdcc7dc4a5d)
 - [webadmin: remove error and autorefresh options from alarms page](http://github.com/dcache/dcache/commit/3b355d122a16118b9df48571b60e5fd5afd34f78)
 - [webdav: add Spnego based Kerberos authentication mechanism for SSO capabilities](http://github.com/dcache/dcache/commit/159c42257703d227583268b59dbd3066ec9570a9)
