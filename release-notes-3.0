@@ -70,39 +70,37 @@ HTML header: <title>dCache 3.0 Release Notes</title>
 
 - Compatibility with pools older than 2.16 has been dropped.
 
-## Release 3.0
+- [webdav,frontend: Drop support for https-jglobus](http://github.com/dcache/dcache/commit/2c8ee66e6ea405926dc9bc91f200300735c574b4)
 
-The most obvious change is that the major version number has been
-incremented. This marks the transition to a new versioning scheme that
-better reflects our existing release and compatibility policy.
+## Release 3.0.0
+
+The most obvious change is the transition to a new versioning scheme
+that better reflects our existing release and compatibility policy.
 
 Once a year, dCache.org releases a golden release. The golden release
 maintains compatibility with pools of the previous golden release and
-any version inbetween. The release after the golden release drops
-compatibility with pools olden than the golden release just before it.
-
+any intermediate version. The release after the golden release drops
+compatibility with pools older than the golden release it surpasses.
 The new versioning scheme reflects the incompatibility by incrementing
 the major version number in the release *after* a golden release. Thus
 the golden release marks the last release of a particular major
-version.
+version. Like before, patch level releases are identified by a third
+number in the version.
 
-Like before, patch level releases are identified by a third number in
-the version.
-
-As always, this dCache release contain many internal changes, many
+As always, this dCache release contains many internal changes, many
 performance improvements and many cosmetic changes that will not be
 explicitly described in the release notes. The changelog at the end
 contains the complete list.
 
-As always in a release after a golden release (i.e an x.0 release in
-the new versioning scheme), configuration properties previously marked
+As always in a release after a golden release (an .0 release in the
+new versioning scheme), configuration properties previously marked
 obsolete have been dropped. Configuration properties previously marked
 deprecated are now obsolete. You should run `dcache check-config`
 before upgrading and fix any warnings. Rerun `dcache check-config`
 after upgrading.
 
 The following are noteworthy changes or changes that you as an admin
-should now about when upgrading. The changes are described in no
+should know about when upgrading. The changes are described in no
 particular order.
 
 #### admin: no longer supports DSA keys
@@ -114,30 +112,30 @@ server key. The `admin.paths.dsa-host-key.private` and
 
 #### Automatic detection of current PostgreSQL master
 
-The `dcache.db.host` and derived properties now accept a comma
-separated list of host named when using with PostgreSQL. This is
-intended for use with a cluster of PostgreSQL servers using streaming
-replication. The JDBC driver automatically detects the current master
-server and uses that one. In case a slave is promoted to a new master,
-the JDBC driver automatically discovers and reconnects to the new
-master without requiring a dCache restart.
+`dcache.db.host` and derived properties now accept a comma separated
+list of host names when used with PostgreSQL. This is intended for use
+with a cluster of PostgreSQL servers using streaming replication. The
+JDBC driver automatically detects and uses the current master
+server. In case a slave is promoted to master, the JDBC driver
+automatically discovers and reconnects to the new master without
+requiring a dCache restart.
 
-#### Updated to caNl 2.1
+#### caNl 2.1
 
 Although this change should be transparent, the update of the Common
 Authentication Library, the Bouncy Castle cryptographic library, the
-ARGUS library, and the VOMS library is a critical change and you never
-know if this breaks something. Keep an eye out for CA or client
+ARGUS library, and the VOMS library is critical and you never
+know if this breaks something. Keep an eye out for CA and client
 problems.
 
 On the positive side, this upgrade allowed us to update the Apache
-SSHD library which hopefully fixes some compatibility problems
-observed with some Python SSH library.
+SSHD library which hopefully fixes a number of compatibility problems
+observed with some Python SSH libraries.
 
 
 #### billing: empty format strings suppresses output
 
-Previously, if a formatting string was undefind, billing records would
+Previously, if a formatting string was undefined, billing records would
 be logged using a default format. This has been changed such that
 billing records with an undefined or empty formatting string are not
 added to the billing file. This allows specific record types to be
@@ -146,25 +144,23 @@ suppressed.
 #### billing: make billing files self-describing
 
 Upon startup or when rolling over to a new billing file, the billing
-service now output formatting instructions in the biling file. These
+service now outputs formatting instructions to the billing file. These
 are lines starting with `##` followed by the message type and the
-configured formatting string.
-
-Third party parsers may make use of the same instructions to recognize
-the format. At the very least, third party parsers should be updated
-to ignore lines starting with a hash symbol.
+configured formatting string.  Parsers may make use of the
+instructions to recognize the format. At the very least, third party
+parsers should be updated to ignore lines starting with a hash symbol.
 
 
-The billing indexing utility has been updated to recognize this
+The billing indexing utility has been updated to recognize these
 formatting instructions and thus can parse the billing files even when
 the output format is changed and billing files thus contain a mix of
 different formats.
 
 Configuration properties with the common prefix
-`billing.parser.format` were added to define the default format to
-expect for old billing files without formatting instructions. Thus the
-output format can be changed while still maintaining compatibility
-with old billing files.
+`billing.parser.format` were added to define the default format for
+old billing files without formatting instructions. Thus the output
+format can be changed while still maintaining compatibility with old
+billing files.
 
 #### billing: expose full address in billing record
 
@@ -179,7 +175,7 @@ fields. Check the instructions in `billing.properties` for details.
 
 It is now possible to add multiple billing services if all components
 (including pools) have been updated to version 3.0. All instances of
-billing receive all billing records.
+`billing` receive all billing records.
 
 Introduced `dcache.queue.billing` and `dcache.topic.billing`
 properties and marked `dcache.service.billing` obsolete.
@@ -204,25 +200,24 @@ in an inoperable state.
 
 #### Legacy cell topology support has been dropped
 
-dCache 2.16 introduced the use of ZooKeeper for discovery topology as
-well as the use of core domains as message brokers and sattelite
-domains as domains connecting to the core domains. For backwards
-compatibility, 2.16 included the legacy UDP discovery service in
-`dCacheDomain` and `dCacheDomain` was a core domain by default.
-
-This UDP service is no longer included and compatibility with pools
-older than 2.16 has been dropped. `dCacheDomain` no longer defaults to
-being a core domain and it in fact no longer a special name - you may
-call it whatever you like.
+dCache 2.16 introduced the use of ZooKeeper for topology discovery as
+well as the use of core domains as message brokers and satellite
+domains connect to core domains. For backwards compatibility, 2.16
+included the legacy UDP discovery service in `dCacheDomain` and
+`dCacheDomain` was a core domain by default.  This UDP service is no
+longer included and compatibility with pools older than 2.16 has been
+dropped. `dCacheDomain` no longer defaults to being a core domain and
+it is in fact no longer a special name - you may call it whatever you
+like.
 
 This however means that unless you define some domain as a core
 domain, none of your dCache domains will be connected and you will be
-left with an inporative dCache. If you haven't already done so in
+left with an inoperative dCache. If you haven't already done so in
 2.16, upon upgrade designate one of your domains as a core domain by
 defining `dcache.broker.scheme = core` for it. Your former
 `dCacheDomain` would be an obvious candidate for such a domain.
 
-#### Lots of improvements to service lifecycle management
+#### Lots of improvements to service life-cycle management
 
 We made lots of changes to the life cycle of dCache cells. These
 changes are mostly internal, but the short story is that we try to
@@ -234,22 +229,22 @@ would be inoperable anyway when shut down. With the addition of high
 availability deployments, this assumption is no longer true and we
 would like to be able to shut down cleanly. The goal has not been
 achieved yet in dCache 3.0, as there are still plenty of issues
-causing exception on shutdown, but the situation should be better than
+causing exceptions on shutdown, but the situation should be better than
 in previous releases.
 
-As an admin, the obvious change you will observe is that the errors
-you see in the log files have changed. In particular we log more stack
-traces when detecting errors and we log cells that shut down slowly;
-even though slow shutdown isn't necessarily an error as many services
-now do more work while trying to shut down cleanly.
+As an admin, the obvious change you will observe is that errors in the
+log files have changed. In particular we log more stack traces when
+detecting errors and we log cells that shut down slowly; even though
+slow shutdown isn't necessarily an error as many services now do more
+work while shutting down.
 
 
 #### New wire protocol for cell communication
 
-A new wire protocol for the interdomain TCP connections used for cell
-communication has been introduced. This protocol has lower
-overhead. Connections with 2.16 domains are detected automatically and
-the old protocol is used as a fallback.
+A new wire protocol for interdomain TCP connections for cell
+communication has been introduced. This protocol has lower overhead
+than the old protocol. Connections with 2.16 domains are detected
+automatically and the old protocol is used as a fallback.
 
 #### dcap: fewer threads and faster
 
@@ -258,75 +253,395 @@ The DCAP door was refactored. Compared to the earlier version it got:
 - about half the number of threads than before,
 - reuse of threads to reduce the overhead,
 - detects client disconnects even if the door is busy,
-- the legacy feature to block a DCAP door by defining the 'dcapLock' entry
-  in the domain context has been removed.
-
-#### poolmanager: Persits setup file in ZooKeeper
-
-The pool manager setup is now preserved accross restarts even without
-saving the setup to disk. This is achieved by persisting the setup in
-ZooKeeper whenever it changes. Upon restarting, the setup is loaded
-back from ZooKeeper.
-
-The consequence is that `poolmanager.conf` is now only loaded when
-either no setup can be found in ZooKeeper, or when the admin
-explicitly uses the `reload` command. Restarting pool manager will not
-reload `poolmanager.conf`. As before, the `save` command is used to
-update `poolmanager.conf` and the file is not updated automatically.
-
-This feature forms the basis of synchronizing the setup between
-multiple instances of the pool manager in a high availability
-deployment of dCache: Whenever the setup changes in one pool manager,
-the setup is stored in ZooKeeper and other instances discover the
-change and apply the updated setup locally.
+- the legacy feature to block a DCAP door by defining the `dcapLock`
+  entry in the domain context has been removed.
 
 
-#### spacemanager: improved latency on non-spacemager transfers
+#### spacemanager: improved latency on non-spacemanager transfers
 
 Space manager is sort of a proxy for pool manager. When enabled, doors
 send requests they usually would send to pool manager to space manager
-instead. This had the effect of adding a litte extra latency to all
-transfers, even read and unmanaged transfers.
+instead. This had the effect of adding a little extra latency to all
+transfers, even reads and unmanaged transfers.
 
 The interaction between pool manager, space manager and doors has been
 heavily refactored. One consequence is that the space manager can
 inject its own behaviour into the doors. This allows the requests to
 be sent directly to pool manager if it can be determined that space
-manager is not involved in the procesing.
+manager is not involved in processing it.
+
+
+#### poolmanager: persist setup file in ZooKeeper
+
+The pool manager setup is now preserved across restarts even without
+saving the setup to disk. This is achieved by persisting the setup in
+ZooKeeper whenever it changes. Upon restart, the setup is loaded back
+from ZooKeeper.
+
+The consequence is that `poolmanager.conf` is only loaded when either
+no setup can be found in ZooKeeper, or when the admin explicitly uses
+the `reload` command. Restarting pool manager will not reload
+`poolmanager.conf`. As before, the `save` command is used to update
+`poolmanager.conf` and the file is not updated automatically.
+
+This feature forms the basis of synchronizing the setup between
+multiple instances of the pool manager in a high availability
+deployment of dCache: Whenever the setup changes in one pool manager,
+the setup is stored in ZooKeeper and other instances discover the
+change and apply the update locally.
+
+#### poolmanager: persist pool read-only status in pool manager setup
+
+When using the `psu set pool -rdonly` command to mark a pool as read
+only, this restriction was not persisted in the pool manager
+configuration file. Consequently, the read only status would be reset
+by a pool manager restart.
+
+The read only status is now stored in both `poolmanager.conf` and
+in ZooKeeper and thus the read only status of a pool survives restarts.
+
+Note that the read-only status in pool manager is a separate concept
+from the `pool disable` state defined in pools.
+
+#### poolmanager: make the service replicable
+
+Pool manager is now a replicable service. This means one can create
+multiple redundant instances of pool manager and the load will be
+distributed over the available instances.  The pool manager
+configuration is synchronized through ZooKeeper. For a given set of
+pool managers, a particular file is always processed by the same
+instance.
+
+#### poolmanager: allow decentralized pool selection
+
+Pool manager has traditionally been the central place in which all
+pool selection (assigning transfers to pools) has been performed. Pool
+manager allows great flexibility in how this selection is performed,
+including cost based replication, load and space triggered fallbacks,
+staging from tape or to export pools, etc.
+
+To accurately enforce the different selection strategies and the
+various cost limits, it was essential that pool manager had a
+complete picture of the load of all pools. Cost updates from pools are
+only distributed every 30 seconds, so to obtain the necessary accuracy,
+pool manager would update its internal cost estimates whenever it
+selected a pool and it would also intercept messages between doors and
+pools indicating the beginning and end of a transfer.
+
+This model falls apart if pool selection is distributed over several
+components as any adjustments to the internal cost state would be
+local to the component selecting the particular pool. Such distributed
+pool selection could be found in a high availability deployment of
+dCache in which multiple redundant pool managers each perform pool
+selection for a shard of the files. Another, not currently
+implemented, scenario is delegating pool selection to doors to reduce
+the latency of pool selection.
+
+dCache 3 reimplements how the various cost limits of pool manager are
+enforced. Rather than assuming that a pool manager has perfect
+knowledge, pool selection is performed under the assumption of
+reasonably, but not perfectly, accurate data. Whenever the pool
+manager selects a pool it also encodes the _assumptions_ under which
+this pool was selected (e.g. load is below a certain threshold, pool
+has enough free space, etc). This assumption is forwarded by the door
+to the pool and checked by the pool before enqueuing a mover. If the
+assumption fails, a cost update is prematurely submitted to pool
+manager and the mover creation request is rejected. The door will
+resubmit the pool selection request to pool manager, which now has
+more accurate cost information.
+
+This change is mostly invisible, although it may certainly affect the
+dynamic behaviour of pool manager, replication and assignment of
+transfers to pools.
+
+By the way, the `cm info` command of pool manager has been removed as
+there is nothing useful for it to report now. The commands `cm set
+active`, `cm set update`, `cm set debug`, `cm set magic` are
+obsolete. These should be removed from `poolmanager.conf` on upgrade.
+
+
+#### poolmanager: improve stability of hot spot replication
+
+Pool manager can be configured to trigger replication of files when
+the source pool exceeds a certain load threshold.
+
+Unfortunately, the load was defined in terms of the average relative
+queue length of the various mover queues on the pool, including the
+queues of pool to pool transfers. Since pool to pool queues typically
+(and wisely) have low limits, the relative weight in the load
+calculation of pool to pool transfers is often high. The consequence
+is that triggering a replication may itself push the calculated load
+of the pool higher, triggering even more replications. This is bound
+to generate an unstable system.
+
+dCache 3 changes how the load of a pool is calculated to exclude the
+two pool to pool queues as well as the HSM stage queue from the pool
+calculation.  Existing cost cut limits may have to be retuned as the
+calculated performance cost has changed.
+
+#### pool: drop the limit on pool to pool receive queues
+
+A pool has two queues dedicated to pool to pool transfers; one for
+sending files and one for receiving files. The receiving end does not
+limit the number of concurrent transfers to avoid deadlocks in pool to
+pool transfers. For purposes of calculating a performance cost, the
+pool did however define a limit anyway (as the load was determined as
+the average queue length _relative_ to the queue limit).
+
+As described in the previous section, load no longer considers the
+pool to pool queues and thus the unenforced limit on the receive queue
+has been dropped. The pool `pp set max active` command has been
+deprecated. The queued and max columns of the pool to pool receive
+queue in `webadmin` and `httpd` are now empty.
+
 
 
 #### pool: log why a mover is killed
 
-The pool was extended with suppor for injecting a message when killing
-a mover. Components and services that kill movers make use of this
-feature to document why the mover was killed. This information is
+The pool has been extended with support for injecting a message when
+killing a mover. Components and services that kill movers make use of
+this feature to document why the mover was killed. This information is
 included in billing and depending on the protocol it may also be
 propagated to the client.
+
+
+#### pool: allow continuous flushing to tape
+
+Traditionally, flush to tape on pools was batched by storage
+class. Once a batch of files began to flush, new files arriving on the
+pool would not begin flushing until the running batch would complete.
+For HSM subsystems that do their own batching, the batching in dCache
+is typically counterproductive as the driver or some external
+component may wait for more files even though such files would be held
+back by the pool to be included in the next batch.
+
+To resolve this issue, dCache 3 adds an `-open` option to the `queue
+define class` command in the `pool` service.  This option alters the
+logic such that newly created files are added to an existing batch
+immediately.
+
+#### pool: support polling scripts with the HSM script driver
+
+The classic `script` HSM driver invokes an external script to flush,
+stage or remove files from tape. Usually, this operation is blocking,
+meaning that many concurrent instances of this script will run at the
+same time.
+
+Some clever admins have found a workaround for this scalability issue
+by letting the script poll for the completion of the operation. Rather
+than block, the script terminates with a failure. This relies on
+dCache pools retrying HSM operations. This works well, except that it
+fills the billing files and log files with error messages.
+
+To support this type of script, dCache 3 extends the `script` driver
+to recognize 72 as a special return code. When the script exits with
+this return code, the driver places the request back into its queue
+and retries it without propagating the error to dCache. The result is
+that the operation is retried without spamming the log files and
+billing files. The retry period can be configured using the new
+-p:delay option.
+
+Note that for flush, the retry triggered by exit code 72 is within the
+same batch. Thus new files will not be added to the queue until the
+batch completes, except if the flush queue is defined with continuous
+flushing (see the `-open` option in the previous section).
+
+
+#### pool: alter failure semantics for empty files
+
+When upload to a pool fails, the file is usually registered in the
+name space like any other upload - if a checksum or file size was
+predefined, the file may optionally be marked broken. In either case,
+the file would be considered "complete" in the sense that no further
+modifications to the file are allowed.
+
+One common failure mode for uploads is when no data is uploaded at
+all. This could be because the mover was killed before it could be
+started, that is, while it is queuing; or because the client didn't
+connect to the mover; or because the mover failed to connect to the
+client. Networking issues could be a common source of such
+failures. Due to the failure semantics, such movers could not be
+retried by the door.
+
+In dCache 3 the failure semantics for such empty uploads has changed
+such that the replica on the pool is instead deleted and not
+registered in the name space. The name space entry is left in its
+"virgin state". Protocols like NFS and DCAP can open such files for
+writing, allowing the upload to be retried.
+
+Eventually, other doors will be updated to retry write mover creation,
+but the current release doesn't do that yet.
+
+#### pool: allow runtime management of mover queues
+
+Pools allow movers to be placed on queues. Several queues may be
+created, e.g. to treat internal and external transfers differently, or
+to queue transfers by protocol.
+
+Previously, custom queues were defined using the `pool.queues`
+configuration property, requiring a pool restart to change the defined
+queues.
+
+In dCache 3, the admin shell commands `mover queue create` and `mover
+queue delete` have been added instead. The existing `pool.queues`
+property is deprecated. The queue definitions are persisted to the
+pool setup file when issuing the `save` command.
+
+By the way, the unused `mover remove` command has been removed.
+
+
+#### pool: deprecated commands for HSM limits have been removed
+
+The deprecated `rh set max active`, `st set max active` and `rm set
+max active` are no longer support in pool setup files. Use the
+equivalent provider specific options instead. Upon upgrade we
+recommend running the pool `save` command before upgrading - at least
+if this has not been done since upgrading to 2.9.
+
+
+#### pool: optimize Berkeley DB meta data updates
+
+The part of the pool abstracting file and meta data operations - the
+repository - has been heavily refactored. One consequence is that
+Berkeley DB updates are now transactional, improving consistency and
+hopefully performance too as updates are batched together.
+
+
+#### pool: allow CEPH to be used as a storage backend
+
+One consequence of the heavily refactored repository component in
+pools is that it has become easy to plug in alternative backends.
+CEPH is a distributed block storage that has gained popularity in
+recent years. In dCache 3, CEPH can be used as a backend for pools,
+allowing the file data to be stored in CEPH. The meta data is kept in
+the traditional Berkeley DB format.
+
+See the documentation of the `pool.backend` property for choosing an
+alternative backend. It has to be stressed that this is considered an
+experimental feature. The more encouraging news is maybe that this
+shows that it is fairly easy to hook alternate storage backends
+into dCache.
+
+One consequence of the change is that HSM drivers can no longer expect
+replicas to be stored as files on the local file system. Instead
+replicas in a pool are now identified by a URI. When developing HSM
+drivers or HSM scripts, this should be taken into
+consideration. Backwards compatibility is however important to the
+dCache team and as long as a local file system is used, the HSM driver
+and HSM scripts are passed a regular path rather than a URI.
+
+
+#### pool: sorted listing of movers
+
+In the _nice to have_ category, dCache 3 supports options in the
+`mover ls` admin shell command to sort the output by last access time
+and file size.
 
 #### ftp: port door to Netty
 
 Netty is an non-blocking I/O framework used by xrootd doors and for
 xrootd and http movers in pools. In dCache 3.0 ftp doors make use of
-Netty too. This is pretty much transparent, but it will allows the
+Netty too. This is pretty much transparent, but it allows the
 door to scale to more concurrent connections with lower resource
 usage.
 
 By the way, we also upgraded to Netty 4.1 with buffer pooling enabled
 - this should reduce Java garbage collection overhead.
 
-#### ftp: Cancel upload if SRM invalidates TURL
+#### ftp: abort upload if SRM invalidates TURL
 
-Previous, when the transfer URL generated by the SRM was invalidated,
+Previously, when the transfer URL generated by the SRM was invalidated,
 either because it expired, the request was aborted, or the SURL was
 deleted, the underlying FTP upload would be allowed to continue. The
-upload would eventually fail when the last byte had been transfered,
+upload would eventually fail when the last byte had been transferred,
 wasting bandwidth and generating a misleading error.
 
 
 This has been changed such that the SRM will kill an FTP upload when
 it invalidates a TURL.
 
+#### srm: added extra fields to the srm access log
 
+The srm access log contains a description of every client request. In
+dCache 3, several extra fields have been added. In particular for
+single file requests, the access log now contains the path of the file
+to which the request applies.
+
+#### webdav: use relative links in generated HTML
+
+The default templates for the HTML view of the `webdav` door now use
+relative links. This should make it easier to use the door behind a
+reverse proxy or load balancer.
+
+#### webdav: allow template to be reloaded at runtime
+
+The `webdav` service generates the HTML view from admin configurable
+template files. A `reload template` command was added to trigger the
+template to be reloaded at runtime. The new
+`webdav.enable.auto-reload.templates` configuration property may be
+used to enable automatic reloading whenever the template changes.
+
+#### xrootd: select mover queue by application name
+
+The `xrootd` door can now select a pool mover queue by client application
+name. See the documentation of the `xrootd.app-ioqueue` configuration
+prefix in `xrootd.properties` for details.
+
+It should be stressed that the application name is submitted by the
+client and is easy to fake.
+
+#### xrootd: recognize oss.asize parameter
+
+Xrootd clients submit the file size upon upload as an `oss.asize`
+property. dCache now recognizes this property and uses it in space
+reservations, pool selection, and file verification. If the uploaded
+file does not match the specified size, the file is marked as broken.
+
+#### Add support for the HAProxy proxy protocol
+
+The `ftp`, `xrootd`, `webdav`, `srm`, `httpd`, and `frontend` services
+have been extended with support for the HAProxy proxy
+protocol. HAProxy or similar load balancers are essential components
+of a high availability deployment.
+
+These load balancers act as frontends for redundant services in
+dCache. One problem of using such a proxy is that the real IP address
+of the client is hidden from dCache, thus obscuring dCache log files
+and hindering network based pool selection.
+
+The HAProxy proxy protocol is an adhoc standard supported by many load
+balancers and proxy servers. It adds a small header to the connection
+between the proxy and the backend service revealing the IP address of
+the client to the backend. The new configuration properties
+`.enable.proxy-protocol` enable support for this protocol. *Note*:
+Once enabled, direct access from client to the respective door must be
+blocked as clients would otherwise be able to conceal their real address
+to the service.
+
+Check the documentation in the relevant default `.properties` files
+for information of which versions of the proxy protocol are supported.
+
+
+#### New mechanism for determining services to monitor
+
+The `httpd` service - both the old style and the newer `webadmin`
+interfaces - monitor other services in dCache. The mechanism for
+determining which services to monitor has changed. In the past the
+list of services was configured in `httpd`; this has been replaced by
+a multi-cast topic. Any service subscribing to this topic will be
+monitored and shown in the web interface.
+
+
+The name of the topic is defined by the property
+`dcache.topic.watched`, although there shouldn't be a need to change
+this (maybe if one wants to partition the services to be monitored by
+multiple `httpd` instances, one could consider introducing multiple
+topics, but why one may want to do this eludes me). The important part
+is that this is the topic a service should subscribe to if it should
+be monitored. By default, `gplazma`, `pnfsmanager`, `poolmanager`,
+`spacemanager`, and `srmmanager` subscribe to this topic. Doors and
+pools are discovered through other means and are monitored despite not
+subscribing to the topic.
 
 
 
@@ -336,57 +651,17 @@ it invalidates a TURL.
 - [ceph: make configurable rados pool name](http://github.com/dcache/dcache/commit/9582a7107c5a56ff533d93cf120f0f1c6c9ba8f8)
 - [dcache-restful-api: change protocol to HTTP](http://github.com/dcache/dcache/commit/f356de5326df4de0a473a913f4850609954d210e)
 - [dcap: bump max command size sent by client to 8MB](http://github.com/dcache/dcache/commit/5d0825d197d13c0cc18c625e3ebdf023f96491cf)
-- [ftp: Add support for the HAProxy Proxy Protocol](http://github.com/dcache/dcache/commit/9854e5d6924992d087edd8637daf10f10d2ff612)
 - [gplazma: Make gplazma.x509.use-policy-principals obsolete](http://github.com/dcache/dcache/commit/b40b8bdc1a16d1eae0ca6ab723bd8484a2aa9b20)
-- [httpd: Introduce topic for discovering services to monitor](http://github.com/dcache/dcache/commit/92b22f794d80e1a7b295286e1e8ecaff152a1d8a)
 - [mespace/chimera: allow optionally disable move to directory having differnt storage class (and cache class)](http://github.com/dcache/dcache/commit/09abff118fa2a255d77568e213ddf558584f7432)
 - [nfs4: autodiscover nfsv4 domain used by idmapper](http://github.com/dcache/dcache/commit/05f327a3160857716b55305442346a86e4f191c7)
 - [nfs: add support for flexfile layout type](http://github.com/dcache/dcache/commit/8a8a2abc648f99f519b420d04d07119d41b81422)
-- [pool: Add open flush mode](http://github.com/dcache/dcache/commit/12eeda4bdc98ba665b7e90635b12b928fc4d8eca)
-- [pool: Adjust failure semantics for empty client uploads](http://github.com/dcache/dcache/commit/bd52f0ab88775e6bc277910b64105a310f07302a)
-- [pool: Allow runtime mover queue management](http://github.com/dcache/dcache/commit/d12ce817e74e9a4c35ac3c354fb4b8d7b618d7bc)
-- [pool: Drop pretend limit on p2p client queue](http://github.com/dcache/dcache/commit/077d1e5598dbe383c70f477f38faec1640b47620)
-- [pool: Ensure that post transfer service shuts down before repository](http://github.com/dcache/dcache/commit/f509447b990a022b2017bc6b37926750799cdefb)
-- [pool: Expose URI rather than File to NearlineStorage implementations](http://github.com/dcache/dcache/commit/dc45cb72e986c9211f732970ac9bf3f024150afc)
-- [pool: Extend script driver for polling scripts](http://github.com/dcache/dcache/commit/6282e3ede95eba24bbf3f64c2ce439de01c44b70)
-- [pool: Remove deprecated nearline concurrency limit commands](http://github.com/dcache/dcache/commit/94af2f903ed1dd4c57ea070770e2a11e26c9485a)
-- [pool: Resolved circular bean dependencies leading to bugs during shutdown](http://github.com/dcache/dcache/commit/1eec7f572b729b2bcd41b7fb80a1a56a26720248)
-- [pool: Transactional bulk update meta data state in Berkeley DB](http://github.com/dcache/dcache/commit/c43acae48323d29879ae3f6231068996736c1893)
-- [pool: Upgrade to Berkeley DB Java Edition 6.4.25](http://github.com/dcache/dcache/commit/2f6abfd0305e01c3cac9e74248439c17adfc5164)
-- [pool: added CEPH back-ended FileStore implementation](http://github.com/dcache/dcache/commit/59a0995336105c846ba6544ba5ff0b64b85f6958)
-- [pool: allow sort output of 'mover ls' by access time and size](http://github.com/dcache/dcache/commit/5679b208e90f24c4c0f32e187b0b708d79f109a7)
 - [pool: close dcap accepter thread and server socket after client connects](http://github.com/dcache/dcache/commit/135522e3b97a059d021b29a9e07b7445aa7b6e4d)
-- [pool: explain why a mover was killed](http://github.com/dcache/dcache/commit/f4e5691a5144f502cdb9e735d68a013818a5d9e4)
-- [pool: use a single ByteBuffer when calculating the checksum of a hole](http://github.com/dcache/dcache/commit/472acb6a9a6c4345a907fd5302ea860173211b9d)
 - [poolmanager.properties: mentioned creation of .bak file](http://github.com/dcache/dcache/commit/8c2b57f18c5c12169ba316e8f62aa2ed208be56a)
-- [poolmanager: Define assumptions on pool selection](http://github.com/dcache/dcache/commit/4a70ec140a774b85d2bbf16a0277cb3a276d9fef)
-- [poolmanager: Fix compilation regression](http://github.com/dcache/dcache/commit/e71d9afdcb56aaec13ed62c723aae6c7c0cc0c92)
-- [poolmanager: Improve stability of cost cuts](http://github.com/dcache/dcache/commit/3348726f05578b0406d6ed4d3eb992e804f992d2)
-- [poolmanager: Make pool manager replicable](http://github.com/dcache/dcache/commit/2de19e3bc98bad2f324e0bd424fcb8d5d5da85d5)
-- [poolmanager: Persist pool manager setup in ZooKeeper](http://github.com/dcache/dcache/commit/73846b1e3780c1a5638a66191223d96f13588065)
-- [poolmanager: Persist pool read only status in setup file](http://github.com/dcache/dcache/commit/d76e7d9a7977ccd1ce2f6f82f0152ef9a82217fd)
-- [poolmanager: Remove dead functionality from cost module](http://github.com/dcache/dcache/commit/ab358bac3892a6ac171c81a40e4984281c4bc706)
-- [poolmanager: Stop adjusting pool cost](http://github.com/dcache/dcache/commit/3b2ca6f8406bc6f3979159ab2d4584a0ec4a0fee)
 - [restful-api: add create, move and rename resources](http://github.com/dcache/dcache/commit/91d183227dd04796c197b3edbda83bdcc7dc4a5d)
-- [spacemanager: Refine errors sent on shutdown](http://github.com/dcache/dcache/commit/8f472c0ca6d1ee259df322d2b56b08181af008dc)
-- [srm: Add support for the proxy protocol](http://github.com/dcache/dcache/commit/dffe01a8b3189e6bd4dde48894daf70cb47cda34)
-- [srm: enrich access log](http://github.com/dcache/dcache/commit/070a543ae612f80d66eeeb4ae4744365f848fb19)
-- [srm: refactor container status update and readying turls](http://github.com/dcache/dcache/commit/7951b59309885436c8877a505e93cc614661d1a8)
-- [srm: remove 'priority' support](http://github.com/dcache/dcache/commit/1390c0c13472376a10997d7e757567bc6cd8f3b2)
-- [util: expose timestamp when the instance of Transfer is created](http://github.com/dcache/dcache/commit/9b23e689acce0b9b46c9f0b3df495b02a9e3b553)
-- [vehicles: use FileAttributes when creating namespace entries](http://github.com/dcache/dcache/commit/c08f8fe37e6aa44f2446f58c744c380a339d8e79)
-- [webadmin: Use topic to discover services to watch](http://github.com/dcache/dcache/commit/b5974a8117fa4eaa81ca5846557c76d02e19db9f)
 - [webadmin: remove error and autorefresh options from alarms page](http://github.com/dcache/dcache/commit/3b355d122a16118b9df48571b60e5fd5afd34f78)
-- [webdav,frontend,httpd: Add proxy protocol support](http://github.com/dcache/dcache/commit/5593c87cebc2e2335cf9baa19ee4b561891e9892)
-- [webdav,frontend: Drop support for https-jglobus](http://github.com/dcache/dcache/commit/2c8ee66e6ea405926dc9bc91f200300735c574b4)
 - [webdav: add Spnego based Kerberos authentication mechanism for SSO capabilities](http://github.com/dcache/dcache/commit/159c42257703d227583268b59dbd3066ec9570a9)
 - [webdav: add cors support for uploading files](http://github.com/dcache/dcache/commit/9969b3b7691f078ed985818b8543a2de5a50a67b)
 - [webdav: add support for ownCloud mtime header](http://github.com/dcache/dcache/commit/b3594f06a2dbe3cd0773f185d968a2063cef350a)
-- [webdav: make links relative in standard template](http://github.com/dcache/dcache/commit/13a009ba27262d0115e01c870b4e585986983699)
-- [webdav: support template reloading](http://github.com/dcache/dcache/commit/46f986c4ade14477fe1447c63c4088cf1c01ed7c)
-- [xrootd: Add support for the HAProxy Proxy Protocol](http://github.com/dcache/dcache/commit/c8a1a38d27274bc3e05fbf2ad3ee1c04b026a109)
-- [xrootd: add per-application io-queue](http://github.com/dcache/dcache/commit/e74520d891af8a3cf3c7f86b4ad5ee23c5a22e6c)
-- [xrootd: add support for oss.asize on upload](http://github.com/dcache/dcache/commit/a81dec3a23c0efeb1827df66913fbb77bc101eb2)
 
 
 ### Changelog from 2.16.0 to 3.0
