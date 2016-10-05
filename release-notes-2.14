@@ -149,6 +149,71 @@ Highlights from this release:
   SRM requests will be lost from the database. Third party scripts
   that access the SRM database directly may have to be updated.
 
+## Release 2.14.35
+
+### billing
+
+Fixed a problem in the output of the `dcache billing` command using
+JSON or YAML when the billing format includes a custom date format.
+
+### dcap
+
+Add support for the dcap client supplying additional version
+information.
+
+### gplazma
+
+Fix `explain login` and `test login` commands so they are able to test
+logging in with username and password.
+
+Add examples to `explain login` command help.  Our thanks to Onno
+Zweers for this change.
+
+### httpd
+
+Fix regression in the `transfers.txt` output format.
+
+Update the transfers.html page so it no longer includes `<unknown>`
+for default/unknown protocols.  With this version of dCache, these are
+represented by a `?` character.  The webadmin page is updated to give
+consistent output.
+
+### scripts
+
+Fix the billing indexer to ignore the `format` string, if present.
+
+
+### Changelog 2.14.34..2.14.35
+
+<!-- git log 2.14.34..2.14.35 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[b513ad0](https://github.com/dcache/dcache/commit/b513ad02dbb79cff5bfc64dbfa287a3f4ee944b8)
+:   [maven-release-plugin] prepare release 2.14.35
+
+[96b772a](https://github.com/dcache/dcache/commit/96b772ad8cfb8743255bd9a3b986df6e9dc01891)
+:   Active Transfers: substitute ? for <unknown> on html pages
+
+[ec8a1ee](https://github.com/dcache/dcache/commit/ec8a1ee2ced6b3af7badc0542ca33f4825637794)
+:   common: add support for UserNamePrincipal as user:<name>
+
+[0a4af22](https://github.com/dcache/dcache/commit/0a4af22030b6b84c55a169102514d92e9098679d)
+:   Added 'explain login' examples to help text in Gplazma2LoginStrategy.java
+
+[a869f1c](https://github.com/dcache/dcache/commit/a869f1c7c429be6d00aa1513e1ef8c661045249c)
+:   billing: Strip format string from attribute name
+
+[895b33e](https://github.com/dcache/dcache/commit/895b33e78989e17245ac49068a96a05d1896b7e5)
+:   transferObserverV1: replace Args with Joiner to construct transfers.txt linesMotivation:
+
+[a0928a3](https://github.com/dcache/dcache/commit/a0928a3b6c49f0b8897bfb07e6dbea5ec30bba1d)
+:   billing: Make billing indexer work with custom format strings
+
+[9a3c997](https://github.com/dcache/dcache/commit/9a3c9971f29c1e66dcf3612f4031bfca3ee8b2b7)
+:   [maven-release-plugin] prepare for next development iteration
+
+[f69b830](https://github.com/dcache/dcache/commit/f69b83074352be222572380e4d61ad7e6692b688)
+:   dcap: add support for clients presenting more version metadata
+
 ## Release 2.14.34
 
 ### commons

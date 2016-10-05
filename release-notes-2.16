@@ -111,6 +111,110 @@ HTML header: <title>dCache 2.16 Release Notes</title>
 * Sites with a custom `httpd.conf` configuration will have to adjust
   this upon upgrade to inject the cell address of the `info` service.
 
+## Release 2.16.16
+
+### Changes affecting multiple services
+
+Fix potential inconsistencies with RoutingManager
+
+The srmmanager and statistic services included hard-coded cell name
+for the billing service.  This release updates these services to
+honour the configured name for billing.
+
+### billing
+
+Fixed a problem in the output of the `dcache billing` command using
+JSON or YAML when the billing format includes a custom date format.
+
+### dcap
+
+Add support for the dcap client supplying additional version
+information.
+
+### frontend
+
+Upgrade dCache-view to v1.0.2, which brings several improvements.
+
+### gplazma
+
+Fix `explain login` and `test login` commands so they are able to test
+logging in with username and password.
+
+Add examples to `explain login` command help.  Our thanks to Onno
+Zweers for this change.
+
+### httpd
+
+Fix regression in the `transfers.txt` output format.
+
+Update the transfers.html page so it no longer includes `<unknown>`
+for default/unknown protocols.  With this version of dCache, these are
+represented by a `?` character.  The webadmin page is updated to give
+consistent output.
+
+### scripts
+
+Fix the billing indexer to ignore the `format` string, if present.
+
+
+### Changelog 2.16.15..2.16.16
+
+<!-- git log 2.16.15..2.16.16 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[22aedeb](https://github.com/dcache/dcache/commit/22aedebbc356ab386f88558dee7ce34f6a77c8ee)
+:   [maven-release-plugin] prepare release 2.16.16
+
+[59b7c4d](https://github.com/dcache/dcache/commit/59b7c4d34da66020735a0a6f16b5003f8804cfd0)
+:   srmclient: fix srmfs to shutdown cleanly if user issues Ctrl-C
+
+[4b6ebf9](https://github.com/dcache/dcache/commit/4b6ebf98c22a0b986a3d9c9af324af22cd0e9f38)
+:   srmclient: clean shutdown srmfs after transfer
+
+[0e5984a](https://github.com/dcache/dcache/commit/0e5984a3957d06572afc6d67188f2e26076b1e2e)
+:   eliminated ETWS on line 569 of TransferObserverV1.
+
+[87ededf](https://github.com/dcache/dcache/commit/87ededf3b30a4a1b90006318207dd22f091f756f)
+:   Active Transfers: substitute ? for <unknown> on html pages
+
+[799a240](https://github.com/dcache/dcache/commit/799a2402b5f73b9c34eadb4adc79e4ef2f5e600a)
+:   srmclient: avoid stack-trace if lcd with incorrect path
+
+[5afc6b3](https://github.com/dcache/dcache/commit/5afc6b3100a8c46272956e20b283f37d87f3e8a2)
+:   cells: Guarantee event order for cell even listeners
+
+[11d4d35](https://github.com/dcache/dcache/commit/11d4d35e579e2084a1b55eb64c6fc415c6606c48)
+:   srmclient: give meaningful error message if credential is missing
+
+[4f86863](https://github.com/dcache/dcache/commit/4f8686363e37cb238b815ef57c88744e6bcd3917)
+:   common: add support for UserNamePrincipal as user:<name>
+
+[56e514f](https://github.com/dcache/dcache/commit/56e514f872970289231ea940c8756f76c5b6d390)
+:   srmclient: provide better error message if credential has expired
+
+[c791ca7](https://github.com/dcache/dcache/commit/c791ca70d315cb6eb0ad4154ba5da70304639672)
+:   Added 'explain login' examples to help text in Gplazma2LoginStrategy.java
+
+[b4629be](https://github.com/dcache/dcache/commit/b4629bed54d073753b2a80da24272a910aa44dbc)
+:   srm,statistics: Parameterize billing service name
+
+[16d3edc](https://github.com/dcache/dcache/commit/16d3edcaed0eba00db6301ea727fa3da6cea5c13)
+:   billing: Strip format string from attribute name
+
+[5223e82](https://github.com/dcache/dcache/commit/5223e82a1ed35c0bf9a9e0253d4bcc8fe61f253a)
+:   transferObserverV1: replace Args with Joiner to construct transfers.txt lines
+
+[f3427e7](https://github.com/dcache/dcache/commit/f3427e79c5563fecbf53456a369dd47ae63dca33)
+:   billing: Make billing indexer work with custom format strings
+
+[4fbf078](https://github.com/dcache/dcache/commit/4fbf07832b14351b36b365ba7c367b81a3f80845)
+:   dcache: update dcache-view version to 1.0.2
+
+[08316b6](https://github.com/dcache/dcache/commit/08316b6b5eeb7dd7090c3fe9b85ca625cb1dbc05)
+:   [maven-release-plugin] prepare for next development iteration
+
+[d9843a7](https://github.com/dcache/dcache/commit/d9843a71ced5fce4da8ab714c6791cd24cda09f2)
+:   dcap: add support for clients presenting more version metadata
+
 ## Release 2.16.15
 
 ### commons
