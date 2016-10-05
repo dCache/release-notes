@@ -191,7 +191,7 @@ Fix the billing indexer to ignore the `format` string, if present.
 :   [maven-release-plugin] prepare release 2.14.35
 
 [96b772a](https://github.com/dcache/dcache/commit/96b772ad8cfb8743255bd9a3b986df6e9dc01891)
-:   Active Transfers: substitute ? for <unknown> on html pages
+:   Active Transfers: substitute ? for &lt;unknown&gt; on html pages
 
 [ec8a1ee](https://github.com/dcache/dcache/commit/ec8a1ee2ced6b3af7badc0542ca33f4825637794)
 :   common: add support for UserNamePrincipal as user:&lt;name&gt;

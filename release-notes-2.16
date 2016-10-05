@@ -174,7 +174,7 @@ Fix the billing indexer to ignore the `format` string, if present.
 :   eliminated ETWS on line 569 of TransferObserverV1.
 
 [87ededf](https://github.com/dcache/dcache/commit/87ededf3b30a4a1b90006318207dd22f091f756f)
-:   Active Transfers: substitute ? for <unknown> on html pages
+:   Active Transfers: substitute ? for &lt;unknown&gt; on html pages
 
 [799a240](https://github.com/dcache/dcache/commit/799a2402b5f73b9c34eadb4adc79e4ef2f5e600a)
 :   srmclient: avoid stack-trace if lcd with incorrect path
