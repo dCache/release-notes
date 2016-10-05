@@ -139,7 +139,7 @@ Fix the billing indexer to ignore the `format` string, if present.
 :   Active Transfers: substitute ? for <unknown> on html pages
 
 [3e91415](https://github.com/dcache/dcache/commit/3e91415a2d37cd70662497bb8ef6dd13c515af20)
-:   common: add support for UserNamePrincipal as user:<name>
+:   common: add support for UserNamePrincipal as user:&lt;name&gt;
 
 [8091f5f](https://github.com/dcache/dcache/commit/8091f5f3ec38c5cd5474773ed3db85d9103d816a)
 :   Added 'explain login' examples to help text in Gplazma2LoginStrategy.java

@@ -186,7 +186,7 @@ Fix the billing indexer to ignore the `format` string, if present.
 :   srmclient: give meaningful error message if credential is missing
 
 [4f86863](https://github.com/dcache/dcache/commit/4f8686363e37cb238b815ef57c88744e6bcd3917)
-:   common: add support for UserNamePrincipal as user:<name>
+:   common: add support for UserNamePrincipal as user:&lt;name&gt;
 
 [56e514f](https://github.com/dcache/dcache/commit/56e514f872970289231ea940c8756f76c5b6d390)
 :   srmclient: provide better error message if credential has expired
