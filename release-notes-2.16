@@ -111,6 +111,41 @@ HTML header: <title>dCache 2.16 Release Notes</title>
 * Sites with a custom `httpd.conf` configuration will have to adjust
   this upon upgrade to inject the cell address of the `info` service.
 
+## Release 2.16.17
+
+### doors
+
+Fixed a bug in which information on stage pool and number of attempts
+were lost when retrying pool selection requests.
+
+### frontend
+
+This release fixes a regression that prevented anonymous users from accessing dCache.
+
+### srmclient
+
+A bug in srmclient was fixed that occasionally reported checksum errors when trying to upload small files.
+
+
+### Changelog 2.16.16..2.16.17
+
+<!-- git log 2.16.16..2.16.17 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[12fe4b2](https://github.com/dcache/dcache/commit/12fe4b2b2186e443c10d6a2d34d7bb41826b7dd8)
+:   [maven-release-plugin] prepare release 2.16.17
+
+[6f113d1](https://github.com/dcache/dcache/commit/6f113d1417b7677db3ca89a103b47ebe4cd6977e)
+:   frontend: reinstate support for truly anonymous access
+
+[a3a68b7](https://github.com/dcache/dcache/commit/a3a68b7def8da6aaa3c1b20b7857a580ca9c5846)
+:   doors: Ensure that pool selection context survives between retries
+
+[fe0e9c2](https://github.com/dcache/dcache/commit/fe0e9c230f95e7737b6a62eed7cbf29bf0652db5)
+:   srmclient: fix checksum mismatch when uploading small files
+
+[a5bd65d](https://github.com/dcache/dcache/commit/a5bd65d98e5a5777c108fbb1920233908443aff6)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.16.16
 
 ### Changes affecting multiple services

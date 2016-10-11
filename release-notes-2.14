@@ -149,6 +149,27 @@ Highlights from this release:
   SRM requests will be lost from the database. Third party scripts
   that access the SRM database directly may have to be updated.
 
+## Release 2.14.36
+
+### doors
+
+Fixed a bug in which information on stage pool and number of attempts
+were lost when retrying pool selection requests.
+
+
+### Changelog 2.14.35..2.14.36
+
+<!-- git log 2.14.35..2.14.36 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[aa669de](https://github.com/dcache/dcache/commit/aa669deaed00853d0048ce99405f9317f9d9ab27)
+:   [maven-release-plugin] prepare release 2.14.36
+
+[9a52fdc](https://github.com/dcache/dcache/commit/9a52fdce1339404bda5e800cecd02f85d09ee327)
+:   doors: Ensure that pool selection context survives between retries
+
+[cfe45ad](https://github.com/dcache/dcache/commit/cfe45ad6f0f55536ed642d883aa535b362d62bdd)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.14.35
 
 ### billing

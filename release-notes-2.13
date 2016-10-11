@@ -137,6 +137,27 @@ Highlights from this release:
   required upon upgrading, but downgrading is not possible without
   explicitly converting the format.
 
+## Release 2.13.47
+
+### doors
+
+Fixed a bug in which information on stage pool and number of attempts
+were lost when retrying pool selection requests.
+
+
+### Changelog 2.13.46..2.13.47
+
+<!-- git log 2.13.46..2.13.47 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[4151cd4](https://github.com/dcache/dcache/commit/4151cd46501956e59f3ea9d6b5fbc20bcfdf52b1)
+:   [maven-release-plugin] prepare release 2.13.47
+
+[0afd0a5](https://github.com/dcache/dcache/commit/0afd0a54895c60f71be3cc925c65df70b88435f1)
+:   doors: Ensure that pool selection context survives between retries
+
+[78a7963](https://github.com/dcache/dcache/commit/78a796373b565de5bd149ee10ab6f30b7b487d30)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.13.46
 
 ### billing
