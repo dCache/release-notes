@@ -637,6 +637,35 @@ property. dCache now recognizes this property and uses it in space
 reservations, pool selection, and file verification. If the uploaded
 file does not match the specified size, the file is marked as broken.
 
+#### nfs: autodiscovery of nfs4domain for idmapping
+
+For correct user id mapping nfs4 requires that server and client use
+the same naming scope, called nfs4domain. This implies a consistent
+configuration on both sides. To lower deployment overhead a special
+auto-discovery mechanism was introduced by SUN Microsystems - a DNS
+TXT record. Staring from version 3.0 dcache supports this discovery
+mechanism. When `nfs.domain` property is set, it gets used. If it's
+left unset, then DNS TXT record for `_nfsv4idmapdomain` is taken or
+the default `localdomain` is used when DNS record is absent.
+
+See [nfsmapid and DNS TXT Records](http://docs.oracle.com/cd/E19253-01/816-4555/epubp/index.html) for more information.
+
+#### nfs: improved protocol compatibility and stability
+
+Nfs door now can share a single mover between multiple transfers to a
+file by the same user coming from the same host. This should improve
+compatibility with existing clients as they expect such behavior which
+is allowed by nfs protocol specification.
+
+#### nfs: added support for flexfile file layout
+
+Flexfile layout type aims to be an extension to pNFS to allow the use of
+storage devices in a fashion such that they require only a quite limited
+degree of interaction with the metadata server. The RHEL 7.2 and it's
+derivatives are providing experimental support for flexfile layout
+type. With this release, dcache starts to issue flexfile layouts if
+requested by a client.
+
 #### Add support for the HAProxy proxy protocol
 
 The `ftp`, `xrootd`, `webdav`, `srm`, `httpd`, and `frontend` services
@@ -725,8 +754,6 @@ considered an expert feature.
 - [dcap: bump max command size sent by client to 8MB](http://github.com/dcache/dcache/commit/5d0825d197d13c0cc18c625e3ebdf023f96491cf)
 - [gplazma: Make gplazma.x509.use-policy-principals obsolete](http://github.com/dcache/dcache/commit/b40b8bdc1a16d1eae0ca6ab723bd8484a2aa9b20)
 - [mespace/chimera: allow optionally disable move to directory having differnt storage class (and cache class)](http://github.com/dcache/dcache/commit/09abff118fa2a255d77568e213ddf558584f7432)
-- [nfs4: autodiscover nfsv4 domain used by idmapper](http://github.com/dcache/dcache/commit/05f327a3160857716b55305442346a86e4f191c7)
-- [nfs: add support for flexfile layout type](http://github.com/dcache/dcache/commit/8a8a2abc648f99f519b420d04d07119d41b81422)
 - [pool: close dcap accepter thread and server socket after client connects](http://github.com/dcache/dcache/commit/135522e3b97a059d021b29a9e07b7445aa7b6e4d)
 - [restful-api: add create, move and rename resources](http://github.com/dcache/dcache/commit/91d183227dd04796c197b3edbda83bdcc7dc4a5d)
 - [webadmin: remove error and autorefresh options from alarms page](http://github.com/dcache/dcache/commit/3b355d122a16118b9df48571b60e5fd5afd34f78)
