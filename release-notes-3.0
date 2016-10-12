@@ -574,8 +574,8 @@ fairly easy to hook alternate storage backends into dCache.
 #### pool: sorted listing of movers
 
 In the _nice to have_ category, dCache 3 supports options in the
-`mover ls` admin shell command to sort the output by last access time
-and file size.
+`mover ls` admin shell command to sort the output by mover's last
+access time and transferred data size.
 
 #### ftp: port door to Netty
 
