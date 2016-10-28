@@ -149,6 +149,80 @@ Highlights from this release:
   SRM requests will be lost from the database. Third party scripts
   that access the SRM database directly may have to be updated.
 
+## Release 2.14.37
+
+### Changes affecting multiple services
+
+Internal notification processing between cleaners and Pin Manager, Replica Manager and Space Manager was improved and runs quicker now.
+
+### admin
+
+A bug in the Admin service that caused it to not detect certain error replies
+from other components was fixed.
+
+### billing
+
+If a dCache instance was shut down while the billing service was in the middle of a refresh,
+an exception was logged and shutdown was delayed. A change in exception handling fixes this rare
+scenario, ensuring a quick shutdown and no unnecessary log entries.
+
+### dcap
+
+This release makes it possible for admins to ban outdated, problematic versions of dcap clients. 
+Some old client versions contain a bug that causes the
+client to make unsatisfiable requests to a pool with no way for dCache
+to reject the request: the client will simply retry. 
+
+The client version limits are exposed using the new configuration property `dcap.limits.client-version`.
+The default is to allow all dcap client versions, unchanged from the previous behaviour. 
+
+This release fixes a regression through which Kerberos dcap would not work for host principals containing a '-' character. GSI dcap was not affected.
+
+### doors
+
+Fixed a bug in the lb set tags command in doors that prevented setting
+an empty list of tags.
+
+### pool
+
+A bug that caused non-critical stack traces to be logged on the pool after
+stage or deletion failure from nearline storage has been fixed.
+
+
+### Changelog 2.14.36..2.14.37
+
+<!-- git log 2.14.36..2.14.37 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[48ab090](https://github.com/dcache/dcache/commit/48ab090e32d56aba2719b9c0d8e60d44514c4fc1)
+:   [maven-release-plugin] prepare release 2.14.37
+
+[bbed67b](https://github.com/dcache/dcache/commit/bbed67bdf5c486967b5445dc43f0ac90ce4438a2)
+:   dcap: expose dcap client version limit
+
+[10e2317](https://github.com/dcache/dcache/commit/10e2317a84aa7d049e003d7aa1f6d1a9fbe92620)
+:   dcap: fix Kerberos dcap if principal contains a '-'
+
+[3799546](https://github.com/dcache/dcache/commit/379954684e006edb2322cef3ae34888425d2fa60)
+:   dcap: fix regression in handling old version
+
+[1c2d2c5](https://github.com/dcache/dcache/commit/1c2d2c5456d1f130fa5e259014a9ef9da44eb28b)
+:   pool: Suppress two stack traces in nearline storage handling
+
+[5dc425d](https://github.com/dcache/dcache/commit/5dc425dd705973f1f63f778e13a956056b189a08)
+:   cleaner: Send notifications concurrently
+
+[fe023c9](https://github.com/dcache/dcache/commit/fe023c9e14b7e08b5c099bf85523b356ffbba44b)
+:   billing: fix stacktrace and slow shutdown if in refresh
+
+[bd28892](https://github.com/dcache/dcache/commit/bd28892c14aee93679851a51b477d685fbb8efdf)
+:   doors: Allow setting an empty list of login broker tags
+
+[77cdddf](https://github.com/dcache/dcache/commit/77cdddf95c3b3d9874fb011c056b001da1021b14)
+:   [maven-release-plugin] prepare for next development iteration
+
+[307e556](https://github.com/dcache/dcache/commit/307e5560010754f7fb0af243d869ed8fc5a7c6f6)
+:   dcache: Fix detection of message errors in admin
+
 ## Release 2.14.36
 
 ### doors

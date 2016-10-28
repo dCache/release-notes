@@ -111,6 +111,139 @@ HTML header: <title>dCache 2.16 Release Notes</title>
 * Sites with a custom `httpd.conf` configuration will have to adjust
   this upon upgrade to inject the cell address of the `info` service.
 
+## Release 2.16.18
+
+### Changes affecting multiple services
+
+Fixed a bug in admin and in the pool manager rebalancer component that
+caused these to not detect certain error replies from other components.
+
+Internal notification processing between cleaners and Pin Manager, Replica Manager and Space Manager was improved and runs quicker now.
+
+### admin
+
+Fixed a problem in which connecting the admin shell to a named queue
+caused messages to be sent to one of several consumers rather than the
+one cell than the admin prompt would indicate as the connected cell.
+
+### billing
+
+If a dCache instance was shut down while the billing service was in the middle of a refresh,
+an exception was logged and shutdown was delayed. A change in exception handling fixes this rare
+scenario, ensuring a quick shutdown and no unnecessary log entries.
+
+### cells
+
+In some cases, problems with two connectors running to the same
+core domain have been observed. This release improves message handling in connectors and improves debugging for problem cases.
+
+Fixed a null pointer exception in location manager caused by loss of connection
+to zookeeper.
+
+### common
+
+The representation parameter lists in help texts was improved.
+
+Text output has been improved so that no trailing whitespace characters cause layout problems any more.
+
+### dcap
+
+This release makes it possible for admins to ban outdated, problematic versions of dcap clients. 
+Some old client versions contain a bug that causes the
+client to make unsatisfiable requests to a pool with no way for dCache
+to reject the request: the client will simply retry. 
+
+The client version limits are exposed using the new configuration property `dcap.limits.client-version`.
+The default is to allow all dcap client versions, unchanged from the previous behaviour. 
+
+This release fixes a regression through which Kerberos dcap would not work for host principals containing a '-' character. GSI dcap was not affected.
+
+### doors
+
+Fixed a bug in the lb set tags command in doors that prevented setting
+an empty list of tags.
+
+### pool
+
+A bug that caused non-critical stack traces to be logged on the pool after
+stage or deletion failure from nearline storage has been fixed.
+
+### srm
+
+SRM logging has been improved: When SRM request tokens appeared in the access log, a regression, fixed by this release, caused them to be listed without a backend ID prefix even if they carried one.
+
+### srmclient
+
+The shell's built-in help support now includes some additional
+information about available commands.
+
+The SRM client now allows glob patterns for the  "check permission",
+"get permission", "lrm", "lrmdir", "rm" and "rmdir" commands.
+
+Until now, SrmFS could not connect to StoRM instances. This release updates the `cd` command so that a connection to StoRM is now possible.
+
+
+### Changelog 2.16.17..2.16.18
+
+<!-- git log 2.16.17..2.16.18 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[f3056d5](https://github.com/dcache/dcache/commit/f3056d52102b9127a9c3d30dab298cfbaf9af7f6)
+:   [maven-release-plugin] prepare release 2.16.18
+
+[38b9a40](https://github.com/dcache/dcache/commit/38b9a4093bf71ab91458277ce3ad653389c145db)
+:   dcap: expose dcap client version limit
+
+[66daa5d](https://github.com/dcache/dcache/commit/66daa5d9776340a06ee7fcbf88f484e799312fe1)
+:   dcap: fix Kerberos dcap if principal contains a '-'
+
+[74d2303](https://github.com/dcache/dcache/commit/74d23039db4ea1acd1a5bf9a2d8949048c939750)
+:   dcap: fix regression in handling old version
+
+[c06470c](https://github.com/dcache/dcache/commit/c06470c6ff129d4d3ebb3f26b9f7b9590747b51a)
+:   cells: Fix NPE in location manager
+
+[de159f1](https://github.com/dcache/dcache/commit/de159f126a7cd7c3fe08764c21b7f941bff4a59b)
+:   cells: Add safe guards to connector create and process update events
+
+[fe480b3](https://github.com/dcache/dcache/commit/fe480b372c04af088a871f640caaa2a164c1807f)
+:   srmclient: fix 'cd' compatibility with StoRM
+
+[02ef254](https://github.com/dcache/dcache/commit/02ef254c83fd9fc492f2eccc5818ab0760a282fa)
+:   pool: Suppress two stack traces in nearline storage handling
+
+[76ec624](https://github.com/dcache/dcache/commit/76ec6244fa52f584423f256e91fd87853a209135)
+:   srm: Log correct request token in access log
+
+[685502e](https://github.com/dcache/dcache/commit/685502e9bc9448696cc91a999c9ae071f78d9875)
+:   srmclient: add initial support for glob expansion
+
+[4a53beb](https://github.com/dcache/dcache/commit/4a53beb4e7028426459a1df7992028821da78001)
+:   billing: fix stacktrace and slow shutdown if in refresh
+
+[7c95752](https://github.com/dcache/dcache/commit/7c95752fe55f0776ef26a9896bc8718cb0d15221)
+:   cleaner: Send notifications concurrently
+
+[de80f81](https://github.com/dcache/dcache/commit/de80f81b9062be9cef8e6f55e153ac243e4c2b0c)
+:   doors: Allow setting an empty list of login broker tags
+
+[ce367b9](https://github.com/dcache/dcache/commit/ce367b96ad98f26030e626d531b6e0cc1b6088ca)
+:   common: update ColumnWriter to remove any trailing whitespace
+
+[15e3528](https://github.com/dcache/dcache/commit/15e35280bf12c5dcd6c7baa07057200cec5798cc)
+:   srmclient: add additional help text to srmfs
+
+[5b1cf01](https://github.com/dcache/dcache/commit/5b1cf01148fe4a175b0cb596e8c0ff9788ed288e)
+:   dcache: Fix detection of message errors in poolmanager and admin
+
+[c040a50](https://github.com/dcache/dcache/commit/c040a502a80c0793738be349c63396c3b302b58c)
+:   admin: Send requests to a fully qualified address once connected to a cell
+
+[8d1d657](https://github.com/dcache/dcache/commit/8d1d657f8d81a3c0a9b64c2bff869f49dc877c0c)
+:   common: do not markup ellipses as a user-value
+
+[c430295](https://github.com/dcache/dcache/commit/c430295e3a5f9be262eeccb7f8de1d631b4abbcb)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.16.17
 
 ### doors
