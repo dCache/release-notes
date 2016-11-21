@@ -953,7 +953,7 @@ considered an expert feature.
 :   srmclient: avoid stack-trace if lcd with incorrect path
 
 [79db347](https://github.com/dcache/dcache/commit/79db3472ecf06e4a1c7fafc929c1f8013584d7f9)
-:   Active Transfers: substitute ? for <unknown> on html pages
+:   Active Transfers: substitute ? for &lt;unknown&gt; on html pages
 
 [881a582](https://github.com/dcache/dcache/commit/881a582aae8a507fddf77662dde13e3ae08701a0)
 :   dcache: Fix output of domain ports for 'dcache ports' command
@@ -980,7 +980,7 @@ considered an expert feature.
 :   srmclient: give meaningful error message if credential is missing
 
 [07db10c](https://github.com/dcache/dcache/commit/07db10ce8581ac1a70f17c9db3d952bd60ccee6e)
-:   common: add support for UserNamePrincipal as user:<name>
+:   common: add support for UserNamePrincipal as user:&lt;name&gt;
 
 [b063e96](https://github.com/dcache/dcache/commit/b063e96c1126779169e10909931547f4bf6d7102)
 :   srmclient: provide better error message if credential has expired
