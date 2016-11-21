@@ -766,6 +766,201 @@ considered an expert feature.
 
 <!-- git log 2.16.0..3.0 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
 
+[45fed81](https://github.com/dcache/dcache/commit/45fed81acea1e6e7e565bf9afebd8ff4b4bb7807)
+:   srmclient: by default show only CN of owner in 'ls -l' output
+
+[10aa51c](https://github.com/dcache/dcache/commit/10aa51cb3588c5c20ae9838ffa72e41cb24bbea3)
+:   resilience: python script for making database changes necessary for migration from old replica manager setup
+
+[12a45fa](https://github.com/dcache/dcache/commit/12a45fa43215ba96781ffc72376621df85bf3908)
+:   pool: Reduce lock contention in migration module
+
+[564442e](https://github.com/dcache/dcache/commit/564442eca96c72c34418b25316f17cee6f548ece)
+:   srmmanager: Adjust semantics of concurrent upload detection
+
+[90e8d7b](https://github.com/dcache/dcache/commit/90e8d7b99cb7b6496fa57f02385e24b8ccb4da85)
+:   spacemanager: Fix shutdown bug causing a file to leak from a reservation
+
+[88ec2b3](https://github.com/dcache/dcache/commit/88ec2b3e27ebb9cfba59e04829322c75999ffdaf)
+:   spacemanager: Fixes a message bounce bug
+
+[bd00ac7](https://github.com/dcache/dcache/commit/bd00ac70eadcfa9bd51b53617f61956146bed4ff)
+:   srmclient: add SRM call statistics
+
+[4f1d904](https://github.com/dcache/dcache/commit/4f1d904864adad517073363ff1a47c095b34d548)
+:   srmclient: update command names in srmfs
+
+[71192e5](https://github.com/dcache/dcache/commit/71192e51db3d415a08448caa23bdb8a08a5e4650)
+:   srmclient: fix srmfs 'get permission' command
+
+[25c313e](https://github.com/dcache/dcache/commit/25c313e6e9f858461702778b3ee6eec4af6e588f)
+:   srmclient: fix compatibility with Bestman
+
+[951fb06](https://github.com/dcache/dcache/commit/951fb06a1d45efbd240ec055b6db88adadb1312b)
+:   srm: Sumbit token less releaseFiles requests to all backends
+
+[0d6e02f](https://github.com/dcache/dcache/commit/0d6e02f2b54bc52b943808a3268aea7f486c8a61)
+:   srmmanager: Support upload detection in clustered environments
+
+[28f79b6](https://github.com/dcache/dcache/commit/28f79b6f7fc2c8e74ba57ae643ba95c7b7812666)
+:   srm: Redefine the semantics of active upload checks
+
+[e320cee8c](https://github.com/dcache/dcache/commit/e320cee8c915ac80d7433d05373d0d8aad7f79fb)
+:   srmmanager: Refactor how various operations handle active transfers
+
+[321a380](https://github.com/dcache/dcache/commit/321a38000945a102f854b9a9c18cfd7bf4c1e6ea)
+:   srmclient: probe for SRM endpoint parameters that the user doesn't specify
+
+[2844429](https://github.com/dcache/dcache/commit/2844429bae23b0249d5f06ffca9395e49cd4d43d)
+:   Resilience: separate out the data structures for handling storage units from those for pool groups
+
+[ced4286](https://github.com/dcache/dcache/commit/ced428677e86a57ca3fc58dd13a54273d4e50f01)
+:   Resilience: Support matching the universal and class default storage unit expressions
+
+[87b5e57](https://github.com/dcache/dcache/commit/87b5e57f4f0165273c67a77808d87c2601c80406)
+:   dcap: don't create stack-trace if tunnel fails due to bad client
+
+[ce0b9e3](https://github.com/dcache/dcache/commit/ce0b9e34dc6741da22a4ada2f27fe35feb39dcda)
+:   PoolManager : stage protection, fix error in stage.fragment
+
+[26fa950](https://github.com/dcache/dcache/commit/26fa950d6d102c83f51c35cc36b9d0c7bc9da4d0)
+:   webdav: fix thrown NPE when CORS is set
+
+[c445044](https://github.com/dcache/dcache/commit/c44504431eb25d4e29b8a09b9c9de264f298ec82)
+:   dcap: expose dcap client version limit
+
+[d60ec26](https://github.com/dcache/dcache/commit/d60ec2666bb6c8dcb0c03ce2951edb09eee1ce95)
+:   dcap: Register DCAP interpreter as a command listener
+
+[8335057](https://github.com/dcache/dcache/commit/833505725ba98e5b8bfc1b72d57c75ec36118bd0)
+:   dcap: fix Kerberos dcap if principal contains a '-'
+
+[fd7b21c](https://github.com/dcache/dcache/commit/fd7b21c3df4483fa353cbbb33b75a736b2296b20)
+:   dcap: fix regression in handling old version
+
+[1d14d80](https://github.com/dcache/dcache/commit/1d14d809954c7f0ab36a627664fb363ef82fb297)
+:   cells: Fix NPE in location manager
+
+[a1d7b4d](https://github.com/dcache/dcache/commit/a1d7b4d41966de00e6ecae68064bb5ec088b3adb)
+:   srmmanager: Add interface to query and abort transfers
+
+[cee5a6a](https://github.com/dcache/dcache/commit/cee5a6a75925801033470e8b84dc590ce8545365)
+:   cells: Remove resubmission to event thread in location manager
+
+[5a08279](https://github.com/dcache/dcache/commit/5a082797bb2778aa27ab2eb392fd43bde339b53c)
+:   cells: Add safe guards to connector create and process update events
+
+[cc9b845](https://github.com/dcache/dcache/commit/cc9b845cb649db62afa8dbda699017a099d7c542)
+:   srmclient: fix 'cd' compatibility with StoRM
+
+[c35fc89](https://github.com/dcache/dcache/commit/c35fc89253468208c45168f2222d440a00b4642e)
+:   poolmanager: Log pool name rather than SelectPool object id
+
+[b6855d4](https://github.com/dcache/dcache/commit/b6855d43b7c1fe42d1221275e902641e5c0f663d)
+:   pool: Suppress two stack traces in nearline storage handling
+
+[802f2d8](https://github.com/dcache/dcache/commit/802f2d8b5339306446b925345bc3e3e6c43a1acd)
+:   srm: Log correct request token in access log
+
+[b75e224](https://github.com/dcache/dcache/commit/b75e224fe84b98e8f8a9dd7f5efd772a75750a9d)
+:   httpd: Enable X-Forwarded-For processing in httpd
+
+[4d5eed5](https://github.com/dcache/dcache/commit/4d5eed56f7a3d5209591df664e058d6162313a6f)
+:   httpd: Don't insist on using http for unauthenticated webadmin pages
+
+[a671d74](https://github.com/dcache/dcache/commit/a671d74ff78ec34660de6d485587a4a1678da8ef)
+:   nfs: allow dCache to start up without DNS
+
+[ad802f8](https://github.com/dcache/dcache/commit/ad802f85aec14b4b8079baff25165fd4d14913c0)
+:   srmclient: add initial support for glob expansion
+
+[f7007f1](https://github.com/dcache/dcache/commit/f7007f10e8a6a7184887356c066d7dfb392654b7)
+:   billing: fix stacktrace and slow shutdown if in refresh
+
+[1388162](https://github.com/dcache/dcache/commit/13881625794c19c4ea8e1bb06474463384247de7)
+:   common: fix alignment of abbreviated byte column in ColumnWriter
+
+[dc23d88](https://github.com/dcache/dcache/commit/dc23d883ee665b7666d9b024fbe07ed8aba0975e)
+:   cleaner: Send notifications concurrently
+
+[bb4f08b](https://github.com/dcache/dcache/commit/bb4f08bb0bd8f67294d50d837ddbdc03e0720823)
+:   poolmanager,spacemanager: Do not reply to pool manager query replies
+
+[cb41330](https://github.com/dcache/dcache/commit/cb4133066ca64ea9550b7b549fd08f42ed76b476)
+:   doors: Allow setting an empty list of login broker tags
+
+[5abed59](https://github.com/dcache/dcache/commit/5abed5917d831e90842f795d61435ebbf12a8700)
+:   dcache: Add column to `dcache services` for proxy-protocol
+
+[2072783](https://github.com/dcache/dcache/commit/2072783868433f1a1012e697bc3e6f04a9c65797)
+:   srmclient: add additional help text to srmfs
+
+[6b9b5db](https://github.com/dcache/dcache/commit/6b9b5dbc27562b689c06fae66d817bdd76f79d43)
+:   common: update ColumnWriter to remove any trailing whitespace
+
+[b661232](https://github.com/dcache/dcache/commit/b66123204174f2e0c639b953748704a4f232064b)
+:   spacemanger: Fix interception of PoolAcceptFileMessage
+
+[4031401](https://github.com/dcache/dcache/commit/40314011506ed2015229f5edfcfbdb02272b57fc)
+:   xrootd: Upgrade to xrootd4j 3.2.1
+
+[f631308](https://github.com/dcache/dcache/commit/f6313084cc867c7a4ce3637c965c652a3c782995)
+:   admin: Send requests to a fully qualified address once connected to a cell
+
+[46e4e17](https://github.com/dcache/dcache/commit/46e4e17a53a91f07cea9bbf0fc5f4e6e60c92b64)
+:   webdav: Fix initialization of html template
+
+[39a2bac](https://github.com/dcache/dcache/commit/39a2baceb31d33a718c684b1dc666e4e1bf1f84d)
+:   common: do not markup ellipses as a user-value
+
+[a6ad18a](https://github.com/dcache/dcache/commit/a6ad18ab900a1668fb84bedef5f73d3e0b9ad9e3)
+:   frontend: reinstate support for truly anonymous access
+
+[b567bc7](https://github.com/dcache/dcache/commit/b567bc7b4c3f6ea6f768d7ad08162f23773df4d4)
+:   spacemanager: Propagate PoolManagerHandler errors as is
+
+[b07f800](https://github.com/dcache/dcache/commit/b07f800b7879b265acf9e842f605f373168325e4)
+:   dcache: Fix detection of message errors in doors and space manager
+
+[08d69d6](https://github.com/dcache/dcache/commit/08d69d6328380f93a3e5452c64a64f5af8d9ce25)
+:   dcache: Fix detection of message errors in poolmanager and admin
+
+[54ba7fe](https://github.com/dcache/dcache/commit/54ba7fe3104575e34063fb29b612c60f26e2d8d5)
+:   doors: Ensure that pool selection context survives between retries
+
+[5458eff](https://github.com/dcache/dcache/commit/5458effef4c3d6030c2bc27cd84a446d801ba366)
+:   poolmanager: Propagate subscriber failures
+
+[61f6ea2](https://github.com/dcache/dcache/commit/61f6ea2c4d7fcf97eace82a2e776b50a4b481162)
+:   cells: Avoid an infinite loop when executing deferred tasks
+
+[494732c](https://github.com/dcache/dcache/commit/494732c08f93c23bce4ff5d42866ef00d20cc33b)
+:   cells: Do not add source name when resending a message
+
+[4be45bd](https://github.com/dcache/dcache/commit/4be45bd6a0882adb86db5c94f74dedbe5c90fb72)
+:   srmclient: fix checksum mismatch when uploading small files
+
+[7856802](https://github.com/dcache/dcache/commit/785680248fc05ec54534ceca4eb6ab085046ea4a)
+:   libs: update to nfs4j-0.13.0
+
+[1f6e347](https://github.com/dcache/dcache/commit/1f6e34794e8c6f20088b6af5dd5d44f13212b721)
+:   srmclient: fix srmfs to shutdown cleanly if user issues Ctrl-C
+
+[98fb6f6](https://github.com/dcache/dcache/commit/98fb6f6a0a27463a612b2c99c246c8ad343d7033)
+:   srmclient: clean shutdown srmfs after transfer
+
+[d93af74](https://github.com/dcache/dcache/commit/d93af74fd83305d91e13c3d4f9d6bcb1892e782e)
+:   srmclient: avoid stack-trace if lcd with incorrect path
+
+[79db347](https://github.com/dcache/dcache/commit/79db3472ecf06e4a1c7fafc929c1f8013584d7f9)
+:   Active Transfers: substitute ? for <unknown> on html pages
+
+[881a582](https://github.com/dcache/dcache/commit/881a582aae8a507fddf77662dde13e3ae08701a0)
+:   dcache: Fix output of domain ports for 'dcache ports' command
+
+[bffb248](https://github.com/dcache/dcache/commit/bffb2488241242c943d0ea59c79cebf02524b144)
+:   dcap,ftp: Allow root path and socket address to be overridden for loginbroker info
+
 [0a40230](https://github.com/dcache/dcache/commit/0a402301c95dbd94121d05ba8fc5d9ea277d2633)
 :   cells: Minor optimization to routing manager when processing GetAllDomain requests
 
@@ -785,7 +980,7 @@ considered an expert feature.
 :   srmclient: give meaningful error message if credential is missing
 
 [07db10c](https://github.com/dcache/dcache/commit/07db10ce8581ac1a70f17c9db3d952bd60ccee6e)
-:   common: add support for UserNamePrincipal as user:name
+:   common: add support for UserNamePrincipal as user:<name>
 
 [b063e96](https://github.com/dcache/dcache/commit/b063e96c1126779169e10909931547f4bf6d7102)
 :   srmclient: provide better error message if credential has expired
@@ -1962,6 +2157,7 @@ considered an expert feature.
 
 [d8ab725](https://github.com/dcache/dcache/commit/d8ab725f5cfb231fc4d27146aefd0b01d74b80e9)
 :   [maven-release-plugin] prepare for next development iteration
+
 
 </div>
 </div>

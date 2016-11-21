@@ -167,6 +167,59 @@
     <br/>
   </preamble>
 
+  <series id="server-3.0">
+    <title>server 3.0.x</title>
+    <description>
+      <p>
+        dCache 3.0 features the following highlights and architectural improvements:
+      </p>
+
+      <ul>
+        <li>Production-ready support for high availability setups and rolling updates.</li>
+	<li>Automatic detection of PostgreSQL master.</li>
+	<li>Support the HAProxy proxy protocol.</li>
+	<li>Self describing billing files.</li>
+	<li>Pool manager setup is stored in ZooKeeper.</li>
+	<li>Pool manager read-only state is stored in setup file and ZooKeeper.</li>
+	<li>New experimental support for Ceph</li>
+	<li>New performance cost calculation for improved stability of hot spot replication.</li>
+	<li>Batching of flush to tape can be disabled.</li>
+	<li>Mover queues can be created at runtime.</li>
+	<li>Abort upload when SRM TURL is invalidated.</li>
+	<li>Allow xrootd clients to select mover queues.</li>
+      </ul>
+    
+      <p>
+          dCache v3.0 requires a JVM supporting Java 8.
+      </p>
+    
+    </description>
+    
+    <releases>
+      <name>dCache VERSION</name>
+      <download-url-prefix>repo/3.0/dcache</download-url-prefix>
+      <notes-url>release-notes-3.0.shtml</notes-url>
+      <version-prefix>3.0.</version-prefix>
+      
+       <release version="0" recommended="1">
+        <date>21.11.2016</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>ffc1888699a6e524bea8392fe2ef0cc2</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>e476188f337353d9a15355028450e20a</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>87b9567509e104dd7d68ecb4e934f01a</md5sum>
+        </package>
+      </release>
+
+    </releases>
+  </series>
+
   <series id="server-2.16">
    <title>server 2.16.x</title>
    <description>
