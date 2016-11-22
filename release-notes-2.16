@@ -111,6 +111,82 @@ HTML header: <title>dCache 2.16 Release Notes</title>
 * Sites with a custom `httpd.conf` configuration will have to adjust
   this upon upgrade to inject the cell address of the `info` service.
 
+## Release 2.16.19
+
+### dcap
+
+Connections of non-DCAP clients to a dCache no longer result in stack-traces in the logs.
+
+### pool
+
+A lock contention scenario in the migration module was removed, increasing performance and throughput.
+
+### poolmanager
+
+PoolManager was updated to properly handle the `dcache.authz.staging.pep` and `dcache.authz.staging` parameters. This allows to enable stage protection properly.
+
+### resilience
+
+When building the central pool information data structure for resilience
+(PoolInfoMap), it was (erroneously) assumed that pool group names would 
+never conflict with storage unit names, since the latter would always contain an '@'.
+
+Obviously, there is no restriction on the naming of pool groups, so
+it is possible (though perhaps unlikely) that the name of a group
+could be identical to that of a storage unit.   In this case,
+when the PoolInfoMap is updated, the storage group will overwrite
+the values for the pool group.  This will eventually lead to the
+failure of all files belonging to that pool group to be replicated.
+
+This potential problem was mitigated by this patch.
+
+Resilience Manager was updated to support globbed expressions for PoolSelectionUnits.
+
+A Python script, `share/migration/migrate_from_repman_to_resilience.py`, is provided for migrating from replica manager to the new resilience service. 
+
+### srmclient
+
+SrmShell has been modified to actively probe for connection information that the
+user has not specified. This reduces unnecessary reconnection attempts.
+
+If an SRM request originating from a BeStMan system has to be rejected, the client now properly
+reports the situation. 
+
+
+### Changelog 2.16.18..2.16.19
+
+<!-- git log 2.16.18..2.16.19 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[a4d5824](https://github.com/dcache/dcache/commit/a4d5824a071a58bc7eee37ea77fcb1bab0219668)
+:   [maven-release-plugin] prepare release 2.16.19
+
+[53e953a](https://github.com/dcache/dcache/commit/53e953a02010cfaebcf46565f9ce5ff4a6b75c3f)
+:   resilience: python script for making database changes necessary for migration from old replica manager setup
+
+[1c9704b](https://github.com/dcache/dcache/commit/1c9704ba2c5acdf815d37a05b2283b103c031475)
+:   pool: Reduce lock contention in migration module
+
+[5e8e9c7](https://github.com/dcache/dcache/commit/5e8e9c76e13ad581995df31aa18424aec025c6cd)
+:   srmclient: fix compatibility with Bestman
+
+[d2e7b95](https://github.com/dcache/dcache/commit/d2e7b95c3d3a8e845e51bfd958854c6feb0b14f5)
+:   srmclient: probe for SRM endpoint parameters that the user doesn't specify
+
+[6752620](https://github.com/dcache/dcache/commit/6752620c62d68bb70e2ae2261579ed89b139725d)
+:   Resilience: separate out the data structures for handling storage units from those for pool groups
+
+[98ec759](https://github.com/dcache/dcache/commit/98ec7594c03c998e3c3df29bfabaaeccd23cd225)
+:   Resilience: Support matching the universal and class default storage unit expressions
+
+[d430a02](https://github.com/dcache/dcache/commit/d430a02f2c1e3e9b23e026122af9fccedaa159d0)
+:   dcap: don't create stack-trace if tunnel fails due to bad client
+
+[de42e02](https://github.com/dcache/dcache/commit/de42e02b49f8a230b8c4db3248043ec3874b0934)
+:   PoolManager : stage protection, fix error in stage.fragment
+
+[5bd8b17](https://github.com/dcache/dcache/commit/5bd8b1705f7670e443e5fb68f46dce0033a65bcd)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.16.18
 
 ### Changes affecting multiple services

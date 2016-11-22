@@ -149,6 +149,33 @@ Highlights from this release:
   SRM requests will be lost from the database. Third party scripts
   that access the SRM database directly may have to be updated.
 
+## Release 2.14.38
+
+### dcap
+
+Connections of non-DCAP clients to a dCache no longer result in stack-traces in the logs.
+
+### poolmanager
+
+PoolManager was updated to properly handle the `dcache.authz.staging.pep` and `dcache.authz.staging` parameters. This allows to enable stage protection properly.
+
+
+### Changelog 2.14.37..2.14.38
+
+<!-- git log 2.14.37..2.14.38 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[d1c87a9](https://github.com/dcache/dcache/commit/d1c87a91e2a61b26b5c3ef6bb084e63c6d81981d)
+:   [maven-release-plugin] prepare release 2.14.38
+
+[3aeb652](https://github.com/dcache/dcache/commit/3aeb652f4911e18a124878ba62cb33cb826630fd)
+:   dcap: don't create stack-trace if tunnel fails due to bad client
+
+[051f57f](https://github.com/dcache/dcache/commit/051f57f0a1e4d18863c2e9d3705fd4bce2086e7d)
+:   PoolManager : stage protection, fix error in stage.fragment
+
+[fa39df6](https://github.com/dcache/dcache/commit/fa39df64a73d6c575d89cc9365de9e2adf9ec4e0)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.14.37
 
 ### Changes affecting multiple services

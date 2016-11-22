@@ -102,6 +102,26 @@ Paul Millar  &lt;paul.millar@desy.de&gt;
   xrootd is now consistent with information recorded for other
   protocol transfers.
 
+## Release 2.10.62
+
+### poolmanager
+
+PoolManager was updated to properly handle the `dcache.authz.staging.pep` and `dcache.authz.staging` parameters. This allows to enable stage protection properly.
+
+
+### Changelog 2.10.61..2.10.62
+
+<!-- git log 2.10.61..2.10.62 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[29cbe36](https://github.com/dcache/dcache/commit/29cbe36c4093e59f26b2e010ce0270a0c4fe6b18)
+:   [maven-release-plugin] prepare release 2.10.62
+
+[4247d9a](https://github.com/dcache/dcache/commit/4247d9a749149a4b4d0a9f5c0abd738d6300aa9b)
+:   PoolManager : stage protection, fix error in stage.fragment
+
+[332e0ff](https://github.com/dcache/dcache/commit/332e0ff275fe3a32f4cf41beb62370ee9211613f)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.10.61
 
 ### pnfsmanager

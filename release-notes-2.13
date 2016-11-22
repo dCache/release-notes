@@ -137,6 +137,33 @@ Highlights from this release:
   required upon upgrading, but downgrading is not possible without
   explicitly converting the format.
 
+## Release 2.13.49
+
+### dcap
+
+Connections of non-DCAP clients to a dCache no longer result in stack-traces in the logs.
+
+### poolmanager
+
+PoolManager was updated to properly handle the `dcache.authz.staging.pep` and `dcache.authz.staging` parameters. This allows to enable stage protection properly.
+
+
+### Changelog 2.13.48..2.13.49
+
+<!-- git log 2.13.48..2.13.49 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[8777492](https://github.com/dcache/dcache/commit/8777492ee3a3e09c99854ac6bc913bce26445db3)
+:   [maven-release-plugin] prepare release 2.13.49
+
+[704121e](https://github.com/dcache/dcache/commit/704121e61ccdfcedca3578e7e6da48f6d2e758c0)
+:   dcap: don't create stack-trace if tunnel fails due to bad client
+
+[6ffa136](https://github.com/dcache/dcache/commit/6ffa136a1b93d467f4cd6c173d2f1520694fae0f)
+:   PoolManager : stage protection, fix error in stage.fragment
+
+[f26ad6b](https://github.com/dcache/dcache/commit/f26ad6b3b8cec0631b4568d370e2234acf6c86d4)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.13.48
 
 ### Changes affecting multiple services
