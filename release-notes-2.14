@@ -149,6 +149,30 @@ Highlights from this release:
   SRM requests will be lost from the database. Third party scripts
   that access the SRM database directly may have to be updated.
 
+## Release 2.14.39
+
+### ftpclient
+
+The current release improves compatibility between dCache FTP client and Globus GridFTP
+server.
+
+
+### Changelog 2.14.38..2.14.39
+
+<!-- git log 2.14.38..2.14.39 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[f04f1e7](https://github.com/dcache/dcache/commit/f04f1e72589c9713f6cd77ab19d848722ae442c9)
+:   [maven-release-plugin] prepare release 2.14.39
+
+[be1932c](https://github.com/dcache/dcache/commit/be1932c28f10625f6ce13b2a0c6a4965bbce951d)
+:   ftpclient: fix multiline ADAT reponses
+
+[fa93188](https://github.com/dcache/dcache/commit/fa93188126f57f9bb33aebe90817a937c7da0df0)
+:   ftpclient: encrypt SITE CLIENTINFO command
+
+[6b2cf9b](https://github.com/dcache/dcache/commit/6b2cf9bf53f9728c2f3408f53d3b7594e7bd8485)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.14.38
 
 ### dcap

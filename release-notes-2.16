@@ -111,6 +111,37 @@ HTML header: <title>dCache 2.16 Release Notes</title>
 * Sites with a custom `httpd.conf` configuration will have to adjust
   this upon upgrade to inject the cell address of the `info` service.
 
+## Release 2.16.20
+
+### cells
+
+The current release improves reply handling in batch processing.
+
+### ftpclient
+
+The current release improves compatibility between dCache FTP client and Globus GridFTP
+server.
+
+
+### Changelog 2.16.19..2.16.20
+
+<!-- git log 2.16.19..2.16.20 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[4467d93](https://github.com/dcache/dcache/commit/4467d93e6b076f5a55b4ac1e1e4b2f2ef7cc97cb)
+:   [maven-release-plugin] prepare release 2.16.20
+
+[059450a](https://github.com/dcache/dcache/commit/059450a49b898539501bd3adcbc59eae4b633f58)
+:   cells+dcache: fix Reply handling in batch processing
+
+[fc86472](https://github.com/dcache/dcache/commit/fc864724973bab4214375274dc987a49539052f2)
+:   ftpclient: fix multiline ADAT reponses
+
+[9a22094](https://github.com/dcache/dcache/commit/9a22094fa7e817f4d178922fc18dd0c9ecd904c3)
+:   ftpclient: encrypt SITE CLIENTINFO command
+
+[8a062ae](https://github.com/dcache/dcache/commit/8a062aed7fb8cf5c1a662f94e1b23a73aac9a2ad)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.16.19
 
 ### dcap

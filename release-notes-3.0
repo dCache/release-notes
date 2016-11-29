@@ -109,6 +109,89 @@ HTML header: <title>dCache 3.0 Release Notes</title>
 
 Thanks to Onno Zweers for several contributions to this release.
 
+## Release 3.0.1
+
+### #
+
+### cells
+
+The current release improves reply handling in batch processing.
+
+### ftpclient
+
+The current release improves compatibility between dCache FTP client and Globus GridFTP
+server.
+
+The dCache GridFTP client was  not working with Globus FTP server. This is now fixed.
+
+### pool
+
+The current release introduces a new pool.mover.nfs.thread-policy property, which add a spossibility to control  
+nfs request processing policies. 
+dCache admins could choose  one of the  strategies for nfs request processing.  
+Please note, that by default the request processing policy is set to same-thtead strategy.
+
+### srmclient
+
+`srmfs` was issuing `SRM` requests that `DPM` did not accept. `srmfs`
+also did not accept the responses from DPM. This was preventing any file
+transfers for succeeding. 
+This is now fixed and srmPrepareToGet and srmStatusOfGetRequest operations work as expected with DPM.
+
+The two `ls` commands (`lls` and `ls`) was not supporting multiple
+arguments or glob expansion. Both were taking an optional, single
+argument, which was  limiting while discovering what content is
+available and was not matching the expectation of the users.
+The current releases fixes this limitation and  Multiple arguments and glob expansion are now supported for the `ls` and `lls` commands.
+
+Correct information displayed about directories from DPM.
+
+This release of dCache improves the readability of the error returned to the client when server declines to add an explanation.
+
+
+### Changelog 3.0.0..3.0.1
+
+<!-- git log 3.0.0..3.0.1 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[0f643c0](https://github.com/dcache/dcache/commit/0f643c0d9f2f22035d1700180fbd660858eaee17)
+:   [maven-release-plugin] prepare release 3.0.1
+
+[3e2e814](https://github.com/dcache/dcache/commit/3e2e814afb5acf88508c89abe84f30db57bf0fcf)
+:   cells+dcache: fix Reply handling in batch processing
+
+[9f5745f](https://github.com/dcache/dcache/commit/9f5745f82bbf50a4220a9ab598adc622b59181a4)
+:   ftpclient: fix compatibility with Globus FTP server
+
+[1670622](https://github.com/dcache/dcache/commit/16706228a76825ec156ffe1dcaa85c33d077ff30)
+:   pool: optimize checksum channel calculation
+
+[b6f591c](https://github.com/dcache/dcache/commit/b6f591c0dfffaa7c339d61dc97ef726be48fc03b)
+:   pool: simplify checksum channel logic
+
+[a2375f1](https://github.com/dcache/dcache/commit/a2375f18fa0f39a12961b360179b6c3c381b2a3f)
+:   srmclient: ensure a reasonable error message
+
+[330e9f5](https://github.com/dcache/dcache/commit/330e9f5b15523a59d1eb63013620c65681e0d66d)
+:   srmclient: fix DPM compatibility with SRM transfer requests
+
+[6d7b7e6](https://github.com/dcache/dcache/commit/6d7b7e604ba7fce08a050e2507e5621ec51b057d)
+:   ftpclient: fix multiline ADAT reponses
+
+[9abf787](https://github.com/dcache/dcache/commit/9abf787ee0fe1bb6b75ef6b31ab6df42ee9ec018)
+:   ftpclient: encrypt SITE CLIENTINFO command
+
+[7279b09](https://github.com/dcache/dcache/commit/7279b09222d9e9c7ee261029724795f61f66fe9d)
+:   pool: add a possibility to control nfs movers threading policy
+
+[8db0380](https://github.com/dcache/dcache/commit/8db0380b833cb3d50f8ca3ef3d06ac311172a942)
+:   srmclient: add glob support for lls and ls
+
+[8cb2378](https://github.com/dcache/dcache/commit/8cb2378d60aaa3c9ce1782edf1bcdf48ee1aa99f)
+:   srmclient: avoid NPE when stat directory with DPM
+
+[d12117a](https://github.com/dcache/dcache/commit/d12117ab68ab1c0f27652bbfe48317bae6cfb32e)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.0.0
 
 The most obvious change is the transition to a new versioning scheme

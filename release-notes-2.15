@@ -94,6 +94,30 @@ Highlights from this release:
   enforced. Clients that relied on these not being enforced will
   fail after upgrade.
 
+## Release 2.15.26
+
+### ftpclient
+
+The current release improves compatibility between dCache FTP client and Globus GridFTP
+server.
+
+
+### Changelog 2.15.25..2.15.26
+
+<!-- git log 2.15.25..2.15.26 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[1cf0d51](https://github.com/dcache/dcache/commit/1cf0d515a96a24e9eb1e5f777a9088eb047d783a)
+:   [maven-release-plugin] prepare release 2.15.26
+
+[1328e3b](https://github.com/dcache/dcache/commit/1328e3bcff710719e8fbdcf97bdd4e9d2b75d1f2)
+:   ftpclient: fix multiline ADAT reponses
+
+[9c2d939](https://github.com/dcache/dcache/commit/9c2d939688fa2a19ba9f9a99dc9e09d6e21d7ee1)
+:   ftpclient: encrypt SITE CLIENTINFO command
+
+[e564036](https://github.com/dcache/dcache/commit/e564036e60e1e35e9c90430519b1c756d7f2b056)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.15.25
 
 ### dcap
