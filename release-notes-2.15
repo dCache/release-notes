@@ -94,6 +94,36 @@ Highlights from this release:
   enforced. Clients that relied on these not being enforced will
   fail after upgrade.
 
+## Release 2.15.27
+
+### cleaner
+
+Users reported that they wanted to see space freed up by cleaner processes
+to be reported as free as soon as possible. This patch sends notifications
+about freed up space more often, resulting in quicker status updates.
+
+### pool
+
+A problem was fixed that could cause the csm check to fail on pools 
+containing broken files.
+
+
+### Changelog 2.15.26..2.15.27
+
+<!-- git log 2.15.26..2.15.27 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[a31dd00](https://github.com/dcache/dcache/commit/a31dd0040e0649b560855ad6d780d805cf6d593f)
+:   [maven-release-plugin] prepare release 2.15.27
+
+[03bf013](https://github.com/dcache/dcache/commit/03bf013c94fd87bf6d267ad2240a032e7e7fc6a5)
+:   cleaner: Send notification more often
+
+[0dade8e](https://github.com/dcache/dcache/commit/0dade8eb1595c6815774b327585d8b9cd2486a31)
+:   pool: Fix csm check command in the pressence of broken files
+
+[63d0647](https://github.com/dcache/dcache/commit/63d0647af9b2335e5ba611fb272d7686d5da8aeb)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.15.26
 
 ### ftpclient

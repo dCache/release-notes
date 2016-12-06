@@ -109,6 +109,108 @@ HTML header: <title>dCache 3.0 Release Notes</title>
 
 Thanks to Onno Zweers for several contributions to this release.
 
+## Release 3.0.2
+
+### cleaner
+
+Users reported that they wanted to see space freed up by cleaner processes
+to be reported as free as soon as possible. This patch sends notifications
+about freed up space more often, resulting in quicker status updates.
+
+### doors
+
+Log when the list of auto-discovered NIC interfaces changes.  Support
+logging the time taken to acquire NIC information.  Update logged
+messages to indicate the context.
+
+### nfs
+
+The NFS implementation was updated, improving spec compliance.
+
+### pool
+
+A problem was fixed that could cause the csm check to fail on pools 
+containing broken files.
+
+When deleting files, the cleaner submits batches of files to delete to a pool,
+but this batch is then processed sequentially. In order to improve deletion
+performance, such deletion tasks are now run concurrently. The
+increase in concurrency can reduce the overhead of syncing the meta data to
+disk after every deletion, thus increasing the deletion rate.
+
+### srmclient
+
+While srmfs's '-debug' option already provided lots of information, 
+including the SOAP request sent to the server, it did not provide 
+the server's response until now. This has been added, making 
+troubleshooting easier for some problem classes.
+
+The SRM client has been updated to work correctly if it has been
+installed in a path containing spaces.
+
+Glob expansion in SRM client has been overhauled, allowing much faster namespace operations on DPM when globbing is in use.
+
+srmfs would not work with paths that require special characters to be percent-encoded.
+This included path names with spaces or hash symbols. After this update to srmfs,
+such path names are permissible and all namespace operations and file transfers on them 
+will succeed.
+
+srmfs now accepts single commands directly as command-line arguments, e.g.
+'srmfs srm://srm.example.org/path ls'
+
+Exiting will block if there are ongoing transfers.  Notifications are
+printed, which should provide feedback on activity.
+
+The user can force an exit by using Ctrl+C, which will still result in a
+clean exit.
+
+
+### Changelog 3.0.1..3.0.2
+
+<!-- git log 3.0.1..3.0.2 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[6a23d46](https://github.com/dcache/dcache/commit/6a23d46c2816ab6a6a10a9b6bdaeee063d63a8db)
+:   [maven-release-plugin] prepare release 3.0.2
+
+[a2f59a5](https://github.com/dcache/dcache/commit/a2f59a5a6ecef7b81a03ece8b34d566537b495ed)
+:   nfs41: fix open-stateid leak introduced in 0702d73
+
+[affa1b4](https://github.com/dcache/dcache/commit/affa1b49169430b7f5e597b45a87ba50b37c47ac)
+:   srmclient: support srmfs with command on command-line
+
+[97f2f8d](https://github.com/dcache/dcache/commit/97f2f8dc875cd59b917d4218b407eb412c40c399)
+:   srmclient: show SOAP response from server when debug enabled
+
+[842f8f0](https://github.com/dcache/dcache/commit/842f8f0b877bd7e92513accaba0364f7838faf41)
+:   srmclient: percent-encode paths that require it
+
+[20ffed0](https://github.com/dcache/dcache/commit/20ffed08900fdff25088d67bfdc12f77c4a42399)
+:   srmclient: fix stat/ls caching for glob expansion for DPM
+
+[d2d4b4c](https://github.com/dcache/dcache/commit/d2d4b4c38f18d303af1d3b027a26673f492904c2)
+:   srmclient: fix deploying srm-client in path with spaces
+
+[192462c](https://github.com/dcache/dcache/commit/192462c23afe29cac5cac5896171b60c1eff29b1)
+:   srmclient: fix Java 7 compatibility for srmfs
+
+[ba8b836](https://github.com/dcache/dcache/commit/ba8b836c2040e5ff7e4520547270e1ae046b863e)
+:   doors: add diagnostic information for NIC auto-discovery
+
+[8a8b83d](https://github.com/dcache/dcache/commit/8a8b83d8d3b6e752c21e1e1cf51c13b75bfed4ba)
+:   pool: Delete files concurrently
+
+[8d77acc](https://github.com/dcache/dcache/commit/8d77acc785997229b7dfb98daeaf81bf0ed72ddf)
+:   cleaner: Send notification more often
+
+[7a542d2](https://github.com/dcache/dcache/commit/7a542d2542e7d9c331cfd9bf7138c45ece277dbc)
+:   pool: Fix csm check command in the pressence of broken files
+
+[1fdb643](https://github.com/dcache/dcache/commit/1fdb6438d11e6abab029e7a3e533f05df40470bc)
+:   [maven-release-plugin] prepare for next development iteration
+
+[a6f5d40](https://github.com/dcache/dcache/commit/a6f5d401a37d1f52180b2d1409ce718c7c9c87be)
+:   nfs: discover open-stateid during layout return
+
 ## Release 3.0.1
 
 

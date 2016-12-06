@@ -111,6 +111,45 @@ HTML header: <title>dCache 2.16 Release Notes</title>
 * Sites with a custom `httpd.conf` configuration will have to adjust
   this upon upgrade to inject the cell address of the `info` service.
 
+## Release 2.16.21
+
+### cleaner
+
+Users reported that they wanted to see space freed up by cleaner processes
+to be reported as free as soon as possible. This patch sends notifications
+about freed up space more often, resulting in quicker status updates.
+
+### pool
+
+A problem was fixed that could cause the csm check to fail on pools 
+containing broken files.
+
+When deleting files, the cleaner submits batches of files to delete to a pool,
+but this batch is then processed sequentially. In order to improve deletion
+performance, such deletion tasks are now run concurrently. The
+increase in concurrency can reduce the overhead of syncing the meta data to
+disk after every deletion, thus increasing the deletion rate.
+
+
+### Changelog 2.16.20..2.16.21
+
+<!-- git log 2.16.20..2.16.21 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[01ef131](https://github.com/dcache/dcache/commit/01ef13194a7bc9af04da7445b03672a896671790)
+:   [maven-release-plugin] prepare release 2.16.21
+
+[e463b0a](https://github.com/dcache/dcache/commit/e463b0a7a6fc31b2295f9e4e72d54162529f556a)
+:   pool: Delete files concurrently
+
+[2ae269f](https://github.com/dcache/dcache/commit/2ae269fb3346e4fe67fec7f1c68654f1522ee710)
+:   cleaner: Send notification more often
+
+[57d29bc](https://github.com/dcache/dcache/commit/57d29bc89e2cc70ba0d24edeacddbcf159637066)
+:   pool: Fix csm check command in the pressence of broken files
+
+[b7168e7](https://github.com/dcache/dcache/commit/b7168e72ecd5ddfde2445bfe01f1f7493626c0b6)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.16.20
 
 ### cells

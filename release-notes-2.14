@@ -149,6 +149,36 @@ Highlights from this release:
   SRM requests will be lost from the database. Third party scripts
   that access the SRM database directly may have to be updated.
 
+## Release 2.14.40
+
+### cleaner
+
+Users reported that they wanted to see space freed up by cleaner processes
+to be reported as free as soon as possible. This patch sends notifications
+about freed up space more often, resulting in quicker status updates.
+
+### pool
+
+A problem was fixed that could cause the csm check to fail on pools 
+containing broken files.
+
+
+### Changelog 2.14.39..2.14.40
+
+<!-- git log 2.14.39..2.14.40 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[4146bf6](https://github.com/dcache/dcache/commit/4146bf683fcb3c2e8e07a97958862c2a7c2a0336)
+:   [maven-release-plugin] prepare release 2.14.40
+
+[60764e5](https://github.com/dcache/dcache/commit/60764e592a7ceaff695b2a477d9d7f3889d18b27)
+:   cleaner: Send notification more often
+
+[02e9d86](https://github.com/dcache/dcache/commit/02e9d864eee782a58b39343705447ca5e8803ad2)
+:   pool: Fix csm check command in the pressence of broken files
+
+[124fb56](https://github.com/dcache/dcache/commit/124fb56b40325b3c6f3ae22f068fff7007bcc5ba)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.14.39
 
 ### ftpclient
