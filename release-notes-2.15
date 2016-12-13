@@ -98,7 +98,7 @@ Highlights from this release:
 
 ### chimera-enstore
 
-Several improvements added to db chimera so that sql statements works as expected.
+Several improvements added to db chimera so that sql statements work as expected.
 
 
 ### Changelog 2.15.27..2.15.28
