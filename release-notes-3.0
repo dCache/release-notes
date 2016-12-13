@@ -109,6 +109,61 @@ HTML header: <title>dCache 3.0 Release Notes</title>
 
 Thanks to Onno Zweers for several contributions to this release.
 
+## Release 3.0.3
+
+### cells
+
+The current release fixed an issue causing doors to log a  stack trace on startup.
+
+### nfs
+
+Remote I/O error was generated on the client side accompanied by stack trace on server side when user fumbled .(get) command.
+The is fixed now and  client side sees no such file or directory error and no stack trace in log file.
+
+### srmclient
+
+The current release fixed out of memory  issue for  `srmls -l`
+ showing particular directory. 
+
+### srm-common
+
+The current release improved  user experience by ensuring that bugs and JVM-critical errors 
+do not trigger a retry of the operation, but favour a fail-fast approach.
+
+### transfermanager
+
+The output of `info`, `queue`, `ls internal` and `ls external` admin
+commands in RemoteTransferManager has been improved.
+
+
+### Changelog 3.0.2..3.0.3
+
+<!-- git log 3.0.2..3.0.3 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[e0c5ab9](https://github.com/dcache/dcache/commit/e0c5ab97e03e28f39159a9b395dacafbff0f082c)
+:   [maven-release-plugin] prepare release 3.0.3
+
+[a832e71](https://github.com/dcache/dcache/commit/a832e715757f3162976d67852bf8f8cb7044a7a5)
+:   srm-common: don't retry when JVM runs out of memory
+
+[104d79a](https://github.com/dcache/dcache/commit/104d79a50629106d1dc6d4fd32a4d887740e2865)
+:   transfermanager: tidy up output from 'info' 'queue' and the two 'ls' commands
+
+[c814f54](https://github.com/dcache/dcache/commit/c814f545ad6cc82bb4243eaf20b32f05787f79fb)
+:   cells: fix 'This stopwatch is already stopped' error
+
+[3859a07](https://github.com/dcache/dcache/commit/3859a07e893ec0732478eb6fca1ae82723a14c0c)
+:   srmclient: use streaming deserialisation, allow more memory.
+
+[a1e2ffb](https://github.com/dcache/dcache/commit/a1e2ffbb2da27a26b9ef724010c7762e8fe7e318)
+:   chimera-enstore: specify fields order on insert
+
+[90021dd](https://github.com/dcache/dcache/commit/90021ddb961b4d168bcd1a45f35f91404d299bce)
+:   NFS: throw FileNotFoundHimeraFsException in case of fumbled ".(get)" command
+
+[8768838](https://github.com/dcache/dcache/commit/8768838d79c9c7e6e7dec803aee6ed199291ee6e)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.0.2
 
 ### cleaner

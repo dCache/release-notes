@@ -111,6 +111,43 @@ HTML header: <title>dCache 2.16 Release Notes</title>
 * Sites with a custom `httpd.conf` configuration will have to adjust
   this upon upgrade to inject the cell address of the `info` service.
 
+## Release 2.16.22
+
+### chimera-enstore
+
+Several improvements added to db chimera so that sql statements works as expected.
+
+### nfs
+
+Remote I/O error was generated on the client side accompanied by stack trace on server side when user fumbled .(get) command.
+The is fixed now and  client side sees no such file or directory error and no stack trace in log file.
+
+### transfermanager
+
+The output of `info`, `queue`, `ls internal` and `ls external` admin
+commands in RemoteTransferManager has been improved.
+
+
+### Changelog 2.16.21..2.16.22
+
+<!-- git log 2.16.21..2.16.22 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[9fcf032](https://github.com/dcache/dcache/commit/9fcf03207bc559bf481212f575559e0251c1a6ba)
+:   [maven-release-plugin] prepare release 2.16.22
+
+[f192439](https://github.com/dcache/dcache/commit/f192439409fa0b8e48366e59f66e4745b6c8f61b)
+:   transfermanager: tidy up output from 'info' 'queue' and the two 'ls' commands
+
+[af9fd50](https://github.com/dcache/dcache/commit/af9fd505817674dbc80e87c3e51816fb6eaa9c66)
+:   chimera-enstore: specify fields order on insert
+
+[3f9e8ad](https://github.com/dcache/dcache/commit/3f9e8ad95bff00b9114d378a596adc1324734a8a)
+:   NFS: throw FileNotFoundHimeraFsException in case of fumbled ".(get)" command
+
+[4b2ecc7](https://github.com/dcache/dcache/commit/4b2ecc7716fd2f0a0c7f28cb65c6581b86a5451d)
+:   [maven-release-plugin] prepare for next development iteration
+
+
 ## Release 2.16.21
 
 ### cleaner

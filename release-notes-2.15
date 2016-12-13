@@ -94,6 +94,26 @@ Highlights from this release:
   enforced. Clients that relied on these not being enforced will
   fail after upgrade.
 
+## Release 2.15.28
+
+### chimera-enstore
+
+Several improvements added to db chimera so that sql statements works as expected.
+
+
+### Changelog 2.15.27..2.15.28
+
+<!-- git log 2.15.27..2.15.28 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[8a235a3](https://github.com/dcache/dcache/commit/8a235a3ff8c41d2efc9f3f77c8c2a88f0db0c2fb)
+:   [maven-release-plugin] prepare release 2.15.28
+
+[0a2d5cf](https://github.com/dcache/dcache/commit/0a2d5cf94d57192e3ad060c5d717e0287d058c11)
+:   chimera-enstore: specify fields order on insert
+
+[fc69f5d](https://github.com/dcache/dcache/commit/fc69f5daff18054bf9bd895975e9d6d2f878dd33)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.15.27
 
 ### cleaner
