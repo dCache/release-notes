@@ -6,7 +6,7 @@
     <title>SRM client releases</title>
 
     <preamble>
-	<p>
+        <p>
             The dCache.org team provide a set of SRM client programs.
             These programs interact with the dCache server using the
             standard <a
@@ -14,241 +14,255 @@
             protocol</a>.  Because these clients use standard SRM
             calls, the clients will work with any other storage
             systems that support the SRM protocol.
-	</p>
+        </p>
 
-	<p>
-	    The packages provided here work without any other dCache
-	    packages.
-	</p>
+        <p>
+            The packages provided here work without any other dCache
+            packages.
+        </p>
 
-	<h2>Release Policy</h2>
+        <h2>Release Policy</h2>
 
-	<p>
-	    The dCache server and the SRM client contains some code in
-	    common.  This is because the dCache server SRM
-	    implementation needs to include an SRM client to fulfil
-	    the server requirements for certain operations.
-	    Therefore, SRM client releases happen as a consequence of
-	    dCache releases.
-	</p>
+        <p>
+            The dCache server and the SRM client contains some code in
+            common.  This is because the dCache server SRM
+            implementation needs to include an SRM client to fulfil
+            the server requirements for certain operations.
+            Therefore, SRM client releases happen as a consequence of
+            dCache releases.
+        </p>
 
-	<p>
-	    Most of the development effort goes into the dCache
-	    server, so the majority of dCache server releases see no
-	    improvement to the SRM client code.  Such server releases
-	    are skipped, as they bring no benefit over the existing
-	    SRM client release.
-	</p>
+        <p>
+            Most of the development effort goes into the dCache
+            server, so the majority of dCache server releases see no
+            improvement to the SRM client code.  Such server releases
+            are skipped, as they bring no benefit over the existing
+            SRM client release.
+        </p>
 
-	<p>
-	    When there is a change affecting the SRM client, we
-	    release a new SRM client package.  Unlike with the dCache
-	    server releases, there are no support branches for the SRM
-	    client packages.  Instead, we release from the latest
-	    stable dCache release at that time.
-	</p>
+        <p>
+            When there is a change affecting the SRM client, we
+            release a new SRM client package.  Unlike with the dCache
+            server releases, there are no support branches for the SRM
+            client packages.  Instead, we release from the latest
+            stable dCache release at that time.
+        </p>
 
-	<p>
-	    There are some exceptions from this.  Most notably for
-	    releases from the 2.2-series.  This is because dCache
-	    server v2.2 is compiled to support Java 6 whereas newer
-	    dCache server releases require Java 7.  Because some users
-	    have not upgraded to Java 7, we still release SRM client
-	    from the 2.2-series dCache server.
-	</p>
+        <p>
+            There are some exceptions from this.  Most notably for
+            releases from the 2.2-series.  This is because dCache
+            server v2.2 is compiled to support Java 6 whereas newer
+            dCache server releases require Java 7.  Because some users
+            have not upgraded to Java 7, we still release SRM client
+            from the 2.2-series dCache server.
+        </p>
     </preamble>
 
 
     <series id="srm-client-java-7">
-	<title>SRM Client (for Java 7)</title>
+        <title>SRM Client (for Java 7)</title>
 
-	<description>
-	    <p>
-		The SRM clients in this section require a JVM that
-		supports Java 7 (or newer) to run.
-	    </p>
-	</description>
+        <description>
+            <p>
+                The SRM clients in this section require a JVM that
+                supports Java 7 (or newer) to run.
+            </p>
+        </description>
 
-	<releases>
-	    <name>SRM client VERSION</name>
-	    <notes-url>srmclient-VERSION.shtml</notes-url>
-	    <download-url-prefix>../repo/</download-url-prefix>
+        <releases>
+            <name>SRM client VERSION</name>
+            <notes-url>srmclient-VERSION.shtml</notes-url>
+            <download-url-prefix>../repo/</download-url-prefix>
 
-	    <release version="3.0.2" recommended="1">
-	        <date>6.12.2016</date>
+            <release version="3.0.3" recommended="1">
+                <date>14.12.2016</date>
 
-		<package name="rpm">
-		    <download-url>3.0/dcache-srmclient-VERSION-1.noarch.rpm</download-url>
-		    <md5sum>52374f54290832117030ad47e94a3620</md5sum>
-		</package>
+                <package name="rpm">
+                    <download-url>3.0/dcache-srmclient-VERSION-1.noarch.rpm</download-url>
+                    <md5sum>8fbdaa29d51f3f90a2feb8caafddd5a7</md5sum>
+                </package>
 
-		<package name="tar.gz">
-		    <download-url>3.0/srm-client-VERSION.tar.gz</download-url>
-		    <md5sum>9faccdb05e2861dffcc2c47808247c0d</md5sum>
-		</package>
-	    </release>
+                <package name="tar.gz">
+                    <download-url>3.0/srm-client-VERSION.tar.gz</download-url>
+                    <md5sum>996db477260a6835b80abde0f4d517bd</md5sum>
+                </package>
+            </release>
 
-	    <release version="3.0.1">
-	        <date>1.12.2016</date>
+            <release version="3.0.2">
+                <date>6.12.2016</date>
 
-		<package name="rpm">
-		    <download-url>3.0/dcache-srmclient-VERSION-1.noarch.rpm</download-url>
-		    <md5sum>879a3512a4c2467effd5b2ed2e383ffb</md5sum>
-		</package>
+                <package name="rpm">
+                    <download-url>3.0/dcache-srmclient-VERSION-1.noarch.rpm</download-url>
+                    <md5sum>52374f54290832117030ad47e94a3620</md5sum>
+                </package>
 
-		<package name="tar.gz">
-		    <download-url>3.0/srm-client-VERSION.tar.gz</download-url>
-		    <md5sum>dad55145301e894ccffc443c553dbb17</md5sum>
-		</package>
-	    </release>
+                <package name="tar.gz">
+                    <download-url>3.0/srm-client-VERSION.tar.gz</download-url>
+                    <md5sum>9faccdb05e2861dffcc2c47808247c0d</md5sum>
+                </package>
+            </release>
 
-	    <release version="2.16.17">
-	        <date>11.10.2016</date>
+            <release version="3.0.1">
+                <date>1.12.2016</date>
 
-		<package name="rpm">
-		    <download-url>2.16/dcache-srmclient-VERSION-1.noarch.rpm</download-url>
-		    <md5sum>f968ef0b59325f60f530cda630bf713a</md5sum>
-		</package>
+                <package name="rpm">
+                    <download-url>3.0/dcache-srmclient-VERSION-1.noarch.rpm</download-url>
+                    <md5sum>879a3512a4c2467effd5b2ed2e383ffb</md5sum>
+                </package>
 
-		<package name="tar.gz">
-		    <download-url>2.16/srm-client-VERSION.tar.gz</download-url>
-		    <md5sum>cf94bde71e4fc2edbffaca228762c924</md5sum>
-		</package>
-	    </release>
+                <package name="tar.gz">
+                    <download-url>3.0/srm-client-VERSION.tar.gz</download-url>
+                    <md5sum>dad55145301e894ccffc443c553dbb17</md5sum>
+                </package>
+            </release>
 
-	    <release version="2.16.16">
-	        <date>5.10.2016</date>
+            <release version="2.16.17">
+                <date>11.10.2016</date>
 
-		<package name="rpm">
-		    <download-url>2.16/dcache-srmclient-VERSION-1.noarch.rpm</download-url>
-		    <md5sum>d0ad65ac7b7ff182641f9060a08f8998</md5sum>
-		</package>
+                <package name="rpm">
+                    <download-url>2.16/dcache-srmclient-VERSION-1.noarch.rpm</download-url>
+                    <md5sum>f968ef0b59325f60f530cda630bf713a</md5sum>
+                </package>
 
-		<package name="tar.gz">
-		    <download-url>2.16/srm-client-VERSION.tar.gz</download-url>
-		    <md5sum>ccdc6647f4a7b599b8fd77db12766d3f</md5sum>
-		</package>
-	    </release>
+                <package name="tar.gz">
+                    <download-url>2.16/srm-client-VERSION.tar.gz</download-url>
+                    <md5sum>cf94bde71e4fc2edbffaca228762c924</md5sum>
+                </package>
+            </release>
 
-	    <release version="2.16.15">
-	        <date>27.9.2016</date>
+            <release version="2.16.16">
+                <date>5.10.2016</date>
 
-		<package name="rpm">
-		    <download-url>2.16/dcache-srmclient-VERSION-1.noarch.rpm</download-url>
-		    <md5sum>43517315d43f61ed82997075e8dd3ef0</md5sum>
-		</package>
+                <package name="rpm">
+                    <download-url>2.16/dcache-srmclient-VERSION-1.noarch.rpm</download-url>
+                    <md5sum>d0ad65ac7b7ff182641f9060a08f8998</md5sum>
+                </package>
 
-		<package name="tar.gz">
-		    <download-url>2.16/srm-client-VERSION.tar.gz</download-url>
-		    <md5sum>11de158968855b752f4b281e6c71825f</md5sum>
-		</package>
-	    </release>
+                <package name="tar.gz">
+                    <download-url>2.16/srm-client-VERSION.tar.gz</download-url>
+                    <md5sum>ccdc6647f4a7b599b8fd77db12766d3f</md5sum>
+                </package>
+            </release>
 
-	    <release version="2.16.14">
-	        <date>12.9.2016</date>
+            <release version="2.16.15">
+                <date>27.9.2016</date>
 
-		<package name="rpm">
-		    <download-url>2.16/dcache-srmclient-VERSION-1.noarch.rpm</download-url>
-		    <md5sum>fc5afb1a50fe95bcd201f372ceba28f7</md5sum>
-		</package>
+                <package name="rpm">
+                    <download-url>2.16/dcache-srmclient-VERSION-1.noarch.rpm</download-url>
+                    <md5sum>43517315d43f61ed82997075e8dd3ef0</md5sum>
+                </package>
 
-		<package name="tar.gz">
-		    <download-url>2.16/srm-client-VERSION.tar.gz</download-url>
-		    <md5sum>dcd303e738770c020146f2e8a3c0155b</md5sum>
-		</package>
-	    </release>
+                <package name="tar.gz">
+                    <download-url>2.16/srm-client-VERSION.tar.gz</download-url>
+                    <md5sum>11de158968855b752f4b281e6c71825f</md5sum>
+                </package>
+            </release>
 
-	    <release version="2.16.12">
-	        <date>12.9.2016</date>
+            <release version="2.16.14">
+                <date>12.9.2016</date>
 
-		<package name="rpm">
-		    <download-url>2.16/dcache-srmclient-VERSION-1.noarch.rpm</download-url>
-		    <md5sum>16bceee7d3b7dd500ddedf3ae8011f30</md5sum>
-		</package>
+                <package name="rpm">
+                    <download-url>2.16/dcache-srmclient-VERSION-1.noarch.rpm</download-url>
+                    <md5sum>fc5afb1a50fe95bcd201f372ceba28f7</md5sum>
+                </package>
 
-		<package name="tar.gz">
-		    <download-url>2.16/srm-client-VERSION.tar.gz</download-url>
-		    <md5sum>4e0223ff512957129592d60f7e258198</md5sum>
-		</package>
-	    </release>
+                <package name="tar.gz">
+                    <download-url>2.16/srm-client-VERSION.tar.gz</download-url>
+                    <md5sum>dcd303e738770c020146f2e8a3c0155b</md5sum>
+                </package>
+            </release>
 
-	    <release version="2.10.7">
-		<date>10.10.2014</date>
-		<package name="rpm">
-		    <download-url>2.10/dcache-srmclient-VERSION-1.noarch.rpm</download-url>
-		    <md5sum>469d39dd293dd123ed007115fde8877d</md5sum>
-		</package>
+            <release version="2.16.12">
+                <date>12.9.2016</date>
 
-		<package name="tar.gz">
-		    <download-url>2.10/srm-client-VERSION.tar.gz</download-url>
-		    <md5sum>83be1cdc6d96700c6f5751b7f825afee</md5sum>
-		</package>
-	    </release>
+                <package name="rpm">
+                    <download-url>2.16/dcache-srmclient-VERSION-1.noarch.rpm</download-url>
+                    <md5sum>16bceee7d3b7dd500ddedf3ae8011f30</md5sum>
+                </package>
 
-	    <release version="2.9.6">
-		<date>26.6.2014</date>
-		<package name="rpm">
-		    <download-url>2.9/dcache-srmclient-VERSION-1.noarch.rpm</download-url>
-		    <md5sum>77f03444d9d1f46e3a5a674c51ae8f8f</md5sum>
-		</package>
+                <package name="tar.gz">
+                    <download-url>2.16/srm-client-VERSION.tar.gz</download-url>
+                    <md5sum>4e0223ff512957129592d60f7e258198</md5sum>
+                </package>
+            </release>
 
-		<package name="tar.gz">
-		    <download-url>2.9/srm-client-VERSION.tar.gz</download-url>
-		    <md5sum>731c388a349ea7e73be6771d6b0b2f2a</md5sum>
-		</package>
-	    </release>
+            <release version="2.10.7">
+                <date>10.10.2014</date>
+                <package name="rpm">
+                    <download-url>2.10/dcache-srmclient-VERSION-1.noarch.rpm</download-url>
+                    <md5sum>469d39dd293dd123ed007115fde8877d</md5sum>
+                </package>
 
-	    <release version="2.6.12">
-		<date>08.11.2013</date>
-		<package name="rpm">
-		    <download-url>2.6/dcache-srmclient-VERSION-1.noarch.rpm</download-url>
-		    <md5sum>c78d9aab9eff8b167682d0e4ce75ff56</md5sum>
-		</package>
-	    </release>
+                <package name="tar.gz">
+                    <download-url>2.10/srm-client-VERSION.tar.gz</download-url>
+                    <md5sum>83be1cdc6d96700c6f5751b7f825afee</md5sum>
+                </package>
+            </release>
 
-	</releases>
+            <release version="2.9.6">
+                <date>26.6.2014</date>
+                <package name="rpm">
+                    <download-url>2.9/dcache-srmclient-VERSION-1.noarch.rpm</download-url>
+                    <md5sum>77f03444d9d1f46e3a5a674c51ae8f8f</md5sum>
+                </package>
+
+                <package name="tar.gz">
+                    <download-url>2.9/srm-client-VERSION.tar.gz</download-url>
+                    <md5sum>731c388a349ea7e73be6771d6b0b2f2a</md5sum>
+                </package>
+            </release>
+
+            <release version="2.6.12">
+                <date>08.11.2013</date>
+                <package name="rpm">
+                    <download-url>2.6/dcache-srmclient-VERSION-1.noarch.rpm</download-url>
+                    <md5sum>c78d9aab9eff8b167682d0e4ce75ff56</md5sum>
+                </package>
+            </release>
+
+        </releases>
     </series>
 
     <series id="srm-client-java-6">
-	<title>SRM Client (for Java 6)</title>
+        <title>SRM Client (for Java 6)</title>
 
-	<description>
-	    <p>
-		The SRM clients in this section require a JVM that
-		supports Java 6 (or newer) to run.
-	    </p>
-	</description>
+        <description>
+            <p>
+                The SRM clients in this section require a JVM that
+                supports Java 6 (or newer) to run.
+            </p>
+        </description>
 
-	<releases>
-	    <name>SRM client VERSION</name>
-	    <notes-url>srmclient-VERSION.shtml</notes-url>
-	    <download-url-prefix>../repo/</download-url-prefix>
+        <releases>
+            <name>SRM client VERSION</name>
+            <notes-url>srmclient-VERSION.shtml</notes-url>
+            <download-url-prefix>../repo/</download-url-prefix>
 
-	    <release version="2.2.27">
-		<date>26.6.2014</date>
-		<package name="rpm">
-		    <download-url>2.2/dcache-srmclient-VERSION-1.noarch.rpm</download-url>
-		    <md5sum>644e51638b51c41fad969a8e122bd346</md5sum>
-		</package>
-	    </release>
+            <release version="2.2.27">
+                <date>26.6.2014</date>
+                <package name="rpm">
+                    <download-url>2.2/dcache-srmclient-VERSION-1.noarch.rpm</download-url>
+                    <md5sum>644e51638b51c41fad969a8e122bd346</md5sum>
+                </package>
+            </release>
 
-	    <release version="2.2.22">
-		<date>02.12.2013</date>
-		<package name="rpm">
-		    <download-url>2.2/dcache-srmclient-VERSION-1.noarch.rpm</download-url>
-		    <md5sum>f4d28338eef053306e82256cad8ba4fc</md5sum>
-		</package>
-	    </release>
+            <release version="2.2.22">
+                <date>02.12.2013</date>
+                <package name="rpm">
+                    <download-url>2.2/dcache-srmclient-VERSION-1.noarch.rpm</download-url>
+                    <md5sum>f4d28338eef053306e82256cad8ba4fc</md5sum>
+                </package>
+            </release>
 
-	</releases>
+        </releases>
     </series>
 
     <postamble>
-	<p>
-	    The older dcache-srmclient releases, which are <strong>no
-	    longer supported</strong>, are available <a
-	    href="unsupported">from this link</a>.
-	</p>
+        <p>
+            The older dcache-srmclient releases, which are <strong>no
+            longer supported</strong>, are available <a
+            href="unsupported">from this link</a>.
+        </p>
     </postamble>
 
 </download-page>
