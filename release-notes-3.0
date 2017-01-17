@@ -109,6 +109,59 @@ HTML header: <title>dCache 3.0 Release Notes</title>
 
 Thanks to Onno Zweers for several contributions to this release.
 
+## Release 3.0.4
+
+### dcache
+
+The current release updated dcache-view version.
+
+### pool
+
+In the current release changes  `hsm ls` command so that it lists all configured HSMs if no argument is provided.
+
+The current release fixed URISyntaxException in ceph backend.
+
+### poolmanager
+
+Ability to restrict staging to specific protocol was missing in
+stage protection specification. Additionally it was not possible to
+specify DN, FQAN, storage group and protocol that are not allowed
+to stage.  
+
+This is now fixed and stage protection configuration can be used as a blacklist. 
+
+
+### Changelog 3.0.3..3.0.4
+
+<!-- git log 3.0.3..3.0.4 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[21783c2](https://github.com/dcache/dcache/commit/21783c203290401434c8ec1830a612420854cf80)
+:   [maven-release-plugin] prepare release 3.0.4
+
+[5314301](https://github.com/dcache/dcache/commit/531430143a8b7619be5255d883c1167716b46faa)
+:   stage protection : minor correction for test to pass
+
+[9882a8f](https://github.com/dcache/dcache/commit/9882a8f85bae8f4a27922ec5f589d75343eabc59)
+:   3.0 compatibility changes for stage protection
+
+[1f7e1c2](https://github.com/dcache/dcache/commit/1f7e1c2259189fd3ee4f56f01c55b2f7e1124155)
+:   pool: fix URISyntaxException in ceph backend
+
+[df629f2](https://github.com/dcache/dcache/commit/df629f2a200595ba8f7aff86115dc7b70b474074)
+:   PoolManager : stage protection add protocol to the list of discriminators
+
+[26c0f5f](https://github.com/dcache/dcache/commit/26c0f5fe582d40570a4e5a4e9cacc121b1b9304f)
+:   dcache: correct the output directory
+
+[efd258c](https://github.com/dcache/dcache/commit/efd258c78f71f5d5a0b94abb929114d3c49800d9)
+:   dcache: update dcache-view version
+
+[c850ff0](https://github.com/dcache/dcache/commit/c850ff0185b0afb0093f11feb342ee8beccd0436)
+:   pool: 'hsm ls' must show all configured hsm if no argument is provided
+
+[03d3434](https://github.com/dcache/dcache/commit/03d34348b933584a293bd7dd8b1c8db31140cab4)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.0.3
 
 ### cells

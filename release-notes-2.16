@@ -111,6 +111,41 @@ HTML header: <title>dCache 2.16 Release Notes</title>
 * Sites with a custom `httpd.conf` configuration will have to adjust
   this upon upgrade to inject the cell address of the `info` service.
 
+## Release 2.16.23
+
+### dcache
+
+The current release updated dcache-view version.
+
+### poolmanager
+
+Ability to restrict staging to specific protocol was missing in
+stage protection specification. Additionally it was not possible to
+specify DN, FQAN, storage group and protocol that are not allowed
+to stage.  
+
+This is now fixed and stage protection configuration can be used as a blacklist. 
+
+
+### Changelog 2.16.22..2.16.23
+
+<!-- git log 2.16.22..2.16.23 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[4dd2ef9](https://github.com/dcache/dcache/commit/4dd2ef9f4b7df4b4b64c07d95b77d2ad9ad91df9)
+:   [maven-release-plugin] prepare release 2.16.23
+
+[4e6cd73](https://github.com/dcache/dcache/commit/4e6cd73de2f8df79d0863e7d737332135951b31b)
+:   PoolManager : stage protection add protocol to the list of discriminators
+
+[c65cd28](https://github.com/dcache/dcache/commit/c65cd2888c5de25832741acc6f8f70a05f34167a)
+:   dcache: correct the output directory
+
+[65c8c58](https://github.com/dcache/dcache/commit/65c8c5855076e86cd9ad97ccd8cfe9bd6b8bf987)
+:   dcache: update dcache-view version
+
+[3c1c44e](https://github.com/dcache/dcache/commit/3c1c44e5b9a2346e02506fd76aa348651ff2db33)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.16.22
 
 ### chimera-enstore
