@@ -141,7 +141,7 @@ Highlights from this release:
 
 ### dcache
 
-The current release updated to jglobus library to fix RFC proxy support
+The current release updated to jglobus library to fix RFC proxy support.
 
 
 ### Changelog 2.13.50..2.13.51
