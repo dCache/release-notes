@@ -109,6 +109,40 @@ HTML header: <title>dCache 3.0 Release Notes</title>
 
 Thanks to Onno Zweers for several contributions to this release.
 
+## Release 3.0.5
+
+### frontend
+
+Included a new version of dCacheView with minor improvements.
+
+### nfs
+
+The handling of NFS requests for offline files has been improved. 
+Such requests will no longer attempt unneccessary retries.
+
+
+### Changelog 3.0.4..3.0.5
+
+<!-- git log 3.0.4..3.0.5 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[6b4ef4c](https://github.com/dcache/dcache/commit/6b4ef4c641b21ff8c838c6dc7138f92d16f8423e)
+:   [maven-release-plugin] prepare release 3.0.5
+
+[0b6d777](https://github.com/dcache/dcache/commit/0b6d777e45ede71e7d05424deeb462948e17bc85)
+:   dcache: update dcache-view version to 1.0.4
+
+[123b47c](https://github.com/dcache/dcache/commit/123b47c187b185985db6b2df51c508dfe8b29b13)
+:   resilience: fix fairness algorithm bugs in file operation map
+
+[3c04c2d](https://github.com/dcache/dcache/commit/3c04c2d566a3964198d06b797211a6334b3b1ecc)
+:   nfs: rework pool selection to get rid of too many retries
+
+[61e8ed1](https://github.com/dcache/dcache/commit/61e8ed1a6ac1aa799682413f98a9011805f095f9)
+:   minor typo corrections
+
+[44ad5c2](https://github.com/dcache/dcache/commit/44ad5c2190f04e64c10fdb384ac261f2663516f4)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.0.4
 
 ### dcache

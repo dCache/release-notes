@@ -111,6 +111,29 @@ HTML header: <title>dCache 2.16 Release Notes</title>
 * Sites with a custom `httpd.conf` configuration will have to adjust
   this upon upgrade to inject the cell address of the `info` service.
 
+## Release 2.16.24
+
+### frontend
+
+Included a new version of dCacheView with minor improvements.
+
+
+### Changelog 2.16.23..2.16.24
+
+<!-- git log 2.16.23..2.16.24 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[f22295c](https://github.com/dcache/dcache/commit/f22295c824b5c2a5ac4ac9a071a20ee9ec167e97)
+:   [maven-release-plugin] prepare release 2.16.24
+
+[b2571fc](https://github.com/dcache/dcache/commit/b2571fc39395c6bb27bcf39743c7724572b4a4c8)
+:   dcache: update dcache-view version to 1.0.4
+
+[411cafb](https://github.com/dcache/dcache/commit/411cafbc75deba62eb4fc6b3ab0ee0e317e61abe)
+:   resilience: fix fairness algorithm bugs in file operation map
+
+[281d16b](https://github.com/dcache/dcache/commit/281d16b954f7423958ab521e8b0c25603b5fe640)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.16.23
 
 ### dcache
