@@ -109,6 +109,61 @@ HTML header: <title>dCache 3.0 Release Notes</title>
 
 Thanks to Onno Zweers for several contributions to this release.
 
+## Release 3.0.6
+
+### cells
+
+Fixed a race condition and logging bug affecting cells relying on zookeeper. This
+could affect location manager, space manager and pool manager.
+
+### gplazma-ldap
+
+Wrong quoting of two gplazma property strings could occasionally cause IllegalArgumentExceptions to be thrown when using LDAP-based logins. This problem has now been fixed.
+
+### locationmanager
+
+Fixed a problem in Location Manager in which it would fail to shut down
+and could leave two overlapping connectors running.
+
+### pool
+
+The process of deleting files on pools has been made more robust against potential problems. This further decreased the likelyhood of repository corruption during file deletion.
+
+This release improves transactional stability of the built-in Berkeley database in pools.
+
+### srmclient
+
+SRM Client v1 received improved error handling. Most noticeably, expired credentials no longer cause a RuntimeException but an IOException.
+
+
+### Changelog 3.0.5..3.0.6
+
+<!-- git log 3.0.5..3.0.6 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[92c752d](https://github.com/dcache/dcache/commit/92c752dab7db95ef2acb3fe187e1df89fd892051)
+:   [maven-release-plugin] prepare release 3.0.6
+
+[52becab](https://github.com/dcache/dcache/commit/52becab9cb3b8e2f2d98f559c32b53eae4895816)
+:   pool: Fix race and nested transaction problem during deletion
+
+[cc8eb74](https://github.com/dcache/dcache/commit/cc8eb746b46d88c26e267b526a3c5e331b9bb437)
+:   pool: Fix transactional behaviour with Berkeley DB
+
+[042c8ef](https://github.com/dcache/dcache/commit/042c8efb80345a9cf492c3be73af3e23e23ed80b)
+:   lm: Fix lost thread interrupt that prevents shutdown
+
+[b3d670f](https://github.com/dcache/dcache/commit/b3d670f30ca5582fcd596bf1fab0aea6dbb62907)
+:   cells: Schedule watcher notifications on cell event thread
+
+[b0bab0c](https://github.com/dcache/dcache/commit/b0bab0c4a482a737cbaeffc94a07db3ad61cdfe9)
+:   gplazma-ldap: fix default properties for root and home
+
+[a21d861](https://github.com/dcache/dcache/commit/a21d861e661f303e097dabfbcaf34287b2db63e5)
+:   [maven-release-plugin] prepare for next development iteration
+
+[ecdf153](https://github.com/dcache/dcache/commit/ecdf153644fe1a80a92ddf4fadf1f103cf1724e6)
+:   srmclient: consolidate credential expiry, don't use RuntimeException
+
 ## Release 3.0.5
 
 ### frontend

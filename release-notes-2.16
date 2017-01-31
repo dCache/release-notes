@@ -111,6 +111,42 @@ HTML header: <title>dCache 2.16 Release Notes</title>
 * Sites with a custom `httpd.conf` configuration will have to adjust
   this upon upgrade to inject the cell address of the `info` service.
 
+## Release 2.16.25
+
+### cells
+
+Fixed a race condition and logging bug affecting cells relying on zookeeper. This
+could affect location manager, space manager and pool manager.
+
+### gplazma-ldap
+
+Wrong quoting of two gplazma property strings could occasionally cause IllegalArgumentExceptions to be thrown when using LDAP-based logins. This problem has now been fixed.
+
+### locationmanager
+
+Fixed a problem in Location Manager in which it would fail to shut down
+and could leave two overlapping connectors running.
+
+
+### Changelog 2.16.24..2.16.25
+
+<!-- git log 2.16.24..2.16.25 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[e6a8458](https://github.com/dcache/dcache/commit/e6a84581e6306d2017884d2d5ef719a4ff4127e0)
+:   [maven-release-plugin] prepare release 2.16.25
+
+[c7d9aaa](https://github.com/dcache/dcache/commit/c7d9aaa8a3ee1525a037edb09bed4001563f520a)
+:   lm: Fix lost thread interrupt that prevents shutdown
+
+[ca1fde2](https://github.com/dcache/dcache/commit/ca1fde2867a28ee50b5f250a76b3c0bbd2616128)
+:   cells: Schedule watcher notifications on cell event thread
+
+[4ab14f3](https://github.com/dcache/dcache/commit/4ab14f33df40a5b5d2aeee3fc1fee6f1e320e397)
+:   gplazma-ldap: fix default properties for root and home
+
+[df3b016](https://github.com/dcache/dcache/commit/df3b0161ee50e7eb79294eb3b03551c1eb7e6414)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.16.24
 
 ### frontend
