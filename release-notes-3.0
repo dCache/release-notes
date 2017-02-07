@@ -109,6 +109,41 @@ HTML header: <title>dCache 3.0 Release Notes</title>
 
 Thanks to Onno Zweers for several contributions to this release.
 
+## Release 3.0.7
+
+### cleaner
+
+The list of Delete Notification targets that the Cleaner will inform when a file's content has been cleaned is admin-configurable. 
+In order to facilitate this configuration, the 'show info' command has been modified to also show Delete Notification targets.
+
+### srm
+
+The SRM code has been made more robust against races between file deletions and copies.
+
+### systemtest
+
+The 'system-test' script was updated to ensure anonymous dcap tests succeed.
+
+
+### Changelog 3.0.6..3.0.7
+
+<!-- git log 3.0.6..3.0.7 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[a6c0932](https://github.com/dcache/dcache/commit/a6c09328a14f65feeeef9fc5003fca5109829882)
+:   [maven-release-plugin] prepare release 3.0.7
+
+[4e25147](https://github.com/dcache/dcache/commit/4e2514735263439282d307e6685e9bf965a5bd1d)
+:   cleaner: show delete notification targets
+
+[4d70728](https://github.com/dcache/dcache/commit/4d707288a2004a02ff394e7f83042f8d9df8d60c)
+:   systemtest: allow anonymous dcap activity
+
+[fa18be9](https://github.com/dcache/dcache/commit/fa18be9a740b43d1f9d907a0205ffe86901e6a32)
+:   [maven-release-plugin] prepare for next development iteration
+
+[54038a3](https://github.com/dcache/dcache/commit/54038a326b3143254a020c60efde138ab58a4dea)
+:   srm: fix recovery procedure in internal copy if source is deleted
+
 ## Release 3.0.6
 
 ### cells

@@ -111,6 +111,41 @@ HTML header: <title>dCache 2.16 Release Notes</title>
 * Sites with a custom `httpd.conf` configuration will have to adjust
   this upon upgrade to inject the cell address of the `info` service.
 
+## Release 2.16.26
+
+### cleaner
+
+The list of Delete Notification targets that the Cleaner will inform when a file's content has been cleaned is admin-configurable. 
+In order to facilitate this configuration, the 'show info' command has been modified to also show Delete Notification targets.
+
+### srm
+
+The SRM code has been made more robust against races between file deletions and copies.
+
+### systemtest
+
+The 'system-test' script was updated to ensure anonymous dcap tests succeed.
+
+
+### Changelog 2.16.25..2.16.26
+
+<!-- git log 2.16.25..2.16.26 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[5cf4555](https://github.com/dcache/dcache/commit/5cf45552d20603e67b03141b8cabbbebe5874a8d)
+:   [maven-release-plugin] prepare release 2.16.26
+
+[e0a3229](https://github.com/dcache/dcache/commit/e0a3229979b6d6696d622e73453d417a3712c746)
+:   cleaner: show delete notification targets
+
+[cc211e9](https://github.com/dcache/dcache/commit/cc211e9ee48e29ba389a12381dfa122140060d97)
+:   systemtest: allow anonymous dcap activity
+
+[e6e70d2](https://github.com/dcache/dcache/commit/e6e70d24b251a7701aee4f3b84a173f4aac32393)
+:   [maven-release-plugin] prepare for next development iteration
+
+[9c2d941](https://github.com/dcache/dcache/commit/9c2d941a54f0d14f1ab4554837ac38a990824c65)
+:   srm: fix recovery procedure in internal copy if source is deleted
+
 ## Release 2.16.25
 
 ### cells

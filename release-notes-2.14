@@ -149,6 +149,33 @@ Highlights from this release:
   SRM requests will be lost from the database. Third party scripts
   that access the SRM database directly may have to be updated.
 
+## Release 2.14.41
+
+### srm
+
+The SRM code has been made more robust against races between file deletions and copies.
+
+### systemtest
+
+The 'system-test' script was updated to ensure anonymous dcap tests succeed.
+
+
+### Changelog 2.14.40..2.14.41
+
+<!-- git log 2.14.40..2.14.41 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[4158477](https://github.com/dcache/dcache/commit/41584771cefbfd763a02e22892056b096fd2f51f)
+:   [maven-release-plugin] prepare release 2.14.41
+
+[6c40d2f](https://github.com/dcache/dcache/commit/6c40d2fdd7746a397aa2b0da3d88b6841c78cb65)
+:   systemtest: allow anonymous dcap activity
+
+[5a1279f](https://github.com/dcache/dcache/commit/5a1279f9513af9fb892f26bd6765caa6668d2c1e)
+:   srm: fix recovery procedure in internal copy if source is deleted
+
+[02430b6](https://github.com/dcache/dcache/commit/02430b603cf8f29414613adae86de8f93ce713b5)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.14.40
 
 ### cleaner

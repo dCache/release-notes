@@ -94,6 +94,33 @@ Highlights from this release:
   enforced. Clients that relied on these not being enforced will
   fail after upgrade.
 
+## Release 2.15.29
+
+### srm
+
+The SRM code has been made more robust against races between file deletions and copies.
+
+### systemtest
+
+The 'system-test' script was updated to ensure anonymous dcap tests succeed.
+
+
+### Changelog 2.15.28..2.15.29
+
+<!-- git log 2.15.28..2.15.29 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[23c0fbb](https://github.com/dcache/dcache/commit/23c0fbb168d60ca1b5bb1a88e14e4d7736918033)
+:   [maven-release-plugin] prepare release 2.15.29
+
+[12f712c](https://github.com/dcache/dcache/commit/12f712c980a196f39698eaec7a6ba241d1442e93)
+:   systemtest: allow anonymous dcap activity
+
+[8eebdd4](https://github.com/dcache/dcache/commit/8eebdd47551659304e6222ce9ffbc2da7054beaf)
+:   srm: fix recovery procedure in internal copy if source is deleted
+
+[a1c5bea](https://github.com/dcache/dcache/commit/a1c5bead03e9253abc61dadd93ecc141c4fcfd7e)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.15.28
 
 ### chimera-enstore
