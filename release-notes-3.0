@@ -109,6 +109,34 @@ HTML header: <title>dCache 3.0 Release Notes</title>
 
 Thanks to Onno Zweers for several contributions to this release.
 
+## Release 3.0.8
+
+### frontend
+
+This release of dCache ships with an updated dCache View version. 
+
+### xrootd
+
+In https://github.com/xrootd/xrootd/issues/459, it became apparent that dCache could improve xrdcp compatibility by sending
+checksum information in lower case. This release contains this change, which should improve xrootd operations.
+
+
+### Changelog 3.0.7..3.0.8
+
+<!-- git log 3.0.7..3.0.8 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[b856742](https://github.com/dcache/dcache/commit/b856742ad28ba4b14aae3492ae796236b56629e1)
+:   [maven-release-plugin] prepare release 3.0.8
+
+[2056dd7](https://github.com/dcache/dcache/commit/2056dd7b67a50cd7ef6dc7bbfcee523f2e631c9d)
+:   xrootd  : use lower case for checksum algorithm names when replying           to checksum queries.
+
+[a87a7c6](https://github.com/dcache/dcache/commit/a87a7c6994c0d35bac361e5271f71823b2c9f2b0)
+:   [maven-release-plugin] prepare for next development iteration
+
+[cb40a59](https://github.com/dcache/dcache/commit/cb40a599b2f79b6777de5b8057338e88e8be8b40)
+:   dcache: update dcache-view version to 1.0.5
+
 ## Release 3.0.7
 
 ### cleaner

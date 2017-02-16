@@ -94,6 +94,27 @@ Highlights from this release:
   enforced. Clients that relied on these not being enforced will
   fail after upgrade.
 
+## Release 2.15.30
+
+### xrootd
+
+In https://github.com/xrootd/xrootd/issues/459, it became apparent that dCache could improve xrdcp compatibility by sending
+checksum information in lower case. This release contains this change, which should improve xrootd operations.
+
+
+### Changelog 2.15.29..2.15.30
+
+<!-- git log 2.15.29..2.15.30 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[5e8913d](https://github.com/dcache/dcache/commit/5e8913dbf1632d598831b1bfbeda8e184e634a69)
+:   [maven-release-plugin] prepare release 2.15.30
+
+[97518c0](https://github.com/dcache/dcache/commit/97518c06092ed5ec5e8bd74a75940cacebf27ee0)
+:   xrootd  : use lower case for checksum algorithm names when replying           to checksum queries.
+
+[1d4f183](https://github.com/dcache/dcache/commit/1d4f183b6dc1916657cb9dfae055ef4b8fb70e07)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.15.29
 
 ### srm
