@@ -137,6 +137,64 @@ Highlights from this release:
   required upon upgrading, but downgrading is not possible without
   explicitly converting the format.
 
+## Release 2.13.54
+
+### ftp
+
+The current release improves compatibility between dCache FTP client and Globus GridFTP server.
+
+
+### srm
+
+During an ATLAS stress-test of tape recalls, it was discovered that
+various sites had relatively short request lifetimes. However, the SRM
+spec provides the opportunity for the server to inform the client (FTS,
+in this case) of what lifetime a request actually has.
+The current release includes the requests remaining lifetime in the response from the server.
+
+The current release improves the documentation to help Admins to have a better understanding how to configure dCache correctly.
+
+
+### Changelog 2.13.53..2.13.54
+
+<!-- git log 2.13.53..2.13.54 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[ea7aee0](https://github.com/dcache/dcache/commit/ea7aee0acb47b15fd807d2544920d7b39237891c)
+:   [maven-release-plugin] prepare release 2.13.54
+
+[0b50e92](https://github.com/dcache/dcache/commit/0b50e9294c3936c3476d8c3d5abb8bc4a8b8ffed)
+:   ftp: add support for paths relative to home directory
+
+[b8838c4](https://github.com/dcache/dcache/commit/b8838c4963010f5314a0aadd0351f86b0b44301f)
+:   ftp: Add support for SITE WHOAMI command
+
+[13d7da2](https://github.com/dcache/dcache/commit/13d7da227bc39a049bcdadc0c95dfc0ec4dd4f55)
+:   ftp: update parsing of CLIENTINFO command
+
+[99c9da1](https://github.com/dcache/dcache/commit/99c9da1f0b4b60fea11c849b7f3af840b8519230)
+:   srm: include remaining request lifetime in various responses
+
+[258a3fd](https://github.com/dcache/dcache/commit/258a3fde927271a8d5878747add8b8786ce3c2e2)
+:   srm: update srm request.*.lifetime configuration properties documentation
+
+[7ad0287](https://github.com/dcache/dcache/commit/7ad02872f1c5cb2d06028b5e930a8e82f0e9a038)
+:   ftp: modify facts describing namespace ownership
+
+[09aa4e1](https://github.com/dcache/dcache/commit/09aa4e1eecc2b108acff9e29c37fd59345f66261)
+:   ftp: add support for SITE TASKID command
+
+[619d006](https://github.com/dcache/dcache/commit/619d006190d9d02542cb3fc3bfcd7dc496786cb6)
+:   ftp: add initial support for checksum performance markers
+
+[3c669c7](https://github.com/dcache/dcache/commit/3c669c78b1aa582876efb350cc984ee0e0edb1a1)
+:   ftp: show SIZE facts for directories
+
+[376e5a6](https://github.com/dcache/dcache/commit/376e5a6b006ea6e1af8ae54953ef10277eb054ff)
+:   ftp: add support in OPTS RETR for specifying performance marker frequency
+
+[df08fb3](https://github.com/dcache/dcache/commit/df08fb33737cad6e616643f5565dcf65751a9641)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.13.53
 
 ### xrootd

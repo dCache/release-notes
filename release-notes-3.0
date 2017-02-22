@@ -109,6 +109,101 @@ HTML header: <title>dCache 3.0 Release Notes</title>
 
 Thanks to Onno Zweers for several contributions to this release.
 
+## Release 3.0.9
+
+### ftp
+
+The current release improves compatibility between dCache FTP client and Globus GridFTP server.
+
+
+### resilience
+
+When a file has no readable replicas, the default behavior of resilience
+is to raise an alarm. Files marked `CUSTODIAL` were excluded from this.
+The current release fixed this in a way that an alarm is raised for all files without readable disk copies, whether the file is `CUSTODIAL`  or not.
+
+### restful
+
+dCache has the concept of a home directory: each user may have a
+directory that is somehow "theirs". This information was not
+available to clients accessing dCache via the REST interface.
+The current release fixed this and querying `/api/v1/user` provides the user's home directory in addition to other user-centric information.
+
+ The RESTful interface exposed some namespace-targeted
+information through /api/v1/namespace, and QoS information through
+/api/v1/qos-management/namespace. This was undesirable as dCache exposes
+namespace-targeted operations in two places.
+This is now fixed and the client may obtain information by querying
+`/api/v1/namespace`.
+
+The current release improves the error handling for RESTful interface. Currently the error JSON object contains potentially useful information in the message and the bugs are logged.
+
+### srm
+
+During an ATLAS stress-test of tape recalls, it was discovered that
+various sites had relatively short request lifetimes. However, the SRM
+spec provides the opportunity for the server to inform the client (FTS,
+in this case) of what lifetime a request actually has.
+The current release includes the requests remaining lifetime in the response from the server.
+
+The current release improves the documentation to help Admins to have a better understanding how to configure dCache correctly.
+
+
+### Changelog 3.0.8..3.0.9
+
+<!-- git log 3.0.8..3.0.9 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[b243cb0](https://github.com/dcache/dcache/commit/b243cb0c7a05265e2bb815b7413f11581bd0253b)
+:   [maven-release-plugin] prepare release 3.0.9
+
+[926bf7c](https://github.com/dcache/dcache/commit/926bf7cfd8a1f73c65d9e603b21f7edf16d95e62)
+:   srm-client: use default GridFTP port if not specified
+
+[6b65522](https://github.com/dcache/dcache/commit/6b65522be556c21a3b1aee42a056e7f03d34acc1)
+:   ftp: Add support for SITE WHOAMI command
+
+[d3d12b9](https://github.com/dcache/dcache/commit/d3d12b9435ecae950791db4ec1cb636ce01b9db6)
+:   resilience: remove check on CUSTODIAL for inaccessible files
+
+[8b4ab7c](https://github.com/dcache/dcache/commit/8b4ab7cd9d25a14685341e33bded1d7094df59bd)
+:   ftp: update parsing of CLIENTINFO command
+
+[5911a18](https://github.com/dcache/dcache/commit/5911a18376f3929e42607e7c67c68914f43045af)
+:   srm: include remaining request lifetime in various responses
+
+[c3662f2](https://github.com/dcache/dcache/commit/c3662f2417190e3cdf26d472864010d63a37f199)
+:   srm: update srm request.*.lifetime configuration properties documentation
+
+[0284bac](https://github.com/dcache/dcache/commit/0284bac4e37f36270cba5cce43e99ac8b81cd8e2)
+:   ftp: modify facts describing namespace ownership
+
+[4136c76](https://github.com/dcache/dcache/commit/4136c762cd0b612c0ab26770540017af39365686)
+:   ftp: add support for SITE TASKID command
+
+[f8c16f5](https://github.com/dcache/dcache/commit/f8c16f5a7fafd3328b29a2cd5d2fe42ae8ff4369)
+:   ftp: add initial support for checksum performance markers
+
+[031862e](https://github.com/dcache/dcache/commit/031862e90b60084baa392cfc8da82c687bd5b599)
+:   restful: support querying QoS through namespace
+
+[8d74684](https://github.com/dcache/dcache/commit/8d746846d82bb9067e423a4a645fdb3c7fac53ed)
+:   [maven-release-plugin] prepare for next development iteration
+
+[393ba5d](https://github.com/dcache/dcache/commit/393ba5dfdf5e4ac1c8db63d3008894d7a0f71098)
+:   rest: add home directory to user info
+
+[b5c8a70](https://github.com/dcache/dcache/commit/b5c8a70f74c1aff920f2ecdb6a26e07fd0d52cd1)
+:   restful: improve error handling
+
+[fccd7bf](https://github.com/dcache/dcache/commit/fccd7bfb2a352c954bd3f70365331c917d63e2f8)
+:   ftp: add support in OPTS RETR for specifying performance marker frequency
+
+[19367b7](https://github.com/dcache/dcache/commit/19367b779c1858ac003bc6f3efd83128f1866dec)
+:   ftp: show SIZE facts for directories
+
+[bbf1c08](https://github.com/dcache/dcache/commit/bbf1c08b2166fa8273ff67cf1fe14becee9e9375)
+:   ftp: add support for paths relative to home directory
+
 ## Release 3.0.8
 
 ### frontend

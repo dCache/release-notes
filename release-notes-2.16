@@ -111,6 +111,73 @@ HTML header: <title>dCache 2.16 Release Notes</title>
 * Sites with a custom `httpd.conf` configuration will have to adjust
   this upon upgrade to inject the cell address of the `info` service.
 
+## Release 2.16.28
+
+### ftp
+
+The current release improves compatibility between dCache FTP client and Globus GridFTP server.
+
+
+### resilience
+
+When a file has no readable replicas, the default behavior of resilience
+is to raise an alarm. Files marked `CUSTODIAL` were excluded from this.
+The current release fixed this in a way that an alarm is raised for all files without readable disk copies, whether the file is `CUSTODIAL`  or not.
+
+### srm
+
+During an ATLAS stress-test of tape recalls, it was discovered that
+various sites had relatively short request lifetimes. However, the SRM
+spec provides the opportunity for the server to inform the client (FTS,
+in this case) of what lifetime a request actually has.
+The current release includes the requests remaining lifetime in the response from the server.
+
+The current release improves the documentation to help Admins to have a better understanding how to configure dCache correctly.
+
+
+### Changelog 2.16.27..2.16.28
+
+<!-- git log 2.16.27..2.16.28 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[6f292e3](https://github.com/dcache/dcache/commit/6f292e3c528a6343f8be7b3ab664cf31a7e39d51)
+:   [maven-release-plugin] prepare release 2.16.28
+
+[96fbfb3](https://github.com/dcache/dcache/commit/96fbfb3d10de0d1a1d8b224165763144ac83f27f)
+:   ftp: add support for paths relative to home directory
+
+[431ee9c](https://github.com/dcache/dcache/commit/431ee9cc98b861f5159899a4ca8ef3a4ea4e7b2c)
+:   ftp: Add support for SITE WHOAMI command
+
+[657346a](https://github.com/dcache/dcache/commit/657346ae0d6464f5c6d9b778b7fc781552b5d8aa)
+:   resilience: remove check on CUSTODIAL for inaccessible files
+
+[a3b4b91](https://github.com/dcache/dcache/commit/a3b4b9149f3de467190920ae735df6b90de2ff2b)
+:   ftp: update parsing of CLIENTINFO command
+
+[030f3e1](https://github.com/dcache/dcache/commit/030f3e136f611177267be30adab6c4ef1272f438)
+:   srm: include remaining request lifetime in various responses
+
+[d976a1d](https://github.com/dcache/dcache/commit/d976a1d2d767fed61ea69046a1ddc26f94c2496c)
+:   srm: update srm request.*.lifetime configuration properties documentation
+
+[bead579](https://github.com/dcache/dcache/commit/bead5795ed5e0fea0d4ad0d4a47b9bdf001049a4)
+:   ftp: modify facts describing namespace ownership
+
+[52d5400](https://github.com/dcache/dcache/commit/52d540086bd07de92b230cda78512aea57443a12)
+:   ftp: add support for SITE TASKID command
+
+[8129a45](https://github.com/dcache/dcache/commit/8129a45614a14e792bda21bb781f9a2270def37a)
+:   ftp: add initial support for checksum performance markers
+
+[4ec6a45](https://github.com/dcache/dcache/commit/4ec6a4532909a05696c1768560e17452b3cf56ff)
+:   [maven-release-plugin] prepare for next development iteration
+
+[da8c3ea](https://github.com/dcache/dcache/commit/da8c3ea67c836291791eed1f3b79e0ce7997a771)
+:   ftp: add support in OPTS RETR for specifying performance marker frequency
+
+[f90912b](https://github.com/dcache/dcache/commit/f90912b668a08288a62bb64d8c259da2726f3980)
+:   ftp: show SIZE facts for directories
+
 ## Release 2.16.27
 
 ### frontend

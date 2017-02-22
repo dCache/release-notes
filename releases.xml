@@ -201,7 +201,23 @@
       <notes-url>release-notes-3.0.shtml</notes-url>
       <version-prefix>3.0.</version-prefix>
       
-       <release version="8" recommended="1">
+       <release version="9" recommended="1">
+        <date>22.2.2017</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>9cc6364b3b99b4ef69bcd8577a673de7</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>4c78e0e2d8fc64cb8d7dadf8774b4729</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>8b030c282fd61b0f3144c178b0070ac5</md5sum>
+        </package>
+      </release>
+
+      <release version="8">
         <date>16.2.2017</date>
         <package name="rpm">
           <download-url>-VERSION-1.noarch.rpm</download-url>
@@ -382,7 +398,27 @@
         <version-prefix>2.16.</version-prefix>
       
 
-      <release version="27" recommended="1">
+      <release version="28" recommended="1">
+        <date>22.2.2017</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>485db0b26cf9fe13dba36f67fb704089</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>454ebebdf74882c9a9f8f6b241a4f4cf</md5sum>
+        </package>
+        <package name="Solaris package">
+          <download-url>-VERSION-1.pkg</download-url>
+          <md5sum>bcc2829f7f4ca17151d768139e25eb8d</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>ce0490b2574acf66ca004e4ae21e9830</md5sum>
+        </package>
+      </release>
+
+      <release version="27">
         <date>16.2.2017</date>
         <package name="rpm">
           <download-url>-VERSION-1.noarch.rpm</download-url>
@@ -975,7 +1011,27 @@
        <notes-url>release-notes-2.15.shtml</notes-url>
        <version-prefix>2.15.</version-prefix>
       
-       <release version="30" recommended="1">
+       <release version="31" recommended="1">
+        <date>22.2.2017</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>6b925793f6e96e3790c05bc8e1aff8fd</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>0e79baeef187e50c190924f5281efa47</md5sum>
+        </package>
+        <package name="Solaris package">
+          <download-url>-VERSION-1.pkg</download-url>
+          <md5sum>8082a3e486ed391c948fe1a0d1748226</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>a263e3df394625241630b09e41c58d5e</md5sum>
+        </package>
+      </release>
+
+      <release version="30">
         <date>16.2.2017</date>
         <package name="rpm">
           <download-url>-VERSION-1.noarch.rpm</download-url>
@@ -1628,7 +1684,27 @@
       <notes-url>release-notes-2.14.shtml</notes-url>
       <version-prefix>2.14.</version-prefix>
 
-      <release version="42" recommended="1">
+      <release version="43" recommended="1">
+        <date>22.2.2017</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>628de8f92592c0b046a5cc24ac81fdfe</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>ccb94a42bcf49d1572fb32c1fce8de5b</md5sum>
+        </package>
+        <package name="Solaris package">
+          <download-url>-VERSION-1.pkg</download-url>
+          <md5sum>d55eedea4e884ebbb122bbc95ed09437</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>63b9a9945f0f2bfffc0484f0a24825b3</md5sum>
+        </package>
+      </release>
+
+      <release version="42">
         <date>16.2.2017</date>
         <package name="rpm">
           <download-url>-VERSION-1.noarch.rpm</download-url>
@@ -2509,7 +2585,27 @@
       <notes-url>release-notes-2.13.shtml</notes-url>
       <version-prefix>2.13.</version-prefix>
 
-      <release version="53" recommended="1">
+      <release version="54" recommended="1">
+        <date>22.2.2017</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>49158787ddc6e86989e34fe82e76655f</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>cff64e66942e7cb285ae34211f3ceeb7</md5sum>
+        </package>
+        <package name="Solaris package">
+          <download-url>-VERSION-1.pkg</download-url>
+          <md5sum>bf70c119217499b1624457c3b4c997df</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>cabf0bca3775d53d6d4cdec2f6889948</md5sum>
+        </package>
+      </release>
+
+      <release version="53">
         <date>16.2.2017</date>
         <package name="rpm">
           <download-url>-VERSION-1.noarch.rpm</download-url>
