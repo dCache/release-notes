@@ -111,6 +111,34 @@ HTML header: <title>dCache 2.16 Release Notes</title>
 * Sites with a custom `httpd.conf` configuration will have to adjust
   this upon upgrade to inject the cell address of the `info` service.
 
+## Release 2.16.29
+
+### ftp
+
+The current release added implementation of MLSC. As a result Globus is able to query the contents of dCache directories using FTP and
+without creating additional TCP connections.
+
+### lm
+
+The current release fixed the issue with duplicate location manager connectors.
+
+
+### Changelog 2.16.28..2.16.29
+
+<!-- git log 2.16.28..2.16.29 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[65fa709](https://github.com/dcache/dcache/commit/65fa709d457ed638a8783289a40c32a718a5b66a)
+:   [maven-release-plugin] prepare release 2.16.29
+
+[bd84187](https://github.com/dcache/dcache/commit/bd84187793c3ad2a6c3fa11d2a9ec75f5f2150ee)
+:   lm: Do not rely on thread interrupt for shutdown
+
+[775eda2](https://github.com/dcache/dcache/commit/775eda23c07ee98a65f72368a9db35ccf2c1459b)
+:   ftp: implement the MLSC command
+
+[f92152d](https://github.com/dcache/dcache/commit/f92152df6b48c0620a321723ec13853d1a4f2b79)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.16.28
 
 ### ftp

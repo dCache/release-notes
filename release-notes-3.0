@@ -109,6 +109,34 @@ HTML header: <title>dCache 3.0 Release Notes</title>
 
 Thanks to Onno Zweers for several contributions to this release.
 
+## Release 3.0.10
+
+### ftp
+
+The current release added implementation of MLSC. As a result Globus is able to query the contents of dCache directories using FTP and
+without creating additional TCP connections.
+
+### lm
+
+The current release fixed the issue with duplicate location manager connectors.
+
+
+### Changelog 3.0.9..3.0.10
+
+<!-- git log 3.0.9..3.0.10 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[2b4e595](https://github.com/dcache/dcache/commit/2b4e595f0125c2b45760bfead90a40849a3bb240)
+:   [maven-release-plugin] prepare release 3.0.10
+
+[301142f](https://github.com/dcache/dcache/commit/301142f95c5d288a2e2dd298a05f7bca1ad4c054)
+:   lm: Do not rely on thread interrupt for shutdown
+
+[6b93af9](https://github.com/dcache/dcache/commit/6b93af98ce68df9cb3e9db567db2308ca7a50ab4)
+:   ftp: implement the MLSC command
+
+[363149a](https://github.com/dcache/dcache/commit/363149a317488de19bbf2f74df45f5e26b14a742)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.0.9
 
 ### ftp
