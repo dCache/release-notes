@@ -157,7 +157,11 @@ The current release fixed database query for storing multiple checksums for a fi
 
 ### ftp
 
-The current release fixed the issue with  failing  proxy transfers.
+The Socket `read` method may return zero to indicate that no bytes were
+read. Although this is not an error, such occurances will result
+in a transfer failing.
+
+This is now fixed.
 
 
 ### Changelog 2.14.44..2.14.45
