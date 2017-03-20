@@ -109,6 +109,50 @@ HTML header: <title>dCache 3.0 Release Notes</title>
 
 Thanks to Onno Zweers for several contributions to this release.
 
+## Release 3.0.11
+
+### chimera
+
+The current release fixed database query for storing multiple checksums for a file.
+
+### ftp
+
+dCache FTP command dispatch did not distinguish between
+commands executed directly and those executed via RFC 2228 security
+extensions. The current release fixed that and most commands are protected from being run directly (unencrypted).
+
+
+The current release fixed the issue with  failing  proxy transfers.
+
+### srmclient
+
+Directory listing for CASTOR was resulting in a `NullPointerException`  when the request
+size is too large, due to the fact that the CASTOR SRM interface limits the maximum number of responses to 1024.
+This is now fixed.
+
+
+### Changelog 3.0.10..3.0.11
+
+<!-- git log 3.0.10..3.0.11 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[57ebca3](https://github.com/dcache/dcache/commit/57ebca36e91b41d9c8c6466d8fd1c418ad54ac1d)
+:   [maven-release-plugin] prepare release 3.0.11
+
+[8e607b6](https://github.com/dcache/dcache/commit/8e607b660a1b3b938113c73cce1905f0f2c83f30)
+:   srmclient: fix compatibility with castor
+
+[3389013](https://github.com/dcache/dcache/commit/3389013f1806cfc3fdc510a896e5159a7cd8e940)
+:   ftp: prevent execution of most commands when unwrapped
+
+[c422b7a](https://github.com/dcache/dcache/commit/c422b7a9170c9c5c60078d99591f534a3ec1bb30)
+:   chimera: fixed database query for storing multiple checksums for a file.
+
+[71a6ac9](https://github.com/dcache/dcache/commit/71a6ac9f11d13b7650c4043b4d746eea89404618)
+:   ftp: do not fail proxy transfer if read returns zero bytes
+
+[c480738](https://github.com/dcache/dcache/commit/c480738e98f64b6cb225d508638fbded90a494ef)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.0.10
 
 ### ftp

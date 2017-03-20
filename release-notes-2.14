@@ -149,6 +149,41 @@ Highlights from this release:
   SRM requests will be lost from the database. Third party scripts
   that access the SRM database directly may have to be updated.
 
+## Release 2.14.45
+
+### chimera
+
+The current release fixed database query for storing multiple checksums for a file.
+
+### ftp
+
+dCache FTP command dispatch did not distinguish between
+commands executed directly and those executed via RFC 2228 security
+extensions. The current release fixed that and most commands are protected from being run directly (unencrypted).
+
+
+The current release fixed the issue with  failing  proxy transfers.
+
+
+### Changelog 2.14.44..2.14.45
+
+<!-- git log 2.14.44..2.14.45 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[3e285f6](https://github.com/dcache/dcache/commit/3e285f6967ded69d62219648cd230dda8865f7af)
+:   [maven-release-plugin] prepare release 2.14.45
+
+[7431759](https://github.com/dcache/dcache/commit/74317592867480160f0848bad59cf72ed8200a9b)
+:   ftp: prevent execution of most commands when unwrapped
+
+[5799780](https://github.com/dcache/dcache/commit/579978061284304192f5717d3da81f83e095dd00)
+:   chimera: fixed database query for storing multiple checksums for a file.
+
+[5116a7c](https://github.com/dcache/dcache/commit/5116a7c04739d1c2a82ee7f3d847f353c9a667b5)
+:   ftp: do not fail proxy transfer if read returns zero bytes
+
+[76250c3](https://github.com/dcache/dcache/commit/76250c3475bfa4e5273f53a57d325331492e6ab5)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.14.44
 
 ### ftp

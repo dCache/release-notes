@@ -94,6 +94,41 @@ Highlights from this release:
   enforced. Clients that relied on these not being enforced will
   fail after upgrade.
 
+## Release 2.15.33
+
+### chimera
+
+The current release fixed database query for storing multiple checksums for a file.
+
+### ftp
+
+dCache FTP command dispatch did not distinguish between
+commands executed directly and those executed via RFC 2228 security
+extensions. The current release fixed that and most commands are protected from being run directly (unencrypted).
+
+
+The current release fixed the issue with  failing  proxy transfers.
+
+
+### Changelog 2.15.32..2.15.33
+
+<!-- git log 2.15.32..2.15.33 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[fe749c0](https://github.com/dcache/dcache/commit/fe749c0b022871a53cd74d4487fed32f4ac5ed80)
+:   [maven-release-plugin] prepare release 2.15.33
+
+[921d6a7](https://github.com/dcache/dcache/commit/921d6a7b352f5116805a684785c58727905cc342)
+:   ftp: prevent execution of most commands when unwrapped
+
+[766d2e3](https://github.com/dcache/dcache/commit/766d2e35ed0ea2f376bb37c24ad3d12f1b3b5276)
+:   chimera: fixed database query for storing multiple checksums for a file.
+
+[d9fe757](https://github.com/dcache/dcache/commit/d9fe7573ec4a007c44390f0eb194361eeb3d95fb)
+:   ftp: do not fail proxy transfer if read returns zero bytes
+
+[7af7a9b](https://github.com/dcache/dcache/commit/7af7a9be8cd863e71887a48424709d5bbeb1133d)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.15.32
 
 ### ftp

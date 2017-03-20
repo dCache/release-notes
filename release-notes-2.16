@@ -111,6 +111,41 @@ HTML header: <title>dCache 2.16 Release Notes</title>
 * Sites with a custom `httpd.conf` configuration will have to adjust
   this upon upgrade to inject the cell address of the `info` service.
 
+## Release 2.16.30
+
+### chimera
+
+The current release fixed database query for storing multiple checksums for a file.
+
+### ftp
+
+dCache FTP command dispatch did not distinguish between
+commands executed directly and those executed via RFC 2228 security
+extensions. The current release fixed that and most commands are protected from being run directly (unencrypted).
+
+
+The current release fixed the issue with  failing  proxy transfers.
+
+
+### Changelog 2.16.29..2.16.30
+
+<!-- git log 2.16.29..2.16.30 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[e723896](https://github.com/dcache/dcache/commit/e723896a4fa2d8d61224c6cb811e40db350840fe)
+:   [maven-release-plugin] prepare release 2.16.30
+
+[9b50f3e](https://github.com/dcache/dcache/commit/9b50f3e1c5d385c15deb8804ae0cf008b08ccaa0)
+:   ftp: prevent execution of most commands when unwrapped
+
+[c092703](https://github.com/dcache/dcache/commit/c0927031e603ed6b7a269ed44618c73676a90cec)
+:   chimera: fixed database query for storing multiple checksums for a file.
+
+[3a54ba5](https://github.com/dcache/dcache/commit/3a54ba586f1e2fd5f0ea2d948a827cc66a0f4a5b)
+:   ftp: do not fail proxy transfer if read returns zero bytes
+
+[204b53d](https://github.com/dcache/dcache/commit/204b53d5e2e0e2e434aac84380f4911b5e8d1b4d)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.16.29
 
 ### ftp
