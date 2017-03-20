@@ -119,11 +119,6 @@ The current release fixed database query for storing multiple checksums for a fi
 
 ### ftp
 
-dCache FTP command dispatch did not distinguish between
-commands executed directly and those executed via RFC 2228 security
-extensions. The current release fixed that and most commands are protected from being run directly (unencrypted).
-
-
 The current release fixed the issue with  failing  proxy transfers.
 
 
