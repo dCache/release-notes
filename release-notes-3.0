@@ -116,10 +116,10 @@ Thanks to Onno Zweers for several contributions to this release.
 There was an issue with a symbolic link to a directory where destination
 where destination contained trailing slash. This is now fixed.
 
-### libs
+### nfs
 
 The current release fixed interoperability with RHEL7-based clients
-clients and  handling of invalid principals on SETATTR sent
+ and  handling of invalid principals on SETATTR sent
 by OSX client. 
 
 
