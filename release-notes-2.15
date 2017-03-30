@@ -94,6 +94,27 @@ Highlights from this release:
   enforced. Clients that relied on these not being enforced will
   fail after upgrade.
 
+## Release 2.15.34
+
+### chimera
+
+There was an issue with a symbolic link to a directory where destination
+where destination contained trailing slash. This is now fixed.
+
+
+### Changelog 2.15.33..2.15.34
+
+<!-- git log 2.15.33..2.15.34 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[74554b5](https://github.com/dcache/dcache/commit/74554b5a1533e67368a0a92bfa058891fe6313ff)
+:   [maven-release-plugin] prepare release 2.15.34
+
+[758b40b](https://github.com/dcache/dcache/commit/758b40b3ac450ce2e3daf84be7ee31441c31ad77)
+:   [maven-release-plugin] prepare for next development iteration
+
+[a676ef6](https://github.com/dcache/dcache/commit/a676ef6600e0c0730fb58e6f383049a0ed67c82f)
+:   chimera : handle empty paths elements path2inumber stored procedure
+
 ## Release 2.15.33
 
 ### chimera

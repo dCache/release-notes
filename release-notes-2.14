@@ -149,6 +149,27 @@ Highlights from this release:
   SRM requests will be lost from the database. Third party scripts
   that access the SRM database directly may have to be updated.
 
+## Release 2.14.46
+
+### chimera
+
+There was an issue with a symbolic link to a directory where destination
+where destination contained trailing slash. This is now fixed.
+
+
+### Changelog 2.14.45..2.14.46
+
+<!-- git log 2.14.45..2.14.46 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[9fbbeb2](https://github.com/dcache/dcache/commit/9fbbeb2a29b60f1e80c497005a6aaa38d36b0a53)
+:   [maven-release-plugin] prepare release 2.14.46
+
+[0890408](https://github.com/dcache/dcache/commit/08904084d846e876bb9fed9e4affcada66f115b5)
+:   [maven-release-plugin] prepare for next development iteration
+
+[c478efd](https://github.com/dcache/dcache/commit/c478efd2d1f0fbc53dd8d2d8980f3e55c84e5b7f)
+:   chimera : handle empty paths elements in path2inode stored procedure
+
 ## Release 2.14.45
 
 ### chimera

@@ -111,6 +111,27 @@ HTML header: <title>dCache 2.16 Release Notes</title>
 * Sites with a custom `httpd.conf` configuration will have to adjust
   this upon upgrade to inject the cell address of the `info` service.
 
+## Release 2.16.31
+
+### chimera
+
+There was an issue with a symbolic link to a directory where destination
+where destination contained trailing slash. This is now fixed.
+
+
+### Changelog 2.16.30..2.16.31
+
+<!-- git log 2.16.30..2.16.31 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[a37c3c7](https://github.com/dcache/dcache/commit/a37c3c725ee03dd75b62001a4fe25c4f420c5bea)
+:   [maven-release-plugin] prepare release 2.16.31
+
+[d74ab56](https://github.com/dcache/dcache/commit/d74ab56f8704f4afdf8c792dcb40c09e69f8732e)
+:   [maven-release-plugin] prepare for next development iteration
+
+[a92cefd](https://github.com/dcache/dcache/commit/a92cefd8bede32a5dcc085e88cfc41a1240d29e4)
+:   chimera : handle empty paths elements path2inumber stored procedure
+
 ## Release 2.16.30
 
 ### chimera

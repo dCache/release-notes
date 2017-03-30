@@ -109,6 +109,39 @@ HTML header: <title>dCache 3.0 Release Notes</title>
 
 Thanks to Onno Zweers for several contributions to this release.
 
+## Release 3.0.12
+
+### chimera
+
+There was an issue with a symbolic link to a directory where destination
+where destination contained trailing slash. This is now fixed.
+
+### libs
+
+The current release fixed interoperability with RHEL7-based clients
+clients and  handling of invalid principals on SETATTR sent
+by OSX client. 
+
+
+### Changelog 3.0.11..3.0.12
+
+<!-- git log 3.0.11..3.0.12 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[4770eea](https://github.com/dcache/dcache/commit/4770eea602c44d14be92c56557fb68284d794468)
+:   [maven-release-plugin] prepare release 3.0.12
+
+[9acdb7e](https://github.com/dcache/dcache/commit/9acdb7e7f9685bd30417725df9fc6bac236f5098)
+:   libs: update to bug fix release nfs4j-0.13.1
+
+[bd98067](https://github.com/dcache/dcache/commit/bd98067743e80f9e2d6bc49b19c30e05ccadbef4)
+:   srmclient: fix handling of checksum options
+
+[be5101d](https://github.com/dcache/dcache/commit/be5101d4ae9eba3ad94775ba2052994cfe1400b2)
+:   [maven-release-plugin] prepare for next development iteration
+
+[0be5408](https://github.com/dcache/dcache/commit/0be540844e776a4c1f8d9b9c6569292f8884e5f3)
+:   chimera : handle empty paths elements path2inumber stored procedure
+
 ## Release 3.0.11
 
 ### chimera

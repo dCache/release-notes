@@ -137,6 +137,30 @@ Highlights from this release:
   required upon upgrading, but downgrading is not possible without
   explicitly converting the format.
 
+## Release 2.13.57
+
+### chimera
+
+There was an issue with a symbolic link to a directory where destination
+where destination contained trailing slash. This is now fixed.
+
+
+### Changelog 2.13.56..2.13.57
+
+<!-- git log 2.13.56..2.13.57 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[adcdac1](https://github.com/dcache/dcache/commit/adcdac12ded6fa754a436366ea724588383c2cac)
+:   [maven-release-plugin] prepare release 2.13.57
+
+[758e472](https://github.com/dcache/dcache/commit/758e47244c3609b8de245ef6ab6f8dbaaa0ee5e6)
+:   fixed changelog XML
+
+[2f66c97](https://github.com/dcache/dcache/commit/2f66c970201d58b09e9202e66580420d5611a5cb)
+:   [maven-release-plugin] prepare for next development iteration
+
+[94b806d](https://github.com/dcache/dcache/commit/94b806d3536cb2b2498c088cfa8a0d45d3ffb012)
+:   chimera : handle empty paths elements in path2inode stored procedure
+
 ## Release 2.13.56
 
 ### chimera
