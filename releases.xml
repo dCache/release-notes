@@ -178,6 +178,7 @@
         <li>Plenty of NFS door improvements.</li>
      	<li>Chimera can track file upload status.</li>
 	<li>OpenID connect support for WebDAV 3rd party copy.</li>
+        <li>Allow regular expression matching of storage units in resilience manager.</li>
       </ul>
 
       <p>
