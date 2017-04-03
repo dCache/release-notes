@@ -167,6 +167,54 @@
     <br/>
   </preamble>
 
+  <series id="server-3.1">
+    <title>server 3.1.x</title>
+    <description>
+      <p>
+        dCache 3.1 features the following highlights and architectural improvements:
+      </p>
+
+      <ul>
+        <li>Plenty of NFS door improvements</li>
+     	<li>Chimera can track file upload status</li>
+	<li>OpenID connect support for WebDAV 3rd party copy</li>
+      </ul>
+
+      <p>
+          dCache v3.1 requires a JVM supporting Java 8.
+      </p>
+
+    </description>
+
+    <releases>
+	<name>dCache VERSION</name>
+      	<download-url-prefix>repo/3.1/dcache</download-url-prefix>
+      	<notes-url>release-notes-3.1.shtml</notes-url>
+     	<version-prefix>3.1.</version-prefix>
+	
+
+   
+
+      <release version="0" recommended="1">
+        <date>3.4.2017</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>294014482b1fb023365888c19c42ffac</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>0dbc79770f8c83a9e8ff37ba925823ee</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>e44397f3e62bb4c6fc4c75c70278c75c</md5sum>
+        </package>
+      </release>
+
+    <releases>  
+   </series>
+
+
   <series id="server-3.0">
     <title>server 3.0.x</title>
     <description>
