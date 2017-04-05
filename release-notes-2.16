@@ -116,7 +116,7 @@ HTML header: <title>dCache 2.16 Release Notes</title>
 ### chimera
 
 There was an issue with a symbolic link to a directory where destination
-where destination contained trailing slash. This is now fixed.
+ contained trailing slash. This is now fixed.
 
 
 ### Changelog 2.16.30..2.16.31
