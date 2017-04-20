@@ -109,6 +109,31 @@ HTML header: <title>dCache 3.0 Release Notes</title>
 
 Thanks to Onno Zweers for several contributions to this release.
 
+## Release 3.0.13
+
+### pool
+
+Current release improves handling of CEPH exceptions, so that pools can react appropriately when request for a missing file.
+
+Fixes double close on p2p.
+
+
+### Changelog 3.0.12..3.0.13
+
+<!-- git log 3.0.12..3.0.13 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[484a88d](https://github.com/dcache/dcache/commit/484a88dc3366177cd4237328cf546083e194f58e)
+:   [maven-release-plugin] prepare release 3.0.13
+
+[6562643](https://github.com/dcache/dcache/commit/65626432a3af17e5cab9630c40dcc44971a7a3d9)
+:   [maven-release-plugin] prepare for next development iteration
+
+[194c54a](https://github.com/dcache/dcache/commit/194c54afcbb36eda093182c4b5f1f92bc37fa1ed)
+:   pool: handle CEPH exceptions
+
+[7f7d6e2](https://github.com/dcache/dcache/commit/7f7d6e279288f40572835a7b12fe35e686d3f472)
+:   pool: fix double close on p2p
+
 ## Release 3.0.12
 
 ### chimera

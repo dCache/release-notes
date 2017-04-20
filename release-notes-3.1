@@ -76,6 +76,38 @@ HTML header: <title>dCache 3.1 Release Notes</title>
 
 Thanks to Johan Guldmyr for his constributions.
 
+## Release 3.1.1
+
+### pool
+
+Current release improves handling of CEPH exceptions, so that pools can react appropriately when request for a missing file.
+
+Fixes double close on p2p.
+
+### restful-api
+
+Current release adds mime-type to file attributes.
+
+
+### Changelog 3.1.0..3.1.1
+
+<!-- git log 3.1.0..3.1.1 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[ccb9e51](https://github.com/dcache/dcache/commit/ccb9e5161398b44ee6c3cc4e068d6022f2e3d510)
+:   [maven-release-plugin] prepare release 3.1.1
+
+[e64219b](https://github.com/dcache/dcache/commit/e64219b7ccf62bc626157d7f8d68c2ac03306a18)
+:   [maven-release-plugin] prepare for next development iteration
+
+[562d467](https://github.com/dcache/dcache/commit/562d467a7157f8d6bb65af431099394ce734a7fa)
+:   restful-api: add file mime-type to file attribute
+
+[671d35b](https://github.com/dcache/dcache/commit/671d35b68540451c889bc1cf3587639731bd4d45)
+:   pool: handle CEPH exceptions
+
+[10e8925](https://github.com/dcache/dcache/commit/10e89256f562ef8921ed2c51cc174a9592a99017)
+:   pool: fix double close on p2p
+
 ## Release 3.1.0
 
 #### Chimera CLI can query access latency and retention policy

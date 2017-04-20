@@ -111,6 +111,31 @@ HTML header: <title>dCache 2.16 Release Notes</title>
 * Sites with a custom `httpd.conf` configuration will have to adjust
   this upon upgrade to inject the cell address of the `info` service.
 
+## Release 2.16.32
+
+### nfs
+
+Change proxy-io client initialization to limit number of threads.
+
+Bugfix update with better compatibility with REHL7 clients. 
+
+
+### Changelog 2.16.31..2.16.32
+
+<!-- git log 2.16.31..2.16.32 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[186ab64](https://github.com/dcache/dcache/commit/186ab64fb4f53b571acb08f4f651b7501194cd19)
+:   [maven-release-plugin] prepare release 2.16.32
+
+[f12b0c2](https://github.com/dcache/dcache/commit/f12b0c2572e61f22669016d55cf4189baf54bba7)
+:   nfs: change proxyio client initialization to limit number of threads
+
+[923ce9f](https://github.com/dcache/dcache/commit/923ce9fa49e0d1ad59f4e7e172a59b70053ef557)
+:   libs: use nfs4j-0.12.4
+
+[4e192b1](https://github.com/dcache/dcache/commit/4e192b117e8c34e4a325aa79588d27a42fbf085c)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.16.31
 
 ### chimera
