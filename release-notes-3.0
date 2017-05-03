@@ -109,6 +109,57 @@ HTML header: <title>dCache 3.0 Release Notes</title>
 
 Thanks to Onno Zweers for several contributions to this release.
 
+## Release 3.0.14
+
+### Changes affecting multiple services
+
+The version of the PostgreSQL driver used by dCache internally was brought up to 9.4.1212. This fixes the issue described in https://liquibase.jira.com/browse/CORE-2939
+.
+
+### chimera
+
+In order to improve IO performance, the way dCache updates `atime` values was modified.
+
+### nfs
+
+An internal change in the NFS door code helps reducing irrelevant exceptions being logged.
+
+### srm
+
+SRM no longer times out file requests. 
+This alleviates a rare race condition where timeouts for the file request and file access competed. 
+Requests that time out now always return SRM_REQUEST_TIMED_OUT at request
+level and SRM_FAILURE for the SURLs in that request.
+
+
+### Changelog 3.0.13..3.0.14
+
+<!-- git log 3.0.13..3.0.14 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[7a614f2ceb](https://github.com/dcache/dcache/commit/7a614f2cebf3e1085bbc8f302d3e7f4ea1d459df)
+:   [maven-release-plugin] prepare release 3.0.14
+
+[ace6b59de1](https://github.com/dcache/dcache/commit/ace6b59de139dc0b9c2a39beaeadd848ed44c591)
+:   ceph: log repository IO error
+
+[706795f5b6](https://github.com/dcache/dcache/commit/706795f5b66da163a0039a1fc362372bd7700c89)
+:   update postgresql driver to version 9.4.1212 to address issue with liquibase changeset and postgresql 9.6 (see https://liquibase.jira.com/browse/CORE-2939)
+
+[f6b7af5112](https://github.com/dcache/dcache/commit/f6b7af5112172cd6c53597cb45a29ab5263b795f)
+:   srm: remove file-level timeout
+
+[95c465df9f](https://github.com/dcache/dcache/commit/95c465df9f3045b73e8ba6f621f48de8c308ec3a)
+:   chimera: do not update inode generation on atime only update
+
+[08a3b4cb10](https://github.com/dcache/dcache/commit/08a3b4cb104471b47c6dfb2d74411164c584dca2)
+:   nfs: do not add Origin to read-only subject
+
+[a3df429db1](https://github.com/dcache/dcache/commit/a3df429db1993acad06eeb1d87e4702f17284a5c)
+:   [maven-release-plugin] prepare for next development iteration
+
+[2434f8375a](https://github.com/dcache/dcache/commit/2434f8375ae0a935f45fe663a7a18feb6da50b46)
+:   parent/dcache: add mail jar to deployment
+
 ## Release 3.0.13
 
 ### pool

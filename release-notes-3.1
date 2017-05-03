@@ -76,6 +76,49 @@ HTML header: <title>dCache 3.1 Release Notes</title>
 
 Thanks to Johan Guldmyr for his constributions.
 
+## Release 3.1.2
+
+### chimera
+
+In order to improve IO performance, the way dCache updates `atime` values was modified.
+
+### nfs
+
+An internal change in the NFS door code helps reducing irrelevant exceptions being logged.
+
+### srm
+
+SRM no longer times out file requests. 
+This alleviates a rare race condition where timeouts for the file request and file access competed. 
+Requests that time out now always return SRM_REQUEST_TIMED_OUT at request
+level and SRM_FAILURE for the SURLs in that request.
+
+
+### Changelog 3.1.1..3.1.2
+
+<!-- git log 3.1.1..3.1.2 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[b08390f331](https://github.com/dcache/dcache/commit/b08390f3313b50d0cf46419b9ef14b90ce0f8010)
+:   [maven-release-plugin] prepare release 3.1.2
+
+[956da34325](https://github.com/dcache/dcache/commit/956da343253d4355e16c5ab2f105bf66efb4556a)
+:   ceph: log repository IO error
+
+[809b7f43bf](https://github.com/dcache/dcache/commit/809b7f43bfbda8482e84d086e7d7f7bbde643e55)
+:   srm: remove file-level timeout
+
+[b734aae1ba](https://github.com/dcache/dcache/commit/b734aae1baa915940ced9d519f3c894318f099c0)
+:   chimera: do not update inode generation on atime only update
+
+[a68318b6a0](https://github.com/dcache/dcache/commit/a68318b6a041ecbd9eb077cc05a4abe008055770)
+:   nfs: do not add Origin to read-only subject
+
+[c30c9c244c](https://github.com/dcache/dcache/commit/c30c9c244c763c1bdc1aee01da3582ae1e71d494)
+:   [maven-release-plugin] prepare for next development iteration
+
+[c9baa6fa10](https://github.com/dcache/dcache/commit/c9baa6fa1061e9b56e8857a8abb2184996fc51c8)
+:   parent/dcache: add mail jar to deployment
+
 ## Release 3.1.1
 
 ### pool

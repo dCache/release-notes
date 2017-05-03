@@ -111,6 +111,56 @@ HTML header: <title>dCache 2.16 Release Notes</title>
 * Sites with a custom `httpd.conf` configuration will have to adjust
   this upon upgrade to inject the cell address of the `info` service.
 
+## Release 2.16.33
+
+### Changes affecting multiple services
+
+The version of the PostgreSQL driver used by dCache internally was brought up to 9.4.1212. This fixes the issue described in https://liquibase.jira.com/browse/CORE-2939.
+
+### chimera
+
+In order to improve IO performance, the way dCache updates `atime` values was modified.
+
+### nfs
+
+An internal change in the NFS door code helps reducing irrelevant exceptions being logged.
+
+### srm
+
+SRM no longer times out file requests. 
+This alleviates a rare race condition where timeouts for the file request and file access competed. 
+Requests that time out now always return SRM_REQUEST_TIMED_OUT at request
+level and SRM_FAILURE for the SURLs in that request.
+
+
+### Changelog 2.16.32..2.16.33
+
+<!-- git log 2.16.32..2.16.33 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[1ae63cfdcf](https://github.com/dcache/dcache/commit/1ae63cfdcf51ce79220d51b3dfaa24d2caa4fd03)
+:   [maven-release-plugin] prepare release 2.16.33
+
+[689172ef74](https://github.com/dcache/dcache/commit/689172ef746498b5d4afc2d0afcecd413a0ac6a9)
+:   postgresql driver: update version to 9.4.1212
+
+[31f7a9e683](https://github.com/dcache/dcache/commit/31f7a9e683a91a4108619b827a0db7ac64fe8dbf)
+:   srm: remove file-level timeout
+
+[7e2aa01927](https://github.com/dcache/dcache/commit/7e2aa019271d1c78fc76b1c5caee13ee6d32e0f2)
+:   chimera: do not update inode generation on atime only update
+
+[a9bcd86e2e](https://github.com/dcache/dcache/commit/a9bcd86e2e7220222e2b04580b5a50dedda5ec3e)
+:   nfs: do not add Origin to read-only subject
+
+[d512dcd933](https://github.com/dcache/dcache/commit/d512dcd9331fd3c213be2b754f23ae0ca6acd0d2)
+:   Eliminated stray dependencies in the dcache/pom.xml accidentally carried over from the cherry-pick.
+
+[03dc2f1c5e](https://github.com/dcache/dcache/commit/03dc2f1c5e2ca706e60aff78cd89f481c552141b)
+:   [maven-release-plugin] prepare for next development iteration
+
+[5a4b4b89ba](https://github.com/dcache/dcache/commit/5a4b4b89ba62d7d726989d6352d08e351e4dab90)
+:   parent/dcache: add mail jar to deployment
+
 ## Release 2.16.32
 
 ### nfs
