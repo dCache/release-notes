@@ -111,6 +111,33 @@ HTML header: <title>dCache 2.16 Release Notes</title>
 * Sites with a custom `httpd.conf` configuration will have to adjust
   this upon upgrade to inject the cell address of the `info` service.
 
+## Release 2.16.34
+
+### nfs
+
+Debugging of stuck transfers has been facilitated by adding the status of transfers to the output of the `show transfers` command.
+
+### system-test
+
+The system-test module, used for demonstration or testing purposes, comes with a built-in X.509 infrastructure. With this release, expired certificates are replaced by new ones.
+
+
+### Changelog 2.16.33..2.16.34
+
+<!-- git log 2.16.33..2.16.34 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[0f6615c72c](https://github.com/dcache/dcache/commit/0f6615c72c8b0ebb2e8f3bbf3734220de86237f6)
+:   [maven-release-plugin] prepare release 2.16.34
+
+[f53c5a1952](https://github.com/dcache/dcache/commit/f53c5a1952dc0fde8e6ffe8d0122c06a6690e2a6)
+:   nfs: show transfer status when displayed
+
+[d1191a524f](https://github.com/dcache/dcache/commit/d1191a524f07f62900ffe3d16c71d2df90402552)
+:   system-test: update disposable-CA generated credentials
+
+[ead58c7498](https://github.com/dcache/dcache/commit/ead58c74989554baba199bc9325b50b08f36b788)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.16.33
 
 ### Changes affecting multiple services

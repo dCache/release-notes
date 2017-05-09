@@ -94,6 +94,42 @@ Highlights from this release:
   enforced. Clients that relied on these not being enforced will
   fail after upgrade.
 
+## Release 2.15.35
+
+### Changes affecting multiple services
+
+The version of the PostgreSQL driver used by dCache internally was brought up to 9.4.1212. This fixes the issue described in https://liquibase.jira.com/browse/CORE–2939.
+
+### system-test
+
+The system-test module, used for demonstration or testing purposes, comes with a built-in X.509 infrastructure. With this release, expired certificates are replaced by new ones.
+
+
+### Changelog 2.15.34..2.15.35
+
+<!-- git log 2.15.34..2.15.35 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[8fec0c7a80](https://github.com/dcache/dcache/commit/8fec0c7a80fccb83046fd35bab4513846d5e44ec)
+:   [maven-release-plugin] prepare release 2.15.35
+
+[d092cb863f](https://github.com/dcache/dcache/commit/d092cb863fc3c6f9474b95927b0ef436b30f1ad2)
+:   system-test: update disposable-CA generated credentials
+
+[7dcb06876e](https://github.com/dcache/dcache/commit/7dcb06876e74ffdd85986ada16cb3820f087775c)
+:   postgresql driver: update version to 9.4.1212
+
+[8ec36faeb1](https://github.com/dcache/dcache/commit/8ec36faeb1ed417004367373d74f1e1aabd533c2)
+:   Revert "libs: update to nfs4j-0.12.4"
+
+[ff0f9afb66](https://github.com/dcache/dcache/commit/ff0f9afb66ae58055fa37c080b71b6d40a809102)
+:   libs: use nfs4j-0.12.4
+
+[a6b500057d](https://github.com/dcache/dcache/commit/a6b500057d1c407dddcdf196f669131a63306693)
+:   libs: update to nfs4j-0.12.4
+
+[1f10c223cf](https://github.com/dcache/dcache/commit/1f10c223cf647e320a52326778aeeee81f177fd0)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.15.34
 
 ### chimera

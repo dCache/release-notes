@@ -109,6 +109,38 @@ HTML header: <title>dCache 3.0 Release Notes</title>
 
 Thanks to Onno Zweers for several contributions to this release.
 
+## Release 3.0.15
+
+### nfs
+
+Debugging of stuck transfers has been facilitated by adding the status of transfers to the output of the `show transfers` command.
+
+The assignment of movers to NFS doors has been made more robust.
+
+### system-test
+
+The system-test module, used for demonstration or testing purposes, comes with a built-in X.509 infrastructure. With this release, expired certificates are replaced by new ones.
+
+
+### Changelog 3.0.14..3.0.15
+
+<!-- git log 3.0.14..3.0.15 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[7c9d20a042](https://github.com/dcache/dcache/commit/7c9d20a04241bb26d9f3eec2fa310bc11f43cf0c)
+:   [maven-release-plugin] prepare release 3.0.15
+
+[a3005ede58](https://github.com/dcache/dcache/commit/a3005ede587331a1313884e210d4ce10cb70bd56)
+:   nfs: show transfer status when displayed
+
+[605db8097b](https://github.com/dcache/dcache/commit/605db8097b50d07cb6d7f2a4bee8e790890a735a)
+:   system-test: update disposable-CA generated credentials
+
+[a45eb26bb3](https://github.com/dcache/dcache/commit/a45eb26bb35b1de13b6d087af06dd3b2bc12324c)
+:   nfs: fix loosing movers due to short timeout
+
+[d17e6332f2](https://github.com/dcache/dcache/commit/d17e6332f2c28c8ba001ecee9cffa80b8c3a3e84)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.0.14
 
 ### Changes affecting multiple services

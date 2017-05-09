@@ -137,6 +137,33 @@ Highlights from this release:
   required upon upgrading, but downgrading is not possible without
   explicitly converting the format.
 
+## Release 2.13.58
+
+### Changes affecting multiple services
+
+The version of the PostgreSQL driver used by dCache internally was brought up to 9.4.1212. This fixes the issue described in https://liquibase.jira.com/browse/CORE–2939.
+
+### system-test
+
+The system-test module, used for demonstration or testing purposes, comes with a built-in X.509 infrastructure. With this release, expired certificates are replaced by new ones.
+
+
+### Changelog 2.13.57..2.13.58
+
+<!-- git log 2.13.57..2.13.58 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[ec161bc28e](https://github.com/dcache/dcache/commit/ec161bc28e1611e563b2be049963fc787d2488ca)
+:   [maven-release-plugin] prepare release 2.13.58
+
+[864cf7e6e1](https://github.com/dcache/dcache/commit/864cf7e6e15d17f9f54ac3213e47b6b7b242e524)
+:   system-test: update disposable-CA generated credentials
+
+[76b372074e](https://github.com/dcache/dcache/commit/76b372074e1b183b52422bcda82bd10ca4f0aaa0)
+:   postgresql driver: update version to 9.4.1212
+
+[8dfb654b5a](https://github.com/dcache/dcache/commit/8dfb654b5a951f18651227a7d1d235165942b5c1)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.13.57
 
 ### chimera

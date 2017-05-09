@@ -149,6 +149,33 @@ Highlights from this release:
   SRM requests will be lost from the database. Third party scripts
   that access the SRM database directly may have to be updated.
 
+## Release 2.14.47
+
+### Changes affecting multiple services
+
+The version of the PostgreSQL driver used by dCache internally was brought up to 9.4.1212. This fixes the issue described in https://liquibase.jira.com/browse/CORE–2939.
+
+### system-test
+
+The system-test module, used for demonstration or testing purposes, comes with a built-in X.509 infrastructure. With this release, expired certificates are replaced by new ones.
+
+
+### Changelog 2.14.46..2.14.47
+
+<!-- git log 2.14.46..2.14.47 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[07e8ec485b](https://github.com/dcache/dcache/commit/07e8ec485b7017b3f46f1c1bf6b2125e7417dcdb)
+:   [maven-release-plugin] prepare release 2.14.47
+
+[77d71f072f](https://github.com/dcache/dcache/commit/77d71f072f37ea636d034c15209f91ab0700f236)
+:   system-test: update disposable-CA generated credentials
+
+[a523fb322f](https://github.com/dcache/dcache/commit/a523fb322fd6b7ec7eb93741a8d0c963f1b0203f)
+:   postgresql driver: update version to 9.4.1212
+
+[26e6beceb1](https://github.com/dcache/dcache/commit/26e6beceb1a0ace68a334a952448b54cd2806572)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.14.46
 
 ### chimera

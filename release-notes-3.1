@@ -76,6 +76,38 @@ HTML header: <title>dCache 3.1 Release Notes</title>
 
 Thanks to Johan Guldmyr for his constributions.
 
+## Release 3.1.3
+
+### nfs
+
+Debugging of stuck transfers has been facilitated by adding the status of transfers to the output of the `show transfers` command.
+
+The assignment of movers to NFS doors has been made more robust.
+
+### system-test
+
+The system-test module, used for demonstration or testing purposes, comes with a built-in X.509 infrastructure. With this release, expired certificates are replaced by new ones.
+
+
+### Changelog 3.1.2..3.1.3
+
+<!-- git log 3.1.2..3.1.3 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[1d031ae198](https://github.com/dcache/dcache/commit/1d031ae1989259a3ce2a0e260b5825387a1ce0c4)
+:   [maven-release-plugin] prepare release 3.1.3
+
+[8d6a141f84](https://github.com/dcache/dcache/commit/8d6a141f84064e0f12c046a4faef1ef34eb45fd6)
+:   nfs: show transfer status when displayed
+
+[14df6b8234](https://github.com/dcache/dcache/commit/14df6b82341eaac9b30ed25f7714f9573ecb53e5)
+:   system-test: update disposable-CA generated credentials
+
+[e1ddd06f0f](https://github.com/dcache/dcache/commit/e1ddd06f0f0a24e92e71a3f8fd40d10415be7e90)
+:   nfs: fix loosing movers due to short timeout
+
+[17579bc177](https://github.com/dcache/dcache/commit/17579bc177db30a2ddad1c13893edb5f6bb9537b)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.1.2
 
 ### chimera
