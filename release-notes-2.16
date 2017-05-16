@@ -111,6 +111,27 @@ HTML header: <title>dCache 2.16 Release Notes</title>
 * Sites with a custom `httpd.conf` configuration will have to adjust
   this upon upgrade to inject the cell address of the `info` service.
 
+## Release 2.16.35
+
+### nfs
+
+Invalidation of VFS caches has been improved, so that there is no stale information left for
+dot files.
+
+
+### Changelog 2.16.34..2.16.35
+
+<!-- git log 2.16.34..2.16.35 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[44c617e1af](https://github.com/dcache/dcache/commit/44c617e1af21cf53a344236416e2bd55c90806c6)
+:   [maven-release-plugin] prepare release 2.16.35
+
+[ff0acf4a38](https://github.com/dcache/dcache/commit/ff0acf4a38ebe26a7e17fc2e99473bf8dd438350)
+:   nfs: bind vfs cache invalidation with file's layout
+
+[8341e04819](https://github.com/dcache/dcache/commit/8341e04819217c9b204f6ce653f7d2d96e4c8efb)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.16.34
 
 ### nfs

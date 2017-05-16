@@ -109,6 +109,34 @@ HTML header: <title>dCache 3.0 Release Notes</title>
 
 Thanks to Onno Zweers for several contributions to this release.
 
+## Release 3.0.16
+
+### nfs
+
+Invalidation of VFS caches has been improved, so that there is no stale information left for
+dot files.
+
+### pool
+
+Error handling in pools was improved for systems using CEPH backends.
+
+
+### Changelog 3.0.15..3.0.16
+
+<!-- git log 3.0.15..3.0.16 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[37e2ad1eac](https://github.com/dcache/dcache/commit/37e2ad1eac4a0f35f3c7ea594e05eca22b2dda93)
+:   [maven-release-plugin] prepare release 3.0.16
+
+[6d56e52d2d](https://github.com/dcache/dcache/commit/6d56e52d2dddf44fcd23697960dba09ecd6651dd)
+:   nfs: bind vfs cache invalidation with file's layout
+
+[89a192ae18](https://github.com/dcache/dcache/commit/89a192ae18bb65c56e78055f2b6ad92d5456151c)
+:   ceph: map RadosException to corresponding IOException
+
+[63d766b889](https://github.com/dcache/dcache/commit/63d766b88995f955aaa61aa1cfb4cfd1381cd79c)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.0.15
 
 ### nfs
