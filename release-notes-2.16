@@ -111,6 +111,30 @@ HTML header: <title>dCache 2.16 Release Notes</title>
 * Sites with a custom `httpd.conf` configuration will have to adjust
   this upon upgrade to inject the cell address of the `info` service.
 
+## Release 2.16.36
+
+### pinmanager
+
+Upgrades from dCache 2.13 could occasionally fail during the Liquibase update stage. 
+The database table `pinsv3` can not be dropped if it is still referenced by foreign
+keys of other tables. This modification adds a `cascadeConstraints=true` modifier to 
+the dropTable command used during the conversion process. Thereby, updates are possible
+without errors and PinManager starts without issues after an upgrade.
+
+
+### Changelog 2.16.35..2.16.36
+
+<!-- git log 2.16.35..2.16.36 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[a31859b134](https://github.com/dcache/dcache/commit/a31859b134e5e40cf0af9812653f39364e5bd2fe)
+:   [maven-release-plugin] prepare release 2.16.36
+
+[1e518499c2](https://github.com/dcache/dcache/commit/1e518499c2fa60f34d06ebb8c4e18b9c2010fe9a)
+:   Add cascadeConstraints="true" to liquibase dropTable action on pinsv3 table
+
+[464e5a6e3c](https://github.com/dcache/dcache/commit/464e5a6e3c55077821f004a87c049d960f7ba702)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.16.35
 
 ### nfs

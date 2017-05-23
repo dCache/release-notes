@@ -109,6 +109,53 @@ HTML header: <title>dCache 3.0 Release Notes</title>
 
 Thanks to Onno Zweers for several contributions to this release.
 
+## Release 3.0.17
+
+### frontend
+
+OpenID connect can now be enabled from dCacheView. This change introduces three new 
+properties in the `frontend.properties` file, 
+`frontend.dcache-view.oidc-provider-name-list`, 
+`frontend.dcache-view.oidc-client-id-list` and 
+`frontend.dcache-view.oidc-authz-endpoint-list`, 
+all of which are documented in the properties file.
+
+### pinmanager
+
+Upgrades from dCache 2.13 could occasionally fail during the Liquibase update stage. 
+The database table `pinsv3` can not be dropped if it is still referenced by foreign
+keys of other tables. This modification adds a `cascadeConstraints=true` modifier to 
+the dropTable command used during the conversion process. Thereby, updates are possible
+without errors and PinManager starts without issues after an upgrade.
+
+### rest-api
+
+Requests to /api/v1/user now include the username of the requestor. This is intended 
+to make working with OpenID Connect tokens easier.
+
+
+### Changelog 3.0.16..3.0.17
+
+<!-- git log 3.0.16..3.0.17 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[44f602a94e](https://github.com/dcache/dcache/commit/44f602a94edae8162bdc6832da68bf8830f1bc8e)
+:   [maven-release-plugin] prepare release 3.0.17
+
+[33fd02c298](https://github.com/dcache/dcache/commit/33fd02c29820a9cac552e6301975e35ef48a8689)
+:   httpd, admin: Fix some hard-coded cell names
+
+[fb5520975e](https://github.com/dcache/dcache/commit/fb5520975e66acd57a4110a2f21a6f6852d93581)
+:   frontend: expose open-id connect to dcache-view
+
+[7fec3318d9](https://github.com/dcache/dcache/commit/7fec3318d9b1a35357f1c75e8e05cd6e8d292caa)
+:   rest-api: include username to the user attributes
+
+[3c465934ee](https://github.com/dcache/dcache/commit/3c465934ee2bec5d1ac20a653f98ed3559f66c5d)
+:   Add cascadeConstraints="true" to liquibase dropTable action on pinsv3 table
+
+[8083ea91bd](https://github.com/dcache/dcache/commit/8083ea91bdeb62054744a539f20e7775ab7256a5)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.0.16
 
 ### nfs
