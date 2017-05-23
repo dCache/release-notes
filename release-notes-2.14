@@ -153,7 +153,7 @@ Highlights from this release:
 
 ### Changes affecting multiple services
 
-The version of the PostgreSQL driver used by dCache internally was brought up to 9.4.1212. This fixes the issue described in https://liquibase.jira.com/browse/CORE–2939.
+The version of the PostgreSQL driver used by dCache internally was brought up to 9.4.1212. This fixes the issue described in [liquibase bug 2939](https://liquibase.jira.com/browse/CORE-2939).
 
 ### system-test
 

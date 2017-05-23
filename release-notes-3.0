@@ -220,7 +220,7 @@ The system-test module, used for demonstration or testing purposes, comes with a
 
 ### Changes affecting multiple services
 
-The version of the PostgreSQL driver used by dCache internally was brought up to 9.4.1212. This fixes the issue described in https://liquibase.jira.com/browse/CORE-2939
+The version of the PostgreSQL driver used by dCache internally was brought up to 9.4.1212. This fixes the issue described in [liquibase bug 2939](https://liquibase.jira.com/browse/CORE-2939)
 .
 
 ### chimera
@@ -250,7 +250,7 @@ level and SRM_FAILURE for the SURLs in that request.
 :   ceph: log repository IO error
 
 [706795f5b6](https://github.com/dcache/dcache/commit/706795f5b66da163a0039a1fc362372bd7700c89)
-:   update postgresql driver to version 9.4.1212 to address issue with liquibase changeset and postgresql 9.6 (see https://liquibase.jira.com/browse/CORE-2939)
+:   update postgresql driver to version 9.4.1212 to address issue with liquibase changeset and postgresql 9.6 (see [liquibase bug 2939](https://liquibase.jira.com/browse/CORE-2939))
 
 [f6b7af5112](https://github.com/dcache/dcache/commit/f6b7af5112172cd6c53597cb45a29ab5263b795f)
 :   srm: remove file-level timeout
