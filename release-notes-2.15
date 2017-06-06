@@ -94,6 +94,29 @@ Highlights from this release:
   enforced. Clients that relied on these not being enforced will
   fail after upgrade.
 
+## Release 2.15.36
+
+### webdav
+
+File transfers through WebDAV doors could potentially bypass any Restrictions
+checks in PnfsManager. This patch ensures that Restrictions are always checked
+and observed, and improves PnfsManager's logging to give information in case
+a Restrictions check is not posssible.
+
+
+### Changelog 2.15.35..2.15.36
+
+<!-- git log 2.15.35..2.15.36 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[ed212800a2](https://github.com/dcache/dcache/commit/ed212800a256ab9f9aa864bfc9901b58880f1d03)
+:   [maven-release-plugin] prepare release 2.15.36
+
+[a7049777c3](https://github.com/dcache/dcache/commit/a7049777c334933b7c8a123bd2199158d61feb0f)
+:   webdav: Fix restriction check when downloading a file
+
+[edecb45a81](https://github.com/dcache/dcache/commit/edecb45a810c45e2bad06df4ad8ec2632c33a95e)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.15.35
 
 ### Changes affecting multiple services
