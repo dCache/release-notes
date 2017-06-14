@@ -94,6 +94,31 @@ Highlights from this release:
   enforced. Clients that relied on these not being enforced will
   fail after upgrade.
 
+## Release 2.15.37
+
+### webdav
+
+A recent update, commit 5abc0e1c, improved the behaviour of the Milton WebDAV libraries if an IOException occurs
+during an upload. That patch, unfortunately, did not address all issues, and when non-spec-conformant clients
+are used against dCache, stacktraces can be triggered.
+
+This patch corrects that behaviour. Also, in case of errors, the error code returned in case of any problems
+was changed from 400 to 500, which should signal cliens that they are free to retry the transfer after a timeout.
+
+
+### Changelog 2.15.36..2.15.37
+
+<!-- git log 2.15.36..2.15.37 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[d670934319](https://github.com/dcache/dcache/commit/d670934319549dfc82357152e68a0952dbcd7d8a)
+:   [maven-release-plugin] prepare release 2.15.37
+
+[a632339cf6](https://github.com/dcache/dcache/commit/a632339cf615de9613298208c2fe450fa17d7483)
+:   webdav: make Milton work-around more robust
+
+[30a90184cc](https://github.com/dcache/dcache/commit/30a90184ccfee6d137901dd516fd7e566f99d5e7)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.15.36
 
 ### webdav

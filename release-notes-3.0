@@ -109,6 +109,60 @@ HTML header: <title>dCache 3.0 Release Notes</title>
 
 Thanks to Onno Zweers for several contributions to this release.
 
+## Release 3.0.19
+
+### frontend
+
+Clients can now send a `Suppress-WWW-Authenticate` header in order to avoid the native login dialog in browsers.
+
+### hsm
+
+A potential space leak in staging requests has been mitigated.
+
+### pool
+
+Since there are various reasons for why a mover may be terminated, the previous log message "Transfer was
+forcefully killed" is not detailed enough to deduce the reason behind the problem. This patch enables more
+detailed error messages both in the log files and in billing. Note, however, that the door's report of the failed 
+transfer may duplicate this information.
+
+### webdav
+
+A recent update, commit 5abc0e1c, improved the behaviour of the Milton WebDAV libraries if an IOException occurs
+during an upload. That patch, unfortunately, did not address all issues, and when non-spec-conformant clients
+are used against dCache, stacktraces can be triggered.
+
+This patch corrects that behaviour. Also, in case of errors, the error code returned in case of any problems
+was changed from 400 to 500, which should signal cliens that they are free to retry the transfer after a timeout.
+
+In case of failing transfers, doors will log more accurate information.
+
+
+### Changelog 3.0.18..3.0.19
+
+<!-- git log 3.0.18..3.0.19 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[b5a645ede8](https://github.com/dcache/dcache/commit/b5a645ede80bb3adb2e23cc77ed8fdf5cc5364d0)
+:   [maven-release-plugin] prepare release 3.0.19
+
+[32ee8c4542](https://github.com/dcache/dcache/commit/32ee8c45425e949e06cfc3fa35c963f03fd410e2)
+:   authentication: suppress WWW-Authenticate if requested
+
+[4506319d50](https://github.com/dcache/dcache/commit/4506319d50817297591d133251392d53a0ec83ef)
+:   webdav: improve logging on transfer failures
+
+[3758693ce4](https://github.com/dcache/dcache/commit/3758693ce475997844ee9e7e5cd1104dd5931e0b)
+:   pool: log why a transfer was forcefully aborted
+
+[3446c4b8da](https://github.com/dcache/dcache/commit/3446c4b8da79642b728687ffa941d4f26482af82)
+:   webdav: make Milton work-around more robust
+
+[0f5c9f7b17](https://github.com/dcache/dcache/commit/0f5c9f7b177e9c86ed0c0f8d5afa4b471d52d82a)
+:   script-nearline-spi: fix space leak when polling script is used
+
+[4466f0d37c](https://github.com/dcache/dcache/commit/4466f0d37c8674f41c51a00727887a3e6f918f17)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.0.18
 
 ### http

@@ -149,6 +149,31 @@ Highlights from this release:
   SRM requests will be lost from the database. Third party scripts
   that access the SRM database directly may have to be updated.
 
+## Release 2.14.48
+
+### webdav
+
+A recent update, commit 5abc0e1c, improved the behaviour of the Milton WebDAV libraries if an IOException occurs
+during an upload. That patch, unfortunately, did not address all issues, and when non-spec-conformant clients
+are used against dCache, stacktraces can be triggered.
+
+This patch corrects that behaviour. Also, in case of errors, the error code returned in case of any problems
+was changed from 400 to 500, which should signal cliens that they are free to retry the transfer after a timeout.
+
+
+### Changelog 2.14.47..2.14.48
+
+<!-- git log 2.14.47..2.14.48 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[f35052b139](https://github.com/dcache/dcache/commit/f35052b139c4c879adb96fc6dcb0d9633d90ea4d)
+:   [maven-release-plugin] prepare release 2.14.48
+
+[4e71787f3e](https://github.com/dcache/dcache/commit/4e71787f3ee146077d16ecd51ab9a2faea4dfd59)
+:   webdav: make Milton work-around more robust
+
+[8207aefbff](https://github.com/dcache/dcache/commit/8207aefbff54667d6a46e92f9210f58f23da9503)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.14.47
 
 ### Changes affecting multiple services

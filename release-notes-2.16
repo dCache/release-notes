@@ -111,6 +111,31 @@ HTML header: <title>dCache 2.16 Release Notes</title>
 * Sites with a custom `httpd.conf` configuration will have to adjust
   this upon upgrade to inject the cell address of the `info` service.
 
+## Release 2.16.38
+
+### webdav
+
+A recent update, commit 5abc0e1c, improved the behaviour of the Milton WebDAV libraries if an IOException occurs
+during an upload. That patch, unfortunately, did not address all issues, and when non-spec-conformant clients
+are used against dCache, stacktraces can be triggered.
+
+This patch corrects that behaviour. Also, in case of errors, the error code returned in case of any problems
+was changed from 400 to 500, which should signal cliens that they are free to retry the transfer after a timeout.
+
+
+### Changelog 2.16.37..2.16.38
+
+<!-- git log 2.16.37..2.16.38 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[6336fe961f](https://github.com/dcache/dcache/commit/6336fe961f4ccad1e096dd33264d0ef944fae068)
+:   [maven-release-plugin] prepare release 2.16.38
+
+[4954fae39b](https://github.com/dcache/dcache/commit/4954fae39ba4b84b13b79c1d264d19f05019ead4)
+:   webdav: make Milton work-around more robust
+
+[be034e047b](https://github.com/dcache/dcache/commit/be034e047bd0398f11fa94a6d9f76c5063d2ac9f)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.16.37
 
 ### webdav
