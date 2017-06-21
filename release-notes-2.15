@@ -94,6 +94,28 @@ Highlights from this release:
   enforced. Clients that relied on these not being enforced will
   fail after upgrade.
 
+## Release 2.15.38
+
+### pool
+
+If the communication between a pool and PnfsManager times out, the error message is not well suited to diagnosing the problem: 
+`Failed to instantiate mover due to unsupported checksum type: Request to [>PnfsManager@local] timed out.` The checksum type is 
+not playing an important role here. Hence, this patch updates the error message.
+
+
+### Changelog 2.15.37..2.15.38
+
+<!-- git log 2.15.37..2.15.38 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[8e94730851](https://github.com/dcache/dcache/commit/8e9473085111492c449b4db18a4cb8547fd0e928)
+:   [maven-release-plugin] prepare release 2.15.38
+
+[611976e77f](https://github.com/dcache/dcache/commit/611976e77f2bf7000087ccd5a1754e2375d164f3)
+:   pool: fix error message on timeout
+
+[5475651cb9](https://github.com/dcache/dcache/commit/5475651cb923b329428b3ef39c5818cab6cbbc69)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.15.37
 
 ### webdav

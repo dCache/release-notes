@@ -149,6 +149,28 @@ Highlights from this release:
   SRM requests will be lost from the database. Third party scripts
   that access the SRM database directly may have to be updated.
 
+## Release 2.14.49
+
+### pool
+
+If the communication between a pool and PnfsManager times out, the error message is not well suited to diagnosing the problem: 
+`Failed to instantiate mover due to unsupported checksum type: Request to [>PnfsManager@local] timed out.` The checksum type is 
+not playing an important role here. Hence, this patch updates the error message.
+
+
+### Changelog 2.14.48..2.14.49
+
+<!-- git log 2.14.48..2.14.49 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[b30310c225](https://github.com/dcache/dcache/commit/b30310c225daf7496370bf2d4cde7a00649dfc80)
+:   [maven-release-plugin] prepare release 2.14.49
+
+[1f225db503](https://github.com/dcache/dcache/commit/1f225db503cf1ca5961838e5507581fa2ad2fdaa)
+:   pool: fix error message on timeout
+
+[4df7bf679d](https://github.com/dcache/dcache/commit/4df7bf679d26c47dbfae9549560a04d7098007cf)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.14.48
 
 ### webdav

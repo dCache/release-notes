@@ -76,6 +76,73 @@ HTML header: <title>dCache 3.1 Release Notes</title>
 
 Thanks to Johan Guldmyr for his constributions.
 
+## Release 3.1.8
+
+### Changes affecting multiple services
+
+dCache previously shipped both log4j and log4j-over-slf4j libraries. This patch simplifies deployment and prevents possible problems due to non-deterministic
+library loading sequences by removing log4j dependencies.
+
+### frontend
+
+If frontend was asked to create a directory listing while a file was being uploaded into the directory being listed, 
+previously, an error would occur. This patch addresses that issue.
+
+This release includes a new dCacheView version.
+
+### info
+
+The info cell can occasionally send messages before it is properly registered. This can lead to `Cannot send message with callback in state...` messages that 
+do not correspond to any valid error condition. This patch ensures that messages are only sent as soon as the cell is properly registered.
+
+### pool
+
+If the communication between a pool and PnfsManager times out, the error message is not well suited to diagnosing the problem: 
+`Failed to instantiate mover due to unsupported checksum type: Request to [>PnfsManager@local] timed out.` The checksum type is 
+not playing an important role here. Hence, this patch updates the error message.
+
+### zookeeper
+
+Embedded Zookeeper instances would occasionally log stack-traces on startup. This patch adds a work-around.
+
+Zookeeper logs a stack-trace in cases where the client disconnects unexpectedly. This is unnecessary and potentially confusing, so this patch changes 
+Zookeeper's behaviour to just logging the incident.
+
+
+### Changelog 3.1.7..3.1.8
+
+<!-- git log 3.1.7..3.1.8 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[e5b9c6f94b](https://github.com/dcache/dcache/commit/e5b9c6f94b08046736af9e2cdaa0a75e4c851434)
+:   [maven-release-plugin] prepare release 3.1.8
+
+[a5939058d3](https://github.com/dcache/dcache/commit/a5939058d39a57a5db4269b8a3fb41f46de589f1)
+:   dcache: release dcache-view 1.2.1 for dcache 3.1
+
+[a2092a23a3](https://github.com/dcache/dcache/commit/a2092a23a3d9e8f98fbb4936a52379fc7b73ffc0)
+:   zookeeper: work-around racy startup
+
+[cc8cae2998](https://github.com/dcache/dcache/commit/cc8cae2998245de56e1ac9bc4fb187948f24e6a0)
+:   zookeeper: silence ZK server errors
+
+[592d7ecb9f](https://github.com/dcache/dcache/commit/592d7ecb9fb9015d02eba96090eb620623b7e097)
+:   dependencies: remove log4j jar
+
+[61e49d91b7](https://github.com/dcache/dcache/commit/61e49d91b77ade3e0a9bdc4d9bd93d125583d22e)
+:   frontend: fix "Attribute is not defined: SIZE" bug
+
+[b63a3e361f](https://github.com/dcache/dcache/commit/b63a3e361f746513108fdf9a48e943aa8a070c53)
+:   pool: fix error message on timeout
+
+[1a76715347](https://github.com/dcache/dcache/commit/1a76715347986c9984e18c976532a54f97af141b)
+:   info: avoid sending messages too early.
+
+[c1d00aa457](https://github.com/dcache/dcache/commit/c1d00aa457b87f77b290ae58f9c5e21c80e46358)
+:   frontend,webdav: add supress-wwwauthenticate to allow headers
+
+[b4cae3b794](https://github.com/dcache/dcache/commit/b4cae3b794fe6edfb646c3c58055af31ce114cce)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.1.7
 
 ### frontend

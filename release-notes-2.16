@@ -111,6 +111,75 @@ HTML header: <title>dCache 2.16 Release Notes</title>
 * Sites with a custom `httpd.conf` configuration will have to adjust
   this upon upgrade to inject the cell address of the `info` service.
 
+## Release 2.16.39
+
+### Changes affecting multiple services
+
+dCache previously shipped both log4j and log4j-over-slf4j libraries. This patch simplifies deployment and prevents possible problems due to non-deterministic
+library loading sequences by removing log4j dependencies.
+
+### frontend
+
+If frontend was asked to create a directory listing while a file was being uploaded into the directory being listed, 
+previously, an error would occur. This patch addresses that issue.
+
+This patch removes the error message `No Server set for org.dcache.restful.errorHandling.RestAPIExceptionHandler` that is erroneously logged on dCache startup.
+
+This release includes a new dCacheView version.
+
+### info
+
+The info cell can occasionally send messages before it is properly registered. This can lead to `Cannot send message with callback in state...` messages that 
+do not correspond to any valid error condition. This patch ensures that messages are only sent as soon as the cell is properly registered.
+
+### pool
+
+If the communication between a pool and PnfsManager times out, the error message is not well suited to diagnosing the problem: 
+`Failed to instantiate mover due to unsupported checksum type: Request to [>PnfsManager@local] timed out.` The checksum type is 
+not playing an important role here. Hence, this patch updates the error message.
+
+### zookeeper
+
+Embedded Zookeeper instances would occasionally log stack-traces on startup. This patch adds a work-around.
+
+Zookeeper logs a stack-trace in cases where the client disconnects unexpectedly. This is unnecessary and potentially confusing, so this patch changes 
+Zookeeper's behaviour to just logging the incident.
+
+
+### Changelog 2.16.38..2.16.39
+
+<!-- git log 2.16.38..2.16.39 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[ce79d12a9e](https://github.com/dcache/dcache/commit/ce79d12a9e2f607958f820c2144cf9f23bad8c8d)
+:   [maven-release-plugin] prepare release 2.16.39
+
+[d828a57199](https://github.com/dcache/dcache/commit/d828a57199e051a73661599e0a831144d92c1909)
+:   Changelog from v1.0.5 to v1.0.6 (for dcache 2.16)     38304f8 dcache-view: log errors during vulcanisation     2a2589f dcache-view: provide more user information     73cb03b dcache-view: hide main menu button base on page width
+
+[bfac33ad69](https://github.com/dcache/dcache/commit/bfac33ad69e1117f2f53a0ff097ddb3c324da6c9)
+:   zookeeper: work-around racy startup
+
+[3142d3d46a](https://github.com/dcache/dcache/commit/3142d3d46a2d181fbb4e65d91568af364d7bdc21)
+:   zookeeper: silence ZK server errors
+
+[2a4bd4c7f0](https://github.com/dcache/dcache/commit/2a4bd4c7f0405bd8b18ee1eee25545b44bbc344c)
+:   dependencies: remove log4j jar
+
+[157b71171a](https://github.com/dcache/dcache/commit/157b71171ae5ab16070617d7d1e8097bbcbb7f22)
+:   frontend: fix "Attribute is not defined: SIZE" bug
+
+[63e0e90086](https://github.com/dcache/dcache/commit/63e0e900866776ae312233cfef2fe912b790f654)
+:   frontend: avoid error No Server set for [..].RestAPIExceptionHandler@[..]
+
+[e753e9bcbe](https://github.com/dcache/dcache/commit/e753e9bcbed57abd92b88cdde58c061550d80769)
+:   pool: fix error message on timeout
+
+[131d94efa3](https://github.com/dcache/dcache/commit/131d94efa3517e59522db94be6c5dd43e3aa3cd1)
+:   info: avoid sending messages too early.
+
+[2097cbdfc4](https://github.com/dcache/dcache/commit/2097cbdfc44d9c3fcffd45c27468ab6a6e3a724c)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.16.38
 
 ### webdav
