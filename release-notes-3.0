@@ -109,6 +109,48 @@ HTML header: <title>dCache 3.0 Release Notes</title>
 
 Thanks to Onno Zweers for several contributions to this release.
 
+## Release 3.0.21
+
+### frontend
+
+Several improvements are added to frontend such as
+restriction usage is improved and easily configurable JSON is now available via frontend.
+
+### srm
+
+The current release enforced restrictions on `srmSetPermission` operations.
+
+### zookeeper
+
+The current release fixed race-condition when ZooKeeper server accepts requests before the server is fully
+initialised.
+
+
+### Changelog 3.0.20..3.0.21
+
+<!-- git log 3.0.20..3.0.21 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[6a0a31b](https://github.com/dcache/dcache/commit/6a0a31b8307a472214b27fc9dee552e48687c4d4)
+:   [maven-release-plugin] prepare release 3.0.21
+
+[d111193](https://github.com/dcache/dcache/commit/d1111930dd59642aab12a1b63464fe51e0bdcfe9)
+:   frontend: refactor static (configuration) data
+
+[6a48e13](https://github.com/dcache/dcache/commit/6a48e13c6a9507bad3ef19b564efd97e20f424b0)
+:   spacemanager: dont try to release expired spaces
+
+[52f2075](https://github.com/dcache/dcache/commit/52f2075c7ebd80c388f365eb6cb159c9ac659f9a)
+:   srmmanager: use path to support srmSetPermission operations
+
+[da19337](https://github.com/dcache/dcache/commit/da193372bbe0aa7f51250ab0050805c5d83e28c8)
+:   frontend: fix Restriction usage
+
+[29478e4](https://github.com/dcache/dcache/commit/29478e417b76c8ca5f69791a5c4f103b38754cfa)
+:   zookeeper: work-around SessionTracker racy initialisation on startup
+
+[d65d5b8](https://github.com/dcache/dcache/commit/d65d5b8f76b8c47990d958d47e28c5ebb661a3a4)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.0.20
 
 ### Changes affecting multiple services

@@ -111,6 +111,48 @@ HTML header: <title>dCache 2.16 Release Notes</title>
 * Sites with a custom `httpd.conf` configuration will have to adjust
   this upon upgrade to inject the cell address of the `info` service.
 
+## Release 2.16.40
+
+### frontend
+
+Several improvements are added to frontend such as
+restriction usage is improved and easily configurable JSON is now available via frontend.
+
+### srm
+
+The current release enforced restrictions on `srmSetPermission` operations.
+
+### zookeeper
+
+The current release fixed race-condition when ZooKeeper server accepts requests before the server is fully
+initialised.
+
+
+### Changelog 2.16.39..2.16.40
+
+<!-- git log 2.16.39..2.16.40 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[9ffc7f8](https://github.com/dcache/dcache/commit/9ffc7f8ead2a25fbcf1e2b4f6693bfa31c6efa86)
+:   [maven-release-plugin] prepare release 2.16.40
+
+[496ac93](https://github.com/dcache/dcache/commit/496ac93d67547795634b170513a2c1940d919d16)
+:   frontend: refactor static (configuration) data
+
+[c73b93d](https://github.com/dcache/dcache/commit/c73b93d529b2210bb7ce8c3dd836bd1e2824611e)
+:   spacemanager: dont try to release expired spaces
+
+[a0b8f09](https://github.com/dcache/dcache/commit/a0b8f09a6d618b1b27bd447ad6476828a39cb477)
+:   srmmanager: use path to support srmSetPermission operations
+
+[014924e](https://github.com/dcache/dcache/commit/014924eec7f1513ab7a5f030121c7f92d43fd24b)
+:   frontend: fix Restriction usage
+
+[58451b7](https://github.com/dcache/dcache/commit/58451b7a2940700d2c26e07faa13d60a807d3c1a)
+:   zookeeper: work-around SessionTracker racy initialisation on startup
+
+[8e35378](https://github.com/dcache/dcache/commit/8e3537838fff33176233df34296c211c319c6c62)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.16.39
 
 ### Changes affecting multiple services
