@@ -149,6 +149,31 @@ Highlights from this release:
   SRM requests will be lost from the database. Third party scripts
   that access the SRM database directly may have to be updated.
 
+## Release 2.14.50
+
+### httpd
+
+The "Disk Space Usage" webpage (`/usageInfo`) contains a table showing
+information about each pool in the dCache cluster.  The "Layout"
+column showed the capacity usage graphically, with different colours
+showing how much of that pool's capacity is being used for different
+tasks.  This release fixes the Layout heading to describe a previously
+undocumented colour.
+
+
+### Changelog 2.14.49..2.14.50
+
+<!-- git log 2.14.49..2.14.50 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[ad1ba42](https://github.com/dcache/dcache/commit/ad1ba42504a008f762ab49e9d475834bc0e761e4)
+:   [maven-release-plugin] prepare release 2.14.50
+
+[36e6e64](https://github.com/dcache/dcache/commit/36e6e646cfaea4f22deede8edec7324bf2073a47)
+:   [maven-release-plugin] prepare for next development iteration
+
+[37a50d3](https://github.com/dcache/dcache/commit/37a50d326c50a19d6bd3b311a8d761394df00147)
+:   httpd: Fixed table headers in usageInfo
+
 ## Release 2.14.49
 
 ### pool

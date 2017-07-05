@@ -76,6 +76,42 @@ HTML header: <title>dCache 3.1 Release Notes</title>
 
 Thanks to Johan Guldmyr for his constributions.
 
+## Release 3.1.10
+
+### admin
+
+Fix idle timeout so that dCache honours the configuration properties
+`admin.ssh.idle-timeout` and `admin.ssh.idle-timeout.unit`.
+
+### httpd
+
+The "Disk Space Usage" webpage (`/usageInfo`) contains a table showing
+information about each pool in the dCache cluster.  The "Layout"
+column showed the capacity usage graphically, with different colours
+showing how much of that pool's capacity is being used for different
+tasks.  This release fixes the Layout heading to describe a previously
+undocumented colour.
+
+
+### Changelog 3.1.9..3.1.10
+
+<!-- git log 3.1.9..3.1.10 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[6eb681a](https://github.com/dcache/dcache/commit/6eb681a98ede51951c17438b8f622fcc4e38dc9e)
+:   [maven-release-plugin] prepare release 3.1.10
+
+[ed07ba5](https://github.com/dcache/dcache/commit/ed07ba53d2367abb78f9d82d900a38ce4cd89d73)
+:   ssh: fix handling of ssh idle timeout
+
+[7fc55df](https://github.com/dcache/dcache/commit/7fc55dfd2f8deb9cb214e8e3a7bbfc8f7657cd2d)
+:   system-test: add series of functional test for frontend service
+
+[aa735b3](https://github.com/dcache/dcache/commit/aa735b39a24c4e790f4701b58363115cbc53e053)
+:   [maven-release-plugin] prepare for next development iteration
+
+[53177d0](https://github.com/dcache/dcache/commit/53177d064cc98a8901d6bc5b642eb5fae5c9d082)
+:   httpd: Fixed table headers in usageInfo
+
 ## Release 3.1.9
 
 ### frontend

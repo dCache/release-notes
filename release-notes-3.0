@@ -109,6 +109,34 @@ HTML header: <title>dCache 3.0 Release Notes</title>
 
 Thanks to Onno Zweers for several contributions to this release.
 
+## Release 3.0.22
+
+### httpd
+
+The "Disk Space Usage" webpage (`/usageInfo`) contains a table showing
+information about each pool in the dCache cluster.  The "Layout"
+column showed the capacity usage graphically, with different colours
+showing how much of that pool's capacity is being used for different
+tasks.  This release fixes the Layout heading to describe a previously
+undocumented colour.
+
+
+### Changelog 3.0.21..3.0.22
+
+<!-- git log 3.0.21..3.0.22 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[9f91b2f](https://github.com/dcache/dcache/commit/9f91b2f8c436628530afb51ac2427dff1daf9736)
+:   [maven-release-plugin] prepare release 3.0.22
+
+[74c1bb2](https://github.com/dcache/dcache/commit/74c1bb29e9aeb909cd8d18cee39956a20f6453d9)
+:   system-test: add series of functional test for frontend service
+
+[1cef325](https://github.com/dcache/dcache/commit/1cef3259db619222c66474154ecf479d985aebec)
+:   [maven-release-plugin] prepare for next development iteration
+
+[872a906](https://github.com/dcache/dcache/commit/872a90670a0ade4a15c7debcfb2bd21f92357bd3)
+:   httpd: Fixed table headers in usageInfo
+
 ## Release 3.0.21
 
 ### frontend

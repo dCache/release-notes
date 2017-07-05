@@ -94,6 +94,31 @@ Highlights from this release:
   enforced. Clients that relied on these not being enforced will
   fail after upgrade.
 
+## Release 2.15.39
+
+### httpd
+
+The "Disk Space Usage" webpage (`/usageInfo`) contains a table showing
+information about each pool in the dCache cluster.  The "Layout"
+column showed the capacity usage graphically, with different colours
+showing how much of that pool's capacity is being used for different
+tasks.  This release fixes the Layout heading to describe a previously
+undocumented colour.
+
+
+### Changelog 2.15.38..2.15.39
+
+<!-- git log 2.15.38..2.15.39 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[1ae416b](https://github.com/dcache/dcache/commit/1ae416b4aa01fe86cdb22ac37b76466acdac6e33)
+:   [maven-release-plugin] prepare release 2.15.39
+
+[3d03714](https://github.com/dcache/dcache/commit/3d037146e71f9de9e6098b19ac4b043034034c7b)
+:   [maven-release-plugin] prepare for next development iteration
+
+[609a15d](https://github.com/dcache/dcache/commit/609a15d4e710d5355a42bcbe85436e92a84a51f1)
+:   httpd: Fixed table headers in usageInfo
+
 ## Release 2.15.38
 
 ### pool

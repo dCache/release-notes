@@ -111,6 +111,31 @@ HTML header: <title>dCache 2.16 Release Notes</title>
 * Sites with a custom `httpd.conf` configuration will have to adjust
   this upon upgrade to inject the cell address of the `info` service.
 
+## Release 2.16.41
+
+### httpd
+
+The "Disk Space Usage" webpage (`/usageInfo`) contains a table showing
+information about each pool in the dCache cluster.  The "Layout"
+column showed the capacity usage graphically, with different colours
+showing how much of that pool's capacity is being used for different
+tasks.  This release fixes the Layout heading to describe a previously
+undocumented colour.
+
+
+### Changelog 2.16.40..2.16.41
+
+<!-- git log 2.16.40..2.16.41 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[b7c9f6a](https://github.com/dcache/dcache/commit/b7c9f6af33c35fab5f07cc4439b01a6f18aaf48c)
+:   [maven-release-plugin] prepare release 2.16.41
+
+[1c5af55](https://github.com/dcache/dcache/commit/1c5af556ea3c802cd8719b5422f610fab98d80d3)
+:   [maven-release-plugin] prepare for next development iteration
+
+[a234b9f](https://github.com/dcache/dcache/commit/a234b9f924cd172c550f840c35322bed263ec40c)
+:   httpd: Fixed table headers in usageInfo
+
 ## Release 2.16.40
 
 ### frontend
