@@ -2466,6 +2466,12 @@ the `srm` service and thus if deploying `srm` and `srmmanager` on the
 same host and if the original service did no use a custom cell name,
 no additional configuration changes are needed on upgrade.
 
+Also note that the default values for the
+`srm.cell.limits.message.threads.max` and
+`srm.cell.limits.message.queue.max` properties have been updated.  The
+default total number of queued messages remains the same, but (by
+default) only a single thread is operating on those messages.
+
 More documentation will be published at
 https://github.com/dCache/dcache/wiki/Replicable-services.
 
