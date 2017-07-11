@@ -111,6 +111,42 @@ HTML header: <title>dCache 2.16 Release Notes</title>
 * Sites with a custom `httpd.conf` configuration will have to adjust
   this upon upgrade to inject the cell address of the `info` service.
 
+## Release 2.16.42
+
+### Changes affecting multiple services
+
+Christoph Anton Mitterer submitted several corrections to the comment string in properties files.
+
+### zookeeper
+
+A race condition in zookeeper caused irrelevant stacktraces to be logged on shutdowns.
+Since this problem is not easily solvable with Zookeeper 3.4, we decided to change the log-level
+threshold for NIOServerCnxnFactory. Note that the suppressed class is only used by ZooKeeper server (i.e.,
+not the client). Therefore, only the 'zookeeper' service is affected.
+
+
+### Changelog 2.16.41..2.16.42
+
+<!-- git log 2.16.41..2.16.42 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[e6347169b5](https://github.com/dcache/dcache/commit/e6347169b5862afaa14c55e4aeeb48cf016dca1f)
+:   [maven-release-plugin] prepare release 2.16.42
+
+[68239553d6](https://github.com/dcache/dcache/commit/68239553d6a78a6839d92e1d9b9d6a3c7f7bc27f)
+:   use correct terminology
+
+[81ba905238](https://github.com/dcache/dcache/commit/81ba905238814d400b5c157d508fc1be6176ce05)
+:   fixed several typos in the documentation
+
+[6ee1514785](https://github.com/dcache/dcache/commit/6ee151478530b19e4fddafc4a54a1683ef0fb7b6)
+:   added hint that pnfsmanagers must use the same DB
+
+[2e0c852009](https://github.com/dcache/dcache/commit/2e0c852009fda58df432dcd63b6415053e52cf3d)
+:   zookeeper: work-around race-condition in zookeeper server shutdown
+
+[c1df82c29d](https://github.com/dcache/dcache/commit/c1df82c29d85165abe82b0c44cd6b46890ac5bf2)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.16.41
 
 ### httpd

@@ -109,6 +109,42 @@ HTML header: <title>dCache 3.0 Release Notes</title>
 
 Thanks to Onno Zweers for several contributions to this release.
 
+## Release 3.0.23
+
+### Changes affecting multiple services
+
+Christoph Anton Mitterer submitted several corrections to the comment string in properties files.
+
+### zookeeper
+
+A race condition in zookeeper caused irrelevant stacktraces to be logged on shutdowns.
+Since this problem is not easily solvable with Zookeeper 3.4, we decided to change the log-level
+threshold for NIOServerCnxnFactory. Note that the suppressed class is only used by ZooKeeper server (i.e.,
+not the client). Therefore, only the 'zookeeper' service is affected.
+
+
+### Changelog 3.0.22..3.0.23
+
+<!-- git log 3.0.22..3.0.23 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[2f93fd01a5](https://github.com/dcache/dcache/commit/2f93fd01a5bc24f3365f1afa00f9034e76783bc1)
+:   [maven-release-plugin] prepare release 3.0.23
+
+[9bd1cac672](https://github.com/dcache/dcache/commit/9bd1cac672cfa94d7ad49615c7e71533a213244a)
+:   use correct terminology
+
+[c3fe563c9e](https://github.com/dcache/dcache/commit/c3fe563c9e781903db810e67f40d5f283713b357)
+:   fixed several typos in the documentation
+
+[d3dfad0fe5](https://github.com/dcache/dcache/commit/d3dfad0fe542c9445f45bc2a1a16208ef1fc70c8)
+:   added hint that pnfsmanagers must use the same DB
+
+[c19e087029](https://github.com/dcache/dcache/commit/c19e087029d53c75d6fd475266e357c578e2b266)
+:   zookeeper: work-around race-condition in zookeeper server shutdown
+
+[f87dd852a8](https://github.com/dcache/dcache/commit/f87dd852a805109da2ae2d991b6462678dd326f3)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.0.22
 
 ### httpd
