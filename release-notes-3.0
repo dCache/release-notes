@@ -109,6 +109,74 @@ HTML header: <title>dCache 3.0 Release Notes</title>
 
 Thanks to Onno Zweers for several contributions to this release.
 
+## Release 3.0.24
+
+### billing
+
+The current release added documentation that describes how a `CellAddress` and its fields
+expand.
+
+### config
+
+The current release improves documentation for dCache admins by adding `obsolete|forbidden` annotation for dropped properties.
+This helps admins to discover changes that might affect their dCache
+instance. This is both through manual inspection and through the
+`dcache check-config` command.
+
+### ftp
+
+It has been discovered that timestamp facts reported by dCache
+GFTP server are expressed in local (to server) time. 
+This is now fixed. Timestamp facts are reported in GMT.
+ Clients like `globus-url-copty -sync`
+work properly and ` ubefrtp -ls` returns correct timestamp.
+
+### srm
+
+The current release added new configuration properties to allow easy modification.
+
+It  upstated  as well `srm/manager.properties`  documentation to describe the relationship between `srmmanager.root` and `srm.loginbroker.root`  properties.
+
+### Changelog 3.0.23..3.0.24
+
+<!-- git log 3.0.23..3.0.24 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[c92bfa3](https://github.com/dcache/dcache/commit/c92bfa3b0a3cdbe59b22f04ad675c970440dc918)
+:   [maven-release-plugin] prepare release 3.0.24
+
+[a775bcf](https://github.com/dcache/dcache/commit/a775bcf23f9bc7af28a84770cc9e3cc27b22f50c)
+:   srm/srmmanager: update documentation about root path
+
+[8ce10c1](https://github.com/dcache/dcache/commit/8ce10c14a1c1ce20b68b61f74dc9b1bca53c51c4)
+:   ftp: convert timestamps to GMT (to follow RFC 3659)
+
+[1521ad1](https://github.com/dcache/dcache/commit/1521ad11586fce17d629d2cb5c5dc5d6df3fc7a9)
+:   config: use consistent terminology
+
+[5f59a0f](https://github.com/dcache/dcache/commit/5f59a0fc029646f31cf604075400ea56ae7521f9)
+:   billing: update documentation to describe CellAddress
+
+[216b127](https://github.com/dcache/dcache/commit/216b127af82cc14c0de1375fb6da63c324a55858)
+:   srm,srmmanager: add configuration property to allow easy modification of srm root
+
+[7bbcbd3](https://github.com/dcache/dcache/commit/7bbcbd310200d0e2471dd01d7d73cfd982c47bb2)
+:   logback: make socket appender construction depend on log level
+
+[db2048a](https://github.com/dcache/dcache/commit/db2048af236dd953d8acce805f578b214a77ef34)
+:   dcache: release dcache-view 1.1.5 for dcache 3.0
+
+[e14e316](https://github.com/dcache/dcache/commit/e14e3166f8047e6a250ce7eaacdb3ae339d7a433)
+:   config: add obsolete|forbidden annotation for dropped properties
+
+[24c8a5f](https://github.com/dcache/dcache/commit/24c8a5fa100ab23c9013db42f94f0dba2c4ff7d7)
+:   [maven-release-plugin] prepare for next development iteration
+
+[454bb6d](https://github.com/dcache/dcache/commit/454bb6d847399e8dc83959fa701eeecebf525654)
+:   config: add obsolete|forbidden annotation for dropped properties
+
+[ea3c73d](https://github.com/dcache/dcache/commit/ea3c73d841946fb8f18f5e27f953532d41d28967)
+:   pnfsmanager: remove obsolete comments from properties file
+
 ## Release 3.0.23
 
 ### Changes affecting multiple services
