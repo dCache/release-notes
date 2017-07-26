@@ -76,6 +76,50 @@ HTML header: <title>dCache 3.1 Release Notes</title>
 
 Thanks to Johan Guldmyr for his constributions.
 
+## Release 3.1.13
+
+### configuration
+
+For some services it was unclear what were the admin's responsibilities in
+terms of consistent configuration. The current release updated the documentation describing what is needed to deploy redundant services.
+
+### resilience
+
+The current relase improved configuration for namespace provider properties by making them immutable.
+
+
+H: 9132256 240fa42 e914aad
+R: 3.1.13 3.0.25 2.16.44
+### srm
+
+The current release improved configuration  for  `srmPing` responses.
+
+
+### Changelog 3.1.12..3.1.13
+
+<!-- git log 3.1.12..3.1.13 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[2bd7e5e](https://github.com/dcache/dcache/commit/2bd7e5e8293093a41d3368a78bf1fdb3305c084c)
+:   [maven-release-plugin] prepare release 3.1.13
+
+[9132256](https://github.com/dcache/dcache/commit/913225689a49f093f8d2ccc11914c58572020632)
+:   configuration: update description for replicable
+
+[928749b](https://github.com/dcache/dcache/commit/928749b3611625ced865e089d97c658b96608489)
+:   resilience: remove reference to pnfsmanager property
+
+[9b00497](https://github.com/dcache/dcache/commit/9b004979059e504d98a62e0de392b29aec90af95)
+:   srm/srmmanager: fix srmPing confusion
+
+[0675c6b](https://github.com/dcache/dcache/commit/0675c6bcf0fa46d1e9c4ae340b6d0b6734862bc9)
+:   [maven-release-plugin] prepare for next development iteration
+
+[3399e1b](https://github.com/dcache/dcache/commit/3399e1b4511038c9bc4f6f1bdadd6b60b2c135c9)
+:   removed the conflict markers
+
+[17b3f2d](https://github.com/dcache/dcache/commit/17b3f2d5c2fc173d3053425a3f222ba2feaf7492)
+:   resilience: make namespace provider properties immutable
+
 ## Release 3.1.12
 
 ### billing

@@ -111,6 +111,37 @@ HTML header: <title>dCache 2.16 Release Notes</title>
 * Sites with a custom `httpd.conf` configuration will have to adjust
   this upon upgrade to inject the cell address of the `info` service.
 
+## Release 2.16.44
+
+### configuration
+
+For some services it was unclear what were the admin's responsibilities in
+terms of consistent configuration. The current release updated the documentation describing what is needed to deploy redundant services.
+
+### srm
+
+The current release improved configuration  for  `srmPing` responses.
+
+
+### Changelog 2.16.43..2.16.44
+
+<!-- git log 2.16.43..2.16.44 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[305fd82](https://github.com/dcache/dcache/commit/305fd8270cc2773a0fa8456298223d60d6d0115c)
+:   [maven-release-plugin] prepare release 2.16.44
+
+[e914aad](https://github.com/dcache/dcache/commit/e914aad3539c5172e0294238523c81b63f5983c1)
+:   configuration: update description for replicable
+
+[f2dd50e](https://github.com/dcache/dcache/commit/f2dd50e846ae6b7ec213eb0dd3150cf413e4b224)
+:   srm/srmmanager: fix srmPing confusion
+
+[d2ff9fa](https://github.com/dcache/dcache/commit/d2ff9fa49e369aa4de50c9b93da3e70753c9f0a5)
+:   [maven-release-plugin] prepare for next development iteration
+
+[f99dd3c](https://github.com/dcache/dcache/commit/f99dd3c657747a2194503aff919f7ff2e8013cbb)
+:   resilience: make namespace provider properties immutable
+
 ## Release 2.16.43
 
 ### billing
