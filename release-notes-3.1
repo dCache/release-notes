@@ -76,6 +76,47 @@ HTML header: <title>dCache 3.1 Release Notes</title>
 
 Thanks to Johan Guldmyr for his constributions.
 
+## Release 3.1.14
+
+### admin
+
+While `migration move` tasks on pools were working correctly, for `migration info` command an error occurred,
+ that the current user (root) wasn't allowed to execute anything (due to missing ACLs). This is now fixed.
+
+### pool
+
+The current release fixed  fix regression in HTTP third-party transfer with redirection and 
+third-party transfers work again when uploading to services that redirect-on-PUT (such as dCache, if so configured).
+
+### webdav
+
+The current release several regressions with `CredentialSource.NONE`. 
+
+The current release fixed  regression in third-party copy with no delegation. 
+
+
+### Changelog 3.1.13..3.1.14
+
+<!-- git log 3.1.13..3.1.14 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[21911f4](https://github.com/dcache/dcache/commit/21911f431841fb0b4d59549af595b2a9145a972d)
+:   [maven-release-plugin] prepare release 3.1.14
+
+[5f4a0b9](https://github.com/dcache/dcache/commit/5f4a0b9cccc2434ef88348c9a1799e7136d2e074)
+:   admin: Fix Inconsistent ACL enforcement, RT 9207
+
+[d1e8a12](https://github.com/dcache/dcache/commit/d1e8a12a2e7f22bf34f1af7268118e559c6732ef)
+:   webdav: fix more regressions with CredentialSource.NONE
+
+[170d278](https://github.com/dcache/dcache/commit/170d278c1164e9d8bc29b224fcaf5c5c2f40906f)
+:   pool: fix regression in HTTP third-party transfer with redirection
+
+[f9d721f](https://github.com/dcache/dcache/commit/f9d721f98165c8a8c790bf9771fc6a37c732b71e)
+:   webdav: fix regression in third-party copy with no delegation
+
+[7d31759](https://github.com/dcache/dcache/commit/7d31759fbadfe9cb784ca183ac16d97a42845e1d)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.1.13
 
 ### configuration

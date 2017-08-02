@@ -111,6 +111,30 @@ HTML header: <title>dCache 2.16 Release Notes</title>
 * Sites with a custom `httpd.conf` configuration will have to adjust
   this upon upgrade to inject the cell address of the `info` service.
 
+## Release 2.16.45
+
+### admin
+
+While `migration move` tasks on pools were working correctly, for `migration info` command an error occurred,
+ that the current user (root) wasn't allowed to execute anything (due to missing ACLs). This is now fixed.
+
+
+### Changelog 2.16.44..2.16.45
+
+<!-- git log 2.16.44..2.16.45 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[dc7ea00](https://github.com/dcache/dcache/commit/dc7ea00dfac555c9c6534e202fbb1477ccac0264)
+:   [maven-release-plugin] prepare release 2.16.45
+
+[4a46bde](https://github.com/dcache/dcache/commit/4a46bde8c8915d336372db669119149ed71d61d0)
+:   resilience: restore extractor class value for extractor property
+
+[4f510f3](https://github.com/dcache/dcache/commit/4f510f3070509aa2e5b901935066e3e7963daf30)
+:   admin: Fix Inconsistent ACL enforcement, RT 9207
+
+[d4abc07](https://github.com/dcache/dcache/commit/d4abc07fea6a1177b8abca4c977a39ba37491520)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.16.44
 
 ### configuration

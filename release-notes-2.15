@@ -94,6 +94,27 @@ Highlights from this release:
   enforced. Clients that relied on these not being enforced will
   fail after upgrade.
 
+## Release 2.15.40
+
+### admin
+
+While `migration move` tasks on pools were working correctly, for `migration info` command an error occurred,
+ that the current user (root) wasn't allowed to execute anything (due to missing ACLs). This is now fixed.
+
+
+### Changelog 2.15.39..2.15.40
+
+<!-- git log 2.15.39..2.15.40 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[ab2e71c](https://github.com/dcache/dcache/commit/ab2e71c0889fae2ab3764376d5508358e817402d)
+:   [maven-release-plugin] prepare release 2.15.40
+
+[a4577fd](https://github.com/dcache/dcache/commit/a4577fdc5930d7d6971e1cb7d733eb5a254b96c3)
+:   admin: Fix Inconsistent ACL enforcement, RT 9207
+
+[90ff687](https://github.com/dcache/dcache/commit/90ff68784889057bdde690d2d5ce77baa8a4a365)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.15.39
 
 ### httpd

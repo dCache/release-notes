@@ -109,6 +109,30 @@ HTML header: <title>dCache 3.0 Release Notes</title>
 
 Thanks to Onno Zweers for several contributions to this release.
 
+## Release 3.0.26
+
+### admin
+
+While `migration move` tasks on pools were working correctly, for `migration info` command an error occurred,
+ that the current user (root) wasn't allowed to execute anything (due to missing ACLs). This is now fixed.
+
+
+### Changelog 3.0.25..3.0.26
+
+<!-- git log 3.0.25..3.0.26 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[722f000](https://github.com/dcache/dcache/commit/722f000da8ea59599b057134eee81d4fbb45b915)
+:   [maven-release-plugin] prepare release 3.0.26
+
+[43fcf92](https://github.com/dcache/dcache/commit/43fcf9264c4fa0405abdc3dac6a43f0048395ac0)
+:   resilience: restore extractor class value for extractor property
+
+[00a2da1](https://github.com/dcache/dcache/commit/00a2da12da6b1ed79226006f6ba203d4846d48cb)
+:   admin: Fix Inconsistent ACL enforcement, RT 9207
+
+[2c0cb3a](https://github.com/dcache/dcache/commit/2c0cb3a70fe69ed3e912680711018096b1d2fd7a)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.0.25
 
 ### configuration

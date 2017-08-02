@@ -149,6 +149,27 @@ Highlights from this release:
   SRM requests will be lost from the database. Third party scripts
   that access the SRM database directly may have to be updated.
 
+## Release 2.14.51
+
+### admin
+
+While `migration move` tasks on pools were working correctly, for `migration info` command an error occurred,
+ that the current user (root) wasn't allowed to execute anything (due to missing ACLs). This is now fixed.
+
+
+### Changelog 2.14.50..2.14.51
+
+<!-- git log 2.14.50..2.14.51 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[68975a9](https://github.com/dcache/dcache/commit/68975a9f711c78c6ccbf3d648f6267901e328737)
+:   [maven-release-plugin] prepare release 2.14.51
+
+[ee228bb](https://github.com/dcache/dcache/commit/ee228bbc3a2495aa8ad59ee68ada4b592b11466b)
+:   admin: Fix Inconsistent ACL enforcement, RT 9207
+
+[1421637](https://github.com/dcache/dcache/commit/1421637dc130d769d07ce3c113f8b1efbb3a40ac)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.14.50
 
 ### httpd
