@@ -660,6 +660,34 @@ If you ever needed to query the access latency or retention policy of
 a file you will be delighted to learn the the Chimera shell now
 supports doing just that.
 
+To support this, some configuration properties have been added.
+
+Previously, the `chimera` shell reused the `pnfsmanager` properties.
+With dCache v3.1, the `chimera` shell has its own set of properties.
+See the `/usr/share/dcache/defaults/chimerashell.properties` file for
+the details.
+
+In addition, the configuration properties
+`dcache.default-access-latency` and `dcache.default-retention-policy`
+have been added.  These new properties are the default values for
+`chimerashell.default-access-latency` &
+`chimerashell.default-retention-policy` (respectively), and
+`pnfsmanager.default-access-latency` &
+`pnfsmanager.default-retention-policy` (respectively).
+
+If you have configured `pnfsmanager.default-access-latency` or
+`pnfsmanager.default-retention-policy` then dCache will continue to
+work as before; however, the `chimera` shell may show incorrect
+information when querying access-latency or retention-policy
+information of a directory.
+
+To fix this, you should update your configuration so that
+`dcache.default-access-latency` and `dcache.default-retention-policy`
+are adjusted instead.  These `dcache.` properties should be configured
+on all nodes where you host a pnfsmanager service or intend to run the
+`chimera` client.
+
+
 #### Fail fast on lack of stage permission
 
 If you rely on the pool manager stage protection feature, know that
