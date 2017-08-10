@@ -109,6 +109,55 @@ HTML header: <title>dCache 3.0 Release Notes</title>
 
 Thanks to Onno Zweers for several contributions to this release.
 
+## Release 3.0.27
+
+### cells
+
+The current release improved handling of rogue domains with badly formatted dCache versions.
+
+
+### configuration
+
+There are configuration options in zookeeper that may affect how well
+the zookeeper cluster will work with dCache. The lack of documentation
+of how dCache uses zookeeper prevents admins from tuning their zookeeper
+instance. This is now fixed and zookeeper configuration is updated with
+ hints on how dCache uses zookeeper, along with the corresponding zookeeper configuration properties.
+
+### pool
+
+The current release fixed loading `setup` that requires queues created by `pool.queues`.
+
+### webdav
+
+The current release fixed the stack-traces on bad client input.
+
+
+### Changelog 3.0.26..3.0.27
+
+<!-- git log 3.0.26..3.0.27 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[2b591bf](https://github.com/dcache/dcache/commit/2b591bf1b52c65be8b3b94da73f228cfabcc66e9)
+:   [maven-release-plugin] prepare release 3.0.27
+
+[fa68a01](https://github.com/dcache/dcache/commit/fa68a01877fc88ea081eb5a51b06e12630f77dbd)
+:   cells: better handling of rogue domains with badly formatted dCache versions
+
+[c944c47](https://github.com/dcache/dcache/commit/c944c4710899485e5b483601475c7b203ee817aa)
+:   configuration: update zookeeper configuration with hints
+
+[cb033cb](https://github.com/dcache/dcache/commit/cb033cb74fcb703445023eab8825865634607b6d)
+:   pool: fix loading 'setup' that requires queues created by 'pool.queues'
+
+[545d072](https://github.com/dcache/dcache/commit/545d0721a3a2b86a120ac3eb07ecf09e091639db)
+:   webdav: avoid stack-trace on bad user requests
+
+[47d18d7](https://github.com/dcache/dcache/commit/47d18d7d9f5bbc2e0d533bfaf9d75fd7381eac1a)
+:   alarms: guard against NPEs on LogEntry getters
+
+[7eb6827](https://github.com/dcache/dcache/commit/7eb682771834201bc412e232a4f834e09889ff9a)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.0.26
 
 ### admin

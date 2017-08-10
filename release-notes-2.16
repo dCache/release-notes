@@ -111,6 +111,40 @@ HTML header: <title>dCache 2.16 Release Notes</title>
 * Sites with a custom `httpd.conf` configuration will have to adjust
   this upon upgrade to inject the cell address of the `info` service.
 
+## Release 2.16.46
+
+### configuration
+
+There are configuration options in zookeeper that may affect how well
+the zookeeper cluster will work with dCache. The lack of documentation
+of how dCache uses zookeeper prevents admins from tuning their zookeeper
+instance. This is now fixed and zookeeper configuration is updated with
+ hints on how dCache uses zookeeper, along with the corresponding zookeeper configuration properties.
+
+### webdav
+
+The current release fixed the stack-traces on bad client input.
+
+
+### Changelog 2.16.45..2.16.46
+
+<!-- git log 2.16.45..2.16.46 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[c3a8fe8](https://github.com/dcache/dcache/commit/c3a8fe8aa968861aba2b3b91684759f131aac4bd)
+:   [maven-release-plugin] prepare release 2.16.46
+
+[704501a](https://github.com/dcache/dcache/commit/704501a044f15bcc3f967e9af3aa1ffe77717ee4)
+:   configuration: update zookeeper configuration with hints
+
+[bf7f2c8](https://github.com/dcache/dcache/commit/bf7f2c892febe61f8857dc2a4ba9ee2378c8af05)
+:   webdav: avoid stack-trace on bad user requests
+
+[7663c8c](https://github.com/dcache/dcache/commit/7663c8c7b013c5f573d825b67466b41f473a4005)
+:   alarms: guard against NPEs on LogEntry getters
+
+[fa3f0a8](https://github.com/dcache/dcache/commit/fa3f0a832ab3bacf7a6b291bbe1be8670abc97dd)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.16.45
 
 ### admin

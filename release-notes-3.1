@@ -76,6 +76,55 @@ HTML header: <title>dCache 3.1 Release Notes</title>
 
 Thanks to Johan Guldmyr for his constributions.
 
+## Release 3.1.15
+
+### cells
+
+The current release improved handling of rogue domains with badly formatted dCache versions.
+
+
+### configuration
+
+There are configuration options in zookeeper that may affect how well
+the zookeeper cluster will work with dCache. The lack of documentation
+of how dCache uses zookeeper prevents admins from tuning their zookeeper
+instance. This is now fixed and zookeeper configuration is updated with
+ hints on how dCache uses zookeeper, along with the corresponding zookeeper configuration properties.
+
+### pool
+
+The current release fixed loading `setup` that requires queues created by `pool.queues`.
+
+### webdav
+
+The current release fixed the stack-traces on bad client input.
+
+
+### Changelog 3.1.14..3.1.15
+
+<!-- git log 3.1.14..3.1.15 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[aa82c54](https://github.com/dcache/dcache/commit/aa82c54ada7f0754786fc16e61edecc87fa15205)
+:   [maven-release-plugin] prepare release 3.1.15
+
+[3dfcc64](https://github.com/dcache/dcache/commit/3dfcc64903ba4af8ca9e28d30a488f6357eab2af)
+:   cells: better handling of rogue domains with badly formatted dCache versions
+
+[0dd102e](https://github.com/dcache/dcache/commit/0dd102efe617e8a6591d16c83d2d28b4caa3a703)
+:   configuration: update zookeeper configuration with hints
+
+[ad3e9b0](https://github.com/dcache/dcache/commit/ad3e9b03c272f41f4b6c25561b2c2f037d2db6c7)
+:   pool: fix loading 'setup' that requires queues created by 'pool.queues'
+
+[ca1667d](https://github.com/dcache/dcache/commit/ca1667d408bde7ce50f5181465839502f1de63ee)
+:   webdav: avoid stack-trace on bad user requests
+
+[ad54a1f](https://github.com/dcache/dcache/commit/ad54a1f0a98da9c2775351ce5b8dd9ef62f9c02a)
+:   alarms: guard against NPEs on LogEntry getters
+
+[265141c](https://github.com/dcache/dcache/commit/265141c39e12dda93e3e4822ee4476d6ae69309d)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.1.14
 
 ### admin
