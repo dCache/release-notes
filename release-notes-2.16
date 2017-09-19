@@ -111,6 +111,94 @@ HTML header: <title>dCache 2.16 Release Notes</title>
 * Sites with a custom `httpd.conf` configuration will have to adjust
   this upon upgrade to inject the cell address of the `info` service.
 
+## Release 2.16.47
+
+### pool
+
+The current release fixed regression in GridFTP OPTS CKSM command  and   GridFTP `OPTS CKSM` command is supported again.
+
+The current release fixe  regression with third-party pull transfers using GridFTP, with
+dCache acting as the GridFTP client that prevented data integrity
+checks.
+
+### resilience
+
+When resilience tries to copy or remove a file, and it is no longer
+in the namespace, this should be a fatal error, differently from
+the discovery that a replica is no longer in cache. These two
+errors, however, were  treated the same way. This is now fixed and the correct behavior is 
+immediate abort of operation when file is not in namespace.
+
+The current release improved error handling for file deletion during scan correctly it fixed bug in formatting and handling of cache exception types.
+
+
+When doing a pool scan, the storage unit information must be
+recovered for each file. This is done from the chimera attributes.
+The code checks an internal map for an index number corresponding
+to the unit it knows about from the PoolMonitor.
+
+However, if the pool selection unit configuration changes such that
+a storage unit is eliminated, that mapping will also be deleted
+from resilience. In the case that the attributes stored in
+Chimera still have the older storage class information, there
+will be a NoSuchElementException thrown.
+
+This is fixed now and Pool scans that encounter this situation do not get stuck
+forever in the queue.
+
+### webdav
+
+In RFC 7230, section 3.2, it states that HTTP header names should be
+case insensitive. Despite this, the standard milton mechanism for
+acquiring header information is case sensitive, which (in turn) means
+that several HTTP header values in dCache are similarly case sensitive.
+There were reports that this case sensitivity has caused problems with certain clients (e.g., go).
+The current release fixed this issue and headers that control third-party transfers are now case insensitive, so should work with more clients.
+
+
+### Changelog 2.16.46..2.16.47
+
+<!-- git log 2.16.46..2.16.47 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[d13e0ce](https://github.com/dcache/dcache/commit/d13e0ced7cfb909a168c6342e2cbb574ea845f67)
+:   [maven-release-plugin] prepare release 2.16.47
+
+[b018bd8](https://github.com/dcache/dcache/commit/b018bd8ade2c919b2e105f78eaea62631ec3237e)
+:   Update FileOperationHandler.java
+
+[0bd79ab](https://github.com/dcache/dcache/commit/0bd79ab0f9337ac093c73be1efd3b651c5da28ea)
+:   pool: fix data integrity regression for 3rd-party GridFTP pull transfers
+
+[fda0922](https://github.com/dcache/dcache/commit/fda09222b092b3a1ea50090ccaa502b572352816)
+:   pool: fix regression in GridFTP OPTS CKSM command
+
+[937e483](https://github.com/dcache/dcache/commit/937e48329123aa0f37f51b8cdb50828002e318b5)
+:   resilience: handle file deletion during scan correctly
+
+[3ce133b](https://github.com/dcache/dcache/commit/3ce133b0f91b969bae6fd821231bf94c230b1914)
+:   resilience: add pool operation logging
+
+[5a7bdfe](https://github.com/dcache/dcache/commit/5a7bdfea18c9ba1dc7d2a0e51696f81a1aee5b88)
+:   resilience: handle storage unit NoSuchElement failure
+
+[0a9d62e](https://github.com/dcache/dcache/commit/0a9d62e7ca7c056441dd43aab217f1dfb38c750a)
+:   webdav: adjust header parsing to be case insensitive
+
+[d423c5e](https://github.com/dcache/dcache/commit/d423c5e2a1935950e11e3ab4bb8f0996ea46f58b)
+:   resilience: handle all cases where no locations for file may be discovered
+
+[3b390ba](https://github.com/dcache/dcache/commit/3b390ba68c9ca0a3c731e08a562f6e1a4bfbc6ac)
+:   resilience: distinguish correctly between file not in repository and file not found
+
+[24f999b](https://github.com/dcache/dcache/commit/24f999bf0b1be3eb029d764589b12a2aaced6e69)
+:   resilience: fix bug in formatting and handling of cache exception types
+
+[41985bd](https://github.com/dcache/dcache/commit/41985bdc7b65d3c5a0b44293b12bf261e0abbfcb)
+:   PoolManager : set return code to CacheException.PERMISSION_DENIED if staging is not allowed due to stage protection.
+
+[91ebad3](https://github.com/dcache/dcache/commit/91ebad3a9e184d4a1359c00ec8a3fd93cd163eab)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.16.46
 
 ### configuration

@@ -76,6 +76,108 @@ HTML header: <title>dCache 3.1 Release Notes</title>
 
 Thanks to Johan Guldmyr for his constributions.
 
+## Release 3.1.16
+
+### nfs
+
+The nfs doors did not shut down cleanly. This slowed down the shutdown sequence. 
+This is now fixed and dCache shutdown is faster and less likely to suffer problems.
+
+### pool
+
+The current release fixed regression in GridFTP OPTS CKSM command  and   GridFTP `OPTS CKSM` command is supported again.
+
+The current release fixe  regression with third-party pull transfers using GridFTP, with
+dCache acting as the GridFTP client that prevented data integrity
+checks.
+
+### resilience
+
+When resilience tries to copy or remove a file, and it is no longer
+in the namespace, this should be a fatal error, differently from
+the discovery that a replica is no longer in cache. These two
+errors, however, were  treated the same way. This is now fixed and the correct behavior is 
+immediate abort of operation when file is not in namespace.
+
+The current release improved error handling for file deletion during scan correctly it fixed bug in formatting and handling of cache exception types.
+
+
+When doing a pool scan, the storage unit information must be
+recovered for each file. This is done from the chimera attributes.
+The code checks an internal map for an index number corresponding
+to the unit it knows about from the PoolMonitor.
+
+However, if the pool selection unit configuration changes such that
+a storage unit is eliminated, that mapping will also be deleted
+from resilience. In the case that the attributes stored in
+Chimera still have the older storage class information, there
+will be a NoSuchElementException thrown.
+
+This is fixed now and Pool scans that encounter this situation do not get stuck
+forever in the queue.
+
+### webdav
+
+In RFC 7230, section 3.2, it states that HTTP header names should be
+case insensitive. Despite this, the standard milton mechanism for
+acquiring header information is case sensitive, which (in turn) means
+that several HTTP header values in dCache are similarly case sensitive.
+There were reports that this case sensitivity has caused problems with certain clients (e.g., go).
+The current release fixed this issue and headers that control third-party transfers are now case insensitive, so should work with more clients.
+
+
+### Changelog 3.1.15..3.1.16
+
+<!-- git log 3.1.15..3.1.16 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[67ced36](https://github.com/dcache/dcache/commit/67ced3654e575d58b3f9fe37d5ae32c1de545283)
+:   [maven-release-plugin] prepare release 3.1.16
+
+[d9fdbbe](https://github.com/dcache/dcache/commit/d9fdbbe67e4eb89a25b54a1f8ce22c6ebf811e2b)
+:   Update FileOperationHandler.java
+
+[f0e6971](https://github.com/dcache/dcache/commit/f0e6971f211767dfc8dc6029758e5fccac87cfc0)
+:   pool: fix data integrity regression for 3rd-party GridFTP pull transfers
+
+[890ebb6](https://github.com/dcache/dcache/commit/890ebb69ca361a51cfce7a43f838bb32e30622fa)
+:   pool: fix regression in GridFTP OPTS CKSM command
+
+[d30f800](https://github.com/dcache/dcache/commit/d30f8003caaa57188ff2397c8e989bd4f855f262)
+:   resilience: handle file deletion during scan correctly
+
+[31dbeb0](https://github.com/dcache/dcache/commit/31dbeb013f6a4b322908716e5dbd0fdf3b08d120)
+:   pool: ceph: ignore file-not-found on remove
+
+[260b555](https://github.com/dcache/dcache/commit/260b555d7182676fdf1f8cc3b0a2d6d6421a324a)
+:   resilience: add pool operation logging
+
+[c7764a8](https://github.com/dcache/dcache/commit/c7764a8bbcee7f7c991244355c25a5e418550df2)
+:   resilience: handle storage unit NoSuchElement failure
+
+[29625d7](https://github.com/dcache/dcache/commit/29625d73076462fa773e176788a8929e130b8e17)
+:   nfs: shutdown callback ScheduledExecutorService on shutdown
+
+[b81786d](https://github.com/dcache/dcache/commit/b81786deec06381ab52b3bbbfc013a7b862e0dd9)
+:   webdav: adjust header parsing to be case insensitive
+
+[bd02e6d](https://github.com/dcache/dcache/commit/bd02e6debfd461f71eb5820aa36bdb1e1bf78748)
+:   resilience: handle all cases where no locations for file may be discovered
+
+[c70583e](https://github.com/dcache/dcache/commit/c70583e2082db1bd2ccfb54c74da652ebb33582c)
+:   resilience: distinguish correctly between file not in repository and file not found
+
+[dce1a67](https://github.com/dcache/dcache/commit/dce1a677092c3fe588ad5d706c77a8da05dc267c)
+:   resilience: fix bug in formatting and handling of cache exception types
+
+[a070892](https://github.com/dcache/dcache/commit/a070892e037e1053888cd16de594a56ca2237bd9)
+:   srmclient: remove non-functioning script with BASH dependencies
+
+[aa2ef59](https://github.com/dcache/dcache/commit/aa2ef591485770f85d6643cdea94c709408bad2f)
+:   ftp: update exception logging to include context
+
+[27d0e67](https://github.com/dcache/dcache/commit/27d0e677383ea8806e125e23cbc5a5ce58c442f5)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.1.15
 
 ### cells
