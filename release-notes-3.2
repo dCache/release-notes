@@ -79,25 +79,25 @@ HTML header: <title>dCache 3.2 Release Notes</title>
 
 ## Release 3.2.0
 
-### Authentication
+### Authentication - PAUL
 
 - [authentication: add support for macaroons](http://github.com/dcache/dcache/commit/e29757959faa79fa65440f9ddd95b3a2d9fa140d)
 - [authentication: support embedding a bearer token in HTTP URLs](http://github.com/dcache/dcache/commit/554fd2a969586a8fc1bd4f3bab84f7d3cd9236b9)
 - [macaroons: add implicit authorisation of READ_METADATA](http://github.com/dcache/dcache/commit/aabac213aa5db89acd82921f005217ad87795ee5)
 
-### Roles
+### Roles - DIMITRY
 
 - [authz: add initial support for Roles](http://github.com/dcache/dcache/commit/8d9c3bf7e309f453efb63d2449702e62aca3eef5)
 - [authz: return a list of allowed but unasserted roles](http://github.com/dcache/dcache/commit/ced8d9fe75ee277b66d87544b6f77506214801d0)
 - [webadmin: use new role-based login and support active/deactive roles](http://github.com/dcache/dcache/commit/dd5fa1ccc309bb94dd9b402c84f207ab2b4ec91f)
 
-### External networking
+### External networking - JUERGEN
 
 - [cells,dcap,ftp: Support for accepting connections from an allowed list of subnets and IP addresses](http://github.com/dcache/dcache/commit/1d8239fadeed1e91592b18a6fb37a38975d5bb8d)
 - [core: Add Remote-Host-Restriction capability to Ssh2Admin PublicKeyAu… (#3431)](http://github.com/dcache/dcache/commit/b2cbf3016b4a47bfce9496a54e0aef6a8d454a46)
 - [srmmanager: reduce network configuration](http://github.com/dcache/dcache/commit/7f5fe17d6c1af7bb8aebcfc1ae03a564bf1abe23)
 
-### Internal networking
+### Internal networking - GERD
 
 - [cells: add tls based encrypted channels for cell communication](http://github.com/dcache/dcache/commit/c977392bb0d704ac5309ad0ce1f636560fbfa9d6)
 - [cells: fix TLS support to work with embedded zookeeper](http://github.com/dcache/dcache/commit/b0abb286b6a98f5b28e0bd382ac9d41425b63ee5)
@@ -125,14 +125,14 @@ were inaccurate. Upon upgrade the reference count for existing tags
 has to be populated which may take a little while on large databases.
 
 
-### Checksum handling
+### Checksum handling - AL
 
 - [dcache,movers: Storing multiple checksums for a file when the client provided checksum is of different type than that of the pool setup.](http://github.com/dcache/dcache/commit/ebceda3297f2783fe6a8ea36d536e7e623f82d0f)
 - [dcache: added command to display multiple checksums for a file](http://github.com/dcache/dcache/commit/4da5635cacb61dbfdf7889698d2fddc3e4e63681)
 - [ftp: add support for dynamic checksum calculation](http://github.com/dcache/dcache/commit/7e2fa7bb9cd71e669961da1806765e985960464c)
 
 
-### API
+### API - AL
 
 - [dcache (alarms): add support for RESTful frontend messages to alarms service](http://github.com/dcache/dcache/commit/50f32f5768d05c82e74fd7bf9a854cc0588ede19)
 - [dcache (pools): Add messaging support for frontend/restful pool info service](http://github.com/dcache/dcache/commit/b70b0d946a9ff9825a0edd9463bdc3c7e30f4f61)
@@ -165,7 +165,7 @@ has to be populated which may take a little while on large databases.
 - [pools: add support for requesting live data for histories](http://github.com/dcache/dcache/commit/6ee63306d66a3ce83287abde3b7697295d1d3179)
 
 
-### Frontend
+### Frontend - MARINA
 
 - [dcache: release dcache-view 1.3.0 for dcache current master](http://github.com/dcache/dcache/commit/3b372e2b516873b48ff6cdcfa907e195e4b13dd2)
 - [dcache: release dcache-view version 1.3.1](http://github.com/dcache/dcache/commit/52a409c136f02b9f70d92fc72f7c4a936270785e)
@@ -278,7 +278,7 @@ their attempt to support pipelining.
 
 The immediate effect is better compatibility with Globus Online.
 
-### WebDAV
+### WebDAV - FEMI
 
 - [http: fix non-/ root for WebDAV and frontend doors](http://github.com/dcache/dcache/commit/0bc04f6b7127ba135bcda0f3ffac37de49299cad)
 
@@ -296,7 +296,7 @@ supplied path (if TOKEN was omitted).
 For WebDAV, reservations are exposed as RFC 4331 quoatas and can be
 queried as such.
 
-### NFS
+### NFS - TIGRAN
 
 - [libs: switch to nfs4j-0.15](http://github.com/dcache/dcache/commit/e064f5577bdb324d5b7efb9d60112ebf53fe6d83)
 - [libs: update nfs4j to version 0.15.2](http://github.com/dcache/dcache/commit/ad7fdddfc086fe0d458d8397e9d12b439d933e48)
@@ -307,11 +307,11 @@ queried as such.
 - [nfsv41door: add filter method for show transfers command](http://github.com/dcache/dcache/commit/345dbfbbd5c457f4d38fd325d53ea4104ae04824)
 
 
-### Xrootd
+### Xrootd - DIMITRY
 
 - [xrootd: allow xrootd to overwrite new empty files. Motivation: Xrootdfs FUSE driver immediately closes a file on creation, then reopens it to write. The file cannot be opened as it already exists. This patch allows the dcache xrootd door to tolerate this behavior.](http://github.com/dcache/dcache/commit/3d67d4c2eda6e8cc99c97155bc6e00fe49eb3c21)
 
-### Pools
+### Pools - TIGRAN
 
 - [pool: add support for mongodb as a backend for medatada](http://github.com/dcache/dcache/commit/130e160f5ce78e29c3ed8ea73b4aefd59004c73e)
 
