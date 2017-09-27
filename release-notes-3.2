@@ -175,44 +175,57 @@ were inaccurate. Upon upgrade the reference count for existing tags
 has to be populated which may take a little while on large databases.
 
 
-### Checksum handling - AL
+### Checksum handling
 
-- [dcache,movers: Storing multiple checksums for a file when the client provided checksum is of different type than that of the pool setup.](http://github.com/dcache/dcache/commit/ebceda3297f2783fe6a8ea36d536e7e623f82d0f)
-- [dcache: added command to display multiple checksums for a file](http://github.com/dcache/dcache/commit/4da5635cacb61dbfdf7889698d2fddc3e4e63681)
-- [ftp: add support for dynamic checksum calculation](http://github.com/dcache/dcache/commit/7e2fa7bb9cd71e669961da1806765e985960464c)
+Two improvements have been made.  The first has to do with what happens when a
+client provides a checksum.  In this case, dCache now verifies and stores the
+provided checksum as well as computes and stores the checksum of the type
+configured by the admin in the pool setup.
+
+The second has to do with interoperability between clients requesting
+different checksum types (this mainly derives from the Globus MD5 requirement).
+The FTP door has been modified to compute a missing checksum required by
+the client on the fly.  This way, files written by a protocol requiring ADLER32
+can be read by clients requiring MD5, and vice-versa.  This fix requires
+updating only the FTP door.
+
+Finally, an admin command
+
+    get file checksums <pnfsid>
+
+has been added to PnfsManager to display multiple checksums.
 
 
-### API - AL
+### RESTful api
 
-- [dcache (alarms): add support for RESTful frontend messages to alarms service](http://github.com/dcache/dcache/commit/50f32f5768d05c82e74fd7bf9a854cc0588ede19)
-- [dcache (pools): Add messaging support for frontend/restful pool info service](http://github.com/dcache/dcache/commit/b70b0d946a9ff9825a0edd9463bdc3c7e30f4f61)
-- [dcache-restful-api:  add RESTful billing service and support](http://github.com/dcache/dcache/commit/11392b9ae831a889e9d72016546cfdad8ee31d01)
-- [dcache-restful-api: Add RESTful resource for active transfers](http://github.com/dcache/dcache/commit/317030ed1f87ec286b607d65974cac0783e6422f)
-- [dcache-restful-api: Add common abstractions for services supporting RESTful admin resources](http://github.com/dcache/dcache/commit/03d529cd688e75ef3f4a137afccefd68b742c20c)
-- [dcache-restful-api: add API to get file attributes from pnfsid](http://github.com/dcache/dcache/commit/1668b1a66d227bf2732c2eaa8e1af3f2846112ed)
-- [dcache-restful-api: add api and implementation for alarms service](http://github.com/dcache/dcache/commit/56fd24237929ca3afc355f63473e1bb2dec97544)
-- [dcache-restful-api: add cell service API and implementation](http://github.com/dcache/dcache/commit/96188c7a141ad2b5d69ba0589bffdbeba9a43b44)
-- [dcache-restful-api: add missing aggregated cost data to JSON](http://github.com/dcache/dcache/commit/366fb071da8ef49bb6a5a7527041e5659d4247e7)
-- [dcache-restful-api: add pnfsid and nlink to all attribute requests](http://github.com/dcache/dcache/commit/8f8c79b3f9895775a591df6fec7565f63da516b4)
-- [dcache-restful-api: add service implementation for collecting staging/restore info](http://github.com/dcache/dcache/commit/306c0d06ab1290220493088bed4d71a14b58cbf3)
-- [dcache-restful-api: add transfer collection utilities](http://github.com/dcache/dcache/commit/26104eac59e1bfd621291a66588943be4a22ca93)
-- [dcache-restful-api: add transfer service implementation](http://github.com/dcache/dcache/commit/d7440e22aa07134e8c1f8992f02709795e0000eb)
-- [dcache-restful-api: add unit tests for transfer service](http://github.com/dcache/dcache/commit/0b5141e849c977f527dab91315504396c1842ccd)
-- [dcache-restful-api: extract the locations from storage info and add to JSON attributes](http://github.com/dcache/dcache/commit/26d939d6118cf9c1036be21eac4112b1def77ee6)
-- [dcache-restful-api: fix handling of no route to cell in alarms collector](http://github.com/dcache/dcache/commit/0b21d9d5e491f056b868fe86c5a6a307ecbdcd4e)
-- [dcache-restful-api: fix misnamed restores command](http://github.com/dcache/dcache/commit/bdd188b536f6e068786374c5bfc64dc5a9c39927)
-- [dcache-restful-api: fix pnsfHandler reference in IdResource](http://github.com/dcache/dcache/commit/893846e2314bc29f36da8073efde234a355f2a9e)
-- [dcache-restful-api: fix restore service initialization](http://github.com/dcache/dcache/commit/dfe1b89c386b5cc0f4d5abd561bac9546a667998)
-- [dcache-restful-api: migrating file to a an appropriate pool](http://github.com/dcache/dcache/commit/502e09e561cf009b9a421f57027074e0aef1c4a2)
-- [dcache-restful-api: move admin collector service abstractions to dcache module](http://github.com/dcache/dcache/commit/fa3d4eb0f78c998e736e069cff3041f866eb0bb6)
-- [dcache-restful-api: pool info service implementation](http://github.com/dcache/dcache/commit/0f2188aab9bc8ba2241538eeea584413d53fcbcb)
-- [dcache-restful-api: removing disk-based caching from CellInfoService](http://github.com/dcache/dcache/commit/891060e8632d183c08215a365a367f5b3f4b2698)
-- [dcache-restful-api: restore creationTime on JSONAttributes](http://github.com/dcache/dcache/commit/4d1e5e66ae82dadd4a9e5e3e8f92471c03cba0f7)
-- [dcache-restful-api: return incomplete info instead of throwing NoSuchElementException](http://github.com/dcache/dcache/commit/16f408d5a4cdbd0bf5044c688b258ef2f0aba0e4)
-- [dcache-restful-api: simplify alarms api and service](http://github.com/dcache/dcache/commit/fbae70d684b4069678c86ed7bb7e354076c3fb93)
-- [dcache-restful-api:bug fix: current locality of the file should be considered](http://github.com/dcache/dcache/commit/a899b42c349c0c300017a5b218cb8572ef9148dc)
-- [dcache: introduce history service with pool timeseries component](http://github.com/dcache/dcache/commit/5b1f65b0ce0c9ff2495f727e233cff3aa40fa2f5)
-- [pools: add support for requesting live data for histories](http://github.com/dcache/dcache/commit/6ee63306d66a3ce83287abde3b7697295d1d3179)
+With this release, information that has traditionally been made available via
+the legacy httpd and webadmin pages will also be accessible via REST apis.
+
+A full description of the paths and parameters for each RESTful service, along
+with example JSON output, will soon be published on the dCache GitHub Wiki.
+
+Included in this release are the apis and supporting services for alarms,
+billing, cell info, pool and pool group info, active transfers and
+tape restores/stages.
+
+An illustrative example:
+
+curl -k -u arossi#admin:xxxxx 'https://fndcatemp1.fnal.gov:3880/api/v1/pools/dmsdca22-7?info=true'
+
+The request is for the basic information concerning a pool; the JSON object
+returned includes cell information, pool configuration/setup information,
+pool cost and request statistics, space statistics, sweeper statistics, etc.
+There are additional parameters for requesting histogram data on pool requests,
+space usage, and file lifetime on the pool.
+
+Notice the user name in the curl command. Use of these services requires admin
+privileges. Here, it is presumed that the user has been accorded the admin role;
+the '#' after the login name indicates a request to express that role for this
+session.  See the section on Roles above for a fuller explanation.
+
+In addition to the new admin services, a small bug has been fixed in the
+handling of QoS updates on the namespace service, so that the request correctly
+considers the current locality of the file.
 
 
 ### Frontend - MARINA
