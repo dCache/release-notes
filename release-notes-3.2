@@ -79,11 +79,61 @@ HTML header: <title>dCache 3.2 Release Notes</title>
 
 ## Release 3.2.0
 
-### Authentication - PAUL
+### Authentication
 
-- [authentication: add support for macaroons](http://github.com/dcache/dcache/commit/e29757959faa79fa65440f9ddd95b3a2d9fa140d)
-- [authentication: support embedding a bearer token in HTTP URLs](http://github.com/dcache/dcache/commit/554fd2a969586a8fc1bd4f3bab84f7d3cd9236b9)
-- [macaroons: add implicit authorisation of READ_METADATA](http://github.com/dcache/dcache/commit/aabac213aa5db89acd82921f005217ad87795ee5)
+We've added support for macaroons in the webdav door.
+
+Macaroons are a new idea that comes from research by Google.  They are
+bearer tokens that allows the bearer to do something, without
+requiring that the user identifying who they are.
+
+A macaroon may be limited and only allow the bearer to do certain
+things by having caveats.  Caveats could by any limitation.  A caveat
+could make the macaroon time-limited (e.g, only good for five
+minutes), location-limited (e.g., only from a particular IP address),
+or anything else.  You can learn more about macaroons from this video:
+
+https://air.mozilla.org/macaroons-cookies-with-contextual-caveats-for-decentralized-authorization-in-the-cloud/
+
+Macaroons are a building-block technology, so have many potential
+uses.  They may be used by a web-portal to allow its clients (of which
+dCache knows nothing) direct access to files stored in dCache.  They
+may be used to authorise third-party transfers without requiring X.509
+credential delegation.  They may be used to create a link that allows
+sharing of resources. There are likely many other uses for them.
+
+Requesting a macaroon is as simple as making a POST request with a
+Content-Type of `application/macaroon-request`.  This returns a
+time-limited (but otherwise unlimited) macaroon.  Additional caveats
+may be added by dCache (include them as JSON in the POST request) or
+subsequently by anyone else.  dCache supports a rich set of possible
+restrictions, including namespace (e.g., only a particular file or
+directory), time (e.g., only the next 5 minutes), location (e.g., only
+from a particular IP address or subnet), and activity (e.g., only
+downloads).
+
+Creating a macaroon takes very little CPU and no storage in dCache.
+Therefore it is safe to request many macaroons; for example, a web
+portal could create a seperate macaroon for every file its user wishes
+to view.
+
+A macaroon is a bearer token.  To use a macaroon in an HTTP request,
+just add it in the Authorization header value with a prefix `bearer`,
+just like with an OpenID-Connect access-token.
+
+Unfortunately not all HTTP clients allow a user to add a bearer token
+to the Authorization HTTP header; for example, a user cannot easily
+include a bearer token in their web-browser.  To support these
+clients, dCache supports URLs that include the 'authz' query
+parameter, with the value used as a bearer token (e.g.,
+`https://dcache.example.org/path/to/file?authz=<token>`).  This works
+for both OpenID-Connect access-token or macaroon.
+
+The webdav directory browsing has been updated so that any query
+parameters in the original request are included in all the generated
+page's navigation and download links.  This makes it easy to navigate
+through the webdav interface using a macaroon or OpenID-Connect
+access-token: just add `?authz=<token>` to the URL.
 
 ### Roles - DIMITRY
 
