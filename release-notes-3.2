@@ -135,11 +135,50 @@ page's navigation and download links.  This makes it easy to navigate
 through the webdav interface using a macaroon or OpenID-Connect
 access-token: just add `?authz=<token>` to the URL.
 
-### Roles - DIMITRY
+### Roles
 
-- [authz: add initial support for Roles](http://github.com/dcache/dcache/commit/8d9c3bf7e309f453efb63d2449702e62aca3eef5)
-- [authz: return a list of allowed but unasserted roles](http://github.com/dcache/dcache/commit/ced8d9fe75ee277b66d87544b6f77506214801d0)
-- [webadmin: use new role-based login and support active/deactive roles](http://github.com/dcache/dcache/commit/dd5fa1ccc309bb94dd9b402c84f207ab2b4ec91f)
+It may be desirable for dCache to behave differently for the same user
+between different login session.  For example, an administrative user
+may wish sometimes to interact with dCache as a normal user (for
+testing purposes or to reduce the risk of mistakes), and other times to
+interact with dCache with effectively root-like prividges.
+
+
+This functionality has been enabled by introducing a concept of user
+roles in dCache. A user may log in requesting zero or
+more roles and the login process chooses which roles (if any) to enact.
+
+For the HTTP-based services (webdav and restful), the roles can be
+chosen by appending '#' and a comma-separated list of roles to
+their username; for example, user 'fred' wishing to adopt 'role-a' and
+'role-b' roles would authenticate with the username
+'fred#role-a,role-b'.
+
+This release introduces limited support for the 'admin' role.
+
+The 'admin' role is intended to give users root-like permissions without
+the user knowing root credential and with the user's
+identity still being bound to that user.  The result is that the user
+with 'admin' role is able to do everything, but files created by that
+user are still owned by that user and log entries show which user
+enacted changes.
+
+An 'admin' role user has a root directory of `/` and no restrictions.
+
+The functionality is enabled by adding new gPlazma session plugin 'roles' to
+`gplazma.conf` file like so:
+
+```
+session  required    roles
+```
+
+A new property
+```
+gplazma.roles.admin-gid = 0
+```
+has been added to `gplazma.properties`. A user must be a member of the above specified
+group to be authorized to obtain the admin role.
+
 
 ### External networking - JUERGEN
 
@@ -370,9 +409,13 @@ queried as such.
 - [nfsv41door: add filter method for show transfers command](http://github.com/dcache/dcache/commit/345dbfbbd5c457f4d38fd325d53ea4104ae04824)
 
 
-### Xrootd - DIMITRY
+### Xrootd
 
-- [xrootd: allow xrootd to overwrite new empty files. Motivation: Xrootdfs FUSE driver immediately closes a file on creation, then reopens it to write. The file cannot be opened as it already exists. This patch allows the dcache xrootd door to tolerate this behavior.](http://github.com/dcache/dcache/commit/3d67d4c2eda6e8cc99c97155bc6e00fe49eb3c21)
+Xrootdfs FUSE driver immediately closes a file on creation,
+then reopens it to write. The behavior of xrootd door in dCache
+has been modified to allow to overwrite new empty files enabling
+xrootdfs FUSE file copies into dCache mounted filesystem.
+
 
 ### Pools - TIGRAN
 
