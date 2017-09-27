@@ -400,6 +400,11 @@ queried as such.
 
 ### NFS - TIGRAN
 
+Update handling of directory listings. This should avoid situations, when client was receiven BAD_COOKIE
+error, cased by server-side cache invalidation. The stage and p2p operations are handles the same way and
+more client friendly. 'show transfer' admin command supports filtering based on client ip, pnfs id and pool
+name.
+
 - [libs: switch to nfs4j-0.15](http://github.com/dcache/dcache/commit/e064f5577bdb324d5b7efb9d60112ebf53fe6d83)
 - [libs: update nfs4j to version 0.15.2](http://github.com/dcache/dcache/commit/ad7fdddfc086fe0d458d8397e9d12b439d933e48)
 - [libs: update to nfs4j-0.15.1](http://github.com/dcache/dcache/commit/7ee44eea7e3c82d1f723e474306db0df9b68ac7d)
@@ -418,6 +423,19 @@ xrootdfs FUSE file copies into dCache mounted filesystem.
 
 
 ### Pools - TIGRAN
+Pools can use mongoDB to store metadata. This can be enabled by:
+```
+pool.plugins.meta=org.dcache.pool.repository.meta.mongo.MongoDbMetadataRepository
+```
+configuration option. Additional properties control mongoDB server location, database name and
+collecton name:
+```
+pool.plugins.meta.mongo.url=mongodb://localhost:27017    
+pool.plugins.meta.mongo.db=pdm
+pool.plugins.meta.mongo.collection=poolMetadata
+```
+A single shared mongoDB instance can be used for all pools. NOTICE, in production mongodb must
+run in a custer to provide high performance and availability.
 
 - [pool: add support for mongodb as a backend for medatada](http://github.com/dcache/dcache/commit/130e160f5ce78e29c3ed8ea73b4aefd59004c73e)
 
