@@ -207,7 +207,7 @@ and ensure that keys are mapped to the correct user name.
 
 ### Namespace
 
-Tags are not reference counted link any other filesystem object. This
+Tags are now reference counted like any other filesystem object. This
 avoids an expensive database query upon file deletion that in some
 cases has led to bottlenecks, in particular when PostgreSQL statistics
 were inaccurate. Upon upgrade the reference count for existing tags
