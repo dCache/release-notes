@@ -270,15 +270,16 @@ considers the current locality of the file.
 ### Frontend and WebDAV - MARINA/FEMI
 
 Version 3 X.509 certificates support the Subject Alternative Name
-extension.  This extention allows the certificate to include information
+extension. This extention allows the certificate to include information
 about the user in additional to the user's DN, such as the user's email
 address. dCache 3.2 updated x509 plugin to extract email addresses from 
 Subject Alternative Name and add this to the list of principals identifying the user.
 
 Frontend clients can now discover a user's email addresses, if any are known.
-They can upload files and directories as well as move file(s) using HTML5 drag and drop API.
 
-Users with non-/ root directory will see the same files and directories
+They can upload files and directories as well as move file(s) using drag and drop.
+
+Users with `non-/ root` directory will see the same files and directories
 under WebDAV as with other protocols.
 
 Frontend provides information consistent with other protocols for users
