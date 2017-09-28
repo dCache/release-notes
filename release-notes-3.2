@@ -230,7 +230,9 @@ updating only the FTP door.
 
 Finally, an admin command
 
+```
     get file checksums <pnfsid>
+```
 
 has been added to PnfsManager to display multiple checksums.
 
@@ -249,7 +251,9 @@ tape restores/stages.
 
 An illustrative example:
 
-curl -k -u arossi#admin:xxxxx 'https://fndcatemp1.fnal.gov:3880/api/v1/pools/dmsdca22-7?info=true'
+```
+    curl -k -u arossi#admin:xxxxx 'https://fndcatemp1.fnal.gov:3880/api/v1/pools/dmsdca22-7?info=true'
+```
 
 The request is for the basic information concerning a pool; the JSON object
 returned includes cell information, pool configuration/setup information,
