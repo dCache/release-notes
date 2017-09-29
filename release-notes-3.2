@@ -76,6 +76,7 @@ HTML header: <title>dCache 3.2 Release Notes</title>
 
 - Many external contributions this time.... compile a list
 
+Max Patzelt: https://github.com/dcache/dcache/commit/b2cbf3016b4a47bfce9496a54e0aef6a8d454a46
 
 ## Release 3.2.0
 
@@ -180,11 +181,17 @@ has been added to `gplazma.properties`. A user must be a member of the above spe
 group to be authorized to obtain the admin role.
 
 
-### External networking - JUERGEN
+### External networking
 
-- [cells,dcap,ftp: Support for accepting connections from an allowed list of subnets and IP addresses](http://github.com/dcache/dcache/commit/1d8239fadeed1e91592b18a6fb37a38975d5bb8d)
-- [core: Add Remote-Host-Restriction capability to Ssh2Admin PublicKeyAu… (#3431)](http://github.com/dcache/dcache/commit/b2cbf3016b4a47bfce9496a54e0aef6a8d454a46)
-- [srmmanager: reduce network configuration](http://github.com/dcache/dcache/commit/7f5fe17d6c1af7bb8aebcfc1ae03a564bf1abe23)
+The handling of external connections has changed for some protocols.
+
+The SRM network configuration was simplified, and dCache can now work
+with multiple SRM services on different ports.
+The deprecated configuration properties `srmmanager.net.port` and
+`srmmanager.net.local-hosts` are no longer needed.
+
+SSH connection to dCache's admin shell now take host restrictions in
+the public key into account.
 
 ### Internal networking - GERD
 
