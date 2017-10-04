@@ -111,6 +111,41 @@ HTML header: <title>dCache 2.16 Release Notes</title>
 * Sites with a custom `httpd.conf` configuration will have to adjust
   this upon upgrade to inject the cell address of the `info` service.
 
+## Release 2.16.48
+
+### cells
+
+The current release improved some problematic error messages has better error reporting to ensure bugs are understood.
+
+### httpd
+
+The curren release fixed the issue of change of format in transfers.txt after upgrading from 2.13 to 2.16.
+
+
+### pool
+
+The current release fixed log and alarms duplication when rebuilding broken entry.
+
+
+### Changelog 2.16.47..2.16.48
+
+<!-- git log 2.16.47..2.16.48 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[ec1553b](https://github.com/dcache/dcache/commit/ec1553b0db6ce5c94828b9ad440637368d6e08ec)
+:   [maven-release-plugin] prepare release 2.16.48
+
+[1b5d4b2](https://github.com/dcache/dcache/commit/1b5d4b2170ecd27c25b5b6e63cc0852f24f8dce2)
+:   httpd: restore millis to transfer time for transfers.txt
+
+[eb6eacb](https://github.com/dcache/dcache/commit/eb6eacb1de823cf6ea1763f1173812c87be6897f)
+:   pool: fix log and alarms duplication when rebuilding broken entry
+
+[f8377dd](https://github.com/dcache/dcache/commit/f8377dd9820373e8468710ab8c4aae8f2d8bf09e)
+:   cells: better error reporting to ensure bugs are understood
+
+[ed9054b](https://github.com/dcache/dcache/commit/ed9054ba6163273e19c24e5994001972b1fce4ba)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.16.47
 
 ### pool

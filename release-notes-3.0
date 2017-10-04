@@ -109,6 +109,47 @@ HTML header: <title>dCache 3.0 Release Notes</title>
 
 Thanks to Onno Zweers for several contributions to this release.
 
+## Release 3.0.29
+
+### cells
+
+The current release improved some problematic error messages has better error reporting to ensure bugs are understood.
+
+### httpd
+
+The curren release fixed the issue of change of format in transfers.txt after upgrading from 2.13 to 2.16.
+
+
+### pool
+
+The current release fixed log and alarms duplication when rebuilding broken entry.
+
+### webdav
+
+Regression fixed in OPTIONS output.
+
+### Changelog 3.0.28..3.0.29
+
+<!-- git log 3.0.28..3.0.29 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[f265e50](https://github.com/dcache/dcache/commit/f265e5000df9990a96bdad991307581b61976c44)
+:   [maven-release-plugin] prepare release 3.0.29
+
+[0eec693](https://github.com/dcache/dcache/commit/0eec6936bd3d83e85f1b21ef92ea7e428311ca96)
+:   httpd: restore millis to transfer time for transfers.txt
+
+[539d3ed](https://github.com/dcache/dcache/commit/539d3ed1b2bb7fbca24ea909b2422c36792f27b6)
+:   pool: fix log and alarms duplication when rebuilding broken entry
+
+[38f5b2d](https://github.com/dcache/dcache/commit/38f5b2d61ffffdecebd0f8e6d9f3360cf54d555c)
+:   cells: better error reporting to ensure bugs are understood
+
+[c506caf](https://github.com/dcache/dcache/commit/c506caf56dede78ad5c4344704b21b3675c76aa7)
+:   webdav: fix regression in OPTIONS response
+
+[342e21b](https://github.com/dcache/dcache/commit/342e21bacf89f4dfaae358e70a2ea2dc2a679d91)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.0.28
 
 ### pool

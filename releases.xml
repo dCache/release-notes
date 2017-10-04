@@ -196,7 +196,23 @@
 
    
 
-      <release version="16" recommended="1">
+      <release version="17" recommended="1">
+        <date>4.10.2017</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>8a8dad841118bb32e8338231e88c1516</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>27b19407e3028ee75c8649feb1917403</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>0c905fdc99c499726009ad52da3242e0</md5sum>
+        </package>
+      </release>
+
+      <release version="16">
         <date>19.9.2017</date>
         <package name="Debian package">
           <download-url>_VERSION-1_all.deb</download-url>
@@ -506,7 +522,23 @@
       <notes-url>release-notes-3.0.shtml</notes-url>
       <version-prefix>3.0.</version-prefix>
       
-       <release version="28" recommended="1">
+       <release version="29" recommended="1">
+        <date>4.10.2017</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>28b77165cccf39a67b4e69052d99c1e1</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>7efd448f6facc014e066ffb8a3cdb333</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>26157cf7395a535389105b20c763b371</md5sum>
+        </package>
+      </release>
+
+      <release version="28">
         <date>19.9.2017</date>
         <package name="Debian package">
           <download-url>_VERSION-1_all.deb</download-url>
@@ -1007,7 +1039,27 @@
         <version-prefix>2.16.</version-prefix>
       
 
-      <release version="47" recommended="1">
+      <release version="48" recommended="1">
+        <date>4.10.2017</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>52cb76fb5bf7bf71b7393e593a2e99ce</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>7b6fee0485017f3ad93e663cf6e89761</md5sum>
+        </package>
+        <package name="Solaris package">
+          <download-url>-VERSION-1.pkg</download-url>
+          <md5sum>ed6619e8b80a4c4df30f698bc791a2ff</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>e068d076373490bb513e69add9d6b476</md5sum>
+        </package>
+      </release>
+
+      <release version="47">
         <date>19.9.2017</date>
         <package name="Debian package">
           <download-url>_VERSION-1_all.deb</download-url>

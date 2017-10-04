@@ -76,6 +76,53 @@ HTML header: <title>dCache 3.1 Release Notes</title>
 
 Thanks to Johan Guldmyr for his constributions.
 
+## Release 3.1.17
+
+### cells
+
+The current release improved some problematic error messages has better error reporting to ensure bugs are understood.
+
+### httpd
+
+The curren release fixed the issue of change of format in transfers.txt after upgrading from 2.13 to 2.16.
+
+
+### pool
+
+The current release fixed log and alarms duplication when rebuilding broken entry.
+
+### webdav
+
+Regression fixed in OPTIONS output.
+
+### Changelog 3.1.16..3.1.17
+
+<!-- git log 3.1.16..3.1.17 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[f16c05b](https://github.com/dcache/dcache/commit/f16c05b82bba80f2f2d0a234c26d35d58975f871)
+:   [maven-release-plugin] prepare release 3.1.17
+
+[c62d4ca](https://github.com/dcache/dcache/commit/c62d4caf9df536d185d0162cfc1f4ee15a190124)
+:   httpd: restore millis to transfer time for transfers.txt
+
+[7564d4f](https://github.com/dcache/dcache/commit/7564d4f6f6ea2fa251fbcf14bdb23387412b20dd)
+:   chimera: fixed database query for storing multiple checksums for a file.
+
+[2a8fe83](https://github.com/dcache/dcache/commit/2a8fe83a19d28f2916397b78b12c6b63978a1abc)
+:   pool: fix log and alarms duplication when rebuilding broken entry
+
+[1fc84b8](https://github.com/dcache/dcache/commit/1fc84b8dcf7732cdcefc53483e467e88a2ba35af)
+:   cells: better error reporting to ensure bugs are understood
+
+[d1b1789](https://github.com/dcache/dcache/commit/d1b1789ef61456a78454a7afdf0fcf7eeb661c6d)
+:   webdav: fix regression in OPTIONS response
+
+[022840f](https://github.com/dcache/dcache/commit/022840f9bc52ac632c361726fd69d2d83fc86e5f)
+:   chimerashell: use chimera.db.* options as defaults
+
+[d8961f4](https://github.com/dcache/dcache/commit/d8961f428c29a80924d045c4ab6ef978b436eb9d)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.1.16
 
 ### nfs
