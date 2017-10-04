@@ -101,9 +101,9 @@ A macaroon may be limited and only allow the bearer to do certain
 things by having caveats.  Caveats could by any limitation.  A caveat
 could make the macaroon time-limited (e.g, only good for five
 minutes), location-limited (e.g., only from a particular IP address),
-or anything else.  You can learn more about macaroons from this video:
-
-https://air.mozilla.org/macaroons-cookies-with-contextual-caveats-for-decentralized-authorization-in-the-cloud/
+or anything else.  You can learn more about macaroons from an Air 
+Mozilla talk called [Macaroons: Cookies with Contextual Caveats 
+for Decentralized Authorization in the Cloud] (https://air.mozilla.org/macaroons-cookies-with-contextual-caveats-for-decentralized-authorization-in-the-cloud/).
 
 Macaroons are a building-block technology, so have many potential
 uses.  They may be used by a web-portal to allow its clients (of which
@@ -202,11 +202,36 @@ The deprecated configuration properties `srmmanager.net.port` and
 SSH connection to dCache's admin shell now take host restrictions in
 the public key into account.
 
-### Internal networking - GERD
+### Internal networking
 
-- [cells: add tls based encrypted channels for cell communication](http://github.com/dcache/dcache/commit/c977392bb0d704ac5309ad0ce1f636560fbfa9d6)
-- [cells: fix TLS support to work with embedded zookeeper](http://github.com/dcache/dcache/commit/b0abb286b6a98f5b28e0bd382ac9d41425b63ee5)
+Network communication between core and satellite domains has, until 
+now, been unencrypted. dCache 3.2 adds the possibility to use TLS 
+encryption between domains, which should be extremely helpful for
+building larger, distributed setups.
 
+A number of new configuration properties controls encrypted cell
+communication. 
+
+Set `dcache.broker.core.channel.security` to `none` in order to 
+listen only for plain-text communication on `dcache.broker.plain.port`, 
+to `tls` in order to listen only for TLS encrypted communication 
+on `dcache.broker.tls.port` or to `none,tls` in order to listen 
+for both plain and encrypted communication.
+
+`dcache.broker.core.client.channel.security` and `dcache.broker.satellite.channel.security`
+can be used to enable encryption between core and satellite domains. 
+
+In order to ease managing encrypted communications, the LocationManager
+cell, `lm`, now has three new commands available: `ls`, `get core-config`
+and `set core-config`, which can be used to query and set the 
+operating mode for domains.
+
+Regarding backwards compatibility, the introduction of TLS encryption
+deprecates the `dcache.broker.port` property. Satellite domains which 
+do not receive a configuration update can still connect to updated 
+core domains which listen to plain communication, and core domains 
+which are not updated can still connect to updated core domains.
+ 
 ### Admin improvements
 
 The `ps` command of the System cell has been overhauled. In particular
