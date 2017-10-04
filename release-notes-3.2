@@ -59,7 +59,7 @@ HTML header: <title>dCache 3.2 Release Notes</title>
 
 <div class="page-header">
 <h1>What's new in dCache 3.2<br/>
-<small>The release notes</small></h1>
+<small>Release notes</small></h1>
 </div>
 
 ## Highlights
@@ -69,23 +69,24 @@ features. This release introduces TLS encryption for domain communication, which
 facilitate setting up large distributed instances with WAN interconnections. On the 
 client-visible side, Macaroons can now be used as a means for detailed access control. 
 And on a more admin-oriented level, the newly-introduced concept of roles makes privilege
-management easier and facilitates delegation of tasks to trusted users.
+management easier and facilitates the delegation of tasks to trusted users.
 
 From an administrative perspective, perhaps the most outstanding change is the switch 
 to systemd-compatible scripts on Debian systems. 
 
 ## Incompatibilities
 
-- Classic replica manager is no longer supported
-- Uses systemd on Debian derived systems if available
-- The admin door limits key based login to the usernames listed in the `authorized_keys2` file.
+- Classic replica manager is no longer supported.
+- Uses systemd only on Debian-derived systems if available.
+- The admin door limits key-based login to the usernames listed in the `authorized_keys2` file.
 - The output of the `ps` admin command has changed. External scripts must be updated.
 - The `dcache.broker.port` property is deprecated.
 
+
 ## Acknowledgments
 
-Once again, we are glad to have received contributions by several people who are not in
-on our core team. 
+Once again, we are pleased to have received contributions by several people who are not
+members of our core team.
 
 We would like to thank Ivan Kadochnikov for his patches to xrootd. 
 
@@ -104,12 +105,12 @@ code made it into 3.2.0.
 We've added support for macaroons in the webdav door.
 
 Macaroons are a new idea that comes from research by Google.  They are
-bearer tokens that allows the bearer to do something, without
-requiring that the user identifying who they are.
+bearer tokens that allow the bearer to do something, without
+requiring the users to identify who they are.
 
-A macaroon may be limited and only allow the bearer to do certain
-things by having caveats.  Caveats could by any limitation.  A caveat
-could make the macaroon time-limited (e.g, only good for five
+A macaroon may be limited by caveats which only allow the bearer to do certain
+things.  These limitations could be nearly anything.  A caveat
+could make the macaroon time-limited (e.g., only good for five
 minutes), location-limited (e.g., only from a particular IP address),
 or anything else.  You can learn more about macaroons from an Air 
 Mozilla talk called [Macaroons: Cookies with Contextual Caveats 
@@ -125,7 +126,7 @@ sharing of resources. There are likely many other uses for them.
 Requesting a macaroon is as simple as making a POST request with a
 Content-Type of `application/macaroon-request`.  This returns a
 time-limited (but otherwise unlimited) macaroon.  Additional caveats
-may be added by dCache (include them as JSON in the POST request) or
+may be added by dCache (included as JSON in the POST request) or
 subsequently by anyone else.  dCache supports a rich set of possible
 restrictions, including namespace (e.g., only a particular file or
 directory), time (e.g., only the next 5 minutes), location (e.g., only
@@ -138,13 +139,13 @@ portal could create a seperate macaroon for every file its user wishes
 to view.
 
 A macaroon is a bearer token.  To use a macaroon in an HTTP request,
-just add it in the Authorization header value with a prefix `bearer`,
+just add it to the Authorization header value with a prefix `bearer`,
 just like with an OpenID-Connect access-token.
 
-Unfortunately not all HTTP clients allow a user to add a bearer token
+Unfortunately, not all HTTP clients allow a user to add a bearer token
 to the Authorization HTTP header; for example, a user cannot easily
 include a bearer token in their web-browser.  To support these
-clients, dCache supports URLs that include the 'authz' query
+clients, dCache accepts URLs that include the 'authz' query
 parameter, with the value used as a bearer token (e.g.,
 `https://dcache.example.org/path/to/file?authz=<token>`).  This works
 for both OpenID-Connect access-token or macaroon.
@@ -155,38 +156,37 @@ page's navigation and download links.  This makes it easy to navigate
 through the webdav interface using a macaroon or OpenID-Connect
 access-token: just add `?authz=<token>` to the URL.
 
+
 ### Roles
 
 It may be desirable for dCache to behave differently for the same user
-between different login session.  For example, an administrative user
+between different login sessions.  For example, an administrative user
 may wish sometimes to interact with dCache as a normal user (for
 testing purposes or to reduce the risk of mistakes), and other times to
-interact with dCache with effectively root-like prividges.
+interact with dCache with effectively root-like privileges.
 
+This functionality has been enabled by introducing the concept of user
+roles in dCache. A user may log in requesting zero or more roles and the
+login process chooses which roles (if any) to enact.
 
-This functionality has been enabled by introducing a concept of user
-roles in dCache. A user may log in requesting zero or
-more roles and the login process chooses which roles (if any) to enact.
-
-For the HTTP-based services (webdav and restful), the roles can be
-chosen by appending '#' and a comma-separated list of roles to
-their username; for example, user 'fred' wishing to adopt 'role-a' and
-'role-b' roles would authenticate with the username
-'fred#role-a,role-b'.
+For the HTTP-based services (webdav and RESTful), roles can be
+requested by appending to the username a '#' followed by a comma-separated list;
+for example, user 'fred' wishing to adopt 'role-a' and
+'role-b' would authenticate with the username 'fred#role-a,role-b'.
 
 This release introduces limited support for the 'admin' role.
 
 The 'admin' role is intended to give users root-like permissions without
-the user knowing root credential and with the user's
+the user knowing the root credentials and with the user's
 identity still being bound to that user.  The result is that the user
-with 'admin' role is able to do everything, but files created by that
+with the 'admin' role is able to do everything, but files created by that
 user are still owned by that user and log entries show which user
-enacted changes.
+made any changes.
 
 An 'admin' role user has a root directory of `/` and no restrictions.
 
-The functionality is enabled by adding new gPlazma session plugin 'roles' to
-`gplazma.conf` file like so:
+The functionality is enabled by adding a new gPlazma session plugin, 'roles', to
+the `gplazma.conf` file, like this:
 
 ```
 session  required    roles
@@ -206,11 +206,13 @@ The handling of external connections has changed for some protocols.
 
 The SRM network configuration was simplified, and dCache can now work
 with multiple SRM services on different ports.
+
 The deprecated configuration properties `srmmanager.net.port` and
 `srmmanager.net.local-hosts` are no longer needed.
 
-SSH connection to dCache's admin shell now take host restrictions in
+SSH connections to dCache's admin shell now take host restrictions in
 the public key into account.
+
 
 ### Internal networking
 
@@ -219,7 +221,7 @@ now, been unencrypted. dCache 3.2 adds the possibility to use TLS
 encryption between domains, which should be extremely helpful for
 building larger, distributed setups.
 
-A number of new configuration properties controls encrypted cell
+A number of new configuration properties control encrypted cell
 communication. 
 
 Set `dcache.broker.core.channel.security` to `none` in order to 
@@ -244,13 +246,13 @@ which are not updated can still connect to updated core domains.
  
 ### Admin improvements
 
-The `ps` command of the System cell has been overhauled. In particular
+The `ps` command of the System cell has been overhauled. In particular,
 the output of the `-f` option has been cleaned up and extended.
 
-The admin cell now generates access log events containing connection,
-disconnection as well as authentication events.
+The admin cell now generates access log events containing connection and
+disconnection, as well as authentication, events.
 
-Key based authentication has been improved by enforcing that a
+Key-based authentication has been improved by enforcing that a
 particular key can only log in with the user name specified in the
 `authorized_keys2` file. Upon upgrade, admins should review this file
 and ensure that keys are mapped to the correct user name.
@@ -258,11 +260,11 @@ and ensure that keys are mapped to the correct user name.
 
 ### Namespace
 
-Tags are now reference counted like any other filesystem object. This
+Tags are now reference-counted like any other filesystem object. This
 avoids an expensive database query upon file deletion that in some
 cases has led to bottlenecks, in particular when PostgreSQL statistics
-were inaccurate. Upon upgrade the reference count for existing tags
-has to be populated which may take a little while on large databases.
+were inaccurate. Upon upgrade, the reference count for existing tags
+has to be populated, which may take a little while on large databases.
 
 
 ### Checksum handling
@@ -274,8 +276,8 @@ configured by the admin in the pool setup.
 
 The second has to do with interoperability between clients requesting
 different checksum types (this mainly derives from the Globus MD5 requirement).
-The FTP door has been modified to compute a missing checksum required by
-the client on the fly.  This way, files written by a protocol requiring ADLER32
+The FTP door has been modified to compute on the fly a missing checksum required
+by the client.  This way, files written by a protocol requiring ADLER32
 can be read by clients requiring MD5, and vice-versa.  This fix requires
 updating only the FTP door.
 
@@ -294,7 +296,7 @@ With this release, information that has traditionally been made available via
 the legacy httpd and webadmin pages will also be accessible via REST apis.
 
 A full description of the paths and parameters for each RESTful service, along
-with example JSON output, will soon be published on the dCache GitHub Wiki.
+with example JSON output, will be published separately on the dCache GitHub Wiki.
 
 Included in this release are the apis and supporting services for alarms,
 billing, cell info, pool and pool group info, active transfers and
@@ -325,31 +327,31 @@ considers the current locality of the file.
 
 ### gPlazma
 
-X509 plugin have been updated to extract email addresses from Subject Alternative
+The X.509 plugin has been updated to extract email addresses from the Subject Alternative
 Name. This extracted information is now part of the principals identifying the
 user, which is available to all dCache components like webdav, frontend etc.
 
 
 ### Frontend and WebDAV
 
-dCache-view which is part of Frontend services, have the following new features
+dCache-view, which is part of Frontend services, has the following new features
 and fixes:
 
-- display user profile information
-- add support for user roles
-- enable drag and drop for moving files and directories
+- display of user profile information
+- added support for user roles
+- drag and drop for moving files and directories
 - user login with open-ID connect
-- upload files and directories using drag and drop
-- replace the hover-context menu with customised context menu
-- user will stay in their current path after successful authentication.
+- upload of files and directories using drag and drop
+- a customised context menu replacing the hover-context
+- users stay in their current path after successful authentication.
 
-Since gplazma plugin have been updated to extract user's email, Frontend clients
+Since the gPlazma plugin has been updated to extract the user's email, Frontend clients
 can now discover a user's email addresses, if any are known.
 
-Frontend unnecessary backward compatible configuration data consume mainly by
-dcache-view were dropped.
+Unnecessary Frontend backward-compatible configuration data, consumed mainly by
+dCache-view, were dropped.
 
-Fix non-/ root for WebDAV and Frontend doors. This fix ensured that users with
+For WebDAV and Frontend doors non-/ root has been fixed, ensuring that users with
 `non-/ root` directory will see the same files and directories under WebDAV/Frontend
 as with other protocols. Also, Frontend 'mkdir' and 'mv' operations are updated
 to honour door and user roots.
@@ -358,20 +360,20 @@ to honour door and user roots.
 ### Obsolete services
 
 dCache 2.16 introduced the next generation replication service called
-the resilience manager. At the time we announced that the replica
+the resilience manager. At that time, we announced that the replica
 manager would eventually be removed. We try to keep what we promise,
 so now the old service is gone. If you haven't migrated yet, you
 should do so before upgrading to dCache 3.2.
 
 
-### systemd support on Debian based systems
+### systemd support on Debian-based systems
 
-Traditionally we have shipped out own scripts to daemonize
-dCache. This made it easier support many different distributions and
-to support the multi process architecture of dCache (in other words,
+Traditionally, we have shipped our own scripts to daemonize
+dCache. This made it easier to support many different distributions as well
+as the multi-process architecture of dCache (in other words,
 it was more fun to implement our own than to study how each
-distribution did it). For better or worse the mainstream Linux
-distributions all moved to systemd and it becomes hard to justify why
+distribution did it). For better or worse, the mainstream Linux
+distributions have all moved to systemd, so it now becomes hard to justify why
 dCache shouldn't make use of the functionality offered.
 
 As a first step towards systemd, this release recognizes systemd on
@@ -386,16 +388,17 @@ directly manages each dCache process. This means:
 - systemd monitors the Java process and restarts it if it quits directly. There is no
   separate 'restart file' to suppress the dCache auto-restart mechanism.
 
-- No PID files as systemd tracks the dCache processes directly.
+- No PID files, as systemd tracks the dCache processes directly.
 
 - systemd captures the stdout/stderr output of the process and directs
   it to journald. The default journald setup passes the log on to
   syslog.
 
 - systemd drops privileges of the Java process during startup. systemd mounts
-  `/etc`, `/usr`, `/boot`, and `/home` read-only for dCache process, preventing dCache
-  from writing to any of these directories. *Note*: This is important to
+  `/etc`, `/usr`, `/boot`, and `/home` read-only for the dCache process, preventing
+  dCache from writing to any of these directories. *Note*: This is important to
   remember if you happen to use `/home` for pool data or tape integration.
+
 
 #### Starting and stopping dCache domains
 
@@ -410,15 +413,16 @@ The `dcache` script has been updated to call out to `systemctl` to
 start and stop domains. One can continue to use these commands to
 manually start and stop domains. Since the systemd support replaces
 the classic SysV init script, auto-startup during boot has changed:
-The generated systemd units are not flagged as enabled
-automatically: Although one can start and stop these domains, they do
+the generated systemd units are not flagged as enabled
+automatically.  Although one can start and stop these domains, they do
 not start automatically. Use the `systemd enable` command on every
 domain that should start automatically. In contrast to before, one can
 select exactly which domains should start automatically.
 
+
 #### Logging
 
-Since dCache by default logs to stdout and since systemd redirects
+Since dCache by default logs to stdout, and since systemd redirects
 stdout to journald and thus to syslog, dCache logs now end up in
 syslog. An rsyslog configuration is included to seperate the dCache
 log output from other syslog messages. Each domain logs to
@@ -426,12 +430,12 @@ log output from other syslog messages. Each domain logs to
 file cannot be placed in `/var/log/dcache` due to permission
 requirements enforced by rsyslog. The default logrotate setup is
 adjusted to rotate the new files. It is no longer necessary to use the
-`copytruncate` option, which makes logrotation more efficient, use
-less disk space, and avoids the risk of loosing log entries.
+`copytruncate` option, which makes logrotation more efficient, uses
+less disk space, and avoids the risk of losing log entries.
 
 Since syslog includes timestamps automatically, the default log format
 is modified upon upgrade to not include the timestamp in the dCache
-output. If the log format was customized, it must be adjusted. Since
+output. If the log format has been customized, it must be adjusted. Since
 the log format changes anyway, we also adjusted how the NDC is
 logged.
 
@@ -441,23 +445,23 @@ to `/var/log/dcache` rather than stdout. If you do, you should ideally
 use the logback logrotation rather than rely on logrotated.
 
 
-
 #### RedHat
 
-Nobody has bothered upgrade the RedHat packaging with systemd support
+Nobody has bothered to upgrade the RedHat packaging with systemd support
 yet. Volunteers are welcome.
 
 
 ### FTP
 
 The FTP door was updated to allow pipelining of commands. Since the
-FTP protocol expects some commands to have immediate effect - ie
-before the previous commands have finished - this is not as trivial as
+FTP protocol expects some commands to have immediate effect – i.e.,
+before the previous commands have finished – this is not as trivial as
 it sounds. We believe we have nailed it, both fixing bugs in the
 existing implementation and avoiding the bugs other services have in
 their attempt to support pipelining.
 
 The immediate effect is better compatibility with Globus Online.
+
 
 ### Space usage
 
@@ -465,48 +469,55 @@ Continuing the WLCG quest to reimplement the features of SRM in other
 protocols, dCache now exposes space reservation stats through both FTP
 and WebDAV.
 
-For FTP the `SITE USAGE` command is implemented, supplying information
+For FTP, the `SITE USAGE` command is implemented, supplying information
 from SpaceManager using reservations with a description that matches
 the TOKEN argument (if a TOKEN was given) or that are bound to the
 supplied path (if TOKEN was omitted).
 
-For WebDAV, reservations are exposed as RFC 4331 quoatas and can be
+For WebDAV, reservations are exposed as RFC 4331 quotas and can be
 queried as such.
+
 
 ### NFS
 
-Update handling of directory listings. This should avoid situations, when client was receiven BAD_COOKIE
-error, cased by server-side cache invalidation. The stage and p2p operations are handles the same way and
-more client friendly. 'show transfer' admin command supports filtering based on client ip, pnfs id and pool
-name.
+Updated handling of directory listings. This should avoid situations when the client receives a BAD_COOKIE
+error caused by server-side cache invalidation. The stage and p2p operations are handled the same way and
+are more client-friendly. The 'show transfer' admin command supports filtering based on client ip, pnfsid
+and pool name.
 
 
 ### Xrootd
 
-Xrootdfs FUSE driver immediately closes a file on creation,
-then reopens it to write. The behavior of xrootd door in dCache
-has been modified to allow to overwrite new empty files enabling
-xrootdfs FUSE file copies into dCache mounted filesystem.
+The xrootdfs FUSE driver immediately closes a file on creation,
+then reopens it to write. The behavior of the xrootd door in dCache
+has been modified to allow new empty files to be overwritten, thus enabling
+file copies from xrootdfs FUSE into a dCache mounted filesystem.
 
 
 ### Pools
-Pools can use mongoDB to store metadata. This can be enabled by:
+
+Pools can use mongoDB to store metadata. This can be enabled by the
+
 ```
 pool.plugins.meta=org.dcache.pool.repository.meta.mongo.MongoDbMetadataRepository
 ```
+
 configuration option. Additional properties control mongoDB server location, database name and
 collecton name:
+
 ```
 pool.plugins.meta.mongo.url=mongodb://localhost:27017    
 pool.plugins.meta.mongo.db=pdm
 pool.plugins.meta.mongo.collection=poolMetadata
 ```
-A single shared mongoDB instance can be used for all pools. NOTICE, in production mongodb must
-run in a custer to provide high performance and availability.
+
+A single shared mongoDB instance can be used for all pools.
+
+NOTICE: in production, mongodb must run in a cluster in order to provide high
+performance and availability.
 
 
-
-### Changelog from 3.0.0 to 3.1
+### Changelog from 3.1.0 to 3.2
 
 <!-- git log 3.1.0..3.2 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
 
@@ -1345,7 +1356,7 @@ run in a custer to provide high performance and availability.
 :   [maven-release-plugin] prepare for next development iteration
 
 [3d91506a31](https://github.com/dcache/dcache/commit/3d91506a31b8a68551005a18d47bdd16849347a5)
-:   xrootd  : use lower case for checksum algorithm names when replying           to checksum queries.
+:   xrootd  : use lower case for checksum algorithm names when replying to checksum queries.
 
 
 
