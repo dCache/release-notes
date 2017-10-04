@@ -288,16 +288,14 @@ handling of QoS updates on the namespace service, so that the request correctly
 considers the current locality of the file.
 
 
-### gPlazma - FEMI
+### gPlazma
 
 X509 plugin have been updated to extract email addresses from Subject Alternative
 Name. This extracted information is now part of the principals identifying the
 user, which is available to all dCache components like webdav, frontend etc.
 
-- [gplazma: extract email from x.509 certificates](http://github.com/dcache/dcache/commit/f7dae695116f74945c03f62cd7b0d491d8040951)
 
-
-### Frontend and WebDAV - MARINA/FEMI
+### Frontend and WebDAV
 
 dCache-view which is part of Frontend services, have the following new features
 and fixes:
@@ -306,9 +304,6 @@ and fixes:
 - add support for user roles
 - enable drag and drop for moving files and directories
 - user login with open-ID connect
-- fix Uncaught TypeError in DirectoryLsError
-- display proper error message when user hit 401 status code
-- change configuration state name to the supported ones in dcache
 - upload files and directories using drag and drop
 - replace the hover-context menu with customised context menu
 - user will stay in their current path after successful authentication.
@@ -324,11 +319,6 @@ Fix non-/ root for WebDAV and Frontend doors. This fix ensured that users with
 as with other protocols. Also, Frontend 'mkdir' and 'mv' operations are updated
 to honour door and user roots.
 
-- [dcache: release dcache-view 1.3.0 for dcache current master](http://github.com/dcache/dcache/commit/3b372e2b516873b48ff6cdcfa907e195e4b13dd2)
-- [dcache: release dcache-view version 1.3.1](http://github.com/dcache/dcache/commit/52a409c136f02b9f70d92fc72f7c4a936270785e)
-- [frontend: expose users email address](http://github.com/dcache/dcache/commit/e5e80f491edf8a78725c20054643e2c36f678917)
-- [frontend: remove backwards compatible config data](http://github.com/dcache/dcache/commit/ba946f112e1b0ce0dee1de22de0541a3e044a0f2)
-- [http: fix non-/ root for WebDAV and frontend doors](http://github.com/dcache/dcache/commit/0bc04f6b7127ba135bcda0f3ffac37de49299cad)
 
 ### Obsolete services
 
@@ -448,20 +438,12 @@ supplied path (if TOKEN was omitted).
 For WebDAV, reservations are exposed as RFC 4331 quoatas and can be
 queried as such.
 
-### NFS - TIGRAN
+### NFS
 
 Update handling of directory listings. This should avoid situations, when client was receiven BAD_COOKIE
 error, cased by server-side cache invalidation. The stage and p2p operations are handles the same way and
 more client friendly. 'show transfer' admin command supports filtering based on client ip, pnfs id and pool
 name.
-
-- [libs: switch to nfs4j-0.15](http://github.com/dcache/dcache/commit/e064f5577bdb324d5b7efb9d60112ebf53fe6d83)
-- [libs: update nfs4j to version 0.15.2](http://github.com/dcache/dcache/commit/ad7fdddfc086fe0d458d8397e9d12b439d933e48)
-- [libs: update to nfs4j-0.15.1](http://github.com/dcache/dcache/commit/7ee44eea7e3c82d1f723e474306db0df9b68ac7d)
-- [nfs: add a possibility to specify offered layout types](http://github.com/dcache/dcache/commit/28e093eec05405c210372ddd6223467a7c0d27b8)
-- [nfs: show transfer status when displayed](http://github.com/dcache/dcache/commit/f77ebaa6c6350f7d6148191019991fb521703df0)
-- [nfs: use v4.1 for flex file layout](http://github.com/dcache/dcache/commit/2af2ae8c0176f64df9f88127d1d23fbd6e8ed817)
-- [nfsv41door: add filter method for show transfers command](http://github.com/dcache/dcache/commit/345dbfbbd5c457f4d38fd325d53ea4104ae04824)
 
 
 ### Xrootd
@@ -472,7 +454,7 @@ has been modified to allow to overwrite new empty files enabling
 xrootdfs FUSE file copies into dCache mounted filesystem.
 
 
-### Pools - TIGRAN
+### Pools
 Pools can use mongoDB to store metadata. This can be enabled by:
 ```
 pool.plugins.meta=org.dcache.pool.repository.meta.mongo.MongoDbMetadataRepository
@@ -486,9 +468,6 @@ pool.plugins.meta.mongo.collection=poolMetadata
 ```
 A single shared mongoDB instance can be used for all pools. NOTICE, in production mongodb must
 run in a custer to provide high performance and availability.
-
-- [pool: add support for mongodb as a backend for medatada](http://github.com/dcache/dcache/commit/130e160f5ce78e29c3ed8ea73b4aefd59004c73e)
-
 
 
 
