@@ -167,6 +167,32 @@
     <br/>
   </preamble>
 
+  <series id="server-3.2">
+    <title>server 3.2.x</title>
+    <description>
+      <p>
+        dCache 3.2 features the following highlights and architectural improvements:
+      </p>
+
+      <ul>
+        <li>Support for macaroons in WebDAV door.</li>
+        <li>Switch to systemd-compatible scripts on Debian systems.</li>
+        <li>OpenID connect support for Frontend.</li>
+        <li>TLS encryption is introduced for domain communication.</li>
+      </ul>
+
+      <p>
+          dCache v3.2 requires a JVM supporting Java 8.
+      </p>
+
+    </description>
+
+    <releases>
+
+
+    </releases>
+  </series>
+
   <series id="server-3.1">
     <title>server 3.1.x</title>
     <description>
