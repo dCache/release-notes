@@ -192,26 +192,25 @@
         <download-url-prefix>repo/3.2/dcache</download-url-prefix>
         <notes-url>release-notes-3.2.shtml</notes-url>
         <version-prefix>3.2.</version-prefix>
+	
+	<release version="0" recommended="1">
+          <date>5.10.2017</date>
+          <package name="Debian package">
+            <download-url>_VERSION-1_all.deb</download-url>
+            <md5sum>4a2b7d46ec56c4db4a2890cd535d9925</md5sum>
+          </package>
+         <package name="rpm">
+            <download-url>-VERSION-1.noarch.rpm</download-url>
+            <md5sum>f953ced9e6024759db94e320f0886459</md5sum>
+         </package>
+         <package name="tgz">
+           <download-url>-VERSION.tar.gz</download-url>
+           <md5sum>75eb167585bed1e4347e2e3e17cb9767</md5sum>
+         </package>
+        </release>
 
     </releases>
-
-      <release version="0" recommended="1">
-        <date>5.10.2017</date>
-        <package name="Debian package">
-          <download-url>_VERSION-1_all.deb</download-url>
-          <md5sum>4a2b7d46ec56c4db4a2890cd535d9925</md5sum>
-        </package>
-        <package name="rpm">
-          <download-url>-VERSION-1.noarch.rpm</download-url>
-          <md5sum>f953ced9e6024759db94e320f0886459</md5sum>
-        </package>
-        <package name="tgz">
-          <download-url>-VERSION.tar.gz</download-url>
-          <md5sum>75eb167585bed1e4347e2e3e17cb9767</md5sum>
-        </package>
-      </release>
-
-      
+     
   </series>
 
   <series id="server-3.1">
