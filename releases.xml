@@ -188,7 +188,10 @@
     </description>
 
     <releases>
-
+     <name>dCache VERSION</name>
+        <download-url-prefix>repo/3.2/dcache</download-url-prefix>
+        <notes-url>release-notes-3.2.shtml</notes-url>
+        <version-prefix>3.2.</version-prefix>
 
     </releases>
   </series>
