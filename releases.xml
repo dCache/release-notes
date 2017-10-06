@@ -176,7 +176,7 @@
 
       <ul>
         <li>Support for macaroons in WebDAV door.</li>
-        <li>Switch to system-compatible scripts on Debian systems.</li>
+        <li>Switch to systemd-compatible scripts on Debian systems.</li>
         <li>OpenID connect support for frontend.</li>
         <li>TLS encryption is introduced for domain communication.</li>
       </ul>
