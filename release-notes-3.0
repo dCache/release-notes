@@ -109,6 +109,69 @@ HTML header: <title>dCache 3.0 Release Notes</title>
 
 Thanks to Onno Zweers for several contributions to this release.
 
+## Release 3.0.30
+
+### Changes affecting multiple services
+
+Many dCache components use RemotePoolMonitor to provide fast access to
+the information that PoolManager has about pools. In order to facilitate
+system diagnosis, the 'info' admin command was augmented by information
+about the current status of the RemotePoolMonitor.
+
+### admin
+
+The Apache sshd library used by the admin interface was updated. 
+Although we believe that dCache is not affected, some security vulnerability
+scanners alert users to a potentially vulnerable library version.
+The update serves mostly to avoid those false alarms.
+
+### pool
+
+A bug in gfal2 results in FTP transfers being aborted some 50 ms after
+being initiated.  This results in the door killing the mover shortly
+after the pool received the PoolDeliverFile message.  If the mover is
+not queued, but not yet fully started, this may lead to the pool
+disabling itself. This patch corrects that problem, ensuring that
+the pool continues to run despite any aborted transfers.
+
+### xrootd
+
+In the 4.7 releases, the xrootd client started enforcing 
+protocol requirements for kXR_login which, unfortunately, 
+broke access to dCache. The xrootd client expects an answer 
+with a 16-character session ID from the door and then the 
+pool after the redirection. Without this ID, the client 
+would retry (without success) repeatedly and appear to hang.
+
+dCache's xrootd implementation has been augmented with the session
+ID, enabling it to work with xrootd clients of version 4.7 and up.
+
+
+### Changelog 3.0.29..3.0.30
+
+<!-- git log 3.0.29..3.0.30 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[8aa487149e](https://github.com/dcache/dcache/commit/8aa487149e69c22024027e9f790e981bd1dcff7e)
+:   [maven-release-plugin] prepare release 3.0.30
+
+[a2aa5fc13b](https://github.com/dcache/dcache/commit/a2aa5fc13be5fc5dcf516899be12a878f260b6b4)
+:   many: add diagnostic information about remote pool monitor
+
+[666b22a5bb](https://github.com/dcache/dcache/commit/666b22a5bbc8177a592e002f5365ea6d20249506)
+:   pool: dont disable pool if mover cancelled before open
+
+[cdc124dce6](https://github.com/dcache/dcache/commit/cdc124dce66c6450e61db7addad8dc1f1a83e32c)
+:   update apache sshd version due to security vulnerability
+
+[b730eec759](https://github.com/dcache/dcache/commit/b730eec7597c6e960f1628b292edd03a983e110e)
+:   [maven-release-plugin] prepare for next development iteration
+
+[1322fd2dcc](https://github.com/dcache/dcache/commit/1322fd2dcce8ebe2fe21e150de20979c102c73a0)
+:   dcache: fix bug in PoolSelectionUnitV2 match()
+
+[eee56dee0a](https://github.com/dcache/dcache/commit/eee56dee0ab186ea7627fee02b70055853721d98)
+:   dcache-xrootd: Fix login handshake to support xrootd clients (> 4.7.0)
+
 ## Release 3.0.29
 
 ### cells

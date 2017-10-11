@@ -111,6 +111,78 @@ HTML header: <title>dCache 2.16 Release Notes</title>
 * Sites with a custom `httpd.conf` configuration will have to adjust
   this upon upgrade to inject the cell address of the `info` service.
 
+## Release 2.16.49
+
+### Changes affecting multiple services
+
+Many dCache components use RemotePoolMonitor to provide fast access to
+the information that PoolManager has about pools. In order to facilitate
+system diagnosis, the 'info' admin command was augmented by information
+about the current status of the RemotePoolMonitor.
+
+### admin
+
+The Apache sshd library used by the admin interface was updated. 
+Although we believe that dCache is not affected, some security vulnerability
+scanners alert users to a potentially vulnerable library version.
+The update serves mostly to avoid those false alarms.
+
+### dcap
+
+In order to better handle large READV requests, the buffer size
+for dcap commands was changed to automatically grow to the
+required size, up to a maximum buffer size of 8 MB.
+
+### pool
+
+A bug in gfal2 results in FTP transfers being aborted some 50 ms after
+being initiated.  This results in the door killing the mover shortly
+after the pool received the PoolDeliverFile message.  If the mover is
+not queued, but not yet fully started, this may lead to the pool
+disabling itself. This patch corrects that problem, ensuring that
+the pool continues to run despite any aborted transfers.
+
+### xrootd
+
+In the 4.7 releases, the xrootd client started enforcing 
+protocol requirements for kXR_login which, unfortunately, 
+broke access to dCache. The xrootd client expects an answer 
+with a 16-character session ID from the door and then the 
+pool after the redirection. Without this ID, the client 
+would retry (without success) repeatedly and appear to hang.
+
+dCache's xrootd implementation has been augmented with the session
+ID, enabling it to work with xrootd clients of version 4.7 and up.
+
+
+### Changelog 2.16.48..2.16.49
+
+<!-- git log 2.16.48..2.16.49 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[4c08188f48](https://github.com/dcache/dcache/commit/4c08188f48f3fcdf5c384605d37aaeae22ecbc1f)
+:   [maven-release-plugin] prepare release 2.16.49
+
+[c89c0d0ffd](https://github.com/dcache/dcache/commit/c89c0d0ffd4016dbc7893f8921ad6bef8e1f0792)
+:   many: add diagnostic information about remote pool monitor
+
+[5fd8a663e9](https://github.com/dcache/dcache/commit/5fd8a663e93288a3b419634498652501774343eb)
+:   pool: dont disable pool if mover cancelled before open
+
+[efdcd16213](https://github.com/dcache/dcache/commit/efdcd162133622798daea346909625d65a3bee9f)
+:   Manual correction of missing mvn-release-plugin commit: Preparation for next development iteration
+
+[6185ebf498](https://github.com/dcache/dcache/commit/6185ebf498b3a95deeb655467b77c191b50aac68)
+:   apache sshd: upgrade to 1.3.0 due to security vulnerability
+
+[92cadf866b](https://github.com/dcache/dcache/commit/92cadf866bc7418ee3fd6bbc6f98d030aba3449f)
+:   dcache: fix bug in PoolSelectionUnitV2 match()
+
+[1e2adb151e](https://github.com/dcache/dcache/commit/1e2adb151e4bb97ea6ba2f1150052b756ea10aba)
+:   dcache-xrootd: Fix login handshake to support xrootd clients (> 4.7.0)
+
+[089a4474a6](https://github.com/dcache/dcache/commit/089a4474a6550d4fc9fdbb3cdb811f2c2f9e8669)
+:   dcap: bump max command size sent by client to 8MB
+
 ## Release 2.16.48
 
 ### cells

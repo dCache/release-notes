@@ -76,6 +76,62 @@ HTML header: <title>dCache 3.1 Release Notes</title>
 
 Thanks to Johan Guldmyr for his constributions.
 
+## Release 3.1.18
+
+### Changes affecting multiple services
+
+Many dCache components use RemotePoolMonitor to provide fast access to
+the information that PoolManager has about pools. In order to facilitate
+system diagnosis, the 'info' admin command was augmented by information
+about the current status of the RemotePoolMonitor.
+
+### pool
+
+A bug in gfal2 results in FTP transfers being aborted some 50 ms after
+being initiated.  This results in the door killing the mover shortly
+after the pool received the PoolDeliverFile message.  If the mover is
+not queued, but not yet fully started, this may lead to the pool
+disabling itself. This patch corrects that problem, ensuring that
+the pool continues to run despite any aborted transfers.
+
+### xrootd
+
+In the 4.7 releases, the xrootd client started enforcing 
+protocol requirements for kXR_login which, unfortunately, 
+broke access to dCache. The xrootd client expects an answer 
+with a 16-character session ID from the door and then the 
+pool after the redirection. Without this ID, the client 
+would retry (without success) repeatedly and appear to hang.
+
+dCache's xrootd implementation has been augmented with the session
+ID, enabling it to work with xrootd clients of version 4.7 and up.
+
+
+### Changelog 3.1.17..3.1.18
+
+<!-- git log 3.1.17..3.1.18 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[9c1b699547](https://github.com/dcache/dcache/commit/9c1b699547903ae08aa37aaf1d2b8855140a6fed)
+:   [maven-release-plugin] prepare release 3.1.18
+
+[98a3c6c43a](https://github.com/dcache/dcache/commit/98a3c6c43afb44bed3b8b119c1cda537a3de3b74)
+:   many: add diagnostic information about remote pool monitor
+
+[9ea035f83d](https://github.com/dcache/dcache/commit/9ea035f83da8a538b718f69eaa54f58ba532ca46)
+:   pool: dont disable pool if mover cancelled before open
+
+[c669be7638](https://github.com/dcache/dcache/commit/c669be763887379897d120fcfc7cfe65cc9c368d)
+:   [maven-release-plugin] prepare for next development iteration
+
+[4e791a9cd0](https://github.com/dcache/dcache/commit/4e791a9cd054c5c163ce3d3ab5f39974a5e7b7d3)
+:   dcache: fix bug in PoolSelectionUnitV2 match()
+
+[51159b2435](https://github.com/dcache/dcache/commit/51159b2435b62826c9752080b90837b67b1afded)
+:   dcache-xrootd: Fix login handshake to support xrootd clients (> 4.7.0)
+
+[c9155d17a8](https://github.com/dcache/dcache/commit/c9155d17a889a9d1733bdea3326757016bdfdf1d)
+:   dcache-xrootd: (WIP) Add support to the xrootd (kxr_)posc flag in (kXR_)open.
+
 ## Release 3.1.17
 
 ### cells
