@@ -330,9 +330,31 @@ with multiple SRM services on different ports.
 The deprecated configuration properties `srmmanager.net.port` and
 `srmmanager.net.local-hosts` are no longer needed.
 
-SSH connections to dCache's admin shell now take host restrictions in
-the public key into account.
+### admin ssh public keys
 
+In previous versions of dCache, any user who has their ssh public key
+in the `admin.paths.authorized-keys` file
+(`/etc/dcache/admin/authorized_keys2` by default) can log into the
+admin interface as any user.
+
+With this version of dCache, a public key is limited to authenticating
+as a single user.  The standard ssh public key format does not have
+any way to describe for which user the line allows authentication;
+therefore, dCache uses the comment field to provide this information.
+
+The comment field appears after the base64-encoded text of the public
+key.  dCache requires the comment contains the desired username
+followed by an `@` symbol; without this, the line is ignored.  The
+text after the `@` does not matter.  The username describes for which
+user the corresponding private key may be used to authenticate.
+
+The following (truncated) line shows an example `authorized_keys2`
+file that allows the use of a public key to authentication as user
+`admin`:
+
+```
+ssh-rsa AAAAB...fPQ== admin@localhost
+```
 
 ### Internal networking
 
