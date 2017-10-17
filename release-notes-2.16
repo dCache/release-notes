@@ -111,6 +111,37 @@ HTML header: <title>dCache 2.16 Release Notes</title>
 * Sites with a custom `httpd.conf` configuration will have to adjust
   this upon upgrade to inject the cell address of the `info` service.
 
+## Release 2.16.50
+
+### dcap
+
+A pool that has gone offline and comes back up again may become
+very slow to respond due to a large amount of superfluous error
+messages to dcap clients that disconnected in the meantime. This
+patch ensures a more responsive reaction to these cases by 
+introducing a time-to-live value for such messages.
+
+### pool
+
+Error reporting was improved for cases of IO errors in pools.
+
+
+### Changelog 2.16.49..2.16.50
+
+<!-- git log 2.16.49..2.16.50 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[f8ef2c239f](https://github.com/dcache/dcache/commit/f8ef2c239f52409c8f161a572cb2b497e0781f9e)
+:   [maven-release-plugin] prepare release 2.16.50
+
+[abfdee972d](https://github.com/dcache/dcache/commit/abfdee972d5c681dddf1215e4ca908f7f28bf2a9)
+:   pool: avoid 'null' and other nondescript error messages
+
+[5a75c9b609](https://github.com/dcache/dcache/commit/5a75c9b609c28619f245eb89b344ad229191748a)
+:   [maven-release-plugin] prepare for next development iteration
+
+[9d55193337](https://github.com/dcache/dcache/commit/9d551933372bf1bc912095df1b18f417dae34c03)
+:   dcap: add TTL information to dcap messages
+
 ## Release 2.16.49
 
 ### Changes affecting multiple services

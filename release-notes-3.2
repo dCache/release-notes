@@ -99,6 +99,63 @@ Marisa Nest, Martin Bürger, Sarah Schulte, Hasan Jahid and Max Patzelt, whose
 code made it into 3.2.0.
 
 
+## Release 3.2.2
+
+### alarms
+
+Shutting down dCache using `dcache stop` is now faster. 
+
+### dcap
+
+A pool that has gone offline and comes back up again may become
+very slow to respond due to a large amount of superfluous error
+messages to dcap clients that disconnected in the meantime. This
+patch ensures a more responsive reaction to these cases by 
+introducing a time-to-live value for such messages.
+
+### frontend
+
+In cases where very many alarms need to be processed by the frontend, 
+they are now fetched in batches, ensuring better responsiveness of
+the system.
+
+The way in which services send large amounts of data to the frontend, 
+as for example the active transfers or staging requests lists, has
+been made far more efficient and performant. 
+
+### pool
+
+Error reporting was improved for cases of IO errors in pools.
+
+
+### Changelog 3.2.1..3.2.2
+
+<!-- git log 3.2.1..3.2.2 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[983e3644bb](https://github.com/dcache/dcache/commit/983e3644bbbb621916c662ed5d382a9e079545b8)
+:   [maven-release-plugin] prepare release 3.2.2
+
+[132d8fa428](https://github.com/dcache/dcache/commit/132d8fa428870629dcd33fca1de331fdb9c1701a)
+:   alarms: fix shutdown timeout
+
+[c1d1324c07](https://github.com/dcache/dcache/commit/c1d1324c077c77f69f601e4bc6c80cbb699c3331)
+:   pool: avoid 'null' and other nondescript error messages
+
+[520bcdf633](https://github.com/dcache/dcache/commit/520bcdf6339c3e6e710744eb1aca94a97a4d4718)
+:   dcache-restful-api: change the way in which transfers and restores support paging
+
+[a775365ef1](https://github.com/dcache/dcache/commit/a775365ef1d31671be47de4b99d0f63820981354)
+:   [maven-release-plugin] prepare for next development iteration
+
+[3236047d4d](https://github.com/dcache/dcache/commit/3236047d4d27c3113de10e1e576412bf86d2c7d9)
+:   dcap: add TTL information to dcap messages
+
+[0e9dd30126](https://github.com/dcache/dcache/commit/0e9dd301262ecb4297b15e7c8faddbc657f7e0de)
+:   alarms: remove default value for LogEntry received
+
+[b4676a9295](https://github.com/dcache/dcache/commit/b4676a9295e932c8ccb466f1999b51027249fc41)
+:   dcache-restful-api: add offset and limit to fetch of alarms
+
 ## Release 3.2.1
 
 ### Changes affecting multiple services

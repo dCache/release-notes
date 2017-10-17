@@ -109,6 +109,37 @@ HTML header: <title>dCache 3.0 Release Notes</title>
 
 Thanks to Onno Zweers for several contributions to this release.
 
+## Release 3.0.31
+
+### dcap
+
+A pool that has gone offline and comes back up again may become
+very slow to respond due to a large amount of superfluous error
+messages to dcap clients that disconnected in the meantime. This
+patch ensures a more responsive reaction to these cases by 
+introducing a time-to-live value for such messages.
+
+### pool
+
+Error reporting was improved for cases of IO errors in pools.
+
+
+### Changelog 3.0.30..3.0.31
+
+<!-- git log 3.0.30..3.0.31 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[f7e46f453c](https://github.com/dcache/dcache/commit/f7e46f453c10da9a318212f7bbf77db43741746e)
+:   [maven-release-plugin] prepare release 3.0.31
+
+[d403eb76f7](https://github.com/dcache/dcache/commit/d403eb76f7ae95d4e11f7eecc0b0ae486f1a77bb)
+:   pool: avoid 'null' and other nondescript error messages
+
+[7008ae46a8](https://github.com/dcache/dcache/commit/7008ae46a85ee3c67fda111a751d5a5095c22850)
+:   [maven-release-plugin] prepare for next development iteration
+
+[7ae58e2bc8](https://github.com/dcache/dcache/commit/7ae58e2bc8294f7e1541ef8cc860897c4f6fb0db)
+:   dcap: add TTL information to dcap messages
+
 ## Release 3.0.30
 
 ### Changes affecting multiple services
