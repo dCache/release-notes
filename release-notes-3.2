@@ -99,6 +99,78 @@ Marisa Nest, Martin Bürger, Sarah Schulte, Hasan Jahid and Max Patzelt, whose
 code made it into 3.2.0.
 
 
+## Release 3.2.3
+
+### alarms
+
+Until now, the sorting order of alarms did not provide a correct ordering 
+for all types of alarms. With this release, alarms are now implicitly ordered 
+by at least their latest modification timestamp.
+
+### frontend
+
+The cause of a stack-trace during system shutdown has been fixed.
+
+### nfs
+
+The handling of directories with hard links in them has been improved, providing
+NFS clients with a way to correctly list them in all cases.
+
+### resilience
+
+One of the features of resilience is the enforcement of file
+partioning on pools according to pool tags.   The pool tag
+restrictions are observed whenever a file is copied.  In
+addition, it is rechecked when a storage unit is updated,
+in order to make sure the files are distributed correctly
+according to the new requirements.  This is done by
+removing the offending copies and recopying them in
+a new location.
+
+Should files get redistributed, however, by rebalancing or
+a migration job, it is possible that the partitioning will 
+be violated, since only resilience observes it. 
+
+The resilience service now verifies that files are distributed according to the requirements
+specified by pool tags while doing periodic scans (or scans initiated through the admin 
+command). 
+
+### statistics
+
+A possible race condition was removed from the implementation of the `create stat` admin command.
+
+
+### Changelog 3.2.2..3.2.3
+
+<!-- git log 3.2.2..3.2.3 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[f4a96d52d6](https://github.com/dcache/dcache/commit/f4a96d52d6e84f43d0a9f7750c56f6248ce70e16)
+:   [maven-release-plugin] prepare release 3.2.3
+
+[a95f3a56d2](https://github.com/dcache/dcache/commit/a95f3a56d27f0e739bdac973045ab1203ded296e)
+:   statistics: fix race in "create stat" admin command
+
+[17d15a2bf9](https://github.com/dcache/dcache/commit/17d15a2bf96c8df39dcd6c724b01e4b2812a4450)
+:   srm: fix stacktrace on database failure
+
+[d89fd3086c](https://github.com/dcache/dcache/commit/d89fd3086c8efdb1e479face46a1120f33b0e33e)
+:   dcache-frontend: fix shutdown not to cause stack trace in collection services
+
+[245e40df10](https://github.com/dcache/dcache/commit/245e40df102901f25030fd38a36732334448db05)
+:   alarms:  revert LogEntry.compareTo() to throw NPE on null object
+
+[5bec23331b](https://github.com/dcache/dcache/commit/5bec23331bac37e36a230d990bba5092be2c0d25)
+:   nfs: change the way how directory cookies are generated
+
+[ed2b1a7138](https://github.com/dcache/dcache/commit/ed2b1a713815102ee177d4ce04f37776ce889101)
+:   resilience: force tag partition checking on scans from admin command and periodic checks
+
+[fcfe6f0437](https://github.com/dcache/dcache/commit/fcfe6f0437513fdd6ef3a2b6face3f5aa9a92ddc)
+:   alarms: fix natural order comparator to use timestamp first
+
+[c33a097997](https://github.com/dcache/dcache/commit/c33a097997b0ae9882bd3a86ef35d6ad922b23cf)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.2.2
 
 ### alarms

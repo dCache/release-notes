@@ -111,6 +111,63 @@ HTML header: <title>dCache 2.16 Release Notes</title>
 * Sites with a custom `httpd.conf` configuration will have to adjust
   this upon upgrade to inject the cell address of the `info` service.
 
+## Release 2.16.51
+
+### alarms
+
+Until now, the sorting order of alarms did not provide a correct ordering 
+for all types of alarms. With this release, alarms are now implicitly ordered 
+by at least their latest modification timestamp.
+
+### resilience
+
+One of the features of resilience is the enforcement of file
+partioning on pools according to pool tags.   The pool tag
+restrictions are observed whenever a file is copied.  In
+addition, it is rechecked when a storage unit is updated,
+in order to make sure the files are distributed correctly
+according to the new requirements.  This is done by
+removing the offending copies and recopying them in
+a new location.
+
+Should files get redistributed, however, by rebalancing or
+a migration job, it is possible that the partitioning will 
+be violated, since only resilience observes it. 
+
+The resilience service now verifies that files are distributed according to the requirements
+specified by pool tags while doing periodic scans (or scans initiated through the admin 
+command). 
+
+### statistics
+
+A possible race condition was removed from the implementation of the `create stat` admin command.
+
+
+### Changelog 2.16.50..2.16.51
+
+<!-- git log 2.16.50..2.16.51 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[474cea883c](https://github.com/dcache/dcache/commit/474cea883c2016af9e192bb5a8597507bc09c336)
+:   [maven-release-plugin] prepare release 2.16.51
+
+[848ccaa4f8](https://github.com/dcache/dcache/commit/848ccaa4f87f0a2d5da98a2973b6b7b7ead395b4)
+:   statistics: fix race in "create stat" admin command
+
+[6b91bf85e0](https://github.com/dcache/dcache/commit/6b91bf85e0f316b5aa81b8a02e16f9efd49d9c2e)
+:   srm: fix stacktrace on database failure
+
+[20e98664bc](https://github.com/dcache/dcache/commit/20e98664bc17748ce8a72d1d100655b7d9deda87)
+:   alarms:  revert LogEntry.compareTo() to throw NPE on null object
+
+[06ed380733](https://github.com/dcache/dcache/commit/06ed38073303f4bc9929a0e853cc2c1ad8e60503)
+:   resilience: force tag partition checking on scans from admin command and periodic checks
+
+[9565b03a7a](https://github.com/dcache/dcache/commit/9565b03a7a4f0cb531acd52fafc95c07c50b194a)
+:   alarms: fix natural order comparator to use timestamp first
+
+[805892ebf6](https://github.com/dcache/dcache/commit/805892ebf69c0b9ed3548fe91148ea35abc85fe9)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.16.50
 
 ### dcap

@@ -109,6 +109,63 @@ HTML header: <title>dCache 3.0 Release Notes</title>
 
 Thanks to Onno Zweers for several contributions to this release.
 
+## Release 3.0.32
+
+### alarms
+
+Until now, the sorting order of alarms did not provide a correct ordering 
+for all types of alarms. With this release, alarms are now implicitly ordered 
+by at least their latest modification timestamp.
+
+### resilience
+
+One of the features of resilience is the enforcement of file
+partioning on pools according to pool tags.   The pool tag
+restrictions are observed whenever a file is copied.  In
+addition, it is rechecked when a storage unit is updated,
+in order to make sure the files are distributed correctly
+according to the new requirements.  This is done by
+removing the offending copies and recopying them in
+a new location.
+
+Should files get redistributed, however, by rebalancing or
+a migration job, it is possible that the partitioning will 
+be violated, since only resilience observes it. 
+
+The resilience service now verifies that files are distributed according to the requirements
+specified by pool tags while doing periodic scans (or scans initiated through the admin 
+command). 
+
+### statistics
+
+A possible race condition was removed from the implementation of the `create stat` admin command.
+
+
+### Changelog 3.0.31..3.0.32
+
+<!-- git log 3.0.31..3.0.32 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[b65e0caea0](https://github.com/dcache/dcache/commit/b65e0caea05e3c4a3f81c54affaafe4f37cd7e6c)
+:   [maven-release-plugin] prepare release 3.0.32
+
+[ce83a48128](https://github.com/dcache/dcache/commit/ce83a48128e5a179ed7dfdb97da40f5daeda4352)
+:   statistics: fix race in "create stat" admin command
+
+[a57ac478f7](https://github.com/dcache/dcache/commit/a57ac478f7c739df4a6209b5dfb527e2888c0ab1)
+:   srm: fix stacktrace on database failure
+
+[c47a65e81c](https://github.com/dcache/dcache/commit/c47a65e81c972f126fda260900bec30900cf6ade)
+:   alarms:  revert LogEntry.compareTo() to throw NPE on null object
+
+[049419c772](https://github.com/dcache/dcache/commit/049419c7723e59131833e783c7a1cb4376c919d7)
+:   resilience: force tag partition checking on scans from admin command and periodic checks
+
+[aaad9d2599](https://github.com/dcache/dcache/commit/aaad9d259901be5550a2bf86289f20ed8a8dfe24)
+:   alarms: fix natural order comparator to use timestamp first
+
+[ea6aed2009](https://github.com/dcache/dcache/commit/ea6aed20093ea20226779b6b9d853e3cdfb4307b)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.0.31
 
 ### dcap
