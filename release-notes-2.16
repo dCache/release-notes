@@ -111,6 +111,49 @@ HTML header: <title>dCache 2.16 Release Notes</title>
 * Sites with a custom `httpd.conf` configuration will have to adjust
   this upon upgrade to inject the cell address of the `info` service.
 
+## Release 2.16.52
+
+### Changes affecting multiple services
+
+dCache no longer logs stack-traces if a Java VirtualMachineError occurs. This is unnecessary as dCache was (presumably) working fine until Java
+discovered a problem.
+
+### chimera
+
+Sites updating to dCache 2.15 or later might observe that a lost+found directory with incorrect permissions was created during the update. This
+patch ensures correct permissions. Since we cannot know if the current permissions in lost+found are
+intended, this patch does not modify any existing lost+found directory
+permissions.
+
+### pool
+
+The `sweeper free`command no longer logs a stack trace if it is started with incorrect input information.
+
+An irrelevant stack trace was logged by the pool. This release corrects that.
+
+
+### Changelog 2.16.51..2.16.52
+
+<!-- git log 2.16.51..2.16.52 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[35ee85d55b](https://github.com/dcache/dcache/commit/35ee85d55b4854c48ac313900923aadaa2e4e1fc)
+:   [maven-release-plugin] prepare release 2.16.52
+
+[33b71595ad](https://github.com/dcache/dcache/commit/33b71595adb8ce403a51e3a2f35e11d1177b8316)
+:   chimera: update schema migration when creating 'lost+found' directory.
+
+[f099997ebf](https://github.com/dcache/dcache/commit/f099997ebf96de48eac2e825d4f4f53c2116bab6)
+:   pool: fix stack-trace on bad command input
+
+[0f767a691b](https://github.com/dcache/dcache/commit/0f767a691b6a94e51282ca7399821ff67f6323eb)
+:   pool: fix stacktrace on FaultEvent logging
+
+[9831422ad2](https://github.com/dcache/dcache/commit/9831422ad236ee185ac5008d0577273c7978f5f1)
+:   system: Don't log stack-trace on fatal JVM error
+
+[f510231470](https://github.com/dcache/dcache/commit/f5102314705699ce112a75c913e562607d89089e)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.16.51
 
 ### alarms

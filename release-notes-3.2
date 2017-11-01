@@ -99,6 +99,79 @@ Marisa Nest, Martin Bürger, Sarah Schulte, Hasan Jahid and Max Patzelt, whose
 code made it into 3.2.0.
 
 
+## Release 3.2.4
+
+### Changes affecting multiple services
+
+dCache no longer logs stack-traces if a Java VirtualMachineError occurs. This is unnecessary as dCache was (presumably) working fine until Java
+discovered a problem.
+
+### chimera
+
+Sites updating to dCache 2.15 or later might observe that a lost+found directory with incorrect permissions was created during the update. This
+patch ensures correct permissions. Since we cannot know if the current permissions in lost+found are
+intended, this patch does not modify any existing lost+found directory
+permissions.
+
+### frontend
+
+An irrelevant stack trace could occasionally be logged by the frontend. This patch corrects that issue.
+
+During service interruptions, timeouts have been logged at WARN level until now. The logging level has been changed to INFO with this release.
+
+An irrelevant stack trace was occasionally logged by the frontend service. This release corrects that.
+
+### history
+
+Currently, the history service will block dCache startup for
+history.service.poolmanager.timeout (2 minutes) if the service is
+started while PoolManager is not running. This blocking was removed,
+so that system starts are quicker and more reliable.
+
+### pool
+
+The `sweeper free`command no longer logs a stack trace if it is started with incorrect input information.
+
+An irrelevant stack trace was logged by the pool. This release corrects that.
+
+
+### Changelog 3.2.3..3.2.4
+
+<!-- git log 3.2.3..3.2.4 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[4f25e874fe](https://github.com/dcache/dcache/commit/4f25e874feee868b439a0deb83b6f2c9ffc4256c)
+:   [maven-release-plugin] prepare release 3.2.4
+
+[a760f18d72](https://github.com/dcache/dcache/commit/a760f18d7283fad56af5a537dd605bfd13389811)
+:   chimera: update schema migration when creating 'lost+found' directory.
+
+[fc9f218337](https://github.com/dcache/dcache/commit/fc9f218337b04c8e9c851940a3a70f37bf203d0d)
+:   pool: fix stack-trace on bad command input
+
+[e17c58e654](https://github.com/dcache/dcache/commit/e17c58e654b94ceedbbe28ff5921190dc6d5017c)
+:   pool: fix stacktrace on FaultEvent logging
+
+[3926ead39c](https://github.com/dcache/dcache/commit/3926ead39c165669370c5e50784b59c1701d97aa)
+:   system: Don't log stack-trace on fatal JVM error
+
+[a924c2175f](https://github.com/dcache/dcache/commit/a924c2175fb597dcd8ef9e8cf63b2c962fabd485)
+:   dcache-frontend: fix ConcurrentModificationException in ReadWriteData
+
+[37e229cffe](https://github.com/dcache/dcache/commit/37e229cffe7f1ee066b56ed4e335d4a2de45e9c7)
+:   srmclient: refactor 'srm' helper script, enforcing environment variables
+
+[bfda91c5cc](https://github.com/dcache/dcache/commit/bfda91c5cc70e06437a170056039425440a0ab91)
+:   history: do not block on startup if PoolManager is not running
+
+[732c5e2b9c](https://github.com/dcache/dcache/commit/732c5e2b9cf15a4c508bca0e092e009d94c84091)
+:   dcache-frontend: adjust level of timeout logging
+
+[91b3d01342](https://github.com/dcache/dcache/commit/91b3d013420265fbd6151a35049bcfef025813c4)
+:   dcache-frontend: adjust REST API for Pool Info Resources
+
+[50652e65ea](https://github.com/dcache/dcache/commit/50652e65ea73dfe36f189c58cf5ef758af5234a4)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.2.3
 
 ### alarms

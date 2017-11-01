@@ -76,6 +76,49 @@ HTML header: <title>dCache 3.1 Release Notes</title>
 
 Thanks to Johan Guldmyr for his constributions.
 
+## Release 3.1.21
+
+### Changes affecting multiple services
+
+dCache no longer logs stack-traces if a Java VirtualMachineError occurs. This is unnecessary as dCache was (presumably) working fine until Java
+discovered a problem.
+
+### chimera
+
+Sites updating to dCache 2.15 or later might observe that a lost+found directory with incorrect permissions was created during the update. This
+patch ensures correct permissions. Since we cannot know if the current permissions in lost+found are
+intended, this patch does not modify any existing lost+found directory
+permissions.
+
+### pool
+
+The `sweeper free`command no longer logs a stack trace if it is started with incorrect input information.
+
+An irrelevant stack trace was logged by the pool. This release corrects that.
+
+
+### Changelog 3.1.20..3.1.21
+
+<!-- git log 3.1.20..3.1.21 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[60c00d59ab](https://github.com/dcache/dcache/commit/60c00d59abeb4e98f98c959be1462b63f0861066)
+:   [maven-release-plugin] prepare release 3.1.21
+
+[067a924d47](https://github.com/dcache/dcache/commit/067a924d47241f05c019f4e66e12d6f3972dd580)
+:   chimera: update schema migration when creating 'lost+found' directory.
+
+[615ecbf90b](https://github.com/dcache/dcache/commit/615ecbf90bbc64dca692c05c49e419954b5c2a03)
+:   pool: fix stack-trace on bad command input
+
+[43bef5f47c](https://github.com/dcache/dcache/commit/43bef5f47c2a2a616b6b1150bfb37fe674814bbe)
+:   pool: fix stacktrace on FaultEvent logging
+
+[4915654b99](https://github.com/dcache/dcache/commit/4915654b99745c178ef8a2ef2b5245ab1cc83286)
+:   system: Don't log stack-trace on fatal JVM error
+
+[afe4f5e686](https://github.com/dcache/dcache/commit/afe4f5e6864bdfd321309492a25537b38a7141b1)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.1.20
 
 ### alarms
