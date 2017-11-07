@@ -82,6 +82,7 @@ to systemd-compatible scripts on Debian systems.
 - The admin door limits key-based login to the usernames listed in the `authorized_keys2` file.
 - The output of the `ps` admin command has changed. External scripts must be updated.
 - The `dcache.broker.port` property is deprecated.
+- The `srmmanager.net.port` and `srmmanager.net.local-hosts` are no longer used.
 
 
 ## Acknowledgments
@@ -860,6 +861,28 @@ A single shared mongoDB instance can be used for all pools.
 NOTICE: in production, mongodb must run in a cluster in order to provide high
 performance and availability.
 
+
+### srmmanager
+
+Most SRM operations are only allowed on local SURLs.  Only third-party
+copying allows non-local SURLs; however, there at least one of
+source/destination SURL-pairs to be local.
+
+In previous versions of dCache, the properties `srmmanager.net.port`
+and `srmmanager.net.local-hosts` allow the srmmanager to decide which
+SURLs are local.  In many cases, this information is redundant, as srm
+services already publish this information within dCache.  Therefore,
+with this version of dCache, the srmmanager will consider SURLs local
+if there is an srm door that advertises it listens on that host and
+port.
+
+Sites may have a DNS alias or have some proxy service to which SRM
+clients connect.  Under these circumstances, the client will not
+connect to the FQDN of the machine hosting the srm service, but some
+other address (that of the DNS alias or the proxy service).  To
+support this, the `srm.loginbroker.address` and `srm.loginbroker.port`
+properties must be configured correctly so that at least one srm
+service advertises the hostname clients use when connecting to dCache.
 
 ### Changelog from 3.1.1 to 3.2
 
