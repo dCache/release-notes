@@ -100,6 +100,43 @@ Marisa Nest, Martin Bürger, Sarah Schulte, Hasan Jahid and Max Patzelt, whose
 code made it into 3.2.0.
 
 
+## Release 3.2.5
+
+### Changes affecting multiple services
+
+This release addresses several issues with systemd support and packaging on Debian systems. 
+
+The rsyslog configuration has been updated from using language version 7 to version 8.
+
+There is a new systemd service unit `dcache.service` that can be used to have all dCache domains started with only one startup call.
+
+An installation bug with the Debian package was fixed that prevented a successful installation because of a missing `cell-info` directory.
+
+Under systemd, log files are again back in their usual location under `/var/log/dcache/$DOMAIN.log`.
+
+
+### Changelog 3.2.4..3.2.5
+
+<!-- git log 3.2.4..3.2.5 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[bc7d6088db](https://github.com/dcache/dcache/commit/bc7d6088dbdf87162ba5d40d70265ed94eff477b)
+:   [maven-release-plugin] prepare release 3.2.5
+
+[9ce9bc9ad4](https://github.com/dcache/dcache/commit/9ce9bc9ad4a64b8e4f8ad482d109b7a4b8898baa)
+:   switch to rsyslog v8 configuration language
+
+[83a779d06f](https://github.com/dcache/dcache/commit/83a779d06fce390be5162e7889e924bd3ba6a75c)
+:   move logfiles back to /var/log/dcache
+
+[d19373ae34](https://github.com/dcache/dcache/commit/d19373ae34beb8eb677c8b8a4fd49583c68b8452)
+:   systemd: adding a global dcache.service which pulls in dcache@*.service
+
+[0dff5cd0e0](https://github.com/dcache/dcache/commit/0dff5cd0e09f273bc976733ee04de9442b6290b1)
+:   packaging: include empty var directory: 'cell-info'
+
+[d6696bcbd1](https://github.com/dcache/dcache/commit/d6696bcbd10b4e18b95882c5a571fdcf66893c06)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.2.4
 
 ### Changes affecting multiple services
