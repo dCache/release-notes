@@ -75,7 +75,7 @@
             <download-url-prefix>../repo/</download-url-prefix>
 
             <release version="3.2.4" recommended="1">
-                <date>1.11.2017</date>
+                <date>01.11.2017</date>
 
                 <package name="rpm">
                     <download-url>3.2/dcache-srmclient-VERSION-1.noarch.rpm</download-url>
