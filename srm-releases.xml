@@ -52,15 +52,15 @@
             There are some exceptions from this.  Most notably for
             releases from the 2.2-series.  This is because dCache
             server v2.2 is compiled to support Java 6 whereas newer
-            dCache server releases require Java 7.  Because some users
-            have not upgraded to Java 7, we still release SRM client
-            from the 2.2-series dCache server.
+            dCache server releases require Java 7 or newer.  Because
+            some users have not upgraded to Java 7, we still release
+            SRM client from the 2.2-series dCache server.
         </p>
     </preamble>
 
 
     <series id="srm-client-java-7">
-        <title>SRM Client (for Java 7)</title>
+        <title>SRM Client (for Java 7 or newer)</title>
 
         <description>
             <p>
