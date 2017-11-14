@@ -111,6 +111,34 @@ HTML header: <title>dCache 2.16 Release Notes</title>
 * Sites with a custom `httpd.conf` configuration will have to adjust
   this upon upgrade to inject the cell address of the `info` service.
 
+## Release 2.16.53
+
+### admin
+
+The admin interface reported  an attempt to connect to an absent cell as  a bug. The current release fixed the issue.
+
+### httpd
+
+Requests to httpd targeting an unknown resource was returning  `200 OK` response code. Nevertheless  the `404 NOT FOUND`
+ response would be closer fit. This is now fixed.
+
+
+### Changelog 2.16.52..2.16.53
+
+<!-- git log 2.16.52..2.16.53 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[d3251cd](https://github.com/dcache/dcache/commit/d3251cd0dbef0f0d4310d58ef47c666f65b2c485)
+:   [maven-release-plugin] prepare release 2.16.53
+
+[f9fa835](https://github.com/dcache/dcache/commit/f9fa835279113492e92d14d58f9253398079d4e0)
+:   admin: do not report attempts to connect to missing cell as a bug
+
+[cb1dbde](https://github.com/dcache/dcache/commit/cb1dbde4813579b079c4d7eccb3e9db22cfcf82f)
+:   httpd: return 404 status code on an unknown page
+
+[6ce3535](https://github.com/dcache/dcache/commit/6ce35350b5f218542ee3158daf63fa3bfaed7bc3)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.16.52
 
 ### Changes affecting multiple services

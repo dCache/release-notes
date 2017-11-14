@@ -109,6 +109,41 @@ HTML header: <title>dCache 3.0 Release Notes</title>
 
 Thanks to Onno Zweers for several contributions to this release.
 
+## Release 3.0.34
+
+### admin
+
+The admin interface reported  an attempt to connect to an absent cell as  a bug. The current release fixed the issue.
+
+### httpd
+
+Requests to httpd targeting an unknown resource was returning  `200 OK` response code. Nevertheless  the `404 NOT FOUND`
+ response would be closer fit. This is now fixed.
+
+### nfs
+
+The current release corrects inaccurate documentation of  `nfs.enable.pnfsmanager-query-on-move`.
+
+
+### Changelog 3.0.33..3.0.34
+
+<!-- git log 3.0.33..3.0.34 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[bcd8d31](https://github.com/dcache/dcache/commit/bcd8d31e99fd895f861f975138edb382a39dc754)
+:   [maven-release-plugin] prepare release 3.0.34
+
+[e8014a2](https://github.com/dcache/dcache/commit/e8014a275a5ba87bf0ad93cf2b4795d0b99c03c5)
+:   nfs: fix documentation of nfs.enable.pnfsmanager-query-on-move
+
+[233b6fd](https://github.com/dcache/dcache/commit/233b6fda47074abc618c884daf8024e9370411fb)
+:   admin: do not report attempts to connect to missing cell as a bug
+
+[9a0752d](https://github.com/dcache/dcache/commit/9a0752d4206df17c0c1b9fa0b049203ef6d7b343)
+:   httpd: return 404 status code on an unknown page
+
+[1cd37d0](https://github.com/dcache/dcache/commit/1cd37d0012d6536b39080a6072f18d9fdc9c0c89)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.0.33
 
 ### Changes affecting multiple services

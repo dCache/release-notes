@@ -100,6 +100,63 @@ Marisa Nest, Martin Bürger, Sarah Schulte, Hasan Jahid and Max Patzelt, whose
 code made it into 3.2.0.
 
 
+## Release 3.2.6
+
+### admin
+
+The admin interface reported  an attempt to connect to an absent cell as  a bug. The current release fixed the issue.
+
+### httpd
+
+Requests to httpd targeting an unknown resource was returning  `200 OK` response code. Nevertheless  the `404 NOT FOUND`
+ response would be closer fit. This is now fixed.
+
+### maven
+
+The `global` `dcache.service`  was missing  from the built packages. 
+The current release fixed this problem and `dcache.service`  is now included in Debian packages.
+
+### nfs
+
+The current release corrects inaccurate documentation of  `nfs.enable.pnfsmanager-query-on-move`.
+
+### pool
+
+Closing dcap mover connection no longer logs a stack trace.
+
+### statistics
+
+Timeout in contacting `PoolManager` no longer results in a stack-trace being logged.
+
+
+### Changelog 3.2.5..3.2.6
+
+<!-- git log 3.2.5..3.2.6 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[6956c9b](https://github.com/dcache/dcache/commit/6956c9bad00b98a488f722378878028d75c1e6aa)
+:   [maven-release-plugin] prepare release 3.2.6
+
+[b695c88](https://github.com/dcache/dcache/commit/b695c88574851e8568c57f34f29639d61923b5eb)
+:   statistics: avoid stack-trace on internal timeout
+
+[b1201b6](https://github.com/dcache/dcache/commit/b1201b6d29df997a71c5d152cbe7e3d7bd4b54e8)
+:   nfs: fix documentation of nfs.enable.pnfsmanager-query-on-move
+
+[d327b87](https://github.com/dcache/dcache/commit/d327b87fdcb76eb114fc7f96bc6e17b5ecb2f6f7)
+:   admin: do not report attempts to connect to missing cell as a bug
+
+[556e2d4](https://github.com/dcache/dcache/commit/556e2d4f4a5280b8d8c3a87af1e4b0d169393bdc)
+:   maven: include dcache.service in Debian packages
+
+[d830799](https://github.com/dcache/dcache/commit/d830799953837d8fbf83d4a41732c92aebc1caa2)
+:   pool: fix stack-trace when closing dcap mover connection
+
+[44b5541](https://github.com/dcache/dcache/commit/44b5541832ea440e0481f2b0792e2736c24c8f57)
+:   httpd: return 404 status code on an unknown page
+
+[995b5bf](https://github.com/dcache/dcache/commit/995b5bfc16b54a1882f2e84ca1e26b65d904d8cb)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.2.5
 
 ### Changes affecting multiple services

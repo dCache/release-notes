@@ -76,6 +76,48 @@ HTML header: <title>dCache 3.1 Release Notes</title>
 
 Thanks to Johan Guldmyr for his constributions.
 
+## Release 3.1.22
+
+### admin
+
+The admin interface reported  an attempt to connect to an absent cell as  a bug. The current release fixed the issue.
+
+### httpd
+
+Requests to httpd targeting an unknown resource was returning  `200 OK` response code. Nevertheless  the `404 NOT FOUND`
+ response would be closer fit. This is now fixed.
+
+### nfs
+
+The current release corrects inaccurate documentation of  `nfs.enable.pnfsmanager-query-on-move`.
+
+### pool
+
+Closing dcap mover connection no longer logs a stack trace.
+
+
+### Changelog 3.1.21..3.1.22
+
+<!-- git log 3.1.21..3.1.22 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[6dc76ac](https://github.com/dcache/dcache/commit/6dc76acf6cf726a3e1a27bff938469ee0dda29c4)
+:   [maven-release-plugin] prepare release 3.1.22
+
+[41f5590](https://github.com/dcache/dcache/commit/41f55905c7f46a7a4144b2b165151434c488c1f4)
+:   nfs: fix documentation of nfs.enable.pnfsmanager-query-on-move
+
+[2dbd723](https://github.com/dcache/dcache/commit/2dbd723e7da09817537f0d7c0dfae489ff44455d)
+:   admin: do not report attempts to connect to missing cell as a bug
+
+[0edf1de](https://github.com/dcache/dcache/commit/0edf1dee31134c20ca5d150128e10184e1863381)
+:   pool: fix stack-trace when closing dcap mover connection
+
+[510516c](https://github.com/dcache/dcache/commit/510516cc3f83777d2a8ac6466335a74ba6ead3c8)
+:   httpd: return 404 status code on an unknown page
+
+[9d6a1bc](https://github.com/dcache/dcache/commit/9d6a1bc00fb25771e7016a0be14acbab31e41b71)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.1.21
 
 ### Changes affecting multiple services
