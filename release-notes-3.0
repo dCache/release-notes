@@ -109,6 +109,62 @@ HTML header: <title>dCache 3.0 Release Notes</title>
 
 Thanks to Onno Zweers for several contributions to this release.
 
+## Release 3.0.35
+
+### cells
+
+dCache no longer logs stack-traces when running  multiple cells with the same name.
+
+### pool
+
+Closing dcap mover connection no longer logs a stack trace.
+
+For certain failures,the pool was logging transfer failures twice. This is now fixed.
+
+### rpm
+
+dCache ensures now that user 'dcache' is a member of group 'dcache'.
+
+### star
+
+The current release Introduced new property `star.db.*`, which makes possible now  to run PostgreSQL on non-standard ports can use STAR.
+
+### statistics
+
+Timeout in contacting PoolManager no longer results in a stack-trace being logged.
+
+
+### Changelog 3.0.34..3.0.35
+
+<!-- git log 3.0.34..3.0.35 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[f7547d7](https://github.com/dcache/dcache/commit/f7547d704ea464144f576097cc944285251c586a)
+:   [maven-release-plugin] prepare release 3.0.35
+
+[6c2cb7d](https://github.com/dcache/dcache/commit/6c2cb7d98b8d24b7649a67b1020e3db7f8ccfabc)
+:   [maven-release-plugin] prepare for next development iteration
+
+[a212275](https://github.com/dcache/dcache/commit/a212275d9a67275c99e962a4cc529353d9011d43)
+:   pool: fix double logging on remote FTP transfer error
+
+[e5ff9ab](https://github.com/dcache/dcache/commit/e5ff9ab1ef633e7cd2fad058c72a14f271d4bd39)
+:   pool: Fix how certain bugs are logged
+
+[dfc024b](https://github.com/dcache/dcache/commit/dfc024b85486ec0cdb767144866c3590342fc1a2)
+:   star: support PostgreSQL running on non-standard TCP ports
+
+[6c721e5](https://github.com/dcache/dcache/commit/6c721e5cd47fca54a864ca5077ab26f95810d51b)
+:   rpm: don't assume existing dcache user is member of dcache group
+
+[fc563b9](https://github.com/dcache/dcache/commit/fc563b9ebbf8fc2c9862fcaa4dd1bab52822ee8e)
+:   cells: don't log stack-trace on starting cell with same name as running cell
+
+[1c42791](https://github.com/dcache/dcache/commit/1c427912a0d9f92963cf2b25db64fb8195552b04)
+:   statistics: avoid stack-trace on internal timeout
+
+[2304f35](https://github.com/dcache/dcache/commit/2304f35659998915901abdf120e15d9bb522c931)
+:   pool: fix stack-trace when closing dcap mover connection
+
 ## Release 3.0.34
 
 ### admin

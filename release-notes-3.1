@@ -76,6 +76,57 @@ HTML header: <title>dCache 3.1 Release Notes</title>
 
 Thanks to Johan Guldmyr for his constributions.
 
+## Release 3.1.23
+
+### cells
+
+dCache no longer logs stack-traces when running  multiple cells with the same name.
+
+### pool
+
+For certain failures,the pool was logging transfer failures twice. This is now fixed.
+
+### rpm
+
+dCache ensures now that user 'dcache' is a member of group 'dcache'.
+
+### star
+
+The current release Introduced new property `star.db.*`, which makes possible now  to run PostgreSQL on non-standard ports can use STAR.
+
+### statistics
+
+Timeout in contacting PoolManager no longer results in a stack-trace being logged.
+
+
+### Changelog 3.1.22..3.1.23
+
+<!-- git log 3.1.22..3.1.23 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[71cf627](https://github.com/dcache/dcache/commit/71cf627bebfcdd0d1eaf7d297d79d5627df9d6e9)
+:   [maven-release-plugin] prepare release 3.1.23
+
+[585ecb4](https://github.com/dcache/dcache/commit/585ecb4c9fdf449c9f6c8d764074c1f66fc5f02b)
+:   [maven-release-plugin] prepare for next development iteration
+
+[6dc8c9f](https://github.com/dcache/dcache/commit/6dc8c9f323f13f911e6d6c10ad0077bf98141ba7)
+:   pool: fix double logging on remote FTP transfer error
+
+[ebebb47](https://github.com/dcache/dcache/commit/ebebb47c980f98df018b0b6100e5d4db0b83a9e3)
+:   pool: Fix how certain bugs are logged
+
+[8367510](https://github.com/dcache/dcache/commit/8367510aaadede0310295e4cd5bd43b6be5196ad)
+:   star: support PostgreSQL running on non-standard TCP ports
+
+[da9d343](https://github.com/dcache/dcache/commit/da9d34395ee9f6326899e02d55b0aa7dce3e5e7f)
+:   rpm: don't assume existing dcache user is member of dcache group
+
+[9d0b51c](https://github.com/dcache/dcache/commit/9d0b51cadc60cd07dee95694f64331ac8d3dc665)
+:   cells: don't log stack-trace on starting cell with same name as running cell
+
+[1dde970](https://github.com/dcache/dcache/commit/1dde970335febc7eecec0170a5263a874ab0d685)
+:   statistics: avoid stack-trace on internal timeout
+
 ## Release 3.1.22
 
 ### admin

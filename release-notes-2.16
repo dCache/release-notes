@@ -111,6 +111,57 @@ HTML header: <title>dCache 2.16 Release Notes</title>
 * Sites with a custom `httpd.conf` configuration will have to adjust
   this upon upgrade to inject the cell address of the `info` service.
 
+## Release 2.16.54
+
+### cells
+
+dCache no longer logs stack-traces when running  multiple cells with the same name.
+
+### pool
+
+For certain failures,the pool was logging transfer failures twice. This is now fixed.
+
+### rpm
+
+dCache ensures now that user 'dcache' is a member of group 'dcache'.
+
+### star
+
+The current release Introduced new property `star.db.*`, which makes possible now  to run PostgreSQL on non-standard ports can use STAR.
+
+### statistics
+
+Timeout in contacting PoolManager no longer results in a stack-trace being logged.
+
+
+### Changelog 2.16.53..2.16.54
+
+<!-- git log 2.16.53..2.16.54 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[928eedf](https://github.com/dcache/dcache/commit/928eedf282a9aa58cba63f71de3e40984dcb9364)
+:   [maven-release-plugin] prepare release 2.16.54
+
+[c0ddc8b](https://github.com/dcache/dcache/commit/c0ddc8be3aa08274b5e2c8b20364bf2f0966d94a)
+:   [maven-release-plugin] prepare for next development iteration
+
+[737c0c2](https://github.com/dcache/dcache/commit/737c0c2f5567e17d5541564f0a32cba11c196101)
+:   pool: fix double logging on remote FTP transfer error
+
+[2d66570](https://github.com/dcache/dcache/commit/2d66570d12ce5ad83ef2a757764c99776f38f1e9)
+:   cells: don't log stack-trace on starting cell with same name as running cell
+
+[76a0285](https://github.com/dcache/dcache/commit/76a0285fb6435a67cf0685935f44d9584b787268)
+:   pool: Fix how certain bugs are logged
+
+[f9c3b4e](https://github.com/dcache/dcache/commit/f9c3b4e6ad163799ee607f78131fa195e160bc5e)
+:   star: support PostgreSQL running on non-standard TCP ports
+
+[eb1e8c1](https://github.com/dcache/dcache/commit/eb1e8c15189b2db01bc8433bbd191dbda5fa110a)
+:   rpm: don't assume existing dcache user is member of dcache group
+
+[7d26897](https://github.com/dcache/dcache/commit/7d26897d0e488ad49cf81471039faea852cec87b)
+:   statistics: avoid stack-trace on internal timeout
+
 ## Release 2.16.53
 
 ### admin

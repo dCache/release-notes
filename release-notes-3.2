@@ -100,6 +100,72 @@ Marisa Nest, Martin Bürger, Sarah Schulte, Hasan Jahid and Max Patzelt, whose
 code made it into 3.2.0.
 
 
+## Release 3.2.7
+
+### cells
+
+dCache no longer logs stack-traces when running  multiple cells with the same name.
+
+### httpd,
+
+### pool
+
+For certain failures,the pool was logging transfer failures twice. This is now fixed.
+
+### rpm
+
+dCache ensures now that user 'dcache' is a member of group 'dcache'.
+
+### srmclient
+
+The same error has been logged multiple times resulting in stack-trace.
+This current release fixed both issues.
+
+### srmmanager
+
+Support tickets indicated that for some services it was unclear  how to fix a configuration that still 
+has assignments for either `srmmanager.net.port` or `srmmanager.net.local-hosts`.
+ The current release updated the documentation describing how to fix their configuration after upgrade.
+
+### star
+
+The current release Introduced new property `star.db.*`, which makes possible now  to run PostgreSQL on non-standard ports can use STAR.
+
+
+### Changelog 3.2.6..3.2.7
+
+<!-- git log 3.2.6..3.2.7 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[ff339ca](https://github.com/dcache/dcache/commit/ff339caf6bac8067e06ff71b386946e49cf3545b)
+:   [maven-release-plugin] prepare release 3.2.7
+
+[93cbaf0](https://github.com/dcache/dcache/commit/93cbaf09272b42a6ed2d7989d6a5991cb094a4ea)
+:   httpd, dcache-frontend: support requests for restore listing when there are multiple pool managers
+
+[58b0338](https://github.com/dcache/dcache/commit/58b0338e8f8a0a90a00fb9f9a49a475065ccfcfd)
+:   [maven-release-plugin] prepare for next development iteration
+
+[8fd4ba4](https://github.com/dcache/dcache/commit/8fd4ba4e7c1aa15feab4f7993cd9af70f2c2035b)
+:   pool: fix double logging on remote FTP transfer error
+
+[a1c9b6e](https://github.com/dcache/dcache/commit/a1c9b6e3c0c0baefa5b876b28fce2451b0990237)
+:   srmclient: avoid stack-trace and repeated logging
+
+[7deae9d](https://github.com/dcache/dcache/commit/7deae9d0196105770cf1aa1acd5bcf0b59365829)
+:   srmmanager: provide better hints on obsolete properties
+
+[29394bd](https://github.com/dcache/dcache/commit/29394bd5b95264a87417b383e5abbed4e7623aa3)
+:   pool: Fix how certain bugs are logged
+
+[3d8e83d](https://github.com/dcache/dcache/commit/3d8e83d96ecd56746a2a32319f70bd416d45b0fb)
+:   star: support PostgreSQL running on non-standard TCP ports
+
+[64b97ef](https://github.com/dcache/dcache/commit/64b97ef297d3a0352da0e655aa4e5b63ad8138aa)
+:   rpm: don't assume existing dcache user is member of dcache group
+
+[bbf75cb](https://github.com/dcache/dcache/commit/bbf75cb9bd08a8b34d93a1cbc25e287e181960a9)
+:   cells: don't log stack-trace on starting cell with same name as running cell
+
 ## Release 3.2.6
 
 ### admin
