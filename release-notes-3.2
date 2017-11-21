@@ -83,8 +83,8 @@ to systemd-compatible scripts on Debian systems.
 - The output of the `ps` admin command has changed. External scripts must be updated.
 - The `dcache.broker.port` property is deprecated.
 - The `srmmanager.net.port` and `srmmanager.net.local-hosts` are no longer used.
-- When upgrading nodes running `frontend`, `webdav` or  `httpd` to version 3.2.7 (or newer) 
-the nodes running `poolmanager` should be, as well, upgraded to at least 3.2.7 (or newer) version.
+- Upgrading nodes running `frontend`, `webdav` or  `httpd` to version 3.2.7 (or newer) requires upgrading
+nodes  running `poolmanager`  at least  to 3.2.7 (or newer) version.
 
 ## Acknowledgments
 
@@ -107,7 +107,21 @@ code made it into 3.2.0.
 
 dCache no longer logs stack-traces when running  multiple cells with the same name.
 
-### httpd,
+### frontend, webdav, httpd
+
+With high availability, it is now possible to run redundant
+services. In the case of `Pool Manager`, restore requests
+are distributed to the separate instances,  so as to avoid staging the same file twice.
+This means, however, that the full list of current restore requests
+is partitioned among the pool manager instances. To receive a full
+listing, it is no longer possible to query for them on the named
+`PoolManager` queue, since this means the response will be from
+the first responder only. The current issue fixed this issue and  all  current http services report all restore requests.
+The current release fixed this issue. 
+
+It is important to note that, upgrading nodes running `frontend`, `webdav` or  `httpd` to version 3.2.7 (or newer) requires upgrading
+nodes  running `poolmanager`  at least  to 3.2.7 (or newer) version.
+
 
 ### pool
 
