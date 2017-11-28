@@ -109,6 +109,51 @@ HTML header: <title>dCache 3.0 Release Notes</title>
 
 Thanks to Onno Zweers for several contributions to this release.
 
+## Release 3.0.36
+
+### pnfsmanager
+
+The current release improves documentation for `set log slow threshold` admin command help.
+
+### spacemanager
+
+
+When trying to upload into dCache using a space-token where there
+is no selectable link for this operation then the user was presented with
+a generic error message; for example,
+
+`No write links configured for [net=131.169.71.98,protocol=GFtp/2,store=dot:user@osm,cache=,linkgroup=]`.
+
+This behavior is changed now and an  improved error message is returned to the user if they attempt an upload data into dCache using a space-reservation in a way where
+`poolmanager` configuration prevents the upload.
+
+### webdav
+
+The current release improved error handling when  dCache is full.
+
+
+### Changelog 3.0.35..3.0.36
+
+<!-- git log 3.0.35..3.0.36 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[38de80c](https://github.com/dcache/dcache/commit/38de80ceecb167cf8f974ca50c83fd43d53f2fcc)
+:   [maven-release-plugin] prepare release 3.0.36
+
+[d6d321b](https://github.com/dcache/dcache/commit/d6d321be7fb6fa7a2c4a3c2e014744df9bf196a1)
+:   systemtest: work with new OpenSSL DN format
+
+[a2a4534](https://github.com/dcache/dcache/commit/a2a45343b34baee0aad7c13cadd588f20e848eb7)
+:   spacemanager: provide space-specific error message on bad upload
+
+[1928311](https://github.com/dcache/dcache/commit/19283119a51ff7c0fd024f0f1b6fca58cae69844)
+:   webdav: return 507 Insufficient Storage when dCache is full
+
+[6351c8a](https://github.com/dcache/dcache/commit/6351c8a766d0fa880200c9b34206f2efa0adeb90)
+:   pnfsmanager: update slow logging admin command help
+
+[2fd15ed](https://github.com/dcache/dcache/commit/2fd15ed80db04e2d0fcace43722e9672f7407c48)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.0.35
 
 ### cells

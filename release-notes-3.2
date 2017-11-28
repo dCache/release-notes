@@ -101,6 +101,73 @@ Marisa Nest, Martin Bürger, Sarah Schulte, Hasan Jahid and Max Patzelt, whose
 code made it into 3.2.0.
 
 
+## Release 3.2.8
+
+### nfs
+
+The current release fixes transfer leak, if the door failed to start a mover.
+
+### pnfsmanager
+
+The current release improves documentation for `set log slow threshold` admin command help.
+
+### spacemanager
+
+dCache now allows an SRM client to specifying from which linkgroup a
+reservation should be made.
+
+
+When trying to upload into dCache using a space-token where there
+is no selectable link for this operation then the user was presented with
+a generic error message; for example,
+
+`No write links configured for [net=131.169.71.98,protocol=GFtp/2,store=dot:user@osm,cache=,linkgroup=]`.
+
+This behavior is changed now and an  improved error message is returned to the user if they attempt an upload data into dCache using a space-reservation in a way where
+`poolmanager` configuration prevents the upload.
+
+### srmclient
+
+The `srm-reserve-space` command now supports a user choosing from which
+linkgroup a reservation should be made, provided the corresponding
+dCache also supports this.
+
+### webdav
+
+The current release improved error handling when  dCache is full.
+
+
+### Changelog 3.2.7..3.2.8
+
+<!-- git log 3.2.7..3.2.8 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[558f21e](https://github.com/dcache/dcache/commit/558f21e3b626eb504b2c0e569485a2b631a905e1)
+:   [maven-release-plugin] prepare release 3.2.8
+
+[1781cee](https://github.com/dcache/dcache/commit/1781ceec85e34ebb1009d82480c62550af3d3d36)
+:   systemtest: work with new OpenSSL DN format
+
+[815a561](https://github.com/dcache/dcache/commit/815a5610b6591d33be22fec4139246a952c9329e)
+:   spacemanager: allow SRM clients to specify linkgroup in reserve requests
+
+[086d559](https://github.com/dcache/dcache/commit/086d559d1cc2898c722fc16632ea7385eeaec010)
+:   srmclient: add support for specifying linkgroup when reserving space
+
+[636fdce](https://github.com/dcache/dcache/commit/636fdcef2e402a69eceafa3fdab3ed070bedf176)
+:   spacemanager: provide space-specific error message on bad upload
+
+[f758653](https://github.com/dcache/dcache/commit/f758653e9aa4fce199af05974266529bd74ed619)
+:   webdav: return 507 Insufficient Storage when dCache is full
+
+[606d7ed](https://github.com/dcache/dcache/commit/606d7ed1ecd1ec5e77170ea78c3f5f03a8c0b7bd)
+:   pnfsmanager: update slow logging admin command help
+
+[bc15f25](https://github.com/dcache/dcache/commit/bc15f25d5989ad5b9e458ca8e15085744bda5223)
+:   nfs: fix transfer leak, if the door failed to start a mover
+
+[2490982](https://github.com/dcache/dcache/commit/2490982905660345ff80bfc75151e361bffba088)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.2.7
 
 ### cells

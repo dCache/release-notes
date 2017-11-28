@@ -111,6 +111,51 @@ HTML header: <title>dCache 2.16 Release Notes</title>
 * Sites with a custom `httpd.conf` configuration will have to adjust
   this upon upgrade to inject the cell address of the `info` service.
 
+## Release 2.16.55
+
+### pnfsmanager
+
+The current release improves documentation for `set log slow threshold` admin command help.
+
+### spacemanager
+
+
+When trying to upload into dCache using a space-token where there
+is no selectable link for this operation then the user was presented with
+a generic error message; for example,
+
+`No write links configured for [net=131.169.71.98,protocol=GFtp/2,store=dot:user@osm,cache=,linkgroup=]`.
+
+This behavior is changed now and an  improved error message is returned to the user if they attempt an upload data into dCache using a space-reservation in a way where
+`poolmanager` configuration prevents the upload.
+
+### webdav
+
+The current release improved error handling when  dCache is full.
+
+
+### Changelog 2.16.54..2.16.55
+
+<!-- git log 2.16.54..2.16.55 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[6f50a50](https://github.com/dcache/dcache/commit/6f50a50cf4515a18fd9662dfdff5057aa71810ea)
+:   [maven-release-plugin] prepare release 2.16.55
+
+[dd97a05](https://github.com/dcache/dcache/commit/dd97a05b7d0c3cbf4047fe41b16b2fba6206aaae)
+:   systemtest: work with new OpenSSL DN format
+
+[b61aab6](https://github.com/dcache/dcache/commit/b61aab61caae9e07a079c7d66ab390c76ce209e7)
+:   spacemanager: provide space-specific error message on bad upload
+
+[fb2285e](https://github.com/dcache/dcache/commit/fb2285ee27ef6951647ba0312722a4058a65fe26)
+:   webdav: return 507 Insufficient Storage when dCache is full
+
+[3123a7e](https://github.com/dcache/dcache/commit/3123a7e3c694f70f302a76298c6ab43e30d53e4c)
+:   pnfsmanager: update slow logging admin command help
+
+[b95d321](https://github.com/dcache/dcache/commit/b95d3213cfa2c44e33f156fe517d40e2383715a5)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.16.54
 
 ### cells

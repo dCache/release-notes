@@ -76,6 +76,58 @@ HTML header: <title>dCache 3.1 Release Notes</title>
 
 Thanks to Johan Guldmyr for his constributions.
 
+## Release 3.1.24
+
+### nfs
+
+The current release fixes transfer leak, if the door failed to start a mover.
+
+### pnfsmanager
+
+The current release improves documentation for `set log slow threshold` admin command help.
+
+### spacemanager
+
+
+When trying to upload into dCache using a space-token where there
+is no selectable link for this operation then the user was presented with
+a generic error message; for example,
+
+`No write links configured for [net=131.169.71.98,protocol=GFtp/2,store=dot:user@osm,cache=,linkgroup=]`.
+
+This behavior is changed now and an  improved error message is returned to the user if they attempt an upload data into dCache using a space-reservation in a way where
+`poolmanager` configuration prevents the upload.
+
+### webdav
+
+The current release improved error handling when  dCache is full.
+
+
+### Changelog 3.1.23..3.1.24
+
+<!-- git log 3.1.23..3.1.24 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[710eed6](https://github.com/dcache/dcache/commit/710eed6202efd2ed6309de21a079394407fc9ffb)
+:   [maven-release-plugin] prepare release 3.1.24
+
+[9d95040](https://github.com/dcache/dcache/commit/9d9504068d1254438f1ecbf740aa3962d2354e18)
+:   systemtest: work with new OpenSSL DN format
+
+[e4a66f7](https://github.com/dcache/dcache/commit/e4a66f768a8067291be35f2e8661b397f0ee6e3b)
+:   spacemanager: provide space-specific error message on bad upload
+
+[425ed04](https://github.com/dcache/dcache/commit/425ed0499d974d6de361f180c6ece6fa249c22a8)
+:   webdav: return 507 Insufficient Storage when dCache is full
+
+[9cef515](https://github.com/dcache/dcache/commit/9cef5154cf5b66422efc15e67b3c58b49005cd20)
+:   pnfsmanager: update slow logging admin command help
+
+[ca2ff7b](https://github.com/dcache/dcache/commit/ca2ff7bbe444c2257702b880dd1deefa6c0c345a)
+:   nfs: fix transfer leak, if the door failed to start a mover
+
+[1d4967c](https://github.com/dcache/dcache/commit/1d4967cc267b1a887b0075b44d64b44722c02d99)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.1.23
 
 ### cells
