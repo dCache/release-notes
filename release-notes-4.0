@@ -72,7 +72,11 @@ HTML header: <title>dCache 4.0 Release Notes</title>
 
 ## Acknowledgments
 
-(tbd, this section uses markdown formatting)
+Once again, we have received important code contributions from our users. 
+
+We would like to thank Christoph Anton Mitterer for his work on systemd integration, 
+Onno Zweers for spotting an https issue with WebDAV, and Robin Wenzel for his contributions
+during the HTW course.
 
 ## Release 4.0
 
