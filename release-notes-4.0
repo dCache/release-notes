@@ -64,7 +64,10 @@ HTML header: <title>dCache 4.0 Release Notes</title>
 
 ## Highlights
 
-(tbd, this section uses markdown formatting)
+In preparation of upcoming changes, dCache 4.0 contains many small architectural improvements, 
+bug fixes and structural changes that will be needed for new features that will be incorporated
+into later releases. Apart from greater stability and improved error handling in many circumstances,
+there are few user-visible changes in this release.
 
 ## Incompatibilities
 
