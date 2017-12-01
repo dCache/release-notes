@@ -69,9 +69,21 @@ bug fixes and structural changes that will be needed for new features that will 
 into later releases. Apart from greater stability and improved error handling in many circumstances,
 there are few user-visible changes in this release.
 
+For systems where local users also tend to be members of VOs, dCache 4.0 brings a helpful change in 
+the way group membership is assigned. gPlazma can now be configured so that several authentication 
+plugins cooperate in selecting and setting the primary GID of a user account, so that a user can
+work in a mixed environment where he or she is recognized through both a local account and a VOMS identity.
+
+In order to facilitate moving clients to using different checksums, the pools can now be configured to 
+calculate several checksums for any uploaded file at once. A file may thus get both an ADLER32 and an MD5 
+checksum, for example.
+
 ## Incompatibilities
 
-(tbd, this section uses markdown formatting)
+The change to gPlazma mentioned above may change the behaviour of some more exotic gPlazma configurations.
+In case a configuration exploits the fact that previously, attempts to assign multiple primary GIDs
+led to failures, any behaviour built on that assumption will now change because the authentication
+plugins will cooperate to assign one of the GIDs as primary and the other as secondary.
 
 ## Acknowledgments
 
