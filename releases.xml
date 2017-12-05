@@ -193,7 +193,23 @@
         <notes-url>release-notes-3.2.shtml</notes-url>
         <version-prefix>3.2.</version-prefix>
 	
-	<release version="8" recommended="1">
+	<release version="9" recommended="1">
+        <date>5.12.2017</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>9e17f2d1ea0b950fb839ed17fdb7ea78</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>94b8b88005f8b6fbe8611232a465a770</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>2cfc1f6c0d2b22a319b77df649fbe005</md5sum>
+        </package>
+      </release>
+
+      <release version="8">
         <date>28.11.2017</date>
         <package name="Debian package">
           <download-url>_VERSION-1_all.deb</download-url>
@@ -370,7 +386,23 @@
 
 
 
-      <release version="24" recommended="1">
+      <release version="25" recommended="1">
+        <date>5.12.2017</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>90ed175b661a7fac6108e7ed0fc2fcd4</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>f1ca7d407901cf2c176ce3289e665b48</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>30d777fca8bc12b8ee19ecd0f5ddf548</md5sum>
+        </package>
+      </release>
+
+      <release version="24">
         <date>28.11.2017</date>
         <package name="Debian package">
           <download-url>_VERSION-1_all.deb</download-url>
@@ -808,7 +840,23 @@
       <notes-url>release-notes-3.0.shtml</notes-url>
       <version-prefix>3.0.</version-prefix>
       
-       <release version="36" recommended="1">
+       <release version="37" recommended="1">
+        <date>5.12.2017</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>59e1c5d0440459f305a3ae8ec10b9015</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>43c33a4afdb0bf449160bf61feccffd4</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>aff952da61493645f414ee487e4f352a</md5sum>
+        </package>
+      </release>
+
+      <release version="36">
         <date>28.11.2017</date>
         <package name="Debian package">
           <download-url>_VERSION-1_all.deb</download-url>
@@ -1437,7 +1485,27 @@
         <version-prefix>2.16.</version-prefix>
 
 
-      <release version="55" recommended="1">
+      <release version="56" recommended="1">
+        <date>5.12.2017</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>b9b5dd01766c00de0e5561a872a688b5</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>977d947f089182293c2d361e1eea44a0</md5sum>
+        </package>
+        <package name="Solaris package">
+          <download-url>-VERSION-1.pkg</download-url>
+          <md5sum>bbc00b0f3ad313d04597381d9dfaa4b7</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>270148996aa344316df396dce0be63c5</md5sum>
+        </package>
+      </release>
+
+      <release version="55">
         <date>28.11.2017</date>
         <package name="Debian package">
           <download-url>_VERSION-1_all.deb</download-url>

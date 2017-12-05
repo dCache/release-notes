@@ -109,6 +109,30 @@ HTML header: <title>dCache 3.0 Release Notes</title>
 
 Thanks to Onno Zweers for several contributions to this release.
 
+## Release 3.0.37
+
+### chimera
+
+
+The current release fixed previously introduced issues for  `lost+found` directory permissions.
+Now, the `lost+found` directory permissions is updated without causing
+problems if that directory has been removed or permissions have been
+modified.
+
+
+### Changelog 3.0.36..3.0.37
+
+<!-- git log 3.0.36..3.0.37 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[89c6a8b](https://github.com/dcache/dcache/commit/89c6a8b0892251c1ad4fa46627b9b6b2b1b6431c)
+:   [maven-release-plugin] prepare release 3.0.37
+
+[bdfb780](https://github.com/dcache/dcache/commit/bdfb780a4694678fc1898f5abaf9f780fe3973ef)
+:   chimera: correct previous attempt to fix 'lost+found' directory permission
+
+[a74b73f](https://github.com/dcache/dcache/commit/a74b73fb74377c70e6e5af04cdd814fe7ae618b5)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.0.36
 
 ### pnfsmanager

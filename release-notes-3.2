@@ -101,6 +101,30 @@ Marisa Nest, Martin Bürger, Sarah Schulte, Hasan Jahid and Max Patzelt, whose
 code made it into 3.2.0.
 
 
+## Release 3.2.9
+
+### chimera
+
+
+The current release fixed previously introduced issues for  `lost+found` directory permissions.
+Now, the `lost+found` directory permissions is updated without causing
+problems if that directory has been removed or permissions have been
+modified.
+
+
+### Changelog 3.2.8..3.2.9
+
+<!-- git log 3.2.8..3.2.9 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[44a6ec8](https://github.com/dcache/dcache/commit/44a6ec87ccc2d970e40920dbfed608c240a52118)
+:   [maven-release-plugin] prepare release 3.2.9
+
+[91c30e6](https://github.com/dcache/dcache/commit/91c30e69e54ef9f5ae27dd3b282f8bbebf63dcbd)
+:   chimera: correct previous attempt to fix 'lost+found' directory permission
+
+[0c61067](https://github.com/dcache/dcache/commit/0c61067ac32db94d2775fa2c4fcf4382d8843e8e)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.2.8
 
 ### nfs

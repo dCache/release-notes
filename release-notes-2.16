@@ -111,6 +111,30 @@ HTML header: <title>dCache 2.16 Release Notes</title>
 * Sites with a custom `httpd.conf` configuration will have to adjust
   this upon upgrade to inject the cell address of the `info` service.
 
+## Release 2.16.56
+
+### chimera
+
+
+The current release fixed previously introduced issues for  `lost+found` directory permissions.
+Now, the `lost+found` directory permissions is updated without causing
+problems if that directory has been removed or permissions have been
+modified.
+
+
+### Changelog 2.16.55..2.16.56
+
+<!-- git log 2.16.55..2.16.56 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[cd08165](https://github.com/dcache/dcache/commit/cd081659f8e1ab8552356ed96406fe8bbfb32761)
+:   [maven-release-plugin] prepare release 2.16.56
+
+[03a7300](https://github.com/dcache/dcache/commit/03a730064df9f139a69dcdb20241129b8a4effd8)
+:   chimera: correct previous attempt to fix 'lost+found' directory permission
+
+[742ec49](https://github.com/dcache/dcache/commit/742ec4916d11af5cb0e39a32671488a56c823b0a)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.16.55
 
 ### pnfsmanager
