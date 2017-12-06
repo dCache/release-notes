@@ -85,6 +85,8 @@ In case a configuration exploits the fact that previously, attempts to assign mu
 led to failures, any behaviour built on that assumption will now change because the authentication
 plugins will cooperate to assign one of the GIDs as primary and the other as secondary.
 
+* tbd: https://github.com/dcache/dcache/commit/38c76ed8322005dc280e63899811bd683aca30f1 * 
+
 ## Acknowledgments
 
 Once again, we have received important code contributions from our users. 
@@ -93,7 +95,106 @@ We would like to thank Christoph Anton Mitterer for his work on systemd integrat
 Onno Zweers for spotting an https issue with WebDAV, and Robin Wenzel for his contributions
 during the HTW course.
 
-## Release 4.0
+## Release 4.0.0
+
+### Admin
+
+### Alarms
+
+### Authentication
+
+gPlazma may be configured so that plugins cooperate in building a list
+of gids for an authenticated user. Somtimes it is desirable for "group membership" (i.e. gid principals) to
+come from multiple sources; for example, a user who known to dCache
+personally and is also asserting their VO membership may wish to access
+resources based on her identity or based on her VO membership. The new release
+changes the plugins' behaviour so that a plugin only adds the first gid as a primary gid 
+if there is no existing primary gid for this user. If there is an
+existing primary gid then the gid is still added, but as a secondary
+gid. 
+
+### Billing 
+
+### Cleaner
+
+### DCAP
+
+### Frontend
+
+If a mover is killed through the pools' REST API, the affected transfers are now shown
+with changed state (CANCELED) in the frontend. 
+
+### FTP
+
+### gplazma
+
+### History
+
+### Hoppingmanager
+
+### httpd
+
+### Info
+
+### NFS
+
+### Pinmanager
+
+### PNFS Manager
+
+### Pool
+
+### Poolmanager
+
+### Resilience
+
+### Spacemanager
+
+Error reporting was improved for cases where a user tries to upload into dCache using a space-token where there
+is no selectable link for this operation. The error message now includes more details.
+
+### SRM
+
+dCache now allows an SRM client to specify from which linkgroup a
+reservation should be made. 
+
+dCache, in general, supports space reservation through linkgroups: each space
+reservation is bound to a particular linkgroup.  Uploads involving a
+reservation automatically select that linkgroup. 
+
+Each linkgroup has an independent set of links.  The set of links within
+a single linkgroup may be configured to accept only a subset of all
+upload requests; for example, only uploads into a particular path (i.e.,
+a specific storage class).
+
+If dCache is configured with more than one linkgroup then it is possible
+that an upload is allowed by one linkgroup, but is not acceptable to
+another.  Attempts to upload with a reservation made from the "wrong"
+linkgroup will fail. Therefore, the user may care from which linkgroup a
+reservation is made.
+
+### SRM Manager
+
+### Statistics
+
+### Systemtest
+
+Since OpenSSL changed the format of DN strings from a slash-separated to a comma-separated one,
+systemtest needed to be updated to work with the new format. 
+
+### WebDAV
+
+WebDAV now issues a warning when https redirects are enabled as, in that situation,
+authentication will be done over https but files will be transfered over plain http.
+
+The WebDAV protocol includes a special return code to indicate that a
+PUT request was denied because the filesystem is full: 507 Insufficient
+Storage. This code is now returned in case the underlying dCache system 
+has no available space left.
+
+### xrootd
+
+### Zookeeper
 
 ### Changelog from 3.2.0 to 4.0.0
 
