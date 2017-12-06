@@ -115,16 +115,21 @@ gid.
 
 ### Billing 
 
+### Cells
+
+The `system` cell's 'route' command has been improved so it provides a
+nicer layout of information and allows filtering out available routes.
+
 ### Cleaner
 
 ### DCAP
 
 ### Frontend
 
-If a mover is killed through the pools' REST API, the affected transfers are now shown
-with changed state (CANCELED) in the frontend. 
-
 ### FTP
+
+As a a workaround for a unusual behaviour in the Globus FTP client, dCache no longer logs 
+`java.io.IOException: Connection reset by peer` exceptions.
 
 ### gplazma
 
@@ -142,8 +147,7 @@ report all restore requests anywhere in the system.
 
 ### NFS
 
-A rare memory leak has been fixed that would occur if, due to an error, no mover was created
-for a beginning transfer.
+dCache's NFS implementation now supports `COMMIT` operations. 
 
 ### Pinmanager
 
@@ -151,11 +155,19 @@ for a beginning transfer.
 
 ### Pool
 
-Unnecessary double logging of transfer failures was corrected.
-
 ### Poolmanager
 
+Timeouts in contacting PoolManager no longer result in a stack-trace
+being logged.
+
 ### Resilience
+
+### Scripts 
+
+dCache-StAR now supports PostgreSQL servers on non-standard ports.
+
+The installation on RPM-based systems will now ensure that the user `dcache` is a member of the group `dcache`,
+ensuring that admin ssh keys are usable.
 
 ### Spacemanager
 
@@ -198,6 +210,9 @@ systemtest needed to be updated to work with the new format.
 
 ### WebDAV
 
+dCache now supports RFC 3230-style Want-Digest headers. These allow clients to request 
+specific checksumming algorithms. 
+
 WebDAV now issues a warning when https redirects are enabled as, in that situation,
 authentication will be done over https but files will be transfered over plain http.
 
@@ -207,6 +222,12 @@ Storage. This code is now returned in case the underlying dCache system
 has no available space left.
 
 ### xrootd
+
+The xrootd implementation now supports the flag `kxr_posc`, available for the `kXR_open` operation. 
+In cases where files may be created but (perhaps due to errors) not properly closed, files could 
+end up abandoned with a 0-byte file size. This flag may be used to switch
+between two behaviours: having the flag set will persist the file, having it unset will ensure
+that such files are cleaned up.
 
 ### Zookeeper
 
