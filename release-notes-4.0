@@ -134,15 +134,24 @@ with changed state (CANCELED) in the frontend.
 
 ### httpd
 
+It was necessary to update the status gathering methods to allow for correct reporting in
+high availability setups. With the current release, all http and frontend services correctly
+report all restore requests anywhere in the system.
+
 ### Info
 
 ### NFS
+
+A rare memory leak has been fixed that would occur if, due to an error, no mover was created
+for a beginning transfer.
 
 ### Pinmanager
 
 ### PNFS Manager
 
 ### Pool
+
+Unnecessary double logging of transfer failures was corrected.
 
 ### Poolmanager
 
@@ -156,7 +165,7 @@ is no selectable link for this operation. The error message now includes more de
 ### SRM
 
 dCache now allows an SRM client to specify from which linkgroup a
-reservation should be made. 
+reservation should be made:
 
 dCache, in general, supports space reservation through linkgroups: each space
 reservation is bound to a particular linkgroup.  Uploads involving a
@@ -174,6 +183,11 @@ linkgroup will fail. Therefore, the user may care from which linkgroup a
 reservation is made.
 
 ### SRM Manager
+
+If an old configuration still contains references to either of the deprecated 
+properties srmmanager.net.port or srmmanager.net.local-hosts, the move away from
+these old properties is now documented better.
+
 
 ### Statistics
 
