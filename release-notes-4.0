@@ -162,6 +162,41 @@ being logged.
 
 ### Resilience
 
+### RESTful API
+
+With this release, an extensive set of RESTful information services is now available.
+The APIs will soon be published separately with documentation.  All of the
+services are reachable via the https port 3880.   For the most part, these
+services implement GET to return JSON objects describing dCache state.
+
+The basic paths are:
+
+https://host:3880/api/v1/alarms
+https://host:3880/api/v1/billing
+https://host:3880/api/v1/cells
+https://host:3880/api/v1/namespace
+https://host:3880/api/v1/id
+https://host:3880/api/v1/links
+https://host:3880/api/v1/partitions
+https://host:3880/api/v1/poolgroups
+https://host:3880/api/v1/pools
+https://host:3880/api/v1/pool-preferences
+https://host:3880/api/v1/restores
+https://host:3880/api/v1/units
+https://host:3880/api/v1/transfers
+
+From them it is possible to obtain such things as lists of billing records
+for a given file, full information on a given pool, including current queue activity,
+a list of transfers or restores for a given file, histogram data for pool queues, etc.
+
+Most of these services require the user to have admin authorization and
+to express the 'admin' role.   For instance:
+
+curl -k -u <uname>#admin:<psswd> 'https://host:3880/api/v1/billing/reads/<pnfsid>'
+
+Fuller information on the subpaths, parameters and descriptions of the
+JSON objects returned is forthcoming.
+
 ### Scripts 
 
 dCache-StAR now supports PostgreSQL servers on non-standard ports.
