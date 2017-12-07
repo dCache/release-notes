@@ -58,7 +58,7 @@ HTML header: <title>dCache 4.0 Release Notes</title>
 <div class="row">
 
 <div class="page-header">
-<h1>What's new in dCache 3.2<br/>
+<h1>What's new in dCache 4.0<br/>
 <small>Release notes</small></h1>
 </div>
 
@@ -114,7 +114,7 @@ nicer layout of information and allows filtering out available routes.
 
 ### FTP
 
-As a a workaround for a unusual behaviour in the Globus FTP client, dCache no longer logs 
+As a  workaround for a unusual behaviour in the Globus FTP client, dCache no longer logs 
 `java.io.IOException: Connection reset by peer` exceptions.
 
 ### httpd

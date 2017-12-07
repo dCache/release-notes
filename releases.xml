@@ -167,6 +167,31 @@
     <br/>
   </preamble>
 
+ <series id="server-4.0">
+    <title>server 4.0.x</title>
+    <description>
+      <p>
+        dCache 4.0 features the following highlights and architectural improvements:
+      </p>
+
+      <ul>
+        <li>dCache-StAR now supports PostgreSQL servers on non-standard ports.</li>
+        <li>dCache now supports RFC 3230-style Want-Digest headers. These allow clients to request specific checksumming algorithms.</li>
+        <li>gPlazma may be configured so that plugins cooperate in building a list of gids for an authenticated user.</li>
+        <li>Pools can now be configured to calculate several checksums for any uploaded file at once.</li>
+      </ul>
+
+      <p>
+          dCache v4.0 requires a JVM supporting Java 8.
+      </p>
+
+    </description>
+
+    <releases>
+    </releases>
+ </series>
+
+
   <series id="server-3.2">
     <title>server 3.2.x</title>
     <description>
