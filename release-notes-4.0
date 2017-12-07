@@ -162,7 +162,7 @@ a list of transfers or restores for a given file, histogram data for pool queues
 Most of these services require the user to have admin authorization and
 to express the 'admin' role.   For instance:
 
-curl -k -u <uname>#admin:<psswd> 'https://host:3880/api/v1/billing/reads/<pnfsid>'
+curl -k -u $USERNAME#admin:$PASSWD 'https://host:3880/api/v1/billing/reads/$PNFSID'
 
 Fuller information on the subpaths, parameters and descriptions of the
 JSON objects returned is forthcoming.
