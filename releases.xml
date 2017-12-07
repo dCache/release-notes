@@ -194,9 +194,7 @@
         <version-prefix>4.0.</version-prefix>
 
 
-    </releases>
-
-      <release version="0" recommended="1">
+       <release version="0" recommended="1">
         <date>7.12.2017</date>
         <package name="Debian package">
           <download-url>_VERSION-1_all.deb</download-url>
@@ -210,8 +208,9 @@
           <download-url>-VERSION.tar.gz</download-url>
           <md5sum>244a6429ef79e38db999ca29e34c90ba</md5sum>
         </package>
- 	</release>
-      </release>
+       </release>
+
+     </releases>
 
       
  </series>
