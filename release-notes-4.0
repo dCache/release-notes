@@ -85,8 +85,6 @@ In case a configuration exploits the fact that previously, attempts to assign mu
 led to failures, any behaviour built on that assumption will now change because the authentication
 plugins will cooperate to assign one of the GIDs as primary and the other as secondary.
 
-* tbd: https://github.com/dcache/dcache/commit/38c76ed8322005dc280e63899811bd683aca30f1 * 
-
 ## Acknowledgments
 
 Once again, we have received important code contributions from our users. 
@@ -96,10 +94,6 @@ Onno Zweers for spotting an https issue with WebDAV, and Robin Wenzel for his co
 during the HTW course.
 
 ## Release 4.0.0
-
-### Admin
-
-### Alarms
 
 ### Authentication
 
@@ -113,29 +107,15 @@ if there is no existing primary gid for this user. If there is an
 existing primary gid then the gid is still added, but as a secondary
 gid. 
 
-### Billing 
-
 ### Cells
 
 The `system` cell's 'route' command has been improved so it provides a
 nicer layout of information and allows filtering out available routes.
 
-### Cleaner
-
-### DCAP
-
-### Frontend
-
 ### FTP
 
 As a a workaround for a unusual behaviour in the Globus FTP client, dCache no longer logs 
 `java.io.IOException: Connection reset by peer` exceptions.
-
-### gplazma
-
-### History
-
-### Hoppingmanager
 
 ### httpd
 
@@ -143,24 +123,14 @@ It was necessary to update the status gathering methods to allow for correct rep
 high availability setups. With the current release, all http and frontend services correctly
 report all restore requests anywhere in the system.
 
-### Info
-
 ### NFS
 
 dCache's NFS implementation now supports `COMMIT` operations. 
-
-### Pinmanager
-
-### PNFS Manager
-
-### Pool
 
 ### Poolmanager
 
 Timeouts in contacting PoolManager no longer result in a stack-trace
 being logged.
-
-### Resilience
 
 ### RESTful API
 
@@ -235,9 +205,6 @@ If an old configuration still contains references to either of the deprecated
 properties srmmanager.net.port or srmmanager.net.local-hosts, the move away from
 these old properties is now documented better.
 
-
-### Statistics
-
 ### Systemtest
 
 Since OpenSSL changed the format of DN strings from a slash-separated to a comma-separated one,
@@ -263,8 +230,6 @@ In cases where files may be created but (perhaps due to errors) not properly clo
 end up abandoned with a 0-byte file size. This flag may be used to switch
 between two behaviours: having the flag set will persist the file, having it unset will ensure
 that such files are cleaned up.
-
-### Zookeeper
 
 ### Changelog from 3.2.0 to 4.0.0
 
