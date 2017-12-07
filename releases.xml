@@ -188,7 +188,32 @@
     </description>
 
     <releases>
+	<name>dCache VERSION</name>
+        <download-url-prefix>repo/4.0/dcache</download-url-prefix>
+        <notes-url>release-notes-4.0.shtml</notes-url>
+        <version-prefix>4.0.</version-prefix>
+
+
     </releases>
+
+      <release version="0" recommended="1">
+        <date>7.12.2017</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>b1ea2cd3948420d0b09114926383ea5e</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>5a45022d3fafb9122bf88134014e20dd</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>244a6429ef79e38db999ca29e34c90ba</md5sum>
+        </package>
+ 	</release>
+      </release>
+
+      
  </series>
 
 
