@@ -101,6 +101,28 @@ Marisa Nest, Martin Bürger, Sarah Schulte, Hasan Jahid and Max Patzelt, whose
 code made it into 3.2.0.
 
 
+## Release 3.2.10
+
+### chimera
+
+A database deadlock was observed in some rare situations with the latest
+3.2 releases. This patch resolves the issue, ensuring trouble-free 
+chimera operation.
+
+
+### Changelog 3.2.9..3.2.10
+
+<!-- git log 3.2.9..3.2.10 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[f50d7d22c6](https://github.com/dcache/dcache/commit/f50d7d22c64859c7b4afeaf0dfd3ef1d926640dc)
+:   [maven-release-plugin] prepare release 3.2.10
+
+[70c1ba902f](https://github.com/dcache/dcache/commit/70c1ba902f5c2a922f63a1c3663cc937073ed736)
+:   chimera: fix deadlock in Postgres driver
+
+[89bb1f959d](https://github.com/dcache/dcache/commit/89bb1f959d5b34e334d625e75ce58f67c8af5bd6)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.2.9
 
 ### chimera

@@ -93,6 +93,28 @@ We would like to thank Christoph Anton Mitterer for his work on systemd integrat
 Onno Zweers for spotting an https issue with WebDAV, and Robin Wenzel for his contributions
 during the HTW course.
 
+## Release 4.0.1
+
+### chimera
+
+A database deadlock was observed in some rare situations with the latest
+3.2 releases. This patch resolves the issue, ensuring trouble-free
+chimera operation.
+
+
+### Changelog 4.0.0..4.0.1
+
+<!-- git log 4.0.0..4.0.1 --no-merges --format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[bc32f2c4be](https://github.com/dcache/dcache/commit/bc32f2c4bee3dd2226ab002638fc47eabee71765)
+:   [maven-release-plugin] prepare release 4.0.1
+
+[596a316dfb](https://github.com/dcache/dcache/commit/596a316dfbd0303df2173e716a05b4ec8294f1c8)
+:   chimera: fix deadlock in Postgres driver
+
+[96a77e3a9f](https://github.com/dcache/dcache/commit/96a77e3a9f9ae080ca0eacbee6026e4775d32145)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.0.0
 
 ### Authentication
