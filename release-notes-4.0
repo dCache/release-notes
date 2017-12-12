@@ -104,7 +104,7 @@ chimera operation.
 
 ### Changelog 4.0.0..4.0.1
 
-<!-- git log 4.0.0..4.0.1 --no-merges --format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+<!-- git log 4.0.0..4.0.1 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
 
 [bc32f2c4be](https://github.com/dcache/dcache/commit/bc32f2c4bee3dd2226ab002638fc47eabee71765)
 :   [maven-release-plugin] prepare release 4.0.1
