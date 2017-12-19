@@ -76,6 +76,39 @@ HTML header: <title>dCache 3.1 Release Notes</title>
 
 Thanks to Johan Guldmyr for his constributions.
 
+## Release 3.1.26
+
+### info
+
+The info service collects information about who is allowed to reserve space. 
+Since some of this information, like VOs, usernames and gids, may be considered
+sensitive information, this update allows admins to control whether or not 
+to publish them. The default behaviour is unchanged from the previous behaviour,
+i.e. info publishes everything. If a site admin wants to change this,
+the `info.limits.show-only-vo-authz` property can be set to `true`.
+
+### scripts
+
+The dcache script and manpage still refered explicitely to Java 6. This patch
+changes the phrasing of the respective text.
+
+
+### Changelog 3.1.25..3.1.26
+
+<!-- git log 3.1.25..3.1.26 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[1121bd4a3a](https://github.com/dcache/dcache/commit/1121bd4a3a1c5b19352eb31cc5c80367087d3a2d)
+:   [maven-release-plugin] prepare release 3.1.26
+
+[f3f2d8f0c7](https://github.com/dcache/dcache/commit/f3f2d8f0c76c44db017710998d48d88c3c0788fd)
+:   scripts: update reference to JDK to avoid mentioning specific java version
+
+[c2eff238db](https://github.com/dcache/dcache/commit/c2eff238db287349306d44c6348fff4ca99ac7f4)
+:   info: allow admin to control whether non-VO / non-FQAN identities are shown
+
+[769c72a044](https://github.com/dcache/dcache/commit/769c72a0448c829d03ecdfdc9dbc405528d0bba3)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.1.25
 
 ### chimera

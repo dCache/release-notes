@@ -111,6 +111,39 @@ HTML header: <title>dCache 2.16 Release Notes</title>
 * Sites with a custom `httpd.conf` configuration will have to adjust
   this upon upgrade to inject the cell address of the `info` service.
 
+## Release 2.16.57
+
+### info
+
+The info service collects information about who is allowed to reserve space. 
+Since some of this information, like VOs, usernames and gids, may be considered
+sensitive information, this update allows admins to control whether or not 
+to publish them. The default behaviour is unchanged from the previous behaviour,
+i.e. info publishes everything. If a site admin wants to change this,
+the `info.limits.show-only-vo-authz` property can be set to `true`.
+
+### scripts
+
+The dcache script and manpage still refered explicitely to Java 6. This patch
+changes the phrasing of the respective text.
+
+
+### Changelog 2.16.56..2.16.57
+
+<!-- git log 2.16.56..2.16.57 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[b1e67a165e](https://github.com/dcache/dcache/commit/b1e67a165ea7c5e19b012b0ba91855e0677ba770)
+:   [maven-release-plugin] prepare release 2.16.57
+
+[ad748c8b9c](https://github.com/dcache/dcache/commit/ad748c8b9c579b1b064a403c57d9063f9843c09c)
+:   scripts: update reference to JDK to avoid mentioning specific java version
+
+[264901a803](https://github.com/dcache/dcache/commit/264901a80345be3ea37b199df697428d642f1912)
+:   info: allow admin to control whether non-VO / non-FQAN identities are shown
+
+[a4c2d5e22c](https://github.com/dcache/dcache/commit/a4c2d5e22c5d2f11cf102902726c69cd424621fa)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.16.56
 
 ### chimera

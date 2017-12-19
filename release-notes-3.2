@@ -101,6 +101,55 @@ Marisa Nest, Martin Bürger, Sarah Schulte, Hasan Jahid and Max Patzelt, whose
 code made it into 3.2.0.
 
 
+## Release 3.2.11
+
+### info
+
+The info service collects information about who is allowed to reserve space. 
+Since some of this information, like VOs, usernames and gids, may be considered
+sensitive information, this update allows admins to control whether or not 
+to publish them. The default behaviour is unchanged from the previous behaviour,
+i.e. info publishes everything. If a site admin wants to change this,
+the `info.limits.show-only-vo-authz` property can be set to `true`.
+
+### nfs
+
+Accessing a nonexisting file on recent NFS implementations could cause a 
+FileNotFoundChimeraFsException, which is now caught and properly handled. 
+
+### pool
+
+In rare circumstances, running `info` on a pool could cause a
+NullPointerException. This issue has been fixed.
+
+### scripts
+
+The dcache script and manpage still refered explicitely to Java 6. This patch
+changes the phrasing of the respective text.
+
+
+### Changelog 3.2.10..3.2.11
+
+<!-- git log 3.2.10..3.2.11 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[4791b79689](https://github.com/dcache/dcache/commit/4791b79689aca7b4fab39b5d702e707862b79c7b)
+:   [maven-release-plugin] prepare release 3.2.11
+
+[0dae9f19f4](https://github.com/dcache/dcache/commit/0dae9f19f4d6fe011f30242cefa7c956f92cac26)
+:   nfs: fix ServerFault on FileNotFoundHimeraFsException
+
+[952fd1d2c0](https://github.com/dcache/dcache/commit/952fd1d2c08e68e4ea927c67677647e6c22a392d)
+:   [maven-release-plugin] prepare for next development iteration
+
+[b68757dd48](https://github.com/dcache/dcache/commit/b68757dd484fde0cd795192bc9aa46e048c9eb33)
+:   scripts: update reference to JDK to avoid mentioning specific java version
+
+[f1c860a74b](https://github.com/dcache/dcache/commit/f1c860a74bc28137f94a573858bc194ca95aaac5)
+:   info: allow admin to control whether non-VO / non-FQAN identities are shown
+
+[64ac107458](https://github.com/dcache/dcache/commit/64ac1074587029fcf1006c0aeb56e7405f16a6c7)
+:   pools: fix NPE from info command at startup
+
 ## Release 3.2.10
 
 ### chimera

@@ -93,6 +93,64 @@ We would like to thank Christoph Anton Mitterer for his work on systemd integrat
 Onno Zweers for spotting an https issue with WebDAV, and Robin Wenzel for his contributions
 during the HTW course.
 
+## Release 4.0.2
+
+### gplazma
+
+A previous release introduced the possibility of several authenticatio
+plugins cooperating in setting primary group IDs. This patch updates
+the multimap plugin so that it can also be used in such a scenario.
+
+### info
+
+The info service collects information about who is allowed to reserve space. 
+Since some of this information, like VOs, usernames and gids, may be considered
+sensitive information, this update allows admins to control whether or not 
+to publish them. The default behaviour is unchanged from the previous behaviour,
+i.e. info publishes everything. If a site admin wants to change this,
+the `info.limits.show-only-vo-authz` property can be set to `true`.
+
+### nfs
+
+Accessing a nonexisting file on recent NFS implementations could cause a 
+FileNotFoundChimeraFsException, which is now caught and properly handled. 
+
+### pool
+
+In rare circumstances, running `info` on a pool could cause a
+NullPointerException. This issue has been fixed.
+
+### scripts
+
+The dcache script and manpage still refered explicitely to Java 6. This patch
+changes the phrasing of the respective text.
+
+
+### Changelog 4.0.1..4.0.2
+
+<!-- git log 4.0.1..4.0.2 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[cd1ebaae54](https://github.com/dcache/dcache/commit/cd1ebaae54d2640b0aa545c2b5de5337d4d1a9b6)
+:   [maven-release-plugin] prepare release 4.0.2
+
+[39127754f4](https://github.com/dcache/dcache/commit/39127754f4a6e9e04e70b1cadae8e3ad89d5b855)
+:   nfs: fix ServerFault on FileNotFoundHimeraFsException
+
+[c867d0cad6](https://github.com/dcache/dcache/commit/c867d0cad664f802f000feb13bce1b3c47555959)
+:   [maven-release-plugin] prepare for next development iteration
+
+[6df84ff96b](https://github.com/dcache/dcache/commit/6df84ff96b8ad30dd627908377fe4fecae59b9ea)
+:   scripts: update reference to JDK to avoid mentioning specific java version
+
+[7724b0693a](https://github.com/dcache/dcache/commit/7724b0693ae40a09c8fa9aeeeabfec7dd07ed063)
+:   info: allow admin to control whether non-VO / non-FQAN identities are shown
+
+[743093ffcb](https://github.com/dcache/dcache/commit/743093ffcb4557b349df24544b69cbafd805d434)
+:   authentication: update multimap to cooperate in generating primary gids
+
+[29c0144cd1](https://github.com/dcache/dcache/commit/29c0144cd1cb0fc20b954eff737b09ad706bd11f)
+:   pools: fix NPE from info command at startup
+
 ## Release 4.0.1
 
 ### chimera
