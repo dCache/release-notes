@@ -93,6 +93,38 @@ We would like to thank Christoph Anton Mitterer for his work on systemd integrat
 Onno Zweers for spotting an https issue with WebDAV, and Robin Wenzel for his contributions
 during the HTW course.
 
+## Release 4.0.3
+
+### nfs
+
+NFS door has been updated  to return NFS4ERR_LAYOUTUNAVAILABLE for DOT files.
+
+### star
+
+The current release improved documentation to help  dCache admins to  have a better understanding of how to generate StAR record.
+
+The current release fixed fix printing exception error message for dcache-star script if there's a problem when run with newer versions of Python.
+
+
+### Changelog 4.0.2..4.0.3
+
+<!-- git log 4.0.2..4.0.3 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[c0d95dc](https://github.com/dcache/dcache/commit/c0d95dcc2fd4ea4afb1bbba5b3cb581e98cb6173)
+:   [maven-release-plugin] prepare release 4.0.3
+
+[acf2137](https://github.com/dcache/dcache/commit/acf2137d1974a37a642e3dd9c43557e93ef518fe)
+:   nfs: return LAYOUTUNAVAILABLE for DOT files
+
+[feb0d3c](https://github.com/dcache/dcache/commit/feb0d3c48ad83dfc17ab777d70d921f178a00914)
+:   star: fix printing exception error message
+
+[fd66ac6](https://github.com/dcache/dcache/commit/fd66ac6f920e4207ad407b04eb66f5b53e5b974a)
+:   star: update documentation to provide better description of script
+
+[00e7464](https://github.com/dcache/dcache/commit/00e746475f876f6b197b75a62ac45cbf246790d1)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.0.2
 
 ### gplazma

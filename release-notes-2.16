@@ -111,6 +111,31 @@ HTML header: <title>dCache 2.16 Release Notes</title>
 * Sites with a custom `httpd.conf` configuration will have to adjust
   this upon upgrade to inject the cell address of the `info` service.
 
+## Release 2.16.58
+
+### star
+
+The current release improved documentation to help  dCache admins to  have a better understanding of how to generate StAR record.
+
+The current release fixed fix printing exception error message for dcache-star script if there's a problem when run with newer versions of Python.
+
+
+### Changelog 2.16.57..2.16.58
+
+<!-- git log 2.16.57..2.16.58 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[e4c262a](https://github.com/dcache/dcache/commit/e4c262adbfd1f2515027b18f9878eaa564a33c92)
+:   [maven-release-plugin] prepare release 2.16.58
+
+[afcabff](https://github.com/dcache/dcache/commit/afcabffd42482987b754dc5640ba242f44c8088a)
+:   star: fix printing exception error message
+
+[7982d56](https://github.com/dcache/dcache/commit/7982d564af711f446b5e32c7902ddba40a2ccf40)
+:   star: update documentation to provide better description of script
+
+[8582150](https://github.com/dcache/dcache/commit/858215053a4969c89dcdacf1c99978405db1cbdf)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.16.57
 
 ### info

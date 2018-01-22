@@ -76,6 +76,38 @@ HTML header: <title>dCache 3.1 Release Notes</title>
 
 Thanks to Johan Guldmyr for his constributions.
 
+## Release 3.1.27
+
+### nfs
+
+NFS door has been updated  to return NFS4ERR_LAYOUTUNAVAILABLE for DOT files.
+
+### star
+
+The current release improved documentation to help  dCache admins to  have a better understanding of how to generate StAR record.
+
+The current release fixed fix printing exception error message for dcache-star script if there's a problem when run with newer versions of Python.
+
+
+### Changelog 3.1.26..3.1.27
+
+<!-- git log 3.1.26..3.1.27 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[3c489d7](https://github.com/dcache/dcache/commit/3c489d709d997feb218ef4d0d1141e6c57207da3)
+:   [maven-release-plugin] prepare release 3.1.27
+
+[ac06cd7](https://github.com/dcache/dcache/commit/ac06cd7f822310f27e3fd032097b2c01fb4b1c4b)
+:   nfs: return LAYOUTUNAVAILABLE for DOT files
+
+[844c0e4](https://github.com/dcache/dcache/commit/844c0e473b78d06604d6f06d1bceda9cc6125bdd)
+:   star: fix printing exception error message
+
+[d913a42](https://github.com/dcache/dcache/commit/d913a424ccd311864bb5061bafb63c2a513cfa9d)
+:   star: update documentation to provide better description of script
+
+[e1b4fe4](https://github.com/dcache/dcache/commit/e1b4fe4cf2dcf833096cc868b80d0ac46468caed)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.1.26
 
 ### info
