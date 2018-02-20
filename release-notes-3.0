@@ -109,6 +109,50 @@ HTML header: <title>dCache 3.0 Release Notes</title>
 
 Thanks to Onno Zweers for several contributions to this release.
 
+## Release 3.0.41
+
+### dcache-resilience
+
+When a checksum or broken file message/error is generated,
+Resilience makes a best effort to (a) remove the broken
+copy and (b) make another replica. This, of course, is not always possible, particularly if
+the broken file is the only accessible copy. This resulted in  faulty behavior 
+ particularly the thrashing noted in the case of a restaging operation which results in a checksum error.
+This is now fixed.
+
+The current release improved error handling for resilience. 
+It fixed  unnecessary Migration Task exceptions resulting from
+source pools with no replica in the repository.
+
+Now  it should be possible for Resilience to use pools blocked only for
+writes from doors.
+
+
+### Changelog 3.0.40..3.0.41
+
+<!-- git log 3.0.40..3.0.41 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[2ed30f8](https://github.com/dcache/dcache/commit/2ed30f866b214638604f98a5779bf7f42848a859)
+:   [maven-release-plugin] prepare release 3.0.41
+
+[1c8c56c](https://github.com/dcache/dcache/commit/1c8c56c17f670cc8ef8472ec74702837c44f1999)
+:   bad commit put DOWN twice
+
+[57c9ccd](https://github.com/dcache/dcache/commit/57c9ccd916e17dabba4ed9aed2233c6cc3b6cd59)
+:   dcache-resilience: define non-writable pool to mean p2p-client is disabled
+
+[71419a4](https://github.com/dcache/dcache/commit/71419a4795243756a588e10ab1a5f60fd34c82f8)
+:   dcache: fix remote pool monitor wait bug
+
+[c49e444](https://github.com/dcache/dcache/commit/c49e4441dbf9ae19dff862e58e6e06df15e00b6e)
+:   dcache-resilience: repair handling of broken files*
+
+[0d58321](https://github.com/dcache/dcache/commit/0d583217057528246e73bd6fef46fb3f543c322e)
+:   [maven-release-plugin] prepare for next development iteration
+
+[05a7853](https://github.com/dcache/dcache/commit/05a7853083a810c7bc9cecd57a9697d28b59da16)
+:   dcache-resilience: fix bug in source handling with Clear Cache Location messages
+
 ## Release 3.0.40
 
 ### cells

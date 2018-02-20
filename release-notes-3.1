@@ -76,6 +76,50 @@ HTML header: <title>dCache 3.1 Release Notes</title>
 
 Thanks to Johan Guldmyr for his constributions.
 
+## Release 3.1.29
+
+### dcache-resilience
+
+When a checksum or broken file message/error is generated,
+Resilience makes a best effort to (a) remove the broken
+copy and (b) make another replica. This, of course, is not always possible, particularly if
+the broken file is the only accessible copy. This resulted in  faulty behavior 
+ particularly the thrashing noted in the case of a restaging operation which results in a checksum error.
+This is now fixed.
+
+The current release improved error handling for resilience. 
+It fixed  unnecessary Migration Task exceptions resulting from
+source pools with no replica in the repository.
+
+Now  it should be possible for Resilience to use pools blocked only for
+writes from doors.
+
+
+### Changelog 3.1.28..3.1.29
+
+<!-- git log 3.1.28..3.1.29 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[9671b92](https://github.com/dcache/dcache/commit/9671b92392ceefb4e0b6ca51786f0789eeba16bb)
+:   [maven-release-plugin] prepare release 3.1.29
+
+[49f750f](https://github.com/dcache/dcache/commit/49f750f2a9fc75f9ff90bdf675f38e1bac3c009a)
+:   bad commit put DOWN twice
+
+[8b40d82](https://github.com/dcache/dcache/commit/8b40d8288333dd2a875dde1e4c4ad7ed38c837e7)
+:   dcache-resilience: define non-writable pool to mean p2p-client is disabled
+
+[582f231](https://github.com/dcache/dcache/commit/582f23193db913831158de5925ed154bb678f218)
+:   dcache: fix remote pool monitor wait bug
+
+[3dd8aa8](https://github.com/dcache/dcache/commit/3dd8aa81c1803996bfa0de4ab88bf1d2b39b8d67)
+:   dcache-resilience: repair handling of broken files*
+
+[51c2bfb](https://github.com/dcache/dcache/commit/51c2bfb88063ba61527452a3baf40b551bdce732)
+:   [maven-release-plugin] prepare for next development iteration
+
+[efe0d91](https://github.com/dcache/dcache/commit/efe0d913ec81399fb4ce9928658e8f51de8a7770)
+:   dcache-resilience: fix bug in source handling with Clear Cache Location messages
+
 ## Release 3.1.28
 
 ### cells

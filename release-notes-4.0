@@ -93,6 +93,60 @@ We would like to thank Christoph Anton Mitterer for his work on systemd integrat
 Onno Zweers for spotting an https issue with WebDAV, and Robin Wenzel for his contributions
 during the HTW course.
 
+## Release 4.0.5
+
+### dcache-resilience
+
+When a checksum or broken file message/error is generated,
+Resilience makes a best effort to (a) remove the broken
+copy and (b) make another replica. This, of course, is not always possible, particularly if
+the broken file is the only accessible copy. This resulted in  faulty behavior 
+ particularly the thrashing noted in the case of a restaging operation which results in a checksum error.
+This is now fixed.
+
+The current release improved error handling for resilience. 
+It fixed  unnecessary Migration Task exceptions resulting from
+source pools with no replica in the repository.
+
+Now  it should be possible for Resilience to use pools blocked only for
+writes from doors.
+
+### packaging
+
+Upgrading to dCache v3.2 (or newer) was resulting  in a broken dCache
+installation due to a missing `services.sh` file. This is now fixed and
+upgrade to dCache v3.2 (or newer) from dCache v3.1 (or older) no longer
+breaks dCache by removing /usr/share/dcache/lib/services.sh.
+
+
+### Changelog 4.0.4..4.0.5
+
+<!-- git log 4.0.4..4.0.5 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[929693c](https://github.com/dcache/dcache/commit/929693c0981c26c2a3fb6a8d1610a8cba2bde2d1)
+:   [maven-release-plugin] prepare release 4.0.5
+
+[0468c8b](https://github.com/dcache/dcache/commit/0468c8b793d2db17be20ccdd672d7329ce601881)
+:   bad commit put DOWN twice
+
+[b6f229b](https://github.com/dcache/dcache/commit/b6f229bdd13f3fdaffee6e2f3834070d70d8273e)
+:   dcache-resilience: define non-writable pool to mean p2p-client is disabled
+
+[f0000cd](https://github.com/dcache/dcache/commit/f0000cd75b0764426ebfb6276cca9ac2edd8728a)
+:   dcache: fix remote pool monitor wait bug
+
+[dcec6c5](https://github.com/dcache/dcache/commit/dcec6c5edd6ff942e20d794e3720e5d17f9a3aea)
+:   dcache-resilience: repair handling of broken files*
+
+[3d0bff3](https://github.com/dcache/dcache/commit/3d0bff3bcf14122ab1531761fdd404ce285fa71e)
+:   packaging: check 'services.sh' after old rpm removed
+
+[1b6734b](https://github.com/dcache/dcache/commit/1b6734b606fcf467198f3ff85af471c14e7f60b4)
+:   [maven-release-plugin] prepare for next development iteration
+
+[4f991cf](https://github.com/dcache/dcache/commit/4f991cf7a36a9191cf4b50990e936f92043062dc)
+:   dcache-resilience: fix bug in source handling with Clear Cache Location messages
+
 ## Release 4.0.4
 
 ### cells

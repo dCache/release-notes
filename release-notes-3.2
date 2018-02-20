@@ -101,6 +101,60 @@ Marisa Nest, Martin Bürger, Sarah Schulte, Hasan Jahid and Max Patzelt, whose
 code made it into 3.2.0.
 
 
+## Release 3.2.14
+
+### dcache-resilience
+
+When a checksum or broken file message/error is generated,
+Resilience makes a best effort to (a) remove the broken
+copy and (b) make another replica. This, of course, is not always possible, particularly if
+the broken file is the only accessible copy. This resulted in  faulty behavior 
+ particularly the thrashing noted in the case of a restaging operation which results in a checksum error.
+This is now fixed.
+
+The current release improved error handling for resilience. 
+It fixed  unnecessary Migration Task exceptions resulting from
+source pools with no replica in the repository.
+
+Now  it should be possible for Resilience to use pools blocked only for
+writes from doors.
+
+### packaging
+
+Upgrading to dCache v3.2 (or newer) was resulting  in a broken dCache
+installation due to a missing `services.sh` file. This is now fixed and
+upgrade to dCache v3.2 (or newer) from dCache v3.1 (or older) no longer
+breaks dCache by removing /usr/share/dcache/lib/services.sh.
+
+
+### Changelog 3.2.13..3.2.14
+
+<!-- git log 3.2.13..3.2.14 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[a7c71df](https://github.com/dcache/dcache/commit/a7c71dfff684cc772a764a3f691e70ee83275197)
+:   [maven-release-plugin] prepare release 3.2.14
+
+[d455f9d](https://github.com/dcache/dcache/commit/d455f9d792fd9e0b58c767cbc4430ef56288c581)
+:   bad commit put DOWN twice
+
+[d848910](https://github.com/dcache/dcache/commit/d8489100cfbf2ced89ea8afe159fab5fa640b439)
+:   dcache-resilience: define non-writable pool to mean p2p-client is disabled
+
+[8ce3c06](https://github.com/dcache/dcache/commit/8ce3c06c88c44fea2d035e24d69dfb4fe9e85483)
+:   dcache: fix remote pool monitor wait bug
+
+[dac5e17](https://github.com/dcache/dcache/commit/dac5e17addc43e888d34479f7239343434e5be58)
+:   dcache-resilience: repair handling of broken files*
+
+[f2cb660](https://github.com/dcache/dcache/commit/f2cb660ab2d0b5bf923c26021a744c2626e4d835)
+:   packaging: check 'services.sh' after old rpm removed
+
+[0876aa8](https://github.com/dcache/dcache/commit/0876aa84042d5aefeca662361044b56a3d9e9778)
+:   [maven-release-plugin] prepare for next development iteration
+
+[e7d5e16](https://github.com/dcache/dcache/commit/e7d5e16199413eb46ae0a5c7b3ee5958a1a83127)
+:   dcache-resilience: fix bug in source handling with Clear Cache Location messages
+
 ## Release 3.2.13
 
 ### cells

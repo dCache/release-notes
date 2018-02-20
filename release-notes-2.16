@@ -111,6 +111,50 @@ HTML header: <title>dCache 2.16 Release Notes</title>
 * Sites with a custom `httpd.conf` configuration will have to adjust
   this upon upgrade to inject the cell address of the `info` service.
 
+## Release 2.16.60
+
+### dcache-resilience
+
+When a checksum or broken file message/error is generated,
+Resilience makes a best effort to (a) remove the broken
+copy and (b) make another replica. This, of course, is not always possible, particularly if
+the broken file is the only accessible copy. This resulted in  faulty behavior 
+ particularly the thrashing noted in the case of a restaging operation which results in a checksum error.
+This is now fixed.
+
+The current release improved error handling for resilience. 
+It fixed  unnecessary Migration Task exceptions resulting from
+source pools with no replica in the repository.
+
+Now  it should be possible for Resilience to use pools blocked only for
+writes from doors.
+
+
+### Changelog 2.16.59..2.16.60
+
+<!-- git log 2.16.59..2.16.60 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[c94e97d](https://github.com/dcache/dcache/commit/c94e97df75dc46d2495de43e809d49d5ee06e0c6)
+:   [maven-release-plugin] prepare release 2.16.60
+
+[a2208da](https://github.com/dcache/dcache/commit/a2208dac9bb375321760568b660a71abf10b1ebb)
+:   bad commit put DOWN twice
+
+[3019c7e](https://github.com/dcache/dcache/commit/3019c7e4bb61a0a0a7dd3e6ddfd362c88159a7be)
+:   dcache-resilience: define non-writable pool to mean p2p-client is disabled
+
+[5296408](https://github.com/dcache/dcache/commit/52964084f11dbe2cfc62f18a7da088b229599f31)
+:   dcache: fix remote pool monitor wait bug
+
+[c1a3389](https://github.com/dcache/dcache/commit/c1a3389d833d290ac70142fd9bf5fde6e4e24166)
+:   dcache-resilience: repair handling of broken files*
+
+[0005651](https://github.com/dcache/dcache/commit/0005651b42fee9d1a98210f3a933bc192fd1e95b)
+:   [maven-release-plugin] prepare for next development iteration
+
+[1fce35f](https://github.com/dcache/dcache/commit/1fce35f893a2beb17d37f20e047b3602ff4c2846)
+:   dcache-resilience: fix bug in source handling with Clear Cache Location messages
+
 ## Release 2.16.59
 
 ### cells
