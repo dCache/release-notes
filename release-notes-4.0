@@ -93,6 +93,64 @@ We would like to thank Christoph Anton Mitterer for his work on systemd integrat
 Onno Zweers for spotting an https issue with WebDAV, and Robin Wenzel for his contributions
 during the HTW course.
 
+## Release 4.0.6
+
+### ftp
+
+A bug (that was not observed in real-world settings yet) that might have caused
+NullPointerExceptions was fixed in the ftp service.
+
+### httpd
+
+dCache will no longer log a stack-trace if HTTP
+requests are made asking for information from the info service when the
+info service is not running.
+
+### poolmanager
+
+An earlier change in PoolManager introduced regular broadcasting of the 
+stage request queue to various internal listeners. In some cases, this
+could lead to erroneous NoRouteToHost  error messages being logged. These
+error messages are now being suppressed.
+
+dCache 3.0 introduced a regression where a dCache domain does not
+start up if it hosts a poolmanager with poolmanager.conf containing
+either the "rc set sameHostCopy" or the "rc set sameHostRetry" command.
+This regression was fixed.
+
+### resilience
+
+Error handling within the Resilience service was improved.
+
+
+### Changelog 4.0.5..4.0.6
+
+<!-- git log 4.0.5..4.0.6 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[44480946d6](https://github.com/dcache/dcache/commit/44480946d68ccd25636e69b820e63b8547f76b0b)
+:   [maven-release-plugin] prepare release 4.0.6
+
+[483a90aeda](https://github.com/dcache/dcache/commit/483a90aeda37bde71b29832ca96e52f55da3a3dc)
+:   dcache-resilience: handle properly RuntimeExceptions from tasks
+
+[1bc74ba32b](https://github.com/dcache/dcache/commit/1bc74ba32babf0e03116d0d0a3a52d5d7b6b7638)
+:   ftp: ensure adapter is closed
+
+[ea690bd082](https://github.com/dcache/dcache/commit/ea690bd08243d762e3c2fa11ef76f92b9673c1d2)
+:   ftp: remove rare NullPointerException when proxying data
+
+[775cd7a7f4](https://github.com/dcache/dcache/commit/775cd7a7f418e1c6ac3a0d9161427236d9aa2329)
+:   httpd: do not log an exception if info cell not running
+
+[26771a24b2](https://github.com/dcache/dcache/commit/26771a24b2c4a2aab870b67708a046f5543ff1c2)
+:   poolmanager: silence NoRouteToCell for stage queue topic
+
+[51c0a3f5c3](https://github.com/dcache/dcache/commit/51c0a3f5c34478d4189acbd59895df9bcc953c8c)
+:   poolmanager: fix poolmanager startup with certain poolmanager.conf content
+
+[5a7e6775d3](https://github.com/dcache/dcache/commit/5a7e6775d3fc710abb7cc21a9060209768f98369)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.0.5
 
 ### dcache-resilience

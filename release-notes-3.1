@@ -76,6 +76,56 @@ HTML header: <title>dCache 3.1 Release Notes</title>
 
 Thanks to Johan Guldmyr for his constributions.
 
+## Release 3.1.30
+
+### ftp
+
+A bug (that was not observed in real-world settings yet) that might have caused
+NullPointerExceptions was fixed in the ftp service.
+
+### httpd
+
+dCache will no longer log a stack-trace if HTTP
+requests are made asking for information from the info service when the
+info service is not running.
+
+### poolmanager
+
+dCache 3.0 introduced a regression where a dCache domain does not
+start up if it hosts a poolmanager with poolmanager.conf containing
+either the "rc set sameHostCopy" or the "rc set sameHostRetry" command.
+This regression was fixed.
+
+### resilience
+
+Error handling within the Resilience service was improved.
+
+
+### Changelog 3.1.29..3.1.30
+
+<!-- git log 3.1.29..3.1.30 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[13c13841ea](https://github.com/dcache/dcache/commit/13c13841eaa360be69e02d602d6d5f4a6a99cb9f)
+:   [maven-release-plugin] prepare release 3.1.30
+
+[d5d2b5d349](https://github.com/dcache/dcache/commit/d5d2b5d349589bf78ba2fc8d1ff07a01950142e9)
+:   dcache-resilience: handle properly RuntimeExceptions from tasks
+
+[a2e92188c8](https://github.com/dcache/dcache/commit/a2e92188c8f5b8268acf8481df7f47e86e8f4944)
+:   ftp: ensure adapter is closed
+
+[1093e95890](https://github.com/dcache/dcache/commit/1093e95890a8e348fe62807900b174d9c6ac2656)
+:   ftp: remove rare NullPointerException when proxying data
+
+[d9a0e4a020](https://github.com/dcache/dcache/commit/d9a0e4a020702a1e93d85704bd7e0758e9e5f039)
+:   httpd: do not log an exception if info cell not running
+
+[14a437035a](https://github.com/dcache/dcache/commit/14a437035a00d0eee12ae551663233242bf601aa)
+:   poolmanager: fix poolmanager startup with certain poolmanager.conf content
+
+[758772c015](https://github.com/dcache/dcache/commit/758772c0158dc9ce757a79c5a1594a352f95cad0)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.1.29
 
 ### dcache-resilience

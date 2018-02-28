@@ -101,6 +101,64 @@ Marisa Nest, Martin Bürger, Sarah Schulte, Hasan Jahid and Max Patzelt, whose
 code made it into 3.2.0.
 
 
+## Release 3.2.15
+
+### ftp
+
+A bug (that was not observed in real-world settings yet) that might have caused
+NullPointerExceptions was fixed in the ftp service.
+
+### httpd
+
+dCache will no longer log a stack-trace if HTTP
+requests are made asking for information from the info service when the
+info service is not running.
+
+### poolmanager
+
+An earlier change in PoolManager introduced regular broadcasting of the 
+stage request queue to various internal listeners. In some cases, this
+could lead to erroneous NoRouteToHost  error messages being logged. These
+error messages are now being suppressed.
+
+dCache 3.0 introduced a regression where a dCache domain does not
+start up if it hosts a poolmanager with poolmanager.conf containing
+either the "rc set sameHostCopy" or the "rc set sameHostRetry" command.
+This regression was fixed.
+
+### resilience
+
+Error handling within the Resilience service was improved.
+
+
+### Changelog 3.2.14..3.2.15
+
+<!-- git log 3.2.14..3.2.15 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[6e95e936af](https://github.com/dcache/dcache/commit/6e95e936af71238827cd9a163ae11fd5cf9a45b1)
+:   [maven-release-plugin] prepare release 3.2.15
+
+[525705459f](https://github.com/dcache/dcache/commit/525705459ff76af347500e173bf72a0a1aae4d5f)
+:   dcache-resilience: handle properly RuntimeExceptions from tasks
+
+[be6abaf5c7](https://github.com/dcache/dcache/commit/be6abaf5c75d853825263e15bdfbe33346621782)
+:   ftp: ensure adapter is closed
+
+[465d2c04b1](https://github.com/dcache/dcache/commit/465d2c04b1ec5159ae9233da252897a26064562b)
+:   ftp: remove rare NullPointerException when proxying data
+
+[40b57484c1](https://github.com/dcache/dcache/commit/40b57484c10acaffd937588de0b1ff4d0ebebf97)
+:   httpd: do not log an exception if info cell not running
+
+[8cea3b4568](https://github.com/dcache/dcache/commit/8cea3b456827684c475e473e773591b99ac69d94)
+:   poolmanager: silence NoRouteToCell for stage queue topic
+
+[71a1728ed2](https://github.com/dcache/dcache/commit/71a1728ed200e0ebcfde13dcd393a3ab54794443)
+:   poolmanager: fix poolmanager startup with certain poolmanager.conf content
+
+[741864a1f6](https://github.com/dcache/dcache/commit/741864a1f6b429c27df5d05458ebd2320cc66ea9)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.2.14
 
 ### dcache-resilience

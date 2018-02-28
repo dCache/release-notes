@@ -109,6 +109,47 @@ HTML header: <title>dCache 3.0 Release Notes</title>
 
 Thanks to Onno Zweers for several contributions to this release.
 
+## Release 3.0.42
+
+### ftp
+
+A bug (that was not observed in real-world settings yet) that might have caused
+NullPointerExceptions was fixed in the ftp service.
+
+### poolmanager
+
+dCache 3.0 introduced a regression where a dCache domain does not
+start up if it hosts a poolmanager with poolmanager.conf containing
+either the "rc set sameHostCopy" or the "rc set sameHostRetry" command.
+This regression was fixed.
+
+### resilience
+
+Error handling within the Resilience service was improved.
+
+
+### Changelog 3.0.41..3.0.42
+
+<!-- git log 3.0.41..3.0.42 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[d4a2df058a](https://github.com/dcache/dcache/commit/d4a2df058a25e5e3d459b7ac0cc8270a899a11d0)
+:   [maven-release-plugin] prepare release 3.0.42
+
+[f72123400d](https://github.com/dcache/dcache/commit/f72123400dab76ea250c6144a3e98b6371591044)
+:   dcache-resilience: handle properly RuntimeExceptions from tasks
+
+[8cb98d73c2](https://github.com/dcache/dcache/commit/8cb98d73c229e9347dccb229a2534c04b99e818a)
+:   ftp: ensure adapter is closed
+
+[f81c008965](https://github.com/dcache/dcache/commit/f81c0089652b801f709a17a12842c289a58cbfc3)
+:   ftp: remove rare NullPointerException when proxying data
+
+[40a1dcab5c](https://github.com/dcache/dcache/commit/40a1dcab5c0573a6400cf69821b37036b5718b8e)
+:   poolmanager: fix poolmanager startup with certain poolmanager.conf content
+
+[b31ade0690](https://github.com/dcache/dcache/commit/b31ade0690d2f5fbde6469cd95c47131c57e6d0c)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.0.41
 
 ### dcache-resilience

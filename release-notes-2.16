@@ -111,6 +111,40 @@ HTML header: <title>dCache 2.16 Release Notes</title>
 * Sites with a custom `httpd.conf` configuration will have to adjust
   this upon upgrade to inject the cell address of the `info` service.
 
+## Release 2.16.61
+
+### ftp
+
+A bug (that was not observed in real-world settings yet) that might have caused
+NullPointerExceptions was fixed in the ftp service.
+
+### resilience
+
+Error handling within the Resilience service was improved.
+
+
+### Changelog 2.16.60..2.16.61
+
+<!-- git log 2.16.60..2.16.61 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[787fd2b84a](https://github.com/dcache/dcache/commit/787fd2b84afcad9b8f4bb62cbd93b3e18717c80c)
+:   [maven-release-plugin] prepare release 2.16.61
+
+[155ac94dd8](https://github.com/dcache/dcache/commit/155ac94dd8166d2df7512534e157bc0e644be777)
+:   removed stray import
+
+[d3ce544154](https://github.com/dcache/dcache/commit/d3ce54415405beeff00dd0735656ddd5c3538407)
+:   dcache-resilience: handle properly RuntimeExceptions from tasks
+
+[83435d3188](https://github.com/dcache/dcache/commit/83435d318839b705ffe3ae8cd09ad406b1506d4f)
+:   ftp: ensure adapter is closed
+
+[f51e086f80](https://github.com/dcache/dcache/commit/f51e086f8079eb90b3dc5cbe66d51cc77b09300e)
+:   ftp: remove rare NullPointerException when proxying data
+
+[ac26d22940](https://github.com/dcache/dcache/commit/ac26d2294083b9848a46255c9d6bcafdbd642bef)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.16.60
 
 ### dcache-resilience
