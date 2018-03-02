@@ -64,7 +64,13 @@ HTML header: <title>dCache 4.1 Release Notes</title>
 
 ## Highlights
 
-(tbd, this section uses markdown formatting)
+This release of dCache introduces a new approach to external messaging. With the introduction
+of Kafka as a message transport, for now in Billing, we start switching to a more modern and 
+efficient messaging system. The goal for the Billing service is easier inclusion with 
+systems like Elasticsearch: Instead of adding messages to a textual log and having an external
+component parse that log, a Kafka-aware ingester can import them directly into the remote
+system.
+
 
 ## Incompatibilities
 
