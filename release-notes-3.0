@@ -109,6 +109,13 @@ HTML header: <title>dCache 3.0 Release Notes</title>
 
 Thanks to Onno Zweers for several contributions to this release.
 
+## Differences from dCache v2.16
+
+The notes for [release 3.0.0](release3.0.0) detail the differences
+from dCache 2.16.  Please read this section *very carefully* when
+upgrading from this version.
+
+
 ## Release 3.0.42
 
 ### ftp
