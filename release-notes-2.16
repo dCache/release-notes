@@ -113,7 +113,7 @@ HTML header: <title>dCache 2.16 Release Notes</title>
 
 ## Differences from dCache v2.15
 
-The notes for [release 2.16.0](release2.16.0) detail the differences
+The notes for [release 2.16.0](#release2.16.0) detail the differences
 from dCache 2.15.  Please read this section *very carefully* when
 upgrading from this version.
 
