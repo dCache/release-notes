@@ -152,6 +152,49 @@ system is used for message delivery.
 
 ### Frontend
 
+The 4.0 release saw the introduction of a range of RESTful services which
+provide an administrative overview of the system.  There have been
+a few minor changes to this api in the intervening releases.
+The API is now stable with 4.1.
+
+To summarize:  these services provide overviews of file data,
+poolmanager configuration, service state, pool configuration and activity,
+and system alarms. For pools and pool groups, it is the 'usage' path
+which returns full configuration and state information.
+
+One can similarly obtain full information on individual files by pnfsid;
+billing records for reads, writes, p2ps, stores, restores and removes of a
+given file are also available if your system is configured to use the billing
+database.  With the database also comes histogram data for tracking reads,
+writes, p2ps, stores and restores over intervals of 24 hours, 1 week, 1 month
+and 1 year.
+
+Histogram data on pool queues and file lifetime is similarly aggregated over
+pools and pool groups.  This data collection is actually done by the history
+service (introduced in 3.2), with which the frontend communicates,
+so it is only available if the former has been deployed.
+
+Finally, information corresponding roughly to the poolmanager.conf file is
+furnished by the selection service API.
+
+With 4.1 also comes integration with Swagger.  All RESTful services have been
+provided with basic annotations in order automatically to generate API documentation.
+A convenient web interface which allows exploration and testing of the API,
+describing paths, parameters, error codes and JSON output, now runs at:
+
+```
+https://[host]:3880/api/v1.
+```
+
+Consulting this page is the easiest way to familiarize yourself with the API.
+
+A final addition to this array of admin services, the space management service,
+which will appear in 4.2, will provide link group and space token information.
+
+A number of properties have been added to the defaults for the frontend, most
+of which have to do with communication with other services (timeouts, endpoints,
+etc.).  Consult the frontend.properties file for details.
+
 ### FTP
 
 GridFTP defines a set of different transfer modes, among them streaming mode (MODE S) and   
@@ -218,6 +261,48 @@ pool.kafka.bootstrap-servers= host1:port,host2:port
 ### Poolmanager
 
 ### Resilience
+
+In the various 4.0 releases, resilience was improved in a number ways.  We
+summarize them here.
+
+First, a number of fixes have made it more robust:  uncaught
+exceptions should no longer allow tasks to get stuck in the queue, and
+the logic concerning available file sources when clear cache location messages
+has been fixed.  In addition, we have fixed the way fatal error alarms
+are generated so as to avoid spamming the alarm service and domain logs
+(there is now a special resilience log for recording these errors on a
+file-by-file basis, configured as usual via properties and logback.xml).
+
+Two features have been added to resilience which enhances its usability.
+The first involves a redefinition of what pools it considers to be accessible
+as opposed to usable (writable) for making copies.  With this change it is
+now possible to close off a resilient pool from external writes while still
+allowing resilience to use them, i.e., by setting
+
+```
+\s resilient-pool-1 pool disable -store
+```
+
+Resilience no long considers such a pool 'inaccessible'.  The rule is now:
+a pool is readable (by external clients) unless its disabled flags include
+'fetch', and is writable (by resilience) unless its disabled flags include
+-p2p-client.
+
+The second new feature is integration of staging into resilience. Files
+which are CUSTODIAL ONLINE (i.e., resilient but also stored on tape)
+will now be automatically restored from tape if all their current replicas
+are not accessible (e.g., because all those pools have gone offline). Since
+this is achieved via communication with the Pool Manager, we have made sure that
+a resilient group whose pools are connected to tape (viz. for stores) but for
+which staging has been disabled will nonetheless receive the first restored
+replica via p2p from some other eligible staging pool selected by the Pool
+Manager.
+
+The default sorting order for the admin history and history errors commands
+has been changed from descending to ascending (more user friendly).
+
+Resilience has now been running for almost a year on a number of systems at
+DESY and elsewhere with reliable and performant results.
 
 ### Space Manager
 
