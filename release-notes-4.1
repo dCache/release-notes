@@ -71,12 +71,58 @@ systems like Elasticsearch: Instead of adding messages to a textual log and havi
 component parse that log, a Kafka-aware ingester can import them directly into the remote
 system.
 
-File transfers using GridFTP can now reuse TCP connections, which makes them faster and improves
-compatibility with the Globus transfer service.
+The global options to control publishing to kafka are added:
+```
+dcache.enable.kafka = true|false
+dcache.kafka.bootstrap-servers= host1:port,host2:port
+```
+The kafka topic is **billing** and for not is not configurable. The record are written as JSON objects, like:
+```
+{
+    "msgType": "request",
+    "mappedUID": 0,
+    "date": "Fri Mar 02 10:48:41 CET 2018",
+    "cellName": "NFS-dcache-lab007",
+    "VERSION": "1.0",
+    "session": "door:NFS-dcache-lab007@core-dcache-lab007:AAVmauGezqg:1519984121401001",
+    "fileSize": 969,
+    "status": {
+      "msg": "",
+      "code": 0
+    },
+    "storageInfo": "size=969;new=true;stored=false;sClass=<Unknown>:<Unknown>;cClass=-;hsm=osm;accessLatency=NEARLINE;retentionPolicy=CUSTODIAL;uid=3750;gid=65534;flag-c=1:5ad529fc;",
+    "cellType": "door",
+    "cellDomain": "core-dcache-lab007",
+    "mappedGID": 0,
+    "billingPath": "/",
+    "sessionDuration": 9,
+    "queuingTime": 0,
+    "pnfsid": "0000328CE70CBAF24579BF5AD373C05AECC0",
+    "transferPath": "/",
+    "@timestamp": "2018-03-02T09:48:41.412Z",
+    "clientChain": "131.169.240.87",
+    "type": "dcache_billing",
+    "client": "131.169.240.87",
+    "subject": [
+      "UidPrincipal[0]",
+      "GidPrincipal[0,primary]",
+      "GidPrincipal[0]",
+      "Origin[131.169.240.87]"
+    ]
+  }
+```
 
 ## Incompatibilities
 
 (tbd, this section uses markdown formatting)
+  - Starting from version 4.1 dCache head nodes are incompatible with pools older that 3.0.
+  - NFSv4.1/pNFS is not compatible with older linux kernels when used with flexfile layout.
+    As a result, by updating to dCache-4.1 a new export options ca be used to enforce layout
+    driver. If you unsure about nfs client capabilities, export with **lt=fsv4_1_files**:
+     ```
+     / old-hosts(rw,lt=nfsv4_1_files)
+     ```
+
 
 ## Acknowledgments
 
@@ -99,12 +145,14 @@ compatibility with the Globus transfer service.
 
 ### FTP
 
-GridFTP defines a set of different transfer modes, among them streaming mode (MODE S) and 
-extended block mode (MODE E). MODE E transfers now support keeping the data connection alive
-in between uploads, resulting in significantly higher throughput and providing better compatibility
-with the Globus transfer service.
-
 ### gplazma
+The LDAP plugin is updated to natively support **auth** phase. As a result,
+there is need for an extra mutator plugin to use ldap based authentication
+```
+    auth     optional   ldap
+    map      sufficient ldap
+```
+NOTICE, that even it's not rewuired to use ldaps:// url, it STRONGLY avised to do so!
 
 ### History
 
@@ -115,12 +163,30 @@ with the Globus transfer service.
 ### Info
 
 ### NFS
+New export option **lt=** to control layout types is added. The supported values are:
+   - flex_files
+   - nfsv4_1_files
+While is't recommended to use flex_files layout type, only moder kernel version (and RHEL 7.5)
+are supporting it. If kernel client capabilities are unknow, the use nfsv4_1_files:
+  ```
+  / old-hosts(rw,lt=nfsv4_1_files)
+```
+
+```
+nfs.enable.kafka = true|false
+nfs.kafka.bootstrap-servers= host1:port,host2:port
+```
 
 ### Pinmanager
 
 ### PNFS Manager
 
 ### Pool
+Added configuration option to publish billing records into apache-kafka queue:
+```
+pool.enable.kafka = true|false
+pool.kafka.bootstrap-servers= host1:port,host2:port
+```
 
 ### Poolmanager
 
@@ -143,7 +209,7 @@ with the Globus transfer service.
 ### XRootD
 
 ### Zookeeper
-
+Updated external zookeeper libraries to version 3.4.11
 
 ### Changelog from 4.0.0 to 4.1.0
 
