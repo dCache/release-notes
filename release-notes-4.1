@@ -269,11 +269,11 @@ are generated so as to avoid spamming the alarm service and domain logs
 (there is now a special resilience log for recording these errors on a
 file-by-file basis, configured as usual via properties and logback.xml).
 
-Two features have been added to resilience which enhances its usability.
+Two features have been added to resilience which enhance its usability.
 The first involves a redefinition of what pools it considers to be accessible
 as opposed to usable (writable) for making copies.  With this change it is
 now possible to close off a resilient pool from external writes while still
-allowing resilience to use them, i.e., by setting
+allowing resilience to use it, i.e., by setting
 
 ```
 \s resilient-pool-1 pool disable -store
