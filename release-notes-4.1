@@ -71,6 +71,8 @@ systems like Elasticsearch: Instead of adding messages to a textual log and havi
 component parse that log, a Kafka-aware ingester can import them directly into the remote
 system.
 
+File transfers using GridFTP can now reuse TCP connections, which makes them faster and improves
+compatibility with the Globus transfer service.
 
 ## Incompatibilities
 
@@ -96,6 +98,11 @@ system.
 ### Frontend
 
 ### FTP
+
+GridFTP defines a set of different transfer modes, among them streaming mode (MODE S) and 
+extended block mode (MODE E). MODE E transfers now support keeping the data connection alive
+in between uploads, resulting in significantly higher throughput and providing better compatibility
+with the Globus transfer service.
 
 ### gplazma
 
