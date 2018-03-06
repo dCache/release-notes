@@ -171,7 +171,8 @@ service (introduced in 3.2), with which the frontend communicates,
 so it is only available if the former has been deployed.
 
 Finally, information corresponding roughly to the poolmanager.conf file is
-furnished by the selection service API.
+furnished by the selection service API, while the space management API
+provides link group and space token information.
 
 With 4.1 also comes integration with Swagger.  All RESTful services have been
 provided with basic annotations in order automatically to generate API documentation.
@@ -183,9 +184,6 @@ https://[host]:3880/api/v1.
 ```
 
 Consulting this page is the easiest way to familiarize yourself with the API.
-
-A final addition to this array of admin services, the space management service,
-which will appear in 4.2, will provide link group and space token information.
 
 A number of properties have been added to the defaults for the frontend, most
 of which have to do with communication with other services (timeouts, endpoints,
