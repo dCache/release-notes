@@ -118,6 +118,35 @@ from dCache 2.15.  Please read this section *very carefully* when
 upgrading from this version.
 
 
+## Release 2.16.62
+
+### resilience
+
+Logging for cases where file replication was fatally aborted was improved. Previously, alarms 
+messages pertained to the PNFSID of the affected files. In rare cases, like when facing 
+network congestion, many hundreds of alarms could be created. With this change, alarms messages
+refer to the storage unit, and a suffix based on an hourly timestamp is added to the 
+alarm message. The alarm will thus be incremented during the hour but a new
+alarm will be created (only) hourly; in this way, those receiving
+email alerts will receive them once an hour.
+
+
+### Changelog 2.16.61..2.16.62
+
+<!-- git log 2.16.61..2.16.62 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[ca403db91f](https://github.com/dcache/dcache/commit/ca403db91fdfce473bedbb72102ac1f7e50cd812)
+:   [maven-release-plugin] prepare release 2.16.62
+
+[da3ba6f48f](https://github.com/dcache/dcache/commit/da3ba6f48fb7f18453891b0340c2568047ecf7e3)
+:   [maven-release-plugin] prepare for next development iteration
+
+[5dab91daa9](https://github.com/dcache/dcache/commit/5dab91daa9161a9e0ed766a9368d387eb2094d25)
+:   substituted Calendar for Instance which was failing.
+
+[58004eb269](https://github.com/dcache/dcache/commit/58004eb269456653350e204aafb753e0468f24e1)
+:   dcache-resilience: avoid spamming alarms with abort messages
+
 ## Release 2.16.61
 
 ### ftp
