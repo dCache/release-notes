@@ -123,8 +123,8 @@ for gplazma now only requires the configuration of a single plugin, `ldap`.
 (tbd, this section uses markdown formatting)
   - Starting from version 4.1 dCache head nodes are incompatible with pools older that 3.0.
   - NFSv4.1/pNFS is not compatible with older linux kernels when used with flexfile layout.
-    As a result, by updating to dCache-4.1 a new export options ca be used to enforce layout
-    driver. If you unsure about nfs client capabilities, export with **lt=fsv4_1_files**:
+    As a result, by updating to dCache-4.1 a new export options can be used to enforce layout
+    driver. If you unsure about nfs client capabilities, export with **lt=nfsv4_1_files**:
      ```
      / old-hosts(rw,lt=nfsv4_1_files)
      ```
