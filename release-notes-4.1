@@ -124,10 +124,13 @@ for gplazma now only requires the configuration of a single plugin, `ldap`.
   - Starting from version 4.1 dCache head nodes are incompatible with pools older that 3.0.
   - NFSv4.1/pNFS is not compatible with older linux kernels when used with flexfile layout.
     As a result, by updating to dCache-4.1 a new export options can be used to enforce layout
-    driver. If you unsure about nfs client capabilities, export with **lt=nfsv4_1_files**:
-     ```
-     / old-hosts(rw,lt=nfsv4_1_files)
-     ```
+    driver. If nothing is specified, then nfsv4_1_files only is offered to the clients. For
+    linux clients with kernel versions starting from 4.14 as well as RHEL-7.5 is flexfile layout
+    is recommended.
+    ```
+    / moder_client_host(rw,lt=nfsv4_1_files,flex_files)
+    ```
+    The **nfs.pnfs.layouts** property is obsolete in favour of **lt=** export option.
      
 ### Acknowledgements
 Once again, we have received important code contributions from our users. 
@@ -233,10 +236,8 @@ New export option **lt=** to control layout types is added. The supported values
    - flex_files
    - nfsv4_1_files
 While is't recommended to use flex_files layout type, only moder kernel version (and RHEL 7.5)
-are supporting it. If kernel client capabilities are unknow, the use nfsv4_1_files:
-  ```
-  / old-hosts(rw,lt=nfsv4_1_files)
-```
+are supporting it. If kernel client capabilities are unknow, the use nfsv4_1_files, which is a
+default, behaviour.
 
 ```
 nfs.enable.kafka = true|false
