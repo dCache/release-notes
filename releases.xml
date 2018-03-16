@@ -167,7 +167,56 @@
     <br/>
   </preamble>
 
- <series id="server-4.0">
+
+
+
+
+<series id="server-4.1">
+    <title>server 4.1.x</title>
+    <description>
+      <p>
+        dCache 4.1 features the following highlights and architectural improvements:
+      </p>
+
+      <ul>
+        <li>This release of dCache introduces  Kafka as a message transport, for now in Billing, as a new approach to external messaging.</li>
+        <li>The configuration of several components has been simplified.</li>
+      </ul>
+
+      <p>
+          dCache v4.1 requires a JVM supporting Java 8.
+      </p>
+
+    </description>
+
+    <releases>
+        <name>dCache VERSION</name>
+        <download-url-prefix>repo/4.1/dcache</download-url-prefix>
+        <notes-url>release-notes-4.1.shtml</notes-url>
+        <version-prefix>4.1.</version-prefix>
+        
+
+      <release version="0" recommended="1">
+        <date>16.3.2018</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>aeaf4657098ae7a27c20409d7af37b22</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>fc308e64ffb5da5a35f392130acfb650</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>c214fbed1ec83ed86812e90184d0b16e</md5sum>
+        </package>
+     </release>
+
+   </releases>
+      
+</series>
+
+<series id="server-4.0">
     <title>server 4.0.x</title>
     <description>
       <p>
@@ -194,7 +243,23 @@
         <version-prefix>4.0.</version-prefix>
 
 
-       <release version="7" recommended="1">
+       <release version="8" recommended="1">
+        <date>16.3.2018</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>0afa944a51d6e0ac73903a0ae959757b</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>d0ffcef1bbed1360b6461f1a517b36a2</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>3231e9f1b3ea3a4f7955a06eeb8a6a1e</md5sum>
+        </package>
+      </release>
+
+      <release version="7">
         <date>7.3.2018</date>
         <package name="rpm">
           <download-url>-VERSION-1.noarch.rpm</download-url>

@@ -99,6 +99,39 @@ The notes for [release 4.0.0](#release4.0.0) detail the differences
 from dCache 3.2.  Please read this section *very carefully* when
 upgrading from this version.
 
+## Release 4.0.8
+
+### dcache-frontend
+
+When the history service was not running or there were other issues
+with pool connectivity, this was leading to incomplete or missing
+JSON data from the history service. This is now fixed.
+
+### webdav
+
+dCache now supports  RFC 3230 clients that request digests using multiple HTTP
+headers.
+
+
+### Changelog 4.0.7..4.0.8
+
+<!-- git log 4.0.7..4.0.8 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[9ccc4f2](https://github.com/dcache/dcache/commit/9ccc4f2e611f37e11ccb96074b6ccbe2640eb8ba)
+:   [maven-release-plugin] prepare release 4.0.8
+
+[6bc0ec2](https://github.com/dcache/dcache/commit/6bc0ec2143290dc9ff351eac5581188379eb3cbd)
+:   webdav: support multiple RFC 3230 'Want-Digest' headers
+
+[5dcc727](https://github.com/dcache/dcache/commit/5dcc727f3ac29e0af95d366b5550f993fa595beb)
+:   dcache-frontend: avoid null dereferencing for incomplete pool history data
+
+[9f095f9](https://github.com/dcache/dcache/commit/9f095f9c32448b6c4ce8c3edf1fc6877fec7c17c)
+:   dcache: avoid NPE from initialization race in RestoreRequestsReceiver in HttpPooMgrEngineV3
+
+[099b96a](https://github.com/dcache/dcache/commit/099b96aa2b78e1182ceded69a563511c5a77be57)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.0.7
 
 ### resilience
