@@ -64,15 +64,15 @@ HTML header: <title>dCache 4.1 Release Notes</title>
 
 ## Highlights
 
+File transfers using GridFTP can now reuse TCP connections, which makes them faster and improves
+compatibility with the Globus transfer service.
+
 This release of dCache introduces a new approach to external messaging. With the introduction
-of Kafka as a message transport, for now in Billing, we start switching to a more modern and 
-efficient messaging system. The goal for the Billing service is easier inclusion with 
+of Apache-Kafka as a message transport, for now in Billing, we start switching to a more modern
+and efficient messaging system. The goal for the Billing service is easier inclusion with 
 systems like Elasticsearch: Instead of adding messages to a textual log and having an external
 component parse that log, a Kafka-aware ingester can import them directly into the remote
 system.
-
-File transfers using GridFTP can now reuse TCP connections, which makes them faster and improves
-compatibility with the Globus transfer service.
 
 The global options to control publishing to kafka are added:
 ```
@@ -120,7 +120,6 @@ for gplazma now only requires the configuration of a single plugin, `ldap`.
 
 ## Incompatibilities
 
-(tbd, this section uses markdown formatting)
   - Starting from version 4.1 dCache head nodes are incompatible with pools older that 3.0.
   - NFSv4.1/pNFS is not compatible with older linux kernels when used with flexfile layout.
     As a result, by updating to dCache-4.1 a new export options can be used to enforce layout
@@ -137,23 +136,16 @@ Once again, we have received important code contributions from our users.
 
 Thanks to Christoph Anton Mitterer for his constributions.
 
-We would like to thank the students of HTW Berlin Alexandra Konovalova and Marcus Kopp,
+We would like to thank the students of HTW Berlin Alexandra Konovalova, Hagen Wittlich and Marcus Kopp,
 for their contributions during the HTW course.
 
 ## Release 4.1.0
 
-### Admin
-
-### Alarms
 
 ### Billing
 
 A newly-introduced configuration property `dcache.enable.kafka` controls whether the Kafka messaging
 system is used for message delivery.
-
-### Cleaner
-
-### DCAP
 
 ### Frontend
 
@@ -208,7 +200,7 @@ there is need for an extra mutator plugin to use ldap based authentication
     auth     optional   ldap
     map      sufficient ldap
 ```
-NOTICE, that even it's not rewuired to use ldaps:// url, it STRONGLY avised to do so!
+NOTICE, that even it's not required to use ldaps:// url, it STRONGLY avised to do so!
 
 The configuration of LDAP-only-setups, which are becoming more important, is now much easier.
 Previously, the plugins `jaas`, `mutator` and `ldap` were necessary for such a setup. Now, the 
@@ -223,13 +215,6 @@ Previously, the plugins `jaas`, `mutator` and `ldap` were necessary for such a s
 
 This functionality relies on using either OpenJDK or Oracle JDK.
 
-### History
-
-### Hoppingmanager
-
-### httpd
-
-### Info
 
 ### NFS
 New export option **lt=** to control layout types is added. The supported values are:
@@ -244,9 +229,6 @@ nfs.enable.kafka = true|false
 nfs.kafka.bootstrap-servers= host1:port,host2:port
 ```
 
-### Pinmanager
-
-### PNFS Manager
 
 ### Pool
 Added configuration option to publish billing records into apache-kafka queue:
@@ -261,7 +243,6 @@ of each IO request and time that the disk system was handling requests
 and idling.  It is important to note that the dCache configuration that describes the billing log
 format must be updated before these values are actually recorded.
 
-### Poolmanager
 
 ### Resilience
 
@@ -307,21 +288,6 @@ has been changed from descending to ascending (more user friendly).
 Resilience has now been running for almost a year on a number of systems at
 DESY and elsewhere with reliable and performant results.
 
-### Space Manager
-
-### SRM
-
-### SRM Manager
-
-### Statistics
-
-### Topo
-
-### Transfer Managers
-
-### WebDAV
-
-### XRootD
 
 ### Zookeeper
 Updated external zookeeper libraries to version 3.4.11
