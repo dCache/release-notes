@@ -296,9 +296,349 @@ Updated external zookeeper libraries to version 3.4.11
 
 <!-- git log 4.0..4.1 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
 
-(tbd as soon as the branching is done)
+[684780b](https://github.com/dcache/dcache/commit/684780b29608082fcefebb186ef2913742df78cb)
+:   [maven-release-plugin] prepare for next development iteration
 
+[95875a4](https://github.com/dcache/dcache/commit/95875a4626d93bbe7304ac8bfb568c0dab7f18f1)
+:   [maven-release-plugin] prepare release 4.1.0
 
+[bbfc504](https://github.com/dcache/dcache/commit/bbfc5047feb9637eb2394cd2af9edde5b971776a)
+:   pom: use nfs4j-0.16.1
+
+[87c2340](https://github.com/dcache/dcache/commit/87c234001dc6d46b2f8031177c747d6eae574a7a)
+:   dcache-frontend: revise Swagger annotations
+
+[2411ac7](https://github.com/dcache/dcache/commit/2411ac7429f0f7782052f8649e758e66b0ed5154)
+:   dcache: release dcache-view version 1.4.0
+
+[30422a8](https://github.com/dcache/dcache/commit/30422a878b87266b58b627a228c1641e6e917cee)
+:   webdav: support multiple RFC 3230 'Want-Digest' headers
+
+[a1bc255](https://github.com/dcache/dcache/commit/a1bc25523fffb5259a968bcf77e27dd13e5b4acd)
+:   ftp: ensure half-closed connections are fully closed on return
+
+[81cc9df](https://github.com/dcache/dcache/commit/81cc9dfc53548c0a7378706d146e1297468ccdf7)
+:   ftp: close pool connection with MODE-E proxy
+
+[1f96951](https://github.com/dcache/dcache/commit/1f9695142cbf5ead773b044c1e4e6a7c43054a18)
+:   dcache-frontend: avoid null dereferencing for incomplete pool history data
+
+[9a24522](https://github.com/dcache/dcache/commit/9a245225ce4878862733e4818a83dc2681961e30)
+:   dcache: avoid NPE from initialization race in RestoreRequestsReceiver in HttpPooMgrEngineV3
+
+[4ae42e8](https://github.com/dcache/dcache/commit/4ae42e80beb2d3488f674ddc7f7be2bf18579ec2)
+:   [maven-release-plugin] prepare branch 4.1
+
+[d9e07f3](https://github.com/dcache/dcache/commit/d9e07f39f8dd9bce0cc2b2f85df944d173747339)
+:   ftp: complete removal of ancient transaction log
+
+[d01b05f](https://github.com/dcache/dcache/commit/d01b05f886264bc7e7570e27634daea5141fee6e)
+:   dcache-frontend: fix predicates in spacemanager resource
+
+[7679b60](https://github.com/dcache/dcache/commit/7679b60f1b546dc85a1da94f2bd533920bf146b7)
+:   zookeeper: silence warning and log lifecycle state events.
+
+[259ec4f](https://github.com/dcache/dcache/commit/259ec4fca75176d2f2f40744a5e8a390b537a48e)
+:   alarms: fix broken path
+
+[ad12325](https://github.com/dcache/dcache/commit/ad12325113ecb77b54b876ccc66b913b580c6e91)
+:   Revert "cells: remove custom implementation of curator's PathChildrenCache"
+
+[af4bfbf](https://github.com/dcache/dcache/commit/af4bfbfee38ba9290e799c7463047f74ec89b5c9)
+:   config: unify kafka configuration
+
+[edc9822](https://github.com/dcache/dcache/commit/edc98228fab41ae8bbb8e96883e7a3a0e12824c7)
+:   dcache: Removed FTPTransactionLog class
+
+[b477cf4](https://github.com/dcache/dcache/commit/b477cf4348680f6bebee56201000050d56dd1ad0)
+:   ftp: Removed uses of FTPTransactionLog class
+
+[eb3159a](https://github.com/dcache/dcache/commit/eb3159ada0f4a68a6281a3d05fd6f544f55ef206)
+:   TransferManagerHandler: Removed FTPTransactionlog
+
+[94e2a06](https://github.com/dcache/dcache/commit/94e2a0605142bb4e7a6b381758f47d4f2f3911cd)
+:   migration: Remove org.dcache.pool.migration.ReverseOrder
+
+[69729b5](https://github.com/dcache/dcache/commit/69729b5708085f7d445edbdeef787ca0113d12cd)
+:   dcache-resilience: avoid spamming alarms with abort messages
+
+[6f0b99c](https://github.com/dcache/dcache/commit/6f0b99c3c6503912409171510c3de38d7f34f1fb)
+:   Revert "dcache-resilience: avoid spamming alarms with abort messages"
+
+[7294198](https://github.com/dcache/dcache/commit/7294198a8a7f0540f04eb624ca0af8a8e96e2e5f)
+:   dcache-resilience: avoid spamming alarms with abort messages
+
+[f49cd17](https://github.com/dcache/dcache/commit/f49cd177d2de890a5ef9b37a176a23060e310c53)
+:   ftp: update ProxyAdapter API
+
+[3f30968](https://github.com/dcache/dcache/commit/3f309684b852787b474c027e52100b37e11c4a8a)
+:   dcache-history: test git hub test
+
+[f529653](https://github.com/dcache/dcache/commit/f529653d8a1716c7de1638ddf875559f43268108)
+:   dcache-frontend: add RESTful space service (spacemanager info)
+
+[b69d55d](https://github.com/dcache/dcache/commit/b69d55da4ca8026c3c289e7f87d491c9c1e65afa)
+:   fir broken commit 96beb4184c
+
+[a411e2e](https://github.com/dcache/dcache/commit/a411e2e0d724f6b38c8d7f61c940792d0fe9b0f4)
+:   libs: revert "libs: update to  liquibase-3.5.4"
+
+[cc0cbb1](https://github.com/dcache/dcache/commit/cc0cbb144bbc4cd923bac31e104acc1d0d64e9b7)
+:   cells: remove compatibility with pre 3.0 releases
+
+[db2a8b3](https://github.com/dcache/dcache/commit/db2a8b30fd0542556506075cade7403dcca1afc1)
+:   pool: fix formating for StorageInfo data
+
+[7554be3](https://github.com/dcache/dcache/commit/7554be3b8502cb4591f3903fbef626abfb6bb519)
+:   nfs: fix wrong imports
+
+[75d03b3](https://github.com/dcache/dcache/commit/75d03b3aee7c6b96ac72613e2c96783c864a0261)
+:   dcache-resilience: handle properly RuntimeExceptions from tasks
+
+[076edee](https://github.com/dcache/dcache/commit/076edee4f86dd9866fd9d7db03298d3841fb5f91)
+:   libs: update to  liquibase-3.5.4
+
+[5f97c5a](https://github.com/dcache/dcache/commit/5f97c5ab8c9aa414f04a1e605c9ae88bdad792c8)
+:   nfs: add embedded Kafka producer
+
+[eefb964](https://github.com/dcache/dcache/commit/eefb9641e9c4c5ff0ee5f6793928e311b334a064)
+:   ftp: support keeping data connections between proxied MODE-E uploads.
+
+[3f8fe3e](https://github.com/dcache/dcache/commit/3f8fe3e78800bc03b2c64a420de4f15444ff97b7)
+:   ftp: update JavaDoc for adapter classes
+
+[e31531f](https://github.com/dcache/dcache/commit/e31531ffe5c8c475d21cdb78e3f79a12b8bfbb77)
+:   gplazma2-ldap: implement GPlazmaAuthenticationPlugin
+
+[3564ec6](https://github.com/dcache/dcache/commit/3564ec6746311d9c1b42e965c5d5babc31dfcaa6)
+:   gplazma2-ldap: re-write ldap plugin in Java
+
+[cc7c87f](https://github.com/dcache/dcache/commit/cc7c87f6824ddfcb4c1a585c149336ae16203279)
+:   dcache-resilience: restore proper log level for eviction message
+
+[8534173](https://github.com/dcache/dcache/commit/85341735e6a6323b6b04a710b8f6dbed061839e9)
+:   ftp: ensure adapter is closed
+
+[96beb41](https://github.com/dcache/dcache/commit/96beb4184c9d65f7bbd25e111a54e7a1b6b22b97)
+:   system-test: enable only nfs41 file layout
+
+[3b71edb](https://github.com/dcache/dcache/commit/3b71edb4dbd03383bc84e3563cfc232423c7b343)
+:   dcache-resilience: integrate support for staging files when no valid replicas accessible
+
+[1fa0e4b](https://github.com/dcache/dcache/commit/1fa0e4b68be79c266c02ca6ec5be40b5027865ab)
+:   dcache: add filter to pool manager to select a read pool from within a specified pool group
+
+[e7c186b](https://github.com/dcache/dcache/commit/e7c186baea3e5b243b9bade9ccc32c15d98ed658)
+:   idcache:exclude hidden dependency to master
+
+[2445198](https://github.com/dcache/dcache/commit/2445198a637a600cff713661f9606db33d852386)
+:   ftp: remove rare NullPointerException when proxying data
+
+[886dbf0](https://github.com/dcache/dcache/commit/886dbf016e921ad72143401f6ef6d897edbede77)
+:   httpd: do not log an exception if info cell not running
+
+[cdfbdfc](https://github.com/dcache/dcache/commit/cdfbdfcfd486a499b5b7383e288927f7bd75c79e)
+:   poolmanager: silence NoRouteToCell for stage queue topic
+
+[deb1fac](https://github.com/dcache/dcache/commit/deb1facab91996904d6688c9b57ede583ea45efb)
+:   poolmanager: fix poolmanager startup with certain poolmanager.conf content
+
+[b243c5d](https://github.com/dcache/dcache/commit/b243c5d3faabb98c762723b44d8367ef359d798e)
+:   dcache-frontend: change all JSON representations of pnfsid to String type
+
+[37ff3a3](https://github.com/dcache/dcache/commit/37ff3a3430ce7e3bc9cef59402e42640c4f9b966)
+:   dcache-resilience: repair faulty commit
+
+[aab9309](https://github.com/dcache/dcache/commit/aab9309ec84617b87d534259d1a9a6517f2ca3ef)
+:   pool: bug-fixfor commit@74880c32a97...
+
+[74880c3](https://github.com/dcache/dcache/commit/74880c32a97d760e0eaff42967ea4f15b97d1840)
+:   pool: add embedded kafka producer
+
+[de97ecb](https://github.com/dcache/dcache/commit/de97ecb09f5907565f455cf26fb4cc534b8090e4)
+:   core: remove getDatabaseId from PnfsId
+
+[ba972b3](https://github.com/dcache/dcache/commit/ba972b33c9f7f614c0b58c70109c829fe593e7e8)
+:   dcache-resilience: define non-writable pool to mean p2p-client is disabled
+
+[ea0318b](https://github.com/dcache/dcache/commit/ea0318bc72503d19e7173ea91c5ea2e7a1f9f55d)
+:   dcache: fix remote pool monitor wait bug
+
+[e7773a1](https://github.com/dcache/dcache/commit/e7773a1ffbff57686128461070dd4bc1d7a7b36e)
+:   cells: wait for zookeeper node before update the content
+
+[a352dfc](https://github.com/dcache/dcache/commit/a352dfcad686b71a37fb7d5c6edb9378c6e6df3b)
+:   dcache-resilience: repair handling of broken files*
+
+[5b37a84](https://github.com/dcache/dcache/commit/5b37a8428fb064c21caa61d4d48e86650f95e8e9)
+:   packaging: check 'services.sh' after old rpm removed
+
+[2139302](https://github.com/dcache/dcache/commit/21393027999f50fd278e9d2b9c8b9228aa081ecc)
+:   core: remove support for '*' PnfsIds.
+
+[413e4ad](https://github.com/dcache/dcache/commit/413e4adcff0b550c21a7dc0efbf6ecbb948e8cd0)
+:   core: remove support for 'domain' in PNFS-style PnfsIds
+
+[fdd0731](https://github.com/dcache/dcache/commit/fdd073117595db5227cffa2581450716e77df0d3)
+:   utils: do not iterate over certificates twice during validation
+
+[1e3e96f](https://github.com/dcache/dcache/commit/1e3e96f7da8f98d7b0e0ffd7017da277b79e8c66)
+:   core: tidy up unit-tests
+
+[3c30323](https://github.com/dcache/dcache/commit/3c303239dfeb6dd6e22112d8cff4e8a152fcd2fb)
+:   dcache-resilience: fix bug in source handling with Clear Cache Location messages
+
+[4ff42f7](https://github.com/dcache/dcache/commit/4ff42f73b1a919188770ac31afdbf1e9dc080946)
+:   src: remove unused diskCacheV111.util.UptimeParser
+
+[5fec809](https://github.com/dcache/dcache/commit/5fec809fa7edb935c11090e5d4306d87b5d63848)
+:   remove dead code from PnfsId
+
+[90bab98](https://github.com/dcache/dcache/commit/90bab988b1803a6c6b43b647df141c5ad6685bba)
+:   pool: use interface rather than concrete class
+
+[d40d999](https://github.com/dcache/dcache/commit/d40d99917ed39d6689109027885ef4939cbf6580)
+:   dcache-resilience: fix wrong assumption about error type in Message
+
+[1d2f7ee](https://github.com/dcache/dcache/commit/1d2f7ee1908afc77e8f068ea6b245ca93b3f944d)
+:   pool: add IO statistics to monitor storage performance
+
+[ecc2c61](https://github.com/dcache/dcache/commit/ecc2c610c981b56cda310089e89193e89b6b2858)
+:   cells: fix broken commit 0be9a678
+
+[0be9a67](https://github.com/dcache/dcache/commit/0be9a6782af3890b0a886cb3721dd210ae10c15a)
+:   cells: add explicit ZooKeeper/Curator monitoring
+
+[33d603a](https://github.com/dcache/dcache/commit/33d603ac631241e60c55bd34d602b3ec38605646)
+:   frontend: Map requests with bad JSON to HTTP 400 Bad Request status code
+
+[0d8ac41](https://github.com/dcache/dcache/commit/0d8ac41ac25b7e5ff6b7d85fb0fc4d94ad7a8897)
+:   pool-manager: use java8 streams to get Active or Enabled pools
+
+[abc6bbb](https://github.com/dcache/dcache/commit/abc6bbb2cfac28d16e7bb3bfc7050a9489439fed)
+:   pom: update zookeeper to latest stable release 3.4.11
+
+[cfd0c9c](https://github.com/dcache/dcache/commit/cfd0c9ccfcf5536091e67a2c8a46fadb82ca1180)
+:   pom: update apache curator version to 2.12.0
+
+[1274b30](https://github.com/dcache/dcache/commit/1274b3006370108f00ff848f565d5428b0993536)
+:   login-broker: replace LoadProvider interface with DoubleSupplier
+
+[5c8562e](https://github.com/dcache/dcache/commit/5c8562ed71a88a3a9fda2fefe6026990fd20615a)
+:   src: fix broken test after commit 4d564d2534
+
+[4d564d2](https://github.com/dcache/dcache/commit/4d564d253418318cbe308655e4ac6093af2b2361)
+:   cells: remove null checks for CuratorFramework
+
+[47b7d51](https://github.com/dcache/dcache/commit/47b7d51f66b7af18a9b6a59d81267467b212e224)
+:   cells: remove historical unused code
+
+[e71f1fc](https://github.com/dcache/dcache/commit/e71f1fceea0d45ea1bf5ddb56b202686cb5648a7)
+:   cells: remove custom implementation of curator's PathChildrenCache
+
+[d0aa2c6](https://github.com/dcache/dcache/commit/d0aa2c679088ad5d3212de6fcaeec752cbb85350)
+:   pool: use NFS internal reboot verifier for WRITE and COMMIT
+
+[fbda58a](https://github.com/dcache/dcache/commit/fbda58acfc8d55bf1bd9c1ae290fa4e5fb15df8c)
+:   dcache-resilience: change default sorting orders to ASC on admin history commands
+
+[1ccc2cb](https://github.com/dcache/dcache/commit/1ccc2cbc35a6af43a7994f8c3bfb002d685f15bb)
+:   gplazma: update multimap to support primary-agnostic matching
+
+[86f6d1b](https://github.com/dcache/dcache/commit/86f6d1bc85d72c76a541ce15949cf37cd6ad552f)
+:   pool: remove embedded nfs v3 server for felxfile layout type support
+
+[4022844](https://github.com/dcache/dcache/commit/4022844c6d4a01323a6107379de28bdb2a2c94eb)
+:   libs: switch to nfs4j-0.16.x
+
+[5ad6fff](https://github.com/dcache/dcache/commit/5ad6fff79c0857ef4f994cd0b86e0d6ee8d2e63e)
+:   nfs: return LAYOUTUNAVAILABLE for DOT files
+
+[fe50695](https://github.com/dcache/dcache/commit/fe506955e48a5c641ef23a52cb32159f407d242d)
+:   frontend: add remaining swagger annotations
+
+[bd6a2fa](https://github.com/dcache/dcache/commit/bd6a2faaaf4f8de6b7d572e753becf3f38177a26)
+:   star: fix printing exception error message
+
+[81178fb](https://github.com/dcache/dcache/commit/81178fb6ed74c171db771f3b0010fada2aa0e97f)
+:   storage-descriptor: add new binary to RPM manifest
+
+[cf1cf65](https://github.com/dcache/dcache/commit/cf1cf653fe99ebe85d5863babd900dc1e785c4cf)
+:   storage-descriptor: add support for generating new format
+
+[d157b92](https://github.com/dcache/dcache/commit/d157b923e762a931f0e8b875b4d4e958a1de6c13)
+:   star: update documentation to provide better description of script
+
+[8a60269](https://github.com/dcache/dcache/commit/8a602696d6857a5a1928d48f047e85b9cdad8b84)
+:   frontend: fix broken commit
+
+[16739c5](https://github.com/dcache/dcache/commit/16739c5231ddca4e69613f84c9e6a9281954faf2)
+:   frontend: add qos swagger annotations
+
+[a56f887](https://github.com/dcache/dcache/commit/a56f8874d3489c3a977f52998a826afba79023ed)
+:   frontend: add swagger namespace API annotations
+
+[d101fc6](https://github.com/dcache/dcache/commit/d101fc6483b24d64a20f83eb710883bf828b3688)
+:   frontend: add global swagger annotations
+
+[3b54f8e](https://github.com/dcache/dcache/commit/3b54f8e0cb060234571bdaad8d1a6a72aa885fdf)
+:   frontend: add swagger-ui support
+
+[551ae71](https://github.com/dcache/dcache/commit/551ae718aa0b341efba1516b521efa7e4b0557ca)
+:   frontend: add swagger annotation scanning
+
+[40a43c4](https://github.com/dcache/dcache/commit/40a43c456854e0ac7046593ba5ec500d2e63d860)
+:   frontend: convert tabs to spaces
+
+[298f858](https://github.com/dcache/dcache/commit/298f85870bc45553fe0011966d751f4cb70af03f)
+:   pool: refactor IO statistics
+
+[4a05834](https://github.com/dcache/dcache/commit/4a05834931cc45fcf232b24cb97cab961d4c3cb0)
+:   Revert "zookeeper: remove work-around for ZOOKEEPER-2809"
+
+[0cad361](https://github.com/dcache/dcache/commit/0cad36105d59d8459c9725fe690a52992aef8111)
+:   zookeeper: remove work-around for ZOOKEEPER-2809
+
+[77d82c0](https://github.com/dcache/dcache/commit/77d82c0c724cef0f83b841202180068fcf7360e0)
+:   nfs: fix ServerFault on FileNotFoundHimeraFsException
+
+[646da1f](https://github.com/dcache/dcache/commit/646da1f1800e9c26bfabc037a769982b83a60aa2)
+:   ftp: support non-ASCII filenames in LIST output
+
+[0de9090](https://github.com/dcache/dcache/commit/0de9090c3cb27c5aeb0b3d2f3e1b0540a6e9422c)
+:   ftp: update LIST output to be more like 'ls -l'
+
+[1576d5e](https://github.com/dcache/dcache/commit/1576d5ef5a1c6c0ef1964874f724e620175478c4)
+:   scripts: update reference to JDK to avoid mentioning specific java version
+
+[efed757](https://github.com/dcache/dcache/commit/efed7579ef41c38e55cda6f242ebdbfe67776acd)
+:   info: allow admin to control whether non-VO / non-FQAN identities are shown
+
+[0010216](https://github.com/dcache/dcache/commit/0010216f5ad0129c22f0a12c0cacab99d55d32d0)
+:   chimera: fix deadlock in Postgres driver
+
+[77c85a1](https://github.com/dcache/dcache/commit/77c85a1fe86d434fd2712080c3a05d0f8dcd05ca)
+:   gplazma: update multimap for generic match and add FQAN support
+
+[4598f02](https://github.com/dcache/dcache/commit/4598f0228e564c1528fc17adcfcd04deddfff505)
+:   authentication: update multimap to cooperate in generating primary gids
+
+[c538064](https://github.com/dcache/dcache/commit/c5380647b8623ee730448f3826bc40c222daee2c)
+:   pools: fix NPE from info command at startup
+
+[7887ba9](https://github.com/dcache/dcache/commit/7887ba90d027bc96f3b50eedd5670c2e4ab8ede1)
+:   systemd: stop all dCache service units in Debian prerm
+
+[279c72f](https://github.com/dcache/dcache/commit/279c72f821f3de2885e036348083f8c8bad5a174)
+:   chimera: correct previous attempt to fix 'lost+found' directory permission
+
+[f31dfa1](https://github.com/dcache/dcache/commit/f31dfa17522b0de50078b0c520aff6078d8613ed)
+:   [maven-release-plugin] prepare for next development iteration
+
+[4bb2574](https://github.com/dcache/dcache/commit/4bb2574133ee1a09dd34ac19e1096cd7fb608509)
+:   maven: fix dcache.service permissions
+
+--
 
 </div>
 </div>
