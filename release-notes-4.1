@@ -74,47 +74,6 @@ systems like Elasticsearch: Instead of adding messages to a textual log and havi
 component parse that log, a Kafka-aware ingester can import them directly into the remote
 system.
 
-The global options to control publishing to kafka are added:
-```
-dcache.enable.kafka = true|false
-dcache.kafka.bootstrap-servers= host1:port,host2:port
-```
-The kafka topic is **billing** and for not is not configurable. The record are written as JSON objects, like:
-```
-{
-    "msgType": "request",
-    "mappedUID": 0,
-    "date": "Fri Mar 02 10:48:41 CET 2018",
-    "cellName": "NFS-dcache-lab007",
-    "VERSION": "1.0",
-    "session": "door:NFS-dcache-lab007@core-dcache-lab007:AAVmauGezqg:1519984121401001",
-    "fileSize": 969,
-    "status": {
-      "msg": "",
-      "code": 0
-    },
-    "storageInfo":"test:public@osm"
-    "cellType": "door",
-    "cellDomain": "core-dcache-lab007",
-    "mappedGID": 0,
-    "billingPath": "/",
-    "sessionDuration": 9,
-    "queuingTime": 0,
-    "pnfsid": "0000328CE70CBAF24579BF5AD373C05AECC0",
-    "transferPath": "/",
-    "@timestamp": "2018-03-02T09:48:41.412Z",
-    "clientChain": "131.169.240.87",
-    "type": "dcache_billing",
-    "client": "131.169.240.87",
-    "subject": [
-      "UidPrincipal[0]",
-      "GidPrincipal[0,primary]",
-      "GidPrincipal[0]",
-      "Origin[131.169.240.87]"
-    ]
-  }
-```
-
 The configuration of several components has been simplified. For example, creating LDAP-only setups
 for gplazma now only requires the configuration of a single plugin, `ldap`. 
 
@@ -146,6 +105,52 @@ for their contributions during the HTW course.
 
 A newly-introduced configuration property `dcache.enable.kafka` controls whether the Kafka messaging
 system is used for message delivery.
+
+Two new global options to control publishing via Kafka have been added:
+
+```
+dcache.enable.kafka = true|false
+dcache.kafka.bootstrap-servers= host1:port,host2:port
+```
+
+The kafka topic is **billing** and is currently not configurable. The records are written as JSON 
+objects, like:
+
+
+```
+{  
+    "msgType": "request",  
+    "mappedUID": 0,  
+    "date": "Fri Mar 02 10:48:41 CET 2018",  
+    "cellName": "NFS-dcache-lab007",  
+    "VERSION": "1.0",  
+    "session": "door:NFS-dcache-lab007@core-dcache-lab007:AAVmauGezqg:1519984121401001",  
+    "fileSize": 969,  
+    "status": {  
+      "msg": "",  
+      "code": 0  
+    },  
+    "storageInfo":"test:public@osm"  
+    "cellType": "door",
+    "cellDomain": "core-dcache-lab007",
+    "mappedGID": 0,  
+    "billingPath": "/",  
+    "sessionDuration": 9,  
+    "queuingTime": 0,  
+    "pnfsid": "0000328CE70CBAF24579BF5AD373C05AECC0",  
+    "transferPath": "/",  
+    "@timestamp": "2018-03-02T09:48:41.412Z",  
+    "clientChain": "131.169.240.87",  
+    "type": "dcache_billing",  
+    "client": "131.169.240.87",  
+    "subject": [  
+      "UidPrincipal[0]",  
+      "GidPrincipal[0,primary]",  
+      "GidPrincipal[0]",  
+      "Origin[131.169.240.87]"  
+    ]  
+  }  
+```
 
 ### Frontend
 
