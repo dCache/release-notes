@@ -192,9 +192,9 @@ etc.).  Consult the frontend.properties file for details.
 
 ### FTP
 
-GridFTP defines a set of different transfer modes, among them streaming mode (MODE S) and   
+GridFTP defines a set of different transfer modes, among them streaming mode (MODE S) and
 extended block mode (MODE E). MODE E transfers now support keeping the data connection alive 
-in between uploads, resulting in significantly higher throughput and providing better compatibility  
+in between uploads, resulting in significantly higher throughput and providing better compatibility
 with the Globus transfer service.
 
 ### gplazma
@@ -228,14 +228,10 @@ While is't recommended to use flex_files layout type, only moder kernel version 
 are supporting it. If kernel client capabilities are unknow, the use nfsv4_1_files, which is a
 default, behaviour.
 
-```
-nfs.enable.kafka = true|false
-nfs.kafka.bootstrap-servers= host1:port,host2:port
-```
-
 
 ### Pool
 Added configuration option to publish billing records into apache-kafka queue:
+
 ```
 pool.enable.kafka = true|false
 pool.kafka.bootstrap-servers= host1:port,host2:port
