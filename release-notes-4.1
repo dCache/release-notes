@@ -98,6 +98,62 @@ Thanks to Christoph Anton Mitterer for his constributions.
 We would like to thank the students of HTW Berlin Alexandra Konovalova, Hagen Wittlich and Marcus Kopp,
 for their contributions during the HTW course.
 
+## Release 4.1.1
+
+### Changes affecting multiple services
+
+This version removes the (by now unused) directory /var/lib/cell-info
+from a default installation. The directory was previously used to store
+cell info data. With the introduction of the history service in dCache 3.2.1,
+this became obsolete.
+
+A small bug-fix addresses wrong directory permissions on tar or Debian
+packages, where the directory /var/lib/dcache/pool-history had the
+wrong permissions.
+
+The deprecated properties for configuring alarms have now finally been made 
+unavailable.
+
+### chimera
+
+An internal update enables chimera to use PostgreSQL 10.
+
+### nfs
+
+A modification in IP address handling greatly increases the speed of 
+NFS client access for Linux clients in mixed IPv4/IPv6 environments.
+
+Prior to Linux 4.12, Linux clients with only an IPv4 address would wait
+for (timeout * retry) seconds when connecting to pools with both a v4 and v6 
+address. This was [fixed upstream in Linux 4.12](https://github.com/torvalds/linux/commit/6ea44adce91526700535b3150f77f8639ae8c82d), but that fix was not
+backported to e.g. RHEL 7 yet.  
+
+
+### Changelog 4.1.0..4.1.1
+
+<!-- git log 4.1.0..4.1.1 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[986bde1cce](https://github.com/dcache/dcache/commit/986bde1cceb19de23dd5d2fa7b6e179de687ae30)
+:   [maven-release-plugin] prepare release 4.1.1
+
+[96fef30a55](https://github.com/dcache/dcache/commit/96fef30a552dd3f78c189ece7b1143a5842363e1)
+:   nfs: filter out IPv6 DS addresses if client connected with v4
+
+[0d5d837a66](https://github.com/dcache/dcache/commit/0d5d837a66329e15200ffdfdaaa3a89cb3ca4cb0)
+:   chimera: adjust postgres driver provider to new version schema
+
+[684780b296](https://github.com/dcache/dcache/commit/684780b29608082fcefebb186ef2913742df78cb)
+:   [maven-release-plugin] prepare for next development iteration
+
+[6e4e69c8a8](https://github.com/dcache/dcache/commit/6e4e69c8a8a798042e688a77b11b8cbfd5c37c89)
+:   skel: remove extraneous cell-info dir
+
+[cfeb7b1e48](https://github.com/dcache/dcache/commit/cfeb7b1e48fd085ecd803a1589de6f84b904d1c7)
+:   packaging: add missing chown and chmod on pool-history
+
+[bc834d029f](https://github.com/dcache/dcache/commit/bc834d029f031817d6344957447cb348c21311d9)
+:   skel: make deprecated alarms properties forbidden
+
 ## Release 4.1.0
 
 

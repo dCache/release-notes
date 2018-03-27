@@ -107,6 +107,62 @@ from dCache 3.1.  Please read this section *very carefully* when
 upgrading from this version.
 
 
+## Release 3.2.17
+
+### Changes affecting multiple services
+
+This version removes the (by now unused) directory /var/lib/cell-info
+from a default installation. The directory was previously used to store
+cell info data. With the introduction of the history service in dCache 3.2.1,
+this became obsolete.
+
+A small bug-fix addresses wrong directory permissions on tar or Debian
+packages, where the directory /var/lib/dcache/pool-history had the
+wrong permissions.
+
+The deprecated properties for configuring alarms have now finally been made 
+unavailable.
+
+### chimera
+
+An internal update enables chimera to use PostgreSQL 10.
+
+### nfs
+
+A modification in IP address handling greatly increases the speed of 
+NFS client access for Linux clients in mixed IPv4/IPv6 environments.
+
+Prior to Linux 4.12, Linux clients with only an IPv4 address would wait
+for (timeout * retry) seconds when connecting to pools with both a v4 and v6 
+address. This was [fixed upstream in Linux 4.12](https://github.com/torvalds/linux/commit/6ea44adce91526700535b3150f77f8639ae8c82d), but that fix was not
+backported to e.g. RHEL 7 yet.  
+
+
+### Changelog 3.2.16..3.2.17
+
+<!-- git log 3.2.16..3.2.17 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[3c3d887c68](https://github.com/dcache/dcache/commit/3c3d887c68441c786ffab15de31a492cc14a0a38)
+:   [maven-release-plugin] prepare release 3.2.17
+
+[ab5d6e6e97](https://github.com/dcache/dcache/commit/ab5d6e6e976dfc067c454ff5dc10bd948468a2a8)
+:   nfs: filter out IPv6 DS addresses if client connected with v4
+
+[278d7e5a33](https://github.com/dcache/dcache/commit/278d7e5a33dc0c6bb059b1059692d87c227825cb)
+:   chimera: adjust postgres driver provider to new version schema
+
+[1f18b011be](https://github.com/dcache/dcache/commit/1f18b011bea034b2485149e4c4ffe7f749dc7f1a)
+:   skel: remove extraneous cell-info dir
+
+[2872ce17ba](https://github.com/dcache/dcache/commit/2872ce17bac2d7f85a840b701bcf7939d2fc97b7)
+:   packaging: add missing chown and chmod on pool-history
+
+[742a3666fc](https://github.com/dcache/dcache/commit/742a3666fcd5ad4e822cb7c745ff6e8216a2ad89)
+:   skel: make deprecated alarms properties forbidden
+
+[24939dc5ac](https://github.com/dcache/dcache/commit/24939dc5acdb9e439f6d053cced4b6e8aebab52e)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.2.16
 
 ### resilience
