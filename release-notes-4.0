@@ -99,6 +99,65 @@ The notes for [release 4.0.0](#release4.0.0) detail the differences
 from dCache 3.2.  Please read this section *very carefully* when
 upgrading from this version.
 
+## Release 4.0.10
+
+### gplazma
+
+gplazma now supports a Fermilab-specific authorization data source in JSON format.
+
+### pool
+
+During active ftp transfers, connection problems would lead to the rather unhelpful error
+message "451 General problem". This error reporting was refactored, so that diagnosis
+of the cause is now greatly facilitated.
+
+### poolmanager
+
+A potential NullPointerException (that was not observed in real-world usage until now)
+was fixed in Pool Manager.
+
+### resilience
+
+A correction to resilience's error handling results in no more reports on
+non-resilient (but corrupted) files. 
+
+### spacemanager
+
+In order to facilitate debugging, Space Manager now logs link-group related content
+in greater detail.
+
+
+### Changelog 4.0.9..4.0.10
+
+<!-- git log 4.0.9..4.0.10 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[f6a357ef9a](https://github.com/dcache/dcache/commit/f6a357ef9a2e3270b54b6a30c10c3ca3173533ba)
+:   [maven-release-plugin] prepare release 4.0.10
+
+[bd37b4e2ef](https://github.com/dcache/dcache/commit/bd37b4e2effe9f83c330c3760816e60f146dcc98)
+:   poolmanager: fix migration command if named pool is removed
+
+[c72a4f8912](https://github.com/dcache/dcache/commit/c72a4f8912d2a293bc4e805ae18c361a92fbd71a)
+:   dcache-resilience: repair over-aggressive handling of broken file messages
+
+[64f90b4c0e](https://github.com/dcache/dcache/commit/64f90b4c0ecd9599728fbb72b0dcfed272efee04)
+:   pool: fix error message for failed active FTP transfers
+
+[00edd07b93](https://github.com/dcache/dcache/commit/00edd07b936bc8c4e8c820039c14a978e7e4634b)
+:   fix the project version in pom.xml
+
+[ba6ecef630](https://github.com/dcache/dcache/commit/ba6ecef630faa1c531da7e999dfa9fa2067d1ef5)
+:   gplazma-fermi: fix last modified check in junit test
+
+[2e9f266807](https://github.com/dcache/dcache/commit/2e9f26680758032f4cf5eb0d4a34f2b06498daf0)
+:   spacemanager: add remote pool monitor debug logging
+
+[04836c16d7](https://github.com/dcache/dcache/commit/04836c16d7b61b91eb4f15abd8340698fa758123)
+:   gplazma-fermi: add mapping plugin to support VO group and username from file
+
+[347aedb537](https://github.com/dcache/dcache/commit/347aedb53726344cf81c31703bcb4f5bdd42d14f)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.0.9
 
 ### Changes affecting multiple services

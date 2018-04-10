@@ -118,6 +118,68 @@ from dCache 2.15.  Please read this section *very carefully* when
 upgrading from this version.
 
 
+## Release 2.16.63
+
+### gplazma
+
+gplazma now supports a Fermilab-specific authorization data source in JSON format.
+
+### pool
+
+During active ftp transfers, connection problems would lead to the rather unhelpful error
+message "451 General problem". This error reporting was refactored, so that diagnosis
+of the cause is now greatly facilitated.
+
+### poolmanager
+
+A potential NullPointerException (that was not observed in real-world usage until now)
+was fixed in Pool Manager.
+
+### resilience
+
+A correction to resilience's error handling results in no more reports on
+non-resilient (but corrupted) files. 
+
+### spacemanager
+
+In order to facilitate debugging, Space Manager now logs link-group related content
+in greater detail.
+
+
+### Changelog 2.16.62..2.16.63
+
+<!-- git log 2.16.62..2.16.63 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[99ff6e5b70](https://github.com/dcache/dcache/commit/99ff6e5b703949a1cd3339f0c7a221024ee257f8)
+:   [maven-release-plugin] prepare release 2.16.63
+
+[bf97198b25](https://github.com/dcache/dcache/commit/bf97198b258818797ed24a6a3f65cea67100b368)
+:   poolmanager: fix migration command if named pool is removed
+
+[1656cb63d5](https://github.com/dcache/dcache/commit/1656cb63d5a1f8f7072d31634e169f54726a1349)
+:   dcache-resilience: repair over-aggressive handling of broken file messages
+
+[ac2bc68cf7](https://github.com/dcache/dcache/commit/ac2bc68cf792125207546b215ed3731b20305da9)
+:   pool: fix error message for failed active FTP transfers
+
+[5cc6fd8750](https://github.com/dcache/dcache/commit/5cc6fd875061ca481fe6c66202a1759dedd1a2ec)
+:   correct the project version in pom.xml
+
+[525ba8f80b](https://github.com/dcache/dcache/commit/525ba8f80b43ea7def8864166095af0bd6cb9191)
+:   set project version
+
+[6ea80f7843](https://github.com/dcache/dcache/commit/6ea80f7843883ece757b3b85f5ab5ff3c3819b74)
+:   gplazma-fermi: fix last modified check in junit test
+
+[9ddefe4776](https://github.com/dcache/dcache/commit/9ddefe477678f70a55cf4c9a1b092db6721ecad6)
+:   spacemanager: add remote pool monitor debug logging
+
+[6c2e08afaa](https://github.com/dcache/dcache/commit/6c2e08afaa4dbd77f4df748315be967909f50d5e)
+:   gplazma-fermi: add mapping plugin to support VO group and username from file
+
+[3f2dbbfdb6](https://github.com/dcache/dcache/commit/3f2dbbfdb6201bdd38a0c816be05eff3eb34222f)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.16.62
 
 ### resilience

@@ -98,6 +98,83 @@ Thanks to Christoph Anton Mitterer for his constributions.
 We would like to thank the students of HTW Berlin Alexandra Konovalova, Hagen Wittlich and Marcus Kopp,
 for their contributions during the HTW course.
 
+## Release 4.1.2
+
+### ftp
+
+A NullPointerException could occasionally occur in ftp. This issue was fixed in this release.
+
+The ftp door now provides far more detailed proxy information (including 
+ASCII-art diagrams of connection status).
+
+FTP has received extra debug-level logging to ease debugging.
+
+### gplazma
+
+gplazma now supports a Fermilab-specific authorization data source in JSON format.
+
+### pool
+
+During active ftp transfers, connection problems would lead to the rather unhelpful error
+message "451 General problem". This error reporting was refactored, so that diagnosis
+of the cause is now greatly facilitated.
+
+### poolmanager
+
+A potential NullPointerException (that was not observed in real-world usage until now)
+was fixed in Pool Manager.
+
+### resilience
+
+A correction to resilience's error handling results in no more reports on
+non-resilient (but corrupted) files. 
+
+### spacemanager
+
+In order to facilitate debugging, Space Manager now logs link-group related content
+in greater detail.
+
+
+### Changelog 4.1.1..4.1.2
+
+<!-- git log 4.1.1..4.1.2 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[b2ee4ccbe3](https://github.com/dcache/dcache/commit/b2ee4ccbe331962fe26bcc39820a148c5e6511d2)
+:   [maven-release-plugin] prepare release 4.1.2
+
+[102f38bbe7](https://github.com/dcache/dcache/commit/102f38bbe76ae218dce71ee098092693c6ca0bac)
+:   poolmanager: fix migration command if named pool is removed
+
+[95053574d6](https://github.com/dcache/dcache/commit/95053574d6478b721565fea7a079e8c9a18c3505)
+:   ftp: improve proxy logging to facilitate debugging
+
+[c33c4390d4](https://github.com/dcache/dcache/commit/c33c4390d47b14ee978e6236243183a729b554c1)
+:   dcache-resilience: repair over-aggressive handling of broken file messages
+
+[11d215e903](https://github.com/dcache/dcache/commit/11d215e90304d53de05845487c6942d96b5b945b)
+:   ftp: add detailed information about proxy status
+
+[1d09af9b53](https://github.com/dcache/dcache/commit/1d09af9b5359d18f6bb10bb3fa9d95423c68e581)
+:   pool: fix error message for failed active FTP transfers
+
+[d7704546c8](https://github.com/dcache/dcache/commit/d7704546c85fb168458f1a0a8c874bf969d83588)
+:   fix the project version in pom.xml
+
+[2a5f421a08](https://github.com/dcache/dcache/commit/2a5f421a08c76031e7a384a9fd6b46619cd31609)
+:   gplazma-fermi: fix last modified check in junit test
+
+[791f03fde5](https://github.com/dcache/dcache/commit/791f03fde5853d406c00c3bcf9bc7bdb1787463e)
+:   spacemanager: add remote pool monitor debug logging
+
+[029bcc8817](https://github.com/dcache/dcache/commit/029bcc8817030b3fb36d1d31a0427cd40ca34eec)
+:   ftp: avoid NPE if connection is closed.
+
+[d2ae92d1dc](https://github.com/dcache/dcache/commit/d2ae92d1dc857e010b9f12ed771a819e98a6c468)
+:   gplazma-fermi: add mapping plugin to support VO group and username from file
+
+[85989a2471](https://github.com/dcache/dcache/commit/85989a247180a18470625bf5f9738d767ce68b8a)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.1.1
 
 ### Changes affecting multiple services

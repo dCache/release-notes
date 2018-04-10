@@ -83,6 +83,73 @@ from dCache 3.0.  Please read this section *very carefully* when
 upgrading from this version.
 
 
+## Release 3.1.32
+
+### gplazma
+
+gplazma now supports a Fermilab-specific authorization data source in JSON format.
+
+### pool
+
+During active ftp transfers, connection problems would lead to the rather unhelpful error
+message "451 General problem". This error reporting was refactored, so that diagnosis
+of the cause is now greatly facilitated.
+
+### poolmanager
+
+A potential NullPointerException (that was not observed in real-world usage until now)
+was fixed in Pool Manager.
+
+### resilience
+
+A correction to resilience's error handling results in no more reports on
+non-resilient (but corrupted) files. 
+
+### skel
+
+A set of old properties controlling alarms that have been marked as deprecated before
+are now forbidden.
+
+### spacemanager
+
+In order to facilitate debugging, Space Manager now logs link-group related content
+in greater detail.
+
+
+### Changelog 3.1.31..3.1.32
+
+<!-- git log 3.1.31..3.1.32 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[3a2169d6d9](https://github.com/dcache/dcache/commit/3a2169d6d9affb55ebe84273290d207b7e4119ee)
+:   [maven-release-plugin] prepare release 3.1.32
+
+[4a5f1cad02](https://github.com/dcache/dcache/commit/4a5f1cad026c246a8b6f5a6c2b2d8a979b01ec08)
+:   poolmanager: fix migration command if named pool is removed
+
+[67967f44ba](https://github.com/dcache/dcache/commit/67967f44ba57a3fc375d520765195c9ae559b1f9)
+:   dcache-resilience: repair over-aggressive handling of broken file messages
+
+[5cfec763db](https://github.com/dcache/dcache/commit/5cfec763db36f6b8747b85408138608dc2ffa651)
+:   pool: fix error message for failed active FTP transfers
+
+[964a3a3187](https://github.com/dcache/dcache/commit/964a3a318780e1fe496b3dff58da5a61975972bc)
+:   fix the project version in pom.xml
+
+[a8215d2f72](https://github.com/dcache/dcache/commit/a8215d2f72c470e5f0bde608c1967111374e4104)
+:   gplazma-fermi: fix last modified check in junit test
+
+[5b1c43982b](https://github.com/dcache/dcache/commit/5b1c43982b1213d806bf05cf16b6ae8fe6565817)
+:   spacemanager: add remote pool monitor debug logging
+
+[f8c0363010](https://github.com/dcache/dcache/commit/f8c036301048f70a6f7a7d18117fef645e1471e9)
+:   gplazma-fermi: add mapping plugin to support VO group and username from file
+
+[d85a87350f](https://github.com/dcache/dcache/commit/d85a87350fdc4d7df2434456f4947eefc9cae1be)
+:   skel: make deprecated alarms properties forbidden
+
+[0bfdadac3b](https://github.com/dcache/dcache/commit/0bfdadac3bdee84b8cfce565b97e0557c1492348)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.1.31
 
 ### resilience
