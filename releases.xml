@@ -180,6 +180,12 @@
 
       <ul>
         <li>This release of dCache introduces  Kafka as a message transport, for now in Billing, as a new approach to external messaging.</li>
+	<li>Various administrative tasks are now possible for users
+	with the <tt>admin</tt> role using frontend.</li>
+	<li>The frontend REST API is documented with Swagger, allowing
+	the auto-generation of clients.</li>
+	<li>The frontend also now comes with a built-in web-browser
+	based Swagger client.</li>
         <li>The configuration of several components has been simplified.</li>
       </ul>
 

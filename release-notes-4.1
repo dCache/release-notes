@@ -74,6 +74,15 @@ systems like Elasticsearch: Instead of adding messages to a textual log and havi
 component parse that log, a Kafka-aware ingester can import them directly into the remote
 system.
 
+Various administrative tasks are now possible for users with
+the 'admin' role using frontend.
+
+The frontend REST API is documented with Swagger, allowing the
+auto-generation of clients.
+
+The frontend also now comes with a built-in web-browser based Swagger
+client.
+
 The configuration of several components has been simplified. For example, creating LDAP-only setups
 for gplazma now only requires the configuration of a single plugin, `ldap`. 
 
