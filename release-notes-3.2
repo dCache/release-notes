@@ -107,6 +107,31 @@ from dCache 3.1.  Please read this section *very carefully* when
 upgrading from this version.
 
 
+## Release 3.2.19
+
+### nfs
+
+Situations, where selection process was incomplete could not  be manually recovered
+When selection process incomplete, due to `PoolManager` restart, there was no way  to trigger a new selection.
+The current release added  two new commands to `nfs door`:  `transfer retry` and `transfer forget`.  
+
+The first command manually re-activates  existing transfer by re-trying selection process. 
+The second one should be  used to  completely 'forget' the stale transfer and let client to trigger a fresh selection process.
+
+
+### Changelog 3.2.18..3.2.19
+
+<!-- git log 3.2.18..3.2.19 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[d580e01](https://github.com/dcache/dcache/commit/d580e016913f2fa80a9f669278810ce5d1e0b570)
+:   [maven-release-plugin] prepare release 3.2.19
+
+[df58f42](https://github.com/dcache/dcache/commit/df58f423574281f6e3f9e20452ef87aec7274d98)
+:   nfs: add commands to reactivate stale transfers
+
+[69d822a](https://github.com/dcache/dcache/commit/69d822aaf0d2454b9b02542e3c6d10eaa6f245ab)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.2.18
 
 ### gplazma

@@ -107,6 +107,39 @@ Thanks to Christoph Anton Mitterer for his constributions.
 We would like to thank the students of HTW Berlin Alexandra Konovalova, Hagen Wittlich and Marcus Kopp,
 for their contributions during the HTW course.
 
+## Release 4.1.3
+
+### frontend
+
+The current release improved `REST API` swagger documentation that describes which aspects of
+dCache are affected by related operations.
+
+### nfs
+
+Situations, where selection process was incomplete could not  be manually recovered
+When selection process incomplete, due to `PoolManager` restart, there was no way  to trigger a new selection.
+The current release added  two new commands to `nfs door`:  `transfer retry` and `transfer forget`.  
+
+The first command manually re-activates  existing transfer by re-trying selection process. 
+The second one should be  used to  completely 'forget' the stale transfer and let client to trigger a fresh selection process.
+
+
+### Changelog 4.1.2..4.1.3
+
+<!-- git log 4.1.2..4.1.3 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[ee31290](https://github.com/dcache/dcache/commit/ee31290f10056b43c558dd4d3a23775c36975f72)
+:   [maven-release-plugin] prepare release 4.1.3
+
+[9fca38c](https://github.com/dcache/dcache/commit/9fca38c2ae6950a67fad23838190dcbcd780e640)
+:   frontend: add swagger Tag descriptions
+
+[97a6e1e](https://github.com/dcache/dcache/commit/97a6e1ef2a370f3c44f22e910218152c275ea2b2)
+:   nfs: add commands to reactivate stale transfers
+
+[07f5f7c](https://github.com/dcache/dcache/commit/07f5f7cad38b6073805a216abc7ea0c7d0a8ebcd)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.1.2
 
 ### ftp
