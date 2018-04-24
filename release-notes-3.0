@@ -116,6 +116,27 @@ from dCache 2.16.  Please read this section *very carefully* when
 upgrading from this version.
 
 
+## Release 3.0.45
+
+### ftp
+
+Error reporting in the FTP service has been improved: in some mixed IPv4 / IPv6 scenarios,
+only unclear error messages were reported. 
+
+
+### Changelog 3.0.44..3.0.45
+
+<!-- git log 3.0.44..3.0.45 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[6bdfcbde5d](https://github.com/dcache/dcache/commit/6bdfcbde5dac4b816e18ad752bd26bcbcfca7541)
+:   [maven-release-plugin] prepare release 3.0.45
+
+[d8a15dbab7](https://github.com/dcache/dcache/commit/d8a15dbab7c1107d97fa09fd13c41b043ef91751)
+:   ftp: returned error is too vague for meaningful investigation
+
+[027f7397a2](https://github.com/dcache/dcache/commit/027f7397a230c5766c259d84917e21a0fbf34205)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.0.44
 
 ### gplazma
