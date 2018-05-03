@@ -120,9 +120,8 @@ upgrading from this version.
 
 ## Release 2.16.65
 
-### #
 
-### dcacge-resilience
+### dcache-resilience
 
 There was a small regression in the way resilience computes
 the number of operations necessary to adjust copies when
