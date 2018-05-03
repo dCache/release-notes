@@ -83,6 +83,51 @@ from dCache 3.0.  Please read this section *very carefully* when
 upgrading from this version.
 
 
+## Release 3.1.34
+
+### #
+
+### dcacge-resilience
+
+There was a small regression in the way resilience computes
+the number of operations necessary to adjust copies when
+a storage unit definition changes.
+
+The current rellease fixed  computation of operation count when storage requirements change.
+
+### ftp
+
+In order to aid diagnosing problems when FTP response being lost, now dcache  logs failures to wrap/encrypt responses.
+
+### webdav
+
+The current release improved error handling for client authentication with OpenID-Connect.
+ A more complete set of information is now logged if OIDC delegation fails,
+supporting the ability to discover why the delegation failed.
+
+
+### Changelog 3.1.33..3.1.34
+
+<!-- git log 3.1.33..3.1.34 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[d3d13fb](https://github.com/dcache/dcache/commit/d3d13fb6eb0a0d1b23358799ae8984303975e0bf)
+:   [maven-release-plugin] prepare release 3.1.34
+
+[89b3a98](https://github.com/dcache/dcache/commit/89b3a9876a09e804423669507f84a3563a1e04ea)
+:   scripts: add support for parsing ZooKeeper transaction logs
+
+[f08a33d](https://github.com/dcache/dcache/commit/f08a33dfa7fc83f879b80442395702b344f78298)
+:   ftp: log failures to wrap/encrypt responses
+
+[7c323dc](https://github.com/dcache/dcache/commit/7c323dc29b1867144ae23eb7794605dda634b2fb)
+:   dcache-resilience: fix computation of operation count when storage requirements change
+
+[3701fb3](https://github.com/dcache/dcache/commit/3701fb3bc833beaa60ea727e7275cd4f56012e77)
+:   webdav: log errors if OIDC delegation fails
+
+[b6adcd9](https://github.com/dcache/dcache/commit/b6adcd979ec5f69886e42b841879d93c8c9fdc43)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.1.33
 
 ### ftp

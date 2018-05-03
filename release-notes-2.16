@@ -118,6 +118,42 @@ from dCache 2.15.  Please read this section *very carefully* when
 upgrading from this version.
 
 
+## Release 2.16.65
+
+### #
+
+### dcacge-resilience
+
+There was a small regression in the way resilience computes
+the number of operations necessary to adjust copies when
+a storage unit definition changes.
+
+The current rellease fixed  computation of operation count when storage requirements change.
+
+### ftp
+
+In order to aid diagnosing problems when FTP response being lost, now dcache  logs failures to wrap/encrypt responses.
+
+
+### Changelog 2.16.64..2.16.65
+
+<!-- git log 2.16.64..2.16.65 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[22b932c](https://github.com/dcache/dcache/commit/22b932cafe36dc1b277613789b1720038dc2b331)
+:   [maven-release-plugin] prepare release 2.16.65
+
+[a1e22fe](https://github.com/dcache/dcache/commit/a1e22feae7b9251a2b7fb15709af4664802066f5)
+:   scripts: add support for parsing ZooKeeper transaction logs
+
+[8b7354a](https://github.com/dcache/dcache/commit/8b7354adf6d952fb38696221bf8b539cd401d144)
+:   ftp: log failures to wrap/encrypt responses
+
+[bab0c9c](https://github.com/dcache/dcache/commit/bab0c9cdca8a858ec0b3b3e4225ef66eecc0ff76)
+:   dcache-resilience: fix computation of operation count when storage requirements change
+
+[f415195](https://github.com/dcache/dcache/commit/f41519546f1ab4422d71ae3bada00ee7617cb794)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 2.16.64
 
 ### ftp
