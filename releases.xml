@@ -202,7 +202,23 @@
         <version-prefix>4.1.</version-prefix>
         
 
-      <release version="6" recommended="1">
+      <release version="7" recommended="1">
+        <date>15.5.2018</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>2a6fe3a46d0d6be07998372c47997ec3</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>690745ef4b354a47081c58e7b9c3c334</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>40e50ae8ce5c33e708dec2ccfbc35a0d</md5sum>
+        </package>
+      </release>
+
+      <release version="6">
         <date>8.5.2018</date>
         <package name="Debian package">
           <download-url>_VERSION-1_all.deb</download-url>

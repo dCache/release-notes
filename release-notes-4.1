@@ -107,6 +107,29 @@ Thanks to Christoph Anton Mitterer for his constributions.
 We would like to thank the students of HTW Berlin Alexandra Konovalova, Hagen Wittlich and Marcus Kopp,
 for their contributions during the HTW course.
 
+## Release 4.1.7
+
+### pool
+
+There was a regression resulting in the pool logging somewhat
+useless information during start-up.
+
+This is now fixed and during the `pool`s start-up, the `replica store`s locations are logged.
+
+
+### Changelog 4.1.6..4.1.7
+
+<!-- git log 4.1.6..4.1.7 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[7f9212b](https://github.com/dcache/dcache/commit/7f9212b8b50218c384355beee2cb043b58df5220)
+:   [maven-release-plugin] prepare release 4.1.7
+
+[89eb811](https://github.com/dcache/dcache/commit/89eb811eebe44bb77e512e215aa2c0948ad832a6)
+:   [maven-release-plugin] prepare for next development iteration
+
+[677cc2e](https://github.com/dcache/dcache/commit/677cc2e86ef3e6f1c63644805f7bdc2da79324d7)
+:   pool: fix logging of replica-store on start-up
+
 ## Release 4.1.6
 
 ### dcache
