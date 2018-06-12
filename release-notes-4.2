@@ -79,6 +79,27 @@ HTML header: <title>dCache 4.2 Release Notes</title>
 
 ### Admin
 
+Admin sshd server supoprts public key and kerberos authentication mechanisms. 
+In some facilities have cyber security policies that explicitly disallow these mechanisms. 
+This release adds kerberos authentication mechanism to admin sshd server and 
+introduces ability to enable specific authentication mechanisms to conform to 
+different security policies. The following configuration variables 
+have been added to control the behavior:
+
+```
+(any-of?kerberos|password|publickey)admin.ssh.authn.enabled = password,publickey
+```
+
+(by default the same existing mechanisms are enabled - password and public key). If kerberos 
+authentication is chosen there is a second configuration variable pointing at location
+of keytab file on your system:
+
+```
+admin.ssh.authn.kerberos.keytab-file = /etc/krb5.keytab
+```
+
+
+
 ### Alarms
 
 ### Billing
