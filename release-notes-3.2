@@ -107,6 +107,40 @@ from dCache 3.1.  Please read this section *very carefully* when
 upgrading from this version.
 
 
+## Release 3.2.22
+
+### door
+
+The current release added  support for a door advertising multiple hostnames or IP addresses.
+dCache doors can  now advertise multiple interfaces, including DNS aliases.
+
+### webdav
+
+Milton's OPTIONS handler was returning  a 404 error if an OPTIONS request
+targets an entity that did not exist. This behavior deviated from
+Apache httpd server and was resulting  in failed uploads for dcache-view.
+The current release fixed.
+
+
+### Changelog 3.2.21..3.2.22
+
+<!-- git log 3.2.21..3.2.22 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[5b8e32b](https://github.com/dcache/dcache/commit/5b8e32b95a20f7bdc011258802735a66602e513f)
+:   [maven-release-plugin] prepare release 3.2.22
+
+[2aafba0](https://github.com/dcache/dcache/commit/2aafba0be48557bdd1ab28740597e73e74c58edf)
+:   gplazma.properties: hint to enable roles
+
+[7fe48f1](https://github.com/dcache/dcache/commit/7fe48f18cee979db0eb64b7a751a9b79c31a71d2)
+:   doors: support advertising multiple addresses in LoginBroker
+
+[7ded7cf](https://github.com/dcache/dcache/commit/7ded7cfe570255e06b868efe25e678f146f4e27d)
+:   webdav: do not return 404 for OPTIONS request targeting absent entity
+
+[64cf055](https://github.com/dcache/dcache/commit/64cf0556798339f83c60f3088dd96297d915dbcd)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.2.21
 
 ### dcache-resilience

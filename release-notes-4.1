@@ -107,6 +107,48 @@ Thanks to Christoph Anton Mitterer for his constributions.
 We would like to thank the students of HTW Berlin Alexandra Konovalova, Hagen Wittlich and Marcus Kopp,
 for their contributions during the HTW course.
 
+## Release 4.1.8
+
+### dcache-view
+
+Now there is a live update of QoS when changed. The current release added the following fixes: fixed the upload toast to show the current status,
+ fixed regression regarding the processing of click events on vaadin-grid tables and fixed path request in view-file. 
+
+### door
+
+The current release added  support for a door advertising multiple hostnames or IP addresses.
+dCache doors can  now advertise multiple interfaces, including DNS aliases.
+
+### webdav
+
+Milton's OPTIONS handler was returning  a 404 error if an OPTIONS request
+targets an entity that did not exist. This behavior deviated from
+Apache httpd server and was resulting  in failed uploads for dcache-view.
+The current release fixed.
+
+
+### Changelog 4.1.7..4.1.8
+
+<!-- git log 4.1.7..4.1.8 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[a3c1971](https://github.com/dcache/dcache/commit/a3c19712d334905bf24f5e9ef7849222598a1ebe)
+:   [maven-release-plugin] prepare release 4.1.8
+
+[db227cd](https://github.com/dcache/dcache/commit/db227cda77880dd6f5c15b06cf8626cf91633820)
+:   gplazma.properties: hint to enable roles
+
+[768e3f7](https://github.com/dcache/dcache/commit/768e3f7388b91e0f5b79f27fc850d0c02cda3487)
+:   doors: support advertising multiple addresses in LoginBroker
+
+[e467725](https://github.com/dcache/dcache/commit/e4677256941de9062dfb4e212e1caf0001d88b08)
+:   webdav: do not return 404 for OPTIONS request targeting absent entity
+
+[7fc66fa](https://github.com/dcache/dcache/commit/7fc66fab6de2bd566bfe5dfd276e6ea345849eea)
+:   dcache: release dcache-view version 1.4.2
+
+[08eeef4](https://github.com/dcache/dcache/commit/08eeef480d8adc5fc94f4be89904c576a1aa3f8c)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.1.7
 
 ### pool
