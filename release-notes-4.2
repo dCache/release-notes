@@ -126,13 +126,36 @@ admin.ssh.authn.kerberos.keytab-file = /etc/krb5.keytab
 
 ### NFS
 
+For situations, where transfers stay in pending state in the nfs door two new admin command are added to
+let door to 'forget' the transfer or retry it. Such situations can be result of network errors or when
+cell communicatioin tunnels get restarted due to core domain restart.
+
+```
+ transfer retry
+ transfer forget
+```
+
+Some deployments may have quite a busy export nfs file. To make it more managable starting release 4.2 dCache
+supportd exports.d directory. The configuration property ```nfs.export.dir``` controls the location of the
+directory. By default **/etc/exports.d** is used. Only files ending in .exports  are  considered.
+Files beginning with a dot are ignored.
+
 ### Pinmanager
 
 ### PNFS Manager
 
+The internal pnfsid <=> inumber cache can be configured to run in the cluster mode, e.g. multiple PnfsManagers
+can share the same cache.  However, as this functionality is not required by current release cluster
+configuration is not enabled.
+
 ### Pool
 
 ### Poolmanager
+
+Added support for glob in **psu remove pool**:
+```
+psu remove pool dcache-pool-A*
+```
 
 ### Resilience
 
