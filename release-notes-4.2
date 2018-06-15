@@ -87,10 +87,10 @@ different security policies. The following configuration variables
 have been added to control the behavior:
 
 ```
-admin.ssh.authn.enabled = password,publickey
+admin.ssh.authn.enabled = kerberos,password,publickey
 ```
 
-(by default the same existing mechanisms are enabled - password and public key). If kerberos 
+(password and publickey are enabled by default). If kerberos 
 authentication is chosen there is a second configuration variable pointing at location
 of keytab file on your system:
 
