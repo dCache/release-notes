@@ -107,6 +107,31 @@ from dCache 3.1.  Please read this section *very carefully* when
 upgrading from this version.
 
 
+## Release 3.2.23
+
+### pool
+
+This release improves dCache's robustness against network errors: In case 
+registering a file with PNFS manager fails due to a timeout, the request
+is retried transparently. 
+
+
+### Changelog 3.2.22..3.2.23
+
+<!-- git log 3.2.22..3.2.23 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[bb4d51dd22](https://github.com/dcache/dcache/commit/bb4d51dd22fc28a39a002f3da64ec090b29ed90c)
+:   [maven-release-plugin] prepare release 3.2.23
+
+[a7739d65b9](https://github.com/dcache/dcache/commit/a7739d65b938d837b7899f0d0100cc26d519776d)
+:   vehicles: fail-fast on invalid path
+
+[11ed4c7cea](https://github.com/dcache/dcache/commit/11ed4c7cea83934edb3b7a76a3ade73c976e65b1)
+:   pool: retry request to pnfs manager if timed out
+
+[b76775f728](https://github.com/dcache/dcache/commit/b76775f728481a853a5ad016a9d60d1f86117941)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.2.22
 
 ### door

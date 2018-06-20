@@ -107,6 +107,52 @@ Thanks to Christoph Anton Mitterer for his constributions.
 We would like to thank the students of HTW Berlin Alexandra Konovalova, Hagen Wittlich and Marcus Kopp,
 for their contributions during the HTW course.
 
+## Release 4.1.9
+
+### frontend
+
+The frontend now correctly handles situations where a transfer that is already
+completed is killed. Be aware that in order to make use of the bugfix, both
+the pools and the head nodes need to be updated to at least 4.1.9. 
+
+### ftp
+
+Since commit [eefb964](https://github.com/dCache/dcache/commit/eefb9641e9c4c5ff0ee5f6793928e311b334a064),
+3rd-party-transfers using ftp between two dCache endpoints had an issue
+where connections were not reliably closed. This release fixes the problem.
+
+### pool
+
+This release improves dCache's robustness against network errors: In case 
+registering a file with PNFS manager fails due to a timeout, the request
+is retried transparently. 
+
+
+### Changelog 4.1.8..4.1.9
+
+<!-- git log 4.1.8..4.1.9 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[508e23b42e](https://github.com/dcache/dcache/commit/508e23b42eafa3be26900691c862bbf4c914ec8b)
+:   [maven-release-plugin] prepare release 4.1.9
+
+[1e26192be7](https://github.com/dcache/dcache/commit/1e26192be73b0f3a383f76faa27bd9c4511269eb)
+:   ftp: always close proxied data connection if client closes their half
+
+[1281d9b1b6](https://github.com/dcache/dcache/commit/1281d9b1b6a0e6743ba766ff35604e91e5849eba)
+:   vehicles: fail-fast on invalid path
+
+[2403b788a8](https://github.com/dcache/dcache/commit/2403b788a892b6750deec5817da0bdc6d5235b9f)
+:   pool: retry request to pnfs manager if timed out
+
+[e4d8bf9857](https://github.com/dcache/dcache/commit/e4d8bf9857293e7f354c32fc766eb3a050d5c57c)
+:   dcache-frontend: invalidate transfer when killed mover not found
+
+[588777f26f](https://github.com/dcache/dcache/commit/588777f26fcfc84a74996aae7e38126aa74fb683)
+:   [maven-release-plugin] prepare for next development iteration
+
+[51d4b79234](https://github.com/dcache/dcache/commit/51d4b792343e7194aa7fb416035becf4847831af)
+:   dcache-frontend: add "Requires admin role" to alarms methods (Swagger)
+
 ## Release 4.1.8
 
 ### dcache-view

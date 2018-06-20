@@ -99,6 +99,31 @@ The notes for [release 4.0.0](#release4.0.0) detail the differences
 from dCache 3.2.  Please read this section *very carefully* when
 upgrading from this version.
 
+## Release 4.0.15
+
+### pool
+
+This release improves dCache's robustness against network errors: In case 
+registering a file with PNFS manager fails due to a timeout, the request
+is retried transparently. 
+
+
+### Changelog 4.0.14..4.0.15
+
+<!-- git log 4.0.14..4.0.15 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[d80652cb16](https://github.com/dcache/dcache/commit/d80652cb16d4bed4941abb2baa27bd2fcfdd7328)
+:   [maven-release-plugin] prepare release 4.0.15
+
+[40818ef57e](https://github.com/dcache/dcache/commit/40818ef57e6066f92c07cb2bda48ac263c954414)
+:   vehicles: fail-fast on invalid path
+
+[c821b17e26](https://github.com/dcache/dcache/commit/c821b17e26d80cecc6fe0c12f29729fe1f0f4250)
+:   pool: retry request to pnfs manager if timed out
+
+[fd3ac055bf](https://github.com/dcache/dcache/commit/fd3ac055bf528ee1bd69e391d488a47f127a520e)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.0.14
 
 ### door
