@@ -66,6 +66,18 @@ HTML header: <title>dCache 4.2 Release Notes</title>
 
 (tbd, this section uses markdown formatting)
 
+This release ships with dCache-View 1.4+ which provides a new version of the
+familiar admin pages.  Currently, access to these new pages requires the user
+to be authorized (and to assert) the admin role.  The pages are only fully
+populated with their respective data when, in addition to the frontend service,
+the alarms and history services are running, and the billing service has
+the database backend enabled.
+
+With this release, dCache-View completely replaces the (Wicket-based) “webadmin”
+interface, which is no longer available on ports 2288 and 8440.  (The
+old static pages at http://<host>:2288/old are, on the other hand, still available,
+but these, too, will eventually be removed in a future release.)
+
 ## Incompatibilities
 
 Some changes 
@@ -87,8 +99,8 @@ updates, pools may remain at 4.1 during that update.
 
 The admin sshd server supoports public key and password authentication mechanisms. 
 Some facilities have cyber security policies that explicitly disallow these mechanisms. 
-This release adds kerberos authentication mechanism to admin sshd server and 
-introduces ability to enable specific authentication mechanism(s) to conform to 
+This release adds the kerberos authentication mechanism to the admin sshd server and
+introduces the ability to enable specific authentication mechanism(s) to conform to
 different security policies. The following configuration variables 
 have been added to control the behavior:
 
@@ -97,8 +109,8 @@ admin.ssh.authn.enabled = kerberos,password,publickey
 ```
 
 (password and publickey are enabled by default). If kerberos 
-authentication is chosen there is a second configuration variable pointing at location
-of keytab file on your system:
+authentication is chosen, there is a second configuration variable pointing at
+the location of the keytab file on your system:
 
 ```
 admin.ssh.authn.kerberos.keytab-file = /etc/krb5.keytab
@@ -115,6 +127,20 @@ admin.ssh.authn.kerberos.keytab-file = /etc/krb5.keytab
 ### DCAP
 
 ### Frontend
+
+The JSON returned from the RESTful admin services now sorts lists (especially
+things like pool names) in natural ascending order for improved readability.
+Swagger annotations for these services have been improved and regularized.
+If the history service is not running, the absence of data is now handled
+peacefully.  Finally, when a mover is killed via the frontend, but the
+transfer has already completed, the cached entry is now correctly invalidated;
+an intervening request for the mover listings from the frontend should display
+any killed mover's state as "CANCELED" until it is in fact removed from the
+cache during the ensuing refresh (to get this correct behavior, however,
+the pools must also be updated to 4.1.9 or better).
+
+As mentioned above, this release includes a version of dcache-view (1.4.2)
+which implements the full set of admin pages.
 
 ### FTP
 
@@ -165,6 +191,24 @@ psu remove pool dcache-pool-A*
 
 ### Resilience
 
+Three issues of some importance have been addressed.
+
+First, Resilience no longer will (incorrectly) report on non-resilient
+files which have been corrupted.
+
+Second, the computation of the number of copies needed when a storage
+requirement changes was fixed so that it is now possible to go from N to M
+and have resilience react correctly (by removing all but M; in particular,
+the case where M = 1 was not being handled at all).
+
+Finally, in connection with the latter, the default 'required' value on storage
+units has been changed from 1 to undefined.  The only resulting behavioral change
+is that resilience will now completely ignore files with the default storage
+unit tag rather than alarming when no copies are readable.  '-required=1' is
+different in that resilience will instead raise an alarm if the single copy
+is not accessible.  This change creates a clearer distinction between
+resilient and non-resilient files.
+
 ### Space Manager
 
 ### SRM
@@ -181,7 +225,7 @@ psu remove pool dcache-pool-A*
 
 ### XRootD
 
-Kafka messaging system could be nowenabled for xrootD.
+Kafka messaging system can now be enabled for xrootD.
 `xrootD.enable.kafka` controls whether the Kafka messaging system is used for message deliver.
 `xrootD.enable.kafka = true|false` `xrootD.kafka.bootstrap-servers= host1:port,host2:port`
 
