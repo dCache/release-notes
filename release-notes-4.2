@@ -97,8 +97,9 @@ updates, pools may remain at 4.1 during that update.
 
 ### Admin
 
-The admin sshd server supoports public key and password authentication mechanisms. 
-Some facilities have cyber security policies that explicitly disallow these mechanisms. 
+The admin sshd server supports public key and password authentication mechanisms. 
+Some facilities, however, have security policies that explicitly disallow 
+these mechanisms. 
 This release adds the kerberos authentication mechanism to the admin sshd server and
 introduces the ability to enable specific authentication mechanism(s) to conform to
 different security policies. The following configuration variables 
@@ -115,16 +116,6 @@ the location of the keytab file on your system:
 ```
 admin.ssh.authn.kerberos.keytab-file = /etc/krb5.keytab
 ```
-
-
-
-### Alarms
-
-### Billing
-
-### Cleaner
-
-### DCAP
 
 ### Frontend
 
