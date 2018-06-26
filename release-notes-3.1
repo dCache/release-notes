@@ -83,6 +83,31 @@ from dCache 3.0.  Please read this section *very carefully* when
 upgrading from this version.
 
 
+## Release 3.1.35
+
+### scripts
+
+The instructions that are printed out once 'dcache pool convert'
+completes successfully now correctly point to the 
+property that needs to be updated, namely `pool.plugins.meta`.
+
+
+### Changelog 3.1.34..3.1.35
+
+<!-- git log 3.1.34..3.1.35 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[fa2e48ddb7](https://github.com/dcache/dcache/commit/fa2e48ddb7d297dbb36ab56494225d71ca08ed75)
+:   [maven-release-plugin] prepare release 3.1.35
+
+[f254c2ef2c](https://github.com/dcache/dcache/commit/f254c2ef2c7fdf4ddc27038f84e9a8c2a0fe1568)
+:   scripts: update reference to configuration property
+
+[d24eeb72bc](https://github.com/dcache/dcache/commit/d24eeb72bc8e5a11a7c5b867f22dbc47c808e690)
+:   pool: fix metadata migration tool to use Path
+
+[db246f71cf](https://github.com/dcache/dcache/commit/db246f71cf3a1926791462ff2a58d8c5e00e6750)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.1.34
 
 

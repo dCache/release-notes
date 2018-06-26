@@ -107,6 +107,38 @@ Thanks to Christoph Anton Mitterer for his constributions.
 We would like to thank the students of HTW Berlin Alexandra Konovalova, Hagen Wittlich and Marcus Kopp,
 for their contributions during the HTW course.
 
+## Release 4.1.10
+
+### pool
+
+A short-lived regression in the `dcache pool convert` command was fixed; the command works again.
+
+### scripts
+
+The instructions that are printed out once 'dcache pool convert'
+completes successfully now correctly point to the 
+property that needs to be updated, namely `pool.plugins.meta`.
+
+
+### Changelog 4.1.9..4.1.10
+
+<!-- git log 4.1.9..4.1.10 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[5607cf0272](https://github.com/dcache/dcache/commit/5607cf02729ac80522645a72ba523c0c57025bad)
+:   [maven-release-plugin] prepare release 4.1.10
+
+[5544fb58cd](https://github.com/dcache/dcache/commit/5544fb58cdb7f3bf243b853c922631f7f1b5e32c)
+:   pool: fix 'dcache pool convert' command
+
+[88e9615ac8](https://github.com/dcache/dcache/commit/88e9615ac850b52514a9a8ad04c138030916412b)
+:   scripts: update reference to configuration property
+
+[cff48234a4](https://github.com/dcache/dcache/commit/cff48234a45d1a8327f14bedeef7324cc72a2727)
+:   pool: fix metadata migration tool to use Path
+
+[2278e32aa2](https://github.com/dcache/dcache/commit/2278e32aa2474c168cee61aa83e5c15e9c6f5084)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.1.9
 
 ### frontend

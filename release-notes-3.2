@@ -107,6 +107,38 @@ from dCache 3.1.  Please read this section *very carefully* when
 upgrading from this version.
 
 
+## Release 3.2.24
+
+### pool
+
+A short-lived regression in the `dcache pool convert` command was fixed; the command works again.
+
+### scripts
+
+The instructions that are printed out once 'dcache pool convert'
+completes successfully now correctly point to the 
+property that needs to be updated, namely `pool.plugins.meta`.
+
+
+### Changelog 3.2.23..3.2.24
+
+<!-- git log 3.2.23..3.2.24 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[427f08e306](https://github.com/dcache/dcache/commit/427f08e3062e3a7f6f71b23308dc82a790eff3e8)
+:   [maven-release-plugin] prepare release 3.2.24
+
+[c06f09b136](https://github.com/dcache/dcache/commit/c06f09b1362a868ec83dacda2600a8e3fa825088)
+:   pool: fix 'dcache pool convert' command
+
+[90a41ca479](https://github.com/dcache/dcache/commit/90a41ca47960e8189fc1e9cb3c1af944b1dc42bb)
+:   scripts: update reference to configuration property
+
+[ce0430201e](https://github.com/dcache/dcache/commit/ce0430201eae04b6bdfba0ef0401ac25c75d5041)
+:   pool: fix metadata migration tool to use Path
+
+[c7772ea933](https://github.com/dcache/dcache/commit/c7772ea933a0d78f10c65615da803f6f0c66f076)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.2.23
 
 ### pool
