@@ -144,7 +144,54 @@ which implements the full set of admin pages.
 
 ### FTP
 
-### gplazma
+The GridFTP door (by default) tries to establish data connections
+directly between the client site and the pool.  Ultimately, this is
+under the clients control: the client can issue commands that force
+dCache to proxy data connections.
+
+The MODE-E extension allows data to flow over multiple TCP connections
+and for those connections to be reused across multiple transfers.
+This makes it harder to know the current status of a FTP session's
+proxy.
+
+To help alleviated this problem, the `info` admin command now shows an
+ASCII-art rendition of the current data transfers.  The door's proxy
+is represented by a box, showing the door's client-facing and
+pool-facing IP address and port numbers.
+
+The corresponding remote IP address and port numbers for the pool and
+the client are also shown, along with the current status of the TCP
+connections using the following scheme:
+
+| Symbol        | Meaning
+|:-------------:| -------------
+| `========`    | Establish
+| `--<--<--`    | Half-closed (data flowing to the left)
+| `-->-->--`    | Half-closed (data flowing to the right)
+| `........`    | Closed
+
+Here is an example, showing the status half-way through transferring a
+file with `globus-url-copy` using the options `-no-g2 -p 5`
+
+```
+[prometheus] (GFTP-prometheus-AAVvh9jceUg@dCacheDomain) admin > info
+     User Host  : 131.169.214.58
+          User  : paul
+[...]
+    Proxy status:
+              Client        +---------------------Adapter---------------------+        Pool
+131.169.214.58:39233========| 131.169.5.149:21218         131.169.5.149:37083 |========131.169.5.149:40000
+131.169.214.58:39237========| 131.169.5.149:21218                             |
+131.169.214.58:39236========| 131.169.5.149:21218                             |
+131.169.214.58:39234========| 131.169.5.149:21218                             |
+131.169.214.58:39235========| 131.169.5.149:21218                             |
+                            +-------------------------------------------------+
+TCP states: "========" means Established
+GFTP-prometheus-AAVvh9jceUg@dCacheDoma[...]Receiving;12982;
+
+[prometheus] (GFTP-prometheus-AAVvh9jceUg@dCacheDomain) admin >
+```
+
 
 ### History
 
