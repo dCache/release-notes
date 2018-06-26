@@ -122,7 +122,7 @@ upgrading from this version.
 
 ### scripts
 
-The instructions that are printed out once 'dcache pool convert'
+The instructions that are printed out once `dcache pool convert`
 completes successfully now correctly point to the 
 property that needs to be updated, namely `pool.plugins.meta`.
 
