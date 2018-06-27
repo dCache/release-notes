@@ -364,6 +364,11 @@ resilient and non-resilient files.
 
 ### WebDAV
 
+Milton's behaviour in handling http OPTION method now correspond with Apache httpd 
+server. This ensure a proper response especially when OPTION request targets an
+entity that does not exist - like in the case of uploading a file through a browser
+client like dcache-view.
+
 ### XRootD
 
 Since 4.1.0 Apache-Kafka has been introduced as a possibility to publish Billing messagies to Kafka. 
