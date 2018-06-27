@@ -334,11 +334,10 @@ The internal pnfsid <=> inumber cache can be configured to run in the cluster mo
 can share the same cache.  However, as this functionality is not required by current release cluster
 configuration is not enabled.
 
-### Pool
-
 ### Poolmanager
 
-Added support for glob in **psu remove pool**:
+The `psu remove pool` command now supports globbing, i.e. wildcard
+characters can be used to refer to a set of pools to act upon:
 ```
 psu remove pool dcache-pool-A*
 ```
@@ -362,12 +361,6 @@ unit tag rather than alarming when no copies are readable.  '-required=1' is
 different in that resilience will instead raise an alarm if the single copy
 is not accessible.  This change creates a clearer distinction between
 resilient and non-resilient files.
-
-### Space Manager
-
-### SRM
-
-### SRM Manager
 
 ### WebDAV
 
