@@ -168,7 +168,50 @@
   </preamble>
 
 
+<series id="server-4.2">
+    <title>server 4.2.x</title>
+    <description>
+      <p>
+        dCache 4.2 is a Golden Release, featuring the following highlights and architectural improvements:
+      </p>
 
+      <ul>
+        <li>The web admin pages have been reworked completely. They are now handled by dCache-View.</li>
+        <li>Frontend gained support for Server-Sent Events through a pluggable events framework.</li>
+      </ul>
+
+      <p>
+          dCache v4.2 requires a JVM supporting Java 8.
+      </p>
+
+    </description>
+
+    <releases>
+        <name>dCache VERSION</name>
+        <download-url-prefix>repo/4.2/dcache</download-url-prefix>
+        <notes-url>release-notes-4.2.shtml</notes-url>
+        <version-prefix>4.2.</version-prefix>
+        
+
+      <release version="0" recommended="1">
+        <date>28.6.2018</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>aeaf4657098ae7a27c20409d7af37b22</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>fc308e64ffb5da5a35f392130acfb650</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>c214fbed1ec83ed86812e90184d0b16e</md5sum>
+        </package>
+     </release>
+
+   </releases>
+      
+</series>
 
 
 <series id="server-4.1">
