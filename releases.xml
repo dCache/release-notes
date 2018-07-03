@@ -193,7 +193,23 @@
         <version-prefix>4.2.</version-prefix>
         
 
-      <release version="0" recommended="1">
+      <release version="1" recommended="1">
+        <date>3.7.2018</date>
+        <package name="rpm)">
+          <download-url/>
+          <md5sum>MD5</md5sum>
+        </package>
+        <package name="tgz)">
+          <download-url/>
+          <md5sum>MD5</md5sum>
+        </package>
+        <package name="deb)">
+          <download-url/>
+          <md5sum>MD5</md5sum>
+        </package>
+      </release>
+
+      <release version="0">
         <date>28.6.2018</date>
         <package name="Debian package">
           <download-url>_VERSION-1_all.deb</download-url>
@@ -245,7 +261,23 @@
         <version-prefix>4.1.</version-prefix>
         
 
-      <release version="10" recommended="1">
+      <release version="11" recommended="1">
+        <date>3.7.2018</date>
+        <package name="rpm)">
+          <download-url/>
+          <md5sum>MD5</md5sum>
+        </package>
+        <package name="tgz)">
+          <download-url/>
+          <md5sum>MD5</md5sum>
+        </package>
+        <package name="deb)">
+          <download-url/>
+          <md5sum>MD5</md5sum>
+        </package>
+      </release>
+
+      <release version="10">
         <date>26.6.2018</date>
         <package name="rpm">
           <download-url>-VERSION-1.noarch.rpm</download-url>
@@ -452,7 +484,23 @@
         <version-prefix>4.0.</version-prefix>
 
 
-       <release version="16" recommended="1">
+       <release version="17" recommended="1">
+        <date>3.7.2018</date>
+        <package name="rpm)">
+          <download-url/>
+          <md5sum>MD5</md5sum>
+        </package>
+        <package name="tgz)">
+          <download-url/>
+          <md5sum>MD5</md5sum>
+        </package>
+        <package name="deb)">
+          <download-url/>
+          <md5sum>MD5</md5sum>
+        </package>
+      </release>
+
+      <release version="16">
         <date>26.6.2018</date>
         <package name="rpm">
           <download-url>-VERSION-1.noarch.rpm</download-url>
@@ -756,7 +804,23 @@
         <notes-url>release-notes-3.2.shtml</notes-url>
         <version-prefix>3.2.</version-prefix>
 	
-	<release version="24" recommended="1">
+	<release version="25" recommended="1">
+        <date>3.7.2018</date>
+        <package name="rpm)">
+          <download-url/>
+          <md5sum>MD5</md5sum>
+        </package>
+        <package name="tgz)">
+          <download-url/>
+          <md5sum>MD5</md5sum>
+        </package>
+        <package name="deb)">
+          <download-url/>
+          <md5sum>MD5</md5sum>
+        </package>
+      </release>
+
+      <release version="24">
         <date>26.6.2018</date>
         <package name="rpm">
           <download-url>-VERSION-1.noarch.rpm</download-url>

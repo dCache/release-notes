@@ -107,6 +107,51 @@ Thanks to Christoph Anton Mitterer for his constributions.
 We would like to thank the students of HTW Berlin Alexandra Konovalova, Hagen Wittlich and Marcus Kopp,
 for their contributions during the HTW course.
 
+## Release 4.1.11
+
+### resilience
+
+Resilience suffered from a bug that would lead to a NoSuchElementException when a pool name no longer 
+mapped to a location known to the Resilience service. This issue has been fixed.
+
+When multiple pools go offline it is possible that
+all replicas for a given resilient file become unreadable.
+If the file is not CUSTODIAL, and thus cannot be restored
+from tape, the discovery of such a file during scanning
+will generate an error in the 'history errors' listing,
+in the resilience domain .resilience log, and will also
+raise a general alarm concerning the pool.
+
+
+There currently exists a command, 'inaccessible', which
+generates a listing of the pnfsids on a given pool
+which in the current state of dCache have no readable 
+replicas.  However, this command takes a while to complete
+(asynchronously), and the output is written to a file
+which must be viewed by logging in.
+
+This release introduces 'refering pool' information to the
+error output so that grepping the resilience log for a given
+pool becomes easier, and adds options to the command to check
+further details.
+
+
+### Changelog 4.1.10..4.1.11
+
+<!-- git log 4.1.10..4.1.11 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[20b2619adc](https://github.com/dcache/dcache/commit/20b2619adc998d2ac2f7f76c3153baf449ed9489)
+:   [maven-release-plugin] prepare release 4.1.11
+
+[7f752ec2d8](https://github.com/dcache/dcache/commit/7f752ec2d8297720d9dfbb6f5c61ab6b078be0a2)
+:   dcache-resilience: improve inaccessible file accounting
+
+[d50e97549c](https://github.com/dcache/dcache/commit/d50e97549ca42d791fef56f74ce09a245ad1b3fc)
+:   dcache-resilience: skip invalid cancel filters
+
+[da6366ad2d](https://github.com/dcache/dcache/commit/da6366ad2dc36f3f44ce35ac28a846720d4e7a3b)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.1.10
 
 ### scripts

@@ -107,6 +107,51 @@ from dCache 3.1.  Please read this section *very carefully* when
 upgrading from this version.
 
 
+## Release 3.2.25
+
+### resilience
+
+Resilience suffered from a bug that would lead to a NoSuchElementException when a pool name no longer 
+mapped to a location known to the Resilience service. This issue has been fixed.
+
+When multiple pools go offline it is possible that
+all replicas for a given resilient file become unreadable.
+If the file is not CUSTODIAL, and thus cannot be restored
+from tape, the discovery of such a file during scanning
+will generate an error in the 'history errors' listing,
+in the resilience domain .resilience log, and will also
+raise a general alarm concerning the pool.
+
+
+There currently exists a command, 'inaccessible', which
+generates a listing of the pnfsids on a given pool
+which in the current state of dCache have no readable 
+replicas.  However, this command takes a while to complete
+(asynchronously), and the output is written to a file
+which must be viewed by logging in.
+
+This release introduces 'refering pool' information to the
+error output so that grepping the resilience log for a given
+pool becomes easier, and adds options to the command to check
+further details.
+
+
+### Changelog 3.2.24..3.2.25
+
+<!-- git log 3.2.24..3.2.25 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[6f85108e66](https://github.com/dcache/dcache/commit/6f85108e66bef5ebf5fc6db94ccce1859ca30b55)
+:   [maven-release-plugin] prepare release 3.2.25
+
+[5419c0a8a3](https://github.com/dcache/dcache/commit/5419c0a8a3cb3a915d8b97e4946f0e97d109d756)
+:   dcache-resilience: improve inaccessible file accounting
+
+[bc803be5d0](https://github.com/dcache/dcache/commit/bc803be5d0be87cc9ccb57d75beed8946f8e8b54)
+:   dcache-resilience: skip invalid cancel filters
+
+[50ce7254b7](https://github.com/dcache/dcache/commit/50ce7254b72d444d229461888a914facd50dc429)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.2.24
 
 ### scripts

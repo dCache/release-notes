@@ -91,6 +91,95 @@ updates, pools may remain at 4.1 during that update.
 The dCache team thanks Christoph Anton Mitterer, Martin Johnki, Onno Zweers and Johannes Thurn
 for their pull requests and contributions.
 
+## Release 4.2.1
+
+### frontend
+
+The frontend now correctly handles situations where a transfer that is already completed is killed. Be aware that in order to make use of the bugfix, both the pools and the head nodes need to be updated to at least 4.1.9.
+
+### ftp
+
+Since commit eefb964, 3rd-party-transfers using ftp between two dCache endpoints had an issue where connections were not reliably closed. This release fixes the problem.
+
+### pool
+
+This release improves dCache’s robustness against network errors: In case registering a file with PNFS manager fails due to a timeout, the request is retried transparently.
+
+### resilience
+
+Resilience suffered from a bug that would lead to a NoSuchElementException when a pool name no longer 
+mapped to a location known to the Resilience service. This issue has been fixed.
+
+When multiple pools go offline it is possible that
+all replicas for a given resilient file become unreadable.
+If the file is not CUSTODIAL, and thus cannot be restored
+from tape, the discovery of such a file during scanning
+will generate an error in the 'history errors' listing,
+in the resilience domain .resilience log, and will also
+raise a general alarm concerning the pool.
+
+
+There currently exists a command, 'inaccessible', which
+generates a listing of the pnfsids on a given pool
+which in the current state of dCache have no readable 
+replicas.  However, this command takes a while to complete
+(asynchronously), and the output is written to a file
+which must be viewed by logging in.
+
+This release introduces 'refering pool' information to the
+error output so that grepping the resilience log for a given
+pool becomes easier, and adds options to the command to check
+further details.
+
+### scripts
+
+A regression in the dcache pool convert command was fixed; the command works again.
+
+### scriptsi
+
+The instructions that are printed out once dcache pool convert completes successfully now correctly point to the property that needs to be updated, namely pool.plugins.meta.
+
+
+### Changelog 4.2.0..4.2.1
+
+<!-- git log 4.2.0..4.2.1 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[84cef8a4fe](https://github.com/dcache/dcache/commit/84cef8a4fe4e37db7c54d1fbb83dd5e16a39a40f)
+:   [maven-release-plugin] prepare release 4.2.1
+
+[a755481da7](https://github.com/dcache/dcache/commit/a755481da795383267c0fad71c2caa6472a518bb)
+:   dcache-resilience: improve inaccessible file accounting
+
+[f399ca1f5c](https://github.com/dcache/dcache/commit/f399ca1f5c53e8e0dc825560bd3a4bb134a85a3e)
+:   dcache-resilience: skip invalid cancel filters
+
+[cd8d67ec4a](https://github.com/dcache/dcache/commit/cd8d67ec4a0c76575977ae50373f0b6d24f33043)
+:   pool: fix 'dcache pool convert' command
+
+[ecb03fa5c3](https://github.com/dcache/dcache/commit/ecb03fa5c34d6bbdbae76c88258ec5b96bd79a8a)
+:   scripts: update reference to configuration property
+
+[1664ca4f10](https://github.com/dcache/dcache/commit/1664ca4f10602cd9cefa59a328cc2d590d8e360c)
+:   pool: fix metadata migration tool to use Path
+
+[a2caabae35](https://github.com/dcache/dcache/commit/a2caabae35d44a57c79c9e5a950038853d73db32)
+:   ftp: always close proxied data connection if client closes their half
+
+[cc96591b64](https://github.com/dcache/dcache/commit/cc96591b646da9fd2bd93403d8d74620db23d57f)
+:   vehicles: fail-fast on invalid path
+
+[7bcb0d6b58](https://github.com/dcache/dcache/commit/7bcb0d6b58fbb86e103f72ac4f04f4a73218de16)
+:   pool: retry request to pnfs manager if timed out
+
+[b45f1982da](https://github.com/dcache/dcache/commit/b45f1982da940f0dbdcdc62889fe0cf2cd3b0caf)
+:   dcache-frontend: invalidate transfer when killed mover not found
+
+[7526861552](https://github.com/dcache/dcache/commit/7526861552fd918afe6285ba7f804282e391751a)
+:   [maven-release-plugin] prepare for next development iteration
+
+[20539f937e](https://github.com/dcache/dcache/commit/20539f937e2788391577f3564e66869a45c1ce15)
+:   dcache-frontend: add "Requires admin role" to alarms methods (Swagger)
+
 ## Release 4.2.0
 
 ### Admin

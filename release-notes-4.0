@@ -99,6 +99,51 @@ The notes for [release 4.0.0](#release4.0.0) detail the differences
 from dCache 3.2.  Please read this section *very carefully* when
 upgrading from this version.
 
+## Release 4.0.17
+
+### resilience
+
+Resilience suffered from a bug that would lead to a NoSuchElementException when a pool name no longer 
+mapped to a location known to the Resilience service. This issue has been fixed.
+
+When multiple pools go offline it is possible that
+all replicas for a given resilient file become unreadable.
+If the file is not CUSTODIAL, and thus cannot be restored
+from tape, the discovery of such a file during scanning
+will generate an error in the 'history errors' listing,
+in the resilience domain .resilience log, and will also
+raise a general alarm concerning the pool.
+
+
+There currently exists a command, 'inaccessible', which
+generates a listing of the pnfsids on a given pool
+which in the current state of dCache have no readable 
+replicas.  However, this command takes a while to complete
+(asynchronously), and the output is written to a file
+which must be viewed by logging in.
+
+This release introduces 'refering pool' information to the
+error output so that grepping the resilience log for a given
+pool becomes easier, and adds options to the command to check
+further details.
+
+
+### Changelog 4.0.16..4.0.17
+
+<!-- git log 4.0.16..4.0.17 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[5e3fca2473](https://github.com/dcache/dcache/commit/5e3fca24733dae2d1c5b221b8a54ea710682e4fc)
+:   [maven-release-plugin] prepare release 4.0.17
+
+[437ac98f5a](https://github.com/dcache/dcache/commit/437ac98f5ad5264732540a922c8db03070cb67a3)
+:   dcache-resilience: improve inaccessible file accounting
+
+[f060954745](https://github.com/dcache/dcache/commit/f060954745866f150723897a3eec0d85e5abba67)
+:   dcache-resilience: skip invalid cancel filters
+
+[d36c17d6c9](https://github.com/dcache/dcache/commit/d36c17d6c9ac1fa75737ce0c906d81079e4052c3)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.0.16
 
 ### scripts
