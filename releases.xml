@@ -195,17 +195,17 @@
 
       <release version="1" recommended="1">
         <date>3.7.2018</date>
-        <package name="rpm)">
-          <download-url/>
-          <md5sum>MD5</md5sum>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>d0f73f065aa6b62547c6e0e9d146a41b</md5sum>
         </package>
-        <package name="tgz)">
-          <download-url/>
-          <md5sum>MD5</md5sum>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>533aa80a628a6a9243108f48562db078</md5sum>
         </package>
-        <package name="deb)">
-          <download-url/>
-          <md5sum>MD5</md5sum>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>cdd74a633ccf50568a4a12b00b1e69b0</md5sum>
         </package>
       </release>
 
@@ -263,17 +263,17 @@
 
       <release version="11" recommended="1">
         <date>3.7.2018</date>
-        <package name="rpm)">
-          <download-url/>
-          <md5sum>MD5</md5sum>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>533aa80a628a6a9243108f48562db078</md5sum>
         </package>
-        <package name="tgz)">
-          <download-url/>
-          <md5sum>MD5</md5sum>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>cdd74a633ccf50568a4a12b00b1e69b0</md5sum>
         </package>
-        <package name="deb)">
-          <download-url/>
-          <md5sum>MD5</md5sum>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>3dd857c5ce40eae059deb359caa9c90f</md5sum>
         </package>
       </release>
 
@@ -486,17 +486,17 @@
 
        <release version="17" recommended="1">
         <date>3.7.2018</date>
-        <package name="rpm)">
-          <download-url/>
-          <md5sum>MD5</md5sum>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>88b531cc9dc3e8615ea7aff49f029f4f</md5sum>
         </package>
-        <package name="tgz)">
-          <download-url/>
-          <md5sum>MD5</md5sum>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>5b4509d1682c5a97c3e959f7c3cb6d54</md5sum>
         </package>
-        <package name="deb)">
-          <download-url/>
-          <md5sum>MD5</md5sum>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>6bcd3f55e5c3f011468b1b3a6353d99f</md5sum>
         </package>
       </release>
 
@@ -806,17 +806,17 @@
 	
 	<release version="25" recommended="1">
         <date>3.7.2018</date>
-        <package name="rpm)">
-          <download-url/>
-          <md5sum>MD5</md5sum>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>694aa0c5a963cb20d04b650248291ed0</md5sum>
         </package>
-        <package name="tgz)">
-          <download-url/>
-          <md5sum>MD5</md5sum>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>6bd761ed8c3ebbcf1b2e5380467cf899</md5sum>
         </package>
-        <package name="deb)">
-          <download-url/>
-          <md5sum>MD5</md5sum>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>664f375f60f46cde3a5e58426233681d</md5sum>
         </package>
       </release>
 
