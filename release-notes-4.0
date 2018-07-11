@@ -99,6 +99,45 @@ The notes for [release 4.0.0](#release4.0.0) detail the differences
 from dCache 3.2.  Please read this section *very carefully* when
 upgrading from this version.
 
+## Release 4.0.18
+
+### PNFS
+
+### pool
+
+HTTP responses now contain more meaningful messages along with the 
+HTTP response codes, instead of only just showing stock messages
+like "400 Bad request". 
+
+### webdav
+
+When the WebDAV door proxies a transfer and a transfer failure occurs, the
+door previously always just reported "500 Internal Error". This reporting
+is now improved, with any more detailed error messages from (possibly) 
+other services taking precedence. For example, if a pool returns a 400 error code, 
+thus complaining about the client's request, this code is reported instead, 
+which should help with diagnosing the error's cause.
+
+
+### Changelog 4.0.17..4.0.18
+
+<!-- git log 4.0.17..4.0.18 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[c0bbdf1212](https://github.com/dcache/dcache/commit/c0bbdf121288a68f28f78e7d71b183b79fbfdb8c)
+:   [maven-release-plugin] prepare release 4.0.18
+
+[a60f4c4448](https://github.com/dcache/dcache/commit/a60f4c44480928a16620ae6f6eaa1a9f3388aa24)
+:   webdav: pass on status message phrase to client
+
+[81f0c6f7e4](https://github.com/dcache/dcache/commit/81f0c6f7e40b54ad44d9df089252ae4abc1d8605)
+:   pool: update HTTP mover to report errors as HTTP status message phrase
+
+[05aee17272](https://github.com/dcache/dcache/commit/05aee17272ab97814222908ac23365e3be9d3628)
+:   pnfsmanager: fix digest name handling in `get file checksum` command
+
+[ba593fd70a](https://github.com/dcache/dcache/commit/ba593fd70a460ec39fd5b42046cfeb7819b98fbf)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.0.17
 
 ### resilience

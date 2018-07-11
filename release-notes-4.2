@@ -91,6 +91,48 @@ updates, pools may remain at 4.1 during that update.
 The dCache team thanks Christoph Anton Mitterer, Martin Johnki, Onno Zweers and Johannes Thurn
 for their pull requests and contributions.
 
+## Release 4.2.2
+
+### PNFS
+
+### pool
+
+HTTP responses now contain more meaningful messages along with the 
+HTTP response codes, instead of only just showing stock messages
+like "400 Bad request". 
+
+### webdav
+
+When the WebDAV door proxies a transfer and a transfer failure occurs, the
+door previously always just reported "500 Internal Error". This reporting
+is now improved, with any more detailed error messages from (possibly) 
+other services taking precedence. For example, if a pool returns a 400 error code, 
+thus complaining about the client's request, this code is reported instead, 
+which should help with diagnosing the error's cause.
+
+
+### Changelog 4.2.1..4.2.2
+
+<!-- git log 4.2.1..4.2.2 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[7fdc1fab07](https://github.com/dcache/dcache/commit/7fdc1fab074bf93c280ec543d96784629ef5843d)
+:   [maven-release-plugin] prepare release 4.2.2
+
+[2fb72a7074](https://github.com/dcache/dcache/commit/2fb72a70740997bb199668f9f6702b8082e21c20)
+:   webdav: pass on status message phrase to client
+
+[f1ae38b5e1](https://github.com/dcache/dcache/commit/f1ae38b5e1fa67cd8919046a7f5785124a4dc438)
+:   pool: update HTTP mover to report errors as HTTP status message phrase
+
+[dfd2d85a11](https://github.com/dcache/dcache/commit/dfd2d85a11342364e19cd7d0eac37838250abc81)
+:   admin: fix regression in startup
+
+[7dbd5da6a2](https://github.com/dcache/dcache/commit/7dbd5da6a207a2e4dbdde44a3bfeb77163b07504)
+:   pnfsmanager: fix digest name handling in `get file checksum` command
+
+[1be5d6a26d](https://github.com/dcache/dcache/commit/1be5d6a26d1a3678fa0e25b91573c3691f690724)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.2.1
 
 ### frontend

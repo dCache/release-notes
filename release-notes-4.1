@@ -107,6 +107,45 @@ Thanks to Christoph Anton Mitterer for his constributions.
 We would like to thank the students of HTW Berlin Alexandra Konovalova, Hagen Wittlich and Marcus Kopp,
 for their contributions during the HTW course.
 
+## Release 4.1.12
+
+### PNFS
+
+### pool
+
+HTTP responses now contain more meaningful messages along with the 
+HTTP response codes, instead of only just showing stock messages
+like "400 Bad request". 
+
+### webdav
+
+When the WebDAV door proxies a transfer and a transfer failure occurs, the
+door previously always just reported "500 Internal Error". This reporting
+is now improved, with any more detailed error messages from (possibly) 
+other services taking precedence. For example, if a pool returns a 400 error code, 
+thus complaining about the client's request, this code is reported instead, 
+which should help with diagnosing the error's cause.
+
+
+### Changelog 4.1.11..4.1.12
+
+<!-- git log 4.1.11..4.1.12 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[39ef1bad70](https://github.com/dcache/dcache/commit/39ef1bad705db27f90e4289f302a5ccef624f5ab)
+:   [maven-release-plugin] prepare release 4.1.12
+
+[f16cdb0dd9](https://github.com/dcache/dcache/commit/f16cdb0dd9de6b9d1c830332c650b49d6ccf2e9b)
+:   webdav: pass on status message phrase to client
+
+[441f07ddd7](https://github.com/dcache/dcache/commit/441f07ddd7a2e006c8c42c497b598feb8641fb85)
+:   pool: update HTTP mover to report errors as HTTP status message phrase
+
+[97d62e96f9](https://github.com/dcache/dcache/commit/97d62e96f958b991d8f0d88deea2f9d2910d4a78)
+:   pnfsmanager: fix digest name handling in `get file checksum` command
+
+[7cbfb3ba88](https://github.com/dcache/dcache/commit/7cbfb3ba8827de8f765305f2ec43c138026b7d8c)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.1.11
 
 ### resilience
