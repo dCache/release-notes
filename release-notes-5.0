@@ -105,6 +105,15 @@ HTML header: <title>dCache 5.0 Release Notes</title>
 
 ### NFS
 
+When pNFS client uses flex_file layout IO errors with pool (data server) are reported to NFS door. The erros can be interpreted
+as:
+```
+  NFS4ERR_NXIO:  The client was unable to establish any communication
+      with the storage device.
+
+   NFS4ERR_*:  The client was able to establish communication with the
+      storage device and is returning one of the allowed error codes.
+```
 ### Pinmanager
 
 ### PNFS Manager
