@@ -91,6 +91,27 @@ updates, pools may remain at 4.1 during that update.
 The dCache team thanks Christoph Anton Mitterer, Martin Johnki, Onno Zweers and Johannes Thurn
 for their pull requests and contributions.
 
+## Release 4.2.3
+
+### nfs
+
+dCache 4.2 now uses nfs4j version 0.17.3, which includes a bugfix that should
+help avoid some rarely observed deadlocks with current Linux clients.
+
+
+### Changelog 4.2.2..4.2.3
+
+<!-- git log 4.2.2..4.2.3 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[94a7a8a2a9](https://github.com/dcache/dcache/commit/94a7a8a2a963b883a640e5f589db0521e19e4569)
+:   [maven-release-plugin] prepare release 4.2.3
+
+[f6508c3019](https://github.com/dcache/dcache/commit/f6508c30199c10c0c2e4b397ddd87d2a9455edc5)
+:   pom: use nfs4j-0.17.3 bugfix version
+
+[ac59cb3056](https://github.com/dcache/dcache/commit/ac59cb30564286c94ec8087959ee487565c62a8f)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.2.2
 
 ### PNFS

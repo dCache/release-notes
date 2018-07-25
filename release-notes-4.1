@@ -107,6 +107,27 @@ Thanks to Christoph Anton Mitterer for his constributions.
 We would like to thank the students of HTW Berlin Alexandra Konovalova, Hagen Wittlich and Marcus Kopp,
 for their contributions during the HTW course.
 
+## Release 4.1.13
+
+### nfs
+
+dCache 4.1 now uses nfs4j version 0.16.2, which includes a bugfix that should
+help avoid some rarely observed deadlocks with current Linux clients.
+
+
+### Changelog 4.1.12..4.1.13
+
+<!-- git log 4.1.12..4.1.13 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[4b67640b3c](https://github.com/dcache/dcache/commit/4b67640b3c8d466b8666b0824a4466626621a65c)
+:   [maven-release-plugin] prepare release 4.1.13
+
+[71b2c7023f](https://github.com/dcache/dcache/commit/71b2c7023fad56e8b25f88c31926f95e33c5e91c)
+:   pom: nfs4j-0.16.2 bugfix version
+
+[2664c4a163](https://github.com/dcache/dcache/commit/2664c4a163fd68cc2c00ee93c62f37bd7a22f1c4)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.1.12
 
 ### PNFS

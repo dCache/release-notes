@@ -99,6 +99,27 @@ The notes for [release 4.0.0](#release4.0.0) detail the differences
 from dCache 3.2.  Please read this section *very carefully* when
 upgrading from this version.
 
+## Release 4.0.19
+
+### nfs
+
+dCache 4.0 and 3.2 now use nfs4j version 0.15.4, which includes a bugfix that should
+help avoid some rarely observed deadlocks with current Linux clients.
+
+
+### Changelog 4.0.18..4.0.19
+
+<!-- git log 4.0.18..4.0.19 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[14dd7236a5](https://github.com/dcache/dcache/commit/14dd7236a53f7f4c67783856d004b982fd26afb3)
+:   [maven-release-plugin] prepare release 4.0.19
+
+[649f080b2a](https://github.com/dcache/dcache/commit/649f080b2a1d8a2b7bc972c0834143a18a066530)
+:   pom: update nfs4j-0.15.4 bugfix version
+
+[7a7482e0b6](https://github.com/dcache/dcache/commit/7a7482e0b64de27f0216bd5c3de9c90f3b54a943)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.0.18
 
 ### PNFS

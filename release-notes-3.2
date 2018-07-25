@@ -107,6 +107,27 @@ from dCache 3.1.  Please read this section *very carefully* when
 upgrading from this version.
 
 
+## Release 3.2.27
+
+### nfs
+
+dCache 4.0 and 3.2 now use nfs4j version 0.15.4, which includes a bugfix that should
+help avoid some rarely observed deadlocks with current Linux clients.
+
+
+### Changelog 3.2.26..3.2.27
+
+<!-- git log 3.2.26..3.2.27 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[406a375f8f](https://github.com/dcache/dcache/commit/406a375f8f05fa91d396763bfd4260c1eb450449)
+:   [maven-release-plugin] prepare release 3.2.27
+
+[a638309921](https://github.com/dcache/dcache/commit/a638309921da6e7b4136d06c68a9d4ddd6a1d40f)
+:   pom: update nfs4j-0.15.4 bugfix version
+
+[79a88a12e4](https://github.com/dcache/dcache/commit/79a88a12e475f097232663b032ceea60f6c55c68)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.2.26
 
 ### pool
