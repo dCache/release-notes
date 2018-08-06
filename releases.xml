@@ -193,7 +193,23 @@
         <version-prefix>4.2.</version-prefix>
         
 
-      <release version="3" recommended="1">
+      <release version="4" recommended="1">
+        <date>6.8.2018</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>78be1d40a8f094f76d07b76ceb86e15e</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>5adf948d4ace61c52345075f4e48b85d</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>7acbf79dfd5842f61549cb121d7f9d75</md5sum>
+        </package>
+      </release>
+
+      <release version="3">
         <date>24.7.2018</date>
         <package name="rpm">
           <download-url>-VERSION-1.noarch.rpm</download-url>
