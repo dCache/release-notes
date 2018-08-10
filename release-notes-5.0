@@ -67,8 +67,7 @@ HTML header: <title>dCache 5.0 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 ## Incompatibilities
-
-(tbd, this section uses markdown formatting)
+This release breaks compatibility with pools running dcache version 2.16 or earlier.
 
 ## Acknowledgments
 
