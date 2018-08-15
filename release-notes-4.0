@@ -99,6 +99,36 @@ The notes for [release 4.0.0](#release4.0.0) detail the differences
 from dCache 3.2.  Please read this section *very carefully* when
 upgrading from this version.
 
+## Release 4.0.20
+
+### history
+
+This release fixes a bug that could cause startup errors
+in the history service in the face of network errors. 
+
+### many
+
+Remote pool monitor would occasionally log stack traces from exceptions  
+when a domain shut down due to an interrupt. This has been fixed, reducing
+the number of irrelevant log entries in such situations.
+
+
+### Changelog 4.0.19..4.0.20
+
+<!-- git log 4.0.19..4.0.20 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[7ad65f8310](https://github.com/dcache/dcache/commit/7ad65f831093ead9aca73296d5be7fd36bcf0a62)
+:   [maven-release-plugin] prepare release 4.0.20
+
+[e74c5b7484](https://github.com/dcache/dcache/commit/e74c5b748430f4ac50ff2da7f8b94defcc5f10d1)
+:   dcache-history: handle Gson syntax errors explicitly
+
+[eb7c3fc2fd](https://github.com/dcache/dcache/commit/eb7c3fc2fdddb1044c13a1ac9a560731bf7f1946)
+:   cells: add handling of RemoteProxyFailureException nested InterruptedException to UncaughtException handler
+
+[3b908b94aa](https://github.com/dcache/dcache/commit/3b908b94aacbb552c49e486c72da72e7b542fc8c)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.0.19
 
 ### nfs

@@ -107,6 +107,36 @@ Thanks to Christoph Anton Mitterer for his constributions.
 We would like to thank the students of HTW Berlin Alexandra Konovalova, Hagen Wittlich and Marcus Kopp,
 for their contributions during the HTW course.
 
+## Release 4.1.14
+
+### history
+
+This release fixes a bug that could cause startup errors
+in the history service in the face of network errors. 
+
+### many
+
+Remote pool monitor would occasionally log stack traces from exceptions  
+when a domain shut down due to an interrupt. This has been fixed, reducing
+the number of irrelevant log entries in such situations.
+
+
+### Changelog 4.1.13..4.1.14
+
+<!-- git log 4.1.13..4.1.14 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[e5285aa7f7](https://github.com/dcache/dcache/commit/e5285aa7f770f64ef2377d247c6809888116c5ba)
+:   [maven-release-plugin] prepare release 4.1.14
+
+[d56f0715a1](https://github.com/dcache/dcache/commit/d56f0715a1c8552268d7ade604e29a70ea089971)
+:   dcache-history: handle Gson syntax errors explicitly
+
+[98c303c423](https://github.com/dcache/dcache/commit/98c303c423591ce75cc8ee94434c85a6997facaf)
+:   cells: add handling of RemoteProxyFailureException nested InterruptedException to UncaughtException handler
+
+[8a629cf44a](https://github.com/dcache/dcache/commit/8a629cf44ad78f0144df424b54c8a7b3c55b94fb)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.1.13
 
 ### nfs

@@ -107,6 +107,36 @@ from dCache 3.1.  Please read this section *very carefully* when
 upgrading from this version.
 
 
+## Release 3.2.28
+
+### history
+
+This release fixes a bug that could cause startup errors
+in the history service in the face of network errors. 
+
+### many
+
+Remote pool monitor would occasionally log stack traces from exceptions  
+when a domain shut down due to an interrupt. This has been fixed, reducing
+the number of irrelevant log entries in such situations.
+
+
+### Changelog 3.2.27..3.2.28
+
+<!-- git log 3.2.27..3.2.28 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[ba9e256593](https://github.com/dcache/dcache/commit/ba9e256593b103e0cf6d9df0fc17e13d0da74d46)
+:   [maven-release-plugin] prepare release 3.2.28
+
+[11c703f059](https://github.com/dcache/dcache/commit/11c703f0597a4e0d0e539576480ac56bc3e6cf46)
+:   dcache-history: handle Gson syntax errors explicitly
+
+[5088923788](https://github.com/dcache/dcache/commit/508892378839a369ecdbb78212f6c0a1c1846639)
+:   cells: add handling of RemoteProxyFailureException nested InterruptedException to UncaughtException handler
+
+[7e1e2a4bf9](https://github.com/dcache/dcache/commit/7e1e2a4bf9cb8afb2d96eba8216f8224e418ba83)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.2.27
 
 ### nfs

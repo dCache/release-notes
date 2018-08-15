@@ -91,6 +91,54 @@ updates, pools may remain at 4.1 during that update.
 The dCache team thanks Christoph Anton Mitterer, Martin Johnki, Onno Zweers and Johannes Thurn
 for their pull requests and contributions.
 
+## Release 4.2.5
+
+### history
+
+This release fixes a bug that could cause startup errors
+in the history service in the face of network errors. 
+
+### many
+
+Remote pool monitor would occasionally log stack traces from exceptions  
+when a domain shut down due to an interrupt. This has been fixed, reducing
+the number of irrelevant log entries in such situations.
+
+### xrootd
+
+A small bug in a third-party client which
+does not propagate errors occurring
+too quickly could cause error messages to not be displayed
+to the user. 
+ One such example would be an
+auth failure due to bad configuration, which
+would appear as a file size mismatch to the user.
+This issue has been worked around, and all errors should
+now be reported correctly.
+
+
+### Changelog 4.2.4..4.2.5
+
+<!-- git log 4.2.4..4.2.5 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[8bf8c1a5dd](https://github.com/dcache/dcache/commit/8bf8c1a5dd0cc2ef361da87d004f300867b03042)
+:   [maven-release-plugin] prepare release 4.2.5
+
+[280bb7122d](https://github.com/dcache/dcache/commit/280bb7122d5a2159a349f667042a1a985b84203c)
+:   dcache-xrootd: repair handling of delayed sync errors to client
+
+[02fbe1f2e8](https://github.com/dcache/dcache/commit/02fbe1f2e80489ba204d985c707eb9b9ea635049)
+:   dcache-history: handle Gson syntax errors explicitly
+
+[cdfab2a1f3](https://github.com/dcache/dcache/commit/cdfab2a1f30b7917924ffc5eeb3565b77d21feaa)
+:   cells: add handling of RemoteProxyFailureException nested InterruptedException to UncaughtException handler
+
+[a8439d4354](https://github.com/dcache/dcache/commit/a8439d4354325889ab3c59d7c17f56e4605f245c)
+:   dcache: remove unused jndi initializers from httpd
+
+[c633404d68](https://github.com/dcache/dcache/commit/c633404d68ebbb6577b67486f0db74eb90685775)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.2.4
 
 
