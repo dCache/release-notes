@@ -107,6 +107,61 @@ from dCache 3.1.  Please read this section *very carefully* when
 upgrading from this version.
 
 
+## Release 3.2.29
+
+### gplazma
+
+The OidcAuthPlugin  plugin was  updated so that users whos op does not claim
+ `name`, and does not claim `given_name` nor
+`family_name` can use dCache.
+
+### pool
+
+This release fixed  the log stack-trace for `queue` admin commands and now bad admin input for the following admin commands no longer results in a stack-trace being logged:
+
+*queue activate
+*queue activate class
+*queue remove class
+*queue suspend class
+*queue resume class
+*queue remove pnfsid
+
+### poolmanager
+
+ NPE is fixed when staging files back from tape and
+`poolmanager.enable.cache-hit-message` is true.
+
+### webdav
+
+The current release updated   default credential delegation for third-party copy so that now requesting a third-party copy using a macaroon does not trigger a failed
+attempt to OpenID-Connect delegation.
+
+
+### Changelog 3.2.28..3.2.29
+
+<!-- git log 3.2.28..3.2.29 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[608c97c](https://github.com/dcache/dcache/commit/608c97c18729a2aef1f365d7d517a0acae7158b8)
+:   [maven-release-plugin] prepare release 3.2.29
+
+[63e6a6b](https://github.com/dcache/dcache/commit/63e6a6bc0468939f86663f7f1e3bb31462bfab56)
+:   poolmanager: fix NullPointerException when staging files and reporting hits
+
+[65a8d62](https://github.com/dcache/dcache/commit/65a8d62ef74671233d8b524ed3a967548f6ffdcd)
+:   gplazma: oidc fix FullNamePrincipal creation
+
+[7fb4034](https://github.com/dcache/dcache/commit/7fb4034eca2a7ccee1fa1f5457ae73336092a479)
+:   libs: update jetty to version 9.4.11
+
+[013c846](https://github.com/dcache/dcache/commit/013c846eb68368a05b49dcf3168a0e121e088575)
+:   pool: 'queue' admin commands not the log stack-trace on bad arguments
+
+[7711b70](https://github.com/dcache/dcache/commit/7711b701f7f63c1e36eafa8930a63becb502eb2a)
+:   webdav: update default credential delegation for third-party copy
+
+[28b9c34](https://github.com/dcache/dcache/commit/28b9c3471ef9a5417dffe7d58c518995f8cc424f)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.2.28
 
 ### history

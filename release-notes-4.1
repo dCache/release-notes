@@ -107,6 +107,61 @@ Thanks to Christoph Anton Mitterer for his constributions.
 We would like to thank the students of HTW Berlin Alexandra Konovalova, Hagen Wittlich and Marcus Kopp,
 for their contributions during the HTW course.
 
+## Release 4.1.15
+
+### gplazma
+
+The OidcAuthPlugin  plugin was  updated so that users whos op does not claim
+ `name`, and does not claim `given_name` nor
+`family_name` can use dCache.
+
+### pool
+
+This release fixed  the log stack-trace for `queue` admin commands and now bad admin input for the following admin commands no longer results in a stack-trace being logged:
+
+*queue activate
+*queue activate class
+*queue remove class
+*queue suspend class
+*queue resume class
+*queue remove pnfsid
+
+### poolmanager
+
+ NPE is fixed when staging files back from tape and
+`poolmanager.enable.cache-hit-message` is true.
+
+### webdav
+
+The current release updated   default credential delegation for third-party copy so that now requesting a third-party copy using a macaroon does not trigger a failed
+attempt to OpenID-Connect delegation.
+
+
+### Changelog 4.1.14..4.1.15
+
+<!-- git log 4.1.14..4.1.15 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[d01d6ec](https://github.com/dcache/dcache/commit/d01d6ec3dc07579a47ce5f7009318d2251997c51)
+:   [maven-release-plugin] prepare release 4.1.15
+
+[69d3818](https://github.com/dcache/dcache/commit/69d3818eb76e1d5002eefc0038d3b9770e62cca8)
+:   poolmanager: fix NullPointerException when staging files and reporting hits
+
+[ccca569](https://github.com/dcache/dcache/commit/ccca56927868238e5cbca46f26a7ff0c84e43ccf)
+:   gplazma: oidc fix FullNamePrincipal creation
+
+[a3a2904](https://github.com/dcache/dcache/commit/a3a2904ef06d4b06332e17df5e2901b81b414d1a)
+:   libs: update jetty to version 9.4.11
+
+[0d8ef70](https://github.com/dcache/dcache/commit/0d8ef7012d37094c4ca185d757224175bd2e3d39)
+:   pool: 'queue' admin commands not the log stack-trace on bad arguments
+
+[fd3e041](https://github.com/dcache/dcache/commit/fd3e041850315bd181113b7b43820f8d8f59634e)
+:   webdav: update default credential delegation for third-party copy
+
+[50b839d](https://github.com/dcache/dcache/commit/50b839d91203079d662f46b6a089f413236602f9)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.1.14
 
 ### history

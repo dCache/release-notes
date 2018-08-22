@@ -91,6 +91,75 @@ updates, pools may remain at 4.1 during that update.
 The dCache team thanks Christoph Anton Mitterer, Martin Johnki, Onno Zweers and Johannes Thurn
 for their pull requests and contributions.
 
+## Release 4.2.6
+
+### dcache-xrootd
+
+This release fixed  xrootd transfer billing records so that the door client is always the user connection and the billing/mover client the source or destination server.  
+This allows one to see immediately whether an xrootd transfer was third-party (for two-party transfers, the two clients will be identical).
+
+### gplazma
+
+The OidcAuthPlugin  plugin was  updated so that users whos op does not claim
+ `name`, and does not claim `given_name` nor
+`family_name` can use dCache.
+
+### pool
+
+This release fixed  the log stack-trace for `queue` admin commands and now bad admin input for the following admin commands no longer results in a stack-trace being logged:
+
+*queue activate
+*queue activate class
+*queue remove class
+*queue suspend class
+*queue resume class
+*queue remove pnfsid
+
+### poolmanager
+
+ NPE is fixed when staging files back from tape and
+`poolmanager.enable.cache-hit-message` is true.
+
+### webdav
+
+The current release updated   default credential delegation for third-party copy so that now requesting a third-party copy using a macaroon does not trigger a failed
+attempt to OpenID-Connect delegation.
+
+
+### Changelog 4.2.5..4.2.6
+
+<!-- git log 4.2.5..4.2.6 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[2af14c4](https://github.com/dcache/dcache/commit/2af14c43430c9ffda702c4fd52e685d6618ef79d)
+:   [maven-release-plugin] prepare release 4.2.6
+
+[611b43d](https://github.com/dcache/dcache/commit/611b43dbd22f5c43065c8c3ef1fb5c087ea77fb1)
+:   poolmanager: fix NullPointerException when staging files and reporting hits
+
+[f42afba](https://github.com/dcache/dcache/commit/f42afba5f7c404fddba2c841ffac0eadd498bebb)
+:   gplazma: oidc fix FullNamePrincipal creation
+
+[53b1b48](https://github.com/dcache/dcache/commit/53b1b48007667bad72708ff6930e0e2b97c1bf76)
+:   libs: update jetty to version 9.4.11
+
+[81f9ce5](https://github.com/dcache/dcache/commit/81f9ce5b7d5d4634e62834e01f6b6034c545eee5)
+:   pool: 'queue' admin commands not the log stack-trace on bad arguments
+
+[52e13d7](https://github.com/dcache/dcache/commit/52e13d7147c7faa8d92a4bef7daa90c47a3b90f4)
+:   dcache-xrootd: fix third-party billing records
+
+[2dd2699](https://github.com/dcache/dcache/commit/2dd2699856889cc6f3ab66f80d438e7d201544e7)
+:   ftp: fix scope of used pool stub
+
+[f1d1d94](https://github.com/dcache/dcache/commit/f1d1d943b685134eeded50f045559c6baae2de3d)
+:   webdav: update default credential delegation for third-party copy
+
+[4ffc7a5](https://github.com/dcache/dcache/commit/4ffc7a508796133ad7b8c9572ac2ba264f8adfa5)
+:   srmclient: update delegation client to support X509_CERT_DIR en.var.
+
+[7eca970](https://github.com/dcache/dcache/commit/7eca9701ec34430ba9c448e33d0c3afe86ec6260)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.2.5
 
 ### history
