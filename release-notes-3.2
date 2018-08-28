@@ -107,6 +107,96 @@ from dCache 3.1.  Please read this section *very carefully* when
 upgrading from this version.
 
 
+## Release 3.2.30
+
+### NFS
+
+When two clients A and B operate on a file in quick succession, A opening the
+file and B deleting it before LAYOUTGET is called, dCache puts the 
+transfer into the list of active transfers and returned NFS4ERR_NOENT. If a
+client tries to optimize the corresponding CLOSE call away, as some do, 
+the entries are never removed from the list, effectively creating a leak.
+
+This problem was fixed. Clients now receive an NFS4ERR_STALE message in those
+cases.
+
+### core
+
+Certain transfer failures, such as attempting to
+use a space-reservation that has insufficient capacity, resulted in the
+door eventually reporting a time-out problem to the client.
+
+A typical error message would resemble
+
+```Request to [>SpaceManager@local ... ] timed out.```
+
+This problem was traced to an internal misconfiguration of a messaging
+component and is fixed from this release onwards.
+
+### frontend
+
+The reporting of a file's QoS status in frontend was improved. Files
+that are being scheduled for moving to tape are now reported as 
+'tape' instead of 'disk'.
+
+### pool
+
+A bug was fixed that occasionally caused problems with the pools' 
+Berkeley DB. This could, for example, be triggered by removing files
+which were in a flush queue. 
+
+A typical error message was, e.g.
+
+```
+27 Aug 2018 12:09:33 (cat2_lhcbtape) [Frontend-dcacheview PoolDataRequest] Fault occurred in repository: Internal repository error. Pool restart required: : CacheExcept
+ion(rc=204;msg=Meta data lookup failed and a pool restart is required: (JE 7.3.7) Environment must be closed, caused by: com.sleepycat.je.ThreadInterruptedException: En
+vironment invalid because of previous exception: (JE 7.3.7) /space/lhcb/tape/pool/meta java.lang.InterruptedException THREAD_INTERRUPTED: InterruptedException may cause
+incorrect internal state, unable to continue. Environment is invalid and must be closed.)
+27 Aug 2018 12:09:33 (cat2_lhcbtape) [Frontend-dcacheview PoolDataRequest] Pool mode changed to disabled(fetch,store,stage,p2p-client,p2p-server,dead): Pool restart req
+uired: Internal repository error
+```
+
+### webdav
+
+Web clients (such as web-browsers) make OPTIONS pre-flight requests to
+discover what they are allowed to do, according to the CORS standard.
+
+Unfortunately, some web-browsers make the OPTIONS request without
+presenting any credentials. If the resource is within a protected
+directory then dCache currently fails the OPTIONS request.
+
+This release introduces a new behaviour where such requests will always
+succeed, so that browser pre-flight requests are not hampered.
+
+
+### Changelog 3.2.29..3.2.30
+
+<!-- git log 3.2.29..3.2.30 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[a47eea0e8f](https://github.com/dcache/dcache/commit/a47eea0e8f7b059189c707e0c85923bf6325f7f6)
+:   [maven-release-plugin] prepare release 3.2.30
+
+[9bc218ab2a](https://github.com/dcache/dcache/commit/9bc218ab2adc403118c07e9892c81daa32c6de2d)
+:   nearline-provides: do not interrupt processing thread on cancel
+
+[303de641f9](https://github.com/dcache/dcache/commit/303de641f99d9eafb60351bf9876598cfdd27c2c)
+:   nfs41: invalidate open-state on layoutget if file is removed
+
+[73a5f72db9](https://github.com/dcache/dcache/commit/73a5f72db948172afe497ffeb375d3ed664ebd2b)
+:   webdav: always respond to OPTIONS request
+
+[129188e8ff](https://github.com/dcache/dcache/commit/129188e8ffef4d307fb16f5bd2e1d649c218ecdb)
+:   core: ensure pool/poolmanager communication receives errors
+
+[bb53e518f3](https://github.com/dcache/dcache/commit/bb53e518f3368d1eead237508de95550e5a5ff2e)
+:   frontend: add targetQoS for not-yet-flushed tape files
+
+[10d95ca99a](https://github.com/dcache/dcache/commit/10d95ca99adcc6e768dbbc0b59be635d80b12de9)
+:   [maven-release-plugin] prepare for next development iteration
+
+[4cbee39946](https://github.com/dcache/dcache/commit/4cbee399469ba4fdd2fecc9498d1af52c8c283ba)
+:   dcache: release dcache-view version 1.3.2
+
 ## Release 3.2.29
 
 ### gplazma

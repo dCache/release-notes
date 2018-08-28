@@ -107,6 +107,111 @@ Thanks to Christoph Anton Mitterer for his constributions.
 We would like to thank the students of HTW Berlin Alexandra Konovalova, Hagen Wittlich and Marcus Kopp,
 for their contributions during the HTW course.
 
+## Release 4.1.16
+
+### NFS
+
+When two clients A and B operate on a file in quick succession, A opening the
+file and B deleting it before LAYOUTGET is called, dCache puts the 
+transfer into the list of active transfers and returned NFS4ERR_NOENT. If a
+client tries to optimize the corresponding CLOSE call away, as some do, 
+the entries are never removed from the list, effectively creating a leak.
+
+This problem was fixed. Clients now receive an NFS4ERR_STALE message in those
+cases.
+
+### core
+
+Certain transfer failures, such as attempting to
+use a space-reservation that has insufficient capacity, resulted in the
+door eventually reporting a time-out problem to the client.
+
+A typical error message would resemble
+
+```Request to [>SpaceManager@local ... ] timed out.```
+
+This problem was traced to an internal misconfiguration of a messaging
+component and is fixed from this release onwards.
+
+### frontend
+
+The reporting of a file's QoS status in frontend was improved. Files
+that are being scheduled for moving to tape are now reported as 
+'tape' instead of 'disk'.
+
+### pool
+
+In some cases, storage info data was not included in messages issued during
+a pool flush. This caused an irrelevant NPE to be logged. 
+
+This problem was solved, and as a side effect of the fix, billing records
+now have the correct format when reporting on flushes:
+
+```08.24 15:24:41 [pool:dcache-lab002-A@dcache-lab002Domain:store] [00006BD12E8925744156AAE87641D4AF73BB,1362] [/] 100013 2 {10006:"Flush was cancelled."}```
+
+vs.
+
+```8.24 15:51:07 [pool:dcache-lab002-A@dcache-lab002Domain:store] [00005C1387649DD74E0491DFE9A98D97DC39,1362] [/] data:sla2@osm 100015 1 {10006:"Flush was cancelled."}``` 
+
+A bug was fixed that occasionally caused problems with the pools' 
+Berkeley DB. This could, for example, be triggered by removing files
+which were in a flush queue. 
+
+A typical error message was, e.g.
+
+```
+27 Aug 2018 12:09:33 (cat2_lhcbtape) [Frontend-dcacheview PoolDataRequest] Fault occurred in repository: Internal repository error. Pool restart required: : CacheExcept
+ion(rc=204;msg=Meta data lookup failed and a pool restart is required: (JE 7.3.7) Environment must be closed, caused by: com.sleepycat.je.ThreadInterruptedException: En
+vironment invalid because of previous exception: (JE 7.3.7) /space/lhcb/tape/pool/meta java.lang.InterruptedException THREAD_INTERRUPTED: InterruptedException may cause
+incorrect internal state, unable to continue. Environment is invalid and must be closed.)
+27 Aug 2018 12:09:33 (cat2_lhcbtape) [Frontend-dcacheview PoolDataRequest] Pool mode changed to disabled(fetch,store,stage,p2p-client,p2p-server,dead): Pool restart req
+uired: Internal repository error
+```
+
+### webdav
+
+Web clients (such as web-browsers) make OPTIONS pre-flight requests to
+discover what they are allowed to do, according to the CORS standard.
+
+Unfortunately, some web-browsers make the OPTIONS request without
+presenting any credentials. If the resource is within a protected
+directory then dCache currently fails the OPTIONS request.
+
+This release introduces a new behaviour where such requests will always
+succeed, so that browser pre-flight requests are not hampered.
+
+
+### Changelog 4.1.15..4.1.16
+
+<!-- git log 4.1.15..4.1.16 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[3117e40e20](https://github.com/dcache/dcache/commit/3117e40e208ac0f7a862bf6eeb9d77e9307c8c4f)
+:   [maven-release-plugin] prepare release 4.1.16
+
+[51316cf59d](https://github.com/dcache/dcache/commit/51316cf59dca054a19c50bce37e7fb1626a4382d)
+:   nearline-provides: do not interrupt processing thread on cancel
+
+[c903be8c6c](https://github.com/dcache/dcache/commit/c903be8c6c6257ed606618dd0883441b5a4b4316)
+:   nfs41: invalidate open-state on layoutget if file is removed
+
+[610802bae9](https://github.com/dcache/dcache/commit/610802bae996c171ba86bf4261ef590c11aacf65)
+:   pool: fix NPE on flush
+
+[09f8da57cd](https://github.com/dcache/dcache/commit/09f8da57cd8d027f9d0e11cda09b381da85da60d)
+:   webdav: always respond to OPTIONS request
+
+[3addbcf0cb](https://github.com/dcache/dcache/commit/3addbcf0cb71937fe0ea5824e1ca8a6b83e80077)
+:   core: ensure pool/poolmanager communication receives errors
+
+[302edf9436](https://github.com/dcache/dcache/commit/302edf9436dc14f74a13dc7159650900270736a1)
+:   frontend: add targetQoS for not-yet-flushed tape files
+
+[c07f1e2a8c](https://github.com/dcache/dcache/commit/c07f1e2a8c557fb0bf6a8d54d1c1ec274447bf81)
+:   [maven-release-plugin] prepare for next development iteration
+
+[cb86e6f1ad](https://github.com/dcache/dcache/commit/cb86e6f1ad212a5a6a38f11c4d07af9f51d83ea9)
+:   dcache: release dcache-view version 1.4.3
+
 ## Release 4.1.15
 
 ### gplazma
