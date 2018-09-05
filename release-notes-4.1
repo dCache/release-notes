@@ -107,6 +107,42 @@ Thanks to Christoph Anton Mitterer for his constributions.
 We would like to thank the students of HTW Berlin Alexandra Konovalova, Hagen Wittlich and Marcus Kopp,
 for their contributions during the HTW course.
 
+## Release 4.1.17
+
+### dcache-view
+
+Several fixes has been implemented  for  dcache-view:  openid connect redirect handling is fixed, fixed file download.
+
+### ftp
+
+dCache now has the ability to log the current status of a transfer at the point the client decided to abort an FTP transfer. 
+This should support a post mortem investigation on why a transfer was cancelled.
+
+### nfs
+
+With the current release the timeout of pnfshandler is configurable and nfs door quicker
+ recovers from situations, when a PnfsManager is not available.
+
+
+### Changelog 4.1.16..4.1.17
+
+<!-- git log 4.1.16..4.1.17 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[4b873db](https://github.com/dcache/dcache/commit/4b873dbf68db7c6e06f52c5144fd4f2ff4b87ffa)
+:   [maven-release-plugin] prepare release 4.1.17
+
+[abf6008](https://github.com/dcache/dcache/commit/abf6008ad7930ad78077548d442844b1349c4711)
+:   ftp: add ability to log client-aborted transfers
+
+[a6b0293](https://github.com/dcache/dcache/commit/a6b0293759083b673e84219147bd13747472567f)
+:   nfs: make timeout of pnfshandler configurable
+
+[d1bc061](https://github.com/dcache/dcache/commit/d1bc061d54b81e0cc0ad489c1e1590e2fe3b57e6)
+:   dcache: release dcache-view version 1.4.5
+
+[384ce15](https://github.com/dcache/dcache/commit/384ce15ba2d7d4e2702cabd78c882ced0bf2585d)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.1.16
 
 ### NFS

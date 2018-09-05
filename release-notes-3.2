@@ -107,6 +107,38 @@ from dCache 3.1.  Please read this section *very carefully* when
 upgrading from this version.
 
 
+## Release 3.2.31
+
+### ftp
+
+dCache now has the ability to log the current status of a transfer at the point the client decided to abort an FTP transfer. 
+This should support a post mortem investigation on why a transfer was cancelled.
+
+### nfs
+
+With the current release the timeout of pnfshandler is configurable and nfs door quicker
+ recovers from situations, when a PnfsManager is not available.
+
+
+### Changelog 3.2.30..3.2.31
+
+<!-- git log 3.2.30..3.2.31 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[ae85848](https://github.com/dcache/dcache/commit/ae85848e4170d9840c8624f010fbff3f9dcc47bb)
+:   [maven-release-plugin] prepare release 3.2.31
+
+[bd2e07b](https://github.com/dcache/dcache/commit/bd2e07b40e3b666ce6c68bd4a56a8c0e7a96d275)
+:   ftp: add ability to log client-aborted transfers
+
+[8e491e4](https://github.com/dcache/dcache/commit/8e491e44ccaabeddbaceeae190f6d0c270c2d80f)
+:   nfs: make timeout of pnfshandler configurable
+
+[1dffc9c](https://github.com/dcache/dcache/commit/1dffc9cce9352682b63343297dcf78d7f6d45560)
+:   dcache: release dcache-view version 1.3.3
+
+[c65318a](https://github.com/dcache/dcache/commit/c65318aeab0c58a233ad8a858c80fe98c02e7d49)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.2.30
 
 ### NFS

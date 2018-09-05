@@ -91,6 +91,79 @@ updates, pools may remain at 4.1 during that update.
 The dCache team thanks Christoph Anton Mitterer, Martin Johnki, Onno Zweers and Johannes Thurn
 for their pull requests and contributions.
 
+## Release 4.2.8
+
+### dcache-view
+
+Several fixes has been implemented  for  dcache-view:  openid connect redirect handling is fixed, fixed file download.
+
+### dcache-xroot
+
+The current release added necessary gsi properties for tcp credentials. 
+These properties have to do with the third-party client on the pool.
+ Note:  this is a temporary workaround for
+  a problem which will be solved in a more general fashion
+For more details please check `xrootd-gsi.properties`.
+
+### ftp
+
+dCache now has the ability to log the current status of a transfer at the point the client decided to abort an FTP transfer. 
+This should support a post mortem investigation on why a transfer was cancelled.
+
+### ftp,dcap
+
+The current release added functionality to push  billing events to Kafka Server when  `ftp.enable.kafka`  and `dcacp.enable.kafka` are enabled. 
+
+### nfs
+
+With the current release the timeout of pnfshandler is configurable and nfs door quicker
+ recovers from situations, when a PnfsManager is not available.
+
+### poolmanager
+
+Previously in dCache it was not possible stage files from tape. This is now fixed.
+
+
+### Changelog 4.2.7..4.2.8
+
+<!-- git log 4.2.7..4.2.8 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[bc73677](https://github.com/dcache/dcache/commit/bc73677576ffc39f1e656f7aa6f8ab97df9ef091)
+:   [maven-release-plugin] prepare release 4.2.8
+
+[2c2c3b8](https://github.com/dcache/dcache/commit/2c2c3b8b261e689deaea6de489cbc28d09381c01)
+:   ftp: add ability to log client-aborted transfers
+
+[99ac792](https://github.com/dcache/dcache/commit/99ac79209d3f7f19306d3b356ede52add6ec4c7a)
+:   nfs: make timeout of pnfshandler configurable
+
+[23f8145](https://github.com/dcache/dcache/commit/23f81457d084084b9008bfd7764b381326328d82)
+:   poolmanager: fix staging files from tape
+
+[df52050](https://github.com/dcache/dcache/commit/df52050394ad07912ebca8bc1f8a827dc9f59a4a)
+:   pool: fix NullPointerException
+
+[420d9c5](https://github.com/dcache/dcache/commit/420d9c51d504da4959c8c28fcea09d7f2f5a573d)
+:   ftp: fix NullPointerException
+
+[5875eb8](https://github.com/dcache/dcache/commit/5875eb8f08610a2181d687d31a81505eea0d5a4c)
+:   dcap: clean code changes
+
+[9a99bbe](https://github.com/dcache/dcache/commit/9a99bbeb6a74aea29491331b847c1a174741bb78)
+:   ftp: add kafka to push messages
+
+[754ebd9](https://github.com/dcache/dcache/commit/754ebd907eb14e447256a7b5a0c620a9acc29bea)
+:   dcap: enable possibility to push transfer events to Kafka
+
+[611a2b6](https://github.com/dcache/dcache/commit/611a2b6d95e9650bd1ea656dc9e9c0bdc7325776)
+:   dcache: release dcache-view version 1.4.5
+
+[329a998](https://github.com/dcache/dcache/commit/329a998a699af364461c83ef3d85b0f3e6aca6a5)
+:   dcache-xrootd: add necessary gsi properties for tpc credentials
+
+[bb27660](https://github.com/dcache/dcache/commit/bb276604e77d0fa60b70fe32fafb7cf5a704453e)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.2.7
 
 ### NFS
