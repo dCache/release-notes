@@ -99,6 +99,41 @@ The notes for [release 4.0.0](#release4.0.0) detail the differences
 from dCache 3.2.  Please read this section *very carefully* when
 upgrading from this version.
 
+## Release 4.0.24
+
+### frontend
+
+The current release fixed broken directory QoS reporting and now frontend now more accurately describes the QoS of directories; i.e., the
+QoS that newly written files will receive when written into this
+directory, assuming none of the targeted pools are volatile.
+
+### webdav
+
+the macaroon creation with multiple path restrictions failed with a http error 500 and the error message.
+ This is now fixed and the macaroon creation succeeds when multiple path restrictions are defined.
+
+The current release improved  error handling for PROPFIND request.
+
+
+### Changelog 4.0.23..4.0.24
+
+<!-- git log 4.0.23..4.0.24 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[1c28c0f](https://github.com/dcache/dcache/commit/1c28c0fbab4ff2a3ce9e92c898f2e734c65802c4)
+:   [maven-release-plugin] prepare release 4.0.24
+
+[e98ada9](https://github.com/dcache/dcache/commit/e98ada9a2ddfa0a7971ed7372419fdffc237c396)
+:   frontend: fix broken directory qos reporting
+
+[49e4bf9](https://github.com/dcache/dcache/commit/49e4bf9e6fe58229194538313c45108753d7f74d)
+:   webdav: avoid throwing any exception when listing a directory for PROPFIND
+
+[ca73622](https://github.com/dcache/dcache/commit/ca736220e0a50c10ca6a1e75d3f63fd85736fba9)
+:   webdav/macaroon: Fix macaroon creation with multiple path restrictions.
+
+[a84d53f](https://github.com/dcache/dcache/commit/a84d53f417ac40a1e3580c42db92c5708aae5f97)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.0.23
 
 ### ftp
