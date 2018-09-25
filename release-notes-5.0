@@ -70,9 +70,8 @@ HTML header: <title>dCache 5.0 Release Notes</title>
 This release breaks compatibility with pools running dcache version 2.16 or earlier.
 
 ## Acknowledgments
-
-(tbd, this section uses markdown formatting)
-
+We thank HTW-Berlin students Marcel Munce, Ferdinand Wolff and MaKrHTW (???) as well
+as Onno Zweers from surfSARA for their contributions.
 
 ## Release 5.0.0
 
