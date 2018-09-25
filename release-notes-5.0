@@ -64,7 +64,7 @@ HTML header: <title>dCache 5.0 Release Notes</title>
 
 ## Highlights
 
-(tbd, this section uses markdown formatting)
+ - pinboard includes date and time
 
 ## Incompatibilities
 This release breaks compatibility with pools running dcache version 2.16 or earlier.
