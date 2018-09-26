@@ -107,6 +107,68 @@ Thanks to Christoph Anton Mitterer for his constributions.
 We would like to thank the students of HTW Berlin Alexandra Konovalova, Hagen Wittlich and Marcus Kopp,
 for their contributions during the HTW course.
 
+## Release 4.1.19
+
+### Changes affecting multiple services
+
+This rlease fixes an issue with WebDAV 3rd-party-copy requests that are
+authorized using a macaroon that is only valid for writing a specific file.
+
+NOTE: both the webdav door and transfermanagers must be updated before
+the fix is effective. 
+
+The timeout used by dCache when attempting to send a Kafka event is now
+adjustable via the configuration properties dcache.kafka.maximum-block
+and dcache.kafka.maximum-block.unit.
+
+The default timeout for pools, and the xrootd, nfs and webdav doors is
+now non-zero. This should fix the problem of kafka events being lost
+under normal operational conditions.
+
+### pool
+
+In order to help with debugging issues with partial FTP transfers, 
+dCache pools now are able to log considerable information about failed FTP
+transfers. 
+
+This is controlled by the new property `pool.mover.ftp.enable.log-aborted-transfers`.
+
+### webdav
+
+dCache can now transfer data with a remote site, authenticating with
+that remote site using a delegated X.509 credential, but authenticating
+locally with a macaroon.
+
+### xrootd
+
+This release updates xrootd4j, which should help fix occasional "pad block corrupted" issues with older clients.
+
+
+### Changelog 4.1.18..4.1.19
+
+<!-- git log 4.1.18..4.1.19 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[5d7936f906](https://github.com/dcache/dcache/commit/5d7936f90659afa73e98d8f829d457852a21017d)
+:   [maven-release-plugin] prepare release 4.1.19
+
+[f78d25b72b](https://github.com/dcache/dcache/commit/f78d25b72bc57dac725ef7095b23119165e58a6f)
+:   pom.xml:  update xrootd4j dependency to 3.2.3
+
+[0b1cb2522a](https://github.com/dcache/dcache/commit/0b1cb2522a249f7081e217310921b2f3e5c3c2bd)
+:   webdav: use TLS credential directly for gridsite
+
+[00f7be99b4](https://github.com/dcache/dcache/commit/00f7be99b4ebc5e55c3a5e9afe9b245888e77157)
+:   pool: instrument ftp mover to show partial transfers
+
+[1703a800ed](https://github.com/dcache/dcache/commit/1703a800ed52da193b50c62947af9e68165d772b)
+:   dcache: add configuration for the Kafka producer timeout
+
+[9e8499a872](https://github.com/dcache/dcache/commit/9e8499a8726fd6b199a68e8d19dd26c4b6feb424)
+:   webdav+transfermanagers: support TPC pull with targeted macaroons
+
+[6cae12248b](https://github.com/dcache/dcache/commit/6cae12248b14e3c3375177b0e8587b811e295744)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.1.18
 
 ### frontend

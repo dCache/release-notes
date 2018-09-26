@@ -91,6 +91,87 @@ updates, pools may remain at 4.1 during that update.
 The dCache team thanks Christoph Anton Mitterer, Martin Johnki, Onno Zweers and Johannes Thurn
 for their pull requests and contributions.
 
+## Release 4.2.11
+
+### Changes affecting multiple services
+
+This rlease fixes an issue with WebDAV 3rd-party-copy requests that are
+authorized using a macaroon that is only valid for writing a specific file.
+
+NOTE: both the webdav door and transfermanagers must be updated before
+the fix is effective. 
+
+The timeout used by dCache when attempting to send a Kafka event is now
+adjustable via the configuration properties dcache.kafka.maximum-block
+and dcache.kafka.maximum-block.unit.
+
+The default timeout for pools, and the xrootd, nfs and webdav doors is
+now non-zero. This should fix the problem of kafka events being lost
+under normal operational conditions.
+
+NFS4J was updated to a newer version with two upstream bugfixes:
+
+* compatibility with standard rpcbind clients
+* allow regular users to change file's owner to the same value
+
+### pool
+
+In order to help with debugging issues with partial FTP transfers, 
+dCache pools now are able to log considerable information about failed FTP
+transfers. 
+
+This is controlled by the new property `pool.mover.ftp.enable.log-aborted-transfers`.
+
+### transfermanagers
+
+An old table that was previously used for debugging and monitoring purposes
+was removed, leading to better performance of the transfermanagers service.
+
+### webdav
+
+dCache can now transfer data with a remote site, authenticating with
+that remote site using a delegated X.509 credential, but authenticating
+locally with a macaroon.
+
+### xrootd
+
+This release updates xrootd4j, which should help fix occasional "pad block corrupted" issues with older clients.
+
+
+### Changelog 4.2.10..4.2.11
+
+<!-- git log 4.2.10..4.2.11 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[43f7091ce7](https://github.com/dcache/dcache/commit/43f7091ce74a40d66b5f0be32cef417709d0afcf)
+:   [maven-release-plugin] prepare release 4.2.11
+
+[818e38da53](https://github.com/dcache/dcache/commit/818e38da53ea06b4869ea368c967b33ee9527d7f)
+:   pom.xml: update to xrootd4j dependency to 3.3.1
+
+[2e991d0c5a](https://github.com/dcache/dcache/commit/2e991d0c5a01271ccb1393e7c38e8a7e1ed47ad2)
+:   webdav: use TLS credential directly for gridsite
+
+[4dea39e85d](https://github.com/dcache/dcache/commit/4dea39e85dd4475395eb770b97319c877113eaf8)
+:   pool: instrument ftp mover to show partial transfers
+
+[6faca97336](https://github.com/dcache/dcache/commit/6faca97336af62f554809b9643c1f490459cd160)
+:   ftp: fix regression in unit-tests
+
+[64db762f89](https://github.com/dcache/dcache/commit/64db762f89aeeb4b9d2604f2a86ad60f6599c2ec)
+:   libs: update to nfs4j-0.17.4
+
+[3f4e24e3b1](https://github.com/dcache/dcache/commit/3f4e24e3b14ee51169e472b9f2ea611931dd8526)
+:   dcache: add configuration for the Kafka producer timeout
+
+[69bb883d19](https://github.com/dcache/dcache/commit/69bb883d1989d825b67b9d86a74920a36da04d60)
+:   TransferManager:  remove state history class and corresponding table responsible                   for storing request state changes. It is not used, but                   may grow rapidly in database.
+
+[fe4d837004](https://github.com/dcache/dcache/commit/fe4d8370043e5b9864400b53496295ac5e2dcb7c)
+:   webdav+transfermanagers: support TPC pull with targeted macaroons
+
+[211713183e](https://github.com/dcache/dcache/commit/211713183e48f3eb623877efc0f6873cde95303d)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.2.10
 
 ### gplazma-role

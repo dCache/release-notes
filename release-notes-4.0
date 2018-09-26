@@ -99,6 +99,57 @@ The notes for [release 4.0.0](#release4.0.0) detail the differences
 from dCache 3.2.  Please read this section *very carefully* when
 upgrading from this version.
 
+## Release 4.0.25
+
+### Changes affecting multiple services
+
+This rlease fixes an issue with WebDAV 3rd-party-copy requests that are
+authorized using a macaroon that is only valid for writing a specific file.
+
+NOTE: both the webdav door and transfermanagers must be updated before
+the fix is effective. 
+
+### pool
+
+In order to help with debugging issues with partial FTP transfers, 
+dCache pools now are able to log considerable information about failed FTP
+transfers. 
+
+This is controlled by the new property `pool.mover.ftp.enable.log-aborted-transfers`.
+
+### webdav
+
+dCache can now transfer data with a remote site, authenticating with
+that remote site using a delegated X.509 credential, but authenticating
+locally with a macaroon.
+
+### xrootd
+
+This release updates xrootd4j, which should help fix occasional "pad block corrupted" issues with older clients.
+
+
+### Changelog 4.0.24..4.0.25
+
+<!-- git log 4.0.24..4.0.25 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[48c07f240b](https://github.com/dcache/dcache/commit/48c07f240be115936d86b07b2ff7540069c8845a)
+:   [maven-release-plugin] prepare release 4.0.25
+
+[290f74b701](https://github.com/dcache/dcache/commit/290f74b70110c16091798ef0de4b00a532eead14)
+:   pom.xml:  update xrootd4j dependency to 3.2.3
+
+[cafc1ed327](https://github.com/dcache/dcache/commit/cafc1ed3277bb8f63724bf8fd3cf13f410fcacf4)
+:   webdav: use TLS credential directly for gridsite
+
+[abe9a39d34](https://github.com/dcache/dcache/commit/abe9a39d3403f5502d96dca3def0928d2e5702b8)
+:   pool: instrument ftp mover to show partial transfers
+
+[d797026a5f](https://github.com/dcache/dcache/commit/d797026a5fc277ca977f184a2b42407fc97991cb)
+:   webdav+transfermanagers: support TPC pull with targeted macaroons
+
+[e2b1af7319](https://github.com/dcache/dcache/commit/e2b1af7319d585d303f52825918aefb6311c672a)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.0.24
 
 ### frontend

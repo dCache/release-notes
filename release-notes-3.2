@@ -107,6 +107,57 @@ from dCache 3.1.  Please read this section *very carefully* when
 upgrading from this version.
 
 
+## Release 3.2.33
+
+### Changes affecting multiple services
+
+This rlease fixes an issue with WebDAV 3rd-party-copy requests that are
+authorized using a macaroon that is only valid for writing a specific file.
+
+NOTE: both the webdav door and transfermanagers must be updated before
+the fix is effective. 
+
+### pool
+
+In order to help with debugging issues with partial FTP transfers, 
+dCache pools now are able to log considerable information about failed FTP
+transfers. 
+
+This is controlled by the new property `pool.mover.ftp.enable.log-aborted-transfers`.
+
+### webdav
+
+dCache can now transfer data with a remote site, authenticating with
+that remote site using a delegated X.509 credential, but authenticating
+locally with a macaroon.
+
+### xrootd
+
+This release updates xrootd4j, which should help fix occasional "pad block corrupted" issues with older clients.
+
+
+### Changelog 3.2.32..3.2.33
+
+<!-- git log 3.2.32..3.2.33 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[d390a16982](https://github.com/dcache/dcache/commit/d390a16982d6ad2788baade9263cd914d4d3af41)
+:   [maven-release-plugin] prepare release 3.2.33
+
+[f26c3650c1](https://github.com/dcache/dcache/commit/f26c3650c1ee0c6d0d6bb06bd4dce536e9759d66)
+:   pom.xml:  update xrootd4j dependency to 3.2.3
+
+[0c6f51c5e4](https://github.com/dcache/dcache/commit/0c6f51c5e42ef455c64ba609ffd076487124925e)
+:   webdav: use TLS credential directly for gridsite
+
+[bd13c21bc2](https://github.com/dcache/dcache/commit/bd13c21bc20499e3c0814a9f53abbe711f0655e8)
+:   pool: instrument ftp mover to show partial transfers
+
+[9663d40ae5](https://github.com/dcache/dcache/commit/9663d40ae5578014baed8a113134723359d2bf79)
+:   webdav+transfermanagers: support TPC pull with targeted macaroons
+
+[c5a6d0af64](https://github.com/dcache/dcache/commit/c5a6d0af64373ea0203157839b7b620de40bfa7d)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.2.32
 
 ### frontend
