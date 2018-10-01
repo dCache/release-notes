@@ -65,6 +65,7 @@ HTML header: <title>dCache 5.0 Release Notes</title>
 ## Highlights
 
  - pinboard includes date and time
+ - updated external dependencies
 
 ## Incompatibilities
 This release breaks compatibility with pools running dcache version 2.16 or earlier.
