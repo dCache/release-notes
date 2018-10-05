@@ -99,6 +99,33 @@ The notes for [release 4.0.0](#release4.0.0) detail the differences
 from dCache 3.2.  Please read this section *very carefully* when
 upgrading from this version.
 
+## Release 4.0.26
+
+### sysytemd
+
+Systemd did  not inherite the system-wide limits and was  completely ignoring  `/etc/security/limits.d/92-dcache.conf`.
+This is now fixed and the limits successfully loaded and enabled as expected.
+
+### vehicles
+
+The current release has fixed serialization regression in `FileCorruptedCacheException`.
+
+### Changelog 4.0.25..4.0.26
+
+<!-- git log 4.0.25..4.0.26 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[1ac0254](https://github.com/dcache/dcache/commit/1ac02542d688b87586a88bc8ae7af5aa4d2219dd)
+:   [maven-release-plugin] prepare release 4.0.26
+
+[e586e55](https://github.com/dcache/dcache/commit/e586e55a4a4f1f3d6619268f97e2722c58f03495)
+:   vehicles: fix serialization regression  in  FileCorruptedCacheException
+
+[f9bb407](https://github.com/dcache/dcache/commit/f9bb40786842cb21e8e3310580a4bb242edda1a8)
+:   [maven-release-plugin] prepare for next development iteration
+
+[22b1b4b](https://github.com/dcache/dcache/commit/22b1b4bd2288b551b98779c7c98a683f580e9053)
+:   systemd: Add `/etc/security/limits.d/92-dcache.conf` in the dcache systemd unit and generator.
+
 ## Release 4.0.25
 
 ### Changes affecting multiple services

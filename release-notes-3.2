@@ -107,6 +107,27 @@ from dCache 3.1.  Please read this section *very carefully* when
 upgrading from this version.
 
 
+## Release 3.2.34
+
+### sysytemd
+
+Systemd did  not inherite the system-wide limits and was  completely ignoring  `/etc/security/limits.d/92-dcache.conf`.
+This is now fixed and the limits successfully loaded and enabled as expected.
+
+
+### Changelog 3.2.33..3.2.34
+
+<!-- git log 3.2.33..3.2.34 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[fa184d2](https://github.com/dcache/dcache/commit/fa184d231292ce656c258c52565361824d67add6)
+:   [maven-release-plugin] prepare release 3.2.34
+
+[e465689](https://github.com/dcache/dcache/commit/e4656894fe0fa1e72b644f6098ebc68ac0a92664)
+:   [maven-release-plugin] prepare for next development iteration
+
+[529a5a2](https://github.com/dcache/dcache/commit/529a5a2598e1dc2d944c5cdf96d6e6f132d79d0e)
+:   systemd: Add `/etc/security/limits.d/92-dcache.conf` in the dcache systemd unit and generator.
+
 ## Release 3.2.33
 
 ### Changes affecting multiple services

@@ -91,6 +91,74 @@ updates, pools may remain at 4.1 during that update.
 The dCache team thanks Christoph Anton Mitterer, Martin Johnki, Onno Zweers and Johannes Thurn
 for their pull requests and contributions.
 
+## Release 4.2.12
+
+### Changes affecting multiple services
+
+For dcap and ftp dorrs for each transfer was created new Kafka producer.
+As a result first Server was shutdown with the following IO exception java.io.IOException: Too many open files
+This is fixed now.
+
+The previous for mat for the `date` key in message was not easy to parse `"date":"Mon Oct 01 13:49:00 CEST 2018"`.
+ This is now changed and the new
+format, is `"date":"2018-10-0113:50:30.008+02:00"` is easier to parse.
+
+
+### frontend
+
+All monitoring information was only available to admin role users.
+This was a change from the previous webadmin interface, where most information
+(except alarms and space token definition) had been  available to all users.
+This probably was too restrictive and may disrupt some user patterns.
+The current release improved the access semantics which are more compatible with previous usage.
+
+### gplazma
+
+The current release added gplazma2-fermi voggroup plugin supports wilcard match on user fqan.
+
+### sysytemd
+
+Systemd did  not inherite the system-wide limits and was  completely ignoring  `/etc/security/limits.d/92-dcache.conf`.
+This is now fixed and the limits successfully loaded and enabled as expected.
+
+### vehicles
+
+The current release has fixed serialization regression in `FileCorruptedCacheException`.
+
+### Changelog 4.2.11..4.2.12
+
+<!-- git log 4.2.11..4.2.12 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[1400080](https://github.com/dcache/dcache/commit/14000806667ae387dc90f95bbba4a83445b92cba)
+:   [maven-release-plugin] prepare release 4.2.12
+
+[a47b547](https://github.com/dcache/dcache/commit/a47b5477e0626458bbee71b0b58ff65f2ba87618)
+:   dcache-xrootd: add missing kafka property
+
+[d9bb047](https://github.com/dcache/dcache/commit/d9bb047dfe92a4ab20e88ddfda42847a79def16a)
+:   vehicles: fix serialization regression  in  FileCorruptedCacheException
+
+[d7c9480](https://github.com/dcache/dcache/commit/d7c948038e22dfec487c22acf68cc2955fa4a79a)
+:   Update StorageInfoMessageSerializer.java
+
+[8c3ea5e](https://github.com/dcache/dcache/commit/8c3ea5e913da50a3da34d80aa58a98ecb1750e3d)
+:   dcache: Adjust Date formating of Timestamp value for `date` key for  kafka producer
+
+[75e5f9b](https://github.com/dcache/dcache/commit/75e5f9bdeeefe519dbb13ea86884e6672b410641)
+:   dcache: Creating multiple KafkaProducer instances results in 'Too many open files'
+
+[62624b0](https://github.com/dcache/dcache/commit/62624b06bfac03144c4121e88c50eed27e85caf8)
+:   gplazma2-fermi plugin (vogroup plugin): allow for wildcard match of fqans
+
+[b4bec04](https://github.com/dcache/dcache/commit/b4bec045c2b8fe77c3cb14bcff56d3aa064135bb)
+:   dcache-frontend: remove admin restrictions on GET and filter transfers on uid if not admin
+
+[83847a0](https://github.com/dcache/dcache/commit/83847a0d968490b4af0b4021934eadfd37476759)
+:   [maven-release-plugin] prepare for next development iteration
+
+[7218c51](https://github.com/dcache/dcache/commit/7218c51b602e7ef238ff8a01c1ff04d9ce7e5966)
+:   systemd: Add `/etc/security/limits.d/92-dcache.conf` in the dcache systemd unit and generator.
+
 ## Release 4.2.11
 
 ### Changes affecting multiple services
