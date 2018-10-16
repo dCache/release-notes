@@ -91,6 +91,129 @@ updates, pools may remain at 4.1 during that update.
 The dCache team thanks Christoph Anton Mitterer, Martin Johnki, Onno Zweers and Johannes Thurn
 for their pull requests and contributions.
 
+## Release 4.2.13
+
+### Changes affecting multiple services
+
+Through integration of an updated BouncyCastle cryptography library package, 
+some rare errors where clients would report a "pad block corrupted" error
+are avoided.
+
+### frontend
+
+When a user does not have the permission to read a file (or is simply
+not logged in), dCache would previously report a 500 
+Internal Server Error. This error reporting was improved, 
+reporting 401 Unauthorized or 403 Forbidden
+as appropriate.
+
+dCache has a hard-coded behaviour where a user providing bad
+authentication (e.g., wrong password, expired OIDC access-token or
+macaroon) is treated as the anonymous user.
+
+This has proved counter-intuitive, as wrong/expired credentials often
+appear to succeed for some operations (e.g., directory listing), while
+failing others (upload/download).
+
+A new configuration property, 
+`dcache.enable.authn.anonymous-fallback-on-failed-login`, allows 
+changing that behaviour. The default setting of the property
+does not change system behaviour.
+
+### ftp
+
+If the ftp client requests a proxied passive transfer with a different
+IP family from the control channel (i.e., the client connects using IPv6
+and requests an IPv4 data channel, or vice versa) the ftp server must
+select which IP address it should return to the client.
+
+As pointed out by Francesco Prelz (thanks!), the door currently selects
+the first address from the same interface that has the desired IP
+family. However, this may not be accessible by the client.
+
+This release updates address selection so that only usable addresses
+will be returned to the clients.
+
+### info
+
+Clients querying the info service (such as info-provider
+and storage-report) are now informed
+of the number of files stored in a space reservation.
+
+The info service now displays the time at which the information it displays
+was recorded.
+
+### nfs
+
+Using the latest NFS4J library brings some performance improvements.
+
+### pool
+
+Monitoring transfers is now a bit more comfortable as this release
+adds path information to a transfer's information.
+
+### poolmanager
+
+This release increases responsiveness for users that are not allowed to stage files, and for NFS users who access offline files. 
+In cases where such a user issued a read request at the same time that Pool Manager handled
+a staging request, the first request would block for the duration of the staging -- potentially
+quite a while. From now on, users that are not allowed to stage receive appropriate error
+messages as soon as possible, without having to wait for anyone else.
+
+### xrootd
+
+The `--zip` option of xrootd clients is now supported.
+
+Support for xrootd `mkdir` was improved.
+
+
+
+### Changelog 4.2.12..4.2.13
+
+<!-- git log 4.2.12..4.2.13 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[fcc1adcb70](https://github.com/dcache/dcache/commit/fcc1adcb70dbe3347c402b33cfa153251e686694)
+:   [maven-release-plugin] prepare release 4.2.13
+
+[5bf1013356](https://github.com/dcache/dcache/commit/5bf1013356a77925e8ea198492dad146503ef6b0)
+:   xrootd: remove spurious stack-trace
+
+[970434b225](https://github.com/dcache/dcache/commit/970434b225ebb54d426016d02d1f3ff7f4bb7ab8)
+:   xrootd: add support for kXR_stat on open files
+
+[8892290b5a](https://github.com/dcache/dcache/commit/8892290b5a476f9647d85a7e7bee299329576c5f)
+:   xrootd: update to xrootd4j dependency to 3.3.3
+
+[5c7597f335](https://github.com/dcache/dcache/commit/5c7597f335e723d5bd3b90fbea3e1167bafd643f)
+:   packaging: use private BC 1.50 release that provides JSSE compatible handling of key agreement secret generation.
+
+[1958003b5c](https://github.com/dcache/dcache/commit/1958003b5c9a767db88dcc543e3d9970c5ec72ea)
+:   dcache-frontend: fix error message for IdResource
+
+[05346f76d3](https://github.com/dcache/dcache/commit/05346f76d3f6a8c69933505f2a4382b73c37a4dd)
+:   ftp: better address selection for cross-family passive proxied transfers
+
+[9ddd28ac95](https://github.com/dcache/dcache/commit/9ddd28ac959a2960652ca209b4e372f81f978c58)
+:   webdav/frontend: make anonymous fallback on bad login optional
+
+[173de7a6bf](https://github.com/dcache/dcache/commit/173de7a6bf6ae0c9d83508a26354ea62efeed0c9)
+:   info/space-manager: monitor number of files in reservation
+
+[2bba771c56](https://github.com/dcache/dcache/commit/2bba771c56736b1107871830cddf0796c2addd74)
+:   info: display the timestamps when metrics were collected
+
+[c09d13284a](https://github.com/dcache/dcache/commit/c09d13284ae842bfac61a96532bfb717a3163447)
+:   poolmanager: do not squash request if state is not allowed
+
+[d7e1539492](https://github.com/dcache/dcache/commit/d7e1539492e99d03b1186335e4817bddab908896)
+:   libs: use nfs4j-0.17.5
+
+[4d026acdb3](https://github.com/dcache/dcache/commit/4d026acdb3e72a323d70a774dc1c0bb8dd156f40)
+:   [maven-release-plugin] prepare for next development iteration
+
+[547776f84b](https://github.com/dcache/dcache/commit/547776f84b96c19720a57933e364df2efbd56633)
+:   dcache: add path to transfer information
+
 ## Release 4.2.12
 
 ### Changes affecting multiple services

@@ -107,6 +107,37 @@ from dCache 3.1.  Please read this section *very carefully* when
 upgrading from this version.
 
 
+## Release 3.2.35
+
+### poolmanager
+
+This release increases responsiveness for users that are not allowed to stage files, and for NFS users who access offline files. 
+In cases where such a user issued a read request at the same time that Pool Manager handled
+a staging request, the first request would block for the duration of the staging -- potentially
+quite a while. From now on, users that are not allowed to stage receive appropriate error
+messages as soon as possible, without having to wait for anyone else.
+
+### xrootd
+
+Support for xrootd `mkdir` was improved. 
+
+
+### Changelog 3.2.34..3.2.35
+
+<!-- git log 3.2.34..3.2.35 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[154c5445b1](https://github.com/dcache/dcache/commit/154c5445b1f30300c78d438cc37f9315225c44f4)
+:   [maven-release-plugin] prepare release 3.2.35
+
+[22aaf03765](https://github.com/dcache/dcache/commit/22aaf037659cfe794e24ad98dcbb50a097c9b7b3)
+:   xrootd: update to xrootd4j dependency to 3.2.3
+
+[1a1691e3fa](https://github.com/dcache/dcache/commit/1a1691e3fa631998bd614cc7bce748e1b92476ae)
+:   poolmanager: do not squash request if state is not allowed
+
+[25815d60f0](https://github.com/dcache/dcache/commit/25815d60f0c12d70f935d0c1b0dae26a098c5133)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.2.34
 
 ### sysytemd
