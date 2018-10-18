@@ -454,8 +454,8 @@ the number of irrelevant log entries in such situations.
 
 ### nfs
 
-dCache 4.0 and 3.2 now use nfs4j version 0.15.4, which includes a bugfix that should
-help avoid some rarely observed deadlocks with current Linux clients.
+dCache 4.0 and 3.2 now use nfs4j version 0.15.4, which includes bugfixes for rarely observed deadlocks
+and incomplete directory listing over nfs.
 
 
 ### Changelog 4.0.18..4.0.19
