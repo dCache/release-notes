@@ -193,6 +193,7 @@
         <version-prefix>4.2.</version-prefix>
         
 
+      <!--
       <release version="13" recommended="1">
         <date>16.10.2018</date>
         <package name="rpm">
@@ -208,6 +209,7 @@
           <md5sum>1425b52d9c25aa0486141fa76ad9c42c</md5sum>
         </package>
       </release>
+      -->
 
       <release version="12">
         <date>5.10.2018</date>
