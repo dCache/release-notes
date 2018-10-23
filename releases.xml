@@ -193,21 +193,23 @@
         <version-prefix>4.2.</version-prefix>
         
 
+      <!--
       <release version="13" recommended="1">
         <date>16.10.2018</date>
         <package name="rpm">
-          <download-url>-DOWNLOAD_DISABLED</download-url>
-          <md5sum>-</md5sum>
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>8fa14914eb8018d50109c60dd4ab788d</md5sum>
         </package>
         <package name="tgz">
-          <download-url>-DOWNLOAD_DISABLED</download-url>
-          <md5sum>-</md5sum>
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>befd78de867597331be874b0bb2addc9</md5sum>
         </package>
         <package name="Debian package">
-          <download-url>-DOWNLOAD_DISABLED</download-url>
-          <md5sum>-</md5sum>
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>1425b52d9c25aa0486141fa76ad9c42c</md5sum>
         </package>
       </release>
+      -->
 
       <release version="12">
         <date>5.10.2018</date>
