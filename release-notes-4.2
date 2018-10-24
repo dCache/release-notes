@@ -91,6 +91,185 @@ updates, pools may remain at 4.1 during that update.
 The dCache team thanks Christoph Anton Mitterer, Martin Johnki, Onno Zweers and Johannes Thurn
 for their pull requests and contributions.
 
+## Release 4.2.14
+
+### Changes affecting multiple services
+
+In order to more easily identify a rejected macaroon in the logs, its ID is now included in the log message.
+
+After discussing an issue observed in a production system at DESY,
+we decided to revert this commit until a more thorough analysis
+was done. The original intent of this change was to resolve rare
+"pad block corrupted" issues with xrootd transfers.
+
+xrootd now shows IP addresses instead of (potentially ambiguous) hostnames as transfer endpoints.
+
+An irrelevant stacktrace was logged on unexpected CacheExceptions. This 
+was removed, leading to less clutter in the logs.
+
+Different macaroons that were issued against the same secret are now discernible in the logs.
+
+Users now get more information about the reasons why an invalid macaroon was
+rejected: HTTP requests that are made with an invalid macaroon have a 401 HTTP
+response with the status-line explanation phrase that describes why the
+macaroon is invalid.
+
+The access log file also logs why a macaroon was rejected.
+
+### core
+
+A library dependency was updated to avoid [CVE-2018-11771](https://nvd.nist.gov/vuln/detail/CVE-2018-11771). This patch introduces no user-visible changes.
+
+### frontend
+
+[Github issue #4242](https://github.com/dCache/dcache/issues/4242) was resolved; 
+cell information can now be be gathered using the REST interface without
+specifying domains.
+
+### gplazma
+
+Invalid macaroon logins no longer "spam" gPlazma.
+
+Group Identifier numbers (GIDs) can now freely be chosen from within the numerical range
+defined by Java's long data type, up to 2<sup>64</sup>-1.
+
+### httpd
+
+Transfer information was improved: A call to hostname.tld:2288/context/transfers.json now also includes path info for transfers.
+
+
+### pnfsmanager
+
+When creating a macaroon to allow uploading of data, the desired path
+may not already exist. Without restrictions, WebDAV will auto-create
+parent directory items that are missing, or the client can create these
+directory elements explicitly with MKCOL.
+
+With restrictions (such as from a macaroon) such directory creation
+currently requires the MANAGE activity, which allows other actions
+beyond the scope of this scenario. With this release, the behaviour 
+was changed so that a user with a macaroon that authorises them to upload data into a
+particular directory will be able to create parent directories to
+achieve uploading the data.
+
+### pool
+
+A regression caused pools that had their size only specified in a layout file
+to report a size of 8 Exabytes. This issue was fixed.
+
+dCache now supports a DPM-specific HTTP extension that indicates the
+checksum calculation is not yet complete, avoiding potential data
+corruption with third-party copies: If DPM is calculating a checksum, then any RFC 3230 (i.e., with a
+'Want-Digest' header) GET or HEAD request returns '202 Accepted' respond
+status line and an HTML page as the response entity. Since dCache
+considers any 2xx response as success, the HTML page was previously accepted as the
+file's contents, resulting in data corruption.
+
+dCache pools no longer log a stack-trace for non-bug P2P failures.
+
+### srm
+
+The domain '.access' log file now contains log information for grid-site
+delegation activity, which facilitates debugging of http third-party-copying issues.
+
+### transfermanagers
+
+The "restriction check by-passed" warning for each WebDAV-initiated
+third-party transfer is fixed.
+
+### webdav
+
+A user may request a macaroon by making an HTTP POST request to the
+WebDAV door. This log entry was augmented by the ID and type of
+macaroon used.
+
+A previous patch needed a bit of an update to ensure that X.509-with-FQAN authenticated third-party transfers with macaroons work under all circumstances. This is now ensured.
+
+### xrootd
+
+A previous patch, committed on master as 6e90136, introduced xrootd
+properties to control the behaviour of the xrootd door when sending
+kafka events. This patch contained a typo in the default value. 
+The result was dCache would not start with a kafka enabled xrootd
+door. This issue has been fixed.
+
+
+### Changelog 4.2.13..4.2.14
+
+<!-- git log 4.2.13..4.2.14 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[d4eeef2c6f](https://github.com/dcache/dcache/commit/d4eeef2c6fbde634a3ad67895423d2deacc83e1a)
+:   [maven-release-plugin] prepare release 4.2.14
+
+[e3881d4517](https://github.com/dcache/dcache/commit/e3881d451766f9deeb7de700b2746d76bcfdf741)
+:   xrootd: fix broken configuration property
+
+[93adbb27cd](https://github.com/dcache/dcache/commit/93adbb27cdcb82ce29367b90527cb49e93125347)
+:   Revert "packaging: use private BC 1.50 release that provides JSSE compatible handling of key agreement secret generation."
+
+[1e99b2e16c](https://github.com/dcache/dcache/commit/1e99b2e16c76b31ec5f6a366fc39d6c149ac3ddc)
+:   gplazma: support large gid values for roles
+
+[403ffa3095](https://github.com/dcache/dcache/commit/403ffa3095d3622566cabda91ac6d8795fa5a1f6)
+:   pool: P2P failures trigger stack-trace
+
+[b7dd724b2b](https://github.com/dcache/dcache/commit/b7dd724b2bdeff260858226a47df9c57ec137b82)
+:   webdav: obtain FQAN from X.509 credential for gridsite
+
+[0c5fa778e5](https://github.com/dcache/dcache/commit/0c5fa778e5f205ef7d1b5bea8c4fcdfb40879ee2)
+:   core: avoid sending bad macaroons to gplazma
+
+[3e03f5085d](https://github.com/dcache/dcache/commit/3e03f5085dfc07a27f103295c508b0f18ecec2f4)
+:   webdav: update access log to record macaroon request details
+
+[21e168325b](https://github.com/dcache/dcache/commit/21e168325bb28d17fb4f750b260b0a7eef9472b5)
+:   transfermanager: fix missing path
+
+[f6fe0b2163](https://github.com/dcache/dcache/commit/f6fe0b2163db8d353bdaa05a95d1d27f62254e37)
+:   ftp: java.lang.IllegalStateException: Cannot send after the producer is closed.
+
+[18ebdc50a3](https://github.com/dcache/dcache/commit/18ebdc50a375f16f633478c6cc3a0cb3a391cfaf)
+:   dcache: use getAddress for uniform client IPs in Transfer info
+
+[1db446d680](https://github.com/dcache/dcache/commit/1db446d68000d7d5ba66a4af638d4f1fdad90b5e)
+:   libs: update to commons-compress-1.18
+
+[c223e0afe9](https://github.com/dcache/dcache/commit/c223e0afe98c31a120389b9dda33e94082c47cbc)
+:   httpd: add path to context/transfers.json
+
+[2ca2edc9d5](https://github.com/dcache/dcache/commit/2ca2edc9d5c3ba5fa3a825fbea8df9898e03d51e)
+:   macaroons: include macaroon id in error message
+
+[af0c14fc17](https://github.com/dcache/dcache/commit/af0c14fc17fd18430dbcdd2be18a8a89ee08eea3)
+:   pool: fix pool's runtime configured size regression (b70b0d9)
+
+[ee9685760a](https://github.com/dcache/dcache/commit/ee9685760a276c50798b1546a917dc501c92700c)
+:   core: provide better feedback and logging if a macaroon is rejected
+
+[e7416d7035](https://github.com/dcache/dcache/commit/e7416d7035951a52f510e3c7b0cdeea485aaa020)
+:   dcache-frontend: fix array out of bounds exception in cell info service
+
+[910ed77ac4](https://github.com/dcache/dcache/commit/910ed77ac497e528bd51f681a70d49369dfbceaf)
+:   pool: update HTTP TPC to support retrying GET and HEAD requests for DPM
+
+[bc15b8cfe2](https://github.com/dcache/dcache/commit/bc15b8cfe265ec408816356f371b56e630e274a1)
+:   srm: add gridsite delegation interface access-log
+
+[60f5628b02](https://github.com/dcache/dcache/commit/60f5628b02eee7377a94df62ce49108446c2928b)
+:   macaroons: fix logged id
+
+[e773fd08c2](https://github.com/dcache/dcache/commit/e773fd08c2db2442c70bec9bcbc6bc541d01506c)
+:   dcache-frontend: add path filter to transfers
+
+[8e35daa3c6](https://github.com/dcache/dcache/commit/8e35daa3c6f6e84f228545ec172e9871547f8fda)
+:   core: avoid stacktrace on arbitrary CacheException
+
+[4b4cd464b2](https://github.com/dcache/dcache/commit/4b4cd464b23f3761f1d86fbfb81591acdeb389a8)
+:   [maven-release-plugin] prepare for next development iteration
+
+[a514557a15](https://github.com/dcache/dcache/commit/a514557a154cdca896dd522c5ed2465a72617dae)
+:   pnfsmanager: allow restricted user with UPLOAD to create parent directories
+
 ## Release 4.2.13
 
 ### Changes affecting multiple services

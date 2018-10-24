@@ -107,6 +107,148 @@ Thanks to Christoph Anton Mitterer for his constributions.
 We would like to thank the students of HTW Berlin Alexandra Konovalova, Hagen Wittlich and Marcus Kopp,
 for their contributions during the HTW course.
 
+## Release 4.1.22
+
+### Changes affecting multiple services
+
+In order to more easily identify a rejected macaroon in the logs, its ID is now included in the log message.
+
+An irrelevant stacktrace was logged on unexpected CacheExceptions. This 
+was removed, leading to less clutter in the logs.
+
+Different macaroons that were issued against the same secret are now discernible in the logs.
+
+Users now get more information about the reasons why an invalid macaroon was
+rejected: HTTP requests that are made with an invalid macaroon have a 401 HTTP
+response with the status-line explanation phrase that describes why the
+macaroon is invalid.
+
+The access log file also logs why a macaroon was rejected.
+
+### core
+
+A library dependency was updated to avoid [CVE-2018-11771](https://nvd.nist.gov/vuln/detail/CVE-2018-11771). This patch introduces no user-visible changes.
+
+### frontend
+
+[Github issue #4242](https://github.com/dCache/dcache/issues/4242) was resolved; 
+cell information can now be be gathered using the REST interface without
+specifying domains.
+
+### gplazma
+
+Invalid macaroon logins no longer "spam" gPlazma.
+
+### pnfsmanager
+
+When creating a macaroon to allow uploading of data, the desired path
+may not already exist. Without restrictions, WebDAV will auto-create
+parent directory items that are missing, or the client can create these
+directory elements explicitly with MKCOL.
+
+With restrictions (such as from a macaroon) such directory creation
+currently requires the MANAGE activity, which allows other actions
+beyond the scope of this scenario. With this release, the behaviour 
+was changed so that a user with a macaroon that authorises them to upload data into a
+particular directory will be able to create parent directories to
+achieve uploading the data.
+
+### pool
+
+A regression caused pools that had their size only specified in a layout file
+to report a size of 8 Exabytes. This issue was fixed.
+
+dCache now supports a DPM-specific HTTP extension that indicates the
+checksum calculation is not yet complete, avoiding potential data
+corruption with third-party copies: If DPM is calculating a checksum, then any RFC 3230 (i.e., with a
+'Want-Digest' header) GET or HEAD request returns '202 Accepted' respond
+status line and an HTML page as the response entity. Since dCache
+considers any 2xx response as success, the HTML page was previously accepted as the
+file's contents, resulting in data corruption.
+
+dCache pools no longer log a stack-trace for non-bug P2P failures.
+
+### srm
+
+The domain '.access' log file now contains log information for grid-site
+delegation activity, which facilitates debugging of http third-party-copying issues.
+
+### transfermanagers
+
+The "restriction check by-passed" warning for each WebDAV-initiated
+third-party transfer is fixed.
+
+### webdav
+
+A user may request a macaroon by making an HTTP POST request to the
+WebDAV door. This log entry was augmented by the ID and type of
+macaroon used.
+
+A previous patch needed a bit of an update to ensure that X.509-with-FQAN authenticated third-party transfers with macaroons work under all circumstances. This is now ensured.
+
+### xrootd
+
+The `--zip` option of xrootd clients is now supported.
+
+
+### Changelog 4.1.21..4.1.22
+
+<!-- git log 4.1.21..4.1.22 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[0f2fc8770e](https://github.com/dcache/dcache/commit/0f2fc8770ee277e7e9103206893ae48b61513b44)
+:   [maven-release-plugin] prepare release 4.1.22
+
+[fe89b26094](https://github.com/dcache/dcache/commit/fe89b2609418c5c786897eadbf614d795979fb26)
+:   xrootd: add support for kXR_stat on open files
+
+[430bf8a4b0](https://github.com/dcache/dcache/commit/430bf8a4b055114f3c2dc9bc9b8de6f9171a9bae)
+:   pool: P2P failures trigger stack-trace
+
+[4781474673](https://github.com/dcache/dcache/commit/4781474673cf75ca2c02bfd4fbfecd690ff1c306)
+:   webdav: obtain FQAN from X.509 credential for gridsite
+
+[f7e445ba77](https://github.com/dcache/dcache/commit/f7e445ba77646ec0ad02e579cd877e84c052ceb5)
+:   core: avoid sending bad macaroons to gplazma
+
+[aa0ba138ad](https://github.com/dcache/dcache/commit/aa0ba138ad81cd72a390940d3283a1281a9fedbe)
+:   webdav: update access log to record macaroon request details
+
+[27347cf925](https://github.com/dcache/dcache/commit/27347cf925b6bbe6714db8f1bbdd13541497473c)
+:   transfermanager: fix missing path
+
+[aaa65d8ec9](https://github.com/dcache/dcache/commit/aaa65d8ec94eb7bbf9590e5bb6479f8bb180460e)
+:   libs: update to commons-compress-1.18
+
+[8e5163de42](https://github.com/dcache/dcache/commit/8e5163de42ffc08a6cc6e499024e68ea261d035a)
+:   macaroons: include macaroon id in error message
+
+[fc8cf467bf](https://github.com/dcache/dcache/commit/fc8cf467bf78111ed8bfeef769d694705685e305)
+:   pool: fix pool's runtime configured size regression (b70b0d9)
+
+[a641fa61cc](https://github.com/dcache/dcache/commit/a641fa61cc13a1a96546f1ac6510f164d0321096)
+:   core: provide better feedback and logging if a macaroon is rejected
+
+[aeb4cee6ce](https://github.com/dcache/dcache/commit/aeb4cee6ce033bd9b8a8410c056c3cbdc8ab4467)
+:   dcache-frontend: fix array out of bounds exception in cell info service
+
+[edc17a507f](https://github.com/dcache/dcache/commit/edc17a507f949009159b19cec465a8e6b6cbc498)
+:   pool: update HTTP TPC to support retrying GET and HEAD requests for DPM
+
+[4aee9f201b](https://github.com/dcache/dcache/commit/4aee9f201b37aff4c10926629f0c4791ea99f419)
+:   srm: add gridsite delegation interface access-log
+
+[d1c13e24ea](https://github.com/dcache/dcache/commit/d1c13e24ea87ac31b61cad4ab9352b58a865b61b)
+:   macaroons: fix logged id
+
+[ea79980dc0](https://github.com/dcache/dcache/commit/ea79980dc0f83818a214c33cf550e8b355d83b5f)
+:   core: avoid stacktrace on arbitrary CacheException
+
+[0c1f3ae879](https://github.com/dcache/dcache/commit/0c1f3ae8796b031765a4952aef37df100d867e31)
+:   [maven-release-plugin] prepare for next development iteration
+
+[30cd18cdd1](https://github.com/dcache/dcache/commit/30cd18cdd183392720718f4c226f476672a5ebc3)
+:   pnfsmanager: allow restricted user with UPLOAD to create parent directories
+
 ## Release 4.1.21
 
 ### frontend

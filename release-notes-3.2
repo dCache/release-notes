@@ -107,6 +107,139 @@ from dCache 3.1.  Please read this section *very carefully* when
 upgrading from this version.
 
 
+## Release 3.2.36
+
+### Changes affecting multiple services
+
+In order to more easily identify a rejected macaroon in the logs, its ID is now included in the log message.
+
+An irrelevant stacktrace was logged on unexpected CacheExceptions. This 
+was removed, leading to less clutter in the logs.
+
+Different macaroons that were issued against the same secret are now discernible in the logs.
+
+Users now get more information about the reasons why an invalid macaroon was
+rejected: HTTP requests that are made with an invalid macaroon have a 401 HTTP
+response with the status-line explanation phrase that describes why the
+macaroon is invalid.
+
+The access log file also logs why a macaroon was rejected.
+
+### core
+
+A library dependency was updated to avoid [CVE-2018-11771](https://nvd.nist.gov/vuln/detail/CVE-2018-11771). This patch introduces no user-visible changes.
+
+### gplazma
+
+Invalid macaroon logins no longer "spam" gPlazma.
+
+### pnfsmanager
+
+When creating a macaroon to allow uploading of data, the desired path
+may not already exist. Without restrictions, WebDAV will auto-create
+parent directory items that are missing, or the client can create these
+directory elements explicitly with MKCOL.
+
+With restrictions (such as from a macaroon) such directory creation
+currently requires the MANAGE activity, which allows other actions
+beyond the scope of this scenario. With this release, the behaviour 
+was changed so that a user with a macaroon that authorises them to upload data into a
+particular directory will be able to create parent directories to
+achieve uploading the data.
+
+### pool
+
+A regression caused pools that had their size only specified in a layout file
+to report a size of 8 Exabytes. This issue was fixed.
+
+dCache now supports a DPM-specific HTTP extension that indicates the
+checksum calculation is not yet complete, avoiding potential data
+corruption with third-party copies: If DPM is calculating a checksum, then any RFC 3230 (i.e., with a
+'Want-Digest' header) GET or HEAD request returns '202 Accepted' respond
+status line and an HTML page as the response entity. Since dCache
+considers any 2xx response as success, the HTML page was previously accepted as the
+file's contents, resulting in data corruption.
+
+dCache pools no longer log a stack-trace for non-bug P2P failures.
+
+### srm
+
+The domain '.access' log file now contains log information for grid-site
+delegation activity, which facilitates debugging of http third-party-copying issues.
+
+### transfermanagers
+
+The "restriction check by-passed" warning for each WebDAV-initiated
+third-party transfer is fixed.
+
+### webdav
+
+A user may request a macaroon by making an HTTP POST request to the
+WebDAV door. This log entry was augmented by the ID and type of
+macaroon used.
+
+A previous patch needed a bit of an update to ensure that X.509-with-FQAN authenticated third-party transfers with macaroons work under all circumstances. This is now ensured.
+
+### xrootd
+
+The `--zip` option of xrootd clients is now supported.
+
+
+### Changelog 3.2.35..3.2.36
+
+<!-- git log 3.2.35..3.2.36 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[4166b4b29b](https://github.com/dcache/dcache/commit/4166b4b29b7bb9ef05e2ef91278c8116ef7df3f0)
+:   [maven-release-plugin] prepare release 3.2.36
+
+[acd769fba0](https://github.com/dcache/dcache/commit/acd769fba0ad78e6a99555a21268bd32d8f13d66)
+:   xrootd: add support for kXR_stat on open files
+
+[9556512fa0](https://github.com/dcache/dcache/commit/9556512fa053dcd60b3fa6310e426f0112b0620c)
+:   pool: P2P failures trigger stack-trace
+
+[80dfa61625](https://github.com/dcache/dcache/commit/80dfa61625051f6684c5aba3b94e28e65915b7e6)
+:   webdav: obtain FQAN from X.509 credential for gridsite
+
+[c1b19f6443](https://github.com/dcache/dcache/commit/c1b19f644310600ce3146618b177af62e118b1b7)
+:   core: avoid sending bad macaroons to gplazma
+
+[4b26086b58](https://github.com/dcache/dcache/commit/4b26086b582c906ed04c5d20ad8a64f20097cccd)
+:   webdav: update access log to record macaroon request details
+
+[5cea320aff](https://github.com/dcache/dcache/commit/5cea320aff00cca75dc47550613e94c21ee83fdb)
+:   transfermanager: fix missing path
+
+[7ff01148cc](https://github.com/dcache/dcache/commit/7ff01148ccc1032355b39801aa9e38c7901da2cf)
+:   libs: update to commons-compress-1.18
+
+[1e84c57b12](https://github.com/dcache/dcache/commit/1e84c57b126c702cfd47e088e272f99aad64ad2d)
+:   macaroons: include macaroon id in error message
+
+[635dee7b22](https://github.com/dcache/dcache/commit/635dee7b22a02a36bfa97ad6ee140771a146804b)
+:   pool: fix pool's runtime configured size regression (b70b0d9)
+
+[e3e03a50dd](https://github.com/dcache/dcache/commit/e3e03a50ddc1dc039830617e126f1f2f55c54f64)
+:   core: provide better feedback and logging if a macaroon is rejected
+
+[eba086bd1a](https://github.com/dcache/dcache/commit/eba086bd1a789ef3caff3b9beae9c26da2dfb3e0)
+:   pool: update HTTP TPC to support retrying GET and HEAD requests for DPM
+
+[1ddd05ec66](https://github.com/dcache/dcache/commit/1ddd05ec66879024b867575cfd6d99d9a058c877)
+:   srm: add gridsite delegation interface access-log
+
+[06f235a099](https://github.com/dcache/dcache/commit/06f235a099c40a8e29f5277603b08e7f486d8b6c)
+:   macaroons: fix logged id
+
+[5bcd4d03a8](https://github.com/dcache/dcache/commit/5bcd4d03a8dc6c4b7fbf7a81634e0771dec47c78)
+:   core: avoid stacktrace on arbitrary CacheException
+
+[c5830a6522](https://github.com/dcache/dcache/commit/c5830a65224c65289649b0b28a5bd9b8c6dcb8e7)
+:   [maven-release-plugin] prepare for next development iteration
+
+[cdc0d5eb18](https://github.com/dcache/dcache/commit/cdc0d5eb18d3ecd552d116e6e4299aa514799c30)
+:   pnfsmanager: allow restricted user with UPLOAD to create parent directories
+
 ## Release 3.2.35
 
 ### poolmanager
