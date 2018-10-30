@@ -91,6 +91,106 @@ updates, pools may remain at 4.1 during that update.
 The dCache team thanks Christoph Anton Mitterer, Martin Johnki, Onno Zweers and Johannes Thurn
 for their pull requests and contributions.
 
+## Release 4.2.15
+
+### libs
+
+This release includes updated library versions Bouncy Castle 1.54, CANL 2.5.0 and
+voms-api-java 3.3.0 which, in addition to the usual security updates, should
+help resolve the "pad block corrupted" issue that a few deployments showed
+with xrootd transfers.
+
+### pool
+
+Diagnostic logging for failed HTTP third-party transfers was improved.
+
+Billing records for failed transfers now show more detailed information.
+
+The handling of cancelled flush requests for nearline media
+was rewritten to be more efficient.
+
+Compatibility with DPM was improved by increasing HTTP GET requests' timeouts.
+This should allow more transfers to succeed.
+
+### poolmanager
+
+Supplying poolmanager with an unresolvable hostname as the target will
+now result in an UnknownHostException instead of the previous behaviour
+where an (unnecessary) NullPointerException was thrown.
+
+### scripts
+
+The format and content of the Storage Description JSON file have been updated
+according to WLCG suggestions:
+
+- 'capacity_id' field is renamed to 'name'
+- 'total_space' and 'used_space' renamed to 'totalsize' and 'usedsize'
+respectively.
+- 'timestamp' field added
+- 'vos' field added
+- 'assignedendpoints' added.  Currently hardcoded to "all".
+
+### srm
+
+Logging of errors in the SRM credential store was improved.
+
+### webdav
+
+If a non-resolvable host name is given as the source or destination
+of a third-party copy request, WebDAV will now fail the transfer
+immediately instead of waiting for a Poolmanager timeout.
+
+Diagnostic logging for failed HTTP third-party transfers was improved.
+
+### xrootd
+
+dCache allows xrootd clients to specify a query/opaque string in a
+kXR_mv request's source path.
+
+
+### Changelog 4.2.14..4.2.15
+
+<!-- git log 4.2.14..4.2.15 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[0d84527d7c](https://github.com/dcache/dcache/commit/0d84527d7c14228e5744b9d4e029af2022db6320)
+:   [maven-release-plugin] prepare release 4.2.15
+
+[09543a34bb](https://github.com/dcache/dcache/commit/09543a34bbd907d6bc788118b821a1bb151fda0b)
+:   pool: HTTP TPC rework exception logging
+
+[4220befbbc](https://github.com/dcache/dcache/commit/4220befbbc7790328125d687032b42b5675c838a)
+:   pool: increase TPC socket timeout for GET requests
+
+[0ef9014b0b](https://github.com/dcache/dcache/commit/0ef9014b0b917ae0ab987da8c4d721a27af9bc7f)
+:   srm: fix credential store logging
+
+[ae6cc5f15d](https://github.com/dcache/dcache/commit/ae6cc5f15d3d33daa235fc8b0466a956ce370fbf)
+:   pool: update log status using exception class name if no message
+
+[c4262b3b1c](https://github.com/dcache/dcache/commit/c4262b3b1cd07413ed8e883831123b7e21ed5e90)
+:   storagedescriptor: update information based on WLCG feedback
+
+[089d7335ef](https://github.com/dcache/dcache/commit/089d7335effc78c412b1066bf16a9f0e3faf26f8)
+:   xrootd: strip off query part from kXR_mv source
+
+[4a5473b86e](https://github.com/dcache/dcache/commit/4a5473b86e1c7e6b85d0f37c5b6dabfb89e0abc0)
+:   webdav: fail TPC request early on unknown hostname
+
+[9ecfc52ce9](https://github.com/dcache/dcache/commit/9ecfc52ce907fa34ef2799d15ef591ba938586f2)
+:   nearline-provider: do not propagate thread interrupt flag
+
+[cbc1223b39](https://github.com/dcache/dcache/commit/cbc1223b39d1fbd0ee85757ecedbe81c4dbd1e38)
+:   poolmanager: fix NPE on unknown host
+
+[61a3174bd7](https://github.com/dcache/dcache/commit/61a3174bd71464ba1eb67675959c3b7f85f8313c)
+:   webdav: improve logging of TPC requests
+
+[eafbd5c1b1](https://github.com/dcache/dcache/commit/eafbd5c1b11d3525787c80136d8dc81b52f44427)
+:   libs: upgrade to bouncycastle 1.54,  CANL to 2.5.0 and voms-api-java to 3.3.0
+
+[3a021a49e8](https://github.com/dcache/dcache/commit/3a021a49e8526d745c069bae533848085456c6dd)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.2.14
 
 ### Changes affecting multiple services

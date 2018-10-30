@@ -107,6 +107,81 @@ from dCache 3.1.  Please read this section *very carefully* when
 upgrading from this version.
 
 
+## Release 3.2.37
+
+### pool
+
+Diagnostic logging for failed HTTP third-party transfers was improved.
+
+Billing records for failed transfers now show more detailed information.
+
+The handling of cancelled flush requests for nearline media
+was rewritten to be more efficient.
+
+Compatibility with DPM was improved by increasing HTTP GET requests' timeouts.
+This should allow more transfers to succeed.
+
+### poolmanager
+
+Supplying poolmanager with an unresolvable hostname as the target will
+now result in an UnknownHostException instead of the previous behaviour
+where an (unnecessary) NullPointerException was thrown.
+
+### srm
+
+Logging of errors in the SRM credential store was improved.
+
+### webdav
+
+If a non-resolvable host name is given as the source or destination
+of a third-party copy request, WebDAV will now fail the transfer
+immediately instead of waiting for a Poolmanager timeout.
+
+Diagnostic logging for failed HTTP third-party transfers was improved.
+
+### xrootd
+
+dCache allows xrootd clients to specify a query/opaque string in a
+kXR_mv request's source path.
+
+
+### Changelog 3.2.36..3.2.37
+
+<!-- git log 3.2.36..3.2.37 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[2015e44697](https://github.com/dcache/dcache/commit/2015e446970673463585e9ce680435ed97023847)
+:   [maven-release-plugin] prepare release 3.2.37
+
+[da040a2395](https://github.com/dcache/dcache/commit/da040a23950c3b3d1e1f532dcf75db0551640b70)
+:   pool: HTTP TPC rework exception logging
+
+[f2f359d250](https://github.com/dcache/dcache/commit/f2f359d2500663048057934f6893a78fc94d3cf3)
+:   pool: increase TPC socket timeout for GET requests
+
+[a3995fe5b7](https://github.com/dcache/dcache/commit/a3995fe5b7c98336d79e089632ca3edc553c488b)
+:   srm: fix credential store logging
+
+[1a474ac8f7](https://github.com/dcache/dcache/commit/1a474ac8f7db8a7c4b417ab6cd7fbe30b09c80c9)
+:   pool: update log status using exception class name if no message
+
+[08e79346ef](https://github.com/dcache/dcache/commit/08e79346efa4c9467768d487bf92cd6066b156ca)
+:   xrootd: strip off query part from kXR_mv source
+
+[fd0187db6c](https://github.com/dcache/dcache/commit/fd0187db6ca3d3235a51107055ddf15a028fca98)
+:   webdav: fail TPC request early on unknown hostname
+
+[1986a52bfe](https://github.com/dcache/dcache/commit/1986a52bfe4cc0b2e7058086fbbd7cc63dde78bc)
+:   nearline-provider: do not propagate thread interrupt flag
+
+[f1cde32f35](https://github.com/dcache/dcache/commit/f1cde32f35f1095ad5524220bb25fa4a0d2a6a4a)
+:   poolmanager: fix NPE on unknown host
+
+[632bd934dd](https://github.com/dcache/dcache/commit/632bd934dd1dda45d22f733df0f7df5336bc5460)
+:   webdav: improve logging of TPC requests
+
+[4c835638fa](https://github.com/dcache/dcache/commit/4c835638fab8c40f430e603b37c1e7f3d9177163)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.2.36
 
 ### Changes affecting multiple services
