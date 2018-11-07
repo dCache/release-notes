@@ -107,6 +107,75 @@ Thanks to Christoph Anton Mitterer for his constributions.
 We would like to thank the students of HTW Berlin Alexandra Konovalova, Hagen Wittlich and Marcus Kopp,
 for their contributions during the HTW course.
 
+## Release 4.1.24
+
+### ftp
+
+The behaviour of FTP transfers was made more robust in cases where a client
+disconnects from the control channel prematurely.
+
+The performance markers that dCache sends back to the client in FTP transfers
+are now more robust against bugs.
+
+### nfs
+
+When transient errors in pools cause NFS transfers to have to wait and retry,
+the system's behaviour is now more robust and no StackOverflowErrors should be logged any more.
+
+### scripts
+
+Maven's findbugs plugin is now granted more working memory in order
+to make builds, especially on our continuous integration system, 
+more robust.
+
+### srm
+
+Certificate lifetime considerations for VOMS proxy certificates are
+improved in this release: if a
+client delegates a credential where the VOMS AC expires before the X.509
+proxies, dCache now will not use the credential beyond the AC expiry time. 
+This avoids unnecessary authentication errors. 
+
+### webdav
+
+When the WebDAV door is considering an HTTP third-party-copy request
+that uses grid-site delegation, there is a minimum 20 minute validity
+that any existing delegated credential must satisfy. If this is not
+satisfied then dCache will request a fresh delegated credential.
+
+Until now, if the client failed to delegate a fresh certificate then the
+subsequent COPY request was rejected. This release changes that behaviour
+and enables such transfers.
+
+
+### Changelog 4.1.23..4.1.24
+
+<!-- git log 4.1.23..4.1.24 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[62456f1976](https://github.com/dcache/dcache/commit/62456f19761f7cf2899647cf1b7565888de8a359)
+:   [maven-release-plugin] prepare release 4.1.24
+
+[e8ffe81e2c](https://github.com/dcache/dcache/commit/e8ffe81e2c1eb54c9118d4ca7c5d93fb75ac01a8)
+:   scripts: Avoid findbugs memory errors
+
+[4f45c29f8e](https://github.com/dcache/dcache/commit/4f45c29f8e798420646074c6632042d1eb2fe52e)
+:   nfs: increase request retry delay when selecting/starting  pool or mover
+
+[9abaac003c](https://github.com/dcache/dcache/commit/9abaac003ca9ff12b3dbd608b9591c00d11ff484)
+:   webdav: adjust minimum validity after requesting delegation
+
+[4e7a6646c9](https://github.com/dcache/dcache/commit/4e7a6646c9ca296dd7d06dcce6d3ba86c8c5aeb1)
+:   srmmanager/webdav: consider VOMS AC validity of delegated credential
+
+[648e13e9cd](https://github.com/dcache/dcache/commit/648e13e9cdc1d5e64d59e2050126a7a868dd938f)
+:   ftp: make performance marker task robust.
+
+[650542c1b6](https://github.com/dcache/dcache/commit/650542c1b6b1c9fd6adf4c263d97b7f2bf8b7ce4)
+:   ftp: avoid NullPointerException if adapter is not connected
+
+[4bb1eb2cee](https://github.com/dcache/dcache/commit/4bb1eb2cee4b598445d6a535c17a23069aa8c90e)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.1.23
 
 ### pool

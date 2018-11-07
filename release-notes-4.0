@@ -99,6 +99,69 @@ The notes for [release 4.0.0](#release4.0.0) detail the differences
 from dCache 3.2.  Please read this section *very carefully* when
 upgrading from this version.
 
+## Release 4.0.30
+
+### ftp
+
+The performance markers that dCache sends back to the client in FTP transfers
+are now more robust against bugs.
+
+### nfs
+
+When transient errors in pools cause NFS transfers to have to wait and retry,
+the system's behaviour is now more robust and no StackOverflowErrors should be logged any more.
+
+### scripts
+
+Maven's findbugs plugin is now granted more working memory in order
+to make builds, especially on our continuous integration system, 
+more robust.
+
+### srm
+
+Certificate lifetime considerations for VOMS proxy certificates are
+improved in this release: if a
+client delegates a credential where the VOMS AC expires before the X.509
+proxies, dCache now will not use the credential beyond the AC expiry time. 
+This avoids unnecessary authentication errors. 
+
+### webdav
+
+When the WebDAV door is considering an HTTP third-party-copy request
+that uses grid-site delegation, there is a minimum 20 minute validity
+that any existing delegated credential must satisfy. If this is not
+satisfied then dCache will request a fresh delegated credential.
+
+Until now, if the client failed to delegate a fresh certificate then the
+subsequent COPY request was rejected. This release changes that behaviour
+and enables such transfers.
+
+
+### Changelog 4.0.29..4.0.30
+
+<!-- git log 4.0.29..4.0.30 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[7cd371066d](https://github.com/dcache/dcache/commit/7cd371066dc697073bb4dc649ccd0272d71f4d85)
+:   [maven-release-plugin] prepare release 4.0.30
+
+[37a7212a0d](https://github.com/dcache/dcache/commit/37a7212a0d6a03bd095ce34f75296adbd2ea26b9)
+:   scripts: Avoid findbugs memory errors
+
+[a619fa8c93](https://github.com/dcache/dcache/commit/a619fa8c93c2068600f6b658e877ace2671c9123)
+:   nfs: increase request retry delay when selecting/starting  pool or mover
+
+[b5371e9fae](https://github.com/dcache/dcache/commit/b5371e9faec6cdf4272cc79284255e509320eaa0)
+:   webdav: adjust minimum validity after requesting delegation
+
+[7ff0b933bc](https://github.com/dcache/dcache/commit/7ff0b933bc4910b29624dfcb1e07d5cede1d89ca)
+:   srmmanager/webdav: consider VOMS AC validity of delegated credential
+
+[f226a8503b](https://github.com/dcache/dcache/commit/f226a8503b198a1e475c3e799438e00a35a7da14)
+:   ftp: make performance marker task robust.
+
+[0f14230923](https://github.com/dcache/dcache/commit/0f142309239f69877d144630fbb66038595c9ef5)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.0.29
 
 ### pool
