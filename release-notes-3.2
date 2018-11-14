@@ -107,6 +107,42 @@ from dCache 3.1.  Please read this section *very carefully* when
 upgrading from this version.
 
 
+## Release 3.2.39
+
+### ftp
+
+The current release provides better protection against leaking proxy/data TCP sockets if client
+aborts a proxied transfer.
+
+Leaking server sockets were observed when a client aborted a proxied transfers
+with kafka enabled. This is now fixed and No further server sockets leaked when a proxy is being used, kafka
+notification is enabled, and the client aborts the transfer
+
+### srm
+
+Clients that use the gridsite protocol, such as davix, can now delegate
+their credential.
+
+
+### Changelog 3.2.38..3.2.39
+
+<!-- git log 3.2.38..3.2.39 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[db287b9](https://github.com/dcache/dcache/commit/db287b9494732fb2033a7b4fd1ff6b95cd8d7640)
+:   [maven-release-plugin] prepare release 3.2.39
+
+[06d5bfe](https://github.com/dcache/dcache/commit/06d5bfe431ff137f9fe5e0682e80078240c75365)
+:   ftp: make shutdown more robust
+
+[1f83d3b](https://github.com/dcache/dcache/commit/1f83d3b0dd3ddf3410278b62f5d5cda25c075eb8)
+:   common: fix bug in CountingHistogram index computation
+
+[3dc7e59](https://github.com/dcache/dcache/commit/3dc7e5936cf17afc7b1e0cdb4d9326803e94bec6)
+:   [maven-release-plugin] prepare for next development iteration
+
+[e4d22d3](https://github.com/dcache/dcache/commit/e4d22d3452a64e4e8aed4b26502734fb15fa257f)
+:   srm: gridsite fix querying validity of delegated credential
+
 ## Release 3.2.38
 
 ### ftp

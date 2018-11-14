@@ -91,6 +91,64 @@ updates, pools may remain at 4.1 during that update.
 The dCache team thanks Christoph Anton Mitterer, Martin Johnki, Onno Zweers and Johannes Thurn
 for their pull requests and contributions.
 
+## Release 4.2.17
+
+### chimera
+
+Chimera shell is now able to find origin tags of a given name.
+
+### pool
+
+The current release fixed stopwatch error and now IO-statistics collecting is more robust,
+ avoiding stack-traces with the message `This stopwatch is already stopped`.
+
+### restful
+
+No function name/operationIds clashes for the swagger generated clients.
+
+### srm
+
+Clients that use the gridsite protocol, such as davix, can now delegate
+their credential.
+
+
+### Changelog 4.2.16..4.2.17
+
+<!-- git log 4.2.16..4.2.17 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[23c0d9f](https://github.com/dcache/dcache/commit/23c0d9f0262337f3635cb99d0f6f5824e65e8523)
+:   [maven-release-plugin] prepare release 4.2.17
+
+[daf27f6](https://github.com/dcache/dcache/commit/daf27f6c27fadae53d0f07f769a25bbd8f144e68)
+:   dcap: fix  NullPointerException:
+
+[1178f8f](https://github.com/dcache/dcache/commit/1178f8f66521c3f6d2fc670209350576fca068a5)
+:   restful: Rename operations to have unique operationId.
+
+[7494641](https://github.com/dcache/dcache/commit/74946415bbcae6bc9f9cbf1bacfa12dc71143246)
+:   ftp: avoid kafka bug, make shutdown more robust
+
+[3ad364e](https://github.com/dcache/dcache/commit/3ad364e7b862902e25813a633c614214a79b3b42)
+:   dcache-history,dcache-frontend: check for serialized error when handling pool data request messages
+
+[272c627](https://github.com/dcache/dcache/commit/272c6279087f944826bbed2b16c8e40341c5d1ec)
+:   pool: fix stopwatch error
+
+[6ac21a4](https://github.com/dcache/dcache/commit/6ac21a40ffd54bca9241591801019bc1ca194bad)
+:   common: fix bug in CountingHistogram index computation
+
+[2ef9022](https://github.com/dcache/dcache/commit/2ef90226159188fb2ad7012947e9f05a1339436e)
+:   libs: update to nfs4j-0.17.6
+
+[eb161be](https://github.com/dcache/dcache/commit/eb161be061dab450cc0d7f2783ca9c205d616e46)
+:   [maven-release-plugin] prepare for next development iteration
+
+[45c992d](https://github.com/dcache/dcache/commit/45c992d543a7707d83cf3db8df245d9eeed52296)
+:   srm: gridsite fix querying validity of delegated credential
+
+[549ce6f](https://github.com/dcache/dcache/commit/549ce6fac80c02f497644e442cf81bc6f84cf125)
+:   chimera: support origin tag discovery
+
 ## Release 4.2.16
 
 ### frontend
