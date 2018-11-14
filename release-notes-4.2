@@ -93,6 +93,12 @@ for their pull requests and contributions.
 
 ## Release 4.2.17
 
+### ftp
+
+Leaking server sockets were observed when a client aborted a proxied transfers
+with kafka enabled. This is now fixed and No further server sockets leaked when a proxy is being used, kafka
+notification is enabled, and the client aborts the transfer.
+
 ### chimera
 
 Chimera shell is now able to find origin tags of a given name.
