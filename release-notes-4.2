@@ -91,6 +91,66 @@ updates, pools may remain at 4.1 during that update.
 The dCache team thanks Christoph Anton Mitterer, Martin Johnki, Onno Zweers and Johannes Thurn
 for their pull requests and contributions.
 
+## Release 4.2.18
+
+### dcache-view
+
+The current release added several bug fixes and improvement to dCache view.
+
+### nfs
+
+It is  possible now to reset  pool selection task if pool disabled before redirect after receiving start mover. 
+
+A stack trace on remove of a missing file is fixed.
+
+### pool
+
+The current release fixed failing HTTPS redirected transfers.
+
+Download and upload via HTTPS in dCacheView required the pool to support
+CORS. This is now fixed and dCacheView upload and download now succeeds.
+
+
+### Changelog 4.2.17..4.2.18
+
+<!-- git log 4.2.17..4.2.18 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[3a463d7](https://github.com/dcache/dcache/commit/3a463d723f00f4f7999de66ff549e3001e3d7f31)
+:   [maven-release-plugin] prepare release 4.2.18
+
+[fd3a263](https://github.com/dcache/dcache/commit/fd3a26386a734acc033f8d23aeb5233d04fbdce6)
+:   restful: Return not Found/404 for non existing pool.
+
+[0323a84](https://github.com/dcache/dcache/commit/0323a84cf27a277ffd106dbbf90660d9a2292bca)
+:   nfs: reset pool selection task if pool disabled before redirect
+
+[4015559](https://github.com/dcache/dcache/commit/40155597cea961d3b0ff988728667bbe99530038)
+:   dcache: release dcache-view version 1.5.1
+
+[f573141](https://github.com/dcache/dcache/commit/f573141f707190b76c2f898cda1b51ed67cde55c)
+:   gplazma2: Log credential information on x509 cert. chain validation and FQAN extraction failures.
+
+[cf01d6a](https://github.com/dcache/dcache/commit/cf01d6a225bcca1196bae60d607f5d11c24c7b6c)
+:   nfs: ignore JdbcFs errors when constructing acceess log entries
+
+[ce71873](https://github.com/dcache/dcache/commit/ce718735ed9ae9acb7de18187a17e4a6727f4e35)
+:   libs: update nfs4j to version 0.17.7
+
+[0d11f86](https://github.com/dcache/dcache/commit/0d11f86677f8db16db7d3c6236b6582ca52b1f92)
+:   nfs: handle chimera exception on remove of a missing file
+
+[9859ca0](https://github.com/dcache/dcache/commit/9859ca08831b6c8390daa5934a092c461e1e1fab)
+:   pool: add CORS support for HTTP requests
+
+[1fe6c73](https://github.com/dcache/dcache/commit/1fe6c738e149b0958c6c9b1160fb4aa55da8d5c8)
+:   pool: use hostname in HTTPS redirection URL
+
+[37da2fd](https://github.com/dcache/dcache/commit/37da2fd01c12d883d582abecc00693f9eac84716)
+:   [maven-release-plugin] prepare for next development iteration
+
+[6d5d9f1](https://github.com/dcache/dcache/commit/6d5d9f1222d272d3ac712a3892e9dcbd320137bb)
+:   dcache: release dcache-view version 1.5.0
+
 ## Release 4.2.17
 
 ### ftp
