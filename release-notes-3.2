@@ -233,7 +233,9 @@ Diagnostic logging for failed HTTP third-party transfers was improved.
 Billing records for failed transfers now show more detailed information.
 
 The handling of cancelled flush requests for nearline media
-was rewritten to be more efficient.
+was rewritten to be more efficient. This resolves issues where pools
+report "Flush of 0000... failed with: CacheException" followed by
+"Pool restart required: Internal repository error".
 
 Compatibility with DPM was improved by increasing HTTP GET requests' timeouts.
 This should allow more transfers to succeed.
