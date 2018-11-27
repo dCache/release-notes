@@ -99,6 +99,26 @@ The notes for [release 4.0.0](#release4.0.0) detail the differences
 from dCache 3.2.  Please read this section *very carefully* when
 upgrading from this version.
 
+## Release 4.0.32
+
+### statistics
+
+Metadata merge was using  max when it should had used min, this is now fixed.
+
+
+### Changelog 4.0.31..4.0.32
+
+<!-- git log 4.0.31..4.0.32 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[53c9888](https://github.com/dcache/dcache/commit/53c98881232ad480bbe0e3a711f1b95b40e098a2)
+:   [maven-release-plugin] prepare release 4.0.32
+
+[cf06159](https://github.com/dcache/dcache/commit/cf06159cce42a3ba8b0ad252bf62ca7349246613)
+:   common: fix histogram metadata merge
+
+[6574f09](https://github.com/dcache/dcache/commit/6574f0935051b131869cdcd90534def4c5d6a28b)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.0.31
 
 ### ftp

@@ -91,6 +91,55 @@ updates, pools may remain at 4.1 during that update.
 The dCache team thanks Christoph Anton Mitterer, Martin Johnki, Onno Zweers and Johannes Thurn
 for their pull requests and contributions.
 
+## Release 4.2.19
+
+### Changes affecting multiple services
+
+Jacco verison is updated so that the code coverage is now possible with java11 runtime.
+
+### libs
+
+The current release modified the nfs4j version, which contains   bugfix and enhancements, such as  fix layoutget usage with current stateid and respectivly.
+
+
+### nfs
+
+When door performs an async pool selection this process should be blocked.
+However, we should block when request
+is performed the very first time to handle busy system and slow
+networks. This is now fixed and a client is not blocked if door knows that the request is not processed yet
+ 
+
+### statistics
+
+Metadata merge was using  max when it should had used min, this is now fixed.
+
+
+### Changelog 4.2.18..4.2.19
+
+<!-- git log 4.2.18..4.2.19 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[b816e01](https://github.com/dcache/dcache/commit/b816e016745d484cea70113395e6ad7a4b3eab33)
+:   [maven-release-plugin] prepare release 4.2.19
+
+[d8e9ac4](https://github.com/dcache/dcache/commit/d8e9ac45475492eb1338c76c24006b41d1631983)
+:   libs: use nfs4j-0.17.8
+
+[baa4c0d](https://github.com/dcache/dcache/commit/baa4c0d02d911c7b7735ecd9687ddf68dc4d1f2b)
+:   pom: use jacoco with java11 support
+
+[0ab1148](https://github.com/dcache/dcache/commit/0ab1148eab4a2dfd96727e090d6c4679b7376fb0)
+:   common: fix histogram metadata merge
+
+[b0f6ae5](https://github.com/dcache/dcache/commit/b0f6ae5015b12f75ec3b0c6d81abe7a0d4c1b1b3)
+:   dcache-frontend,dcache-history: revisit NPE fix
+
+[85f8957](https://github.com/dcache/dcache/commit/85f8957de1fe2d02b083b8f936d4bdb3a649f242)
+:   nfs4: only block pool selection on the first attempt
+
+[61afa20](https://github.com/dcache/dcache/commit/61afa2071798caf02579daedac000b94ab8dba70)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.2.18
 
 ### dcache-view
