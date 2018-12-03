@@ -95,24 +95,27 @@ for their pull requests and contributions.
 
 ### Changes affecting multiple services
 
-Jacco verison is updated so that the code coverage is now possible with java11 runtime.
+Jacco verison is updated so that the code coverage is now possible
+with java11 runtime.
 
 ### libs
 
-The current release modified the nfs4j version, which contains   bugfix and enhancements, such as  fix layoutget usage with current stateid and respectivly.
-
+The current release modified the nfs4j version, which contains bugfix
+and enhancements, such as fix layoutget usage with current stateid and
+respectively.
 
 ### nfs
 
-When door performs an async pool selection this process should be blocked.
-However, we should block when request
-is performed the very first time to handle busy system and slow
-networks. This is now fixed and a client is not blocked if door knows that the request is not processed yet
+When door performs an async pool selection this process should be
+blocked.  However, we should block when request is performed the very
+first time to handle busy system and slow networks. This is now fixed
+and a client is not blocked if door knows that the request is not
+processed yet.
  
-
 ### statistics
 
-Metadata merge was using  max when it should had used min, this is now fixed.
+Metadata merge was using max when it should had used min, this is now
+fixed.
 
 
 ### Changelog 4.2.18..4.2.19
@@ -146,9 +149,15 @@ Metadata merge was using  max when it should had used min, this is now fixed.
 
 The current release added several bug fixes and improvement to dCache view.
 
+### gplazma
+
+The voms plugin now includes the user's DN in the logged error message
+if it cannot validate the VO-membership information.
+
 ### nfs
 
-It is  possible now to reset  pool selection task if pool disabled before redirect after receiving start mover. 
+It is possible now to reset pool selection task if pool disabled
+before redirect after receiving start mover.
 
 A stack trace on remove of a missing file is fixed.
 
