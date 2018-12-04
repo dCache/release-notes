@@ -107,6 +107,47 @@ Thanks to Christoph Anton Mitterer for his constributions.
 We would like to thank the students of HTW Berlin Alexandra Konovalova, Hagen Wittlich and Marcus Kopp,
 for their contributions during the HTW course.
 
+## Release 4.1.28
+
+### alarms
+
+An internal issue with the alarms configuration was fixed, which
+should prevent a rare NullPointerException from occuring.
+
+### dcap
+
+Creating a file or directory using the DCAP protocol with a URL
+as parameter, the file permissions were not set correctly. 
+
+With the current release, this was corrected, and such files
+use the client-supplied file permissions. If none are provided,
+the default modes 0700 (for directories) and 0600 (for files)
+are used. 
+
+### xrootd
+
+An uncaught exception in xrootd doors was fixed.
+
+
+### Changelog 4.1.27..4.1.28
+
+<!-- git log 4.1.27..4.1.28 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[f4a8299da1](https://github.com/dcache/dcache/commit/f4a8299da1316d86f5d174071fae7c61b1484e1e)
+:   [maven-release-plugin] prepare release 4.1.28
+
+[10cd61f23d](https://github.com/dcache/dcache/commit/10cd61f23ddf7b5a96323cc5c3c1dff8999f5925)
+:   alarms: fix persistence.xml configuration
+
+[2f7260b151](https://github.com/dcache/dcache/commit/2f7260b151fb77a48f687d9469f1882a2772d74b)
+:   dcap: fix permission propagation with DCAP
+
+[19a502af5f](https://github.com/dcache/dcache/commit/19a502af5f224e74e2700a708fa0e11747f612c7)
+:   dcache-xrootd: handle possible race condition in directory listing
+
+[25aefdd9b5](https://github.com/dcache/dcache/commit/25aefdd9b5c1c601c3d2a99cdf3b407235beae36)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.1.27
 
 ### statistics

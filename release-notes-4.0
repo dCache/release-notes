@@ -99,6 +99,47 @@ The notes for [release 4.0.0](#release4.0.0) detail the differences
 from dCache 3.2.  Please read this section *very carefully* when
 upgrading from this version.
 
+## Release 4.0.33
+
+### alarms
+
+An internal issue with the alarms configuration was fixed, which
+should prevent a rare NullPointerException from occuring.
+
+### dcap
+
+Creating a file or directory using the DCAP protocol with a URL
+as parameter, the file permissions were not set correctly. 
+
+With the current release, this was corrected, and such files
+use the client-supplied file permissions. If none are provided,
+the default modes 0700 (for directories) and 0600 (for files)
+are used. 
+
+### xrootd
+
+An uncaught exception in xrootd doors was fixed.
+
+
+### Changelog 4.0.32..4.0.33
+
+<!-- git log 4.0.32..4.0.33 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[62657c3f71](https://github.com/dcache/dcache/commit/62657c3f71b8432e127b5967a8b5d36cb63d43ac)
+:   [maven-release-plugin] prepare release 4.0.33
+
+[cb1020343e](https://github.com/dcache/dcache/commit/cb1020343e7001ecfaf6ffdd07336384df6803cc)
+:   alarms: fix persistence.xml configuration
+
+[6423f196ea](https://github.com/dcache/dcache/commit/6423f196ea3a3873f020a845af3dc85f79b5b1ea)
+:   dcap: fix permission propagation with DCAP
+
+[8c2e8da647](https://github.com/dcache/dcache/commit/8c2e8da6472afa3f1a47283811a4a20459aa319b)
+:   dcache-xrootd: handle possible race condition in directory listing
+
+[8b772286f2](https://github.com/dcache/dcache/commit/8b772286f2507d42bef4dd63314bd0c472f2736c)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.0.32
 
 ### statistics

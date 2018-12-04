@@ -91,6 +91,62 @@ updates, pools may remain at 4.1 during that update.
 The dCache team thanks Christoph Anton Mitterer, Martin Johnki, Onno Zweers and Johannes Thurn
 for their pull requests and contributions.
 
+## Release 4.2.20
+
+### alarms
+
+An internal issue with the alarms configuration was fixed, which
+should prevent a rare NullPointerException from occuring.
+
+### dcap
+
+Creating a file or directory using the DCAP protocol with a URL
+as parameter, the file permissions were not set correctly. 
+
+With the current release, this was corrected, and such files
+use the client-supplied file permissions. If none are provided,
+the default modes 0700 (for directories) and 0600 (for files)
+are used. 
+
+### nfs
+
+When a pool is decomissioned, clients can now be notified about 
+the need to terminate any remaining connections. The 
+`pool reset id` command was updated to issue a device change
+notification callback.
+
+### xrootd
+
+Interoperability with the 4.9.x client series was improved.
+
+An uncaught exception in xrootd doors was fixed.
+
+
+### Changelog 4.2.19..4.2.20
+
+<!-- git log 4.2.19..4.2.20 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[85b441434f](https://github.com/dcache/dcache/commit/85b441434fce8b86f5c365ecb76f703991d53e9c)
+:   [maven-release-plugin] prepare release 4.2.20
+
+[3ac7332249](https://github.com/dcache/dcache/commit/3ac73322495db1c4b97b60e90c1dee7cebe102f4)
+:   dcache-xrootd: add missing query support for tpc on pools
+
+[d4ed957a18](https://github.com/dcache/dcache/commit/d4ed957a1891f617e8cc18cc300c6da5e253ecb4)
+:   alarms: fix persistence.xml configuration
+
+[f4154f7f0c](https://github.com/dcache/dcache/commit/f4154f7f0ce09d9abb8fe949a35873a6b5a4cd02)
+:   dcap: fix permission propagation with DCAP
+
+[f8fa92a4ae](https://github.com/dcache/dcache/commit/f8fa92a4ae30a0da86db8b12259e6651ba0f7854)
+:   dcache-xrootd: handle possible race condition in directory listing
+
+[7f5a40d021](https://github.com/dcache/dcache/commit/7f5a40d0210fc233ea2addba63c447ef992f47f0)
+:   nfs41: update `reset pool` command to issue cb device notify
+
+[3d6fc445f0](https://github.com/dcache/dcache/commit/3d6fc445f057bfd19d2f8c48fc443f5d059bafaf)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.2.19
 
 ### Changes affecting multiple services
