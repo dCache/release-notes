@@ -58,15 +58,18 @@ book_type() { # $1 - dCache version
     fi
 }
 
+name_for_version() { # $1 - dCache version
+    if [ "$1" = "$NEXT_RELEASE" ]; then
+        echo "$1 (unreleased)"
+    else
+        echo "$1"
+    fi
+}
+
+
 link_for_version() { # $1 - version
     local bookPath="/manuals/Book-$1"
-    local name
-
-    if [ "$1" = "$NEXT_RELEASE" ]; then
-        name="$1 (unreleased)"
-    else
-        name="$1"
-    fi
+    local name=$(name_for_version $1)
 
     case $(book_type "$1") in
         DocBook)
@@ -109,8 +112,8 @@ echo -ne "<div class=\"book-navi\">
 #    These files need to be changed for each new release.                                   *
 #********************************************************************************************
 
-headerdocsversion=""
 for ((j=$length; j>0; j--)); do
+    headerdocsversion=""
     for ((i=$length; i>0; i--)); do
         thisVersion="${Version[i-1]}"
         if [ $i -ne $length ]; then
@@ -118,23 +121,27 @@ for ((j=$length; j>0; j--)); do
         fi
 
         if [ "$j" = "$i" ]; then
-            headerdocsversion="$headerdocsversion<span class=\"activ\">${Version[i-1]}</span>"
-
+            headerdocsversion="$headerdocsversion<span class=\"activ\">$(name_for_version "$thisVersion")</span>"
         else
-            headerdocsversion="$headerdocsversion$(link_for_version "${Version[i-1]}")"
+            headerdocsversion="$headerdocsversion$(link_for_version "$thisVersion")"
         fi
      done
 
-     echo "     create $WEB_ROOT/template/frags/header-docs-${Version[j-1]}-fhs.shtml"
-    echo -ne "<div class=\"book-navi\">
-           $header_start
-           $headerdocsversion
-           $header_end
-</div>" >$WEB_ROOT/template/frags/header-docs-${Version[j-1]}-fhs.shtml
+     outerVersion="${Version[j-1]}"
+     if [ "$(book_type "$outerVersion")" = "DocBook" ]; then
+        path=$WEB_ROOT/template/frags/header-docs-$outerVersion-fhs.shtml
+     else
+        path=$WEB_ROOT/template/frags/header-docs-$outerVersion.shtml
+     fi
 
-
-   headerdocsversion=""
-   done
+     cat >$path <<EOF
+<div class="book-navi">
+$header_start
+$headerdocsversion
+$header_end
+</div>
+EOF
+done
 
 #******************************************************************************************
 # create files                                                                            *
