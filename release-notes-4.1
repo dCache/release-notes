@@ -107,6 +107,59 @@ Thanks to Christoph Anton Mitterer for his constributions.
 We would like to thank the students of HTW Berlin Alexandra Konovalova, Hagen Wittlich and Marcus Kopp,
 for their contributions during the HTW course.
 
+## Release 4.1.29
+
+### Changes affecting multiple services
+
+If a client specifies a checksum value with either a WebDAV or FTP upload,
+a `Restriction check by-passed due to missing path` warning was logged occasionally.
+This was fixed now, ensuring that restrictions are always applied.
+
+### pool
+
+Space reservations on pools that are connected to tape showed a problem with 
+failing restore requests: If a restore failed, the space that was reserved to
+hold the file that was supposed to come in from tape was not freed again but
+kept in the 'sticky' state. This resulted in lots of unusable space on pools
+that could only be reclaimed through a restart. 
+
+With the current release, this issue is fixed and space is freed as soon
+as possible after a failed restore request.
+
+### resilience
+
+A very rare race-condition is fixed where a failed upload results in
+resilience recording a stack-trace.
+
+### webdav
+
+An issue with the Milton WebDAV library prevented Partial (or vector-read) GET requests
+from succeeding. This was fixed now through both an update of the dependency and a local
+patch while we wait for the proposed fix to be included upstream.
+
+
+### Changelog 4.1.28..4.1.29
+
+<!-- git log 4.1.28..4.1.29 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[69b1a98226](https://github.com/dcache/dcache/commit/69b1a98226a4a3a62e3346afb4a4394435d006f2)
+:   [maven-release-plugin] prepare release 4.1.29
+
+[f285e97109](https://github.com/dcache/dcache/commit/f285e97109460393a92e5b287128a1026465981b)
+:   webdav: fix proxied partial (vector-read) GET requests
+
+[239d9c38ea](https://github.com/dcache/dcache/commit/239d9c38eab87ae3c3938f017083c4f18ff22a83)
+:   pool: fix pool space accounting on failed restores
+
+[d6f3b6d1e1](https://github.com/dcache/dcache/commit/d6f3b6d1e160d389effb39ad7507dfc902da1d73)
+:   resilience: fix NPE if file unlinked when resilience processes a broken file
+
+[c399f14ebe](https://github.com/dcache/dcache/commit/c399f14ebe61239e41640cfafc4de5d94eea66b4)
+:   ftp/webdav: fix bypass of restrictions
+
+[ed5b2f2167](https://github.com/dcache/dcache/commit/ed5b2f2167ec54b1fac7cb51f42a6cdfce7a9e96)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.1.28
 
 ### alarms

@@ -91,6 +91,80 @@ updates, pools may remain at 4.1 during that update.
 The dCache team thanks Christoph Anton Mitterer, Martin Johnki, Onno Zweers and Johannes Thurn
 for their pull requests and contributions.
 
+## Release 4.2.21
+
+### Changes affecting multiple services
+
+If a client specifies a checksum value with either a WebDAV or FTP upload,
+a `Restriction check by-passed due to missing path` warning was logged occasionally.
+This was fixed now, ensuring that restrictions are always applied.
+
+### gplazma
+
+In situations where a user's numerical UID is already known, but other attributes
+are still needed, gPlazma can now query an LDAP server using the uidNumer attribute.
+The property `gplazma.ldap.try-uid-mapping=true|false` (defaulting to false) in the
+`gplazma.properties` file to control this new feature.
+
+
+### nfs
+
+The NFS property `nfs.idmap.manage-gids` was added to help overcome
+a traditional 16-group limit for users: If a client uses AUTH_SYS and a user
+has more than 15 subgroups, the NFS door will query gPlazma to discover additional
+user groups.
+
+### pool
+
+Space reservations on pools that are connected to tape showed a problem with 
+failing restore requests: If a restore failed, the space that was reserved to
+hold the file that was supposed to come in from tape was not freed again but
+kept in the 'sticky' state. This resulted in lots of unusable space on pools
+that could only be reclaimed through a restart. 
+
+With the current release, this issue is fixed and space is freed as soon
+as possible after a failed restore request.
+
+### resilience
+
+A very rare race-condition is fixed where a failed upload results in
+resilience recording a stack-trace.
+
+### webdav
+
+An issue with the Milton WebDAV library prevented Partial (or vector-read) GET requests
+from succeeding. This was fixed now through both an update of the dependency and a local
+patch while we wait for the proposed fix to be included upstream.
+
+
+### Changelog 4.2.20..4.2.21
+
+<!-- git log 4.2.20..4.2.21 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[4b0eab45b0](https://github.com/dcache/dcache/commit/4b0eab45b0740c5ff0718bf01ed533dcecb34342)
+:   [maven-release-plugin] prepare release 4.2.21
+
+[cd3d1bc8ba](https://github.com/dcache/dcache/commit/cd3d1bc8ba39ce2aa940993560ae54745e703fc3)
+:   webdav: fix proxied partial (vector-read) GET requests
+
+[30c15824b0](https://github.com/dcache/dcache/commit/30c15824b0c667d55a79fc594ea338842dd9a33b)
+:   nfs: overcome the 16 group limit of AUTH_SYS
+
+[e32bca8d3c](https://github.com/dcache/dcache/commit/e32bca8d3cc8118092f16c953514c093e5463706)
+:   pool: fix pool space accounting on failed restores
+
+[e8d6ee19b3](https://github.com/dcache/dcache/commit/e8d6ee19b302146c593950c11c0575a724c5aae3)
+:   resilience: fix NPE if file unlinked when resilience processes a broken file
+
+[5d3864a423](https://github.com/dcache/dcache/commit/5d3864a423bc578a006f26b2f2be3e0406a4e60d)
+:   ldap: search user by uidNumber attribute if only UidPrincipal is provided
+
+[870fffd119](https://github.com/dcache/dcache/commit/870fffd119e5380e286484151dae639c77c706d4)
+:   ftp/webdav: fix bypass of restrictions
+
+[b27b6a26fb](https://github.com/dcache/dcache/commit/b27b6a26fb06d8e49aed5b750b09a235e68018eb)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.2.20
 
 ### alarms
