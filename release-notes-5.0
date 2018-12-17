@@ -153,6 +153,17 @@ a given scanned pool.
 
 ### XRootD
 
+Third-party copy is now supported.  Please refer to the documentation in _The Book_ (5.0) for further information.
+
+Bug fixes and improvements:  (1) the correct error (kXR_NoSpace) is now returned to the client when there is no more disk space;
+(2) xrootd now fails fast if the MaxUploadSize is supplied, and the file is too large; (3) the xrootd door spring configuration
+no longer fails to load when kafka is not activated; (4) the 'stat' request now supports both open file handles as well 
+as paths, enabling use of the ``--zip`` option; (5) dCache no longer logs a  stack trace when a client requests a file be 
+created, the parent directory does not exist, and the make parent option is omitted; (6) a source path containing 
+a query part on a mv request no longer causes the request to fail; (7) a potential race condition preventing directory
+listing now is correctly handled; (8) support for the 'tpc' query on the pools has been added in order to comply with
+the newer (4.9) XrootD clients.
+
 ### Zookeeper
 
 
