@@ -163,7 +163,7 @@ as paths, enabling use of the ``--zip`` option; (5) dCache no longer logs a  sta
 created, the parent directory does not exist, and the make parent option is omitted; (6) a source path containing 
 a query part on a mv request no longer causes the request to fail; (7) a potential race condition preventing directory
 listing now is correctly handled; (8) support for the 'tpc' query on the pools has been added in order to comply with
-the newer (4.9) XrootD clients. (9) It is now no longer necessary or correct to list 'access-log' among the xrootd plugins; 
+the newer (4.9) XrootD clients; (9) it is now no longer necessary nor correct to list 'access-log' among the xrootd plugins; 
 this log handler is added automatically as it is for other doors; (10) file handles and query strings are now included in
 the access log information; (11) logging of failed authentication is improved to include more useful information, like
 the DN; (12) it is now possible to identify all entries in the access-log from the same TCP connection via a session identifier.
