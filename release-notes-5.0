@@ -129,7 +129,7 @@ Bugs which have been fixed:  (1) an error is no longer reported when trying to h
 already been unlinked; (2) the entire pool scan no longer fails when one file in the list is not resilient 
 or has no locations; (3) filters referencing invalid pool names no longer cause scan cancel to fail.
 
-Improved features:  (1) command ``retry errors`` immediately reprocess the most recent failed file operations; 
+Improved features:  (1) command ``retry errors`` immediately reprocesses the most recent failed file operations; 
 (2) the command ``pool ls`` now displays the number of file operation errors encountered during a given scan;
 (3) the list of pools is now sorted by STATE (RUNNING, WAITING, IDLE) and then by pool name in ascending 
 lexicographic order; (4) the ``inaccessible`` command now has options to check the status of the job, 
