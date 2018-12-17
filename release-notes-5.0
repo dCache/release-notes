@@ -178,9 +178,16 @@ a given scanned pool.
 
 ### Space Manager
 
-### SRM
+### SRM / SRM Manager
 
-### SRM Manager
+Fixes in gridsite delegation storage handling - fixed querying validity of delegated credential stored on the gridsite end-point
+ allowing clients like  `davix-cp` to work ([839604e45f](https://github.com/dCache/dcache/commit/839604e45f5af327e6547a7fce80a828089eb6c5)) with dCache;
+fixed handling of delegated credential with VOMS AC
+that expires before the X.509 ([54658383d1](https://github.com/dCache/dcache/commit/54658383d15303eecb7728ca0bbfa1f89a63d960)); imporved error reporting ([41976be12d](https://github.com/dCache/dcache/commit/41976be12d6788a28c3cab5bdcec66763d0c9c23)); added add gridsite delegation interface access-log ([5392271fcf](https://github.com/dCache/dcache/commit/5392271fcffb2bd6f09a1b74a52051f2e26e91e8)).
+
+SRM client has been updated to support `X509_CERT_DIR` environmental variable ([ed8b86e604](https://github.com/dCache/dcache/commit/ed8b86e60422b82456d0e2f4fcf9277da68bb716)).
+
+Fixed handling of duplicate SURLs by SRM client ([36b9e0c7d6](https://github.com/dCache/dcache/commit/36b9e0c7d68f2c4eade1875d8d0ec1f1a770c454)).
 
 ### Statistics
 
