@@ -121,6 +121,10 @@ A bug impeding reception of email alarms when the XML database is used has been 
 
 ### DCAP
 
+Improved features: when using dcap URL to create a file or a directory
+they are  created with dcap get desired file permissions.
+
+
 ### Frontend
 
 ### FTP
