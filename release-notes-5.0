@@ -125,6 +125,13 @@ A bug impeding reception of email alarms when the XML database is used has been 
 
 ### FTP
 
+Bug which have been fixed:
+
+The leaking server sockets issue , when a client aborts a proxied transfers with kafka ebnabled  is now fixed. No further server sockets leaked when a proxy is being used, Kafka
+notification is enabled, and the client aborts the transfer.
+
+Improved features:  Improve `date` value formatting when sending billing events via Kafka. 
+
 ### gplazma
 
 The credential information (e.g., distinguished name) is now logged for x509 certification chain validation and FQAN extraction failures.
