@@ -68,7 +68,7 @@ HTML header: <title>dCache 5.0 Release Notes</title>
  - updated external dependencies
 
 ## Incompatibilities
-This release breaks compatibility with pools running dcache version 3.2 or earlier.
+This release breaks compatibility with pools running dcache version 2.16 or earlier.
 
 ## Acknowledgments
 We thank HTW-Berlin students Marcel Munce, Ferdinand Wolff and MaKrHTW (???) as well
@@ -77,6 +77,39 @@ as Onno Zweers from surfSARA for their contributions.
 ## Release 5.0.0
 
 ### Admin
+
+A new property in the frontend `frontend.authz.unlimited-operation-visibility` 
+now controls visibility of operations exposing file metadata. The default is `false`, meaning 
+non-admin users can only see file operations for files which they own or which are 
+anonymous. Setting it to `true` allows everyone access.
+([267d937c79](https://github.com/dCache/dcache/commit/267d937c79713330ae2161dd28b05ee4166d2934)).
+
+Monitoring information exposed through 
+the HTTP GET method is now available  to all users and not only admin role users.
+([32597dc77a](https://github.com/dCache/dcache/commit/32597dc77aeca34144a374e75ffe23e6b3b69a36)).
+
+The admin data fields like the lists of pools, groups, units, etc., are now
+sorted by default for the admin REST API.
+([4928eff71d](https://github.com/dCache/dcache/commit/4928eff71dabcc66deb3ad35a3a652ce9e1f943c)).
+ 
+The dCache admin ssh server now supports kerberos authentication mechanism and
+abilty to enable desired set of authentication mechanism(s). The following
+variables are added to configure admin ssh server authentication:
+
+```
+Supported ssh authentication mechanisms : kerberos, password, publickey
+```
+
+```
+(any-of?kerberos|password|publickey)admin.ssh.authn.enabled = password,publickey
+```
+Location of keytab file which is needed when kerberos authentication
+mechanism is enabled
+
+```
+admin.ssh.authn.kerberos.keytab-file = /etc/krb5.keytab
+```
+([cbab40a841](https://github.com/dCache/dcache/commit/cbab40a8415e81d96dfd775a0d28f3f9158d2eaf)).
 
 ### Alarms
 
@@ -94,6 +127,49 @@ A bug impeding reception of email alarms when the XML database is used has been 
 
 ### gplazma
 
+The credential information (e.g., distinguished name) is now logged for x509 certification chain validation and FQAN extraction failures.
+([9c39e149e0](https://github.com/dCache/dcache/commit/9c39e149e0db31a088d46ebd602fe5fd63c20eb9)).
+
+Large numerical value gids may be used to define roles fro groupid (gid).
+([11b34011ae](https://github.com/dCache/dcache/commit/11b34011ae9c613db6aae0ca8a822853d2cf7e2a)).
+ 
+Wildcard match of FQANS is possible for the VO group (`vo-group.json`) gplazma plugin.
+[173dca3a96](https://github.com/dCache/dcache/commit/173dca3a96d52acca73bac1c9ea568338095037f)).  
+
+A new role, "observer", is defined and available for according read-only access to system or file information.
+([4aa440ab2a](https://github.com/dCache/dcache/commit/4aa440ab2abd46cd1903384d2c47ecec0677eb98)).  
+
+The Storage AuthzDB file format is updated to accept an optional
+'max-upload=<value>' element after the 'read-write' or 'read-only'
+value.  The label is optional.  If present, the value describes the
+maximum file size the user can upload.
+([e3dce67083](https://github.com/dCache/dcache/commit/e3dce67083166451be67c42700640eaed2597669))
+
+As some newer authentication mechanisms embed usage limitations; i.e., a
+user may authenticate in a way that limits what that user can do (E.g. SciTokens)
+New authentication plugins have the possibility to specify a Restriction
+as part of the authentication process.  Existing authentication plugins
+are supported as before. ([204024b9e8](https://github.com/dCache/dcache/commit/204024b9e878b85fbd6a5583908ccada4396d944)).  
+
+
+A new configuration option has been introduced to capture all
+information about an OpenID-Connect provider, which is  
+some external service that dCache users can authenticate against.
+
+This configuration property is a map.  Each entry of the map
+associates a nickname with information about that provider.  The
+nickname is used when logging problems with the provider.  The
+information is the URI of the issuer endpoint.  This must be a
+valid URL that starts 'https://'.
+
+The following example associates the nickname 'google' with 
+Google's issuer endpoint.
+
+```
+      gplazma.oidc.provider!google = https://accounts.google.com/
+````
+([bab4e635ac](https://github.com/dCache/dcache/commit/bab4e635ac1b451b772badc70c9b89da6892ac65)). 
+ 
 ### History
 
 ### Hoppingmanager
