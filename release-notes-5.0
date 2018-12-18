@@ -68,7 +68,7 @@ HTML header: <title>dCache 5.0 Release Notes</title>
  - updated external dependencies
 
 ## Incompatibilities
-This release breaks compatibility with pools running dcache version 2.16 or earlier.
+This release breaks compatibility with pools running dcache version 3.2 or earlier.
 
 ## Acknowledgments
 We thank HTW-Berlin students Marcel Munce, Ferdinand Wolff and MaKrHTW (???) as well
