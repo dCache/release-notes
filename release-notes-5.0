@@ -63,7 +63,7 @@ HTML header: <title>dCache 5.0 Release Notes</title>
 </div>
 
 ## Highlights
-
+ - Java11 support 
  - pinboard includes date and time
  - updated external dependencies
 
