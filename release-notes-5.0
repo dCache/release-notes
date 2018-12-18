@@ -63,15 +63,19 @@ HTML header: <title>dCache 5.0 Release Notes</title>
 </div>
 
 ## Highlights
+
  - Java11 support 
- - pinboard includes date and time
+ - Major documentation revision
+ - Pinboard includes timestamps
  - updated external dependencies
+ - experimental support for HTTP 3rd party copying
 
 ## Incompatibilities
-This release breaks compatibility with pools running dcache version 2.16 or earlier.
+This release breaks compatibility with pools running dcache version 3.2 or earlier.
 
 ## Acknowledgments
-We thank HTW-Berlin students Marcel Munce, Ferdinand Wolff and MaKrHTW (???) as well
+
+We thank HTW Berlin students Marcel Munce, Ferdinand Wolff and MaKrHTW (???) as well
 as Onno Zweers from surfSARA for their contributions.
 
 ## Release 5.0.0
@@ -85,31 +89,24 @@ anonymous. Setting it to `true` allows everyone access.
 ([267d937c79](https://github.com/dCache/dcache/commit/267d937c79713330ae2161dd28b05ee4166d2934)).
 
 Monitoring information exposed through 
-the HTTP GET method is now available  to all users and not only admin role users.
+the HTTP GET method is now available to all users and not only admin role users.
 ([32597dc77a](https://github.com/dCache/dcache/commit/32597dc77aeca34144a374e75ffe23e6b3b69a36)).
 
 The admin data fields like the lists of pools, groups, units, etc., are now
 sorted by default for the admin REST API.
 ([4928eff71d](https://github.com/dCache/dcache/commit/4928eff71dabcc66deb3ad35a3a652ce9e1f943c)).
  
-The dCache admin ssh server now supports kerberos authentication mechanism and
-abilty to enable desired set of authentication mechanism(s). The following
-variables are added to configure admin ssh server authentication:
+The dCache admin ssh server now supports kerberos as an authentication mechanism 
+(along with password and publickey). 
 
-```
-Supported ssh authentication mechanisms : kerberos, password, publickey
-```
+[cbab40a841](https://github.com/dCache/dcache/commit/cbab40a8415e81d96dfd775a0d28f3f9158d2eaf) 
+added the following property to configure admin ssh server authentication:
 
-```
-(any-of?kerberos|password|publickey)admin.ssh.authn.enabled = password,publickey
-```
-Location of keytab file which is needed when kerberos authentication
-mechanism is enabled
+    (any-of?kerberos|password|publickey)admin.ssh.authn.enabled = password,publickey
 
-```
-admin.ssh.authn.kerberos.keytab-file = /etc/krb5.keytab
-```
-([cbab40a841](https://github.com/dCache/dcache/commit/cbab40a8415e81d96dfd775a0d28f3f9158d2eaf)).
+The keytab's location can be set under
+
+    admin.ssh.authn.kerberos.keytab-file = /etc/krb5.keytab
 
 ### Alarms
 
@@ -121,8 +118,8 @@ A bug impeding reception of email alarms when the XML database is used has been 
 
 ### DCAP
 
-Improved features: when using dcap URL to create a file or a directory
-they are  created with dcap get desired file permissions.
+Improved features: when using dcap URL to create a file or a directory,
+they are created with dcap get desired file permissions.
 
 
 ### Frontend
@@ -183,11 +180,15 @@ Google's issuer endpoint.
  
 ### History
 
-### Hoppingmanager
-
-### httpd
+Error handling in the history service was improved.
 
 ### Info
+
+The info service now publishes the time that information was collected along with the actual data. 
+The timestamp is available via the `last-updated` attribute.
+
+Info clients (such as info-provider and storage-report) are now informed
+of the number of files stored in a space reservation.
 
 ### Missing Files
 
@@ -202,9 +203,14 @@ as:
    NFS4ERR_*:  The client was able to establish communication with the
       storage device and is returning one of the allowed error codes.
 ```
-### Pinmanager
 
 ### PNFS Manager
+
+A user with a macaroon that authorises them to upload data into a
+particular directory will now also be able to create parent directories to
+achieve uploading the data.
+
+A bug that prevented `get file checksum` from working in some cases was fixed.
 
 ### Pool
 
@@ -247,7 +253,12 @@ Fixed regression that broke `dcache pool convert' command ([80461b2f9a](https://
 
 Introduced a retry loop to retry file attributes update in timeout to pnfs manager ([8c60877527]((https://github.com/dCache/dcache/commit/8c60877527869095acf23dd95f424d1df1e5b790).
 
-### Poolmanager
+### Pool Manager
+
+Select Read Pool requests for which the user does not have enough permissions now do not affect other requests
+any more.
+
+Several smaller bugfixes for Pool Manager also went into this release.
 
 ### Resilience
 
@@ -303,6 +314,7 @@ the DN; (12) it is now possible to identify all entries in the access-log from t
 
 ### Zookeeper
 
+The internal Zookeeper version was updated to 3.4.13.
 
 ### Changelog from 4.2.0 to 5.0.0
 
