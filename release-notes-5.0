@@ -64,12 +64,12 @@ HTML header: <title>dCache 5.0 Release Notes</title>
 
 ## Highlights
 
- - Java11 support 
- - Major documentation revision
+ - dCache now supports Java 11 as its platform
+ - Documentation, especially the dCache Book, received a major revision and will remain in focus
+ - HTTP 3rd-party-copying has matured to a feature-rich, well tested state
  - Pinboard includes timestamps
  - updated external dependencies
- - experimental support for HTTP 3rd party copying
-
+ 
 ## Incompatibilities
 This release breaks compatibility with pools running dcache version 3.2 or earlier.
 
@@ -123,6 +123,17 @@ they are created with dcap get desired file permissions.
 
 
 ### Frontend
+
+dCache now supports more scientific file formats: HDF4 and 5 files as well as ROOT files are now identified and
+treated as such.
+
+The new configuration property `(one-of?true|false)dcache.enable.authn.anonymous-fallback-on-failed-login = true` allows
+modifying the behaviour of the frontend in case of failed logins: dCache has a hard-coded "feature" where a user providing bad
+authentication (e.g., wrong password, expired OIDC access-token or
+macaroon) is treated as the anonymous user.  This has proved counter-intuitive, as wrong/expired credentials often
+appear to succeed for some operations (e.g., directory listing), while
+failing others (upload/download). Providing the new property allows to set a fail-fast behaviour in those cases, providing a quicker
+response to users.
 
 ### FTP
 
@@ -294,6 +305,8 @@ Fixed handling of duplicate SURLs by SRM client ([36b9e0c7d6](https://github.com
 ### Transfer Managers
 
 ### WebDAV
+
+A lot of work has gone into making 3rd party copying functionality more robust and scalable.
 
 ### XRootD
 
