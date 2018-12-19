@@ -124,26 +124,20 @@ they are created with dcap get desired file permissions.
 
 ### Frontend
 
-##### New Features:
-- exposed list of all available doors in dcache through the new door API (`.../api/v1/doors`)
-- served frontend with https by default.
-- added targetQoS for not-yet-flushed tape files. Frontend now report that files written into a directory that targets 'tape' QoS are in transition to QoS 'tape'.
-- added SSE plugin to support inotify events. Clients can discover changes in dCache namespace using an interface modelled after the inotify(7) API (See dCache book for detail).
-- added filtering and sorting capabilities on transfers API.
-- added more mime types for scientific file formats like `hdf4`, `hdf5`, `root` etc.
-- updated dcache-view to new version (v1.5) see dcache-view repository for new feature details.
+dCache now supports more scientific file formats: HDF4 and 5 files as well as ROOT files are now identified and
+treated as such.
 
-##### Bug fixes and behavioural modification:
-- rectify wrong qos calculation a uploaded file recieve when uploaded into a directory. Frontend now more accurately describes the QoS of directories; i.e., the
-    QoS that newly written files will recieve when written into this directory, assuming none of the targeted pools are volatile.
-- remove admin restrictions on GET and filter transfers on uid if not admin.
-- make anonymous fallback on bad login configurable and optional. The new configuration property `(one-of?true|false)dcache.enable.authn.anonymous-fallback-on-failed-login = true` allows
-    modifying the behaviour of the frontend in case of failed logins: dCache has a hard-coded "feature" where a user providing bad
-    authentication (e.g., wrong password, expired OIDC access-token or
-    macaroon) is treated as the anonymous user.  This has proved counter-intuitive, as wrong/expired credentials often
-    appear to succeed for some operations (e.g., directory listing), while
-    failing others (upload/download). Providing the new property allows to set a fail-fast behaviour in those cases, providing a quicker
-    response to users.
+The new configuration property `(one-of?true|false)dcache.enable.authn.anonymous-fallback-on-failed-login = true` allows
+modifying the behaviour of the frontend in case of failed logins: dCache has a hard-coded "feature" where a user providing bad
+authentication (e.g., wrong password, expired OIDC access-token or
+macaroon) is treated as the anonymous user.  This has proved counter-intuitive, as wrong/expired credentials often
+appear to succeed for some operations (e.g., directory listing), while
+failing others (upload/download). Providing the new property allows to set a fail-fast behaviour in those cases, providing a quicker
+response to users.
+
+To support inotify events, a new plugin for SSE is introduced. Clients can discover changes in dCache namespace using an interface modelled after the inotify(7) API (See dCache book for detail).
+
+dCache View is updated to a new version (v1.5), see dcache-view repository for new feature details.
 
 ### FTP
 
