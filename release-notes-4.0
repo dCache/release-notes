@@ -99,6 +99,26 @@ The notes for [release 4.0.0](#release4.0.0) detail the differences
 from dCache 3.2.  Please read this section *very carefully* when
 upgrading from this version.
 
+## Release 4.0.35
+
+### Changes affecting multiple services
+
+The current release corrected the properties for access-log.
+
+
+### Changelog 4.0.34..4.0.35
+
+<!-- git log 4.0.34..4.0.35 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[173b6a1](https://github.com/dcache/dcache/commit/173b6a18227ceb7d6265270143cf0b715a774f53)
+:   [maven-release-plugin] prepare release 4.0.35
+
+[b83c282](https://github.com/dcache/dcache/commit/b83c2824eb3685751770bbf752d7b3600863230b)
+:   correct the properties for access-log
+
+[4c8281b](https://github.com/dcache/dcache/commit/4c8281be282c5c9f7c4eeed960bc54bcfce59f1e)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.0.34
 
 ### Changes affecting multiple services
