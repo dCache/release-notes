@@ -189,13 +189,11 @@
     </description>
 
     <releases>
-        <name>dCache VERSION</name>
-        <download-url-prefix>repo/5.0/dcache</download-url-prefix>
-        <notes-url>release-notes-5.0.shtml</notes-url>
-        <version-prefix>5.0.</version-prefix>
-
-    </releases>
-
+      <name>dCache VERSION</name>
+      <download-url-prefix>repo/5.0/dcache</download-url-prefix>
+      <notes-url>release-notes-5.0.shtml</notes-url>
+      <version-prefix>5.0.</version-prefix>
+      
       <release version="0" recommended="1">
         <date>21.1.2019</date>
         <package name="rpm">
@@ -212,7 +210,7 @@
         </package>
       </release>
 
-      
+    </releases>
 
 </series>
 
