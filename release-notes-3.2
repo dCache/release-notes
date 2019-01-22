@@ -107,6 +107,35 @@ from dCache 3.1.  Please read this section *very carefully* when
 upgrading from this version.
 
 
+## Release 3.2.44
+
+### gplazma
+
+Since update to newer BC and voms-java-api libraries
+sites report VOMS certificate validation errors like
+This is now fixed.
+
+### srm
+
+The 'dcache ports' command now includes the srm's TLS/SSL interface
+
+
+### Changelog 3.2.43..3.2.44
+
+<!-- git log 3.2.43..3.2.44 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[7864f0e](https://github.com/dcache/dcache/commit/7864f0ee7182dc2686e56411610b77aa853b3f3f)
+:   [maven-release-plugin] prepare release 3.2.44
+
+[4ba7a54](https://github.com/dcache/dcache/commit/4ba7a5458b4a43aae3c31ea2a9f450cac3c56727)
+:   gplazma voms plugin: add trust anchor refresh paramater
+
+[2ab9153](https://github.com/dcache/dcache/commit/2ab9153eac1835dafeb86420ecaa0f2778a0dfa7)
+:   srm: include TLS/SSL port in 'dcache ports' command
+
+[4d5e0eb](https://github.com/dcache/dcache/commit/4d5e0ebf3265e1a4ba7d257ce62d19635094f672)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.2.43
 
 ### Changes affecting multiple services

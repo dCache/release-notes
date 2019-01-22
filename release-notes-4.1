@@ -107,6 +107,38 @@ Thanks to Christoph Anton Mitterer for his constributions.
 We would like to thank the students of HTW Berlin Alexandra Konovalova, Hagen Wittlich and Marcus Kopp,
 for their contributions during the HTW course.
 
+## Release 4.1.31
+
+### gplazma
+
+Since update to newer BC and voms-java-api libraries
+sites report VOMS certificate validation errors like
+This is now fixed.
+
+### srm
+
+The 'dcache ports' command now includes the srm's TLS/SSL interface
+
+
+### Changelog 4.1.30..4.1.31
+
+<!-- git log 4.1.30..4.1.31 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[bd315b0](https://github.com/dcache/dcache/commit/bd315b06205f5c8368f735fb0aebaa30ee1c290e)
+:   [maven-release-plugin] prepare release 4.1.31
+
+[ba68f63](https://github.com/dcache/dcache/commit/ba68f63825d6c3c44f9f9537493e8419ba06c1b5)
+:   gplazma voms plugin: add trust anchor refresh paramater
+
+[b369668](https://github.com/dcache/dcache/commit/b3696683aacefd5c28a5ab15fdeda4155f7dd63f)
+:   srm: include TLS/SSL port in 'dcache ports' command
+
+[995f688](https://github.com/dcache/dcache/commit/995f6884569a48046a1b31b304364e3b9dcbf151)
+:   dcache/frontend: release dcache-view version 1.4.7
+
+[c276c9e](https://github.com/dcache/dcache/commit/c276c9eb73432fdfc5e3d4ea787ed60779bda63a)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.1.30
 
 ### Changes affecting multiple services

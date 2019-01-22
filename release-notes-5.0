@@ -78,6 +78,48 @@ This release breaks compatibility with pools running dcache version 3.2 or earli
 We thank HTW Berlin students Marcel Munce, Ferdinand Wolff and MaKrHTW (???) as well
 as Onno Zweers from surfSARA for their contributions.
 
+## Release 5.0.1
+
+### dcache
+
+### gplazma
+
+Since update to newer BC and voms-java-api libraries
+sites report VOMS certificate validation errors like
+This is now fixed.
+
+### nfs
+
+The current release ficxed the bug  introduced by  `ByteBuffer#limit`, which is used instead of
+`Buffer#limit`.   
+
+### srm
+
+The 'dcache ports' command now includes the srm's TLS/SSL interface
+
+
+### Changelog 5.0.0..5.0.1
+
+<!-- git log 5.0.0..5.0.1 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[f6d2455](https://github.com/dcache/dcache/commit/f6d24553602e09c0d142a66ef683f33cfee31a4a)
+:   [maven-release-plugin] prepare release 5.0.1
+
+[b870a14](https://github.com/dcache/dcache/commit/b870a14f518627cc761555e4cec59ce25e598dd9)
+:   pom: use nfs4j-0.17.10
+
+[a3c86b1](https://github.com/dcache/dcache/commit/a3c86b12d8024e47a818ff944b72ae2dadf8156d)
+:   gplazma voms plugin: add trust anchor refresh paramater
+
+[cb15ef8](https://github.com/dcache/dcache/commit/cb15ef8a2c0cd4cf89f6b07021293dbbd478ee7b)
+:   srm: include TLS/SSL port in 'dcache ports' command
+
+[5eb104c](https://github.com/dcache/dcache/commit/5eb104cf854e8389bc9a51a7433b715a0e4c9312)
+:   [maven-release-plugin] prepare for next development iteration
+
+[b770e51](https://github.com/dcache/dcache/commit/b770e51b4b9608f002a1d088f915a1eb56059545)
+:   dcache, frontend: release dcache-view version 1.5.1
+
 ## Release 5.0.0
 
 ### Admin
