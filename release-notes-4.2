@@ -104,9 +104,11 @@ Gravatar request is now make optional and how the images are stored are now more
 
 Since update to newer CANL and voms-java-api libraries
 sites report VOMS certificate validation errors like so:
+
 ```
 [[canlError]:CAnL certificate validation error: Signature of a CRL corresponding to this certificates CA is invalid, [invalidAcCert]:LSC validation failed: AA certificate chain embedded in the VOMS AC failed certificate validation!, [aaCertNotFound]:AC signature verification failure: no valid VOMS server credential found.]
 ```
+
 This is a consequence of not refreshing certificates from trust anchor
 directory in gPlazma voms plugin. The refresh is enabled by passing a regresh interval
 option when setting up voms validator. The patch
