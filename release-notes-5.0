@@ -96,7 +96,7 @@ This is now fixed.
 
 ### nfs
 
-The current release ficxed the bug  introduced by  `ByteBuffer#limit`, which is used instead of
+The current release fixed the bug  introduced by  `ByteBuffer#limit`, which is used instead of
 `Buffer#limit`.   
 
 ### srm
