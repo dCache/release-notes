@@ -102,14 +102,32 @@ Gravatar request is now make optional and how the images are stored are now more
 
 ### gplazma
 
-Since update to newer BC and voms-java-api libraries
-sites report VOMS certificate validation errors like
-This is now fixed.
+Since update to newer CANL and voms-java-api libraries
+sites report VOMS certificate validation errors like so:
+```
+[[canlError]:CAnL certificate validation error: Signature of a CRL corresponding to this certificates CA is invalid, [invalidAcCert]:LSC validation failed: AA certificate chain embedded in the VOMS AC failed certificate validation!, [aaCertNotFound]:AC signature verification failure: no valid VOMS server credential found.]
+```
+This is a consequence of not refreshing certificates from trust anchor
+directory in gPlazma voms plugin. The refresh is enabled by passing a regresh interval
+option when setting up voms validator. The patch
+[fab850d](https://github.com/dcache/dcache/commit/fab850d66e295596737aca9a4482165c0bf459ba)
+adds two variables `gplazma.vomsdir.refresh-interval` and `gplazma.vomsdir.refresh-interval.unit`
+that control refresh interval:
+
+```
+gplazma.vomsdir.refresh-interval = 4
+(one-of?MILLISECONDS|SECONDS|MINUTES|HOURS|DAYS)\
+gplazma.vomsdir.refresh-interval.unit = HOURS
+
+```
+Without this fix voms plugin fails to validate voms certificates rendering dCache non-operational.
+Therefore sites runing dCache releases 4.2.15-4.2.22 are strongly encouraged to upgrade.
+
 
 ### nfs
 
 The current release fixed the bug introduced by `ByteBuffer#limit`, which is used instead of
-`Buffer#limit`.   
+`Buffer#limit`.
 
 ### srm
 
@@ -190,11 +208,11 @@ user groups.
 
 ### pool
 
-Space reservations on pools that are connected to tape showed a problem with 
+Space reservations on pools that are connected to tape showed a problem with
 failing restore requests: If a restore failed, the space that was reserved to
 hold the file that was supposed to come in from tape was not freed again but
 kept in the 'sticky' state. This resulted in lots of unusable space on pools
-that could only be reclaimed through a restart. 
+that could only be reclaimed through a restart.
 
 With the current release, this issue is fixed and space is freed as soon
 as possible after a failed restore request.
@@ -249,17 +267,17 @@ should prevent a rare NullPointerException from occuring.
 ### dcap
 
 Creating a file or directory using the DCAP protocol with a URL
-as parameter, the file permissions were not set correctly. 
+as parameter, the file permissions were not set correctly.
 
 With the current release, this was corrected, and such files
 use the client-supplied file permissions. If none are provided,
 the default modes 0700 (for directories) and 0600 (for files)
-are used. 
+are used.
 
 ### nfs
 
-When a pool is decomissioned, clients can now be notified about 
-the need to terminate any remaining connections. The 
+When a pool is decomissioned, clients can now be notified about
+the need to terminate any remaining connections. The
 `pool reset id` command was updated to issue a device change
 notification callback.
 
@@ -315,7 +333,7 @@ blocked.  However, we should block when request is performed the very
 first time to handle busy system and slow networks. This is now fixed
 and a client is not blocked if door knows that the request is not
 processed yet.
- 
+
 ### statistics
 
 Metadata merge was using max when it should had used min, this is now
@@ -504,7 +522,7 @@ the system's behaviour is now more robust and no StackOverflowErrors should be l
 ### scripts
 
 Maven's findbugs plugin is now granted more working memory in order
-to make builds, especially on our continuous integration system, 
+to make builds, especially on our continuous integration system,
 more robust.
 
 ### srm
@@ -512,8 +530,8 @@ more robust.
 Certificate lifetime considerations for VOMS proxy certificates are
 improved in this release: if a
 client delegates a credential where the VOMS AC expires before the X.509
-proxies, dCache now will not use the credential beyond the AC expiry time. 
-This avoids unnecessary authentication errors. 
+proxies, dCache now will not use the credential beyond the AC expiry time.
+This avoids unnecessary authentication errors.
 
 ### webdav
 
@@ -673,7 +691,7 @@ was done. The original intent of this change was to resolve rare
 
 xrootd now shows IP addresses instead of (potentially ambiguous) hostnames as transfer endpoints.
 
-An irrelevant stacktrace was logged on unexpected CacheExceptions. This 
+An irrelevant stacktrace was logged on unexpected CacheExceptions. This
 was removed, leading to less clutter in the logs.
 
 Different macaroons that were issued against the same secret are now discernible in the logs.
@@ -691,7 +709,7 @@ A library dependency was updated to avoid [CVE-2018-11771](https://nvd.nist.gov/
 
 ### frontend
 
-[Github issue #4242](https://github.com/dCache/dcache/issues/4242) was resolved; 
+[Github issue #4242](https://github.com/dCache/dcache/issues/4242) was resolved;
 cell information can now be be gathered using the REST interface without
 specifying domains.
 
@@ -716,7 +734,7 @@ directory elements explicitly with MKCOL.
 
 With restrictions (such as from a macaroon) such directory creation
 currently requires the MANAGE activity, which allows other actions
-beyond the scope of this scenario. With this release, the behaviour 
+beyond the scope of this scenario. With this release, the behaviour
 was changed so that a user with a macaroon that authorises them to upload data into a
 particular directory will be able to create parent directories to
 achieve uploading the data.
@@ -758,7 +776,7 @@ A previous patch needed a bit of an update to ensure that X.509-with-FQAN authen
 
 A previous patch, committed on master as 6e90136, introduced xrootd
 properties to control the behaviour of the xrootd door when sending
-kafka events. This patch contained a typo in the default value. 
+kafka events. This patch contained a typo in the default value.
 The result was dCache would not start with a kafka enabled xrootd
 door. This issue has been fixed.
 
@@ -843,15 +861,15 @@ door. This issue has been fixed.
 
 ### Changes affecting multiple services
 
-Through integration of an updated BouncyCastle cryptography library package, 
+Through integration of an updated BouncyCastle cryptography library package,
 some rare errors where clients would report a "pad block corrupted" error
 are avoided.
 
 ### frontend
 
 When a user does not have the permission to read a file (or is simply
-not logged in), dCache would previously report a 500 
-Internal Server Error. This error reporting was improved, 
+not logged in), dCache would previously report a 500
+Internal Server Error. This error reporting was improved,
 reporting 401 Unauthorized or 403 Forbidden
 as appropriate.
 
@@ -863,8 +881,8 @@ This has proved counter-intuitive, as wrong/expired credentials often
 appear to succeed for some operations (e.g., directory listing), while
 failing others (upload/download).
 
-A new configuration property, 
-`dcache.enable.authn.anonymous-fallback-on-failed-login`, allows 
+A new configuration property,
+`dcache.enable.authn.anonymous-fallback-on-failed-login`, allows
 changing that behaviour. The default setting of the property
 does not change system behaviour.
 
@@ -902,7 +920,7 @@ adds path information to a transfer's information.
 
 ### poolmanager
 
-This release increases responsiveness for users that are not allowed to stage files, and for NFS users who access offline files. 
+This release increases responsiveness for users that are not allowed to stage files, and for NFS users who access offline files.
 In cases where such a user issued a read request at the same time that Pool Manager handled
 a staging request, the first request would block for the duration of the staging -- potentially
 quite a while. From now on, users that are not allowed to stage receive appropriate error
@@ -1038,7 +1056,7 @@ This rlease fixes an issue with WebDAV 3rd-party-copy requests that are
 authorized using a macaroon that is only valid for writing a specific file.
 
 NOTE: both the webdav door and transfermanagers must be updated before
-the fix is effective. 
+the fix is effective.
 
 The timeout used by dCache when attempting to send a Kafka event is now
 adjustable via the configuration properties dcache.kafka.maximum-block
@@ -1055,9 +1073,9 @@ NFS4J was updated to a newer version with two upstream bugfixes:
 
 ### pool
 
-In order to help with debugging issues with partial FTP transfers, 
+In order to help with debugging issues with partial FTP transfers,
 dCache pools now are able to log considerable information about failed FTP
-transfers. 
+transfers.
 
 This is controlled by the new property `pool.mover.ftp.enable.log-aborted-transfers`.
 
@@ -1176,7 +1194,7 @@ Several fixes has been implemented  for  dcache-view:  openid connect redirect h
 
 ### dcache-xroot
 
-The current release added necessary gsi properties for tcp credentials. 
+The current release added necessary gsi properties for tcp credentials.
 These properties have to do with the third-party client on the pool.
  Note:  this is a temporary workaround for
   a problem which will be solved in a more general fashion
@@ -1184,12 +1202,12 @@ For more details please check `xrootd-gsi.properties`.
 
 ### ftp
 
-dCache now has the ability to log the current status of a transfer at the point the client decided to abort an FTP transfer. 
+dCache now has the ability to log the current status of a transfer at the point the client decided to abort an FTP transfer.
 This should support a post mortem investigation on why a transfer was cancelled.
 
 ### ftp,dcap
 
-The current release added functionality to push  billing events to Kafka Server when  `ftp.enable.kafka`  and `dcacp.enable.kafka` are enabled. 
+The current release added functionality to push  billing events to Kafka Server when  `ftp.enable.kafka`  and `dcacp.enable.kafka` are enabled.
 
 ### nfs
 
@@ -1246,9 +1264,9 @@ Previously in dCache it was not possible stage files from tape. This is now fixe
 ### NFS
 
 When two clients A and B operate on a file in quick succession, A opening the
-file and B deleting it before LAYOUTGET is called, dCache puts the 
+file and B deleting it before LAYOUTGET is called, dCache puts the
 transfer into the list of active transfers and returned NFS4ERR_NOENT. If a
-client tries to optimize the corresponding CLOSE call away, as some do, 
+client tries to optimize the corresponding CLOSE call away, as some do,
 the entries are never removed from the list, effectively creating a leak.
 
 This problem was fixed. Clients now receive an NFS4ERR_STALE message in those
@@ -1270,13 +1288,13 @@ component and is fixed from this release onwards.
 ### frontend
 
 The reporting of a file's QoS status in frontend was improved. Files
-that are being scheduled for moving to tape are now reported as 
+that are being scheduled for moving to tape are now reported as
 'tape' instead of 'disk'.
 
 ### pool
 
 In some cases, storage info data was not included in messages issued during
-a pool flush. This caused an irrelevant NPE to be logged. 
+a pool flush. This caused an irrelevant NPE to be logged.
 
 This problem was solved, and as a side effect of the fix, billing records
 now have the correct format when reporting on flushes:
@@ -1285,11 +1303,11 @@ now have the correct format when reporting on flushes:
 
 vs.
 
-```8.24 15:51:07 [pool:dcache-lab002-A@dcache-lab002Domain:store] [00005C1387649DD74E0491DFE9A98D97DC39,1362] [/] data:sla2@osm 100015 1 {10006:"Flush was cancelled."}``` 
+```8.24 15:51:07 [pool:dcache-lab002-A@dcache-lab002Domain:store] [00005C1387649DD74E0491DFE9A98D97DC39,1362] [/] data:sla2@osm 100015 1 {10006:"Flush was cancelled."}```
 
-A bug was fixed that occasionally caused problems with the pools' 
+A bug was fixed that occasionally caused problems with the pools'
 Berkeley DB. This could, for example, be triggered by removing files
-which were in a flush queue. 
+which were in a flush queue.
 
 A typical error message was, e.g.
 
@@ -1350,7 +1368,7 @@ succeed, so that browser pre-flight requests are not hampered.
 
 ### dcache-xrootd
 
-This release fixed  xrootd third-party transfer billing records  so that the door client is always the user connection and the billing/mover client the source or destination server.  
+This release fixed  xrootd third-party transfer billing records  so that the door client is always the user connection and the billing/mover client the source or destination server.
 This allows one to see immediately whether an xrootd transfer was third-party (for two-party transfers, the two clients will be identical).
 
 ### gplazma
@@ -1420,11 +1438,11 @@ attempt to OpenID-Connect delegation.
 ### history
 
 This release fixes a bug that could cause startup errors
-in the history service in the face of network errors. 
+in the history service in the face of network errors.
 
 ### many
 
-Remote pool monitor would occasionally log stack traces from exceptions  
+Remote pool monitor would occasionally log stack traces from exceptions
 when a domain shut down due to an interrupt. This has been fixed, reducing
 the number of irrelevant log entries in such situations.
 
@@ -1433,7 +1451,7 @@ the number of irrelevant log entries in such situations.
 A small bug in a third-party client which
 does not propagate errors occurring
 too quickly could cause error messages to not be displayed
-to the user. 
+to the user.
  One such example would be an
 auth failure due to bad configuration, which
 would appear as a file size mismatch to the user.
@@ -1517,17 +1535,17 @@ help avoid some rarely observed deadlocks with current Linux clients.
 
 ### pool
 
-HTTP responses now contain more meaningful messages along with the 
+HTTP responses now contain more meaningful messages along with the
 HTTP response codes, instead of only just showing stock messages
-like "400 Bad request". 
+like "400 Bad request".
 
 ### webdav
 
 When the WebDAV door proxies a transfer and a transfer failure occurs, the
 door previously always just reported "500 Internal Error". This reporting
-is now improved, with any more detailed error messages from (possibly) 
-other services taking precedence. For example, if a pool returns a 400 error code, 
-thus complaining about the client's request, this code is reported instead, 
+is now improved, with any more detailed error messages from (possibly)
+other services taking precedence. For example, if a pool returns a 400 error code,
+thus complaining about the client's request, this code is reported instead,
 which should help with diagnosing the error's cause.
 
 
@@ -1569,7 +1587,7 @@ This release improves dCache’s robustness against network errors: In case regi
 
 ### resilience
 
-Resilience suffered from a bug that would lead to a NoSuchElementException when a pool name no longer 
+Resilience suffered from a bug that would lead to a NoSuchElementException when a pool name no longer
 mapped to a location known to the Resilience service. This issue has been fixed.
 
 When multiple pools go offline it is possible that
@@ -1583,7 +1601,7 @@ raise a general alarm concerning the pool.
 
 There currently exists a command, 'inaccessible', which
 generates a listing of the pnfsids on a given pool
-which in the current state of dCache have no readable 
+which in the current state of dCache have no readable
 replicas.  However, this command takes a while to complete
 (asynchronously), and the output is written to a file
 which must be viewed by logging in.
@@ -1915,7 +1933,7 @@ resilient and non-resilient files.
 
 ### WebDAV
 
-Milton's behaviour in handling http OPTION method now correspond with Apache httpd 
+Milton's behaviour in handling http OPTION method now correspond with Apache httpd
 server. This ensure a proper response especially when OPTION request targets an
 entity that does not exist - like in the case of uploading a file through a browser
 client like dcache-view.
@@ -1925,7 +1943,7 @@ headers. Hence, dCache now accept and process multiple 'Want-Digest' headers.
 
 ### XRootD
 
-Since 4.1.0 Apache-Kafka has been introduced as a possibility to publish Billing messages to Kafka. 
+Since 4.1.0 Apache-Kafka has been introduced as a possibility to publish Billing messages to Kafka.
 When Kafka enabled these events could be consumed outside from dCache.
 Similarly  to 4.1.0 in  4.2.0 Kafka could be enabled for xrootD by setting the folowing properties:
 
