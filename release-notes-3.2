@@ -107,6 +107,39 @@ from dCache 3.1.  Please read this section *very carefully* when
 upgrading from this version.
 
 
+## Release 3.2.45
+
+### billing
+
+Database connection loss now is reported for billing.
+
+### webdav
+
+The current release fixed the problem where all but one requests fail, if multiple concurrent PUT requests have directories in the path that do not already exist. 
+
+
+### Changelog 3.2.44..3.2.45
+
+<!-- git log 3.2.44..3.2.45 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[2686bd9](https://github.com/dcache/dcache/commit/2686bd9a76758e4458eabe22870bd6d16b9b79b3)
+:   [maven-release-plugin] prepare release 3.2.45
+
+[bdcbef7](https://github.com/dcache/dcache/commit/bdcbef7fae7ea381df63fc78fea3db2d066b31aa)
+:   dcache: wrap billing data source with AlarmEnabledDataSource
+
+[b28891d](https://github.com/dcache/dcache/commit/b28891d065cda5f9c37fc481f98ab0950454cbc8)
+:   common: fix random data generation in TimeseriesHistogram unit test
+
+[03b7c02](https://github.com/dcache/dcache/commit/03b7c02e69b2f34dbad6036bb10e414439a9477f)
+:   webdav: work-around Milton racy API for creating collections
+
+[31c4ea8](https://github.com/dcache/dcache/commit/31c4ea8cc2246aeeb49b4b01c5b2c7669cff84b0)
+:   webdav: fix name of root
+
+[c201313](https://github.com/dcache/dcache/commit/c201313aa0e5fc8e1b04eff9fcf613991f56c5b1)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.2.44
 
 ### gplazma

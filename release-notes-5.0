@@ -78,6 +78,75 @@ This release breaks compatibility with pools running dcache version 3.2 or earli
 We thank HTW Berlin students Marcel Munce, Ferdinand Wolff and MaKrHTW (???) as well
 as Onno Zweers from surfSARA for their contributions.
 
+## Release 5.0.2
+
+### billing
+
+Database connection loss now is reported for billing.
+
+### docs
+
+Improve documentation by clarifying requirement `gplazma.ldap.try-uid-mapping` option in `cookbook-transport-security.md`.
+
+### nfs
+
+The NFS door assumed that routable IP address, like 130.199.49.35, in general can't
+access private subnet, like 10.1.1.1. This assumption was not always true for all sites
+and ended up with non functional pNFS deployment.
+This is now fixed.
+
+### pool
+
+
+The current release improved performance for CEPH based pools and fixed regression affected chunked uploads.
+
+The IO chunk size can be configured now for read as well as for write.
+
+### webdav
+
+The current release fixed the problem where all but one requests fail, if multiple concurrent PUT requests have directories in the path that do not already exist. 
+
+
+### Changelog 5.0.1..5.0.2
+
+<!-- git log 5.0.1..5.0.2 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[2d1f0e7](https://github.com/dcache/dcache/commit/2d1f0e7688a9f5b34fe0f3b2eaa7174be99ecb9c)
+:   [maven-release-plugin] prepare release 5.0.2
+
+[bd9ac6d](https://github.com/dcache/dcache/commit/bd9ac6d24c3f58d0de1dfcea44653aa2e1a4738e)
+:   nfs: do not filter device's IP addresses based on site locality
+
+[b3102cd](https://github.com/dcache/dcache/commit/b3102cd33b5fafbcdc24f14fb6a6dda1cfd1d630)
+:   dcache: wrap billing data source with AlarmEnabledDataSource
+
+[8499f47](https://github.com/dcache/dcache/commit/8499f476b70cb6950ed863002037f7ecdd8459be)
+:   common: fix random data generation in TimeseriesHistogram unit test
+
+[0ebb667](https://github.com/dcache/dcache/commit/0ebb6679fb7211ffe6baea13e0bbe659064b90a9)
+:   docs: clarify requirement gplazma.ldap.try-uid-mapping option
+
+[09ac758](https://github.com/dcache/dcache/commit/09ac758dbc361d6dba53ab0c2d5992ba8dab450e)
+:   webdav: work-around Milton racy API for creating collections
+
+[829a0d6](https://github.com/dcache/dcache/commit/829a0d6bbe1bb1e32d325aea00f307fd1c7bcebc)
+:   webdav: fix name of root
+
+[c3a548d](https://github.com/dcache/dcache/commit/c3a548d6d0dfcc46d070167f721dc04425fdaeb9)
+:   pom: use rados4j-0.0.3 with ARM64 support
+
+[b730cf4](https://github.com/dcache/dcache/commit/b730cf4ecc8697e3a7419c1adc1343c7d4e63ff1)
+:   [maven-release-plugin] prepare for next development iteration
+
+[e14cef6](https://github.com/dcache/dcache/commit/e14cef65a7af50319f0f676cfbf50df050ccab29)
+:   pool: let http mover respect pool.mover.http.chunk-size
+
+[0f7763e](https://github.com/dcache/dcache/commit/0f7763e886c2d11109970d9cae6093183243521a)
+:   pool: fix HTTP chunked upload
+
+[5940b45](https://github.com/dcache/dcache/commit/5940b456f22889e5b976d36c824b616992bbdf53)
+:   pool: grow file prior HTTP upload
+
 ## Release 5.0.1
 
 ### dcache-view

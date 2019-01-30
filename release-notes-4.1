@@ -107,6 +107,39 @@ Thanks to Christoph Anton Mitterer for his constributions.
 We would like to thank the students of HTW Berlin Alexandra Konovalova, Hagen Wittlich and Marcus Kopp,
 for their contributions during the HTW course.
 
+## Release 4.1.32
+
+### billing
+
+Database connection loss now is reported for billing.
+
+### webdav
+
+The current release fixed the problem where all but one requests fail, if multiple concurrent PUT requests have directories in the path that do not already exist. 
+
+
+### Changelog 4.1.31..4.1.32
+
+<!-- git log 4.1.31..4.1.32 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[65742b3](https://github.com/dcache/dcache/commit/65742b3a3e16f8d742f488000a16dd16556cbebe)
+:   [maven-release-plugin] prepare release 4.1.32
+
+[b0f6314](https://github.com/dcache/dcache/commit/b0f6314448307b54e56609272e24258071b90117)
+:   dcache: wrap billing data source with AlarmEnabledDataSource
+
+[06de91f](https://github.com/dcache/dcache/commit/06de91fd97f9333c697c90e1d08e78ac09ac9804)
+:   common: fix random data generation in TimeseriesHistogram unit test
+
+[dccb333](https://github.com/dcache/dcache/commit/dccb33339ced6bd41892bce531ba269c5c8d1e34)
+:   webdav: work-around Milton racy API for creating collections
+
+[789d99d](https://github.com/dcache/dcache/commit/789d99dd3220e9ceb7777b26a8a48c1b03c04f93)
+:   webdav: fix name of root
+
+[649d857](https://github.com/dcache/dcache/commit/649d857b86ecf8c9fbc7c0189746d50f264ae948)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.1.31
 
 ### dcache-view

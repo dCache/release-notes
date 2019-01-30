@@ -91,6 +91,64 @@ updates, pools may remain at 4.1 during that update.
 The dCache team thanks Christoph Anton Mitterer, Martin Johnki, Onno Zweers and Johannes Thurn
 for their pull requests and contributions.
 
+## Release 4.2.24
+
+### billing
+
+Database connection loss now is reported for billing.
+
+### libs
+
+postgres-jdbc  is updated to 42.2.5  resulting in  better integration with postgres 10 and better support for java11.
+
+### nfs
+
+The NFS door assumed that routable IP address, like 130.199.49.35, in general can't
+access private subnet, like 10.1.1.1. This assumption was not always true for all sites
+and ended up with non functional pNFS deployment.
+This is now fixed.
+
+### webdav
+
+The current release fixed the problem where all but one requests fail, if multiple concurrent PUT requests have directories in the path that do not already exist. 
+
+### zookeeper
+
+The current release updated the lib version for zookeeper to 3.4.13 with  minor version update with many bugfixes.
+See: https://zookeeper.apache.org/doc/r3.4.13/releasenotes.html.
+
+
+### Changelog 4.2.23..4.2.24
+
+<!-- git log 4.2.23..4.2.24 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[add726d](https://github.com/dcache/dcache/commit/add726de882b049a124c784056ded1554607b399)
+:   [maven-release-plugin] prepare release 4.2.24
+
+[9f379b8](https://github.com/dcache/dcache/commit/9f379b8f0e78028c6b7f38564b24beeefbdd7850)
+:   nfs: do not filter device's IP addresses based on site locality
+
+[02b0ed4](https://github.com/dcache/dcache/commit/02b0ed4d45775f2a49e1f61a514f5bf209e151ab)
+:   dcache: wrap billing data source with AlarmEnabledDataSource
+
+[b9dbf8b](https://github.com/dcache/dcache/commit/b9dbf8b320991ba32142b618dfd39cc76183583d)
+:   libs: use zookeeper-3.4.13
+
+[41231b3](https://github.com/dcache/dcache/commit/41231b3d8cd846efb5de3f6e1a9a110837e5ab8f)
+:   libs: use postgres-jdbc 42.2.5
+
+[25bb88d](https://github.com/dcache/dcache/commit/25bb88d92a48abdc5730aef1e8bb4fd40275cfdd)
+:   common: fix random data generation in TimeseriesHistogram unit test
+
+[e8e5aa4](https://github.com/dcache/dcache/commit/e8e5aa4bd881494e2bae29529aaa62be5991b3d6)
+:   webdav: work-around Milton racy API for creating collections
+
+[f04def1](https://github.com/dcache/dcache/commit/f04def1ca7ed6a433fc24c876ef3d93b76131c20)
+:   webdav: fix name of root
+
+[517279f](https://github.com/dcache/dcache/commit/517279f502e5963971af597f45a84e72010b10e8)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.2.23
 
 ### dcache-view
