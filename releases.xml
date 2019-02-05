@@ -181,6 +181,7 @@
         <li>dCache now supports Java 11 as its platform JVM</li>
         <li>HTTP 3rd-party-copying has matured to a feature-rich, well tested state</li>
         <li>Pinboard includes timestamps</li>
+        <li>Frontend SSE events now supports a subset of inotify events</li>
       </ul>
       <p>
           dCache v5.0 requires a JVM supporting Java 8 or Java 11.
@@ -255,7 +256,7 @@
 
       <ul>
         <li>The web admin pages have been reworked completely. They are now handled by dCache-View.</li>
-        <li>Frontend gained support for Server-Sent Events through a pluggable events framework.</li>
+        <li>Frontend gained support for Server-Sent Events (SSE) through a pluggable events framework.</li>
       </ul>
 
       <p>
