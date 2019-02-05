@@ -99,6 +99,26 @@ The notes for [release 4.0.0](#release4.0.0) detail the differences
 from dCache 3.2.  Please read this section *very carefully* when
 upgrading from this version.
 
+## Release 4.0.38
+
+### ftp
+
+The current release fixed MLSC command for non-small directories and Globus is now able to list directories with > 100 directories.
+
+
+### Changelog 4.0.37..4.0.38
+
+<!-- git log 4.0.37..4.0.38 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[95552ec](https://github.com/dcache/dcache/commit/95552ec584a82acfb8aff0ff263894ee666dbe9a)
+:   [maven-release-plugin] prepare release 4.0.38
+
+[dd51676](https://github.com/dcache/dcache/commit/dd51676480cb2c8a990d02c65885bbaf2d400e44)
+:   ftp: fix MLSC command for non-small directories
+
+[06df72a](https://github.com/dcache/dcache/commit/06df72a97e89cf8a065b62f02e59d97d3c2a7d2f)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.0.37
 
 ### billing

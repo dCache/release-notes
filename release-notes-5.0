@@ -78,6 +78,50 @@ This release breaks compatibility with pools running dcache version 3.2 or earli
 We thank HTW Berlin students Marcel Munce, Ferdinand Wolff and MaKrHTW (???) as well
 as Onno Zweers from surfSARA for their contributions.
 
+## Release 5.0.3
+
+### dcache-frontend
+
+The current release added documentation concerning restores.
+
+### ftp
+
+The current release fixed MLSC command for non-small directories and Globus is now able to list directories with > 100 directories.
+
+### xrootd4j
+
+The current release updated  the xrootd4j including the following fixes and improvements:
+add ERROR status to tpc info, change the protocol version to int, prevent NPE when constructing error response, 
+fix path handling in move request, correctly handle multiple authn protocols as indicated by server,
+ handle correctly IO/Security exceptions on credential loading and  distinguish correctly between kXR_wait and kXR_waitresp.
+
+
+
+### Changelog 5.0.2..5.0.3
+
+<!-- git log 5.0.2..5.0.3 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[359b183](https://github.com/dcache/dcache/commit/359b1836afe11aca8b1799f1485cffa42f085380)
+:   [maven-release-plugin] prepare release 5.0.3
+
+[ca48ef5](https://github.com/dcache/dcache/commit/ca48ef53c1100aaf71e0c8abd2253da292377d19)
+:   ftp: fix MLSC command for non-small directories
+
+[d113cb5](https://github.com/dcache/dcache/commit/d113cb5400933cdf1bff3203dcf25eff3fe54388)
+:   dcache-xrootd: remove mv request hack
+
+[76e846c](https://github.com/dcache/dcache/commit/76e846c122884ebf9f08487ca1c5a9cbe58c2ff5)
+:   dcache-frontend: add documentation concerning restores
+
+[ce48a8c](https://github.com/dcache/dcache/commit/ce48a8cf64c137aa08827740857a57fb7b760061)
+:   pom.xml: update xrootd4j dependency to 3.3.4
+
+[b3c20ee](https://github.com/dcache/dcache/commit/b3c20ee1884656f6510ab83bdad0aac8e0c3e10b)
+:   dcache-frontend: undefined suid parameter on transfers should be NULL not "null"
+
+[72338e6](https://github.com/dcache/dcache/commit/72338e6db3a83437969cf56952b623ae25d65a42)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.0.2
 
 ### billing

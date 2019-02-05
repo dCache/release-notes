@@ -91,6 +91,50 @@ updates, pools may remain at 4.1 during that update.
 The dCache team thanks Christoph Anton Mitterer, Martin Johnki, Onno Zweers and Johannes Thurn
 for their pull requests and contributions.
 
+## Release 4.2.25
+
+### dcache-frontend
+
+The current release added documentation concerning restores.
+
+### ftp
+
+The current release fixed MLSC command for non-small directories and Globus is now able to list directories with > 100 directories.
+
+### xrootd4j
+
+The current release updated  the xrootd4j including the following fixes and improvements:
+add ERROR status to tpc info, change the protocol version to int, prevent NPE when constructing error response, 
+fix path handling in move request, correctly handle multiple authn protocols as indicated by server,
+ handle correctly IO/Security exceptions on credential loading and  distinguish correctly between kXR_wait and kXR_waitresp.
+
+
+
+### Changelog 4.2.24..4.2.25
+
+<!-- git log 4.2.24..4.2.25 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[6723aa4](https://github.com/dcache/dcache/commit/6723aa477bb98f1cfb97ec369c1fa0d7ad66f01b)
+:   [maven-release-plugin] prepare release 4.2.25
+
+[e4d03d7](https://github.com/dcache/dcache/commit/e4d03d71541e55657f0b4f5327ac727f7b06645a)
+:   ftp: fix MLSC command for non-small directories
+
+[ffe9566](https://github.com/dcache/dcache/commit/ffe9566cb17403fd6dcb258a5d5e2e4156054189)
+:   dcache-xrootd: remove mv request hack
+
+[7625685](https://github.com/dcache/dcache/commit/76256858075d19939208b62639f56a958dff18a9)
+:   dcache-frontend: add documentation concerning restores
+
+[ba5d0d2](https://github.com/dcache/dcache/commit/ba5d0d2412327ba38f49ea43e5806ec1caa0f196)
+:   pom.xml: update xrootd4j dependency to 3.3.4
+
+[eedc6e1](https://github.com/dcache/dcache/commit/eedc6e1221146b7ecb4250535adfb92dcb34e13c)
+:   dcache-frontend: undefined suid parameter on transfers should be NULL not "null"
+
+[d6fd146](https://github.com/dcache/dcache/commit/d6fd14646a8b7fe95f450dd2839a13289b8cbcc6)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.2.24
 
 ### billing
