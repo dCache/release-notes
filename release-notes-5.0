@@ -78,6 +78,154 @@ This release breaks compatibility with pools running dcache version 3.2 or earli
 We thank HTW Berlin students Marcel Munce, Ferdinand Wolff and MaKrHTW (???) as well
 as Onno Zweers from surfSARA for their contributions.
 
+## Release 5.0.4
+
+### admin
+
+he current support added  direct command execution capability and  it works with support for semicolon (;) separated list of commands like so:
+`ssh -p <port> user@example.com "command1; command2; command3"`.
+
+### alarms
+
+Pool errors involving a fatal repository fault, for
+instance, can be sent now  as an email alarm without
+having to send all pool disabled alarms.
+
+### billing
+
+Better formating for storageInfo key, when events send with kafka producer.
+
+### dcache-view
+
+Troubles when using firefox and/or safari to browse dcache-view were reported. This is now fixed.
+
+### gplazma
+
+The JAAS gplazma plugin no longer logs a stacktrace on bad configuration.
+
+### pool
+
+The current release improved error messages  making them clearer by avoid using the same error message in multiple places. 
+
+The current release boosts performance  for ceph pool.
+
+The current release fixed lookup for canonical hostname for IPv6 addresses  and now secure HTTP transfers work over IPv6 and problems are easier to diagnose.
+
+
+The current release improved error message  (previously "Could not create mover") to provide
+more information about why the mover could not be created.
+
+### srm
+
+A stack-traces fixed  for  concurrent updates in pin-manager and similar
+(expected) failures.
+
+### transfermanager
+
+When  transfermanager returns an error to the caller (e.g., WebDAV) if
+there was a problem starting the mover. This message did not include
+any details describing on which pool this failure occured.  This is now fixed and HTTP TPC failures in which the pool does not start the mover now include
+the pool's address in the error message. This allows admins to
+investigate further.
+
+Now Third-party transfers fail if the client is requesting to copy a file
+from dCache that has not fully been uploaded.
+
+### webdav
+
+Disabling basic authn should not now disable macaroons. The current release fixed  `webdav.authn.basic` and `frontend.authn.basic` so that setting
+these configuration properties to `false` no longer blocks macaroons from being accepted in the HTTP Authorization header.
+
+The current release impoved error messaging  for unauthenticated request. 
+
+IllegalArgumentException exception is fixed now and attempts by a client to copy a file that has not fully been uploaded 
+results in a clear error response.
+
+The current release added switch to reject macacroons sent unencrypted and now  following security recommendations sites may configure dCache to reject any macaroons send over an
+unencrypted channel. The default behaviour is to continue accepting macaroons sent over an
+unencrypted channel to avoid breaking existing deployment.
+
+### xrootd
+
+The current release fixed  access logging when xrootd door is configured with HAproxy 
+
+
+### Changelog 5.0.3..5.0.4
+
+<!-- git log 5.0.3..5.0.4 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[4a0c3d0](https://github.com/dcache/dcache/commit/4a0c3d0478965b7827c1987787df109239756253)
+:   [maven-release-plugin] prepare release 5.0.4
+
+[e033d6f](https://github.com/dcache/dcache/commit/e033d6f0aaef5cae6644ca349bee3b9381841e73)
+:   webdav/frontend: add switch to reject macaroons sent unencrypted
+
+[35e0d9a](https://github.com/dcache/dcache/commit/35e0d9a8a72b01386d17183b31ed145e5ecf7782)
+:   xrootd: fix access logging when xrootd door is configured with HAproxy
+
+[ac195b1](https://github.com/dcache/dcache/commit/ac195b15d19d1cf246ab88c8777a2f7cfac88cfa)
+:   webdav/frontend: disabling basic authn should not disable macaroons
+
+[7ca1116](https://github.com/dcache/dcache/commit/7ca111645ce444af6a80ebe2df7e5c7ddb4c9cb4)
+:   srm: do not log a stack-trace on expected Exception errors
+
+[ba8079f](https://github.com/dcache/dcache/commit/ba8079f03594f8554028b4b45bf192b1906d1b6c)
+:   transfermanager: fail third-party copy if the file is still being uploaded
+
+[325caee](https://github.com/dcache/dcache/commit/325caee2951c580a490b44af8a438f350f79082f)
+:   webdav: fail COPY early if file is currently being uploaded
+
+[0b580ee](https://github.com/dcache/dcache/commit/0b580ee041368aad033980d70d334614ef85d4cd)
+:   transfermanager: abort transfer if there is a bug
+
+[086a416](https://github.com/dcache/dcache/commit/086a416b1581ef3f8dcfc7b022cbeaf4169265bc)
+:   gplazma: JAAS plugin logs a stack-trace on misconfiguration
+
+[869ca7e](https://github.com/dcache/dcache/commit/869ca7e739dbf5036e734871deeb0a9b4df17bb8)
+:   transfermanager: include pool address in the mover start failure message
+
+[ecdad0d](https://github.com/dcache/dcache/commit/ecdad0dc7ce4c648f9a54ea61c6946106d95d5d8)
+:   pool: update error messages to make them distinct
+
+[6557695](https://github.com/dcache/dcache/commit/6557695723a89d65ded418808d3094aaa061daa0)
+:   pool: avoid using the same error message in multiple places
+
+[3a91693](https://github.com/dcache/dcache/commit/3a91693778b7ec3e63b318eec9c4874bc2eed56f)
+:   alarms: add pool dead alarm
+
+[49af685](https://github.com/dcache/dcache/commit/49af685f3f4d106bd62049e9310cb0b199c5700c)
+:   pool: fix lookup for canonical hostname for IPv6 addresses
+
+[dc6fd90](https://github.com/dcache/dcache/commit/dc6fd9033f700368c097dfe1e796ea47395e692b)
+:   admin : add direct command execution capability
+
+[cefff6c](https://github.com/dcache/dcache/commit/cefff6c2d4a05b111b1e7d7f6eeac91302a9a918)
+:   pool: grow file prior FTP upload
+
+[3ffc516](https://github.com/dcache/dcache/commit/3ffc516bb2939a4b28fa2073d34685674d9174c4)
+:   [maven-release-plugin] prepare for next development iteration
+
+[78146ac](https://github.com/dcache/dcache/commit/78146ac9c27d21f55967821bd447b796e7768d0b)
+:   pool: don't update atime on flush
+
+[ee4ac8a](https://github.com/dcache/dcache/commit/ee4ac8a66db6a3287050f35134e8b340a0151d25)
+:   pnfsmanager: do not emit IN_ATTRIB event on atime updates
+
+[edb882d](https://github.com/dcache/dcache/commit/edb882dd070dfe0bffcfb487b4b254cb49010bb9)
+:   scripts: fix 'dcache pool yaml' command
+
+[48b54c8](https://github.com/dcache/dcache/commit/48b54c8103af11857e0177648cc86e7dc1da46cb)
+:   webdav: 401 for unauthenticated requests; message in status line
+
+[345d322](https://github.com/dcache/dcache/commit/345d32236912575a6ae627429d1633b30856854d)
+:   dcache, frontend: release dcache-view version 1.5.3
+
+[4200c68](https://github.com/dcache/dcache/commit/4200c68ee1195936719fff244696574699638df4)
+:   door: fix issue 4551 (wring storage)
+
+[57515f1](https://github.com/dcache/dcache/commit/57515f1f9c5919b9caf679bc875cacab5f87b91e)
+:   dcache: update kafka-client lib version to 2.1.0
+
 ## Release 5.0.3
 
 ### dcache-frontend

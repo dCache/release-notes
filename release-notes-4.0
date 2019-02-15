@@ -99,6 +99,86 @@ The notes for [release 4.0.0](#release4.0.0) detail the differences
 from dCache 3.2.  Please read this section *very carefully* when
 upgrading from this version.
 
+## Release 4.0.39
+
+### alarms
+
+Pool errors involving a fatal repository fault, for
+instance, can be sent now  as an email alarm without
+having to send all pool disabled alarms.
+
+### gplazma
+
+The JAAS gplazma plugin no longer logs a stacktrace on bad configuration.
+
+### pool
+
+The current release improved error messages  making them clearer by avoid using the same error message in multiple places. 
+
+### srm
+
+A stack-traces fixed  for  concurrent updates in pin-manager and similar
+(expected) failures.
+
+### transfermanager
+
+Now Third-party transfers fail if the client is requesting to copy a file
+from dCache that has not fully been uploaded.
+
+### webdav
+
+Disabling basic authn should not now disable macaroons. The current release fixed  `webdav.authn.basic` and `frontend.authn.basic` so that setting
+these configuration properties to `false` no longer blocks macaroons from being accepted in the HTTP Authorization header.
+
+The current release impoved error messaging  for unauthenticated request. 
+
+IllegalArgumentException exception is fixed now and attempts by a client to copy a file that has not fully been uploaded 
+results in a clear error response.
+
+
+### Changelog 4.0.38..4.0.39
+
+<!-- git log 4.0.38..4.0.39 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[6130d2b](https://github.com/dcache/dcache/commit/6130d2b6d5e99556eb5691c3436368b098069173)
+:   [maven-release-plugin] prepare release 4.0.39
+
+[47a0806](https://github.com/dcache/dcache/commit/47a080616d4490a325d0a8ebbb74f1664247ad38)
+:   webdav/frontend: disabling basic authn should not disable macaroons
+
+[796ae0b](https://github.com/dcache/dcache/commit/796ae0b73faf96a8a83eb2341eb640e54d928414)
+:   srm: do not log a stack-trace on expected Exception errors
+
+[cf4dada](https://github.com/dcache/dcache/commit/cf4dadaf9737be46517a9a40ebe23f6d9ef7a802)
+:   transfermanager: fail third-party copy if the file is still being uploaded
+
+[cfae242](https://github.com/dcache/dcache/commit/cfae242b17658c3cef9b8988d29e40b858e33c28)
+:   webdav: fail COPY early if file is currently being uploaded
+
+[65791b3](https://github.com/dcache/dcache/commit/65791b3dd3161961c51b9b61c1ed38226f3f8178)
+:   transfermanager: abort transfer if there is a bug
+
+[7e91526](https://github.com/dcache/dcache/commit/7e9152681ae01904d25289a93fbea64c16c5c117)
+:   gplazma: JAAS plugin logs a stack-trace on misconfiguration
+
+[5969503](https://github.com/dcache/dcache/commit/59695038aba4e065115d10d1fceaccd76354bb5c)
+:   pool: avoid using the same error message in multiple places
+
+[7627e34](https://github.com/dcache/dcache/commit/7627e348b9ba38fc901fbb85691063df0d2fbd3a)
+:   alarms: add pool dead alarm
+
+[9bfef0b](https://github.com/dcache/dcache/commit/9bfef0b6eaab28f57fc9c0001f97a7e06cf861b1)
+:   [maven-release-plugin] prepare for next development iteration
+
+[d3864b2](https://github.com/dcache/dcache/commit/d3864b2e6cd538c748e5445375d53fef22153fae)
+:   pool: don't update atime on flush
+
+[8ee187f](https://github.com/dcache/dcache/commit/8ee187f305d598b4a1bd3917d7839f23d2fb2461)
+:   scripts: fix 'dcache pool yaml' command
+
+[fc2b228](https://github.com/dcache/dcache/commit/fc2b228a13a1c8cd63a70967bed5a784b755b5c8)
+:   webdav: 401 for unauthenticated requests; message in status line
+
 ## Release 4.0.38
 
 ### ftp
