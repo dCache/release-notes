@@ -147,7 +147,7 @@ unencrypted channel to avoid breaking existing deployment.
 
 ### xrootd
 
-The current release fixed  access logging when xrootd door is configured with HAproxy 
+The current release fixed  access logging when xrootd door is configured with HAproxy. 
 
 
 ### Changelog 5.0.3..5.0.4
