@@ -99,6 +99,35 @@ The notes for [release 4.0.0](#release4.0.0) detail the differences
 from dCache 3.2.  Please read this section *very carefully* when
 upgrading from this version.
 
+## Release 4.0.40
+
+### webdav
+
+When users request a macaroon via an HTTP POST request targeting
+a specific path, a caveat is created that restricts the macaroon
+to that path (requests to / result in a non-limited macaroon). 
+
+Commit 99c726e3 resulted in users getting back a non-limited
+macaroon for every request. This issue was fixed with this
+release.
+
+
+### Changelog 4.0.39..4.0.40
+
+<!-- git log 4.0.39..4.0.40 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[a7d821186e](https://github.com/dcache/dcache/commit/a7d821186e5c17d5aeff5db8178c50a8bd45a575)
+:   [maven-release-plugin] prepare release 4.0.40
+
+[eae47330f3](https://github.com/dcache/dcache/commit/eae47330f3233b7a46f2bcefe356ec0ce7cb94e9)
+:   systemtest: fix OpenSSL DN format change
+
+[6022036556](https://github.com/dcache/dcache/commit/6022036556ae6b117cabac07303090701991ccf4)
+:   webdav: fix path-to-caveat for macaroon minting endpoint
+
+[e1f5f5ea04](https://github.com/dcache/dcache/commit/e1f5f5ea04b9f4d852e122d32c4c75ac1d0d15d1)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.0.39
 
 ### alarms

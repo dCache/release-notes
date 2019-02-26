@@ -107,6 +107,35 @@ from dCache 3.1.  Please read this section *very carefully* when
 upgrading from this version.
 
 
+## Release 3.2.48
+
+### webdav
+
+When users request a macaroon via an HTTP POST request targeting
+a specific path, a caveat is created that restricts the macaroon
+to that path (requests to / result in a non-limited macaroon). 
+
+Commit 99c726e3 resulted in users getting back a non-limited
+macaroon for every request. This issue was fixed with this
+release.
+
+
+### Changelog 3.2.47..3.2.48
+
+<!-- git log 3.2.47..3.2.48 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[de788e78a4](https://github.com/dcache/dcache/commit/de788e78a4222a5d57ffe00b7ea353d45f7486b6)
+:   [maven-release-plugin] prepare release 3.2.48
+
+[5102908077](https://github.com/dcache/dcache/commit/5102908077f0020463dda0294bfe90832a5698b7)
+:   systemtest: fix OpenSSL DN format change
+
+[c01e841292](https://github.com/dcache/dcache/commit/c01e841292e505fa15215fd1899606419462f539)
+:   webdav: fix path-to-caveat for macaroon minting endpoint
+
+[4071b1f305](https://github.com/dcache/dcache/commit/4071b1f3057354b9ccfb26f63d697d62d57bb649)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.2.47
 
 ### alarms

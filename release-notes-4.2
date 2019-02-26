@@ -91,6 +91,63 @@ updates, pools may remain at 4.1 during that update.
 The dCache team thanks Christoph Anton Mitterer, Martin Johnki, Onno Zweers and Johannes Thurn
 for their pull requests and contributions.
 
+## Release 4.2.27
+
+### gplazma
+
+Due to a formatting issue, certificates issued by InCommon CA were not accepted
+because of case mismatches between the supplied "postalCode" and "street" 
+and the expected "PostalCode" and "STREET" field descriptors.
+
+Since this release, dCache handles those certificates as expected despite the
+unusual naming convention.
+
+### pool
+
+There was an issue with the timestamps output by the `sweeper ls`
+command. The command lists replica creation time and the time of 
+the last access. The output for replica creation time was incorrect,
+as it showed the startup timestamp for the replica's pool if that
+was more recent than the actual creation time of the replica.
+
+This issue was fixed, and the timestamps are showing the correct values now.
+
+### webdav
+
+When users request a macaroon via an HTTP POST request targeting
+a specific path, a caveat is created that restricts the macaroon
+to that path (requests to / result in a non-limited macaroon). 
+
+Commit 99c726e3 resulted in users getting back a non-limited
+macaroon for every request. This issue was fixed with this
+release.
+
+
+### Changelog 4.2.26..4.2.27
+
+<!-- git log 4.2.26..4.2.27 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[0f9417c155](https://github.com/dcache/dcache/commit/0f9417c15560a1daf62cb64a4934798c85e79d75)
+:   [maven-release-plugin] prepare release 4.2.27
+
+[e5de51d28d](https://github.com/dcache/dcache/commit/e5de51d28d61b2fa456b03aae00c74468ae71231)
+:   systemtest: fix OpenSSL DN format change
+
+[d3be93e958](https://github.com/dcache/dcache/commit/d3be93e95802d372e1201d6681cb7f6f5fc37804)
+:   webdav: fix path-to-caveat for macaroon minting endpoint
+
+[eefd8ee5f3](https://github.com/dcache/dcache/commit/eefd8ee5f3611a487e09917ef888079a50b0fed4)
+:   gplazma gridmap plugin: compare DNs ignoring letter case for attribute names
+
+[c9cf8f7670](https://github.com/dcache/dcache/commit/c9cf8f7670de263a04bbc458a8cc924685cad14a)
+:   webdav: fix NPE when Kafka notified file deletion
+
+[9069ab99a3](https://github.com/dcache/dcache/commit/9069ab99a3f08daf83c0426154a10eadc95059b4)
+:   [maven-release-plugin] prepare for next development iteration
+
+[121a95ccd8](https://github.com/dcache/dcache/commit/121a95ccd8a9d4a81eff3f029dd9d8259b57129c)
+:   pool: report correct replica creation time to sweeper
+
 ## Release 4.2.26
 
 ### admin

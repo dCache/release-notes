@@ -107,6 +107,35 @@ Thanks to Christoph Anton Mitterer for his constributions.
 We would like to thank the students of HTW Berlin Alexandra Konovalova, Hagen Wittlich and Marcus Kopp,
 for their contributions during the HTW course.
 
+## Release 4.1.35
+
+### webdav
+
+When users request a macaroon via an HTTP POST request targeting
+a specific path, a caveat is created that restricts the macaroon
+to that path (requests to / result in a non-limited macaroon). 
+
+Commit 99c726e3 resulted in users getting back a non-limited
+macaroon for every request. This issue was fixed with this
+release.
+
+
+### Changelog 4.1.34..4.1.35
+
+<!-- git log 4.1.34..4.1.35 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[2aec4f2f34](https://github.com/dcache/dcache/commit/2aec4f2f34b25ab219b7fae1f3350138f8f58557)
+:   [maven-release-plugin] prepare release 4.1.35
+
+[ebbe61de6a](https://github.com/dcache/dcache/commit/ebbe61de6acf32dbeaa14be8437f0aa96def7aa6)
+:   systemtest: fix OpenSSL DN format change
+
+[4562cf2ef1](https://github.com/dcache/dcache/commit/4562cf2ef11249298f3c12a3f96956d6693db88a)
+:   webdav: fix path-to-caveat for macaroon minting endpoint
+
+[fd04861a37](https://github.com/dcache/dcache/commit/fd04861a3745da960cd133e98a90b34e756dd82c)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.1.34
 
 ### alarms

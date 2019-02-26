@@ -78,6 +78,73 @@ This release breaks compatibility with pools running dcache version 3.2 or earli
 We thank HTW Berlin students Marcel Munce, Ferdinand Wolff and MaKrHTW (???) as well
 as Onno Zweers from surfSARA for their contributions.
 
+## Release 5.0.5
+
+### gplazma
+
+Due to a formatting issue, certificates issued by InCommon CA were not accepted
+because of case mismatches between the supplied "postalCode" and "street" 
+and the expected "PostalCode" and "STREET" field descriptors.
+
+Since this release, dCache handles those certificates as expected despite the
+unusual naming convention.
+
+### pool
+
+There was an issue with the timestamps output by the `sweeper ls`
+command. The command lists replica creation time and the time of 
+the last access. The output for replica creation time was incorrect,
+as it showed the startup timestamp for the replica's pool if that
+was more recent than the actual creation time of the replica.
+
+This issue was fixed, and the timestamps are showing the correct values now.
+
+### scripts
+
+The system-test build target provides a self-contained dCache deployment for
+development or evaluation purposes. Due to an oversight, its GSI xrootd 
+door tried instantiating the access-log plugin redundantly. This was
+fixed with this release.
+
+### webdav
+
+When users request a macaroon via an HTTP POST request targeting
+a specific path, a caveat is created that restricts the macaroon
+to that path (requests to / result in a non-limited macaroon). 
+
+Commit 99c726e3 resulted in users getting back a non-limited
+macaroon for every request. This issue was fixed with this
+release.
+
+
+### Changelog 5.0.4..5.0.5
+
+<!-- git log 5.0.4..5.0.5 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[b23feaa86f](https://github.com/dcache/dcache/commit/b23feaa86fefc70ef4ce0dd0811ef63347704dbb)
+:   [maven-release-plugin] prepare release 5.0.5
+
+[019e4d1339](https://github.com/dcache/dcache/commit/019e4d13398cbd53f135ff11ee9229db5601e6c6)
+:   systemtest: fix OpenSSL DN format change
+
+[6ca716bcba](https://github.com/dcache/dcache/commit/6ca716bcbac73deec99ca1ecacb399de8562fbda)
+:   systemtest: remove reference to access-log plugin
+
+[8c8ab4a072](https://github.com/dcache/dcache/commit/8c8ab4a0723e0aa0a88ab0126d1a81d710471e55)
+:   webdav: fix path-to-caveat for macaroon minting endpoint
+
+[b604835f59](https://github.com/dcache/dcache/commit/b604835f59600dea6201f7668fd5a351a5f60904)
+:   gplazma gridmap plugin: compare DNs ignoring letter case for attribute names
+
+[32399dd349](https://github.com/dcache/dcache/commit/32399dd3491e20137c3888a755e162a8b8564a4d)
+:   webdav: fix NPE when Kafka notified file deletion
+
+[4a595d7a54](https://github.com/dcache/dcache/commit/4a595d7a540898aac67481724cee538a176bddb9)
+:   [maven-release-plugin] prepare for next development iteration
+
+[6cc5119357](https://github.com/dcache/dcache/commit/6cc5119357e7a17b487589a1fa7a9721ba0bf2a0)
+:   pool: report correct replica creation time to sweeper
+
 ## Release 5.0.4
 
 ### admin
