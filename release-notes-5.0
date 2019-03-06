@@ -78,6 +78,26 @@ This release breaks compatibility with pools running dcache version 3.2 or earli
 We thank HTW Berlin students Marcel Munce, Ferdinand Wolff and MaKrHTW (???) as well
 as Onno Zweers from surfSARA for their contributions.
 
+## Release 5.0.6
+
+### xrootd
+
+With this release, dCache has gained full signature verification support for xrootd. 
+
+
+### Changelog 5.0.5..5.0.6
+
+<!-- git log 5.0.5..5.0.6 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[0367fc0348](https://github.com/dcache/dcache/commit/0367fc0348ff716d5df43f8e0afc6328f4955f02)
+:   [maven-release-plugin] prepare release 5.0.6
+
+[0aa6f55584](https://github.com/dcache/dcache/commit/0aa6f555847e9c4fdeed3781fcfd3f63816b7e7a)
+:   dcache-xrootd: implement support for security level and signed hashes
+
+[d883379f12](https://github.com/dcache/dcache/commit/d883379f12152844ef079f826ca7fa62054ce314)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.0.5
 
 ### gplazma
