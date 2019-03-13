@@ -107,6 +107,36 @@ from dCache 3.1.  Please read this section *very carefully* when
 upgrading from this version.
 
 
+## Release 3.2.49
+
+### ftp
+
+Now clients can request the checksum value of a file not owned by that
+user and where dCache does not already know the checksum value.
+
+### pool
+
+The current release fixed some logging on the pool where messages were recorded against an
+arbitrary context (i.e., the bit in square brackets), resulting in
+misleading information. 
+
+
+### Changelog 3.2.48..3.2.49
+
+<!-- git log 3.2.48..3.2.49 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[4e7509c](https://github.com/dcache/dcache/commit/4e7509cb7f504a074d3cad2d00f9227a68f36fa3)
+:   [maven-release-plugin] prepare release 3.2.49
+
+[ad0e509](https://github.com/dcache/dcache/commit/ad0e50933c8937c6224d694285e8d7c6973f25fe)
+:   pool: fix CDC for repository listener notification
+
+[4c4a603](https://github.com/dcache/dcache/commit/4c4a603774960b2d268406d1e39b0d20edd28cd8)
+:   ftp: store calculated checksum using root privileges
+
+[46df236](https://github.com/dcache/dcache/commit/46df2362b236cbbcd5251411793a40e7a3d63c82)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.2.48
 
 ### webdav

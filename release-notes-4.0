@@ -99,6 +99,36 @@ The notes for [release 4.0.0](#release4.0.0) detail the differences
 from dCache 3.2.  Please read this section *very carefully* when
 upgrading from this version.
 
+## Release 4.0.41
+
+### ftp
+
+Now clients can request the checksum value of a file not owned by that
+user and where dCache does not already know the checksum value.
+
+### pool
+
+The current release fixed some logging on the pool where messages were recorded against an
+arbitrary context (i.e., the bit in square brackets), resulting in
+misleading information. 
+
+
+### Changelog 4.0.40..4.0.41
+
+<!-- git log 4.0.40..4.0.41 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[63f22d4](https://github.com/dcache/dcache/commit/63f22d46e83dffd75546edec3560ee9c7540d6a4)
+:   [maven-release-plugin] prepare release 4.0.41
+
+[adb82a6](https://github.com/dcache/dcache/commit/adb82a61a9cd07405b6826a7bb30cdaa74b9ca09)
+:   pool: fix CDC for repository listener notification
+
+[ab22edd](https://github.com/dcache/dcache/commit/ab22eddc73f92bbe7ff9126d24964763c2a357e7)
+:   ftp: store calculated checksum using root privileges
+
+[7a1241a](https://github.com/dcache/dcache/commit/7a1241a410abf8c22d7e3acb10933a0f979b03f6)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.0.40
 
 ### webdav

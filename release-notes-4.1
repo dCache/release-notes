@@ -107,6 +107,36 @@ Thanks to Christoph Anton Mitterer for his constributions.
 We would like to thank the students of HTW Berlin Alexandra Konovalova, Hagen Wittlich and Marcus Kopp,
 for their contributions during the HTW course.
 
+## Release 4.1.36
+
+### ftp
+
+Now clients can request the checksum value of a file not owned by that
+user and where dCache does not already know the checksum value.
+
+### pool
+
+The current release fixed some logging on the pool where messages were recorded against an
+arbitrary context (i.e., the bit in square brackets), resulting in
+misleading information. 
+
+
+### Changelog 4.1.35..4.1.36
+
+<!-- git log 4.1.35..4.1.36 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[015c55b](https://github.com/dcache/dcache/commit/015c55baec1cfd35ac0f9b4fe447aefab8a05b81)
+:   [maven-release-plugin] prepare release 4.1.36
+
+[bd1cbc9](https://github.com/dcache/dcache/commit/bd1cbc9df663ce372a39ca6c78959673bfacaf17)
+:   pool: fix CDC for repository listener notification
+
+[044f0fe](https://github.com/dcache/dcache/commit/044f0fef3dc7478ffcdcc4ecce409bb9d282958f)
+:   ftp: store calculated checksum using root privileges
+
+[e76c9c1](https://github.com/dcache/dcache/commit/e76c9c16e29ff1c7345ae41948eda3bfb96546ba)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.1.35
 
 ### webdav

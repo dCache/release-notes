@@ -78,6 +78,62 @@ This release breaks compatibility with pools running dcache version 3.2 or earli
 We thank HTW Berlin students Marcel Munce, Ferdinand Wolff and MaKrHTW (???) as well
 as Onno Zweers from surfSARA for their contributions.
 
+## Release 5.0.7
+
+### ftp
+
+Now clients can request the checksum value of a file not owned by that
+user and where dCache does not already know the checksum value.
+
+### pnfsmanager
+
+The current release fixed a NPE triggered by network issues.
+
+### pool
+
+The current release fixed some logging on the pool where messages were recorded against an
+arbitrary context (i.e., the bit in square brackets), resulting in
+misleading information. 
+
+### transfermanagers
+
+TransferManager failed a transfer if the pool reports any
+problem when requesting the transfer was started. This is now fixed and third-party transfer is more robust against non-fatal errors that occur
+normally on a busy system.
+
+### xrootd
+
+Xrootd4j is updated to version , which fixed regression in supporting TPC pre-4.9.
+
+
+### Changelog 5.0.6..5.0.7
+
+<!-- git log 5.0.6..5.0.7 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[19bd3ac](https://github.com/dcache/dcache/commit/19bd3ac3bd2943ee10e704ff6cc0f3235783df4b)
+:   [maven-release-plugin] prepare release 5.0.7
+
+[2118353](https://github.com/dcache/dcache/commit/2118353ad918af442192401d154c05c88c7ebef1)
+:   dcache-xrootd: use debug level instead of trace
+
+[e3a1f18](https://github.com/dcache/dcache/commit/e3a1f1809fe06ec0feeef001f13578929d87ed62)
+:   xrootd: upgrade to xrootd4j v3.4.1
+
+[f73404c](https://github.com/dcache/dcache/commit/f73404c35a96092e0e8c003fd227b7ed4ecd4704)
+:   transfermanagers: recover from non-fatal error starting mover
+
+[969561f](https://github.com/dcache/dcache/commit/969561f3c3f829757538ff8de4aac8511ccdfff6)
+:   pnfsmanager: network issues triggered a NPE
+
+[a663aad](https://github.com/dcache/dcache/commit/a663aad25f525056f88c7ae9a3f9a7c7403217ed)
+:   pool: fix CDC for repository listener notification
+
+[106f51c](https://github.com/dcache/dcache/commit/106f51c4cef21598442c2f3d5c2269492e026158)
+:   ftp: store calculated checksum using root privileges
+
+[d2488fa](https://github.com/dcache/dcache/commit/d2488fa2da283cf3b8e7bfe7aab7c049e633c8c2)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.0.6
 
 ### xrootd

@@ -91,6 +91,45 @@ updates, pools may remain at 4.1 during that update.
 The dCache team thanks Christoph Anton Mitterer, Martin Johnki, Onno Zweers and Johannes Thurn
 for their pull requests and contributions.
 
+## Release 4.2.28
+
+### ftp
+
+Now clients can request the checksum value of a file not owned by that
+user and where dCache does not already know the checksum value.
+
+### pool
+
+The current release fixed some logging on the pool where messages were recorded against an
+arbitrary context (i.e., the bit in square brackets), resulting in
+misleading information. 
+
+### transfermanagers
+
+TransferManager failed a transfer if the pool reports any
+problem when requesting the transfer was started. This is now fixed and third-party transfer is more robust against non-fatal errors that occur
+normally on a busy system.
+
+
+### Changelog 4.2.27..4.2.28
+
+<!-- git log 4.2.27..4.2.28 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[9ddb29e](https://github.com/dcache/dcache/commit/9ddb29eebea5725d619ac58baa06914ca83adcc1)
+:   [maven-release-plugin] prepare release 4.2.28
+
+[367c012](https://github.com/dcache/dcache/commit/367c01250f685bf13579e99d310445e41257a108)
+:   transfermanagers: recover from non-fatal error starting mover
+
+[7353b40](https://github.com/dcache/dcache/commit/7353b405b7a3e21905e04e85fe242530bd3d67e9)
+:   pool: fix CDC for repository listener notification
+
+[e81337b](https://github.com/dcache/dcache/commit/e81337b24011746e7c91c61f83f48a2770574de3)
+:   ftp: store calculated checksum using root privileges
+
+[3e97b6c](https://github.com/dcache/dcache/commit/3e97b6ce5f50a806d0e4597ac6dc518738bb4d65)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.2.27
 
 ### gplazma
