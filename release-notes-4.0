@@ -99,6 +99,26 @@ The notes for [release 4.0.0](#release4.0.0) detail the differences
 from dCache 3.2.  Please read this section *very carefully* when
 upgrading from this version.
 
+## Release 4.0.42
+
+### webdav
+
+The current release fixed resource name for door root error.
+
+
+### Changelog 4.0.41..4.0.42
+
+<!-- git log 4.0.41..4.0.42 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[144c899](https://github.com/dcache/dcache/commit/144c8996b9aefff5c362d0270b5308c817eb4474)
+:   [maven-release-plugin] prepare release 4.0.42
+
+[6703656](https://github.com/dcache/dcache/commit/67036563cde9cc7fe5a651744e415d117dc401f9)
+:   webdav: fix resource name for door root
+
+[029f28a](https://github.com/dcache/dcache/commit/029f28aa2a6c99b7d0da5f4c862a45a09b6730dd)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.0.41
 
 ### ftp

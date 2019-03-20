@@ -78,6 +78,61 @@ This release breaks compatibility with pools running dcache version 3.2 or earli
 We thank HTW Berlin students Marcel Munce, Ferdinand Wolff and MaKrHTW (???) as well
 as Onno Zweers from surfSARA for their contributions.
 
+## Release 5.0.8
+
+### dcache
+
+rados4j version is updated which contains bugfix  addressing  data corruption on write with HTTP.
+
+### kafka
+
+The current release added ability to specify Kafka receiving topic name: `dcache.kafka.topic=billing`.
+
+### pool
+
+The current release added performance boost for ceph pool.
+
+### pool-ceph
+
+A NPE is fixed  when initiating a macaroon authz HTTP PUSH, authn with X.509/macaroon to target. 
+
+### resilience
+
+It is now possible to record resilience activity (on the receiving end).
+
+### webdav
+
+The current release fixed resource name for door root error.
+
+
+### Changelog 5.0.7..5.0.8
+
+<!-- git log 5.0.7..5.0.8 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[c284e8f](https://github.com/dcache/dcache/commit/c284e8f42a65d6f1e8bc9667420d9c7bfb70857d)
+:   [maven-release-plugin] prepare release 5.0.8
+
+[9093601](https://github.com/dcache/dcache/commit/909360100ad89fc87f5a35ead6a5a3fba61b4435)
+:    pool: grow file prior HTTP TPC
+
+[0f065aa](https://github.com/dcache/dcache/commit/0f065aa069b29c41506c357a8b76c9a9f8fcc375)
+:   pom: use rados4j-0.0.4
+
+[a2c97ac](https://github.com/dcache/dcache/commit/a2c97ace88cbd5c17a019a6eba48c7ce8aaec02d)
+:   resilience: add ability to log resilience activity (incoming)
+
+[1e89f34](https://github.com/dcache/dcache/commit/1e89f34f42fc46d9ac8c9fdf7268fa046792e92d)
+:   kafka: add ability to specify Kafka topic name
+
+[a2a6064](https://github.com/dcache/dcache/commit/a2a606462c43825205704786b4442c56db648096)
+:   pool-ceph: Failure when initiating a macaroon authz HTTP PUSH, authn with X.509/macaroon to target.
+
+[157580e](https://github.com/dcache/dcache/commit/157580efa1e1d112957c5724d010668864921665)
+:   webdav: fix resource name for door root
+
+[cc14e94](https://github.com/dcache/dcache/commit/cc14e94ab7b09e597e4e28ce58bc54cdbb446eac)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.0.7
 
 ### ftp

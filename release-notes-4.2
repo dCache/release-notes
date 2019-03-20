@@ -91,6 +91,54 @@ updates, pools may remain at 4.1 during that update.
 The dCache team thanks Christoph Anton Mitterer, Martin Johnki, Onno Zweers and Johannes Thurn
 for their pull requests and contributions.
 
+## Release 4.2.29
+
+### dcache
+
+rados4j version is updated which contains bugfix  addressing  data corruption on write with HTTP.
+
+### kafka
+
+The current release added ability to specify Kafka receiving topic name: `dcache.kafka.topic=billing`.
+
+### pool
+
+The current release added performance boost for ceph pool.
+
+### resilience
+
+It is now possible to record resilience activity (on the receiving end).
+
+### webdav
+
+The current release fixed resource name for door root error.
+
+
+### Changelog 4.2.28..4.2.29
+
+<!-- git log 4.2.28..4.2.29 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[8a0c017](https://github.com/dcache/dcache/commit/8a0c017a7b1f51de1af1e85c0c24114fe3c37fa8)
+:   [maven-release-plugin] prepare release 4.2.29
+
+[aafa409](https://github.com/dcache/dcache/commit/aafa4097df70a71ccd1e636dc466e542fee46834)
+:    pool: grow file prior HTTP TPC
+
+[98bb631](https://github.com/dcache/dcache/commit/98bb631a109499b2eb785ee64c6023464307cc71)
+:   pom: use rados4j-0.0.4
+
+[d49df53](https://github.com/dcache/dcache/commit/d49df53d2381e4271e89a937ef24007b03780ed0)
+:   resilience: add ability to log resilience activity (incoming)
+
+[e8ac90b](https://github.com/dcache/dcache/commit/e8ac90b856a1249e4c01aec60db4c0da4f7b4e59)
+:   kafka: add ability to specify Kafka topic name
+
+[8ba03f6](https://github.com/dcache/dcache/commit/8ba03f68bcc4b5037f820f55d66ab9de82680e64)
+:   webdav: fix resource name for door root
+
+[0d7bb40](https://github.com/dcache/dcache/commit/0d7bb4062ff0f07c1a016a3e40b2824095f7a3a6)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.2.28
 
 ### ftp
