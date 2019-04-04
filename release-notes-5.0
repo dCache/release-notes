@@ -78,6 +78,68 @@ This release breaks compatibility with pools running dcache version 3.2 or earli
 We thank HTW Berlin students Marcel Munce, Ferdinand Wolff and MaKrHTW (???) as well
 as Onno Zweers from surfSARA for their contributions.
 
+## Release 5.0.9
+
+### dcache
+
+Jetty version is updated to  9.4.12.v20180830.
+
+### nfs
+
+nfs4j version is changed to 0.17.11 with  fixed  export table evaluation order.
+
+### resilience
+
+It is now possible to record resilience activity (on the receiving
+end), which may prove useful in understanding
+behaviour.
+
+In rare circumstances  dark removes  can result in data loss by 
+removing of all replicas for a given file. The current release fixed the issue.
+
+Pool operations now can successfully be restarted from the
+command line after they have been shutdown, without
+restarting resilience.
+
+
+
+### Changelog 5.0.8..5.0.9
+
+<!-- git log 5.0.8..5.0.9 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[c3af74b](https://github.com/dcache/dcache/commit/c3af74bdad2477acf2541d156c5e20181eee4daf)
+:   [maven-release-plugin] prepare release 5.0.9
+
+[0829208](https://github.com/dcache/dcache/commit/08292083c08de41d69fc342fcea9deef4f48a7c3)
+:   resilience: update state on pool operations when restarted from admin command
+
+[31e70b9](https://github.com/dcache/dcache/commit/31e70b9ed59f7f3f3a3970fbcf18701a04aa73f3)
+:   libs: use nfs4j-0.17.11
+
+[2e2418b](https://github.com/dcache/dcache/commit/2e2418b9e3f1d46d1f1ce62f5c371044a5267b06)
+:   chimera-shell: fix class cast of extractor in constructor
+
+[a120777](https://github.com/dcache/dcache/commit/a1207775985306bb1977528c557ce832f63362b5)
+:   libs: update jetty version to 9.4.12.v20180830
+
+[73950c3](https://github.com/dcache/dcache/commit/73950c34aef321b42fb99eb7ec29c74728dbf8af)
+:   nfs: fix missing CDC initialization
+
+[4edc62c](https://github.com/dcache/dcache/commit/4edc62cff3fc7e97e259a9074872c028af563634)
+:   resilience: do simple existence check of replica on pool to avoid dark removes
+
+[4828d68](https://github.com/dcache/dcache/commit/4828d68b515c740782b154b6e5bb4305ee775907)
+:   systemtest: remove ancient replica pools
+
+[1f345c6](https://github.com/dcache/dcache/commit/1f345c615a6ef16df1840953a18305ed34938878)
+:   Fixing example of ban.conf that breaks dCache.
+
+[87410e2](https://github.com/dcache/dcache/commit/87410e2d3e606b94dbf6e02e9381c3b0f625ef11)
+:   [maven-release-plugin] prepare for next development iteration
+
+[147e11b](https://github.com/dcache/dcache/commit/147e11b36db0688bda8b907509b40bed5c1117db)
+:   resilience: add ability to log resilience activity
+
 ## Release 5.0.8
 
 ### dcache

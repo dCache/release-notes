@@ -107,6 +107,58 @@ Thanks to Christoph Anton Mitterer for his constributions.
 We would like to thank the students of HTW Berlin Alexandra Konovalova, Hagen Wittlich and Marcus Kopp,
 for their contributions during the HTW course.
 
+## Release 4.1.38
+
+### dcache
+
+Jetty version is updated to  9.4.12.v20180830.
+
+### resilience
+
+It is now possible to record resilience activity (on the receiving
+end), which may prove useful in understanding
+behaviour.
+
+In rare circumstances  dark removes  can result in data loss by 
+removing of all replicas for a given file. The current release fixed the issue.
+
+Pool operations now can successfully be restarted from the
+command line after they have been shutdown, without
+restarting resilience.
+
+
+
+### Changelog 4.1.37..4.1.38
+
+<!-- git log 4.1.37..4.1.38 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[e28f2f2](https://github.com/dcache/dcache/commit/e28f2f2cb895af15b1047f5b86655f7a12518822)
+:   [maven-release-plugin] prepare release 4.1.38
+
+[4ef1910](https://github.com/dcache/dcache/commit/4ef19108adf8c6e7ee81939b3d88f96d45e743da)
+:   resilience: update state on pool operations when restarted from admin command
+
+[96d6fc7](https://github.com/dcache/dcache/commit/96d6fc7105784839b7c99400faff53c2c9096f34)
+:   chimera-shell: fix class cast of extractor in constructor
+
+[24db9e6](https://github.com/dcache/dcache/commit/24db9e66e9d96ad0b67a39371de574bfa4b2a240)
+:   libs: update jetty version to 9.4.12.v20180830
+
+[485ef68](https://github.com/dcache/dcache/commit/485ef68e0d68c80dbc2998e65ea50adbd55b8dfc)
+:   resilience: do simple existence check of replica on pool to avoid dark removes
+
+[85a15c7](https://github.com/dcache/dcache/commit/85a15c7bde68916ecf4aac0deeb57ba788f8de00)
+:   Fixed method name error (getPool() -> getPoolName()) compilation error
+
+[b5d405a](https://github.com/dcache/dcache/commit/b5d405a26b89d9a9ee3917ff60dc52e56d331c88)
+:   [maven-release-plugin] prepare for next development iteration
+
+[5928fb7](https://github.com/dcache/dcache/commit/5928fb7221e871400f36fbe1867a6ba314ee9c33)
+:   resilience: add ability to log resilience activity (incoming)
+
+[c302851](https://github.com/dcache/dcache/commit/c302851393c0a9214c7819de4fe7abfec9b41c55)
+:   resilience: add ability to log resilience activity
+
 ## Release 4.1.37
 
 ### webdav

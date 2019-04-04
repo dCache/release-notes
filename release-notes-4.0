@@ -99,6 +99,55 @@ The notes for [release 4.0.0](#release4.0.0) detail the differences
 from dCache 3.2.  Please read this section *very carefully* when
 upgrading from this version.
 
+## Release 4.0.43
+
+### dcache
+
+Jetty version is updated to  9.4.12.v20180830.
+
+### resilience
+
+It is now possible to record resilience activity (on the receiving
+end), which may prove useful in understanding
+behaviour.
+
+In rare circumstances  dark removes  can result in data loss by 
+removing of all replicas for a given file. The current release fixed the issue.
+
+Pool operations now can successfully be restarted from the
+command line after they have been shutdown, without
+restarting resilience.
+
+
+
+### Changelog 4.0.42..4.0.43
+
+<!-- git log 4.0.42..4.0.43 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[7871b7f](https://github.com/dcache/dcache/commit/7871b7f2f5565ffcae20dc75172f0e64cd6f6db8)
+:   [maven-release-plugin] prepare release 4.0.43
+
+[4b71475](https://github.com/dcache/dcache/commit/4b71475e85b5952d79575ed44bb09c222ff93d08)
+:   resilience: update state on pool operations when restarted from admin command
+
+[19655eb](https://github.com/dcache/dcache/commit/19655eb01b7f3acdf737e7b20874a3ff31dbbe84)
+:   chimera-shell: fix class cast of extractor in constructor
+
+[f176365](https://github.com/dcache/dcache/commit/f176365b4f8f58ba4547082732f14a4b0d2e93bb)
+:   libs: update jetty version to 9.4.12.v20180830
+
+[bc1e5a2](https://github.com/dcache/dcache/commit/bc1e5a29d9def45563c4682d3515c877de61c359)
+:   resilience: do simple existence check of replica on pool to avoid dark removes
+
+[dd7c5b6](https://github.com/dcache/dcache/commit/dd7c5b640a0856d8ec79459f09e1af0867a6c612)
+:   [maven-release-plugin] prepare for next development iteration
+
+[c6471c1](https://github.com/dcache/dcache/commit/c6471c1dc67911698ff28e8a184230805e1fbb3e)
+:   resilience: add ability to log resilience activity (incoming)
+
+[68e36e1](https://github.com/dcache/dcache/commit/68e36e1a3b78f2efc57348ff8c912b537178c82a)
+:   resilience: add ability to log resilience activity
+
 ## Release 4.0.42
 
 ### webdav

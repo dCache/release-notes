@@ -91,6 +91,65 @@ updates, pools may remain at 4.1 during that update.
 The dCache team thanks Christoph Anton Mitterer, Martin Johnki, Onno Zweers and Johannes Thurn
 for their pull requests and contributions.
 
+## Release 4.2.30
+
+### dcache
+
+Jetty version is updated to  9.4.12.v20180830.
+
+### nfs
+
+nfs4j version is changed to 0.17.11 with  fixed  export table evaluation order.
+
+### resilience
+
+It is now possible to record resilience activity (on the receiving
+end), which may prove useful in understanding
+behaviour.
+
+In rare circumstances  dark removes  can result in data loss by 
+removing of all replicas for a given file. The current release fixed the issue.
+
+Pool operations now can successfully be restarted from the
+command line after they have been shutdown, without
+restarting resilience.
+
+
+
+### Changelog 4.2.29..4.2.30
+
+<!-- git log 4.2.29..4.2.30 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[4e3a9f7](https://github.com/dcache/dcache/commit/4e3a9f77cfda819a105b87c61f63cf9834f8a615)
+:   [maven-release-plugin] prepare release 4.2.30
+
+[0ba3158](https://github.com/dcache/dcache/commit/0ba31580d0b8a596072a85b95a185ea436f47769)
+:   resilience: update state on pool operations when restarted from admin command
+
+[f17163f](https://github.com/dcache/dcache/commit/f17163f49bc0d166617aa03e39981edee95059a2)
+:   libs: use nfs4j-0.17.11
+
+[060e570](https://github.com/dcache/dcache/commit/060e5708e04c210ede4550d228a58f3b9fce01cb)
+:   chimera-shell: fix class cast of extractor in constructor
+
+[2b208b9](https://github.com/dcache/dcache/commit/2b208b9c58405c7271531ffa63467c296a3c8318)
+:   libs: update jetty version to 9.4.12.v20180830
+
+[87a2fbe](https://github.com/dcache/dcache/commit/87a2fbeda8dc0e7644787eeafb94096132b80445)
+:   nfs: fix missing CDC initialization
+
+[584cede](https://github.com/dcache/dcache/commit/584cedefa7557803d83b86793e5f6ef8ad8a95c2)
+:   resilience: do simple existence check of replica on pool to avoid dark removes
+
+[cf1a0d9](https://github.com/dcache/dcache/commit/cf1a0d96fd6d9cb9b74b308a8fd756a1287003c2)
+:   systemtest: remove ancient replica pools
+
+[ee2ec0e](https://github.com/dcache/dcache/commit/ee2ec0e61b87271030e84929ac452cf1f6e21c4d)
+:   [maven-release-plugin] prepare for next development iteration
+
+[98e3198](https://github.com/dcache/dcache/commit/98e3198cf3fab4603bc07af42f6601e566a62f38)
+:   resilience: add ability to log resilience activity
+
 ## Release 4.2.29
 
 ### dcache
