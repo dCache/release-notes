@@ -64,16 +64,32 @@ HTML header: <title>dCache 5.1 Release Notes</title>
 
 ## Highlights
 
-(tbd, this section uses markdown formatting)
+The 5.1 series of dCache focuses on new data transfer features.
+
+It introduces 3rd-party copy capabilities to the xrootd protocol. 
+
+FTP doors can now be accessed using anonymous FTP, and encrypted FTPS (TLS) authentication is now supported as well.
+
+gPlazma has gained support for SciToken authentication as well as improved OpenID Connect support.
+
+Pools can now send the full set of inotify events through SSE.
+
+
 
 ## Incompatibilities
 
-(tbd, this section uses markdown formatting)
+  * The Kafka configuration was moved from dcache.properties to a dedicated kafka.properties file.
+
 
 ## Acknowledgments
 
-(tbd, this section uses markdown formatting)
+Once again, we are grateful for code and documentation contributions from contributors outside of our core team.
 
+Onno Zweers provided many helpful corrections to the documentation.
+
+Lea Morschel also provided documentation and code refinements.
+
+Other contributions originated from a lecture at HTW Berlin; many thanks to Jonas Grabber, "tabea" and "xpinkyx" for their contributions.
 
 
 ## Release 5.1.0
