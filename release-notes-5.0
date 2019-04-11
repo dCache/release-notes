@@ -78,6 +78,35 @@ This release breaks compatibility with pools running dcache version 3.2 or earli
 We thank HTW Berlin students Marcel Munce, Ferdinand Wolff and MaKrHTW (???) as well
 as Onno Zweers from surfSARA for their contributions.
 
+## Release 5.0.10
+
+### pool
+
+The current release improved time formatting for Json mover info.
+
+### resilience
+
+Faulty parsing of the error string on the `retry errors`
+command results in operation failure, with message
+`IllegalArgumentException: Illegal pnfsid string length`. This is now fixed.
+
+
+### Changelog 5.0.9..5.0.10
+
+<!-- git log 5.0.9..5.0.10 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[8099bb7](https://github.com/dcache/dcache/commit/8099bb7ad7111a3afc7aa5caa2cb273ec69ea92b)
+:   [maven-release-plugin] prepare release 5.0.10
+
+[232341f](https://github.com/dcache/dcache/commit/232341f22f101625efb063055b004d6ca381fdb7)
+:   dcache-resilience: fix indexing on retry errors command
+
+[e01cc02](https://github.com/dcache/dcache/commit/e01cc02e78f0c13194732344898737ab0439cfdf)
+:   pools: JSON mover info timeInSeconds should be timeInMilliseconds
+
+[ba60436](https://github.com/dcache/dcache/commit/ba60436b57597bedfd68786fb8a7e1a21097bf74)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.0.9
 
 ### dcache

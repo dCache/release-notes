@@ -107,6 +107,34 @@ from dCache 3.1.  Please read this section *very carefully* when
 upgrading from this version.
 
 
+## Release 3.2.52
+
+### resilience
+
+In rare circumstances dark removes can result in data loss by removing of all replicas for a given file. The current release fixed the issue.
+
+The admin command `pool ctrl` provides for `start` and `shutdown`
+options which stop the processing of all pool operations. This is now fixed and pool operations can successfully be restarted from the
+command line after they have been shutdown, without
+restarting resilience.
+
+
+### Changelog 3.2.51..3.2.52
+
+<!-- git log 3.2.51..3.2.52 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[298adb4](https://github.com/dcache/dcache/commit/298adb401bb559ea87cfd4e50efeb1e893c6917a)
+:   [maven-release-plugin] prepare release 3.2.52
+
+[66f9203](https://github.com/dcache/dcache/commit/66f92036dd816fcf5bcdc6e43c731a8ebed3315f)
+:   resilience: update state on pool operations when restarted from admin command
+
+[33ff6b8](https://github.com/dcache/dcache/commit/33ff6b883cb6c2fe6d3acabc0842d93aca54e85d)
+:   resilience: do simple existence check of replica on pool to avoid dark removes
+
+[20bf397](https://github.com/dcache/dcache/commit/20bf397e5d5f3af4a23dbde33490ad68bed04f37)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.2.51
 
 ### dcache
