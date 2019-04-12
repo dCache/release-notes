@@ -74,6 +74,8 @@ gPlazma has gained support for SciToken authentication as well as improved OpenI
 
 Pools can now send the full set of inotify events through SSE.
 
+Pool manager can create dynamic pool groups based on defined tags.
+
 
 
 ## Incompatibilities
@@ -127,6 +129,17 @@ Other contributions originated from a lecture at HTW Berlin; many thanks to Jona
 ### Pool
 
 ### Pool Manager
+
+Added option `-dynamic` to `psu create pool` command to create a pool group that will dynamically add all pools
+that have a specific attribute. Currently, only pool tag, defined by `pool.tags` property is supported.
+
+Example:
+```
+>  psu create pgroup -dynamic -tags=zone=A zone-A-pools
+```
+
+Will create pool group `zone-A-pools` and any existing pool as well as any new pool that configured with tag
+`zone=A` will be automatically included into that pool group.
 
 ### Resilience
 
