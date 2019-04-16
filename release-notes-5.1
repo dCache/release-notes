@@ -143,6 +143,39 @@ Will create pool group `zone-A-pools` and any existing pool as well as any new p
 
 ### Resilience
 
+An important bug which made resilience susceptible to causing data loss during removal of excess replicas
+was fixed.
+
+Several smaller bug fixes were also applied:
+
+1.
+
+```
+\s Resilience pool ctrl start
+```
+
+now properly reinitializes the pool state on the pool operations.
+
+2.
+
+```
+\s Resilience retry errors
+```
+
+no longer throws a string index exception.
+
+3.  After excluding a pool, it cannot be scanned under any circumstances; it must be explicitly included
+again before scanning can be activated on it; i.e.,
+
+```
+\s Resilience pool include [pool expression]
+```
+
+Access logging has also been added to resilience in order to be able to trace its communication with
+other dCache components.  As usual, these records appear at INFO level in the ``resilience.access`` log.
+
+
+
 ### Space Manager
 
 ### SRM / SRM Manager
