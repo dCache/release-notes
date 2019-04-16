@@ -208,16 +208,16 @@ as 'VOID', but as 'NOOP', when you do:
 
 ### XRootD
 
-The dCache xrootd door/server now supports security level configuration and signed hash verification (see
+The dCache xrootd door/server now supports security level configuration and signed hash verification. See
 ``dcache.properties`` under "Xrootd: support for verifying signed hashes (by server/door)" for information.
 
 We have also added support for mapping clients with valid credentials to NOBODY; this also enables the
-current version of third-party-copy (which lacks the full proxy delegation which will be available in
-the next Golden Release [5.2]) to allow destination servers to log in to dCache as source anonymously;
-in this latter case (only), dCache also allows the server to see read-protected files.
+current version of third-party-copy (which lacks the full proxy delegation that will be available in
+the next Golden Release [5.2]) to allow destination servers to log in anonymously to dCache as source
+during third-party-copy; in this latter case (only), dCache also allows the server to see read-protected files.
 
 A bug involving access logging when the door is configured with HAproxy was fixed, and trace-level logging
-in general was converted to debug-level, so that the former is reserved for handshake packet dumps only.
+in general was converted to debug-level, so that the former may be reserved for handshake packet dumps only.
 
 ### Zookeeper
 
