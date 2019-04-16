@@ -184,8 +184,8 @@ again before scanning can be activated on it; i.e.,
 \s Resilience pool include [pool expression]
 ```
 
-Access logging has also been added to resilience in order to be able to trace its communication with
-other dCache components.  As usual, these records appear at INFO level in the ``resilience.access`` log.
+Logging of messages has also been added to resilience in order to be able to trace its communication with
+other dCache components.  These records appear at INFO level in the ``resilience.resilience`` log.
 
 For clarity, the final state of a file operation which ends up being unnecessary is no longer reported
 as 'VOID', but as 'NOOP', when you do:
