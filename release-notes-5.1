@@ -143,12 +143,12 @@ Will create pool group `zone-A-pools` and any existing pool as well as any new p
 
 ### Resilience
 
-An important bug which made resilience susceptible to causing data loss during removal of excess replicas
+An important bug (from a race condition) which made resilience susceptible to causing data loss during removal of excess replicas
 was fixed.
 
 Several smaller bug fixes were also applied:
 
-1.
+1) The restart command
 
 ```
 \s Resilience pool ctrl start
@@ -156,7 +156,7 @@ Several smaller bug fixes were also applied:
 
 now properly reinitializes the pool state on the pool operations.
 
-2.
+2) The retry command
 
 ```
 \s Resilience retry errors
@@ -174,7 +174,12 @@ again before scanning can be activated on it; i.e.,
 Access logging has also been added to resilience in order to be able to trace its communication with
 other dCache components.  As usual, these records appear at INFO level in the ``resilience.access`` log.
 
+For clarity, the final state of a file operation which ends up being unnecessary is no longer reported
+as 'VOID', but as 'NOOP', when you do:
 
+```
+\s Resilience file ls
+```
 
 ### Space Manager
 
