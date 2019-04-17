@@ -107,6 +107,54 @@ from dCache 3.1.  Please read this section *very carefully* when
 upgrading from this version.
 
 
+## Release 3.2.53
+
+### pool
+
+An unhelpful error message "Parameter `directory` is not a directory" is
+replaced with one that provides information on which directory is
+missing.
+
+Update error messages (previously "Could not create mover") to provide
+more information about why the mover could not be created.
+
+The pool no longer logs configuration or deployment problems that
+prevent the pool from creating a mover as if that problem was a bug.
+
+The current release fixed certain error cases, where a pool is unable to create a mover are no
+longer logged as a bug in dCache.
+
+### transfermanager
+
+The current release fixed a NPE  if transfer was cancelled.
+
+
+
+### Changelog 3.2.52..3.2.53
+
+<!-- git log 3.2.52..3.2.53 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[2470947](https://github.com/dcache/dcache/commit/247094737ffe3e13cd97a44bdc368d45e4b03fa5)
+:   [maven-release-plugin] prepare release 3.2.53
+
+[6403603](https://github.com/dcache/dcache/commit/6403603e3ab5c9ef7a9d18170dd3bf9a160ccb72)
+:   pool: avoid throwing a RuntimeException for non-bugs
+
+[ad82d27](https://github.com/dcache/dcache/commit/ad82d275ccce7d2adbc337cec53954c689daff3f)
+:   pool: avoid log-and-throw anti-pattern
+
+[caf8d9c](https://github.com/dcache/dcache/commit/caf8d9c40af644de25b4751053ab47bdbb9d8423)
+:   transfermanager: avoid NPE on shutdown
+
+[27a281a](https://github.com/dcache/dcache/commit/27a281aaf76956eb8d07713e22e5dc6dd7b8163c)
+:   pool: throw exception with meaningful error message
+
+[c9d1f88](https://github.com/dcache/dcache/commit/c9d1f88811da71e05604a2f181d33301d1618085)
+:   pool: update error messages to make them distinct
+
+[9afcf32](https://github.com/dcache/dcache/commit/9afcf32a248942b90f455da6bfc7464138cebf0d)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.2.52
 
 ### resilience

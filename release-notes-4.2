@@ -91,6 +91,69 @@ updates, pools may remain at 4.1 during that update.
 The dCache team thanks Christoph Anton Mitterer, Martin Johnki, Onno Zweers and Johannes Thurn
 for their pull requests and contributions.
 
+## Release 4.2.32
+
+### frontend
+
+The destroy sequence for a channel failed to obtain the Channel
+monitor. This could result in concurrent changes to the Channel's
+state and incomplete Channel shutdown. This is now fixed and the shutdown sequence of a channel is more robust.
+
+
+### pool
+
+An unhelpful error message "Parameter `directory` is not a directory" is
+replaced with one that provides information on which directory is
+missing.
+
+The pool no longer logs configuration or deployment problems that
+prevent the pool from creating a mover as if that problem was a bug.
+
+The current release fixed certain error cases, where a pool is unable to create a mover are no
+longer logged as a bug in dCache.
+
+### transfermanager
+
+By default, the transfermanager will retry starting the mover ten times
+before giving up on the pool. If we know that a pool doesn't support
+this transfer type (for whatever reason), then this makes no sense. This is now fixed and a pool that does not support a particular transfer is not immediately
+retried.
+
+The current release fixed a NPE  if transfer was cancelled.
+
+
+
+### Changelog 4.2.31..4.2.32
+
+<!-- git log 4.2.31..4.2.32 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[d0b7b69](https://github.com/dcache/dcache/commit/d0b7b69d3aedfde60fe4c20ece955a711efb41af)
+:   [maven-release-plugin] prepare release 4.2.32
+
+[bc59ba9](https://github.com/dcache/dcache/commit/bc59ba97e36869847beb52a3999bbd03a60670ed)
+:   pool: avoid throwing a RuntimeException for non-bugs
+
+[62be882](https://github.com/dcache/dcache/commit/62be882690e47f21aaf1765d74dcebb63050fe4d)
+:   transfermanager: do not retry starting mover if transfer is not supported
+
+[1666d8b](https://github.com/dcache/dcache/commit/1666d8baf9d00e70575b49588db97717c3459950)
+:   pool: avoid log-and-throw anti-pattern
+
+[178aeb2](https://github.com/dcache/dcache/commit/178aeb2668e8c05a868b55d09694187e0b09707b)
+:   frontend: ensure client is disconnected when shutting down channel
+
+[1964c2e](https://github.com/dcache/dcache/commit/1964c2eb7c28b765af80f111e5a8d33edc2a4a3b)
+:   frontend: avoid race on cancelling channel garbage-collect task
+
+[cf9390b](https://github.com/dcache/dcache/commit/cf9390b07251c08a86b0fb2bb960170f80cd15f3)
+:   transfermanager: avoid NPE on shutdown
+
+[ac4019f](https://github.com/dcache/dcache/commit/ac4019f04bd5ed41c8cef2e97a08d0e2070ae755)
+:   pool: throw exception with meaningful error message
+
+[4ef86a4](https://github.com/dcache/dcache/commit/4ef86a4c25f91265f62f5127b861b60604b253cf)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.2.31
 
 ### pool

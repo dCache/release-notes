@@ -99,6 +99,54 @@ The notes for [release 4.0.0](#release4.0.0) detail the differences
 from dCache 3.2.  Please read this section *very carefully* when
 upgrading from this version.
 
+## Release 4.0.44
+
+### pool
+
+An unhelpful error message "Parameter `directory` is not a directory" is
+replaced with one that provides information on which directory is
+missing.
+
+Update error messages (previously "Could not create mover") to provide
+more information about why the mover could not be created.
+
+The pool no longer logs configuration or deployment problems that
+prevent the pool from creating a mover as if that problem was a bug.
+
+The current release fixed certain error cases, where a pool is unable to create a mover are no
+longer logged as a bug in dCache.
+
+### transfermanager
+
+The current release fixed a NPE  if transfer was cancelled.
+
+
+
+### Changelog 4.0.43..4.0.44
+
+<!-- git log 4.0.43..4.0.44 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[e149388](https://github.com/dcache/dcache/commit/e1493883a69eaa217270f488810c8f8e178cad83)
+:   [maven-release-plugin] prepare release 4.0.44
+
+[577a54d](https://github.com/dcache/dcache/commit/577a54ddcafc142623ea41791ef2362c3faeeb22)
+:   pool: avoid throwing a RuntimeException for non-bugs
+
+[d3ec801](https://github.com/dcache/dcache/commit/d3ec801989b0bba76bf1343794124ea873b71849)
+:   pool: avoid log-and-throw anti-pattern
+
+[1f222d3](https://github.com/dcache/dcache/commit/1f222d3774a62ceb2552e53a478bd15f28f1778a)
+:   transfermanager: avoid NPE on shutdown
+
+[d4c1cbe](https://github.com/dcache/dcache/commit/d4c1cbe05f6523ceeaad84fc434482f9e97290b6)
+:   pool: throw exception with meaningful error message
+
+[d307641](https://github.com/dcache/dcache/commit/d3076416b7ed995c662e0e0cfbfb2b7675274f90)
+:   pool: update error messages to make them distinct
+
+[70378b3](https://github.com/dcache/dcache/commit/70378b3204df23d363fff0ddd8fc86825c4bd427)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.0.43
 
 ### dcache

@@ -107,6 +107,54 @@ Thanks to Christoph Anton Mitterer for his constributions.
 We would like to thank the students of HTW Berlin Alexandra Konovalova, Hagen Wittlich and Marcus Kopp,
 for their contributions during the HTW course.
 
+## Release 4.1.40
+
+### pool
+
+An unhelpful error message "Parameter `directory` is not a directory" is
+replaced with one that provides information on which directory is
+missing.
+
+Update error messages (previously "Could not create mover") to provide
+more information about why the mover could not be created.
+
+The pool no longer logs configuration or deployment problems that
+prevent the pool from creating a mover as if that problem was a bug.
+
+The current release fixed certain error cases, where a pool is unable to create a mover are no
+longer logged as a bug in dCache.
+
+### transfermanager
+
+The current release fixed a NPE  if transfer was cancelled.
+
+
+
+### Changelog 4.1.39..4.1.40
+
+<!-- git log 4.1.39..4.1.40 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[a81d695](https://github.com/dcache/dcache/commit/a81d69511eb87c60bef681920a5f34106f7904b0)
+:   [maven-release-plugin] prepare release 4.1.40
+
+[1907425](https://github.com/dcache/dcache/commit/1907425f8d0e5c4b585cdbc7f86725530392f97e)
+:   pool: avoid throwing a RuntimeException for non-bugs
+
+[8bfd05c](https://github.com/dcache/dcache/commit/8bfd05ceb04a3e12154c7f46d228567d60852fa6)
+:   pool: avoid log-and-throw anti-pattern
+
+[7661f70](https://github.com/dcache/dcache/commit/7661f70578ec090b1a5d06b3a21c67419689f965)
+:   transfermanager: avoid NPE on shutdown
+
+[354f955](https://github.com/dcache/dcache/commit/354f955ea1459f13fdbb60249a8de405a15b35c7)
+:   pool: throw exception with meaningful error message
+
+[e6ac348](https://github.com/dcache/dcache/commit/e6ac3489b06ab9ce7f0cfee61facf63f2787d304)
+:   pool: update error messages to make them distinct
+
+[668b305](https://github.com/dcache/dcache/commit/668b3053e48bc9814e55b3e6c5d9bc9f8f80ed1b)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.1.39
 
 ### pool

@@ -78,6 +78,75 @@ This release breaks compatibility with pools running dcache version 3.2 or earli
 We thank HTW Berlin students Marcel Munce, Ferdinand Wolff and MaKrHTW (???) as well
 as Onno Zweers from surfSARA for their contributions.
 
+## Release 5.0.11
+
+### frontend
+
+The destroy sequence for a channel failed to obtain the Channel
+monitor. This could result in concurrent changes to the Channel's
+state and incomplete Channel shutdown. This is now fixed and the shutdown sequence of a channel is more robust.
+
+
+### pool
+
+An unhelpful error message "Parameter `directory` is not a directory" is
+replaced with one that provides information on which directory is
+missing.
+
+The pool no longer logs configuration or deployment problems that
+prevent the pool from creating a mover as if that problem was a bug.
+
+The current release fixed certain error cases, where a pool is unable to create a mover are no
+longer logged as a bug in dCache.
+
+### transfermanager
+
+By default, the transfermanager will retry starting the mover ten times
+before giving up on the pool. If we know that a pool doesn't support
+this transfer type (for whatever reason), then this makes no sense. This is now fixed and a pool that does not support a particular transfer is not immediately
+retried.
+
+The current release fixed a NPE  if transfer was cancelled.
+
+
+
+### Changelog 5.0.10..5.0.11
+
+<!-- git log 5.0.10..5.0.11 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[9f2d38e](https://github.com/dcache/dcache/commit/9f2d38e89691da46fec4264a8bc3ab2568811f1a)
+:   [maven-release-plugin] prepare release 5.0.11
+
+[7511623](https://github.com/dcache/dcache/commit/7511623c3e97a385137a66c784181ad1fd3f503f)
+:   pool: avoid throwing a RuntimeException for non-bugs
+
+[f2c015b](https://github.com/dcache/dcache/commit/f2c015b19f3a42bb46f7bc4e60a33cbd9c1ee6de)
+:   docs: TheBook fix location of edit-me-on-github ribbon
+
+[2adec24](https://github.com/dcache/dcache/commit/2adec24cfa738747ce3dddc8294302ec1f1b3bf6)
+:   docs: TheBook update heading importance to be more consistent
+
+[ebb9071](https://github.com/dcache/dcache/commit/ebb90714a9d3a96b5c056dc08fdfc8492de811ae)
+:   transfermanager: do not retry starting mover if transfer is not supported
+
+[1c22df2](https://github.com/dcache/dcache/commit/1c22df2fea343bfc28e3657736ba0e0fcd1f6247)
+:   pool: avoid log-and-throw anti-pattern
+
+[412876a](https://github.com/dcache/dcache/commit/412876ac8e673368f20858590e19af01128f5dd2)
+:   frontend: ensure client is disconnected when shutting down channel
+
+[71d2244](https://github.com/dcache/dcache/commit/71d22445b96907c12c59f9df73a1da0849757843)
+:   frontend: avoid race on cancelling channel garbage-collect task
+
+[a1c02ea](https://github.com/dcache/dcache/commit/a1c02ea8b0dcd6d01fc81a415bff647dbb9accfd)
+:   transfermanager: avoid NPE on shutdown
+
+[dc9c6b9](https://github.com/dcache/dcache/commit/dc9c6b9db52a16ca1e52ec5c8fbb065559a934c4)
+:   pool: throw exception with meaningful error message
+
+[af5daa0](https://github.com/dcache/dcache/commit/af5daa092526b8245f07d6af4ac4a29aa3a355e1)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.0.10
 
 ### pool
