@@ -96,7 +96,7 @@ Other contributions originated from a lecture at HTW Berlin; many thanks to Jona
 
 ## Release 5.1.0
 
-### Admin
+### Admin (@paul)
 
 ### Alarms
 
@@ -110,9 +110,9 @@ Alarms was also modified in order to be able to support a more modern version of
 The database connection was wrapped so as to catch fatal exceptions and report them as alarms (this
 is already done for other databases such as chimera).
 
-### Cleaner
+### Cleaner (@jstarek)
 
-### DCAP
+### DCAP (@jstarek)
 
 ### Frontend
 
@@ -121,27 +121,25 @@ to how this works:  (a) admins always see everything; (b) authenticated users al
 transfers; (c) if ``frontend.authz.unlimited-operation-visibility`` is set to `true`, authenticated users
 can see all transfers.  Non-authenticated users can only see anonymous transfers.
 
-### FTP
+### FTP (@paul)
 
-### gplazma
+### gplazma (@paul)
 
-### History
+### History (@marina)
 
-### Hoppingmanager
+### httpd (@marina)
 
-### httpd
+### Info (@marina)
 
-### Info
+### Missing Files (@femi)
 
-### Missing Files
+### NFS (@tigran)
 
-### NFS
+### PNFS Manager (@femi)
 
-### PNFS Manager
+### Pool (@femi)
 
-### Pool
-
-### Pool Manager
+### Pool Manager 
 
 Added option `-dynamic` to `psu create pool` command to create a pool group that will dynamically add all pools
 that have a specific attribute. Currently, only pool tag, defined by `pool.tags` property is supported.
@@ -194,17 +192,17 @@ as 'VOID', but as 'NOOP', when you do:
 \s Resilience file ls
 ```
 
-### Space Manager
+### Space Manager (@jstarek)
 
-### SRM / SRM Manager
+### SRM / SRM Manager (@sibel)
 
-### Statistics
+### Statistics (@sibel)
 
-### Topo
+### Topo (@sibel)
 
-### Transfer Manager
+### Transfer Manager (@vingar)
 
-### WebDAV
+### WebDAV (@vingar)
 
 ### XRootD
 
@@ -219,7 +217,7 @@ during third-party-copy; in this latter case (only), dCache also allows the serv
 A bug involving access logging when the door is configured with HAproxy was fixed, and trace-level logging
 in general was converted to debug-level, so that the former may be reserved for handshake packet dumps only.
 
-### Zookeeper
+### Zookeeper (@vingar)
 
 
 ### Changelog from 5.0.0 to 5.1.0
