@@ -77,11 +77,9 @@ Pools can now send the full set of inotify events through SSE.
 Pool manager can create dynamic pool groups based on defined tags.
 
 
-
 ## Incompatibilities
 
   * The Kafka configuration was moved from dcache.properties to a dedicated kafka.properties file.
-
 
 ## Acknowledgments
 
@@ -110,9 +108,8 @@ Alarms was also modified in order to be able to support a more modern version of
 The database connection was wrapped so as to catch fatal exceptions and report them as alarms (this
 is already done for other databases such as chimera).
 
-### Cleaner (@jstarek)
-
-### DCAP (@jstarek)
+When using the Kafka messaging system, the "billing" topic was hardcoded until now. This release introduces
+a new configuration variable, `dcache.kafka.topic=billing` to configure this. 
 
 ### Frontend
 
@@ -192,13 +189,9 @@ as 'VOID', but as 'NOOP', when you do:
 \s Resilience file ls
 ```
 
-### Space Manager (@jstarek)
-
 ### SRM / SRM Manager (@sibel)
 
 ### Statistics (@sibel)
-
-### Topo (@sibel)
 
 ### Transfer Manager (@vingar)
 
@@ -219,6 +212,20 @@ in general was converted to debug-level, so that the former may be reserved for 
 
 ### Zookeeper (@vingar)
 
+### Changes affecting multiple services
+
+Kafka topics can now be set independently for several services using the variables 
+
+    dcache.kafka.topic = billing
+
+(where "billing" is the default value) and the more specific
+
+    dcap.kafka.topic = ${dcache.kafka.topic}
+    ftp.kafka.topic = ${dcache.kafka.topic}
+    nfs.kafka.topic = ${dcache.kafka.topic}
+    pool.kafka.topic = ${dcache.kafka.topic}
+    webdav.kafka.topic = ${dcache.kafka.topic}
+    xrootd.kafka.topic = ${dcache.kafka.topic}
 
 ### Changelog from 5.0.0 to 5.1.0
 
