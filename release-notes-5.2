@@ -79,6 +79,13 @@ HTML header: <title>dCache 5.2 Release Notes</title>
 ## Release 5.2.0
 
 ### Admin
+Admin's ssh access information is legged in domain's access log file, For example:
+```
+level=INFO ts=2019-05-02T12:49:58.518+0200 event=org.dcache.services.ssh2.connect remote.socket=/2001:638:700:xx:52224
+level=INFO ts=2019-05-02T12:49:58.561+0200 event=org.dcache.services.ssh2.login username=admin remote.socket=/2001:638:7xx:52224 method="PublicKey (RSA SHA256:al9RPdXETJXX)" successful=true
+level=INFO ts=2019-05-02T12:50:06.657+0200 event=org.dcache.services.ssh2.exec username=admin cmd.args="\\c PoolManager"
+level=INFO ts=2019-05-02T12:50:12.000+0200 event=org.dcache.services.ssh2.exec username=admin cmd.destination=[>PoolManager@core-dcache-lab] cmd.args="rc ls"
+```
 
 ### Alarms
 
