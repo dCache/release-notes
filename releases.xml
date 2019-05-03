@@ -192,7 +192,25 @@
      <download-url-prefix>repo/5.1/dcache</download-url-prefix>
      <notes-url>release-notes-5.1.shtml</notes-url>
      <version-prefix>5.1.</version-prefix>
-   </releases>
+
+      <release version="0" recommended="1">
+        <date>3.5.2019</date>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>9e34f0347cfe56573327d463559cbb8f</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>fc313dc3d7f04c99f6edc42cf9a561c0</md5sum>
+        </package>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>c0d6f4e2ac6c493ace9d19d09ff0c491</md5sum>
+        </package>
+      </release>
+
+
+   </releases>      
 
  </series>
 
