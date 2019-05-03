@@ -168,6 +168,34 @@
   </preamble>
 
 
+<series id="server-5.1">
+   <title>server 5.1.x</title>
+
+   <description>
+     <p>dCache 5.1 is a Feature Release with the following new features: </p>
+     <ul>
+       <li>The Resilience Manager has become more robust</li>
+       <li>Improved error and status reporting in many places</li>
+       <li>SciToken support in gPlazma</li>
+       <li>inotify support for open/read/write/close events</li>
+       <li>FTP: anonymous access as well as TLS (FTPS) support</li>
+       <li>3rd-party copy capabilities for xrootd</li>
+       <li>support for security level and signed hashes in xrootd</li>
+       <li>dynamic pool groups based on pool tags</li>
+       <li>updated external dependencies</li>
+     </ul>
+     <p>dCache v5.1 requires a JVM supporting Java 8 or Java 11.</p>
+   </description>
+
+   <releases>
+     <name>dCache VERSION</name>
+     <download-url-prefix>repo/5.1/dcache</download-url-prefix>
+     <notes-url>release-notes-5.1.shtml</notes-url>
+     <version-prefix>5.1.</version-prefix>
+   </releases>
+
+ </series>
+
 <series id="server-5.0">
     <title>server 5.0.x</title>
 

@@ -89,7 +89,7 @@ Onno Zweers provided many helpful corrections to the documentation.
 
 Lea Morschel also provided documentation and code refinements.
 
-Other contributions originated from a lecture at HTW Berlin; many thanks to Jonas Grabber, "tabea" and "xpinkyx" for their contributions.
+Other contributions originated from a lecture at HTW Berlin; many thanks to Jonas Grabber, "tabea", "Co" and "xpinkyx" for their contributions.
 
 
 ## Release 5.1.0
@@ -229,12 +229,549 @@ Kafka topics can now be set independently for several services using the variabl
 
 ### Changelog from 5.0.0 to 5.1.0
 
-<!-- git log 5.0..5.1 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+[40307e91f2](https://github.com/dcache/dcache/commit/40307e91f2a61b17d19faac86c577ba80241ff4b)
+:   [maven-release-plugin] prepare for next development iteration
 
-(tbd as soon as the branching is done.
-In order to run the git log command given above, make sure that
-- both branches are checked out and "git pull"ed in to make them local on your machine and
-- you replace the single dashes by double dashes on the command's parameters)
+[5234c07f2a](https://github.com/dcache/dcache/commit/5234c07f2a0055d9b74735e5d7c66f814bd852f2)
+:   [maven-release-plugin] prepare release 5.1.0
+
+[30b6209ad8](https://github.com/dcache/dcache/commit/30b6209ad809df85e07aaf1f8a045f4842f461b4)
+:   Revert "docker: Add a way to create docker image"
+
+[92975e7a54](https://github.com/dcache/dcache/commit/92975e7a5404bd6a4f19165d99256ccb8371a352)
+:   resilience: adjust synchronization of file operation removal from map
+
+[7c212b24d6](https://github.com/dcache/dcache/commit/7c212b24d681e651cb04c3a544b255ce4b92eb5b)
+:   pool: avoid throwing a RuntimeException for non-bugs
+
+[0863f49066](https://github.com/dcache/dcache/commit/0863f490664d3d5873c72266f4036899b6de827e)
+:   docs: TheBook UserGuide fix location of edit-me-on-github ribbon
+
+[4b2d9381de](https://github.com/dcache/dcache/commit/4b2d9381de1fdf1e736d55fd69006ec661756b96)
+:   docs: TheBook update heading importance to be more consistent
+
+[f8365ec8a7](https://github.com/dcache/dcache/commit/f8365ec8a786102165335905fe40191cfbc5cf80)
+:   transfermanager: do not retry starting mover if transfer is not supported
+
+[aac0eb6e52](https://github.com/dcache/dcache/commit/aac0eb6e521cdf67c4fcfe9a4a64cd3f045d6378)
+:   pool: avoid log-and-throw anti-pattern
+
+[ec453280d2](https://github.com/dcache/dcache/commit/ec453280d256dceda3ccebadcdfb2774469bdfdb)
+:   frontend: ensure client is disconnected when shutting down channel
+
+[a56116e565](https://github.com/dcache/dcache/commit/a56116e56574b3b178fd7df068a6f2adff9e4166)
+:   frontend: avoid race on cancelling channel garbage-collect task
+
+[bc68734a3c](https://github.com/dcache/dcache/commit/bc68734a3c4ce0c1dfd78d9553af4c98a2bafb22)
+:   transfermanager: avoid NPE on shutdown
+
+[886f36acb3](https://github.com/dcache/dcache/commit/886f36acb393fa93d67c5d8b607f8cd00f8ef4a1)
+:   pool: throw exception with meaningful error message
+
+[0fc21c0217](https://github.com/dcache/dcache/commit/0fc21c02178e6fe551c1d799e77a5f05336b5158)
+:   [maven-release-plugin] prepare branch 5.1
+
+[68acbbf689](https://github.com/dcache/dcache/commit/68acbbf689a3fff4fd2a4c5fdb7020ccf3ff73ef)
+:   docs: add rest API active transfers description
+
+[99f049d6ee](https://github.com/dcache/dcache/commit/99f049d6eed55b9c8e1824b00053ea2746407a54)
+:   docs: UserGuide REST API add description of space reservations
+
+[3f3ed31715](https://github.com/dcache/dcache/commit/3f3ed317154a179ecee0d4c5715ac063580fefae)
+:   docs/UserGuide add initial frontend QoS description
+
+[4a5c1836bf](https://github.com/dcache/dcache/commit/4a5c1836bf621103b1624710579337b023bb44ed)
+:   Remove copy-n-paste error
+
+[eddd8b0670](https://github.com/dcache/dcache/commit/eddd8b0670db243ee84351648a3ce29a041e0d70)
+:   docs: add inital information about frontend REST API
+
+[82c0bbc4a3](https://github.com/dcache/dcache/commit/82c0bbc4a38f32baffb61815d8efc643ecfa4ec0)
+:   pool: register size of successful zero-length uploads
+
+[136cbe1cde](https://github.com/dcache/dcache/commit/136cbe1cded8d7623c729404ab04ac02e5cf5221)
+:   Core: make dCache buildable on non-English locales
+
+[8ac85b095f](https://github.com/dcache/dcache/commit/8ac85b095f547590cc35251f47d56a9622e15b16)
+:   docs: add UserGuide
+
+[0ffdd34f46](https://github.com/dcache/dcache/commit/0ffdd34f46b2f77eece486e3f0420e257c1d6e2d)
+:   libs: use slf4j-1.7.26
+
+[ef39e437f2](https://github.com/dcache/dcache/commit/ef39e437f22aa38444e86c3f76ade8903a903bc5)
+:   Core: make dCache buildable on non-English locales
+
+[3313ca8b8a](https://github.com/dcache/dcache/commit/3313ca8b8a2e9c38e539b194cefe4d20d79c3547)
+:   docs: TheBook remove reference to non-existing service
+
+[e3c4223424](https://github.com/dcache/dcache/commit/e3c4223424d42fb37df2bef3669d0e80619463ed)
+:   gplazma: oidc better handling if JWT is unknown or invalid
+
+[f0f1379ecc](https://github.com/dcache/dcache/commit/f0f1379ecc0dac24e0372cc6c26c9890db7e43b8)
+:   resilience: do not allow pool scans of excluded pools, period
+
+[5733f5e60c](https://github.com/dcache/dcache/commit/5733f5e60c86de0a703cd6e0fad3e3311b441834)
+:   alarms: move to logback 1.1.4 and fix handling of MDC
+
+[bab35350a6](https://github.com/dcache/dcache/commit/bab35350a602d23ff6d8a78b7dc0bcdebaa0f218)
+:   src: remove dead code (artifacts of ReplicaManager)
+
+[f894624ee0](https://github.com/dcache/dcache/commit/f894624ee0ce050d74774480979357a97e9abdd7)
+:   dcache-resilience: fix indexing on retry errors command
+
+[b2dc1245d0](https://github.com/dcache/dcache/commit/b2dc1245d062de4d91a590103634a74281fc6f95)
+:   pools: JSON mover info timeInSeconds should be timeInMilliseconds
+
+[0d9963becd](https://github.com/dcache/dcache/commit/0d9963becdda7fc3ff42d27350b120ba18b7d99b)
+:   pool: update StateChangeListener classes with change explanation
+
+[b51ca78b8a](https://github.com/dcache/dcache/commit/b51ca78b8a1b412e69c22657879cf3165686a1be)
+:   pool: include change explanation in replica monitoring events
+
+[84f3e15e35](https://github.com/dcache/dcache/commit/84f3e15e35d34de12e5c17885c750cd294b5bfae)
+:   pool: add explanation field when updating a replica
+
+[3cf5967975](https://github.com/dcache/dcache/commit/3cf5967975e69cb4f1dc7285ad0709e2d851fe55)
+:   pool: describe what triggered replica state changes
+
+[fb97274611](https://github.com/dcache/dcache/commit/fb972746112e31c0015abb61070deed9314d907e)
+:   ftp: add support for (explicit) FTPS doors
+
+[ec34f0c332](https://github.com/dcache/dcache/commit/ec34f0c332677f2f4761231416163135929b4d3e)
+:   resilience: update state on pool operations when restarted from admin command
+
+[07772db56f](https://github.com/dcache/dcache/commit/07772db56f6776b829d45545e91c19141c62ad07)
+:   libs: use nfs4j-0.18.2
+
+[aaecade7e4](https://github.com/dcache/dcache/commit/aaecade7e4b2045218bd91e710a0c49d2248bac8)
+:   chimera-shell: fix class cast of extractor in constructor
+
+[eddda93d9e](https://github.com/dcache/dcache/commit/eddda93d9ed32f9ccbb5b15d127aae14ff6c31ef)
+:   libs: update jetty version to 9.4.12.v20180830
+
+[00d89b7244](https://github.com/dcache/dcache/commit/00d89b7244b9965e223ec10b72430a2ff456ae90)
+:   nfs: fix missing CDC initialization
+
+[18dc14c270](https://github.com/dcache/dcache/commit/18dc14c270ec3ccb9de82d62f95d4eaa8ede92e0)
+:   dcache: adding more configurations to KafkaProducer
+
+[7e8993fa45](https://github.com/dcache/dcache/commit/7e8993fa4502cb0a777b38e44fbf93078a02815d)
+:   gplazma: add SciToken support
+
+[d688b16846](https://github.com/dcache/dcache/commit/d688b16846543ca111f3aaaec9ff68cdc37e5771)
+:   common: add multi-targeted restriction
+
+[f7ac12a41a](https://github.com/dcache/dcache/commit/f7ac12a41ad26abce7beffe3e0b9c444e4b91d87)
+:   gplazma: ban add ability to select based on uid and gid
+
+[8161f08b81](https://github.com/dcache/dcache/commit/8161f08b81071ce014df66adc2df18b59b5e12b4)
+:   resilience: do simple existence check of replica on pool to avoid dark removes
+
+[7069ed2183](https://github.com/dcache/dcache/commit/7069ed2183287217a8ddea2dc7faf0f9793484d7)
+:   systemtest: remove ancient replica pools
+
+[4651736dd5](https://github.com/dcache/dcache/commit/4651736dd52b45e64531cc4f0f5c1f2bc5fdba18)
+:   pool: add inotify support for open/read/write/close events
+
+[1e5e355150](https://github.com/dcache/dcache/commit/1e5e3551504a698b789cbaef174c441a5b4ec860)
+:   docs: mongodb as pool metadata backend
+
+[b66a891fd0](https://github.com/dcache/dcache/commit/b66a891fd08c5c1176701ff44766444ac1494d4b)
+:   docs: Fixed lists in config-PoolManager
+
+[7f3fbf0261](https://github.com/dcache/dcache/commit/7f3fbf02618d6acc11db9a7248860497254dc848)
+:   docs: RT#9533 and 9494: IPv6
+
+[e5a7041156](https://github.com/dcache/dcache/commit/e5a70411562949734f260a8a569c1ab1f5e12397)
+:   docs: RT#9534: Ceph pool backend config
+
+[cd826a7d25](https://github.com/dcache/dcache/commit/cd826a7d253a7d2810fadd892b1a32e521d168f9)
+:   gplazma: oidc cache user-info lookup result
+
+[08656e96b5](https://github.com/dcache/dcache/commit/08656e96b5358363c98e048e097f9cf25ecb2cd4)
+:   TheBook: some hints on using a banfile (#4740)
+
+[311c7182a1](https://github.com/dcache/dcache/commit/311c7182a1e738f75db2e85a3ce68b883dceaf2a)
+:   Fixing example of ban.conf that breaks dCache.
+
+[424f968388](https://github.com/dcache/dcache/commit/424f968388fedef89e83209efe67b22daf35e171)
+:   gplazma: oidc fix broken commit
+
+[4a1da8a569](https://github.com/dcache/dcache/commit/4a1da8a569823b214994d8da1f2c93c93f2bff2a)
+:   gplazma: oidc optimise network usage
+
+[09d3757069](https://github.com/dcache/dcache/commit/09d3757069e3681407f6593e49694007d79bec13)
+:   resilience: add ability to log resilience activity
+
+[18a79e7768](https://github.com/dcache/dcache/commit/18a79e77684d24bf4647c98a752d0a7b27d1bc69)
+:   pool: grow file prior HTTP TPC
+
+[884dcc9e8d](https://github.com/dcache/dcache/commit/884dcc9e8ddb552a5c88da8fe45f341219f80985)
+:   pom: use rados4j-0.0.4
+
+[549b22cd8b](https://github.com/dcache/dcache/commit/549b22cd8b1950e324fb35e6abd06b9fdf543ee2)
+:   resilience: add ability to log resilience activity (incoming)
+
+[87aa817764](https://github.com/dcache/dcache/commit/87aa817764553df0a52f5d331d38e8e2deaf78af)
+:   resilience: remove the 'VOID' operation state
+
+[cad57b6561](https://github.com/dcache/dcache/commit/cad57b65613c86b9f876e4b3c9631e49c8f991df)
+:   Add documentation to accompany patch 806de4076b3ea7c0ccad3c28abf0bf8430ffacf0
+
+[806de4076b](https://github.com/dcache/dcache/commit/806de4076b3ea7c0ccad3c28abf0bf8430ffacf0)
+:   kafka: add ability to specify Kafka topic name
+
+[83c8b1bcd6](https://github.com/dcache/dcache/commit/83c8b1bcd61d6c6f1f1e08c2212f2593eeedae0c)
+:   pool-ceph: Failure when initiating a macaroon authz HTTP PUSH, authn with X.509/macaroon to target.
+
+[1ac0ac77fd](https://github.com/dcache/dcache/commit/1ac0ac77fd52079fde8a787a67719bce1d079dd0)
+:   Changes to the dCache documentation (TheBook): broken links, typos, formatting, wording, ...
+
+[4c124a11d7](https://github.com/dcache/dcache/commit/4c124a11d7c81267e0b6e16408fa85838eb5c491)
+:   gplazma: oidc add discovery cache configuration properties
+
+[2abff00b2e](https://github.com/dcache/dcache/commit/2abff00b2e45dc810d4acc08f9cbe25d00f7f6f1)
+:   gplazma: oidc warn slow user-info queries
+
+[69669e6e3f](https://github.com/dcache/dcache/commit/69669e6e3fcdc53990f0c1729c075292c315e0a8)
+:   webdav: fix resource name for door root
+
+[53b95fbdb2](https://github.com/dcache/dcache/commit/53b95fbdb226d8ed1fa90834f162295dd4d1991b)
+:   Updated dependency list for building on Debian
+
+[5cafe39aad](https://github.com/dcache/dcache/commit/5cafe39aadc991b9a686357511b6cb9a18ef8997)
+:   ftp: add support for anonymous FTP access
+
+[f87e4a070c](https://github.com/dcache/dcache/commit/f87e4a070cf6d88e520f6e2e12ea4d5d4a4f93c6)
+:   util:add new setter to ConfigurationMapFactoryBean
+
+[ddf9009b52](https://github.com/dcache/dcache/commit/ddf9009b52ba849c0ffb5e56afea0502eff41460)
+:   dcache-xrootd: use debug level instead of trace
+
+[2a2455f11c](https://github.com/dcache/dcache/commit/2a2455f11c8e6f93eea82bd830cb16e6d1fa6297)
+:   xrootd: upgrade to xrootd4j v3.4.1
+
+[ac5419d132](https://github.com/dcache/dcache/commit/ac5419d1327cd3d35139e25fa2cf92e855ecbfc5)
+:   gplazma: oidc introspect JWT to learn issuer
+
+[0f2a60e276](https://github.com/dcache/dcache/commit/0f2a60e2767f65079d6481f9f6df16565de702f4)
+:   transfermanagers: recover from non-fatal error starting mover
+
+[277f773dd0](https://github.com/dcache/dcache/commit/277f773dd0546133062f1b8faef59fdbbf6bbc38)
+:   pnfsmanager: network issues triggered a NPE
+
+[65b8e499d1](https://github.com/dcache/dcache/commit/65b8e499d12b16029c5514af73f70448b0dd5965)
+:   Changed .gitignore to include .reviewboardrc file
+
+[9566a165bb](https://github.com/dcache/dcache/commit/9566a165bb6863ec955a9e72bc35ed593c6505fe)
+:   cells: Improving readability of cells communication code
+
+[223992f630](https://github.com/dcache/dcache/commit/223992f63057c311e0605e0e190c3d4664bc2fc8)
+:   pool: fix CDC for repository listener notification
+
+[186a407d7f](https://github.com/dcache/dcache/commit/186a407d7f6bafce235c87fd3bf0458375338439)
+:   ftp: store calculated checksum using root privileges
+
+[fc8de4575a](https://github.com/dcache/dcache/commit/fc8de4575a3d790304953f66bbfe805faf5dcc85)
+:   docs: add initial information about the ftp door
+
+[915d66e454](https://github.com/dcache/dcache/commit/915d66e454861363f2797df5701e3cff179ffb73)
+:   util:add unit test to ConfigurationMapFactoryBean
+
+[094f99fc01](https://github.com/dcache/dcache/commit/094f99fc012e62072e6a3dfa7264cd38a6f26397)
+:   dcache-xrootd: implement support for security level and signed hashes
+
+[77b0b33708](https://github.com/dcache/dcache/commit/77b0b337085786273447a50efe46fa7736549f59)
+:   pnfsmanager: fix regression when querying attributes of the root directory
+
+[9853191a15](https://github.com/dcache/dcache/commit/9853191a15a8e929afc1a9ae6e8d9f2307093bfc)
+:   systemtest: fix OpenSSL DN format change
+
+[099d7e2ffc](https://github.com/dcache/dcache/commit/099d7e2ffcd8d71fb8244a9e8c24e73b991b7f2f)
+:   core: describe missing FileAttribute in PoolManager message
+
+[2e3c02acc2](https://github.com/dcache/dcache/commit/2e3c02acc21b8f7b4f92903c13f4985244778d0f)
+:   systemtest: remove reference to access-log plugin
+
+[968926535c](https://github.com/dcache/dcache/commit/968926535c8df953ec9ee3957b221df42d946491)
+:   pnfsmanager: include link information in storageinfo
+
+[949936a21e](https://github.com/dcache/dcache/commit/949936a21e6b3d4a9fbc9a25996f52fba3bbbb8c)
+:   poolmanager: introduce dynamic pool groups based on pool tags
+
+[33d957a899](https://github.com/dcache/dcache/commit/33d957a899f4a780278c8bed0ae96df986b49b99)
+:   webdav: fix path-to-caveat for macaroon minting endpoint
+
+[59145459e2](https://github.com/dcache/dcache/commit/59145459e28758738bb7dd16423c8b5277e8aadf)
+:   cells: changed readme (#4634)
+
+[a4acb0ec79](https://github.com/dcache/dcache/commit/a4acb0ec79dd855f67f1c5bb738fc1afe00132fc)
+:   gplazma gridmap plugin: compare DNs ignoring letter case for attribute names
+
+[2b64c115c5](https://github.com/dcache/dcache/commit/2b64c115c57559b65c5755086e16bf363942f824)
+:   pool: fix Guava to Java-API migration introduced in 3de5f34179
+
+[478049fbd4](https://github.com/dcache/dcache/commit/478049fbd43241a51a841c1e1b56f6497e75cb32)
+:   poolmanager: update 'rc failed' command
+
+[cbd3ceba9f](https://github.com/dcache/dcache/commit/cbd3ceba9f84eaca665ed0b35d9e98bdfcfbfe47)
+:   pool: fix tag parsing regression introduces in #7f9a32beec
+
+[dbe93282ce](https://github.com/dcache/dcache/commit/dbe93282ce4fff3ceec8c6117c5cd8aaf18b8399)
+:   dcache: Expand star import in Indexer
+
+[70e1b12d6a](https://github.com/dcache/dcache/commit/70e1b12d6ae7e10dfede75c3240938bddc0122c2)
+:   docs: describe poolmanager configuration location in zookeeper
+
+[7f9a32beec](https://github.com/dcache/dcache/commit/7f9a32beec85a37ef15f761407633c5aaef89e4d)
+:   pool: fix parsing of pool tags
+
+[6c33d339a2](https://github.com/dcache/dcache/commit/6c33d339a2362951a51f965228cb04f963a278bb)
+:   webdav: fix NPE when Kafka notified file deletion
+
+[3de5f34179](https://github.com/dcache/dcache/commit/3de5f341796c0e1dd35967febfec12ef62a8eca6)
+:   various: replace guava Files usages JDK Files
+
+[aa2883f25a](https://github.com/dcache/dcache/commit/aa2883f25a71b33615e741c15289267ce9f97804)
+:   doc: fix typo
+
+[0d8df30064](https://github.com/dcache/dcache/commit/0d8df30064af68e5c14d74e6e7d32d64ccb5e8ff)
+:   pool: report correct replica creation time to sweeper
+
+[b5e076fd68](https://github.com/dcache/dcache/commit/b5e076fd68344f5d2223fd0f63316af4a96658b3)
+:   psu: remove dead code
+
+[c26df9f1d4](https://github.com/dcache/dcache/commit/c26df9f1d41a7a4a068de0d98d425e853d22e5b4)
+:   libs: update to hazelcast-3.11
+
+[137d2ed565](https://github.com/dcache/dcache/commit/137d2ed5657e68eec929e1ae892b9ae15a3cb0a4)
+:   xrootd: fix access logging when xrootd door is configured with HAproxy
+
+[bca2869abf](https://github.com/dcache/dcache/commit/bca2869abf8b9439be4a2c815afb687419d4d4c6)
+:   webdav/frontend: disabling basic authn should not disable macaroons
+
+[0dc483bdcc](https://github.com/dcache/dcache/commit/0dc483bdcc688909bee187bcade1de49c8ef3ff1)
+:   srm: do not log a stack-trace on expected Exception errors
+
+[ea3cdd48cb](https://github.com/dcache/dcache/commit/ea3cdd48cb5c24da96c210d9a696121ac14624fd)
+:   webdav/frontend: update default to reject macaroons on unencrypted channels
+
+[3bb180b849](https://github.com/dcache/dcache/commit/3bb180b849a40c99286ee63644b31b54bc31e4cb)
+:   transfermanager: fail third-party copy if the file is still being uploaded
+
+[9cb63c2142](https://github.com/dcache/dcache/commit/9cb63c21421085bd98e404ecad0042e24aa1d041)
+:   webdav: fail COPY early if file is currently being uploaded
+
+[800c979d74](https://github.com/dcache/dcache/commit/800c979d7476e52bdb55d861fd0a99a8988947e1)
+:   transfermanager: abort transfer if there is a bug
+
+[8550267c56](https://github.com/dcache/dcache/commit/8550267c5644ebd5ea0ca024d9ec02a7ab12d977)
+:   Fix typo
+
+[224574aced](https://github.com/dcache/dcache/commit/224574acede16509d4a8e611109efde266c92a5a)
+:   chimera: README to README.md, clean contents
+
+[690d7f9145](https://github.com/dcache/dcache/commit/690d7f9145afd6945d0e6a3b49c2cc07e61c195a)
+:   webdav/frontend: add switch to reject macaroons sent unencrypted
+
+[b3d0f026f0](https://github.com/dcache/dcache/commit/b3d0f026f069ecddc27332cff618ea9d26330010)
+:   pool: introduce clone method for FileAttributes
+
+[9fde33d6d8](https://github.com/dcache/dcache/commit/9fde33d6d8e4bd857a7269103ff2f36237b4f1ba)
+:   pom: update nfs4j to version 0.18.1
+
+[a95763ecce](https://github.com/dcache/dcache/commit/a95763ecceee490e7f50e42bbe05d859c839187b)
+:   gplazma: JAAS plugin logs a stack-trace on misconfiguration
+
+[01c9a760b1](https://github.com/dcache/dcache/commit/01c9a760b1d32b0f809c2cacd6c55de0645a3de6)
+:   httpd: write requests on admin webpage to .access-log
+
+[7991e8ed61](https://github.com/dcache/dcache/commit/7991e8ed612fd9293c186b3e1421d90513be21cc)
+:   pool: nfs mover always returns DATA_SYNC4 as stable write indication
+
+[f400fcd0a3](https://github.com/dcache/dcache/commit/f400fcd0a3b94a9b9bb5bcff635f79f2eb2cdd8d)
+:   packaging: remove redundant systemd configuration, add note to limits file
+
+[eee88ce105](https://github.com/dcache/dcache/commit/eee88ce105fb80210b13b45e32ddb15b06cdfb30)
+:   transfermanager: include pool address in the mover start failure message
+
+[6946e79390](https://github.com/dcache/dcache/commit/6946e79390ae06d2b0db655530baaf44032891ea)
+:   pool: update error messages to make them distinct
+
+[b0839feca7](https://github.com/dcache/dcache/commit/b0839feca7cbcbe9e0d5e1bc58a4c98496d75f73)
+:   poolmanager: update some psu commands to be consistent
+
+[a16ef71546](https://github.com/dcache/dcache/commit/a16ef71546cebeffa650f532313361b16d326f33)
+:   pool: avoid using the same error message in multiple places
+
+[131d0ecb6d](https://github.com/dcache/dcache/commit/131d0ecb6dbdc9cb4002f99372b1b8ff6c3fc863)
+:   admin: update dependency on mina-sshd library
+
+[1483ee5d12](https://github.com/dcache/dcache/commit/1483ee5d12fbc4b4fb8c842f40495988c09e8ae5)
+:   admin: update dependency on mina-sshd library
+
+[c48f8ef30a](https://github.com/dcache/dcache/commit/c48f8ef30a8a9fb41edb3b981494494740f86d8d)
+:   libs: use nfs4j-0.18.0
+
+[7cc4963ad6](https://github.com/dcache/dcache/commit/7cc4963ad693b79f4d4809c65b7a04e988a6e4eb)
+:   alarms: add pool dead alarm
+
+[b65acf64af](https://github.com/dcache/dcache/commit/b65acf64af074a8c3361c83847d254438f888cb8)
+:   webdav.properties: note about redirects to HTTPS
+
+[a1cadfe017](https://github.com/dcache/dcache/commit/a1cadfe01728818db6e98dce221434417b57a47b)
+:   pool: fix lookup for canonical hostname for IPv6 addresses
+
+[273821b44e](https://github.com/dcache/dcache/commit/273821b44e2eafbcc4842433e131c0e36c203ae5)
+:   doc: add paragraph in direct command execution in admin section
+
+[22270ff344](https://github.com/dcache/dcache/commit/22270ff3448bc41afbca5e2f0d33722fb1bcbb9a)
+:   admin : add direct command execution capability
+
+[17f01abd5e](https://github.com/dcache/dcache/commit/17f01abd5e179c33a0206768b5458c99e5f28585)
+:   pool: grow file prior FTP upload
+
+[4bb48bed23](https://github.com/dcache/dcache/commit/4bb48bed2380eae46d0a2367685cfec88aae1873)
+:   pool: don't update atime on flush
+
+[e4e841630f](https://github.com/dcache/dcache/commit/e4e841630fe4750cd9c18001719cf62d48c72d9f)
+:   pnfsmanager: do not emit IN_ATTRIB event on atime updates
+
+[3e6e7cf782](https://github.com/dcache/dcache/commit/3e6e7cf78250ad83dc423e215dac056cda1d94fd)
+:   scripts: fix 'dcache pool yaml' command
+
+[63b864039e](https://github.com/dcache/dcache/commit/63b864039e5e9b44ff4d08696d07d370f966f82e)
+:   webdav: 401 for unauthenticated requests; message in status line
+
+[b2d7393ba3](https://github.com/dcache/dcache/commit/b2d7393ba3e084fa049bb7d5f6a8f15a15c45889)
+:   dcache, frontend: release dcache-view version 1.5.3
+
+[7a9ac72b11](https://github.com/dcache/dcache/commit/7a9ac72b11a91506dade1ee78f94b2ec3e00b649)
+:   door: fix issue 4551 (wring storage)
+
+[63438af62d](https://github.com/dcache/dcache/commit/63438af62d484ce7064d9bf51a706cc9918c4e70)
+:   Update config-chimera.md
+
+[b508529b83](https://github.com/dcache/dcache/commit/b508529b838f5d92a6286b916cd50ea89bb1a2cc)
+:   Update config-write-token.md
+
+[99ddbf5050](https://github.com/dcache/dcache/commit/99ddbf50506499c265bf77749337a4324cff01a9)
+:   ftp: fix MLSC command for non-small directories
+
+[37c3a825c1](https://github.com/dcache/dcache/commit/37c3a825c144edd3441fbe62fbc039968a2fb101)
+:   pom: update maven-git-commit-id-plugin to version 2.2.6
+
+[d936ee8bf4](https://github.com/dcache/dcache/commit/d936ee8bf47549f56bab0c39a6517b351ef6091f)
+:   dcache-xrootd: remove mv request hack
+
+[31e4f9c818](https://github.com/dcache/dcache/commit/31e4f9c818516f1989b8fad3948be238c833df0b)
+:   dcache-frontend: add documentation concerning restores
+
+[71367f26e0](https://github.com/dcache/dcache/commit/71367f26e064d2d1aa3e36101861c11110b96880)
+:   dcache-xrootd: Allow ROOT read access by destination server when dCache is the source in a third-party transfer.
+
+[4e2e589eee](https://github.com/dcache/dcache/commit/4e2e589eee771268d3a34b8101facd737b00fc89)
+:   pom.xml: update xrootd4j dependency to 3.3.4
+
+[8a7ced4cc5](https://github.com/dcache/dcache/commit/8a7ced4cc5a3285398f005e3130b5be364f258bb)
+:   dcache-frontend: undefined suid parameter on transfers should be NULL not "null"
+
+[5f82d2710e](https://github.com/dcache/dcache/commit/5f82d2710ef8ff76748321c70135c71d5b7715e2)
+:   dcache: update kafka-client lib version to 2.1.0
+
+[cecd828583](https://github.com/dcache/dcache/commit/cecd828583468f6449a4cbdb597568a92af589c7)
+:   macaroon: add an issue ID caveat
+
+[1e9353e8de](https://github.com/dcache/dcache/commit/1e9353e8de4dd5ecd79d427139fe17b97d373a6a)
+:   webdav/pool: add support for RFC3230 Want-Digest on COPY command
+
+[24bf16cbf6](https://github.com/dcache/dcache/commit/24bf16cbf62081c7e169bd4308a7442dd115a337)
+:   pool: http-TPC do not fail if HEAD fails for non-verified transfer
+
+[dd66bf0ea3](https://github.com/dcache/dcache/commit/dd66bf0ea3256f8d05e110a54d016d8d968e9da5)
+:   pool: http-TPC consider more PUT response codes as successful
+
+[ad17e63ac0](https://github.com/dcache/dcache/commit/ad17e63ac0421b874935d3fb1f6f6fa94b5f28ec)
+:   pool: remove desired checksum from ChecksumMover
+
+[606c8236b7](https://github.com/dcache/dcache/commit/606c8236b731906c89d8321006a3abbb6aeade05)
+:   nfs: do not filter device's IP addresses based on site locality
+
+[f29ddeab04](https://github.com/dcache/dcache/commit/f29ddeab04ec7dabc676f0245db04aee540e8f1a)
+:   dcache: wrap billing data source with AlarmEnabledDataSource
+
+[1f8a3c8322](https://github.com/dcache/dcache/commit/1f8a3c832235886b60fc82ddaa6f5461e92751b9)
+:   pool: HTTP TPC create 'Want-Digest' value based on known checksums
+
+[6c17311370](https://github.com/dcache/dcache/commit/6c17311370cec475cb788b5030e4dc621207d9bf)
+:   common: fix random data generation in TimeseriesHistogram unit test
+
+[1c17e70bf8](https://github.com/dcache/dcache/commit/1c17e70bf8774b27368c91b343a1366d43a3a689)
+:   docs: clarify requirement gplazma.ldap.try-uid-mapping option
+
+[a7bc5ef250](https://github.com/dcache/dcache/commit/a7bc5ef2507e47d49ac7e22567571b9cc4cc1b14)
+:   webdav: work-around Milton racy API for creating collections
+
+[3f5d8f8255](https://github.com/dcache/dcache/commit/3f5d8f8255db47b2a55c8d93018536baed54cfa4)
+:   poolmanager: add ability to disable anonymous staging
+
+[a42022b6c1](https://github.com/dcache/dcache/commit/a42022b6c1c3d02d496c5b32b0848ee1ebeeaebe)
+:   webdav: fix name of root
+
+[4560d3f4ba](https://github.com/dcache/dcache/commit/4560d3f4ba91d1d480bec9cb099fd291c556465f)
+:   webdav: add Content-Type and fix status
+
+[4f29cba8a0](https://github.com/dcache/dcache/commit/4f29cba8a0b1784ca16687e6afe9aa58f907f915)
+:   pool: move ChecksumChannel creation out of AbstractMover
+
+[32e1cbb7ee](https://github.com/dcache/dcache/commit/32e1cbb7eec2e2a7cdd541774738e0612003595e)
+:   pom: use rados4j-0.0.3 with ARM64 support
+
+[220e2f19ef](https://github.com/dcache/dcache/commit/220e2f19efc02e153aca885c1108d2bf8a0afbc4)
+:   Removing version reference
+
+[57f1e6b460](https://github.com/dcache/dcache/commit/57f1e6b4602ff40a1c48d6a2170493848651026b)
+:   Remove version reference in new paragraph
+
+[73ffa3dff3](https://github.com/dcache/dcache/commit/73ffa3dff37b87ae8b8ccd68fb0bde46ad506761)
+:   Update cookbook-transport-security.md
+
+[563094fb82](https://github.com/dcache/dcache/commit/563094fb8264e2b0e00a21cfd7bfd42b54b807f5)
+:   pom: use nfs4j-0.17.10
+
+[73a107892f](https://github.com/dcache/dcache/commit/73a107892f610233794d9d2a39af03500c4858ca)
+:   pool: improve error logging for failed HTTP third-party copies
+
+[b7d3b663ac](https://github.com/dcache/dcache/commit/b7d3b663ac0ec455202b1a9cd826a047a78502b7)
+:   gplazma voms plugin: add trust anchor refresh paramater
+
+[9c526832cf](https://github.com/dcache/dcache/commit/9c526832cf84f8d94128cd1883a3d1c644ee1e9e)
+:   srm: include TLS/SSL port in 'dcache ports' command
+
+[41c32a8c14](https://github.com/dcache/dcache/commit/41c32a8c14b70fad7728e3151e1766050d919044)
+:   dcache, frontend: release dcache-view version 1.5.1
+
+[653bb697bb](https://github.com/dcache/dcache/commit/653bb697bbf24930decdd9717d0fe11c268c74ce)
+:   pool: fix HTTP chunked upload
+
+[806e8bc3d1](https://github.com/dcache/dcache/commit/806e8bc3d160842e0010de6838666841ad3ebadd)
+:   xrootd: support mapping clients with valid credentials to NOBODY
+
+[b36842c800](https://github.com/dcache/dcache/commit/b36842c8000c3348966819a428d1586fac6f6b81)
+:   libs: use nfs4j-0.17.9
+
+[4fd18c5dbe](https://github.com/dcache/dcache/commit/4fd18c5dbe9597292bb15746633204fe701503db)
+:   pool: grow file prior HTTP upload
+
+[4d91d68ca4](https://github.com/dcache/dcache/commit/4d91d68ca4bdac3f225ee2dec1279b0b100e1114)
+:   Update BUILDING.md
+
+[a0a53eef1f](https://github.com/dcache/dcache/commit/a0a53eef1f6c5aacb69c9e56796c064604eb3ce7)
+:   pool: let http mover respect pool.mover.http.chunk-size
+
+[169e6579ea](https://github.com/dcache/dcache/commit/169e6579ea692e61a594826836093037ce1ca4b8)
+:   [maven-release-plugin] prepare for next development iteration
+
 
 </div>
 </div>
