@@ -66,9 +66,10 @@ HTML header: <title>dCache 5.1 Release Notes</title>
 
 The 5.1 series of dCache focuses on new data transfer features.
 
-It introduces 3rd-party copy capabilities to the xrootd protocol. 
+It introduces 3rd-party copy capabilities to the xrootd protocol.
 
-FTP doors can now be accessed using anonymous FTP, and encrypted FTPS (TLS) authentication is now supported as well.
+FTP doors can now support anonymous-FTP logins, and explicit TLS
+encrypted control channel (FTPS).
 
 gPlazma has gained support for SciToken authentication as well as improved OpenID Connect support.
 
@@ -109,7 +110,25 @@ The database connection was wrapped so as to catch fatal exceptions and report t
 is already done for other databases such as chimera).
 
 When using the Kafka messaging system, the "billing" topic was hardcoded until now. This release introduces
-a new configuration variable, `dcache.kafka.topic=billing` to configure this. 
+a new configuration variable, `dcache.kafka.topic=billing` to configure this.
+
+When a pool reports a replica was removed, it includes information on
+why the replica was deleted.  By default, this information is logged
+at the end of the line in double-quotes, where previously an empty
+string was logged.
+
+### dCacheView
+
+Support macaroons for sharing files and directories.  There is now an
+easy way for a user to generate a pre-authorised URL by requesting a
+macaroon from dCache.
+
+Gravatar is an externally run service that maps an email address to an
+icon.  The goal is that many independent services may use the same
+icon for the same user.  At sites' request, this behaviour is now
+optional.
+
+
 
 ### Frontend
 
@@ -118,9 +137,120 @@ to how this works:  (a) admins always see everything; (b) authenticated users al
 transfers; (c) if ``frontend.authz.unlimited-operation-visibility`` is set to `true`, authenticated users
 can see all transfers.  Non-authenticated users can only see anonymous transfers.
 
+The inotify support now includes sending IN_OPEN, IN_ACCESS,
+IN_MODIFY, IN_CLOSE_WRITE, IN_CLOSE_NOWRITE events on file activity.
+Uploading or writing a file will send IN_OPEN, IN_MODIFY,
+IN_CLOSE_WRITE.  Downloading or reading a file will send the IN_OPEN,
+IN_ACCESS, IN_CLOSE_NOWRITE events.  Support in the pool for sending
+these events is configurable `pool.inotify-generation.enable` (enabled
+by default).  Some fine-tuning is possible using
+`pool.inotify-generation.backlog.initial`,
+`pool.inotify-generation.backlog.per-door` and
+`pool.inotify-generation.message-batch-size` where these have the same
+meaning as the similarly named `pnfsmanager.` properties.
+
+Sending IN_MODIFY and IN_ACCESS events is rate-limited by the pool, so
+that multiple IO operations of the same type generate at most one
+event every `pool.inotify-generation.io-suppression`
+`pool.inotify-generation.io-suppression.unit` (by default 10 SECONDS).
+
+
 ### FTP
 
+Add support for anonymous FTP.  Anonymous FTP is when the client
+authenticates with a place-holder username (e.g., `anonymous` or
+`ftp`) and something (perhaps their email address) as the password.
+When enabled, dCache will grant limited (read-only) access to that
+user.  Many aspects may be configured, including the username
+(`anonymous` by default) and whether the password must look like an
+email address (by default not enforced).  A specific root directory
+may be configured for anonymous users (by default, dCache's root),
+further limiting what data is exposed.  The Globus transfer service
+uses anonymous access for "archival" access.
+
+Add support for FTPS doors.  This is explicit FTPS sometimes written
+as FTP(E)S.  Implicit FTPS is not widely used and is not supported in
+dCache.  This new FTP door is represented by a new possible value for
+`ftp.authn.protocol`.  Both FTPS and gsiftp encrypt the control
+channel and neither support encrypted data transfers.  FTPS doors are
+advertised (in info-provider, frontend, etc) with URLs that start
+`ftps://`.  Currently, only username and password authentication is
+supported.
+
 ### gplazma
+
+The ban plugin can now ban users by their uid or gid.
+
+The restrictions infrastructure now supports a mult-targeted
+restriction: `MultiTargetedRestriction`.  This allows a plugin to
+allow users to have different permissions for different parts of the
+namespace.
+
+#### OpenID-Connect
+
+The oidc plugin will introspect JWT to learn issuer.  The access
+token, issued by the OpenID-Connect server is opaque; however, a JWT
+is a common choice for this token.  If the token is a JWT then the
+oidc plugin can discover which OIDC server issued the token.  If
+multiple OIDC servers are configured, knowing which one issued the
+token avoids having to contact each OIDC server, resulting in a faster
+response.
+
+The oidc plugin now accepts the `gplazma.oidc.http.slow-threshold` and
+`gplazma.oidc.http.slow-threshold.unit` configuration properties, with
+2 SECONDS as default values.  If looking up a user takes longer than
+this threshold then the plugin will log the slow query.
+
+The oidc plugin will cache the OIDC discover document.  This document
+contains slowly changing information, so it makes sense to cache the
+information.  The cache lifetime is controlled by the configuration
+properties `gplazma.oidc.discovery-cache` and
+`gplazma.oidc.discovery-cache.unit`, with default values of 1 HOUR.
+Fetching an up-to-date version of the discovery document when the
+cache has expired is done asynchronously: login attempts will use the
+old data until the fresh document is received.
+
+The oidc plugin will now query OIDC servers in parallel, if more than
+one OIDC server is configured.
+
+The oidc plugin will try to keep the TCP network connections with OIDC
+services (used to query a user's identity) alive between subsequent
+requests.
+
+The oidc plugin caches a user's identity, as this lookup operation may
+be slow for some OIDC servers.  The maximum number of identities
+cached is `gplazma.oidc.access-token-cache.size` (by default 1000).
+Cached information is refreshed, controlled by
+`gplazma.oidc.access-token-cache.refresh` and
+`gplazma.oidc.access-token-cache.refresh.unit` (by default 100
+SECONDS).  This refresh happens asynchronously: existing login
+activity uses the existing data until new information is returned.
+Users are automatically removed from the cache if they are idle.  The
+expiry time is controlled by `gplazma.oidc.access-token-cache.expire`
+and `gplazma.oidc.access-token-cache.expire.unit` (by default 120
+SECONDS).
+
+#### SciToken
+
+Add scitoken plugin to support SciTokens.  A SciToken is a bearer
+token from some OAuth2 server that uses the JWT format.  The SciToken
+includes a description of which activities the bearer to entitled.
+The scitoken plugin maps all tokens from the same OAuth2 server to a
+single account.  Paths within the SciToken are mapped to dCache paths
+by adding a prefix.  The plugin optionally supports t
+
+The `jti` claim is unique for each SciToken.  dCache can prevent
+replay attacks by remembering the previous
+`gplazma.scitoken.token-history` values and rejecting the token if
+already seen.  If the configuration value is zero (the default) then
+this feature is disabled.
+
+The `aud` claim describes which service the SciToken was issued.  The
+`gplazma.scitoken.audience-targets` configuration property is a
+space-separated list of targets that dCache should consider for
+itself.  If the configuration property is non-empty then dCache will
+reject any SciToken with an `aud` claim that does not match one of the
+listed claims.
 
 ### History
 
@@ -132,11 +262,69 @@ can see all transfers.  Non-authenticated users can only see anonymous transfers
 
 ### NFS
 
+Improve performance of file system locks.
+
 ### PNFS Manager
 
 ### Pool
 
-### Pool Manager 
+For HTTP transfers, the pool now honours the
+`pool.mover.http.chunk-size` property.  Some storage backends (in
+particular, CEPH) suffer from very poor performance if IO operations
+are small.  Setting this property to a larger value will result in the
+pool caching incoming data (in memory) so that writes are the
+configured size.  When sending data, the pool will try to read this
+amount of data before sending it to the client.
+
+When accepting data, the pool may know the file's ultimate size before
+the transfer has started; for example, if an HTTP client specifies
+the 'Content-Length' HTTP request header in a PUT or an HTTP TPC
+request, or if an FTP upload is orchestrated using SRM.  Under these
+circumstances, the the pool will now allocate all of that capacity in
+the storage backend before initiating the transfer.  This avoids
+allocating more capacity with each client write.  Some storage
+backends (CEPH in particular) suffer from poor performance if capacity
+is allocated incrementally.
+
+Improve error reporting for HTTP Third-party copy.  In particular, the
+error message describes any redirection that took place while removing
+redundant information.
+
+When making an HTTP third-party PUSH copy, the pool makes an HTTP PUT
+request and then verifies that the uploaded file was transferred
+correctly by requesting the uploaded file's checksum.  Previously, the
+pool always asked for the same set of checksum algorithms,
+irrespective of which algorithm values dCache knows for this file.
+dCache now builds the list of desired checksum algorithms based on the
+known checksums for the file.
+
+When making an HTTP third-party PUSH copy, the pool checks the HTTP
+response status code from the server.  The server may response 204 and
+205 to indicate a successful upload where the content is identical, a
+status code that some systems (including OneData) use.  dCache now
+considers 204 and 205 as successful HTTP response codes.
+
+A successful HTTP PUT request for an HTTP third-party PUSH copy does
+not guarantee that a subsequent HTTP HEAD request will succeed.  In
+particular, a pre-authorised URL (from an S3 endpoint) may allow the
+PUT request but not the HEAD request.  Previously, dCache always
+considered this to be a failure and failed the request.  Now, if the
+transfer is not required to verify checksums then the HEAD request
+failure is ignored.
+
+The NFS mover now tells the client that if it wishes to update file
+attributes then such requests must go to the door (not the pool).  A
+client calling fsync on an open file will now update the file's mtime
+and size.
+
+Support pools with multiple tags.  The `pool.tags` configuration
+property was meant as a comma-separated list of key-value pairs; e.g.,
+`pool.tags = tag1=value1, tag2=value2, ...`.  Due to a bug, a pool had
+only one tag, with the remainder tags included in that tag's value
+(e.g., `tag1` `value1,tag2=value2`).  Now pools will accept multiple
+tags.
+
+### Pool Manager
 
 Added option `-dynamic` to `psu create pool` command to create a pool group that will dynamically add all pools
 that have a specific attribute. Currently, only pool tag, defined by `pool.tags` property is supported.
@@ -148,6 +336,26 @@ Example:
 
 Will create pool group `zone-A-pools` and any existing pool as well as any new pool that configured with tag
 `zone=A` will be automatically included into that pool group.
+
+Add the ability to disable anonymous staging.  Without enabling
+explicit stage protection, dCache allows anyone who can read a file to
+stage it.  Various doors allow anonymous access, where any
+world-readable files may be read.  If such a file is stored on tape
+then an anonymous user could trigger staging of those files.  This
+version of dCache has the ability to disallow staging if the user is
+not authenticated.
+
+The `psu` admin commands are inconsistent.  Several commands that
+support modifying associations have the form `psu addto` and `psu
+removefrom` to add and remove an association (respectively).  However,
+the commands for managing the associations between pools or poolgroups
+and links do not follow this form; instead, the commands are `psu add
+link` and `psu unlink`.  This version of dCache fixes this
+inconsistency by also supporting the `psu addto link` and `psu
+removefrom link` commands.
+
+The `rc failed` admin command documentation is updated, so it no
+longer wrongly described the argument as a PNFS-ID.
 
 ### Resilience
 
@@ -197,6 +405,19 @@ as 'VOID', but as 'NOOP', when you do:
 
 ### WebDAV
 
+The HTTP status code returned after successfully initiating an HTTP
+third-party-copy is now 202 (Accepted), rather than 200 (OK).  The
+HTTP response also includes a Content-Type header describing the
+response as `text/perf-marker-stream`.
+
+HTTP third-party copy now supports RFC-3230 'Want-Digest' headers on
+COPY requests.  For HTTP PUSH requests, this just acts like an HTTP
+HEAD request with the 'Want-Digest' header: the response includes the
+file's checksum.  For HTTP PULL requests, dCache will ensure that the
+most appropriate checksum algorithm is calculated.  If the client
+advertises it suppers HTTP trailers then the checksum value is
+returned after the transfer has completed.
+
 ### XRootD
 
 The dCache xrootd door/server now supports security level configuration and signed hash verification. See
@@ -214,7 +435,7 @@ in general was converted to debug-level, so that the former may be reserved for 
 
 ### Changes affecting multiple services
 
-Kafka topics can now be set independently for several services using the variables 
+Kafka topics can now be set independently for several services using the variables
 
     dcache.kafka.topic = billing
 
@@ -226,6 +447,21 @@ Kafka topics can now be set independently for several services using the variabl
     pool.kafka.topic = ${dcache.kafka.topic}
     webdav.kafka.topic = ${dcache.kafka.topic}
     xrootd.kafka.topic = ${dcache.kafka.topic}
+
+Macaroons now include an Issue ID (`iid`) caveat, which dCache ensures
+is the first caveat in each new macaroon.  The iid caveat ensures that
+the ID is always unique, even when generated with the same secret, but
+that derived macaroons (ones with additional caveats) may still be
+identified.
+
+By default, the WebDAV and frontend doors now reject any macaroon sent
+on an unencrypted connection.  Although these doors used to accept
+macaroons on unencrypted connections and this behaviour is
+configurable, we recommend sites accept this change and have dCache
+reject unencrypted macaroons.
+
+This version of dCache configures systemd limits in a single place,
+avoiding that ineffective configuration is included.
 
 ### Changelog from 5.0.0 to 5.1.0
 
@@ -780,5 +1016,3 @@ Kafka topics can now be set independently for several services using the variabl
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" type="text/javascript"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
         integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-
-
