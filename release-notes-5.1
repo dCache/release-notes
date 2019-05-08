@@ -95,22 +95,24 @@ Other contributions originated from a lecture at HTW Berlin; many thanks to Jona
 
 ## Release 5.1.0
 
-### Admin
-
 ### Alarms
 
-So that they can be given different priority levels, a new alarm, ``POOL_DEAD``, was created to distinguish a pool
-which is completely unreachable, from ``POOL_DOWN`` or ``POOL_DISABLED``.
+So that they can be given different priority levels, a new alarm,
+``POOL_DEAD``, was created to distinguish a pool which is completely
+unreachable, from ``POOL_DOWN`` or ``POOL_DISABLED``.
 
-Alarms was also modified in order to be able to support a more modern version of the logback library.
+Alarms was also modified in order to be able to support a more modern
+version of the logback library.
 
 ### Billing
 
-The database connection was wrapped so as to catch fatal exceptions and report them as alarms (this
-is already done for other databases such as chimera).
+The database connection was wrapped so as to catch fatal exceptions
+and report them as alarms (this is already done for other databases
+such as chimera).
 
-When using the Kafka messaging system, the "billing" topic was hardcoded until now. This release introduces
-a new configuration variable, `dcache.kafka.topic=billing` to configure this.
+When using the Kafka messaging system, the "billing" topic was
+hardcoded until now. This release introduces a new configuration
+variable, `dcache.kafka.topic=billing` to configure this.
 
 When a pool reports a replica was removed, it includes information on
 why the replica was deleted.  By default, this information is logged
@@ -128,14 +130,14 @@ icon.  The goal is that many independent services may use the same
 icon for the same user.  At sites' request, this behaviour is now
 optional.
 
-
-
 ### Frontend
 
-A bug preventing the proper filtering of active transfers according to uid was fixed.  A reminder as
-to how this works:  (a) admins always see everything; (b) authenticated users always see their own
-transfers; (c) if ``frontend.authz.unlimited-operation-visibility`` is set to `true`, authenticated users
-can see all transfers.  Non-authenticated users can only see anonymous transfers.
+A bug preventing the proper filtering of active transfers according to
+uid was fixed.  A reminder as to how this works: (a) admins always see
+everything; (b) authenticated users always see their own transfers;
+(c) if ``frontend.authz.unlimited-operation-visibility`` is set to
+`true`, authenticated users can see all transfers.  Non-authenticated
+users can only see anonymous transfers.
 
 The inotify support now includes sending IN_OPEN, IN_ACCESS,
 IN_MODIFY, IN_CLOSE_WRITE, IN_CLOSE_NOWRITE events on file activity.
@@ -252,19 +254,9 @@ itself.  If the configuration property is non-empty then dCache will
 reject any SciToken with an `aud` claim that does not match one of the
 listed claims.
 
-### History
-
-### httpd
-
-### Info
-
-### Missing Files
-
 ### NFS
 
 Improve performance of file system locks.
-
-### PNFS Manager
 
 ### Pool
 
@@ -326,16 +318,19 @@ tags.
 
 ### Pool Manager
 
-Added option `-dynamic` to `psu create pool` command to create a pool group that will dynamically add all pools
-that have a specific attribute. Currently, only pool tag, defined by `pool.tags` property is supported.
+Added option `-dynamic` to `psu create pool` command to create a pool
+group that will dynamically add all pools that have a specific
+attribute. Currently, only pool tag, defined by `pool.tags` property
+is supported.
 
 Example:
 ```
 >  psu create pgroup -dynamic -tags=zone=A zone-A-pools
 ```
 
-Will create pool group `zone-A-pools` and any existing pool as well as any new pool that configured with tag
-`zone=A` will be automatically included into that pool group.
+Will create pool group `zone-A-pools` and any existing pool as well as
+any new pool that configured with tag `zone=A` will be automatically
+included into that pool group.
 
 Add the ability to disable anonymous staging.  Without enabling
 explicit stage protection, dCache allows anyone who can read a file to
@@ -359,8 +354,9 @@ longer wrongly described the argument as a PNFS-ID.
 
 ### Resilience
 
-An important bug (from a race condition) which made resilience susceptible to causing data loss during removal of excess replicas
-was fixed.
+An important bug (from a race condition) which made resilience
+susceptible to causing data loss during removal of excess replicas was
+fixed.
 
 Several smaller bug fixes were also applied:
 
@@ -380,28 +376,25 @@ now properly reinitializes the pool state on the pool operations.
 
 no longer throws a string index exception.
 
-3.  After excluding a pool, it cannot be scanned under any circumstances; it must be explicitly included
-again before scanning can be activated on it; i.e.,
+3.  After excluding a pool, it cannot be scanned under any
+circumstances; it must be explicitly included again before scanning
+can be activated on it; i.e.,
 
 ```
 \s Resilience pool include [pool expression]
 ```
 
-Logging of messages has also been added to resilience in order to be able to trace its communication with
-other dCache components.  These records appear at INFO level in the ``resilience.resilience`` log.
+Logging of messages has also been added to resilience in order to be
+able to trace its communication with other dCache components.  These
+records appear at INFO level in the ``resilience.resilience`` log.
 
-For clarity, the final state of a file operation which ends up being unnecessary is no longer reported
-as 'VOID', but as 'NOOP', when you do:
+For clarity, the final state of a file operation which ends up being
+unnecessary is no longer reported as 'VOID', but as 'NOOP', when you
+do:
 
 ```
 \s Resilience file ls
 ```
-
-### SRM / SRM Manager
-
-### Statistics
-
-### Transfer Manager
 
 ### WebDAV
 
@@ -420,22 +413,28 @@ returned after the transfer has completed.
 
 ### XRootD
 
-The dCache xrootd door/server now supports security level configuration and signed hash verification. See
-``dcache.properties`` under "Xrootd: support for verifying signed hashes (by server/door)" for information.
+The dCache xrootd door/server now supports security level
+configuration and signed hash verification. See ``dcache.properties``
+under "Xrootd: support for verifying signed hashes (by server/door)"
+for information.
 
-We have also added support for mapping clients with valid credentials to NOBODY; this also enables the
-current version of third-party-copy (which lacks the full proxy delegation that will be available in
-the next Golden Release [5.2]) to allow destination servers to log in anonymously to dCache as source
-during third-party-copy; in this latter case (only), dCache also allows the server to see read-protected files.
+We have also added support for mapping clients with valid credentials
+to NOBODY; this also enables the current version of third-party-copy
+(which lacks the full proxy delegation that will be available in the
+next Golden Release [5.2]) to allow destination servers to log in
+anonymously to dCache as source during third-party-copy; in this
+latter case (only), dCache also allows the server to see
+read-protected files.
 
-A bug involving access logging when the door is configured with HAproxy was fixed, and trace-level logging
-in general was converted to debug-level, so that the former may be reserved for handshake packet dumps only.
-
-### Zookeeper
+A bug involving access logging when the door is configured with
+HAproxy was fixed, and trace-level logging in general was converted to
+debug-level, so that the former may be reserved for handshake packet
+dumps only.
 
 ### Changes affecting multiple services
 
-Kafka topics can now be set independently for several services using the variables
+Kafka topics can now be set independently for several services using
+the variables
 
     dcache.kafka.topic = billing
 
@@ -449,10 +448,10 @@ Kafka topics can now be set independently for several services using the variabl
     xrootd.kafka.topic = ${dcache.kafka.topic}
 
 Macaroons now include an Issue ID (`iid`) caveat, which dCache ensures
-is the first caveat in each new macaroon.  The iid caveat ensures that
-the ID is always unique, even when generated with the same secret, but
-that derived macaroons (ones with additional caveats) may still be
-identified.
+is the first caveat in each new macaroon.  The `iid` caveat ensures
+that the ID is always unique, even when generated with the same
+secret, but that derived macaroons (ones with additional caveats) may
+still be identified.
 
 By default, the WebDAV and frontend doors now reject any macaroon sent
 on an unencrypted connection.  Although these doors used to accept
