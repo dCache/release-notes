@@ -93,6 +93,44 @@ Lea Morschel also provided documentation and code refinements.
 Other contributions originated from a lecture at HTW Berlin; many thanks to Jonas Grabber, "tabea", "Co" and "xpinkyx" for their contributions.
 
 
+## Release 5.1.1
+
+### Changes affecting multiple services
+
+Stage request from unknown locations resulted in NPE in dcap and pinmanager services.
+this is now fixed and using `dccp` to stage a file should work even if the location is unknown. '--'
+
+### frontend
+
+A client that disconnects and quickly reconnects could  had  triggered the following NPE, this is now fixed.
+
+### resilience
+
+The current release fixed  race condition on replica state and no `inaccessible file errors` occures  for a newly written file.
+
+
+### Changelog 5.1.0..5.1.1
+
+<!-- git log 5.1.0..5.1.1 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[adba768](https://github.com/dcache/dcache/commit/adba76881ed5d8d67a1b0410f4fb3b9dd7d83b34)
+:   [maven-release-plugin] prepare release 5.1.1
+
+[7d7c4c5](https://github.com/dcache/dcache/commit/7d7c4c58d99fc2902ad7573851217e0ef7ce5fd5)
+:   dcap/pinmanager: stage request for unknown location results in NPE
+
+[ef3a977](https://github.com/dcache/dcache/commit/ef3a97772284c7a0e5cdc39bbb88b7a3ba756f7d)
+:   dcap batch : fix handling of dcap.kafka.topic variable
+
+[fc88f10](https://github.com/dcache/dcache/commit/fc88f1008e475f81b48848e3c321c5b31d4af7dd)
+:   dcache-resilience (stable branches): fix race condition on replica state
+
+[0e979ce](https://github.com/dcache/dcache/commit/0e979ce85d8e0d4e5277991030269079a3ecf1a7)
+:   frontend: fix race on client reconnecting
+
+[40307e9](https://github.com/dcache/dcache/commit/40307e91f2a61b17d19faac86c577ba80241ff4b)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.1.0
 
 ### Alarms

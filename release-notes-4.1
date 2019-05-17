@@ -107,6 +107,37 @@ Thanks to Christoph Anton Mitterer for his constributions.
 We would like to thank the students of HTW Berlin Alexandra Konovalova, Hagen Wittlich and Marcus Kopp,
 for their contributions during the HTW course.
 
+## Release 4.1.41
+
+### Changes affecting multiple services
+
+Stage request from unknown locations resulted in NPE in dcap and pinmanager services.
+this is now fixed and using `dccp` to stage a file should work even if the location is unknown. '--'
+
+### resilience
+
+The current release fixed  race condition on replica state and no `inaccessible file errors` occures  for a newly written file.
+
+
+### Changelog 4.1.40..4.1.41
+
+<!-- git log 4.1.40..4.1.41 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[50c89ff](https://github.com/dcache/dcache/commit/50c89ff1b33db52f3d77d0a974078231fe7fb05b)
+:   [maven-release-plugin] prepare release 4.1.41
+
+[b1bd482](https://github.com/dcache/dcache/commit/b1bd482ec32106132f0068b006d2afb23c76b93f)
+:   dcap/pinmanager: stage request for unknown location results in NPE
+
+[cfe24ef](https://github.com/dcache/dcache/commit/cfe24efc316d08de318ff814e82a6222cfd3a181)
+:   dcache-resilience (stable branches): fix race condition on replica state
+
+[f948fb1](https://github.com/dcache/dcache/commit/f948fb19235ff608e2d272fd0df1eef1359a0bb9)
+:   [maven-release-plugin] prepare for next development iteration
+
+[3803f65](https://github.com/dcache/dcache/commit/3803f6540ca6e898229a9a9f95c96a7d6b8bbb4a)
+:   resilience: adjust synchronization of file operation removal from map
+
 ## Release 4.1.40
 
 ### pool

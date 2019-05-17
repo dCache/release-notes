@@ -78,6 +78,47 @@ This release breaks compatibility with pools running dcache version 3.2 or earli
 We thank HTW Berlin students Marcel Munce, Ferdinand Wolff and MaKrHTW (???) as well
 as Onno Zweers from surfSARA for their contributions.
 
+## Release 5.0.12
+
+### Changes affecting multiple services
+
+Stage request from unknown locations resulted in NPE in dcap and pinmanager services.
+this is now fixed and using `dccp` to stage a file should work even if the location is unknown. '--'
+
+### frontend
+
+A client that disconnects and quickly reconnects could  had  triggered the following NPE, this is now fixed.
+
+### resilience
+
+The current release fixed  race condition on replica state and no `inaccessible file errors` occures  for a newly written file.
+
+
+### Changelog 5.0.11..5.0.12
+
+<!-- git log 5.0.11..5.0.12 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[33d6d90](https://github.com/dcache/dcache/commit/33d6d90af64670630ba7f2609ccd679b9a1a6deb)
+:   [maven-release-plugin] prepare release 5.0.12
+
+[0d78953](https://github.com/dcache/dcache/commit/0d789531250e4c0119dca7e871dd88bd67f40ca0)
+:   dcap/pinmanager: stage request for unknown location results in NPE
+
+[8c0666d](https://github.com/dcache/dcache/commit/8c0666dafc40f8e234392e39b3da7276d8810ad2)
+:   dcap batch : fix handling of dcap.kafka.topic variable
+
+[4a8a6dd](https://github.com/dcache/dcache/commit/4a8a6dd7344611be80dcdb73763722868e2e10f3)
+:   dcache-resilience (stable branches): fix race condition on replica state
+
+[e63f6b0](https://github.com/dcache/dcache/commit/e63f6b0a9a8712841078fc0b8f837e250477531d)
+:   frontend: fix race on client reconnecting
+
+[01e3ed8](https://github.com/dcache/dcache/commit/01e3ed8cd857253c2ab487a6201c3de95194d563)
+:   [maven-release-plugin] prepare for next development iteration
+
+[702f8d7](https://github.com/dcache/dcache/commit/702f8d7d1f728b4d04f8d81cefbd571e3671aac8)
+:   resilience: adjust synchronization of file operation removal from map
+
 ## Release 5.0.11
 
 ### frontend
