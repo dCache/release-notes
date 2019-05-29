@@ -107,6 +107,69 @@ from dCache 3.1.  Please read this section *very carefully* when
 upgrading from this version.
 
 
+## Release 3.2.55
+
+### alarms
+
+To ease troubleshooting, the POOL_DEAD alarm message now includes the pool name.
+
+### ftp
+
+This release fixes an issue where a NullPointerException was thrown
+by FTP doors. The error occured only in very specific circumstances:
+a client would need to either download a file
+or issue a LIST, NLST or MLSD command after uploading a file through
+a passive door using proxied transfers.
+
+### pinmanager
+
+A bug was fixed where PinManager's `bulk ls` admin command yielded a 
+NullPointerException if the optional argument was omitted.
+
+A typo prevented the error message "Remote connection failure while unpinning..." from
+appearing completely and correctly in the logs. The error message string now contains
+the message string of the underlying Exception, hopefully providing helpful details for 
+troubleshooting.
+
+### pool
+
+A regression that prevented a replica's position in the LRU queue for garbage collection from being updated was fixed.
+
+### webdav
+
+Users asserting the "admin" role would occasionally receive 
+NullPointerExceptions when trying to transfer files through 
+WebDAV. This release fixes that issue.
+
+
+### Changelog 3.2.54..3.2.55
+
+<!-- git log 3.2.54..3.2.55 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[ad31b5e459](https://github.com/dcache/dcache/commit/ad31b5e45913361aefa3a767967d3fd5350d889b)
+:   [maven-release-plugin] prepare release 3.2.55
+
+[e13874a7f1](https://github.com/dcache/dcache/commit/e13874a7f1d83cad70de41b82a5b6bbe1b581bab)
+:   UnpinProcessor: fix assumed typo `{)`
+
+[f3bace2ec8](https://github.com/dcache/dcache/commit/f3bace2ec80646472224a7217cceb07b21cb7af5)
+:   webdav: allow transfers as user with role 'admin'
+
+[cc2fc40a50](https://github.com/dcache/dcache/commit/cc2fc40a50d08ca28dd2c5f3d064fd0b29884cce)
+:   pinmanager: avoid NPE if no argument given for 'bulk ls' command
+
+[082ae84015](https://github.com/dcache/dcache/commit/082ae84015a13ba3c76022112deec08fa91e7c20)
+:   alarms: add pool name to POOL_DEAD alarm
+
+[9b894d4c4c](https://github.com/dcache/dcache/commit/9b894d4c4cd336f92762f6e11010d1c92944dabc)
+:   ftp: avoid NullPointerException after passive upload
+
+[b3fc6e3780](https://github.com/dcache/dcache/commit/b3fc6e378081ac3ccfe00b325f861e1b17327716)
+:   pool: fix reordering of removable replicas on access
+
+[255241e81f](https://github.com/dcache/dcache/commit/255241e81f7d22fe6942c4fedd179cdcd051d5ab)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.2.54
 
 ### Changes affecting multiple services

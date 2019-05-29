@@ -93,6 +93,70 @@ Lea Morschel also provided documentation and code refinements.
 Other contributions originated from a lecture at HTW Berlin; many thanks to Jonas Grabber, "tabea", "Co" and "xpinkyx" for their contributions.
 
 
+## Release 5.1.2
+
+### alarms
+
+To ease troubleshooting, the POOL_DEAD alarm message now includes the pool name.
+
+### pinmanager
+
+A bug was fixed where PinManager's `bulk ls` admin command yielded a 
+NullPointerException if the optional argument was omitted.
+
+A typo prevented the error message "Remote connection failure while unpinning..." from
+appearing completely and correctly in the logs. The error message string now contains
+the message string of the underlying Exception, hopefully providing helpful details for 
+troubleshooting.
+
+### pool
+
+A regression that prevented a replica's last access time from being updated was fixed.
+
+A regression that prevented a replica's position in the LRU queue for garbage collection from being updated was fixed.
+
+inotify's IN_CLOSE_WRITE event was sent at a time when it could not be guaranteed that
+the file triggering the event could immediately be opened. This race condition was
+fixed, and consumers can start using a file immediately after receiving this event.
+
+### webdav
+
+Users asserting the "admin" role would occasionally receive 
+NullPointerExceptions when trying to transfer files through 
+WebDAV. This release fixes that issue.
+
+
+### Changelog 5.1.1..5.1.2
+
+<!-- git log 5.1.1..5.1.2 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[d8b2275279](https://github.com/dcache/dcache/commit/d8b2275279b227056785ccc1eb9765136b412baf)
+:   [maven-release-plugin] prepare release 5.1.2
+
+[6f23091cff](https://github.com/dcache/dcache/commit/6f23091cff991f0ad3d624a6985d3ed87131da29)
+:   UnpinProcessor: fix assumed typo `{)`
+
+[438a96a1d9](https://github.com/dcache/dcache/commit/438a96a1d9f2751114331ca2c0def1e372ffb490)
+:   webdav: allow transfers as user with role 'admin'
+
+[f914ddcf08](https://github.com/dcache/dcache/commit/f914ddcf08a2015c343606f529e88583d5755d3b)
+:   pinmanager: avoid NPE if no argument given for 'bulk ls' command
+
+[71cb623a8d](https://github.com/dcache/dcache/commit/71cb623a8def75bbae086be07fdb5c621c2dfd7d)
+:   alarms: add pool name to POOL_DEAD alarm
+
+[033bd83c8c](https://github.com/dcache/dcache/commit/033bd83c8c55447d4155b041b3d81628c9b32dc3)
+:   pool: fix reordering of removable replicas on access
+
+[84ed9d20c6](https://github.com/dcache/dcache/commit/84ed9d20c6d73312261bb3f6d3cc187c55560d29)
+:   pool: fix storage of replica last access time
+
+[a98a1ce5ad](https://github.com/dcache/dcache/commit/a98a1ce5adf490b3c8bc6959589f5a5240c66ca1)
+:   [maven-release-plugin] prepare for next development iteration
+
+[ad9852c91a](https://github.com/dcache/dcache/commit/ad9852c91a25c93c5e1332f7d24bd61d5fd812e6)
+:   pool: inotify avoid race in IN_CLOSE_WRITE event
+
 ## Release 5.1.1
 
 ### Changes affecting multiple services

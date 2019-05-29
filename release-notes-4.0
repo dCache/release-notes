@@ -99,6 +99,69 @@ The notes for [release 4.0.0](#release4.0.0) detail the differences
 from dCache 3.2.  Please read this section *very carefully* when
 upgrading from this version.
 
+## Release 4.0.46
+
+### alarms
+
+To ease troubleshooting, the POOL_DEAD alarm message now includes the pool name.
+
+### ftp
+
+This release fixes an issue where a NullPointerException was thrown
+by FTP doors. The error occured only in very specific circumstances:
+a client would need to either download a file
+or issue a LIST, NLST or MLSD command after uploading a file through
+a passive door using proxied transfers.
+
+### pinmanager
+
+A bug was fixed where PinManager's `bulk ls` admin command yielded a 
+NullPointerException if the optional argument was omitted.
+
+A typo prevented the error message "Remote connection failure while unpinning..." from
+appearing completely and correctly in the logs. The error message string now contains
+the message string of the underlying Exception, hopefully providing helpful details for 
+troubleshooting.
+
+### pool
+
+A regression that prevented a replica's position in the LRU queue for garbage collection from being updated was fixed.
+
+### webdav
+
+Users asserting the "admin" role would occasionally receive 
+NullPointerExceptions when trying to transfer files through 
+WebDAV. This release fixes that issue.
+
+
+### Changelog 4.0.45..4.0.46
+
+<!-- git log 4.0.45..4.0.46 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[ad22a2ca14](https://github.com/dcache/dcache/commit/ad22a2ca146969bb31529e87aaadb1a43b9f3e1b)
+:   [maven-release-plugin] prepare release 4.0.46
+
+[c6116f0613](https://github.com/dcache/dcache/commit/c6116f0613ed04eeae9ade13aebd8736ffb4263a)
+:   UnpinProcessor: fix assumed typo `{)`
+
+[ec3c42aa3b](https://github.com/dcache/dcache/commit/ec3c42aa3b86bfd234fa556d04b7aee8125cdf21)
+:   webdav: allow transfers as user with role 'admin'
+
+[fffa6a2cc0](https://github.com/dcache/dcache/commit/fffa6a2cc0fb3b515523e25bc9fdece5595d7d4b)
+:   pinmanager: avoid NPE if no argument given for 'bulk ls' command
+
+[2594616811](https://github.com/dcache/dcache/commit/2594616811e1b6e86275622db0aa3ea11154c98a)
+:   alarms: add pool name to POOL_DEAD alarm
+
+[247bea8052](https://github.com/dcache/dcache/commit/247bea80526e1168dcd886a59705a04c9b48f79e)
+:   ftp: avoid NullPointerException after passive upload
+
+[d8630797e3](https://github.com/dcache/dcache/commit/d8630797e37f85aa7abcd84f1fe16b3f5f830c7f)
+:   pool: fix reordering of removable replicas on access
+
+[088711ee5a](https://github.com/dcache/dcache/commit/088711ee5aa7b7ef892608f5a893b6fc5116cb65)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.0.45
 
 ### Changes affecting multiple services

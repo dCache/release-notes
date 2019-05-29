@@ -78,6 +78,63 @@ This release breaks compatibility with pools running dcache version 3.2 or earli
 We thank HTW Berlin students Marcel Munce, Ferdinand Wolff and MaKrHTW (???) as well
 as Onno Zweers from surfSARA for their contributions.
 
+## Release 5.0.13
+
+### alarms
+
+To ease troubleshooting, the POOL_DEAD alarm message now includes the pool name.
+
+### pinmanager
+
+A bug was fixed where PinManager's `bulk ls` admin command yielded a 
+NullPointerException if the optional argument was omitted.
+
+A typo prevented the error message "Remote connection failure while unpinning..." from
+appearing completely and correctly in the logs. The error message string now contains
+the message string of the underlying Exception, hopefully providing helpful details for 
+troubleshooting.
+
+### pool
+
+A regression that prevented a replica's last access time from being updated was fixed.
+
+A regression that prevented a replica's position in the LRU queue for garbage collection from being updated was fixed.
+
+### webdav
+
+Users asserting the "admin" role would occasionally receive 
+NullPointerExceptions when trying to transfer files through 
+WebDAV. This release fixes that issue.
+
+
+### Changelog 5.0.12..5.0.13
+
+<!-- git log 5.0.12..5.0.13 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[64e2063b2c](https://github.com/dcache/dcache/commit/64e2063b2cb63da5e10a33a8416f6eda406df2dd)
+:   [maven-release-plugin] prepare release 5.0.13
+
+[6b5e05f0ea](https://github.com/dcache/dcache/commit/6b5e05f0ea964521eebf2085d072964007031944)
+:   UnpinProcessor: fix assumed typo `{)`
+
+[07f6f5b58d](https://github.com/dcache/dcache/commit/07f6f5b58da81ae690378153574fdc52be037670)
+:   webdav: allow transfers as user with role 'admin'
+
+[2e531f6134](https://github.com/dcache/dcache/commit/2e531f613442782e8de534f4a8075eae1e388d91)
+:   pinmanager: avoid NPE if no argument given for 'bulk ls' command
+
+[249c895912](https://github.com/dcache/dcache/commit/249c89591249d2634817cad62a023ac69ca75ea2)
+:   alarms: add pool name to POOL_DEAD alarm
+
+[51982824c3](https://github.com/dcache/dcache/commit/51982824c307d933a70ff1a9341ea61790d9255a)
+:   pool: fix reordering of removable replicas on access
+
+[421cec3adf](https://github.com/dcache/dcache/commit/421cec3adfc8b489e8525bb6d327588b579ca0f3)
+:   pool: fix storage of replica last access time
+
+[554a40de9c](https://github.com/dcache/dcache/commit/554a40de9cc9b5a5b07b13a84e65144a6c04669f)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.0.12
 
 ### Changes affecting multiple services
