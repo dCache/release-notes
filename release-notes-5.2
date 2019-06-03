@@ -95,6 +95,13 @@ level=INFO ts=2019-05-02T12:50:12.000+0200 event=org.dcache.services.ssh2.exec u
 The `ictime` field of `t_locationinfo_trash` table stores the time when trash table entry was created.
 
 ### Cleaner
+The cleaner now can way a specified amount of time after delition before file finally get removed from pools
+and HSM. Two new properties added to control this behaviour:
+
+```
+cleaner.service.grace-period = 0
+cleaner.service.grace-period.unit = SECONDS
+```
 
 ### DCAP
 
