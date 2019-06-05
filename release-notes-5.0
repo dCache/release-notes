@@ -78,6 +78,41 @@ This release breaks compatibility with pools running dcache version 3.2 or earli
 We thank HTW Berlin students Marcel Munce, Ferdinand Wolff and MaKrHTW (???) as well
 as Onno Zweers from surfSARA for their contributions.
 
+## Release 5.0.14
+
+### Changes affecting multiple services
+
+This release updates the Zookeeper library shipped with dCache to version 3.4.14, which
+contains fixes for CVE-2019-0201, a possible critical behaviour where unsalted hashes 
+could leak to network-internal attackers.
+
+### gplazma
+
+Logging of problems with OpenID-Connect logins through dCache View was greatly improved.
+
+
+### Changelog 5.0.13..5.0.14
+
+<!-- git log 5.0.13..5.0.14 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[30ffb8122b](https://github.com/dcache/dcache/commit/30ffb8122bcc131bb08d6ae8d01562f32b1753d9)
+:   [maven-release-plugin] prepare release 5.0.14
+
+[6c0adf2f50](https://github.com/dcache/dcache/commit/6c0adf2f501e35f6e60da824867d00201b360009)
+:   gplazma: consider bearer token when deciding whether to log failures
+
+[ce28afd111](https://github.com/dcache/dcache/commit/ce28afd1115291e36f73e290fa46009ce630579a)
+:   libs: use zookeeper-3.4.14
+
+[0050bca54b](https://github.com/dcache/dcache/commit/0050bca54bf5ce85cf28b5c5542b3fa36bd69e5b)
+:   common: allow counting histogram to accept negative values
+
+[f0225fb2f7](https://github.com/dcache/dcache/commit/f0225fb2f79dcd9f3aa54a2abf0252f4d615bb24)
+:   pool (sweeper): catch negative file lifetime value
+
+[e24e59e9dd](https://github.com/dcache/dcache/commit/e24e59e9ddf86677275a19bd943ea321b37df4d6)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.0.13
 
 ### alarms
