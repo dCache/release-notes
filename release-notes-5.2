@@ -129,6 +129,8 @@ When a pNFS client that uses `flexfile` layout reports connection error to a poo
 ### Pool
 
 ### Pool Manager
+In a situations, where for a given READ access two links are available and there are no pools available at
+link with a higher priority, then a pool from a lower link priority will be selected if file is available.
 
 ### Resilience
 
