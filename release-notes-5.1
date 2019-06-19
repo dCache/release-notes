@@ -93,6 +93,99 @@ Lea Morschel also provided documentation and code refinements.
 Other contributions originated from a lecture at HTW Berlin; many thanks to Jonas Grabber, "tabea", "Co" and "xpinkyx" for their contributions.
 
 
+## Release 5.1.4
+
+### Changes affecting multiple services
+
+This release includes an updated Jetty library, with the update adressing
+CVE-2019-10247.
+
+This release includes an updated Jetty library, with the update adressing
+CVE-2019-10247.
+
+### dcap
+
+The Kafka messaging implementation in the dcap service has been made more robust,
+fixing issue [#4831](https://github.com/dCache/dcache/issues/4831).
+
+### frontend
+
+Periodic activity associated with the frontend door is now logged with the
+door's cell name. Such messages will also appear in the door's
+pinboard.
+
+### nfs
+
+Periodic activity associated with the NFS door is now logged with the
+door's cell name. Such messages will also appear in the door's
+pinboard.
+
+### pool
+
+Attempting to start a full checksum scan (with `csm check *`) while an
+existing scan is still running is no longer reported as a bug.
+
+Pool start-up logging now includes the corresponding pool cell name.
+
+An internal timing check was updated, which should result in more robust pool
+behaviour. There should be no user-visible impact.
+
+### webdav
+
+Periodic activity associated with the WebDAV door is now logged with the
+door's cell name. Such messages will also appear in the door's
+pinboard.
+
+### xrootd
+
+A new configuration property, `pool.mover.xrootd.tpc-server-response-timeout`, allows
+setting a timeout for xrootd 3rd party copy operations. This can also be changed through
+the new admin command `xrootd set server response timeout`.
+
+
+### Changelog 5.1.3..5.1.4
+
+<!-- git log 5.1.3..5.1.4 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[8bc74e3f13](https://github.com/dcache/dcache/commit/8bc74e3f1314a02161c6f2c7f4509ae7f72618ea)
+:   [maven-release-plugin] prepare release 5.1.4
+
+[c9ed0d87e3](https://github.com/dcache/dcache/commit/c9ed0d87e31f3bae8e6bf81e1060e0c7542cabc7)
+:   pool: avoid IllegalStateException in 'csm check *' command
+
+[8cdf34d790](https://github.com/dcache/dcache/commit/8cdf34d790816beaa09348d8d20ef3acf3364503)
+:   dcap: fix premature close of kafka sender
+
+[d88ba9bef4](https://github.com/dcache/dcache/commit/d88ba9bef45436a134a3d7dfa36c4dc4fee91511)
+:   sweeper: compute now after the values have been fetched
+
+[8aaabb6316](https://github.com/dcache/dcache/commit/8aaabb6316ae151419331a3622f1ed937f4b465d)
+:   libs: use jetty 9.4.18.v20190429
+
+[03ad080bed](https://github.com/dcache/dcache/commit/03ad080bed08d93e14874a752dc47bef60069b7e)
+:   dcache-xrootd: add ability to override default timeout for server response (TPC)
+
+[906ab5ac03](https://github.com/dcache/dcache/commit/906ab5ac03c659f00238d49f9fde23bd78ba9d6c)
+:   [maven-release-plugin] prepare for next development iteration
+
+[d8f0ee3954](https://github.com/dcache/dcache/commit/d8f0ee39544e2b978a311168a487869fb66fadda)
+:   frontend: include CDC in scheduled activity
+
+[6007c39a82](https://github.com/dcache/dcache/commit/6007c39a822bade0797c75a88786e34e66ce52ff)
+:   nfs: include CDC in scheduled activity
+
+[8ba362e928](https://github.com/dcache/dcache/commit/8ba362e92859a9152979766118e34b8e5ee690af)
+:   webdav: include CDC in scheduled activity
+
+[a5337a705a](https://github.com/dcache/dcache/commit/a5337a705ab032da638d65ae83b13c5580521508)
+:   pool: ensure initialisation thread has correct CDC information
+
+[0e7fcabfd8](https://github.com/dcache/dcache/commit/0e7fcabfd85e5c1579129bcc3445f5d8ffedd18a)
+:   jetty: make CanlContextFactory subclass of jetty.ssl.SslContextFactory.Server
+
+[6e566d3d9f](https://github.com/dcache/dcache/commit/6e566d3d9f1cff61f59a7d7358a01960ecc6bb71)
+:   pom: use jetty 9.4.17.v20190418
+
 ## Release 5.1.2
 
 ### alarms

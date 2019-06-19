@@ -107,6 +107,27 @@ Thanks to Christoph Anton Mitterer for his constributions.
 We would like to thank the students of HTW Berlin Alexandra Konovalova, Hagen Wittlich and Marcus Kopp,
 for their contributions during the HTW course.
 
+## Release 4.1.43
+
+### pool
+
+Attempting to start a full checksum scan (with `csm check *`) while an
+existing scan is still running is no longer reported as a bug.
+
+
+### Changelog 4.1.42..4.1.43
+
+<!-- git log 4.1.42..4.1.43 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[f1020142ba](https://github.com/dcache/dcache/commit/f1020142bae50f410c27428e543b7fc3a534178b)
+:   [maven-release-plugin] prepare release 4.1.43
+
+[6a1ea2f940](https://github.com/dcache/dcache/commit/6a1ea2f940aed5cabd929cdd863cb2e8952d68ee)
+:   pool: avoid IllegalStateException in 'csm check *' command
+
+[d39b791553](https://github.com/dcache/dcache/commit/d39b7915539d6dc6ef78c3c556e2bbc5c37db4c0)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.1.42
 
 ### alarms

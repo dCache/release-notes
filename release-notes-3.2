@@ -107,6 +107,27 @@ from dCache 3.1.  Please read this section *very carefully* when
 upgrading from this version.
 
 
+## Release 3.2.56
+
+### pool
+
+Attempting to start a full checksum scan (with `csm check *`) while an
+existing scan is still running is no longer reported as a bug.
+
+
+### Changelog 3.2.55..3.2.56
+
+<!-- git log 3.2.55..3.2.56 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[c3ad410dca](https://github.com/dcache/dcache/commit/c3ad410dca72f8341b3996e2029dc7c8cfb7c960)
+:   [maven-release-plugin] prepare release 3.2.56
+
+[2fc1418c94](https://github.com/dcache/dcache/commit/2fc1418c94f0a6ba43d7b94f19b1604e39019875)
+:   pool: avoid IllegalStateException in 'csm check *' command
+
+[5de570d4cc](https://github.com/dcache/dcache/commit/5de570d4cc9733d9d020ab6c61eb4ef244b93b7e)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 3.2.55
 
 ### alarms

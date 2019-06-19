@@ -78,6 +78,105 @@ This release breaks compatibility with pools running dcache version 3.2 or earli
 We thank HTW Berlin students Marcel Munce, Ferdinand Wolff and MaKrHTW (???) as well
 as Onno Zweers from surfSARA for their contributions.
 
+## Release 5.0.15
+
+### Changes affecting multiple services
+
+This release includes an updated Jetty library, with the update adressing
+CVE-2019-10247.
+
+This release includes an updated Jetty library, with the update adressing
+CVE-2019-10247.
+
+### dcap
+
+The Kafka messaging implementation in the dcap service has been made more robust,
+fixing issue [#4831](https://github.com/dCache/dcache/issues/4831).
+
+### frontend
+
+Periodic activity associated with the frontend door is now logged with the
+door's cell name. Such messages will also appear in the door's
+pinboard.
+
+### nfs
+
+Periodic activity associated with the NFS door is now logged with the
+door's cell name. Such messages will also appear in the door's
+pinboard.
+
+### pool
+
+Attempting to start a full checksum scan (with `csm check *`) while an
+existing scan is still running is no longer reported as a bug.
+
+Pool start-up logging now includes the corresponding pool cell name.
+
+An internal timing check was updated, which should result in more robust pool
+behaviour. There should be no user-visible impact.
+
+### webdav
+
+Periodic activity associated with the WebDAV door is now logged with the
+door's cell name. Such messages will also appear in the door's
+pinboard.
+
+### xrootd
+
+A new configuration property, `pool.mover.xrootd.tpc-server-response-timeout`, allows
+setting a timeout for xrootd 3rd party copy operations. This can also be changed through
+the new admin command `xrootd set server response timeout`.
+
+
+### Changelog 5.0.14..5.0.15
+
+<!-- git log 5.0.14..5.0.15 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[61228154c6](https://github.com/dcache/dcache/commit/61228154c66451d6b269a86c566b31275548705c)
+:   [maven-release-plugin] prepare release 5.0.15
+
+[df878d862d](https://github.com/dcache/dcache/commit/df878d862da804f0aa9a5fd171618e681a6a69fb)
+:   pool: avoid IllegalStateException in 'csm check *' command
+
+[76575b0771](https://github.com/dcache/dcache/commit/76575b077102a42e4385b2cdf0bc2486869a353a)
+:   Update config-SRM.md
+
+[9ab6197b73](https://github.com/dcache/dcache/commit/9ab6197b73d456081cea4b86d1dfc299e633cdfb)
+:   Update config-SRM.md
+
+[462cf31a93](https://github.com/dcache/dcache/commit/462cf31a93b5543d49cf8882c622a5bed87e32aa)
+:   dcap: fix premature close of kafka sender
+
+[df99ce0710](https://github.com/dcache/dcache/commit/df99ce0710ac6385ee24b9f9daae42b745f82138)
+:   sweeper: compute now after the values have been fetched
+
+[fa071d90cc](https://github.com/dcache/dcache/commit/fa071d90cc5f9ac80df36b38e6d28fb7e453aad7)
+:   libs: use jetty 9.4.18.v20190429
+
+[cda8868232](https://github.com/dcache/dcache/commit/cda8868232d7e9529d98d2ef6f61d89a8eda83c9)
+:   dcache-xrootd: add ability to override default timeout for server response (TPC)
+
+[3b9c7f7674](https://github.com/dcache/dcache/commit/3b9c7f7674785f0bc4050570fc0ffd839cf7724f)
+:   [maven-release-plugin] prepare for next development iteration
+
+[6ec0c14175](https://github.com/dcache/dcache/commit/6ec0c1417599e6f31235311f1ea4ab680500f1d4)
+:   frontend: include CDC in scheduled activity
+
+[99c377c2f6](https://github.com/dcache/dcache/commit/99c377c2f663b641c3fe215233f4bb7dfc2a5a4d)
+:   nfs: include CDC in scheduled activity
+
+[6b2298ec51](https://github.com/dcache/dcache/commit/6b2298ec51a3b74d097de66eee4e3c9843a84fae)
+:   webdav: include CDC in scheduled activity
+
+[4e146e7e02](https://github.com/dcache/dcache/commit/4e146e7e028db33c80ab410334103e768e1ce1d3)
+:   pool: ensure initialisation thread has correct CDC information
+
+[ec475d6d07](https://github.com/dcache/dcache/commit/ec475d6d071983f2d0ab9a98c1ecb7d05228f7f7)
+:   jetty: make CanlContextFactory subclass of jetty.ssl.SslContextFactory.Server
+
+[1acd5f4f3d](https://github.com/dcache/dcache/commit/1acd5f4f3d35d16bd62ad91d0be3c00e995de2fa)
+:   pom: use jetty 9.4.17.v20190418
+
 ## Release 5.0.13
 
 ### alarms
