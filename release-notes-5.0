@@ -78,6 +78,67 @@ This release breaks compatibility with pools running dcache version 3.2 or earli
 We thank HTW Berlin students Marcel Munce, Ferdinand Wolff and MaKrHTW (???) as well
 as Onno Zweers from surfSARA for their contributions.
 
+## Release 5.0.16
+
+### frontend
+
+This release updates the dCache View web GUI to version 1.5.4.
+
+### ftp
+
+HAProxy can probe endpoints to discover if
+they are still alive.
+
+The FTP door has an optimisation that detects such probes and does not
+create the FTP command interpreter, since the FTP client (the HA-Proxy
+instance) is calling on behalf of itself, and will not issue any FTP
+requests.
+
+This release fixes a regression that would cause erroneous 
+NullPointerExceptions when FTP doors were probed by HAProxy.
+
+### pool
+
+The default value for the xrootd Third-Party Copying server response timeout,
+`pool.mover.xrootd.tpc-server-response-timeout`, was increased from 2 to 30 seconds 
+to provide more robust behaviour in the face of high loads and network congestion.
+
+### transfermanager
+
+Error messages like the WebDAV door's
+
+`Failed to fetch information for progress marker: failed to query pool: (0) Job not found : Job-1`
+
+where the TransferManager is unable to discover the
+current status of the pool mover now include the pool's name,
+which should make debugging easier.
+
+
+### Changelog 5.0.15..5.0.16
+
+<!-- git log 5.0.15..5.0.16 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[437a8768b0](https://github.com/dcache/dcache/commit/437a8768b0cecfbb9dcc9847dfa965df40825434)
+:   [maven-release-plugin] prepare release 5.0.16
+
+[010d456aad](https://github.com/dcache/dcache/commit/010d456aad866512d2e96cee76aee96304587565)
+:   dcache, frontend: release dcache-view version 1.5.4
+
+[214cb68c6f](https://github.com/dcache/dcache/commit/214cb68c6ff6fac40bc5375367b834dcf8fd044b)
+:   pools: make the xrootd tpc response timeout less aggressive
+
+[c0a95a2f71](https://github.com/dcache/dcache/commit/c0a95a2f71b50bf744874673ed8a34d0c7029ffa)
+:   transfermanager: include pool name in error for 'mover ls' failures
+
+[2db61d1da5](https://github.com/dcache/dcache/commit/2db61d1da5d4666f09eb959de9b99286c22814e5)
+:   ftp: avoid NPE on HA-Proxy probes
+
+[843a15b9a5](https://github.com/dcache/dcache/commit/843a15b9a5666f38a830800561d8b5eab84e44bd)
+:   core: fix pool selection in killAll command of TransferManager
+
+[1c96bb4b77](https://github.com/dcache/dcache/commit/1c96bb4b77e2533a7f11ff23ef28c62bc6c8d9b4)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.0.15
 
 ### Changes affecting multiple services
