@@ -105,6 +105,8 @@ HTML header: <title>dCache 6.0 Release Notes</title>
 ### Missing Files
 
 ### NFS
+The nfs door will return error NO-SPACE when all pools are full. However, when a pool is not online yet
+(disabled due to startup procedure), then client is instructed to try later.
 
 ### PNFS Manager
 
