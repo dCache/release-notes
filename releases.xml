@@ -167,6 +167,25 @@
     <br/>
   </preamble>
 
+<series id="server-5.2">
+   <title>server 5.2.x</title>
+
+   <description>
+     <p>
+       dCache 5.2 is a Golden Release, focusing on stability and 
+       maintainability.  
+     </p>
+     <p>dCache v5.2 requires OpenJDK 8 or 11.</p>
+   </description>
+
+   <releases>
+     <name>dCache VERSION</name>
+     <download-url-prefix>repo/5.2/dcache</download-url-prefix>
+     <notes-url>release-notes-5.2.shtml</notes-url>
+     <version-prefix>5.2.</version-prefix>
+   </releases>
+
+</series>
 
 <series id="server-5.1">
    <title>server 5.1.x</title>
