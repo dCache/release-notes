@@ -64,101 +64,614 @@ HTML header: <title>dCache 5.2 Release Notes</title>
 
 ## Highlights
 
-(tbd, this section uses markdown formatting)
+- As a Golden Release, the focus of 5.2 is on robustness and stability. Many small changes (not all mentioned here) target handling rare error conditions, and
+logging has become more detailed across the board.
+
+- This release introduces the new concept of "zones" to improve networking performance in geographically distributed dCache instances. While 5.2 does not offer
+  a full, admin-configurable system yet, this is an important milestone for future installation types.
+
 
 ## Incompatibilities
 
-(tbd, this section uses markdown formatting)
+- The order in which fields are logged in the frontend log for WebDAV accesses has changed (but the set of fields itself has remained the same). This may require
+  tuning of any custom log processors that rely on the field ordering.
+  
+- The default setting for logging aborted FTP transfers was changed, so that sites upgrading to dCache v5.2 will now automatically log aborted
+transfers.
+
+- Pool tags may no longer use the literal string "zone".
+
 
 ## Acknowledgments
 
-(tbd, this section uses markdown formatting)
-
+We gratefully acknowledge code and documentation contributions from Christoph Anton Mitterer a´nd Onno Zweers.
 
 
 ## Release 5.2.0
 
 ### Admin
-Admin's ssh access information is logged in domain's access log file, For example:
-```
-level=INFO ts=2019-05-02T12:49:58.518+0200 event=org.dcache.services.ssh2.connect remote.socket=/2001:638:700:xx:52224
-level=INFO ts=2019-05-02T12:49:58.561+0200 event=org.dcache.services.ssh2.login username=admin remote.socket=/2001:638:7xx:52224 method="PublicKey (RSA SHA256:al9RPdXETJXX)" successful=true
-level=INFO ts=2019-05-02T12:50:06.657+0200 event=org.dcache.services.ssh2.exec username=admin cmd.args="\\c PoolManager"
-level=INFO ts=2019-05-02T12:50:12.000+0200 event=org.dcache.services.ssh2.exec username=admin cmd.destination=[>PoolManager@core-dcache-lab] cmd.args="rc ls"
-```
+
+The interactive admin shell gained two improvements in logging: Log entries from admin commands now include the SSH session-ID,
+and commands that were executed through the admin shell are logged in detail. An example: 
+
+    level=INFO ts=2019-05-02T12:49:58.518+0200 event=org.dcache.services.ssh2.connect remote.socket=/2001:638:700:xx:52224
+    level=INFO ts=2019-05-02T12:49:58.561+0200 event=org.dcache.services.ssh2.login username=admin remote.socket=/2001:638:7xx:52224 method="PublicKey (RSA SHA256:al9RPdXETJXX)" successful=true
+    level=INFO ts=2019-05-02T12:50:06.657+0200 event=org.dcache.services.ssh2.exec username=admin cmd.args="\\c PoolManager"
+    level=INFO ts=2019-05-02T12:50:12.000+0200 event=org.dcache.services.ssh2.exec username=admin cmd.destination=[>PoolManager@core-dcache-lab] cmd.args="rc ls"
 
 ### Alarms
 
+The alarms system gained some improvements in logging, such as reporting the originating pool name in `POOL_DEAD` messages.
+Additionally, messages can be sent directly to Kafka. The new properties `dcache.log.kafka.topic`, for setting the topic
+name, and `dcache.log.level.kafka` to set the log level, were added to configure this feature.
+
 ### Billing
 
+The database tables `billinginfo`, `storageinfo`, `doorinfo` and `hitinfo`
+can, if desired, be automatically truncated. This allows a logrotate-style
+approach to limiting the growth of the billing database, which
+can fill up quickly over the course of time if there is a lot of
+door activity.
+
+A built-in cron can be set to run every 24 hours in order to remove
+older rows from these "fine-grained" tables.
+
+The following properties are relevant:
+
+    billing.enable.db-truncate (default = false)
+    billing.db.fine-grained-truncate-before (default = 365)
+    billing.db.fine-grained-truncate-before.unit (default = DAYS)
+
 ### Chimera
-The `ictime` field of `t_locationinfo_trash` table stores the time when trash table entry was created.
+
+The Chimera database now keeps track of the time when a file was added to the trash table. This timestamp
+is stored in the `ictime` field of `t_locationinfo_trash`.
 
 ### Cleaner
-The cleaner now can way a specified amount of time after delition before file finally get removed from pools
-and HSM. Two new properties added to control this behaviour:
 
-```
-cleaner.service.grace-period = 0
-cleaner.service.grace-period.unit = SECONDS
-```
+The cleaner now can wait a specified amount of time after deletion before file finally get removed from pools
+and HSM. Two new properties were added to control this behaviour:
 
-### DCAP
+    cleaner.service.grace-period = 0
+    cleaner.service.grace-period.unit = SECONDS
 
 ### Frontend
 
+The HTTP access log now includes HTTP Entities (if they were present in the request) to facilitate debugging.
+
+Additionally, the frontend now provides useful, minimal logging of API requests in the access log file.
+
+Periodic activity associated with the frontend door is now logged with the
+door's cell name.  Such messages will also appear in the door's pinboard.
+
 ### FTP
+
+The default settings for the logging of aborted FTP transfers were changed, so that Sites that upgrade to dCache v5.2 will now automatically log aborted
+transfers. The reason for that change is that it provides post mortem information about
+transfers where the client received less data than it requested. Enabling it only after someone reports a problem could be too late (if the
+problem is not reproducible).
+
+The log entries for aborted transfers now also include detailed information about the cause of the issue, as well as being more compact.
 
 ### gplazma
 
-### History
-
-### Hoppingmanager
-
-### httpd
+As for several other services, logging was improved to make troubleshooting easier. Failed login attempts using OpenID-Connect, particularly from dCacheView, are now logged.
 
 ### Info
 
-### Missing Files
+The info service now list a domain's zone as the metric
+'domains.<domain-name>.static.zone', if the domain is configured to have
+a zone.  If the domain is not configured with a zone then this metric is
+not published.
 
 ### NFS
-When a pNFS client that uses `flexfile` layout reports connection error to a pool, then an alarm will be raised.
 
-### PNFS Manager
+When a pNFS client using the `flexfile` layout reports a connection error to a pool, then, as an alternative to just logging the issue, an alarm will be raised.
+
+Periodic activity associated with the NFS door is now logged with the
+door's cell name.  Such messages will also appear in the door's pinboard.
 
 ### Pool
 
+The timeout for XRootD 3rd-party-copying responses was increased to 30 seconds, making operations more robust.
+
+Pool start-up logging is now recorded against the corresponding pool cell name.
+
+A pool now includes a 'zone' tag where the value is zone within which
+the pool resides.  Pools no longer accept the tag 'zone'.
+
+Various internal changes should make pool operations in general more robust.
+
 ### Pool Manager
+
 In a situations, where for a given READ access two links are available and there are no pools available at
 link with a higher priority, then a pool from a lower link priority will be selected if file is available.
 
 ### Resilience
 
-### Space Manager
+Resilience is now able to use a CACHEd file as a replication source in cases where no STICKY copy is available.
+This also means that a cached initial copy (such as
+if a resilient pool is marked lfs=volatile and
+is chosen by the pool manager) will not stop
+resilience from creating the requisite number of
+permanent copies.
 
-### SRM / SRM Manager
-
-### Statistics
-
-### Topo
+Various other changes make Resilience's operations more robust.
 
 ### Transfer Manager
 
+Error messages where the TransferManager is unable to discover the
+current status of the pool mover now include the pool's name.
+
+An optimization to retrying mover operations makes Transfer Manager's operations more efficient: 
+If a pool does not support a particular transfer type, retries on that pool will not even be attempted.
+
 ### WebDAV
+
+Periodic activity associated with the WebDAV door is now logged with the
+door's cell name.  Such messages will also appear in the door's pinboard.
 
 ### XRootD
 
+The client timeout is now configurable through two new properties or, alternatively, an interactive admin command.
+
+The Third-party embedded client has a timer which will interrupt and return
+an error if the response from the server does not arrive after a given
+amount of time.
+
+The default values for this can be controlled by the properties:
+
+    pool.mover.xrootd.tpc-server-response-timeout
+    pool.mover.xrootd.tpc-server-response-timeout.unit
+
+These are set to 2 seconds iby default, matching the comparatively aggressive behavior of the SLAC
+implementation.  However, dCache allows you to control this dynamically
+as well, using the admin command
+
+    \s <xrootd-door> xrootd set server response timeout
+
+This could conceivably be necessary under heavier load.
+
 ### Zookeeper
 
+The Zookeeper library was updated to version 3.4.14, addressing CVE-2019-0201.
 
 ### Changelog from 5.1.0 to 5.2.0
 
-<!-- git log 5.1..5.2 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
 
-(tbd as soon as the branching is done.
-In order to run the git log command given above, make sure that
-- both branches are checked out and "git pull"ed in to make them local on your machine and
-- you replace the single dashes by double dashes on the command's parameters)
+[a4749b2843](https://github.com/dcache/dcache/commit/a4749b2843d08481039e800a34d6a4aac42ae201)
+:   dcache-xrootd: compute VOMs CA refresh interval using unit
+
+[ba7b902a4e](https://github.com/dcache/dcache/commit/ba7b902a4e066b3cab56496c41fd34539eb118ff)
+:   dcache, frontend: release dcache-view version 1.5.4
+
+[d60f840f3a](https://github.com/dcache/dcache/commit/d60f840f3a7d55f4a43eec4d9936241dc9508893)
+:   pools: make the xrootd tpc response timeout less aggressive
+
+[d13d5a9a45](https://github.com/dcache/dcache/commit/d13d5a9a45e554256d80619ddbc7b6e6ab2c9e52)
+:   transfermanager: include pool name in error for 'mover ls' failures
+
+[969af6d25e](https://github.com/dcache/dcache/commit/969af6d25e5459e4e8c8226e68f6cd037b6f0185)
+:   ftp: avoid NPE on HA-Proxy probes
+
+[5b3cf0e620](https://github.com/dcache/dcache/commit/5b3cf0e62058b89282751fb02847a8684971989c)
+:   [maven-release-plugin] prepare for next development iteration
+
+[a329e2d7a6](https://github.com/dcache/dcache/commit/a329e2d7a6704b01741c8e9692e9d9a9e7ebcda1)
+:   [maven-release-plugin] prepare release 5.2.0
+
+[2804dcdcb9](https://github.com/dcache/dcache/commit/2804dcdcb920db518bf84451ab52cb3a5eb3e6b5)
+:   Revert "docker: Add a way to create docker image"
+
+[4fb9567392](https://github.com/dcache/dcache/commit/4fb956739239d7c7ec6e69c32e5e8c497eea1552)
+:   [maven-release-plugin] prepare branch 5.2
+
+[796e4bf6fb](https://github.com/dcache/dcache/commit/796e4bf6fbca5db0913cd0101d5a0f24258cf16b)
+:   core: add support for Properties prefix configuration
+
+[a1c615ae50](https://github.com/dcache/dcache/commit/a1c615ae50151b8ed6b3a7dacbaf4f82a6386522)
+:   pool: include diagnostic context when logging why a replica was removed
+
+[481e5ec180](https://github.com/dcache/dcache/commit/481e5ec180db56d97432d9c92c3bfb15c362aa12)
+:   libs: use jersey-2.28
+
+[4e3e760523](https://github.com/dcache/dcache/commit/4e3e76052320445b522b0c833c78de82eb9cd0e4)
+:   pom: move dependency version information into parent pom
+
+[de09a3a6af](https://github.com/dcache/dcache/commit/de09a3a6af7c98050de0f90ce01fe3a594b55827)
+:   nfs: raise an alarm when client reports connection issues with a pool
+
+[c1f7183f3c](https://github.com/dcache/dcache/commit/c1f7183f3c3853847382793417a965f1c1552dcc)
+:   poolmanager: don't fallback selection links by default
+
+[bb94ab1599](https://github.com/dcache/dcache/commit/bb94ab15991f2e95c87de644ecafcb47d7261aa0)
+:   UnpinProcessor: add logging
+
+[2377c86beb](https://github.com/dcache/dcache/commit/2377c86beb00c10c6f2f8147de61b8f0c291fbef)
+:   frontend: add HTTP entities in the access log file.
+
+[300db762c5](https://github.com/dcache/dcache/commit/300db762c5e039e428c92dd6736ec0c580047f60)
+:   cells: remove safety buffer and enforce exit on OOM
+
+[9a85d76cce](https://github.com/dcache/dcache/commit/9a85d76cce3f5c77346cca9fe330c48d7ea57590)
+:   core: fix pool selection in killAll command of TransferManager
+
+[3dc0af4cb8](https://github.com/dcache/dcache/commit/3dc0af4cb8566bb43efea7d8f5ea3b1221444a9c)
+:   nfs: enforce charset encoding when processing dot files
+
+[487dac8e81](https://github.com/dcache/dcache/commit/487dac8e8150ec7e6602cdea54f31ea574354e9a)
+:   chimera: remove historic code
+
+[f20fa88ed2](https://github.com/dcache/dcache/commit/f20fa88ed2b1b251bd41126b9bca2f458954af77)
+:   pool: avoid IllegalStateException in 'csm check *' command
+
+[650063856b](https://github.com/dcache/dcache/commit/650063856bc825d99d50db9671ecaa6ab2a39200)
+:   frontend: add basic access logging
+
+[388e6d2b6a](https://github.com/dcache/dcache/commit/388e6d2b6acb1c34e425a84d89f28e95b6aa44c7)
+:   dcap: fix premature close of kafka sender
+
+[7885b185b6](https://github.com/dcache/dcache/commit/7885b185b6afb4cf33e84fc85f8e6ad072432894)
+:   sweeper: compute now after the values have been fetched
+
+[f853024421](https://github.com/dcache/dcache/commit/f8530244213eeaeb7dd01103373e2adc0cb2d84e)
+:   dcache-xrootd: add ability to override default timeout for server response (TPC)
+
+[2244b9a5ff](https://github.com/dcache/dcache/commit/2244b9a5ffa3772ed88636b0eaefeeb74b7c5e5e)
+:   dcache: abstract common features of HTTP access logging
+
+[21b1650492](https://github.com/dcache/dcache/commit/21b1650492a76b22a4fa26c21ac7601631370f75)
+:   frontend: include CDC in scheduled activity
+
+[f41b4a9d1b](https://github.com/dcache/dcache/commit/f41b4a9d1b3f288921e4c23a85463983fbd71a40)
+:   nfs: include CDC in scheduled activity
+
+[c334ea1c58](https://github.com/dcache/dcache/commit/c334ea1c58e68997c272a3f686b1d7d1acf4a84f)
+:   webdav: include CDC in scheduled activity
+
+[61de56a69c](https://github.com/dcache/dcache/commit/61de56a69c43cf1620f920fe558595a3f07d751c)
+:   pool: ensure initialisation thread has correct CDC information
+
+[71723b8c39](https://github.com/dcache/dcache/commit/71723b8c392ec151d8896a1b2693ea1ac9978f03)
+:   dcache-xrootd: fix delegation client lifecycle management
+
+[768ff98f1a](https://github.com/dcache/dcache/commit/768ff98f1a97085491fbf5503d52ad28e833407d)
+:   pinmanager: add LoggingDao to monitor changes in persistent state.
+
+[1461b4c3f1](https://github.com/dcache/dcache/commit/1461b4c3f1b8448db0d53e488a2797e9b9fec744)
+:   gplazma: consider bearer token when deciding whether to log failures
+
+[bf7e4ea5b5](https://github.com/dcache/dcache/commit/bf7e4ea5b527287d0f8e03bac8610084a6cee3e9)
+:   gplazma: add extra OIDs for Key-Usage
+
+[f424d8b376](https://github.com/dcache/dcache/commit/f424d8b376374240b0dee114984801cae125eb48)
+:   cells: remove unused constructor for AbstractCell
+
+[0d5ac9cb3b](https://github.com/dcache/dcache/commit/0d5ac9cb3b28a34c428656c1414d7656d182237f)
+:   pinmanager: fix issues with logging context of background activity
+
+[8d4db2d0f2](https://github.com/dcache/dcache/commit/8d4db2d0f21403f4ecaf2c43b77c43f0473eff66)
+:   cells: work-around Curator creating custom ThreadFactory
+
+[b528098af8](https://github.com/dcache/dcache/commit/b528098af8dc9a2d8ab136606dc7a16b6f2bebf3)
+:   cleaner: add grace period before files get cleaned
+
+[d34292dc30](https://github.com/dcache/dcache/commit/d34292dc303412f330929136e636f8408caef8c9)
+:   pool: update replica commands to use CommandException
+
+[654bde3daf](https://github.com/dcache/dcache/commit/654bde3daf191708c6a365d320146e38f392997b)
+:   TimeUtils: use 'now' when describing the current time
+
+[cd2d04e72d](https://github.com/dcache/dcache/commit/cd2d04e72dd5dc10b7eadc97c2341329c049c8d6)
+:   cleaner: stop using deprecated guava API
+
+[e12f41993d](https://github.com/dcache/dcache/commit/e12f41993df9f9851a5376c609ec218113008679)
+:   chimera: keep track when a file was added into trash table
+
+[4c99ed65c5](https://github.com/dcache/dcache/commit/4c99ed65c55ed71b39fb2fac74728b6d025e0826)
+:   libs: use zookeeper-3.4.14
+
+[4009541521](https://github.com/dcache/dcache/commit/40095415213ce976605ba4609647bc8d0022bbd8)
+:   common: allow counting histogram to accept negative values
+
+[040c86b1d6](https://github.com/dcache/dcache/commit/040c86b1d60944bf85aa4f7f83ecd9f334e8ee6d)
+:   pool (sweeper): catch negative file lifetime value
+
+[bdaf63f0a1](https://github.com/dcache/dcache/commit/bdaf63f0a11b75f6191168e4cdf2bc0e878864ae)
+:   dcache: cleaned up pool admin command outputs
+
+[a770085352](https://github.com/dcache/dcache/commit/a770085352f38f77a957f7fb0f44f58a2710e2d0)
+:   PinManager: change info message
+
+[b36b612add](https://github.com/dcache/dcache/commit/b36b612adde1440a4f2327b2b0cfa04aaaf42577)
+:   pinmanager: add logging info
+
+[bab39ae28f](https://github.com/dcache/dcache/commit/bab39ae28f5969bbc8ce755deaa2becc610ecd6a)
+:   pom: use jackson-databind/annotations/core version 2.9.9 CVE-2019-12086
+
+[1faec76731](https://github.com/dcache/dcache/commit/1faec767318013aab60308bb12bbb0573f7f01ef)
+:   UnpinProcessor: fix assumed typo `{)`
+
+[f77fd77e27](https://github.com/dcache/dcache/commit/f77fd77e274159a0b02f06aa74bfa0a4ce184afd)
+:   webdav: allow transfers as user with role 'admin'
+
+[cbf920fd55](https://github.com/dcache/dcache/commit/cbf920fd5501f3d2032cfcd701308cf3979d2689)
+:   pinmanager: avoid NPE if no argument given for 'bulk ls' command
+
+[8225651652](https://github.com/dcache/dcache/commit/8225651652e7d08d0aef7d7fd882030a449b7ea7)
+:   pool: add 'zone' tag
+
+[563aaf9273](https://github.com/dcache/dcache/commit/563aaf927340b1a3a6cd55ff98291f60ad5c37f8)
+:   Pgpass file permission for POSIX (Issue #4670) (#4682)
+
+[b1dfe06a79](https://github.com/dcache/dcache/commit/b1dfe06a79f953c7e878a07426f46b774e526a64)
+:   alarms: add pool name to POOL_DEAD alarm
+
+[2c5abae30e](https://github.com/dcache/dcache/commit/2c5abae30ee34f6c400ad4042d201e5c9a2441bc)
+:   cells: add support classes to learn in which zone they reside
+
+[aea1c4b4a5](https://github.com/dcache/dcache/commit/aea1c4b4a5b793b83ec7406600a6c5700506052e)
+:   cells: make tunnels aware in which zone the remote domain resides
+
+[9379199b77](https://github.com/dcache/dcache/commit/9379199b77582690be2db0324df987afbbab83e5)
+:   info: publish a domain's zone
+
+[27cb88fdfd](https://github.com/dcache/dcache/commit/27cb88fdfde5a7ed4c6fe8d8d607da4464a45148)
+:   pool: fix reordering of removable replicas on access
+
+[d2472e4edc](https://github.com/dcache/dcache/commit/d2472e4edcb04724f3c4ff5a9a93d828c9a3c4f7)
+:   pool: fix storage of replica last access time
+
+[b03d514de4](https://github.com/dcache/dcache/commit/b03d514de4e2378d351627130cbcd0b8ca5d72f0)
+:   ftp/pool: enable aborted transfer logging by default
+
+[619d9ee193](https://github.com/dcache/dcache/commit/619d9ee193cf8ec48eaa068eed5935c0cadf2822)
+:   pool: ftp include cause in aborted transfer report
+
+[be1f0e1a99](https://github.com/dcache/dcache/commit/be1f0e1a997c08321c3988d5105ae665b3ecb3cb)
+:   pool: ftp avoid printing useless information in abort log
+
+[c05ccad2e0](https://github.com/dcache/dcache/commit/c05ccad2e08f4a11e8055718972c62adb4079ae9)
+:   cells: add zone concept
+
+[d5e308f90d](https://github.com/dcache/dcache/commit/d5e308f90d1db3ae13f67acd90abc81045215914)
+:   Revert "dcap: fix premature close of kafka sender:"
+
+[68c2ddc60d](https://github.com/dcache/dcache/commit/68c2ddc60d59661043e73b98958634fbdd52c456)
+:   dcap: fix premature close of kafka sender:
+
+[12d872d53e](https://github.com/dcache/dcache/commit/12d872d53e205c9474eef59a3fc55f9f04e7ba99)
+:   dcache-resilience: account for waiting states
+
+[babd708540](https://github.com/dcache/dcache/commit/babd708540530a0f007817ea939a5c101923ffc0)
+:   dcap/pinmanager: stage request for unknown location results in NPE
+
+[571ad60872](https://github.com/dcache/dcache/commit/571ad6087260ee5973355ff1940616cbf5145601)
+:   admin: include SSH session-ID in admin command logs
+
+[2852519e21](https://github.com/dcache/dcache/commit/2852519e21232553ea8de4f1f899c0a2f522b96b)
+:   pool: inotify avoid race in IN_CLOSE_WRITE event
+
+[ca21bdd8f6](https://github.com/dcache/dcache/commit/ca21bdd8f6bcf5d589ebb3908e7cdc4f27359846)
+:   libs: use jetty 9.4.18.v20190429
+
+[9e34434e35](https://github.com/dcache/dcache/commit/9e34434e35950dc0235c9f2027b60dd78a171af9)
+:   dcap batch : fix handling of dcap.kafka.topic variable
+
+[348b459990](https://github.com/dcache/dcache/commit/348b45999058eb58ffbf6db8e4d3379776fc54e4)
+:   pool: remove dummy VFS used by NFSv4MoverHandler
+
+[8ad4ca3a7a](https://github.com/dcache/dcache/commit/8ad4ca3a7a6f054afdd22f374ab53666b9d9ed97)
+:   jetty: make CanlContextFactory subclass of jetty.ssl.SslContextFactory.Server
+
+[b91240daff](https://github.com/dcache/dcache/commit/b91240daffd69f91516dcd656cf411d697979113)
+:   frontend: fix race on client reconnecting
+
+[3823f5008d](https://github.com/dcache/dcache/commit/3823f5008d4882b6a24bf29d59a16b2bbde96275)
+:   docs: UserGuide reformat JSON to be more consistent, fix some JSON errors
+
+[2ae15e3138](https://github.com/dcache/dcache/commit/2ae15e3138c14fd486a59430edd2017b73696b38)
+:   docs: UserGuide override prism's CSS to leave space for drop-shadow
+
+[2ba2a67d9b](https://github.com/dcache/dcache/commit/2ba2a67d9bf3c8b04caed3f975e391fe5c5973d8)
+:   ssh: add session to access log file
+
+[be520165b4](https://github.com/dcache/dcache/commit/be520165b4b1c699675cac7c1b0fd7b4fc5b090f)
+:   dcache (billing db): add capability for automatic truncation of fine-grained info tables
+
+[1f3424199d](https://github.com/dcache/dcache/commit/1f3424199d7b0007171677d24b9b0b9e96da36e1)
+:   admin: log executed commands into access log
+
+[abe853ea47](https://github.com/dcache/dcache/commit/abe853ea47622869f385bac4012680d8aa7bc7ff)
+:   docs: Added link to Transport Security chapter
+
+[4f8b8ba486](https://github.com/dcache/dcache/commit/4f8b8ba486268766302c8ef47a329d7b585efa37)
+:   11667: dcache-xrootd: add full proxy delegation to door
+
+[c68f470a80](https://github.com/dcache/dcache/commit/c68f470a809f15aea9e12398ee968bfd46fdd76e)
+:   docs: Added link to Transport Security chapter
+
+[d4f481c36e](https://github.com/dcache/dcache/commit/d4f481c36e6e58f8e4a7dc209508a8755a0c5238)
+:   11667: dcache-xrootd: add full proxy delegation to door
+
+[b02a110df8](https://github.com/dcache/dcache/commit/b02a110df84831ba1c0ddce64071d5179f7f6f30)
+:   dcache-xrootd: implement proxy delegation client
+
+[35cd7adc11](https://github.com/dcache/dcache/commit/35cd7adc11836a90799c675b122ebeffb89ba519)
+:   dcache-resilience: allow cached file as source when no sticky available
+
+[a389f5c6e7](https://github.com/dcache/dcache/commit/a389f5c6e7ff4f81f99efc2721159da59d52d843)
+:   pom:  jackson.databind, jackson.annotations, jackson.core version 2.9.8 CVE-2018-14719
+
+[0b43b86d73](https://github.com/dcache/dcache/commit/0b43b86d73acca0ab22a4552494e13ee724156e0)
+:   pom:  use jackson-databind, jackson.annotations, jackson.core to 2.9.6
+
+[5b5d951096](https://github.com/dcache/dcache/commit/5b5d9510968cd2100d138e75d4cd61960fc14e3b)
+:   alarms: sending alarms events in json format
+
+[120f702739](https://github.com/dcache/dcache/commit/120f702739f1cdb9b97a8b259ec1806574c33180)
+:   pom: use jetty 9.4.17.v20190418
+
+[4ed4cd0474](https://github.com/dcache/dcache/commit/4ed4cd047448b11dbc83b89b3b24f63da7d94e22)
+:   Update frontend.md
+
+[4ca91914cb](https://github.com/dcache/dcache/commit/4ca91914cb6816b06ea2732cc0cbe7805d4805cc)
+:   Update frontend.md
+
+[265917aeb0](https://github.com/dcache/dcache/commit/265917aeb07346fb8a73ece9c352269d8ae448e9)
+:   Update frontend.md
+
+[1d30b6bb8a](https://github.com/dcache/dcache/commit/1d30b6bb8adde9ab3feceef824e1dd5be9c175d8)
+:   Update frontend.md
+
+[3bb992ff60](https://github.com/dcache/dcache/commit/3bb992ff605ad15de694d30672ba5d22f1297efa)
+:   Update frontend.md
+
+[a4d9cc6abe](https://github.com/dcache/dcache/commit/a4d9cc6abe94f6e2e92081b1fbbc5beff1171208)
+:   Update frontend.md
+
+[701929dc9d](https://github.com/dcache/dcache/commit/701929dc9d45c60d1244a018e239e25a8ad1546f)
+:   Update frontend.md
+
+[5c60f86127](https://github.com/dcache/dcache/commit/5c60f86127d43493e1f63f6d2506b5b256a51bc2)
+:   Update frontend.md
+
+[6d00809bbd](https://github.com/dcache/dcache/commit/6d00809bbd17b35b3fac36b93721b0e097602d7d)
+:   Update frontend.md
+
+[128336e247](https://github.com/dcache/dcache/commit/128336e2472fd81cbb8ede53d8d90a5beeec9710)
+:   Update frontend.md
+
+[ebacac4297](https://github.com/dcache/dcache/commit/ebacac429704d2e0409fdfe2043ca3f4d58fe64e)
+:   Update frontend.md
+
+[bfe4f5070f](https://github.com/dcache/dcache/commit/bfe4f5070f50a68f27ec31d2b906f8d21d9df977)
+:   Update frontend.md
+
+[f71577d640](https://github.com/dcache/dcache/commit/f71577d64066bb2f371b99acdd488983690f457c)
+:   Update frontend.md
+
+[844fd839da](https://github.com/dcache/dcache/commit/844fd839da25cfeb11ec4cc629c54ff660bcc9d2)
+:   Update frontend.md
+
+[1149f0595f](https://github.com/dcache/dcache/commit/1149f0595fc03d44883fd70026f265ea3f0312ee)
+:   Update frontend.md
+
+[f5298f20c7](https://github.com/dcache/dcache/commit/f5298f20c7eb35d24b815729ccf580a3a7708384)
+:   Update frontend.md
+
+[1e2a4ca139](https://github.com/dcache/dcache/commit/1e2a4ca139d10059f5dfcb3a422db46678f48a66)
+:   Update frontend.md
+
+[8eccff1f8a](https://github.com/dcache/dcache/commit/8eccff1f8a5c3c7292c81b0fd92de23690e6fdae)
+:   Update frontend.md
+
+[b07d3faf68](https://github.com/dcache/dcache/commit/b07d3faf684e381276fa7f05f2401d053398123f)
+:   docs: UserGuide add drop-shadow for images and pre-formatted text
+
+[3bdb9a9ce5](https://github.com/dcache/dcache/commit/3bdb9a9ce5caf8d47e362323f7f972d5568de3b7)
+:   docs: UserGuide add initial skeleton version of macaroons chapter
+
+[7e2bfeb16e](https://github.com/dcache/dcache/commit/7e2bfeb16ed038a82a0710a769f5e3e1aaf86789)
+:   docs: UserGuide frontend tidy up minor problems
+
+[5e78c3b5bf](https://github.com/dcache/dcache/commit/5e78c3b5bf746557e40aa373d4108cb1e5833b01)
+:   docs: UserGuide frontend add SwaggerUI images
+
+[2f4db801bd](https://github.com/dcache/dcache/commit/2f4db801bd71f387edae4e194cfe1577d90f0083)
+:   docs: UserGuide drop the excessive inter-line spacing.
+
+[d5a35fd6ab](https://github.com/dcache/dcache/commit/d5a35fd6ab6ccef1c99538ca1c54f88a3db942c2)
+:   docs: UserGuide add support for console output
+
+[30b0f423a4](https://github.com/dcache/dcache/commit/30b0f423a47ea9db571695140efb46dc74644d9c)
+:   docs: UserGuide frontend avoid too many console copy-n-paste, focus on JSON
+
+[c8943140ab](https://github.com/dcache/dcache/commit/c8943140ab10d12d34dc749d2e9da0ccdfcb5d05)
+:   resilience: add unit tests for new task operations and to check non-sticky processing and removal semantics
+
+[124b3e92aa](https://github.com/dcache/dcache/commit/124b3e92aab6fefba64515f092010724ee5aadeb)
+:   resilience: eliminate the 'new pool' flag (no longer necessary)
+
+[c367e9fad8](https://github.com/dcache/dcache/commit/c367e9fad850e4ff83560cf11edf38fc7ded313f)
+:   resilience: do full pool replica state verification and change remove semantics
+
+[232604b78e](https://github.com/dcache/dcache/commit/232604b78ef541d82e729206657d269ef639399a)
+:   resilience: adjust synchronization of file operation removal from map
+
+[5ffed3902d](https://github.com/dcache/dcache/commit/5ffed3902ddc1438c3a1ad76eae1669058904c73)
+:   pool: avoid throwing a RuntimeException for non-bugs
+
+[dbea103273](https://github.com/dcache/dcache/commit/dbea10327352facc16c97fb57b25268bfd494e27)
+:   docs: mode info on dynamic pool groups
+
+[ef7870fd6e](https://github.com/dcache/dcache/commit/ef7870fd6e7785f5ccbc294fe7a1ef62efec3b07)
+:   Add initial support for code highlighting with prism.js
+
+[04bd4708e0](https://github.com/dcache/dcache/commit/04bd4708e0e4b461cfade2c0cf6a19259543bc04)
+:   alarms: add logback Kafka Appender
+
+[9e1ec493c7](https://github.com/dcache/dcache/commit/9e1ec493c7b3af78c311eb5a52aeece5f60b2e5c)
+:   docs: TheBook UserGuide fix location of edit-me-on-github ribbon
+
+[ae8ba0b3ab](https://github.com/dcache/dcache/commit/ae8ba0b3abc43edb05fd10e12cfd33035979614f)
+:   docs: TheBook update heading importance to be more consistent
+
+[e8092bd281](https://github.com/dcache/dcache/commit/e8092bd281fded06e11525d95d5d11c4f4819947)
+:   transfermanager: do not retry starting mover if transfer is not supported
+
+[e6d48431b9](https://github.com/dcache/dcache/commit/e6d48431b9b75ebc0a17d3849285fda116297505)
+:   pool: avoid log-and-throw anti-pattern
+
+[ed41f74110](https://github.com/dcache/dcache/commit/ed41f741106d787bc07fd38ee37e0fd2527ed4c4)
+:   frontend: ensure client is disconnected when shutting down channel
+
+[82adce7015](https://github.com/dcache/dcache/commit/82adce7015a16fcf0cdb2e1e9b97dd485b6aba3b)
+:   frontend: avoid race on cancelling channel garbage-collect task
+
+[a06637cf15](https://github.com/dcache/dcache/commit/a06637cf150fd5531eb02a8e3503bf000dc808ac)
+:   transfermanager: avoid NPE on shutdown
+
+[0c80d91596](https://github.com/dcache/dcache/commit/0c80d91596b451a9f246add9e7d7c3e0d1675845)
+:   pool: throw exception with meaningful error message
+
+[ead326ffea](https://github.com/dcache/dcache/commit/ead326ffea0d1dd3987805aa8e40b002de901e36)
+:   docs: UserGuide frontend add section on doors, minor tidy up in events
+
+[01a4ef3f12](https://github.com/dcache/dcache/commit/01a4ef3f12a4962dd383e8c1988fe41e743fec83)
+:   docs: UserGuide frontend add information about client identifier
+
+[c4af495fb9](https://github.com/dcache/dcache/commit/c4af495fb923f65ef8e7937d6c3ccb0220f8580c)
+:   docs: UserGuide frontend add links between the various QoS activities
+
+[cc249e0ae7](https://github.com/dcache/dcache/commit/cc249e0ae7883b13069cc01d333613e6196b5315)
+:   docs: UserGuide frontend add examples showing events in action
+
+[3fbbaec073](https://github.com/dcache/dcache/commit/3fbbaec07300057541ab5ff9839e1e3d8976a03a)
+:   docs: UserGuide add second-level in table-of-contents
+
+[fc9351c833](https://github.com/dcache/dcache/commit/fc9351c833d7919a3f5631319f2a3201d09ebe72)
+:   docs: UserGuide add missing information about namespace stat flags
+
+[8a99fe1540](https://github.com/dcache/dcache/commit/8a99fe15401de140bf9fc577caba08fafe3d2112)
+:   docs: UserGuide frontend add index to aid navigation
+
+[f58d3cf3ad](https://github.com/dcache/dcache/commit/f58d3cf3adb682c5f9ec34287683d344a3b88e5b)
+:   docs: UserGuide frontend add more information about inotify
+
+[36d22e25c1](https://github.com/dcache/dcache/commit/36d22e25c10feec8b155c34269a3b2dd37c573c6)
+:   docs: UserGuide frontend be more consistent with line splitting
+
+[8e77a71058](https://github.com/dcache/dcache/commit/8e77a71058bc5c693fe4b181fb191ae6e49fef8a)
+:   docs: UserGuide frontend add details about event channels
+
+[54de2c9d32](https://github.com/dcache/dcache/commit/54de2c9d322407ca150105175a45d362987a98d2)
+:   docs: UserGuide frontend add initial description of events
+
+[72d233d6cf](https://github.com/dcache/dcache/commit/72d233d6cf3518a4bb189687a4a0d42954368335)
+:   [maven-release-plugin] prepare for next development iteration
+
+
 
 </div>
 </div>
