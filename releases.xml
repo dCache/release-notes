@@ -185,6 +185,24 @@
      <version-prefix>5.2.</version-prefix>
    </releases>
 
+      <release version="0" recommended="1">
+        <date>1.7.2019</date>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>ba801a6a33a894d8cb00389123323493</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>00c7e307144f716f196554aad3c8bdf9</md5sum>
+        </package>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>6dad57b6020bafbf6e5a3e065f28689b</md5sum>
+        </package>
+      </release>
+
+      
+
 </series>
 
 <series id="server-5.1">
