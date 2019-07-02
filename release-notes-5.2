@@ -89,6 +89,76 @@ transfers.
 We gratefully acknowledge code and documentation contributions from Christoph Anton Mitterer a´nd Onno Zweers.
 
 
+## Release 5.2.1
+
+### frontend
+
+dCache View was upadted to version 1.5.4.
+
+### ftp
+
+This release fixes a regression that would cause erroneous NullPointerExceptions when FTP doors were probed by HAProxy.
+
+### many
+
+The `dcache pool ls` command now provides correct output even if the pool is
+defined with a single-digit number of bytes. 
+
+### pool
+
+The default value for the xrootd Third-Party Copying server response 
+timeout, `pool.mover.xrootd.tpc-server-response-timeout`, was 
+increased from 2 to 30 seconds to provide more robust behaviour 
+in the face of high loads and network congestion.
+
+### transfermanager
+
+Error messages where the TransferManager is unable to discover the
+current status of the pool mover now include the pool's name.
+
+### xrootd
+
+This release fixes an issue that would cause high CPU load on xrootd.
+
+TPC lite (delegation) is now more robust when communicating with EOS destinations.
+
+XRootD doors now correctly communicate their TPC capabilities to clients.
+
+
+### Changelog 5.2.0..5.2.1
+
+<!-- git log 5.2.0..5.2.1 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[16792c33ed](https://github.com/dcache/dcache/commit/16792c33ed951d8a7db5a2dabfe45eb49ed274bd)
+:   [maven-release-plugin] prepare release 5.2.1
+
+[b5d705b92b](https://github.com/dcache/dcache/commit/b5d705b92bab8e28cfe06443120f64bec7e1c8b5)
+:   scripts: avoid copy-n-paste error when calculating pool size
+
+[f71b0a14de](https://github.com/dcache/dcache/commit/f71b0a14deaeeb9ede67965dbd61a3f8b02110e6)
+:   dcache-xrootd: check the session for credential on source open
+
+[7d32476800](https://github.com/dcache/dcache/commit/7d32476800cdf5173023d7ea5968c29523fa6284)
+:   dcache-xrootd: respond to tpc query correctly*
+
+[a4749b2843](https://github.com/dcache/dcache/commit/a4749b2843d08481039e800a34d6a4aac42ae201)
+:   dcache-xrootd: compute VOMs CA refresh interval using unit
+
+[ba7b902a4e](https://github.com/dcache/dcache/commit/ba7b902a4e066b3cab56496c41fd34539eb118ff)
+:   dcache, frontend: release dcache-view version 1.5.4
+
+[d60f840f3a](https://github.com/dcache/dcache/commit/d60f840f3a7d55f4a43eec4d9936241dc9508893)
+:   pools: make the xrootd tpc response timeout less aggressive
+
+[d13d5a9a45](https://github.com/dcache/dcache/commit/d13d5a9a45e554256d80619ddbc7b6e6ab2c9e52)
+:   transfermanager: include pool name in error for 'mover ls' failures
+
+[969af6d25e](https://github.com/dcache/dcache/commit/969af6d25e5459e4e8c8226e68f6cd037b6f0185)
+:   ftp: avoid NPE on HA-Proxy probes
+
+[5b3cf0e620](https://github.com/dcache/dcache/commit/5b3cf0e62058b89282751fb02847a8684971989c)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.2.0
 
 ### Admin

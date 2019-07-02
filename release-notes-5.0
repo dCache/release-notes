@@ -78,6 +78,27 @@ This release breaks compatibility with pools running dcache version 3.2 or earli
 We thank HTW Berlin students Marcel Munce, Ferdinand Wolff and MaKrHTW (???) as well
 as Onno Zweers from surfSARA for their contributions.
 
+## Release 5.0.17
+
+### many
+
+The `dcache pool ls` command now provides correct output even if the pool is
+defined with a single-digit number of bytes. 
+
+
+### Changelog 5.0.16..5.0.17
+
+<!-- git log 5.0.16..5.0.17 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[719fb8a506](https://github.com/dcache/dcache/commit/719fb8a50695da135489fb2ff0743ef2b4ee5942)
+:   [maven-release-plugin] prepare release 5.0.17
+
+[639c8e204c](https://github.com/dcache/dcache/commit/639c8e204c804e26e7aa474d30b38081592396a5)
+:   scripts: avoid copy-n-paste error when calculating pool size
+
+[40b7849ade](https://github.com/dcache/dcache/commit/40b7849ade1db7cac48ccec88c9dd6017a26305a)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.0.16
 
 ### frontend
