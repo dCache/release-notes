@@ -103,6 +103,7 @@ location `dcache/lm/cores` is for bakward compatibility only.
 ### Hoppingmanager
 
 ### httpd
+Update old https admin pages legend to describe pool space usage.
 
 ### Info
 
