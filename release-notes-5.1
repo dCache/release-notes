@@ -93,6 +93,70 @@ Lea Morschel also provided documentation and code refinements.
 Other contributions originated from a lecture at HTW Berlin; many thanks to Jonas Grabber, "tabea", "Co" and "xpinkyx" for their contributions.
 
 
+## Release 5.1.7
+
+### chimera
+
+The shell infrastructure supports commands being given interactively, on
+the commandline (e.g., 'chimera mkdir /path/to/dir') and from stdin
+(e.g., 'echo "mkdir /path/to/dir" | chimera'). `chimera` now supports the latter
+case and properly shows command output when invoked in that fashion. 
+
+### frontend
+
+This release updates dCache View to 1.5.5.
+
+### nfs
+
+The NFS door now correctly handles situations where newly created read-only
+files could occasionally not be written into:
+
+    f = os.open('test.txt', os.O_WRONLY|os.O_CREAT, 0400)
+    os.write(f,"Hello pNFS!")
+    os.fsync(f)
+    os.close(f)
+
+will now succeed.
+
+### webdav
+
+A client may issue a PUT request that targets an existing collection
+resource; i.e., attempt to write a file as a path that is a directory.
+dCache, until now, responded with an incorrect status code of 500. This release
+changes the status code for this operation to 405 (Method not allowed), 
+thus keeping closer to RFC 4918.
+
+### xrootd
+
+This release improves compatibility with the xrdcp client in versions \>4.9
+by responding correctly to query strings requesting a specific checksum type.
+
+
+### Changelog 5.1.6..5.1.7
+
+<!-- git log 5.1.6..5.1.7 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[06521c8fb8](https://github.com/dcache/dcache/commit/06521c8fb82bf5449fc0a29eef6b701141002812)
+:   [maven-release-plugin] prepare release 5.1.7
+
+[c994d6a39f](https://github.com/dcache/dcache/commit/c994d6a39ff982ab2f1aa5bf453b7fdcdf1a315f)
+:   dcache, frontend: release dcache-view version 1.5.5
+
+[7db20d5f7f](https://github.com/dcache/dcache/commit/7db20d5f7fd2fc67bc69ed1a6ac68ffc2d4a7f8a)
+:   nfs: introduce workaround 'permission deny' on layout commit
+
+[65d8c86ac1](https://github.com/dcache/dcache/commit/65d8c86ac19c9489cca02a58ef9eec66247e5e4f)
+:   chimera: chimera shell should show output when commands come from stdin.
+
+[9bf1cbc775](https://github.com/dcache/dcache/commit/9bf1cbc775765595d01256f4497db4e9d6bab27f)
+:   webdav: return 405 status code for PUT requests targeting collections
+
+[fb4576d6f6](https://github.com/dcache/dcache/commit/fb4576d6f6594d2da2b376028caf57e927e878c1)
+:   dcache-xrootd: add checksum cgi handling to door query
+
+[7850889dac](https://github.com/dcache/dcache/commit/7850889dac8bb68330a17ea60d53cdde77b6b379)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.1.6
 
 ### many

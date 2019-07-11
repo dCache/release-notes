@@ -78,6 +78,55 @@ This release breaks compatibility with pools running dcache version 3.2 or earli
 We thank HTW Berlin students Marcel Munce, Ferdinand Wolff and MaKrHTW (???) as well
 as Onno Zweers from surfSARA for their contributions.
 
+## Release 5.0.18
+
+### chimera
+
+The shell infrastructure supports commands being given interactively, on
+the commandline (e.g., 'chimera mkdir /path/to/dir') and from stdin
+(e.g., 'echo "mkdir /path/to/dir" | chimera'). `chimera` now supports the latter
+case and properly shows command output when invoked in that fashion. 
+
+### frontend
+
+This release updates dCache View to 1.5.5.
+
+### webdav
+
+A client may issue a PUT request that targets an existing collection
+resource; i.e., attempt to write a file as a path that is a directory.
+dCache, until now, responded with an incorrect status code of 500. This release
+changes the status code for this operation to 405 (Method not allowed), 
+thus keeping closer to RFC 4918.
+
+### xrootd
+
+This release improves compatibility with the xrdcp client in versions \>4.9
+by responding correctly to query strings requesting a specific checksum type.
+
+
+### Changelog 5.0.17..5.0.18
+
+<!-- git log 5.0.17..5.0.18 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[d1b275f790](https://github.com/dcache/dcache/commit/d1b275f790928b258a4aded6dbe6f415d6ebd959)
+:   [maven-release-plugin] prepare release 5.0.18
+
+[8b8f32315c](https://github.com/dcache/dcache/commit/8b8f32315cc5e801fcb79c3a69fe16c7da4547ec)
+:   dcache, frontend: release dcache-view version 1.5.5
+
+[9171aee1a4](https://github.com/dcache/dcache/commit/9171aee1a4f8eadec3c0a5eca2867f4667004bc0)
+:   chimera: chimera shell should show output when commands come from stdin.
+
+[0859aa2792](https://github.com/dcache/dcache/commit/0859aa279215fb5d64c675bdf8a94a572d788d1e)
+:   webdav: return 405 status code for PUT requests targeting collections
+
+[c7dca2d4de](https://github.com/dcache/dcache/commit/c7dca2d4de9aa85c979453377c9e02038ebad583)
+:   dcache-xrootd: add checksum cgi handling to door query
+
+[cd0a6f0f66](https://github.com/dcache/dcache/commit/cd0a6f0f6697d9e67da1c068924ffb42a5f4d587)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.0.17
 
 ### many
