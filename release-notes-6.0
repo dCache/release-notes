@@ -84,6 +84,10 @@ HTML header: <title>dCache 6.0 Release Notes</title>
 
 ### Billing
 
+### Cells
+fixed core domain discovery. Now on the zookeeper path `dcache/lm/cores-uri` is always used and the old
+location `dcache/lm/cores` is for bakward compatibility only.
+
 ### Chimera
 
 ### DCAP
@@ -99,6 +103,7 @@ HTML header: <title>dCache 6.0 Release Notes</title>
 ### Hoppingmanager
 
 ### httpd
+Update old https admin pages legend to describe pool space usage.
 
 ### Info
 
