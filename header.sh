@@ -31,8 +31,9 @@ Version=("$NEXT_RELEASE" "${Version[@]}")
 
 length=${#Version[@]}
 
-header_start="<a href=\"/manuals/releasenotes.shtml\">release notes</a>
-   | Book: "
+header_start="<a href=\"/manuals/releasenotes.shtml\">release notes</a>"
+header_userguide_start=" | UserGuide: "
+header_book_start=" | Book: "
 header_end="| <a href=\"http://trac.dcache.org/trac.cgi/wiki\">Wiki</a>
    | <a href=\"/manuals/FAQ.shtml\">Q&amp;A</a>
    <img src=\"/images/black_bg.png\" width=\"100%\" height=\"1\" alt=\"black_bg\" border=\"0\" />"
@@ -44,10 +45,11 @@ header_end="| <a href=\"http://trac.dcache.org/trac.cgi/wiki\">Wiki</a>
 #  This file needs to be changed for each new release.                                   *
 #*****************************************************************************************
 
+headeruserguideoverview=""
 headerdocsoverview=""
 
-book_type() { # $1 - dCache version
-    local bookPath="$WEB_ROOT/manuals/Book-$1"
+book_type() { # $1 - dCache version, $2 dir prefix
+    local bookPath="$WEB_ROOT/manuals/$2-$1"
 
     if [ -f $bookPath/index-fhs.shtml ]; then
         echo "DocBook"
@@ -67,11 +69,11 @@ name_for_version() { # $1 - dCache version
 }
 
 
-link_for_version() { # $1 - version
-    local bookPath="/manuals/Book-$1"
+link_for_version() { # $1 - version, $2 dir prefix
+    local bookPath="/manuals/$2-$1"
     local name=$(name_for_version $1)
 
-    case $(book_type "$1") in
+    case "$(book_type "$1" "$2")" in
         DocBook)
             echo "<a href=\"$bookPath/index-fhs.shtml\">$name</a>"
             ;;
@@ -88,17 +90,24 @@ link_for_version() { # $1 - version
 
 for ((i=$length; i>0; i--));
 do
-    html="$(link_for_version ${Version[i-1]})"
+    thisVersion=${Version[i-1]}
+    book_html="$(link_for_version "$thisVersion" Book)"
+    guide_html="$(link_for_version "$thisVersion" UserGuide)"
     if [ $i -ne $length ]; then
-        headerdocsoverview="$headerdocsoverview, $html"
+        headerdocsoverview="$headerdocsoverview, $book_html"
+	headeruserguideoverview="$headeruserguideoverview, $guide_html"
     else
-        headerdocsoverview="$html"
+        headerdocsoverview="$book_html"
+	headeruserguideoverview="$guide_html"
     fi
 done
 
 echo "     create $WEB_ROOT/template/frags/header-docs-overview.shtml"
 echo -ne "<div class=\"book-navi\">
    $header_start
+   $header_userguide_start
+   $headeruserguideoverview
+   $header_book_start
    $headerdocsoverview
    $header_end
 </div>" >$WEB_ROOT/template/frags/header-docs-overview.shtml
@@ -109,35 +118,71 @@ echo -ne "<div class=\"book-navi\">
 #********************************************************************************************
 #    Create files:                                                                          *
 #       $WEB_ROOT/template/frags/header-docs-VERSION-fhs.shtml                              *
+#       $WEB_ROOT/template/frags/header-docs-VERSION-userguide.shtml                        *
 #    These files need to be changed for each new release.                                   *
 #********************************************************************************************
 
 for ((j=$length; j>0; j--)); do
-    headerdocsversion=""
+    header_book_version=""
+    header_book_version_all_live=""
+    header_userguide_version=""
+    header_userguide_version_all_live=""
     for ((i=$length; i>0; i--)); do
         thisVersion="${Version[i-1]}"
         if [ $i -ne $length ]; then
-            headerdocsversion="$headerdocsversion, "
+            header_book_version="$header_book_version, "
+            header_book_version_all_live="$header_book_version_all_live, "
+            header_userguide_version="$header_userguide_version, "
+            header_userguide_version_all_live="$header_userguide_version_all_live, "
         fi
 
+	book_html="$(link_for_version "$thisVersion" Book)"
+	userguide_html="$(link_for_version "$thisVersion" UserGuide)"
         if [ "$j" = "$i" ]; then
-            headerdocsversion="$headerdocsversion<span class=\"activ\">$(name_for_version "$thisVersion")</span>"
+            header_book_version="$header_book_version<span class=\"activ\">$(name_for_version "$thisVersion")</span>"
+            header_userguide_version="$header_userguide_version<span class=\"activ\">$(name_for_version "$thisVersion")</span>"
         else
-            headerdocsversion="$headerdocsversion$(link_for_version "$thisVersion")"
+            header_book_version="$header_book_version$book_html"
+            header_userguide_version="$header_userguide_version$userguide_html"
         fi
+	header_book_version_all_live="$header_book_version_all_live$book_html"
+	header_userguide_version_all_live="$header_userguide_version_all_live$userguide_html"
      done
 
      outerVersion="${Version[j-1]}"
-     if [ "$(book_type "$outerVersion")" = "DocBook" ]; then
-        path=$WEB_ROOT/template/frags/header-docs-$outerVersion-fhs.shtml
-     else
-        path=$WEB_ROOT/template/frags/header-docs-$outerVersion.shtml
-     fi
+     compat_path=$WEB_ROOT/template/frags/header-docs-$outerVersion.shtml
+     book_path=$WEB_ROOT/template/frags/header-docs-book-$outerVersion.shtml
+     userguide_path=$WEB_ROOT/template/frags/header-docs-userguide-$outerVersion.shtml
 
-     cat >$path <<EOF
+     ## REVISIT remove compat path once all Book versions are updated
+     ## to include the header-docs-book-<version> template.
+     cat >$compat_path <<EOF
 <div class="book-navi">
 $header_start
-$headerdocsversion
+$header_userguide_start
+$header_userguide_version_all_live
+$header_book_start
+$header_book_version
+$header_end
+</div>
+EOF
+     cat >$book_path <<EOF
+<div class="book-navi">
+$header_start
+$header_userguide_start
+$header_userguide_version_all_live
+$header_book_start
+$header_book_version
+$header_end
+</div>
+EOF
+     cat >$userguide_path <<EOF
+<div class="book-navi">
+$header_start
+$header_userguide_start
+$header_userguide_version
+$header_book_start
+$header_book_version_all_live
 $header_end
 </div>
 EOF
@@ -152,7 +197,7 @@ done
 for ((i=0; i<$length-1; i++)); do
     thisVersion=${Version[i]}
 
-    if [ $(book_type "$thisVersion") = "DocBook" ]; then
+    if [ $(book_type "$thisVersion" Book) = "DocBook" ]; then
         cat >$WEB_ROOT/template/frags/header-book-$thisVersion-fhs.shtml <<EOF
 <div class="book-type">
    Web:
@@ -180,7 +225,7 @@ done
 for ((i=$length-1; i>0; i--)); do
     thisVersion=${Version[i-1]}
 
-    case $(book_type "$thisVersion") in
+    case $(book_type "$thisVersion" Book) in
         DocBook)
             cat >$WEB_ROOT/template/l3-docs-book-$thisVersion-fhs-header.shtml << EOF
 <!--#include virtual="/template/frags/header-beginning.shtml" -->
