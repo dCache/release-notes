@@ -113,6 +113,8 @@ Update old https admin pages legend to describe pool space usage.
 The nfs door will return error NO-SPACE when all pools are full. However, when a pool is not online yet
 (disabled due to startup procedure), then client is instructed to try later.
 
+Updated the undelaying nfs code implementation.
+
 ### PNFS Manager
 
 ### Pool
