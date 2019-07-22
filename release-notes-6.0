@@ -68,7 +68,9 @@ HTML header: <title>dCache 6.0 Release Notes</title>
 
 ## Incompatibilities
 
-(tbd, this section uses markdown formatting)
+The 6.0 release breaks compatibility of pools with pre-6.0 `dcap` and `srm` doors.
+However, the 6.0 doors will work with existing pre-6.0 pools.
+
 
 ## Acknowledgments
 
