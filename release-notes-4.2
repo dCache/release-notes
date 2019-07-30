@@ -91,6 +91,36 @@ updates, pools may remain at 4.1 during that update.
 The dCache team thanks Christoph Anton Mitterer, Martin Johnki, Onno Zweers and Johannes Thurn
 for their pull requests and contributions.
 
+## Release 4.2.40
+
+### nfs
+
+NPE on "show transfers" command is now fixed.
+
+### webdav
+
+The current release fixed CORS for WebDAV doors that do not allow anonymous
+access; in particular, to support dCacheView uploading
+and downloading files with such authentication-required
+WebDAV doors.
+
+
+### Changelog 4.2.39..4.2.40
+
+<!-- git log 4.2.39..4.2.40 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[10130fe](https://github.com/dcache/dcache/commit/10130fefc7393f2292c14c542089a7cca4249446)
+:   [maven-release-plugin] prepare release 4.2.40
+
+[9f23dc0](https://github.com/dcache/dcache/commit/9f23dc06a88535cf9e27792b5dd3955d6afc4902)
+:   nfs: fix NPE on "show transfers" command
+
+[65db4f8](https://github.com/dcache/dcache/commit/65db4f8b88031183cd294b6dab38ecf1bc96f0c6)
+:   webdav: fix cross origin resources sharing issue
+
+[11ec1a7b](https://github.com/dcache/dcache/commit/11ec1a7bee59c44804dcbf7e22f942b9032dd564)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.2.39
 
 ### chimera

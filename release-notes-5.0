@@ -78,6 +78,36 @@ This release breaks compatibility with pools running dcache version 3.2 or earli
 We thank HTW Berlin students Marcel Munce, Ferdinand Wolff and MaKrHTW (???) as well
 as Onno Zweers from surfSARA for their contributions.
 
+## Release 5.0.19
+
+### nfs
+
+NPE on "show transfers" command is now fixed.
+
+### webdav
+
+The current release fixed CORS for WebDAV doors that do not allow anonymous
+access; in particular, to support dCacheView uploading
+and downloading files with such authentication-required
+WebDAV doors.
+
+
+### Changelog 5.0.18..5.0.19
+
+<!-- git log 5.0.18..5.0.19 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[3d5c25b](https://github.com/dcache/dcache/commit/3d5c25b2bea30641a209b929d84cb602d54ea5f8)
+:   [maven-release-plugin] prepare release 5.0.19
+
+[63a2357](https://github.com/dcache/dcache/commit/63a23570fd6cfa2b45d4b0b896f9bc1a1daacb79)
+:   nfs: fix NPE on "show transfers" command
+
+[5b3067f](https://github.com/dcache/dcache/commit/5b3067f1e5e663a7d2c9a4f1966019b2e3da2b15)
+:   webdav: fix cross origin resources sharing issue
+
+[49df7bb](https://github.com/dcache/dcache/commit/49df7bb52526f7992d0c70814931b8c57876fcb3)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.0.18
 
 ### chimera

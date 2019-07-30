@@ -89,6 +89,39 @@ transfers.
 We gratefully acknowledge code and documentation contributions from Christoph Anton Mitterer and Onno Zweers.
 
 
+## Release 5.2.3
+
+### nfs
+
+NPE on "show transfers" command is now fixed.
+
+### webdav
+
+The current release fixed CORS for WebDAV doors that do not allow anonymous
+access; in particular, to support dCacheView uploading
+and downloading files with such authentication-required
+WebDAV doors.
+
+
+### Changelog 5.2.2..5.2.3
+
+<!-- git log 5.2.2..5.2.3 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[cf0ed9a](https://github.com/dcache/dcache/commit/cf0ed9a1f841740cc0352ff25eee7345b8c387e5)
+:   [maven-release-plugin] prepare release 5.2.3
+
+[4dfd693](https://github.com/dcache/dcache/commit/4dfd693568a86ba5c8370fd9ba998ed21d27178c)
+:   nfs: fix NPE on "show transfers" command
+
+[db319cb](https://github.com/dcache/dcache/commit/db319cb270eb359ac52cd96e5c3f628b5a453f64)
+:   docs: Update UserGuide to use guide-specific navigation header
+
+[638ef78](https://github.com/dcache/dcache/commit/638ef78bb0df0140dd8b211e06ffac49b841ac6f)
+:   webdav: fix cross origin resources sharing issue
+
+[f2d488f](https://github.com/dcache/dcache/commit/f2d488fcbe8a842d1209fa17b2f489ba78905f35)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.2.2
 
 ### chimera
