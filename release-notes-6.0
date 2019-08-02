@@ -93,6 +93,7 @@ location `dcache/lm/cores` is for bakward compatibility only.
 ### Chimera
 
 ### DCAP
+Remove `strict-size` control channel option that was required for legacy 'Pnfs'.
 
 ### Frontend
 
