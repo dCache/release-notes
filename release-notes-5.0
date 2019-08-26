@@ -78,6 +78,35 @@ This release breaks compatibility with pools running dcache version 3.2 or earli
 We thank HTW Berlin students Marcel Munce, Ferdinand Wolff and MaKrHTW (???) as well
 as Onno Zweers from surfSARA for their contributions.
 
+## Release 5.0.20
+
+### common
+
+The current release fixed formatting of error message in Checksum. 
+
+### frontend
+
+Admins may now configure frontend to specify in which country (or
+countries) data may be stored. This information is visible through
+dCacheView.
+
+
+### Changelog 5.0.19..5.0.20
+
+<!-- git log 5.0.19..5.0.20 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[7d77a9c](https://github.com/dcache/dcache/commit/7d77a9ca688bf25c030c54fb4b67116756ad9b45)
+:   [maven-release-plugin] prepare release 5.0.20
+
+[1687106](https://github.com/dcache/dcache/commit/16871068996e4646e9b7a38efd939a5d28497dce)
+:   frontend: make geographic placement configurable
+
+[93a253e](https://github.com/dcache/dcache/commit/93a253eda97e65db8b82a43dfe25d65afc36efba)
+:   common: fix formatting of error message in Checksum
+
+[7883369](https://github.com/dcache/dcache/commit/788336959e5008a108457b615cddfb9bd3a5bb20)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.0.19
 
 ### nfs

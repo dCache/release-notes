@@ -93,6 +93,42 @@ Lea Morschel also provided documentation and code refinements.
 Other contributions originated from a lecture at HTW Berlin; many thanks to Jonas Grabber, "tabea", "Co" and "xpinkyx" for their contributions.
 
 
+## Release 5.1.9
+
+### common
+
+The current release fixed formatting of error message in Checksum. 
+
+### frontend
+
+Admins may now configure frontend to specify in which country (or
+countries) data may be stored. This information is visible through
+dCacheView.
+
+### gplazma
+
+The current release fixe remote reading of JSON with UTF-8 CharSet and dCache can now work with OPs that use `utf-8` charset.
+
+
+### Changelog 5.1.8..5.1.9
+
+<!-- git log 5.1.8..5.1.9 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[8e8b2b9](https://github.com/dcache/dcache/commit/8e8b2b91c6bc8ce87da29e3936e48ffdffd5cdbb)
+:   [maven-release-plugin] prepare release 5.1.9
+
+[6948f87](https://github.com/dcache/dcache/commit/6948f876d3bd7984d91d54a319ddacaabecd213f)
+:   frontend: make geographic placement configurable
+
+[b5e245d](https://github.com/dcache/dcache/commit/b5e245d251f782b11a7ca4e921f7657a585bb437)
+:   common: fix formatting of error message in Checksum
+
+[1662c2c](https://github.com/dcache/dcache/commit/1662c2cceaf1a3763dc39baba3f58db21204bca9)
+:   scitoken: fix remote reading of JSON with UTF-8 CharSet
+
+[176f4eb](https://github.com/dcache/dcache/commit/176f4eb9ada9093cd51273f81dc549ab44ea5fc3)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.1.8
 
 ### nfs

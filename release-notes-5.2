@@ -89,6 +89,56 @@ transfers.
 We gratefully acknowledge code and documentation contributions from Christoph Anton Mitterer and Onno Zweers.
 
 
+## Release 5.2.4
+
+### common
+
+The current release fixed formatting of error message in Checksum. 
+
+### frontend
+
+Admins may now configure frontend to specify in which country (or
+countries) data may be stored. This information is visible through
+dCacheView.
+
+### gplazma
+
+The current release fixe remote reading of JSON with UTF-8 CharSet and dCache can now work with OPs that use `utf-8` charset.
+
+### nfs
+
+The current release added  ability to get valid checksum types via NFS.
+Usage  `cat ".(checksums)()"`. Returns a new-line delimited list of checksum type names.
+
+### util
+
+The current release improved log messaging so that CDC context is available in during retries.
+
+### Changelog 5.2.3..5.2.4
+
+<!-- git log 5.2.3..5.2.4 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[b5c6b56](https://github.com/dcache/dcache/commit/b5c6b56d6394906141e03475421e7142a03bd944)
+:   [maven-release-plugin] prepare release 5.2.4
+
+[17032a6](https://github.com/dcache/dcache/commit/17032a64d257eca598ea252ce741d18801f0bbb1)
+:   nfs: checksum types dot command
+
+[4f31c1c](https://github.com/dcache/dcache/commit/4f31c1cdfb576b21783c16e34b847d3eb9c5afc4)
+:   frontend: make geographic placement configurable
+
+[6e85512](https://github.com/dcache/dcache/commit/6e8551231c196bd136d532e0ce02faca2412d356)
+:   common: fix formatting of error message in Checksum
+
+[069d9eb](https://github.com/dcache/dcache/commit/069d9ebcd6ca2f486c714f5feee8aa193624f7cf)
+:   scitoken: fix remote reading of JSON with UTF-8 CharSet
+
+[f457d8a](https://github.com/dcache/dcache/commit/f457d8ac7d43270a4c372725fd18ef96dbfbcd65)
+:   util: decorate retry executor with CDC-aware wrapper
+
+[774fe07](https://github.com/dcache/dcache/commit/774fe07a8fc3a090c8b2b020382f3b92ce81d9f1)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.2.3
 
 ### nfs

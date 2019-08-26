@@ -91,6 +91,35 @@ updates, pools may remain at 4.1 during that update.
 The dCache team thanks Christoph Anton Mitterer, Martin Johnki, Onno Zweers and Johannes Thurn
 for their pull requests and contributions.
 
+## Release 4.2.41
+
+### common
+
+The current release fixed formatting of error message in Checksum. 
+
+### frontend
+
+Admins may now configure frontend to specify in which country (or
+countries) data may be stored. This information is visible through
+dCacheView.
+
+
+### Changelog 4.2.40..4.2.41
+
+<!-- git log 4.2.40..4.2.41 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[e9ee03b](https://github.com/dcache/dcache/commit/e9ee03b59c3c550cca31bf089c403c5f49225720)
+:   [maven-release-plugin] prepare release 4.2.41
+
+[4a4bc96](https://github.com/dcache/dcache/commit/4a4bc96ed77beac0159ec2ce19b36a93e5cd1a1d)
+:   frontend: make geographic placement configurable
+
+[0eb4352](https://github.com/dcache/dcache/commit/0eb435225785cef693335db55df8e6fb51a7a368)
+:   common: fix formatting of error message in Checksum
+
+[a0af8d7](https://github.com/dcache/dcache/commit/a0af8d7c9666afbc340472883fa3034ae5623d0f)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.2.40
 
 ### nfs
