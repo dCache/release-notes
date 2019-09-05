@@ -123,6 +123,8 @@ Updated the undelaying nfs code implementation.
 ### Pool
 
 ### Pool Manager
+In situations when all pools with requested file are off-line "Pool unavailable" message logged as warning. Before
+is was treated as a fatal error.
 
 ### Resilience
 
