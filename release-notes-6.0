@@ -118,6 +118,8 @@ The nfs door will return error NO-SPACE when all pools are full. However, when a
 
 Updated the undelaying nfs code implementation.
 
+NFS door will automatically re-try pool selection when all pool are off-line.
+
 ### PNFS Manager
 
 ### Pool
