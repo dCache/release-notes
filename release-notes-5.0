@@ -78,6 +78,38 @@ This release breaks compatibility with pools running dcache version 3.2 or earli
 We thank HTW Berlin students Marcel Munce, Ferdinand Wolff and MaKrHTW (???) as well
 as Onno Zweers from surfSARA for their contributions.
 
+## Release 5.0.21
+
+### srm
+
+A new user community requires the srm tools to be able to handle
+very large file listings. During preliminary tests, OutOfMemory
+errors from the srmls tool were observed. This is now fixed and 
+srm can now support operations on very large file lists
+without running out of memory.
+
+### webdav
+
+The current release added allow header to list of response headers for OPTION method
+request.
+
+
+### Changelog 5.0.20..5.0.21
+
+<!-- git log 5.0.20..5.0.21 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[783dd61](https://github.com/dcache/dcache/commit/783dd61aa4d393b018fb204ea61a8b46bfcd595e)
+:   [maven-release-plugin] prepare release 5.0.21
+
+[79baec2](https://github.com/dcache/dcache/commit/79baec2d93547d939476a886d3cfb22657b72e6b)
+:   webdav: add allow header to OPTION method request
+
+[0a97928](https://github.com/dcache/dcache/commit/0a979284b918468ed0e7fff6bb2456d263d2b91c)
+:   srm: Remove JVM memory limits
+
+[1c8c08c](https://github.com/dcache/dcache/commit/1c8c08cfd08b8aedaad1654bcc82a8f98bf3a733)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.0.20
 
 ### common

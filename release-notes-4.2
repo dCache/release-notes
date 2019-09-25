@@ -91,6 +91,38 @@ updates, pools may remain at 4.1 during that update.
 The dCache team thanks Christoph Anton Mitterer, Martin Johnki, Onno Zweers and Johannes Thurn
 for their pull requests and contributions.
 
+## Release 4.2.42
+
+### srm
+
+A new user community requires the srm tools to be able to handle
+very large file listings. During preliminary tests, OutOfMemory
+errors from the srmls tool were observed. This is now fixed and 
+srm can now support operations on very large file lists
+without running out of memory.
+
+### webdav
+
+The current release added allow header to list of response headers for OPTION method
+request.
+
+
+### Changelog 4.2.41..4.2.42
+
+<!-- git log 4.2.41..4.2.42 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[f610c7f](https://github.com/dcache/dcache/commit/f610c7fd95c6bb251090104c6aa3deb723ece26f)
+:   [maven-release-plugin] prepare release 4.2.42
+
+[1f7bac2](https://github.com/dcache/dcache/commit/1f7bac201434fc4202fc500ec8c5b55078bc7514)
+:   webdav: add allow header to OPTION method request
+
+[f2bd61c](https://github.com/dcache/dcache/commit/f2bd61c3aafa6950c928665f40b822088804a0c5)
+:   srm: Remove JVM memory limits
+
+[36fc58d](https://github.com/dcache/dcache/commit/36fc58d1987165fa70df68b840739d09305c31e2)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.2.41
 
 ### common

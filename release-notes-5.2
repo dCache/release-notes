@@ -89,6 +89,92 @@ transfers.
 We gratefully acknowledge code and documentation contributions from Christoph Anton Mitterer and Onno Zweers.
 
 
+## Release 5.2.5
+
+### chimera
+
+Admins may require to change top-level tags in the middle of a
+directory tree and those tags should be propagated to all subdirectories.
+To support this a recursive update tag command is required.
+
+Admins now  can `set/update` and push directory tags as:
+
+````
+
+`chimera:/# writetag /exports/data foo-tag foo`
+`chimera:/# pushtag /exports/data foo-tag`
+
+### nfs
+
+The current release added ability to set file checksum(s) via dot command.
+
+### pool
+
+The current releasse improved metadata check speed on pool re-start. 
+
+### resilience
+
+If there was two replicas, one of which was precious,
+and some change was triggered which reduces the required count
+for the file to 1, the removal operation was failing. This behavior is now fixed. 
+
+### srm
+
+A new user community requires the srm tools to be able to handle
+very large file listings. During preliminary tests, OutOfMemory
+errors from the srmls tool were observed. This is now fixed and 
+srm can now support operations on very large file lists
+without running out of memory.
+
+### webdav
+
+The current release added allow header to list of response headers for OPTION method
+request.
+
+
+### Changelog 5.2.4..5.2.5
+
+<!-- git log 5.2.4..5.2.5 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[4faec49](https://github.com/dcache/dcache/commit/4faec49cda602a5aab390cf615d46da455cb90c6)
+:   [maven-release-plugin] prepare release 5.2.5
+
+[8f217bc](https://github.com/dcache/dcache/commit/8f217bc2d8d67a9ef3e839b95fd232e87b132e8a)
+:   httpd: escape status field in HttpPoolMgrEngineV3
+
+[def422e](https://github.com/dcache/dcache/commit/def422ea5449c46badb339338fede5c693c24ec0)
+:   webdav: add allow header to OPTION method request
+
+[a8edd03](https://github.com/dcache/dcache/commit/a8edd039876988369de80680ce290ad998ca6504)
+:   nfs: support ability to set file checksum(s) via dot command
+
+[fc0bd33](https://github.com/dcache/dcache/commit/fc0bd3382de22ba08a5b5779dafdb66d7f4744bb)
+:   chimera: add command to push tags into subdirectories
+
+[cbd868d](https://github.com/dcache/dcache/commit/cbd868dbaf71ad596db23d88763bef81edc5c094)
+:   libs: use h2 version 1.4.199
+
+[ad0a8e6](https://github.com/dcache/dcache/commit/ad0a8e6066cd26ca74020b33ae8c356b0dbbde60)
+:   srm: Remove JVM memory limits
+
+[eed5b71](https://github.com/dcache/dcache/commit/eed5b7134de2916abd4d73316c751d119eda5c50)
+:   resilience: fix remove count when replica is precious
+
+[1ce9a9d](https://github.com/dcache/dcache/commit/1ce9a9d5c2e9b58ff544f9fc05bea377b6a388ee)
+:   chimera: update ctime on checksum set and remove
+
+[c01691c](https://github.com/dcache/dcache/commit/c01691cdf4bdc5ed8dda64fcb5d9b75a6e9bc502)
+:   Update config-zookeeper.md
+
+[3e4ab82](https://github.com/dcache/dcache/commit/3e4ab826ec87599bb95ee86c04477fb1b25beb9f)
+:   dcache: fix RepositorySubsystem unit test NPE
+
+[73eb4d4](https://github.com/dcache/dcache/commit/73eb4d4176b39fe0e1df8b4e409f18c7c4c04d51)
+:   pool-repository: Improve metadata check speed on pool re-start.
+
+[33a8aaa](https://github.com/dcache/dcache/commit/33a8aaa99e5de36491efb3ac8914fc28e8dde67d)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.2.4
 
 ### common
