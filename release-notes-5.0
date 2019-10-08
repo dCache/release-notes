@@ -78,6 +78,33 @@ This release breaks compatibility with pools running dcache version 3.2 or earli
 We thank HTW Berlin students Marcel Munce, Ferdinand Wolff and MaKrHTW (???) as well
 as Onno Zweers from surfSARA for their contributions.
 
+## Release 5.0.22
+
+### dcap
+
+dcap door could not  handle out-of-date errors. This is now fixed.
+
+### httpd
+
+The current release fixed  escape status field in HttpPoolMgrEngineV3.
+
+
+### Changelog 5.0.21..5.0.22
+
+<!-- git log 5.0.21..5.0.22 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[d15ec87](https://github.com/dcache/dcache/commit/d15ec87d83bf1d1d59aa5cfeb943349c80c1f4f5)
+:   [maven-release-plugin] prepare release 5.0.22
+
+[3b69ad0](https://github.com/dcache/dcache/commit/3b69ad08aedc8adb5b88532c7132999d0844818f)
+:   dcap: restart pool selection on OUT-OF-DATE error
+
+[0cdb5fa](https://github.com/dcache/dcache/commit/0cdb5fad836d976b97f16f0e5cfd813266d1e19e)
+:   httpd: escape status field in HttpPoolMgrEngineV3
+
+[336f472](https://github.com/dcache/dcache/commit/336f472eb103c38b5a0860a2c730064aa8686902)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.0.21
 
 ### srm

@@ -91,6 +91,40 @@ updates, pools may remain at 4.1 during that update.
 The dCache team thanks Christoph Anton Mitterer, Martin Johnki, Onno Zweers and Johannes Thurn
 for their pull requests and contributions.
 
+## Release 4.2.43
+
+### dcap
+
+dcap door could not  handle out-of-date errors. This is now fixed.
+
+### gplazma
+
+The current release fixed  thread leak by explicitly close NamingEnumeration
+
+### httpd
+
+The current release fixed  escape status field in HttpPoolMgrEngineV3.
+
+
+### Changelog 4.2.42..4.2.43
+
+<!-- git log 4.2.42..4.2.43 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[16fbcfe](https://github.com/dcache/dcache/commit/16fbcfead23c34947d5d960aea3668592a31b1ed)
+:   [maven-release-plugin] prepare release 4.2.43
+
+[2807958](https://github.com/dcache/dcache/commit/280795800594ba7f4762a35188d875eacf3b6e9d)
+:   dcap: restart pool selection on OUT-OF-DATE error
+
+[ea7a0cf](https://github.com/dcache/dcache/commit/ea7a0cfdb5a6e2eef2e90bf9d9b1c10656297e24)
+:   gplazma-ldap: avoid thread leak by explicitly close NamingEnumeration
+
+[e8c88f7](https://github.com/dcache/dcache/commit/e8c88f7dd7859f6962242e69110e9d790e6c6528)
+:   httpd: escape status field in HttpPoolMgrEngineV3
+
+[291213c](https://github.com/dcache/dcache/commit/291213c9986177dc34f472daaaaf0e32a53d89bb)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.2.42
 
 ### srm

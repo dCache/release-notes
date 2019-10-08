@@ -89,6 +89,36 @@ transfers.
 We gratefully acknowledge code and documentation contributions from Christoph Anton Mitterer and Onno Zweers.
 
 
+## Release 5.2.6
+
+### dcap
+
+dcap door could not  handle out-of-date errors. This is now fixed.
+
+### gplazma
+
+The current release fixed  thread leak by explicitly close NamingEnumeration
+
+
+### Changelog 5.2.5..5.2.6
+
+<!-- git log 5.2.5..5.2.6 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[5ab8c5a](https://github.com/dcache/dcache/commit/5ab8c5a85384eeec59bc7198c0f16d6fa38742be)
+:   [maven-release-plugin] prepare release 5.2.6
+
+[cc6e167](https://github.com/dcache/dcache/commit/cc6e167b4e0028e05cea74ce914c7bec1e093cb9)
+:   dcap: restart pool selection on OUT-OF-DATE error
+
+[74e08dc](https://github.com/dcache/dcache/commit/74e08dc21041b461c76d59a086732bd5ab05b3c1)
+:   gplazma-ldap: avoid thread leak by explicitly close NamingEnumeration
+
+[14e67d1](https://github.com/dcache/dcache/commit/14e67d1010f99da56b5e92015d48ff9e75ee32da)
+:   libs: update jackson-databind to 2.9.10
+
+[df306ed](https://github.com/dcache/dcache/commit/df306ede98bce3df15205928c51079e892d4ab0a)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.2.5
 
 ### chimera
