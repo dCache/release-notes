@@ -97,6 +97,11 @@ Remove `strict-size` control channel option that was required for legacy 'Pnfs'.
 
 ### Frontend
 
+Admins may now configure frontend to specify in which country (or countries) data 
+may be stored by using the property `frontend.geographic-placement`. The property
+accept comma seperated list of ISO-3166 alpha-2 codes.
+
+
 ### FTP
 
 ### gplazma
