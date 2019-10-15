@@ -218,6 +218,12 @@ Fixed remove count when replica is precious.
 
 ### WebDAV
 
+Option method request is now properly handled even if the site does not allow
+anonymous operation.
+
+A PUT request that targets an existing collection resource (a directory)
+will now return the correct status code (405) instead of 500 Internal Error.
+
 ### XRootD
 
 ### Zookeeper
