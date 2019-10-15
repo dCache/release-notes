@@ -107,6 +107,8 @@ Remove `strict-size` control channel option that was required for legacy 'Pnfs'.
 
 ### httpd
 Update old https admin pages legend to describe pool space usage.
+Escape status field string in  `/poolInfo/restoreHandler/*` so that it is not
+confused with html statement.
 
 ### Info
 
@@ -116,19 +118,88 @@ Update old https admin pages legend to describe pool space usage.
 The nfs door will return error NO-SPACE when all pools are full. However, when a pool is not online yet
 (disabled due to startup procedure), then client is instructed to try later.
 
-Updated the undelaying nfs code implementation.
+Updated the underlying nfs code implementation.
 
 NFS door will automatically re-try pool selection when all pool are off-line.
+
+Added ability to query supported checksum types:
+
+```
+    cat ".(checksums)()"
+```
+
+Added ability to set file checksum(s) via dot command. This is useful for some
+HSM clients. A regular user can only set one checksum (type, value) pair, and cannot
+overwrite existing values. A root user is allowed to set multiple types
+(successively) and also to overwrite values for any type.
+
+```
+    touch foo
+    touch ".(fset)(foo)(checksum)(ADLER32)(ffffffff)"
+```
+
+Fix formatting of error message in Checksum.
 
 ### PNFS Manager
 
 ### Pool
 
+Added control to modify behavior of the pool space sweeper. Normally, when a pool is 100% full,
+the pool sweeper would remove just enough replicas to accomodate a new file. The variable has
+been added to adjust the amount of space released by sweeper:
+
+```
+    pool.limits.sweeper-margin=0.0
+```
+
+meaning that if set different from 0.0 then that fraction of the total pool space will be released
+when the pool is 100% full and it has to accept a new file replica. This behavior is designed to eliminate
+continuous removal when writing (or staging) to pools that are always full to avoid disk thrashing at
+the expense of slighly reduced replica lifetime. 0.0 means no change to existing behavior.
+
+
+HSM flush queue can be set to behave as either LIFO
+(last-in-first-out) or FIFO (first-in-first-out).  This can be done statically using
+the property:
+
+```
+    (one-of?fifo|lifo)pool.flush-controller.queue-order=fifo
+```
+
+in the setup file:
+
+```
+    flush set queue order lifo
+```
+
+or by using the admin command itself:
+
+```
+   \s <pool-name> flush set queue order lifo
+```
+
+
 ### Pool Manager
 In situations when all pools with requested file are off-line "Pool unavailable" message logged as warning. Before
 is was treated as a fatal error.
 
+
 ### Resilience
+
+Added command to detect files all of whose replicas are on a given set of pools. Useful
+to handle pool decomissioning.
+
+```
+   contained in
+```
+The argument to this command is a regular expression defining a set of
+pools to check. Running that command over
+the set of pools to be drained and removed will provide a list of
+pnfsids for which some sort of manual action/migration will be necessary,
+since they will be alarmed as 'inaccessible' by resilience.
+
+Fixed remove count when replica is precious.
+
 
 ### Space Manager
 
