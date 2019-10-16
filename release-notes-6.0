@@ -73,10 +73,7 @@ HTML header: <title>dCache 6.0 Release Notes</title>
 
 The 6.0 release breaks compatibility of pools with pre-6.0 `dcap` and `srm` doors.
 os soon as the branching is done.
-In order to run the git log command given above, make sure that
-- both branches are checked out and "git pull"ed in to make them local on your machine and
-- you replace the single dashes by double dashes on the command's parameters)
-wever, the 6.0 doors will work with existing pre-6.0 pools.
+However, the 6.0 doors will work with existing pre-6.0 pools.
 
 
 ## Acknowledgments
@@ -94,11 +91,7 @@ location `dcache/lm/cores` is for bakward compatibility only.
 
 
 
-(tbd as soon as the branching is done.
-In order to run the git log command given above, make sure that
-- both branches are checked out and "git pull"ed in to make them local on your machine and
-- you replace the single dashes by double dashes on the command's parameters)
-### DCAP
+###  DCAP
 Remove `strict-size` control channel option that was required for legacy 'Pnfs'.
 
 ### Frontend
@@ -122,10 +115,6 @@ The nfs door will return error NO-SPACE when all pools are full. However, when a
 Updated the underlying nfs code implementation.
 
 NFS door will automatically re-try pool selection when all pool are off-line.
-(tbd as soon as the branching is done.
-In order to run the git log command given above, make sure that
-- both branches are checked out and "git pull"ed in to make them local on your machine and
-- you replace the single dashes by double dashes on the command's parameters)
 
 Added ability to query supported checksum types:
 
@@ -150,10 +139,6 @@ Fix formatting of error message in Checksum.
 ### Pool
 
 Added control to modify behavior of the pool space sweeper. Normally, when a pool is 100% full,
-(tbd as soon as the branching is done.
-In order to run the git log command given above, make sure that
-- both branches are checked out and "git pull"ed in to make them local on your machine and
-- you replace the single dashes by double dashes on the command's parameters)
 the pool sweeper would remove just enough replicas to accomodate a new file. The variable has
 been added to adjust the amount of space released by sweeper:
 
@@ -175,10 +160,6 @@ the property:
     (one-of?fifo|lifo)pool.flush-controller.queue-order=fifo
 ```
 
-(tbd as soon as the branching is done.
-In order to run the git log command given above, make sure that
-- both branches are checked out and "git pull"ed in to make them local on your machine and
-- you replace the single dashes by double dashes on the command's parameters)
 in the setup file:
 
 ```
@@ -203,10 +184,7 @@ Added command to detect files all of whose replicas are on a given set of pools.
 to handle pool decomissioning.
 
 ```
-(tbd as soon as the branching is done.
-In order to run the git log command given above, make sure that
-- both branches are checked out and "git pull"ed in to make them local on your machine and
-- you replace the single dashes by double dashes on the command's parameters)
+
    contained in
 i```
 The argument to this command is a regular expression defining a set of
@@ -279,10 +257,6 @@ In order to run the git log command given above, make sure that
 :   core: fix code formatting and javadoc of StickyRecord
 
 [665a774](https://github.com/dcache/dcache/commit/665a774f5622da76d36eb01b5568f8d2b14f1398)
-(tbd as soon as the branching is done.
-In order to run the git log command given above, make sure that
-- both branches are checked out and "git pull"ed in to make them local on your machine and
-- you replace the single dashes by double dashes on the command's parameters)
 :   pool: allow margin option on sweeper when reclaiming space
 
 [4acfa2b](https://github.com/dcache/dcache/commit/4acfa2b1e653269c384a26a92c123445cca18c90)
@@ -310,10 +284,6 @@ In order to run the git log command given above, make sure that
 :   nfs: fix layoutreturn operation handling regression
 
 [26c20f2](https://github.com/dcache/dcache/commit/26c20f24556fc796640308de8e082e07590ae602)
-(tbd as soon as the branching is done.
-In order to run the git log command given above, make sure that
-- both branches are checked out and "git pull"ed in to make them local on your machine and
-- you replace the single dashes by double dashes on the command's parameters)
 :   chimera: FsInode_SURI, refactor permission checks into ChimeraVfs
 
 [d42cb2a](https://github.com/dcache/dcache/commit/d42cb2ab2110abc38a35dba55cc68b0c4a8cf0ea)
@@ -335,10 +305,6 @@ In order to run the git log command given above, make sure that
 :   resilience: add command to detect files all of whose replicas are on a given set of pools
 
 [72b90de](https://github.com/dcache/dcache/commit/72b90de40b22eb158dade2f154e97a63f8aa43a6)
-(tbd as soon as the branching is done.
-In order to run the git log command given above, make sure that
-- both branches are checked out and "git pull"ed in to make them local on your machine and
-- you replace the single dashes by double dashes on the command's parameters)
 :   libs: use h2 version 1.4.199
 
 [a231e87](https://github.com/dcache/dcache/commit/a231e873aff04b95db6135a939869ff34e610272)
@@ -363,10 +329,6 @@ In order to run the git log command given above, make sure that
 :   Update intouch.md
 
 [270783f](https://github.com/dcache/dcache/commit/270783fd5057716a58983f2170d80ec1b1c5fd7c)
-(tbd as soon as the branching is done.
-In order to run the git log command given above, make sure that
-- both branches are checked out and "git pull"ed in to make them local on your machine and
-- you replace the single dashes by double dashes on the command's parameters)
 :   docs: improve formatting of preface.md
 
 [e2241eb](https://github.com/dcache/dcache/commit/e2241ebca54ddee3a232fbe43b812d68c01dcb3a)
@@ -391,10 +353,6 @@ In order to run the git log command given above, make sure that
 :   Update intouch.md
 
 [6ae1787](https://github.com/dcache/dcache/commit/6ae17875b15e8c29cfda495b642d469e08dda12d)
-(tbd as soon as the branching is done.
-In order to run the git log command given above, make sure that
-- both branches are checked out and "git pull"ed in to make them local on your machine and
-- you replace the single dashes by double dashes on the command's parameters)
 :   Update intouch.md
 
 [f524ed7](https://github.com/dcache/dcache/commit/f524ed75dd798292770ba514ed11a30a935e087f)
@@ -418,10 +376,6 @@ In order to run the git log command given above, make sure that
 [350aee6](https://github.com/dcache/dcache/commit/350aee6603742d69b738de1239f607ab461ddf59)
 :   docs: TheBook further updates to describe updated NFS pinning interface
 
-(tbd as soon as the branching is done.
-In order to run the git log command given above, make sure that
-- both branches are checked out and "git pull"ed in to make them local on your machine and
-- you replace the single dashes by double dashes on the command's parameters)
 [ea3f2fb](https://github.com/dcache/dcache/commit/ea3f2fb1555c561621c872620ff8a4d7aeabede7)
 :   common: fix formatting of error message in Checksum
 
