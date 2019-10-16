@@ -168,6 +168,44 @@
   </preamble>
 
 <series id="server-5.2">
+   <title>server 6.0.x</title>
+
+   <description>
+     <p>
+       dCache 6.0 is a Feature Release, focusing on stability and
+       maintainability.
+     </p>
+     <p>dCache v6.0 requires OpenJDK 8 or 11.</p>
+   </description>
+
+   <releases>
+     <name>dCache VERSION</name>
+     <download-url-prefix>repo/6.0/dcache</download-url-prefix>
+     <notes-url>release-notes-6.0.shtml</notes-url>
+     <version-prefix>6.0.</version-prefix>
+   </releases>
+
+      <release version="0" recommended="1">
+        <date>16.10.2019</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>c9db07be4a87531861c84f2fd408cc52</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>2ab4fbac0fddfbfb913ecfdc11d6a1c7</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>9330e5bf7f2fcee5079ac3bf6aa1c26f</md5sum>
+        </package>
+      </release>
+
+      
+</series>
+
+
+<series id="server-5.2">
    <title>server 5.2.x</title>
 
    <description>
