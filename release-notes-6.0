@@ -80,17 +80,12 @@ Weber from FZ-Jülich for their contributions.
 
 ## Release 6.0.0
 
-### Admin
-
-### Alarms
-
-### Billing
 
 ### Cells
 fixed core domain discovery. Now on the zookeeper path `dcache/lm/cores-uri` is always used and the old
 location `dcache/lm/cores` is for bakward compatibility only.
 
-### Chimera
+
 
 ### DCAP
 Remove `strict-size` control channel option that was required for legacy 'Pnfs'.
@@ -102,22 +97,12 @@ may be stored by using the property `frontend.geographic-placement`. The propert
 accept comma seperated list of ISO-3166 alpha-2 codes.
 
 
-### FTP
-
-### gplazma
-
-### History
-
-### Hoppingmanager
 
 ### httpd
 Update old https admin pages legend to describe pool space usage.
 Escape status field string in  `/poolInfo/restoreHandler/*` so that it is not
 confused with html statement.
 
-### Info
-
-### Missing Files
 
 ### NFS
 The nfs door will return error NO-SPACE when all pools are full. However, when a pool is not online yet
@@ -145,7 +130,7 @@ overwrite existing values. A root user is allowed to set multiple types
 
 Fix formatting of error message in Checksum.
 
-### PNFS Manager
+
 
 ### Pool
 
@@ -206,16 +191,6 @@ since they will be alarmed as 'inaccessible' by resilience.
 Fixed remove count when replica is precious.
 
 
-### Space Manager
-
-### SRM / SRM Manager
-
-### Statistics
-
-### Topo
-
-### Transfer Manager
-
 ### WebDAV
 
 Option method request is now properly handled even if the site does not allow
@@ -224,9 +199,6 @@ anonymous operation.
 A PUT request that targets an existing collection resource (a directory)
 will now return the correct status code (405) instead of 500 Internal Error.
 
-### XRootD
-
-### Zookeeper
 
 
 ### Changelog from 5.2.0 to 6.0.0
