@@ -180,11 +180,6 @@ the set of pools to be drained and removed will provide a list of
 pnfsids for which some sort of manual action/migration will be necessary,
 since they will be alarmed as 'inaccessible' by resilience.
 Fixed remove count when replica is precious.
-### WebDAV
-Option method request is now properly handled even if the site does not allow
-anonymous operation.
-A PUT request that targets an existing collection resource (a directory)
-will now return the correct status code (405) instead of 500 Internal Error.
 
 
 ### WebDAV
