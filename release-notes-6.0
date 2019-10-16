@@ -64,7 +64,10 @@ HTML header: <title>dCache 6.0 Release Notes</title>
 
 ## Highlights
 
-(tbd, this section uses markdown formatting)
+- Admins may now configure frontend to specify in which country (or countries) data may be stored.
+
+- Added control to modify behavior of the pool space sweeper. 
+
 
 ## Incompatibilities
 
