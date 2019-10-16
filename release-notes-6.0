@@ -232,10 +232,6 @@ will now return the correct status code (405) instead of 500 Internal Error.
 :   gplazma-ldap: avoid thread leak by explicitly close NamingEnumeration
 
 [1a9b880](https://github.com/dcache/dcache/commit/1a9b8800bdd84da7b1ef7c6b5b714ffd4ed5837a)
-(tbd as soon as the branching is done.
-In order to run the git log command given above, make sure that
-- both branches are checked out and "git pull"ed in to make them local on your machine and
-- you replace the single dashes by double dashes on the command's parameters)
 :   [maven-release-plugin] prepare branch 6.0
 
 [d293b1e](https://github.com/dcache/dcache/commit/d293b1e39e7af89e3ff1d78a49aa109b79d3ece3)
