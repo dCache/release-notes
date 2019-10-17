@@ -64,9 +64,12 @@ HTML header: <title>dCache 6.0 Release Notes</title>
 
 ## Highlights
 
-- Admins may now configure frontend to specify in which country (or countries) data may be stored.
+- The nfs door will return error NO-SPACE when all pools are full.
 
-- Added control to modify behavior of the pool space sweeper. 
+- Added control to modify behavior of the pool space sweeper.
+
+- HSM flush queue can be set to behave as either LIFO (last-in-first-out) or FIFO (first-in-first-out).
+ 
 
 
 ## Incompatibilities
