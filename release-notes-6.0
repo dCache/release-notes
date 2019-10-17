@@ -96,10 +96,12 @@ Remove `strict-size` control channel option that was required for legacy 'Pnfs'.
 
 ### Frontend
 
-The QoS backend contain data's geographic placement which is hardcoded to be DE. Admins may now 
-configure frontend to specify in which country (or countries) data may be stored via 
-`frontend.geographic-placement` property. The property accept comma seperated list of ISO-3166 
-alpha-2 codes.
+The QoS management in the restful api contain metadata object which provide information
+about the media QoS class. And one the values this metadata might show is the possible 
+data's geographic placement. Previously, this value is hardcoded to be DE. Now, the admins 
+have the possibility to set this value to a specify country (or countries). This can be 
+done via `frontend.geographic-placement` property. The property accept comma seperated 
+list of ISO-3166 alpha-2 codes.
 
 ### httpd
 
