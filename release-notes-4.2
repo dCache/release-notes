@@ -91,6 +91,65 @@ updates, pools may remain at 4.1 during that update.
 The dCache team thanks Christoph Anton Mitterer, Martin Johnki, Onno Zweers and Johannes Thurn
 for their pull requests and contributions.
 
+## Release 4.2.44
+
+### Changes affecting multiple services
+
+The Apache Commons Compress library used in dCache was updated to version 1.19.
+
+A rare deadlock situation in the Chimera database was eliminated. In cases
+where, within the same directory, concurrent mkdir and rmdir events happened,
+transactions within the database could deadlock. This would be indicated by the message
+
+    ERROR: deadlock detected
+
+in the logs.
+
+### pool
+
+There were reports of extraordinarily high CPU usage on pool nodes with a large
+number of cached files. Through an optimization of the `sweeper`, CPU usage
+was reduced significantly.
+
+### xrootd
+
+This release fixes a vulnerability in dCache's XRootD protocol implementation. 
+We recommend that all sites update their XRootD doors.
+Details will be made available through EGI Security and, in a week's time, through an
+update to these release notes.
+
+
+### Changelog 4.2.43..4.2.44
+
+<!-- git log 4.2.43..4.2.44 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[7bfe8eefac](https://github.com/dcache/dcache/commit/7bfe8eefac9bae268475ba65c5fe719dcae5d964)
+:   [maven-release-plugin] prepare release 4.2.44
+
+[fb6913af6d](https://github.com/dcache/dcache/commit/fb6913af6d9023ae8e96b6eb8a06409f092db749)
+:   dcache-xrootd: honor read paths when listing directories
+
+[246a96209f](https://github.com/dcache/dcache/commit/246a96209fd32bd8d50fe7ae74c240e16086c928)
+:   resilience: don't compare Integer objects by refference
+
+[4fd1250396](https://github.com/dcache/dcache/commit/4fd1250396acb58506db215622bd280a32b349c0)
+:   sweeper: use in-memory map instead of repository for histogram data
+
+[c59972f06b](https://github.com/dcache/dcache/commit/c59972f06b75d926f8baf3c6118c60c1f531fe92)
+:   dcache-xrootd: replace constants for version number
+
+[cc59b68f91](https://github.com/dcache/dcache/commit/cc59b68f911cfb633def19b2f535557288bd0da5)
+:   dcache-xrootd: update protocol version numbers
+
+[73f75af9b4](https://github.com/dcache/dcache/commit/73f75af9b4ce0c429c6ecd6e155a64f23db6aab5)
+:   libs: update apache.commons:commons-compress to 1.19
+
+[ab0e78e949](https://github.com/dcache/dcache/commit/ab0e78e9498c4fef8ba09723c90684786159d1c4)
+:   chimera: fix ABBA db deadlock when mkdir and rmdir run concurrently
+
+[5b12d34f43](https://github.com/dcache/dcache/commit/5b12d34f43f920b74bf883374102f28d266c8acd)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.2.43
 
 ### dcap

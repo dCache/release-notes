@@ -89,6 +89,84 @@ transfers.
 We gratefully acknowledge code and documentation contributions from Christoph Anton Mitterer and Onno Zweers.
 
 
+## Release 5.2.7
+
+### Changes affecting multiple services
+
+The Apache Commons Compress library used in dCache was updated to version 1.19.
+
+A rare deadlock situation in the Chimera database was eliminated. In cases
+where, within the same directory, concurrent mkdir and rmdir events happened,
+transactions within the database could deadlock. This would be indicated by the message
+
+    ERROR: deadlock detected
+
+in the logs.
+
+### pool
+
+A regression introduced in the last release caused a ClassNotFoundException on pool startup
+with a message like
+
+    [ERROR] Server responded with an error: [3012] Failed to open file (Protocol Xrootd-4.0:123.32.123.32:38374 is not supported [27])
+    
+appearing in the logs. This release fixes that issue.
+
+There were reports of extraordinarily high CPU usage on pool nodes with a large
+number of cached files. Through an optimization of the `sweeper`, CPU usage
+was reduced significantly.
+
+### xrootd
+
+This release fixes a small regression in the `kill mover` command that 
+would occasionally fail to kill all targeted movers.
+
+This release fixes a vulnerability in dCache's XRootD protocol implementation. 
+We recommend that all sites update their XRootD doors.
+Details will be made available through EGI Security and, in a week's time, through an
+update to these release notes.
+
+
+### Changelog 5.2.6..5.2.7
+
+<!-- git log 5.2.6..5.2.7 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[2e98b03a4f](https://github.com/dcache/dcache/commit/2e98b03a4fe9203e02cef050adf12995246e1c37)
+:   [maven-release-plugin] prepare release 5.2.7
+
+[47ab7704ba](https://github.com/dcache/dcache/commit/47ab7704ba03f283994d4a22177f4bc4259244ee)
+:   dcache-xrootd: honor read paths when listing directories
+
+[6a62dac6dc](https://github.com/dcache/dcache/commit/6a62dac6dc300c62a838a610e7b9da3e55f1303c)
+:   pool: fix the xrootd version number on pool transfer service
+
+[3950434553](https://github.com/dcache/dcache/commit/39504345534fd62d489e54b172076aef3d3b8df7)
+:   resilience: don't compare Integer objects by refference
+
+[85d2e6b470](https://github.com/dcache/dcache/commit/85d2e6b470f9a1b86542281ac78a2ce12f7a1bdf)
+:   xrootd: fix `kill mover` command
+
+[f13708238d](https://github.com/dcache/dcache/commit/f13708238d168674f098f940f1b2debf85ba09ad)
+:   doors: initialize IdentityResolverFactory after dependency injection
+
+[18f63397cf](https://github.com/dcache/dcache/commit/18f63397cf7c8ba2ebf966c55bba5bac31811e9a)
+:   sweeper: use in-memory map instead of repository for histogram data
+
+[76d52b26ac](https://github.com/dcache/dcache/commit/76d52b26ac8e5dfb4d1b2c655ba4283232b6967e)
+:   dcache-xrootd: replace constants for version number
+
+[44ec827db0](https://github.com/dcache/dcache/commit/44ec827db07bd479b4fd2ed102459a45b6ddb618)
+:   dcache-xrootd: update protocol version numbers
+
+[0c4f84f18c](https://github.com/dcache/dcache/commit/0c4f84f18c04d12023626706e07554a24cf72e6c)
+:   libs: update apache.commons:commons-compress to 1.19
+
+[0d8144d766](https://github.com/dcache/dcache/commit/0d8144d766c98f5ef28f48224408a49ae10abc3f)
+:   chimera: fix ABBA db deadlock when mkdir and rmdir run concurrently
+
+[37daa02f8a](https://github.com/dcache/dcache/commit/37daa02f8acc37d1872565d882df29bec37995c4)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.2.6
 
 ### dcap

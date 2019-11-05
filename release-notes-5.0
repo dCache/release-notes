@@ -78,6 +78,65 @@ This release breaks compatibility with pools running dcache version 3.2 or earli
 We thank HTW Berlin students Marcel Munce, Ferdinand Wolff and MaKrHTW (???) as well
 as Onno Zweers from surfSARA for their contributions.
 
+## Release 5.0.23
+
+### Changes affecting multiple services
+
+The Apache Commons Compress library used in dCache was updated to version 1.19.
+
+A rare deadlock situation in the Chimera database was eliminated. In cases
+where, within the same directory, concurrent mkdir and rmdir events happened,
+transactions within the database could deadlock. This would be indicated by the message
+
+    ERROR: deadlock detected
+
+in the logs.
+
+### pool
+
+There were reports of extraordinarily high CPU usage on pool nodes with a large
+number of cached files. Through an optimization of the `sweeper`, CPU usage
+was reduced significantly.
+
+### xrootd
+
+This release fixes a vulnerability in dCache's XRootD protocol implementation. 
+We recommend that all sites update their XRootD doors.
+Details will be made available through EGI Security and, in a week's time, through an
+update to these release notes.
+
+
+### Changelog 5.0.22..5.0.23
+
+<!-- git log 5.0.22..5.0.23 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[f16f4828dd](https://github.com/dcache/dcache/commit/f16f4828ddf142f568f55de60040170d78fa4d07)
+:   [maven-release-plugin] prepare release 5.0.23
+
+[efaa3c6089](https://github.com/dcache/dcache/commit/efaa3c60899502f86cd4a4bde0243bf6b4d6280f)
+:   dcache-xrootd: honor read paths when listing directories
+
+[d32187f7c3](https://github.com/dcache/dcache/commit/d32187f7c32ea81ea36e8e641e34ee30ce434fd3)
+:   resilience: don't compare Integer objects by refference
+
+[c3775c8d57](https://github.com/dcache/dcache/commit/c3775c8d5707a06bb176780bd0c7cb95a44f28a8)
+:   sweeper: use in-memory map instead of repository for histogram data
+
+[de14b4877f](https://github.com/dcache/dcache/commit/de14b4877f1be548cf826172a1dcd22a2236da4b)
+:   dcache-xrootd: replace constants for version number
+
+[20db76731a](https://github.com/dcache/dcache/commit/20db76731a248b29578fb41cfa45ed8c6cc78ad3)
+:   dcache-xrootd: update protocol version numbers
+
+[9af1f67ed9](https://github.com/dcache/dcache/commit/9af1f67ed93efa7b00af5c62be8566fa2dd5fd34)
+:   libs: update apache.commons:commons-compress to 1.19
+
+[e9ff3b259f](https://github.com/dcache/dcache/commit/e9ff3b259f9b63f7dcede3406b290fed11a2992c)
+:   chimera: fix ABBA db deadlock when mkdir and rmdir run concurrently
+
+[fe723c8563](https://github.com/dcache/dcache/commit/fe723c85632e24dae7f6a7ca483921274451a9cd)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.0.22
 
 ### dcap
