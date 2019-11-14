@@ -83,6 +83,65 @@ We would like to thank HTW-Berlin students David Linke, Lilit Patzwaldt-Sergoyan
 Quentin Kuth, Sophie Schauer, Viktoriia Sulimenko, Vladimir Vilenchik, Johann Gillhoff and Dieter
 Weber from FZ-Jülich for their contributions.
 
+## Release 6.0.2
+
+### frontend
+
+The current release fixed QoS pin semantics.
+
+A bug is fixed in frontend that results in a NullPointerException for
+billing queries where no limit is specified.
+
+### srm
+
+Investigation into tape carousel has highlighted limitations in what
+dCache logs. In particular, information about the pin lifetime for
+srmBringOnline is missing.
+
+This is now fixed and dCache SRM access logging contains information about client's desired
+pin lifetime in srmBringOnline requests.
+
+### srmclient
+
+The commands `srm-check-permissions`, `srm-get-permissions`, `srmls`,
+`srmmkdir`, `srmmv`, `srm-release-space`, `srm-reserve-space`, `srmrm`,
+`srmrmdir` and `srm-set-permissions` now support the `-extraInfo`
+command-line option.
+
+### xrootd
+
+The current release  refined error handling by providing  more meaningful (or at least consistent) error responses
+to the client.
+
+
+### Changelog 6.0.1..6.0.2
+
+<!-- git log 6.0.1..6.0.2 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[0e0b409](https://github.com/dcache/dcache/commit/0e0b4096b5c0dc1d643ea078aa656dd06c338484)
+:   [maven-release-plugin] prepare release 6.0.2
+
+[a92235c](https://github.com/dcache/dcache/commit/a92235cf462a1f8e93436eab7b460f91294dc20d)
+:   build: avoid shipping log4j with dCache
+
+[a34298e](https://github.com/dcache/dcache/commit/a34298ef1f5f15f45075f166e186eefa531ad677)
+:   frontend: fix NPE if limit is not specified
+
+[b30e6b9](https://github.com/dcache/dcache/commit/b30e6b908aa07f57e957f50a9039d609d1c0d9a8)
+:   srm: improve access logging of srmBringOnline requests.
+
+[57cef0d](https://github.com/dcache/dcache/commit/57cef0de5606a70691274e072ba68fbbf76d6f27)
+:   srmclient: complete and tidy-up storageSystemInfo support
+
+[54c9860](https://github.com/dcache/dcache/commit/54c9860a55a54959b2d62f83e2acaca19e55eb44)
+:   dcache-frontend: fix QoS pin semantics
+
+[6ec3f30](https://github.com/dcache/dcache/commit/6ec3f300b4dd90837adfe51ae10d3f7fc2d68f0b)
+:   dcache-xrootd: refine error handling
+
+[3d2d270](https://github.com/dcache/dcache/commit/3d2d270f84e35d4d437f4112826f05f2c025821c)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.0.1
 
 ### Changes affecting multiple services

@@ -91,6 +91,32 @@ updates, pools may remain at 4.1 during that update.
 The dCache team thanks Christoph Anton Mitterer, Martin Johnki, Onno Zweers and Johannes Thurn
 for their pull requests and contributions.
 
+## Release 4.2.45
+
+### frontend
+
+The current release fixed QoS pin semantics.
+
+A bug is fixed in frontend that results in a NullPointerException for
+billing queries where no limit is specified.
+
+
+### Changelog 4.2.44..4.2.45
+
+<!-- git log 4.2.44..4.2.45 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[5fe7649](https://github.com/dcache/dcache/commit/5fe76491dfc9d969b5643324c5828e94be40bcb0)
+:   [maven-release-plugin] prepare release 4.2.45
+
+[95694d9](https://github.com/dcache/dcache/commit/95694d91abec4fe7f9071c70dd30210c28b9c679)
+:   frontend: fix NPE if limit is not specified
+
+[34ca0ec](https://github.com/dcache/dcache/commit/34ca0ec10ba5e8ce0dcc1d67e472690faff05426)
+:   dcache-frontend: fix QoS pin semantics
+
+[fca79f8](https://github.com/dcache/dcache/commit/fca79f87da0df9097f93efe3bb4aaf53f13a6ace)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.2.44
 
 ### Changes affecting multiple services

@@ -78,6 +78,32 @@ This release breaks compatibility with pools running dcache version 3.2 or earli
 We thank HTW Berlin students Marcel Munce, Ferdinand Wolff and MaKrHTW (???) as well
 as Onno Zweers from surfSARA for their contributions.
 
+## Release 5.0.24
+
+### frontend
+
+The current release fixed QoS pin semantics.
+
+A bug is fixed in frontend that results in a NullPointerException for
+billing queries where no limit is specified.
+
+
+### Changelog 5.0.23..5.0.24
+
+<!-- git log 5.0.23..5.0.24 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[fcc7919](https://github.com/dcache/dcache/commit/fcc791938d3351e8f169b3f5193851a423b49b9f)
+:   [maven-release-plugin] prepare release 5.0.24
+
+[ba65ccd](https://github.com/dcache/dcache/commit/ba65ccd0139790306624d40ebba1457db8b6d91a)
+:   frontend: fix NPE if limit is not specified
+
+[2a20915](https://github.com/dcache/dcache/commit/2a209156bea87c2d00f5666797b7c3c42306895d)
+:   dcache-frontend: fix QoS pin semantics
+
+[44d9b74](https://github.com/dcache/dcache/commit/44d9b74853c80759c13c02f4884294bd43a3611c)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.0.23
 
 ### Changes affecting multiple services

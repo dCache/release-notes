@@ -89,6 +89,52 @@ transfers.
 We gratefully acknowledge code and documentation contributions from Christoph Anton Mitterer and Onno Zweers.
 
 
+## Release 5.2.8
+
+### frontend
+
+The current release fixed QoS pin semantics.
+
+A bug is fixed in frontend that results in a NullPointerException for
+billing queries where no limit is specified.
+
+### srm
+
+Investigation into tape carousel has highlighted limitations in what
+dCache logs. In particular, information about the pin lifetime for
+srmBringOnline is missing.
+
+This is now fixed and dCache SRM access logging contains information about client's desired
+pin lifetime in srmBringOnline requests.
+
+### xrootd
+
+The current release  refined error handling by providing  more meaningful (or at least consistent) error responses
+to the client.
+
+
+### Changelog 5.2.7..5.2.8
+
+<!-- git log 5.2.7..5.2.8 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[7a67863](https://github.com/dcache/dcache/commit/7a678639834c641451bb3257ee4e25afc39f4167)
+:   [maven-release-plugin] prepare release 5.2.8
+
+[7da9409](https://github.com/dcache/dcache/commit/7da9409eb2729b87394dd0b2a4df9e2d4abfedc1)
+:   frontend: fix NPE if limit is not specified
+
+[1956d34](https://github.com/dcache/dcache/commit/1956d34f2768bd5f04a4e8bee691e5bfc917b718)
+:   srm: improve access logging of srmBringOnline requests.
+
+[b081289](https://github.com/dcache/dcache/commit/b0812892948f4525638dc17aad0d48f43790f113)
+:   dcache-frontend: fix QoS pin semantics
+
+[9b1f54a](https://github.com/dcache/dcache/commit/9b1f54abcce4b718c11b48f0062bd4753a277dec)
+:   dcache-xrootd: refine error handling
+
+[865710c](https://github.com/dcache/dcache/commit/865710ca45f1886a1b12be241dd7312765939fff)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.2.7
 
 ### Changes affecting multiple services

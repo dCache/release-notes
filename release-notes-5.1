@@ -93,6 +93,32 @@ Lea Morschel also provided documentation and code refinements.
 Other contributions originated from a lecture at HTW Berlin; many thanks to Jonas Grabber, "tabea", "Co" and "xpinkyx" for their contributions.
 
 
+## Release 5.1.13
+
+### frontend
+
+The current release fixed QoS pin semantics.
+
+A bug is fixed in frontend that results in a NullPointerException for
+billing queries where no limit is specified.
+
+
+### Changelog 5.1.12..5.1.13
+
+<!-- git log 5.1.12..5.1.13 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[1eb7e32](https://github.com/dcache/dcache/commit/1eb7e3276ece4efde652eebb5cc880ab866db752)
+:   [maven-release-plugin] prepare release 5.1.13
+
+[c83c585](https://github.com/dcache/dcache/commit/c83c5852ccf62a013e8eb988509a221cd5146161)
+:   frontend: fix NPE if limit is not specified
+
+[9ed3404](https://github.com/dcache/dcache/commit/9ed340490762233e442649faba73d80e194f8bde)
+:   dcache-frontend: fix QoS pin semantics
+
+[a931d26](https://github.com/dcache/dcache/commit/a931d26ceb79371b8b8e33565ef19553c4bb75cf)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.1.12
 
 ### Changes affecting multiple services
