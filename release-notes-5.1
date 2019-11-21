@@ -93,6 +93,53 @@ Lea Morschel also provided documentation and code refinements.
 Other contributions originated from a lecture at HTW Berlin; many thanks to Jonas Grabber, "tabea", "Co" and "xpinkyx" for their contributions.
 
 
+## Release 5.1.14
+
+### gplazma
+
+The SciToken gplazma plugin now supports the audience (`aud`) claim
+where the claim's value is an array. This allows dCache to support
+SciTokens with multiple audience values.
+
+### pool
+
+Pool health-check log messages now include the pool's name.
+
+### webdav
+
+On an unsuccessful HTTP-TPC pull request, dCache will delete the file.
+If  this deletion did not work then an error was  logged. This is fixed now and 
+failures to delete the incomplete file from a failed HTTP-TPC pull
+request, where the incomplete file has been deleted by some other means
+are now logged at DEBUG level, rather than WARN level.
+
+### xrootd
+
+The current release refited checksum handling after xrootd4j bug fix. 
+
+
+### Changelog 5.1.13..5.1.14
+
+<!-- git log 5.1.13..5.1.14 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[09f44ba](https://github.com/dcache/dcache/commit/09f44baa3b75bd7bbb615fa4a81272d6ab735688)
+:   [maven-release-plugin] prepare release 5.1.14
+
+[bbe0dc2](https://github.com/dcache/dcache/commit/bbe0dc281bd0dba2ce3f407926544681f5e285d4)
+:   dcache-xrootd: refit checksum handling after xrootd4j bug fix
+
+[81af14e](https://github.com/dcache/dcache/commit/81af14e207b3fbba592102260aca669755330f79)
+:   webdav: avoid logging non-error as an error
+
+[f30b95b](https://github.com/dcache/dcache/commit/f30b95bb4ff8c1b72024d51f13e35a1c13564f35)
+:   pool: include pool name in health-check reports
+
+[a68785d](https://github.com/dcache/dcache/commit/a68785d835a472470359f6b2b5756e5b8b314748)
+:   gplazma: scitoken add support for multiple audience claims
+
+[25a4d2d](https://github.com/dcache/dcache/commit/25a4d2d51263adb42f8adcb030ad95c36f2eeb48)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.1.13
 
 ### frontend

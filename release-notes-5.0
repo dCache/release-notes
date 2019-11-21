@@ -78,6 +78,44 @@ This release breaks compatibility with pools running dcache version 3.2 or earli
 We thank HTW Berlin students Marcel Munce, Ferdinand Wolff and MaKrHTW (???) as well
 as Onno Zweers from surfSARA for their contributions.
 
+## Release 5.0.25
+
+### pool
+
+Pool health-check log messages now include the pool's name.
+
+### webdav
+
+On an unsuccessful HTTP-TPC pull request, dCache will delete the file.
+If  this deletion did not work then an error was  logged. This is fixed now and 
+failures to delete the incomplete file from a failed HTTP-TPC pull
+request, where the incomplete file has been deleted by some other means
+are now logged at DEBUG level, rather than WARN level.
+
+### xrootd
+
+The current release refited checksum handling after xrootd4j bug fix. 
+
+
+### Changelog 5.0.24..5.0.25
+
+<!-- git log 5.0.24..5.0.25 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[bc977bd](https://github.com/dcache/dcache/commit/bc977bda3994d3a99fe080c5cbfaff23b2358480)
+:   [maven-release-plugin] prepare release 5.0.25
+
+[0ab2c68](https://github.com/dcache/dcache/commit/0ab2c68417e6960b4968334e1caa4564941f631e)
+:   dcache-xrootd: refit checksum handling after xrootd4j bug fix
+
+[3cedbaa](https://github.com/dcache/dcache/commit/3cedbaa7e8499b72e4e88d0aa67ccfcd829cf7a9)
+:   webdav: avoid logging non-error as an error
+
+[659b63f](https://github.com/dcache/dcache/commit/659b63f1eb6c094c24b8478f29ae60f79d68782e)
+:   pool: include pool name in health-check reports
+
+[3cf1302](https://github.com/dcache/dcache/commit/3cf1302eee61d1253f6b802f2883ee07b480f4b0)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.0.24
 
 ### frontend

@@ -91,6 +91,44 @@ updates, pools may remain at 4.1 during that update.
 The dCache team thanks Christoph Anton Mitterer, Martin Johnki, Onno Zweers and Johannes Thurn
 for their pull requests and contributions.
 
+## Release 4.2.46
+
+### pool
+
+Pool health-check log messages now include the pool's name.
+
+### webdav
+
+On an unsuccessful HTTP-TPC pull request, dCache will delete the file.
+If  this deletion did not work then an error was  logged. This is fixed now and 
+failures to delete the incomplete file from a failed HTTP-TPC pull
+request, where the incomplete file has been deleted by some other means
+are now logged at DEBUG level, rather than WARN level.
+
+### xrootd
+
+The current release refited checksum handling after xrootd4j bug fix. 
+
+
+### Changelog 4.2.45..4.2.46
+
+<!-- git log 4.2.45..4.2.46 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[9cc8d6d](https://github.com/dcache/dcache/commit/9cc8d6d154cb73f97988e2f8b56f2dad37f5f422)
+:   [maven-release-plugin] prepare release 4.2.46
+
+[a92589d](https://github.com/dcache/dcache/commit/a92589d2c70521280d0c063f38ca77bf85079700)
+:   dcache-xrootd: refit checksum handling after xrootd4j bug fix
+
+[5349dd5](https://github.com/dcache/dcache/commit/5349dd5249ee4c52dc9d116b5170252b8e68a3de)
+:   webdav: avoid logging non-error as an error
+
+[c1cb9fd](https://github.com/dcache/dcache/commit/c1cb9fda1db336a942606582f5fdb7196564e438)
+:   pool: include pool name in health-check reports
+
+[3488666](https://github.com/dcache/dcache/commit/3488666bc59798ef03317a89bba2fb662a6ddc04)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.2.45
 
 ### frontend

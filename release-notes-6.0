@@ -83,6 +83,64 @@ We would like to thank HTW-Berlin students David Linke, Lilit Patzwaldt-Sergoyan
 Quentin Kuth, Sophie Schauer, Viktoriia Sulimenko, Vladimir Vilenchik, Johann Gillhoff and Dieter
 Weber from FZ-Jülich for their contributions.
 
+## Release 6.0.3
+
+### dcache
+
+
+The current release restored  pool compatibility with doors sending `Xrootd-2` protocol version.
+
+### gplazma
+
+The SciToken gplazma plugin now supports the audience (`aud`) claim
+where the claim's value is an array. This allows dCache to support
+SciTokens with multiple audience values.
+
+### pool
+
+Pool health-check log messages now include the pool's name.
+
+### webdav
+
+On an unsuccessful HTTP-TPC pull request, dCache will delete the file.
+If  this deletion did not work then an error was  logged. This is fixed now and 
+failures to delete the incomplete file from a failed HTTP-TPC pull
+request, where the incomplete file has been deleted by some other means
+are now logged at DEBUG level, rather than WARN level.
+
+### xrootd
+
+The current release refited checksum handling after xrootd4j bug fix. 
+
+
+### Changelog 6.0.2..6.0.3
+
+<!-- git log 6.0.2..6.0.3 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[54b4cd2](https://github.com/dcache/dcache/commit/54b4cd2d3caaace732609bad7241c83bc05e6db3)
+:   [maven-release-plugin] prepare release 6.0.3
+
+[7077373](https://github.com/dcache/dcache/commit/70773732ad3cddbe4f04db16184de1e47612cac9)
+:   dcache-xrootd: refit checksum handling after xrootd4j bug fix
+
+[3c80a39](https://github.com/dcache/dcache/commit/3c80a39b03844db97a41569a380276f1313f4b7a)
+:   webdav: avoid logging non-error as an error
+
+[6626085](https://github.com/dcache/dcache/commit/662608582a2d52f568d2bc5c85e420e0ba185aeb)
+:   pool: include pool name in health-check reports
+
+[b53e33f](https://github.com/dcache/dcache/commit/b53e33fa9e8cbe202f4980fa7f6bb48ba74a5a6a)
+:   gplazma: scitoken add support for multiple audience claims
+
+[764eeaa](https://github.com/dcache/dcache/commit/764eeaaae5dca444167afaa78cbda858e554359d)
+:   build(deps): bump jackson-databind from 2.9.10 to 2.9.10.1
+
+[2b65eb8](https://github.com/dcache/dcache/commit/2b65eb80c429f3e5733c05b04c06a4c97c360a71)
+:   dcache: restore pool compatibility with doors sending 'Xrootd-2' protocol version
+
+[d2ef379](https://github.com/dcache/dcache/commit/d2ef37912d3888b98542441aec5b344a626cc71d)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.0.2
 
 ### frontend

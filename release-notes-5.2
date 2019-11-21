@@ -89,6 +89,64 @@ transfers.
 We gratefully acknowledge code and documentation contributions from Christoph Anton Mitterer and Onno Zweers.
 
 
+## Release 5.2.9
+
+### dcache
+
+
+The current release restored  pool compatibility with doors sending `Xrootd-2` protocol version.
+
+### gplazma
+
+The SciToken gplazma plugin now supports the audience (`aud`) claim
+where the claim's value is an array. This allows dCache to support
+SciTokens with multiple audience values.
+
+### pool
+
+Pool health-check log messages now include the pool's name.
+
+### webdav
+
+On an unsuccessful HTTP-TPC pull request, dCache will delete the file.
+If  this deletion did not work then an error was  logged. This is fixed now and 
+failures to delete the incomplete file from a failed HTTP-TPC pull
+request, where the incomplete file has been deleted by some other means
+are now logged at DEBUG level, rather than WARN level.
+
+### xrootd
+
+The current release refited checksum handling after xrootd4j bug fix. 
+
+
+### Changelog 5.2.8..5.2.9
+
+<!-- git log 5.2.8..5.2.9 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[1f8567d](https://github.com/dcache/dcache/commit/1f8567d1b06b56b62267878ea0d6711311884272)
+:   [maven-release-plugin] prepare release 5.2.9
+
+[847222b](https://github.com/dcache/dcache/commit/847222b6e863bc1e431df9751c8220575176a962)
+:   dcache-xrootd: refit checksum handling after xrootd4j bug fix
+
+[5419fda](https://github.com/dcache/dcache/commit/5419fdaada0cdc506ef0c21fa412fcfe12bf3851)
+:   webdav: avoid logging non-error as an error
+
+[ca96e1d](https://github.com/dcache/dcache/commit/ca96e1d5707bf828849e4419a2fbbbe4cd26adf7)
+:   pool: include pool name in health-check reports
+
+[b1f4aa4](https://github.com/dcache/dcache/commit/b1f4aa4c94d94fb4c3b2a2c1acb82e6e9dd61453)
+:   gplazma: scitoken add support for multiple audience claims
+
+[63a2620](https://github.com/dcache/dcache/commit/63a262030612cb1529ae96d07ed714c6396d9a13)
+:   build(deps): bump jackson-databind from 2.9.10 to 2.9.10.1
+
+[e289df7](https://github.com/dcache/dcache/commit/e289df7ce57db337627172f17c6f6db9ba6474ef)
+:   dcache: restore pool compatibility with doors sending 'Xrootd-2' protocol version
+
+[3d64e71](https://github.com/dcache/dcache/commit/3d64e7162d7671d46a5fec10c6fdf5d0ae68bdb9)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.2.8
 
 ### frontend
