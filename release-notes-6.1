@@ -64,7 +64,8 @@ HTML header: <title>dCache 6.1 Release Notes</title>
 
 ## Highlights
 
-(tbd, this section uses markdown formatting)
+- Optional TLS for p2p transfers
+- Zone-aware cell messaging
 
 ## Incompatibilities
 
@@ -77,6 +78,12 @@ HTML header: <title>dCache 6.1 Release Notes</title>
 
 
 ## Release 6.1.0
+
+### Cells
+
+Starting with release 6.1.0 dCache internal massage routing will prefer zone local cells when possible.
+This is benefitial in geo-distributed HA setups, where talking to remote cells may introduce additional
+latency.
 
 ### Admin
 
