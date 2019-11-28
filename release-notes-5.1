@@ -93,6 +93,44 @@ Lea Morschel also provided documentation and code refinements.
 Other contributions originated from a lecture at HTW Berlin; many thanks to Jonas Grabber, "tabea", "Co" and "xpinkyx" for their contributions.
 
 
+## Release 5.1.15
+
+### doors
+
+The current release fixed a bug  where running the `lb set tags` admin command without any
+arguments triggers a NullPointerException.
+
+### pool
+
+The current release improved  error messages about jobs cancellation.
+
+### scripts
+
+The dcache-storage-descriptor command no longer requires a URL argument.
+
+
+### Changelog 5.1.14..5.1.15
+
+<!-- git log 5.1.14..5.1.15 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[06f58c2](https://github.com/dcache/dcache/commit/06f58c262804a8df9d5e06c37af002a073d776f7)
+:   [maven-release-plugin] prepare release 5.1.15
+
+[78a2168](https://github.com/dcache/dcache/commit/78a2168a28e2c66477904087fc99f16bf7914874)
+:   doors: fix "lb set tags" command with no arguments
+
+[8bbfcb0](https://github.com/dcache/dcache/commit/8bbfcb08a1083ca7822a81511e0b4ab7fcd4ee6b)
+:   pool: improve messages when migration job is cancelled.
+
+[77f4323](https://github.com/dcache/dcache/commit/77f43235e8830131577169e544931e9407c0822b)
+:   scripts: fix variable ordering in dcache-storage-descriptor
+
+[9944724](https://github.com/dcache/dcache/commit/99447245f12647056811a8b3097cb02bd89c92fc)
+:   docs: TheBook add chapter on SRR
+
+[4432077](https://github.com/dcache/dcache/commit/4432077d66aa2e56db5e8a6023cd758c4a51e578)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.1.14
 
 ### gplazma

@@ -83,6 +83,44 @@ We would like to thank HTW-Berlin students David Linke, Lilit Patzwaldt-Sergoyan
 Quentin Kuth, Sophie Schauer, Viktoriia Sulimenko, Vladimir Vilenchik, Johann Gillhoff and Dieter
 Weber from FZ-Jülich for their contributions.
 
+## Release 6.0.4
+
+### doors
+
+The current release fixed a bug  where running the `lb set tags` admin command without any
+arguments triggers a NullPointerException.
+
+### pool
+
+The current release improved  error messages about jobs cancellation.
+
+### scripts
+
+The dcache-storage-descriptor command no longer requires a URL argument.
+
+
+### Changelog 6.0.3..6.0.4
+
+<!-- git log 6.0.3..6.0.4 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[aa0eb9d](https://github.com/dcache/dcache/commit/aa0eb9d717d6deaf3286d50cc7b936f796dab6ac)
+:   [maven-release-plugin] prepare release 6.0.4
+
+[15155fd](https://github.com/dcache/dcache/commit/15155fd50e65d11577ae8ad078bc339032f07464)
+:   doors: fix "lb set tags" command with no arguments
+
+[f8c13bd](https://github.com/dcache/dcache/commit/f8c13bd4a90965e321a41e250f72b08db7cd67da)
+:   pool: improve messages when migration job is cancelled.
+
+[8dd5e4f](https://github.com/dcache/dcache/commit/8dd5e4f563f22d3bf77b0facf5c5a69b10e6aa6a)
+:   scripts: fix variable ordering in dcache-storage-descriptor
+
+[222a151](https://github.com/dcache/dcache/commit/222a151bde530e9214fb3f713ce4f119ce9287ae)
+:   docs: TheBook add chapter on SRR
+
+[7da7ec0](https://github.com/dcache/dcache/commit/7da7ec0304bfe9ec7b128f97d892598aadc3e6c2)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.0.3
 
 ### dcache

@@ -91,6 +91,41 @@ updates, pools may remain at 4.1 during that update.
 The dCache team thanks Christoph Anton Mitterer, Martin Johnki, Onno Zweers and Johannes Thurn
 for their pull requests and contributions.
 
+## Release 4.2.47
+
+### doors
+
+The current release fixed a bug  where running the `lb set tags` admin command without any
+arguments triggers a NullPointerException.
+
+### pool
+
+The current release improved  error messages about jobs cancellation.
+
+### scripts
+
+The dcache-storage-descriptor command no longer requires a URL argument.
+
+
+### Changelog 4.2.46..4.2.47
+
+<!-- git log 4.2.46..4.2.47 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[7540712](https://github.com/dcache/dcache/commit/7540712233f5f7822ad95b09d82d2d38484dc1f3)
+:   [maven-release-plugin] prepare release 4.2.47
+
+[5ce4df2](https://github.com/dcache/dcache/commit/5ce4df29c023e665bff7041f342d0f39aa0082c9)
+:   doors: fix "lb set tags" command with no arguments
+
+[fe169d7](https://github.com/dcache/dcache/commit/fe169d7b360cbfacf7a5a27f66b93060ab07fa87)
+:   pool: improve messages when migration job is cancelled.
+
+[61b8d64](https://github.com/dcache/dcache/commit/61b8d64fcb86fbc40b2be77d0e8235ace09638d9)
+:   scripts: fix variable ordering in dcache-storage-descriptor
+
+[6f2213e](https://github.com/dcache/dcache/commit/6f2213ee9cb6e63eac66afcc4f6a241349ddde1a)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.2.46
 
 ### pool

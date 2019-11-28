@@ -78,6 +78,44 @@ This release breaks compatibility with pools running dcache version 3.2 or earli
 We thank HTW Berlin students Marcel Munce, Ferdinand Wolff and MaKrHTW (???) as well
 as Onno Zweers from surfSARA for their contributions.
 
+## Release 5.0.26
+
+### doors
+
+The current release fixed a bug  where running the `lb set tags` admin command without any
+arguments triggers a NullPointerException.
+
+### pool
+
+The current release improved  error messages about jobs cancellation.
+
+### scripts
+
+The dcache-storage-descriptor command no longer requires a URL argument.
+
+
+### Changelog 5.0.25..5.0.26
+
+<!-- git log 5.0.25..5.0.26 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[e16683b](https://github.com/dcache/dcache/commit/e16683bd22ce997e7a966d8aaf2e0923086ebb18)
+:   [maven-release-plugin] prepare release 5.0.26
+
+[432aa60](https://github.com/dcache/dcache/commit/432aa60f43cfb60cdeac7ed3722100ff3400eda3)
+:   doors: fix "lb set tags" command with no arguments
+
+[2633541](https://github.com/dcache/dcache/commit/26335413dd3add3d49281e1e0ebebe41f167cb94)
+:   pool: improve messages when migration job is cancelled.
+
+[88cce36](https://github.com/dcache/dcache/commit/88cce36f273647b1b917288d35b85e74ddd583ad)
+:   scripts: fix variable ordering in dcache-storage-descriptor
+
+[d164159](https://github.com/dcache/dcache/commit/d16415985e02ce850014cc3ff97556799d7bf3e3)
+:   docs: TheBook add chapter on SRR
+
+[f52ee67](https://github.com/dcache/dcache/commit/f52ee67c44c56c0e071aa2be179592316d4daeb5)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.0.25
 
 ### pool

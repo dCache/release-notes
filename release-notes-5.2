@@ -89,6 +89,44 @@ transfers.
 We gratefully acknowledge code and documentation contributions from Christoph Anton Mitterer and Onno Zweers.
 
 
+## Release 5.2.10
+
+### doors
+
+The current release fixed a bug  where running the `lb set tags` admin command without any
+arguments triggers a NullPointerException.
+
+### pool
+
+The current release improved  error messages about jobs cancellation.
+
+### scripts
+
+The dcache-storage-descriptor command no longer requires a URL argument.
+
+
+### Changelog 5.2.9..5.2.10
+
+<!-- git log 5.2.9..5.2.10 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[d5096b2](https://github.com/dcache/dcache/commit/d5096b2a7ef2410ad35559c554a17c7189a2fa93)
+:   [maven-release-plugin] prepare release 5.2.10
+
+[dabb072](https://github.com/dcache/dcache/commit/dabb072c7259f59030a98ffba9942fd3c0861100)
+:   doors: fix "lb set tags" command with no arguments
+
+[686be7b](https://github.com/dcache/dcache/commit/686be7bae5ca4299631fd3084313888abba46a0e)
+:   pool: improve messages when migration job is cancelled.
+
+[34b50e3](https://github.com/dcache/dcache/commit/34b50e389f0d8a9ab1c1a3aa177830da218db7f0)
+:   scripts: fix variable ordering in dcache-storage-descriptor
+
+[9a71d94](https://github.com/dcache/dcache/commit/9a71d948332104933d3c2ac90db50a84dc945e36)
+:   docs: TheBook add chapter on SRR
+
+[fd4e37d](https://github.com/dcache/dcache/commit/fd4e37d7b08b62f431728bd29afb79beb290a71d)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.2.9
 
 ### dcache
