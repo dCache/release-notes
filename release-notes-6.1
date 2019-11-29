@@ -116,6 +116,14 @@ latency.
 ### PNFS Manager
 
 ### Pool
+Starting from 6.1.0 the pool to pool transfers can be optionaly configured to use TLS. A new propertry
+`pool.enable.encrypted.p2p-transfers` is introduced that accepts three values:
+
+ - NEVER: TLS is never used for p2p transfers
+ - ALWAYS: all p2p transfers aare using TLS
+ - CROSSZONES: TLS is used only when source and dstination pools are in different zones.
+ 
+NOTE, that in the current implementation `CROSSZONES` has the same effect as `ALWAYS`.
 
 ### Pool Manager
 
