@@ -66,6 +66,7 @@ HTML header: <title>dCache 6.1 Release Notes</title>
 
 - Optional TLS for p2p transfers
 - Zone-aware cell messaging
+- New serialization format
 
 ## Incompatibilities
 
@@ -84,6 +85,15 @@ HTML header: <title>dCache 6.1 Release Notes</title>
 Starting with release 6.1.0 dCache internal massage routing will prefer zone local cells when possible.
 This is benefitial in geo-distributed HA setups, where talking to remote cells may introduce additional
 latency.
+
+A new serializer is available in dCache, which improves the speed of internal message passing between cells.
+As this feature has not been tested very extensively and it's possible that sites may experience unforeseen
+behavior, the new serializer have to be explicitlry enaled as:
+ 
+```dcache.broker.channel.msg-payload-serializer = experimental```
+
+NOTE: when divverent cells are not on the same bug-fix release, then dCache will allways wall back to standard
+serialization schema.
 
 ### Admin
 
