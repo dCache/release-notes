@@ -93,6 +93,35 @@ Lea Morschel also provided documentation and code refinements.
 Other contributions originated from a lecture at HTW Berlin; many thanks to Jonas Grabber, "tabea", "Co" and "xpinkyx" for their contributions.
 
 
+## Release 5.1.16
+
+### srm
+
+The current release fixed  a problem resulting in high CPU use in SrmManager if clients are
+attempting to pin a file and PinManager is unavailable.
+
+
+A regression fixed  where SrmManager will reject all QUEUED jobs and
+INPROGRESS BringOnline requests on restart, if there are no SRM doors
+running when SrmManager starts.
+
+
+### Changelog 5.1.15..5.1.16
+
+<!-- git log 5.1.15..5.1.16 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[521fe2e](https://github.com/dcache/dcache/commit/521fe2eb3ad384909127937c33b7e55a4452e303)
+:   [maven-release-plugin] prepare release 5.1.16
+
+[73cc5c4](https://github.com/dcache/dcache/commit/73cc5c48fa37b8f2972a50853265a60b73226ea7)
+:   SrmManager: fix handling of saved requests on start-up
+
+[ca2bd3d](https://github.com/dcache/dcache/commit/ca2bd3df034d5f42ae6786d7544b34f472b9ab27)
+:   SrmManager: avoid spamming if PinManager is down
+
+[a761455](https://github.com/dcache/dcache/commit/a761455175396dff3308f2483541559757676a1b)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.1.15
 
 ### doors

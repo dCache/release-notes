@@ -89,6 +89,35 @@ transfers.
 We gratefully acknowledge code and documentation contributions from Christoph Anton Mitterer and Onno Zweers.
 
 
+## Release 5.2.11
+
+### srm
+
+The current release fixed  a problem resulting in high CPU use in SrmManager if clients are
+attempting to pin a file and PinManager is unavailable.
+
+
+A regression fixed  where SrmManager will reject all QUEUED jobs and
+INPROGRESS BringOnline requests on restart, if there are no SRM doors
+running when SrmManager starts.
+
+
+### Changelog 5.2.10..5.2.11
+
+<!-- git log 5.2.10..5.2.11 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[b0dba87](https://github.com/dcache/dcache/commit/b0dba8765e1527ed6762825bce3c6d01fc619dd1)
+:   [maven-release-plugin] prepare release 5.2.11
+
+[0e57e10](https://github.com/dcache/dcache/commit/0e57e10976d3f8ca886fde4acf92e993b681a637)
+:   SrmManager: fix handling of saved requests on start-up
+
+[009f623](https://github.com/dcache/dcache/commit/009f623677a15350f0126bfcb57b30509bc2da48)
+:   SrmManager: avoid spamming if PinManager is down
+
+[8db6df3](https://github.com/dcache/dcache/commit/8db6df398607d252aa893ff0710f325a744ef8f6)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.2.10
 
 ### doors

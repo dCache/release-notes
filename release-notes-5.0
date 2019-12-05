@@ -78,6 +78,35 @@ This release breaks compatibility with pools running dcache version 3.2 or earli
 We thank HTW Berlin students Marcel Munce, Ferdinand Wolff and MaKrHTW (???) as well
 as Onno Zweers from surfSARA for their contributions.
 
+## Release 5.0.27
+
+### srm
+
+The current release fixed  a problem resulting in high CPU use in SrmManager if clients are
+attempting to pin a file and PinManager is unavailable.
+
+
+A regression fixed  where SrmManager will reject all QUEUED jobs and
+INPROGRESS BringOnline requests on restart, if there are no SRM doors
+running when SrmManager starts.
+
+
+### Changelog 5.0.26..5.0.27
+
+<!-- git log 5.0.26..5.0.27 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[d9098bf](https://github.com/dcache/dcache/commit/d9098bf939dab36d74629f2a9120bb536c8d7898)
+:   [maven-release-plugin] prepare release 5.0.27
+
+[a5f60cc](https://github.com/dcache/dcache/commit/a5f60cc1219a1ac077273f2d2442cdf17da7081c)
+:   SrmManager: fix handling of saved requests on start-up
+
+[158795b](https://github.com/dcache/dcache/commit/158795bc52a0b9b5a21272d2c73feedb29fdc976)
+:   SrmManager: avoid spamming if PinManager is down
+
+[e58343a](https://github.com/dcache/dcache/commit/e58343a8812b6759c2e1879700363a400c299ef3)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.0.26
 
 ### doors

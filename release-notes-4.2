@@ -91,6 +91,35 @@ updates, pools may remain at 4.1 during that update.
 The dCache team thanks Christoph Anton Mitterer, Martin Johnki, Onno Zweers and Johannes Thurn
 for their pull requests and contributions.
 
+## Release 4.2.48
+
+### srm
+
+The current release fixed  a problem resulting in high CPU use in SrmManager if clients are
+attempting to pin a file and PinManager is unavailable.
+
+
+A regression fixed  where SrmManager will reject all QUEUED jobs and
+INPROGRESS BringOnline requests on restart, if there are no SRM doors
+running when SrmManager starts.
+
+
+### Changelog 4.2.47..4.2.48
+
+<!-- git log 4.2.47..4.2.48 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[7af11ca](https://github.com/dcache/dcache/commit/7af11ca57f529368d6460af235bce6a4c4fce7b0)
+:   [maven-release-plugin] prepare release 4.2.48
+
+[9ec9e32](https://github.com/dcache/dcache/commit/9ec9e324e2d1085f71208681b3418e2be445c9a3)
+:   SrmManager: fix handling of saved requests on start-up
+
+[e6b17d6](https://github.com/dcache/dcache/commit/e6b17d6d8c3daa30b9a8223eec4c8759fac623ab)
+:   SrmManager: avoid spamming if PinManager is down
+
+[bce8d98](https://github.com/dcache/dcache/commit/bce8d98be48b5fc326a121dc4e6bedd059f2e729)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.2.47
 
 ### doors

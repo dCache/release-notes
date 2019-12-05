@@ -83,6 +83,42 @@ We would like to thank HTW-Berlin students David Linke, Lilit Patzwaldt-Sergoyan
 Quentin Kuth, Sophie Schauer, Viktoriia Sulimenko, Vladimir Vilenchik, Johann Gillhoff and Dieter
 Weber from FZ-Jülich for their contributions.
 
+## Release 6.0.5
+
+### nfs
+
+The current release fixed  NPE on error path.
+
+### srm
+
+The current release fixed  a problem resulting in high CPU use in SrmManager if clients are
+attempting to pin a file and PinManager is unavailable.
+
+
+A regression fixed  where SrmManager will reject all QUEUED jobs and
+INPROGRESS BringOnline requests on restart, if there are no SRM doors
+running when SrmManager starts.
+
+
+### Changelog 6.0.4..6.0.5
+
+<!-- git log 6.0.4..6.0.5 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[c54a7c5](https://github.com/dcache/dcache/commit/c54a7c591bc414287a9d080d8f80827c36afcaf1)
+:   [maven-release-plugin] prepare release 6.0.5
+
+[cf59f51](https://github.com/dcache/dcache/commit/cf59f51fe2a8ed5b50b99ff8c0ec255cb13237ec)
+:   nfs: avoid NPE on error path
+
+[780de79](https://github.com/dcache/dcache/commit/780de795887cdda8184d47d6a0d686fa583712e4)
+:   SrmManager: fix handling of saved requests on start-up
+
+[eff62ea](https://github.com/dcache/dcache/commit/eff62ea3d7b26909093a9a92558fe1ee022bb472)
+:   SrmManager: avoid spamming if PinManager is down
+
+[e6b3f13](https://github.com/dcache/dcache/commit/e6b3f136f8c1d3e5d6d378ba173720d02444b9db)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.0.4
 
 ### doors
