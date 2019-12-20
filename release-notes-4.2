@@ -91,6 +91,30 @@ updates, pools may remain at 4.1 during that update.
 The dCache team thanks Christoph Anton Mitterer, Martin Johnki, Onno Zweers and Johannes Thurn
 for their pull requests and contributions.
 
+## Release 4.2.49
+
+### webdav
+
+The current release fixed an issue of  transfers through dCacheView when the webdav door is configured with
+empty `webdav.allowed.client.origins` value, which is the default value. 
+
+
+### Changelog 4.2.48..4.2.49
+
+<!-- git log 4.2.48..4.2.49 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[aa442c5](https://github.com/dcache/dcache/commit/aa442c50147e0ee25e2dbaddf1283f80f34ad57f)
+:   [maven-release-plugin] prepare release 4.2.49
+
+[9dc5382](https://github.com/dcache/dcache/commit/9dc538246b6a61be674a70bd72278a08ef4959bf)
+:   dcache: add null check to pool info collector util
+
+[22f99cd](https://github.com/dcache/dcache/commit/22f99cd3479118201add987a50803312a01c72af)
+:   webdav: fix CORS when all clients are allowed to connect
+
+[4973b09](https://github.com/dcache/dcache/commit/4973b09ac418706fec3a059f708d604b293884a4)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 4.2.48
 
 ### srm

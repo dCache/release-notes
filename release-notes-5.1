@@ -93,6 +93,54 @@ Lea Morschel also provided documentation and code refinements.
 Other contributions originated from a lecture at HTW Berlin; many thanks to Jonas Grabber, "tabea", "Co" and "xpinkyx" for their contributions.
 
 
+## Release 5.1.17
+
+### config
+
+A typo in the dcap config file was fixed correcting 
+`dcacp.enable.kafka` to  `dcap.enable.kafka`.
+ 
+### dcache
+
+Pool compatibility with Xrootd-2 and Xrootd-4 versions is now allowed.
+
+### gplazma
+
+The SciToken plugin will now reject any JWT where there is none of the
+expected scopes defined. This allows dCache to support both
+OpenID-Connect and SciTokens.
+
+### webdav
+
+The current release fixed an issue of  transfers through dCacheView when the webdav door is configured with
+empty `webdav.allowed.client.origins` value, which is the default value. 
+
+
+### Changelog 5.1.16..5.1.17
+
+<!-- git log 5.1.16..5.1.17 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[f5e71b8](https://github.com/dcache/dcache/commit/f5e71b8017b0ee20132c457921e2c2c9763eefe5)
+:   [maven-release-plugin] prepare release 5.1.17
+
+[d204071](https://github.com/dcache/dcache/commit/d204071e057df753d78322ba643e6912fa50d8d6)
+:   dcache: add null check to pool info collector util
+
+[1a9be8f](https://github.com/dcache/dcache/commit/1a9be8f84e5cce36c1fb503b10e25310cdc491c4)
+:   config: fix typo in property name
+
+[f27d03d](https://github.com/dcache/dcache/commit/f27d03dec15037cfde23a121067fc3195f79eae1)
+:   gplazma: scitoken fix two issues with SciToken plugin
+
+[dc948d0](https://github.com/dcache/dcache/commit/dc948d0839059c567e2798b91488f08791894bee)
+:   webdav: fix CORS when all clients are allowed to connect
+
+[99e2106](https://github.com/dcache/dcache/commit/99e210651c02cc6227cb7de5b0d30b76938a90ae)
+:   dcache: allow pool compatibility with Xrootd-2 and Xrootd-4 versions
+
+[0b06dfd](https://github.com/dcache/dcache/commit/0b06dfdbf8079831e4af2c1044aa926ec2d6af9c)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.1.16
 
 ### srm

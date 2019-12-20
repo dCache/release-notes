@@ -78,6 +78,45 @@ This release breaks compatibility with pools running dcache version 3.2 or earli
 We thank HTW Berlin students Marcel Munce, Ferdinand Wolff and MaKrHTW (???) as well
 as Onno Zweers from surfSARA for their contributions.
 
+## Release 5.0.28
+
+### config
+
+A typo in the dcap config file was fixed correcting 
+`dcacp.enable.kafka` to  `dcap.enable.kafka`.
+ 
+### dcache
+
+Pool compatibility with Xrootd-2 and Xrootd-4 versions is now allowed.
+
+### webdav
+
+The current release fixed an issue of  transfers through dCacheView when the webdav door is configured with
+empty `webdav.allowed.client.origins` value, which is the default value. 
+
+
+### Changelog 5.0.27..5.0.28
+
+<!-- git log 5.0.27..5.0.28 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[a74929d](https://github.com/dcache/dcache/commit/a74929da44815e3758bb6653f31f0249d9f0f571)
+:   [maven-release-plugin] prepare release 5.0.28
+
+[f96d231](https://github.com/dcache/dcache/commit/f96d231f9c3eed9b90050d062ce615c672e60427)
+:   dcache: add null check to pool info collector util
+
+[7d98792](https://github.com/dcache/dcache/commit/7d98792a726ab1762e3bd0645030b5ec242f923f)
+:   config: fix typo in property name
+
+[f94e80e](https://github.com/dcache/dcache/commit/f94e80e0d146395fae89f1273957b6b726bd9802)
+:   webdav: fix CORS when all clients are allowed to connect
+
+[22a2d63](https://github.com/dcache/dcache/commit/22a2d638938601eb25c71075596a0a8147e21723)
+:   dcache: allow pool compatibility with Xrootd-2 and Xrootd-4 versions
+
+[2cd1b02](https://github.com/dcache/dcache/commit/2cd1b02313677520afdd57a42007c2eaecf0f8fd)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.0.27
 
 ### srm

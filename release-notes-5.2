@@ -89,6 +89,68 @@ transfers.
 We gratefully acknowledge code and documentation contributions from Christoph Anton Mitterer and Onno Zweers.
 
 
+## Release 5.2.12
+
+### chimera
+
+Enstore client, encp, stores information in layer 4 (level_4). It
+was natural to assume that files written directly by encp would have
+NEARLINE/CUSTODIAL AccessLatenct/RetentionPolicy. Although, setting
+of access latency interferes with QoS.
+
+This is fixed no and `encp` does not interfer with file access latency (say if it is specified to
+be ONLINE).
+
+### config
+
+A typo in the dcap config file was fixed correcting 
+`dcacp.enable.kafka` to  `dcap.enable.kafka`.
+ 
+### frontend
+
+The current release fixed a NPE bug  (which is then logged as a stack-trace) that
+is triggered when the reply does not contain a media type. 
+
+### gplazma
+
+The SciToken plugin will now reject any JWT where there is none of the
+expected scopes defined. This allows dCache to support both
+OpenID-Connect and SciTokens.
+
+### webdav
+
+The current release fixed an issue of  transfers through dCacheView when the webdav door is configured with
+empty `webdav.allowed.client.origins` value, which is the default value. 
+
+
+### Changelog 5.2.11..5.2.12
+
+<!-- git log 5.2.11..5.2.12 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[2859046](https://github.com/dcache/dcache/commit/2859046422025b6c7f1642b51bcef08d52ef0509)
+:   [maven-release-plugin] prepare release 5.2.12
+
+[a07b585](https://github.com/dcache/dcache/commit/a07b5854f5fc2a9f11a7f7123c965e0bfaa6566c)
+:   frontend: avoid NPE when request has no media type
+
+[f42f51d](https://github.com/dcache/dcache/commit/f42f51d4e1c48aa58a1070fba49a1e1bb7a4686a)
+:   dcache: add null check to pool info collector util
+
+[289ea51](https://github.com/dcache/dcache/commit/289ea51d5d13c6cb98d5f1e7b1d3acbde384cb6e)
+:   config: fix typo in property name
+
+[a4dc031](https://github.com/dcache/dcache/commit/a4dc03110f173406c350e7b9798104d98ad03ea5)
+:   chimera: do not update access latency on updat/insert in level_4
+
+[2e037c0](https://github.com/dcache/dcache/commit/2e037c09fc84d3329074c0e775bd35ac5ef58cb4)
+:   gplazma: scitoken fix two issues with SciToken plugin
+
+[aeb2c30](https://github.com/dcache/dcache/commit/aeb2c308a2f0807d3a6b8a5df7825abe9eac59ff)
+:   webdav: fix CORS when all clients are allowed to connect
+
+[fb453df](https://github.com/dcache/dcache/commit/fb453df893fe0bc3253677cdf43d3fbb0d7d20e6)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.2.11
 
 ### srm
