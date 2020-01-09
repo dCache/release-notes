@@ -83,6 +83,44 @@ We would like to thank HTW-Berlin students David Linke, Lilit Patzwaldt-Sergoyan
 Quentin Kuth, Sophie Schauer, Viktoriia Sulimenko, Vladimir Vilenchik, Johann Gillhoff and Dieter
 Weber from FZ-Jülich for their contributions.
 
+## Release 6.0.7
+
+### canl
+
+The current release updated lib version to 2.5.1.
+
+### gplazma
+
+The current release fixed URL-prefix SciToken parsing and error handling if JWT contains
+malformed SciToken scopes.
+
+### webdav
+
+When making a cross-origin call to webdav door from e.g.
+the frontend by using dcache-view, this call would be
+blocked if the client want to forward the user certificate.
+This is now fixed.
+
+
+### Changelog 6.0.6..6.0.7
+
+<!-- git log 6.0.6..6.0.7 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[47a3773](https://github.com/dcache/dcache/commit/47a3773dce983811f0c2c964992cf5c18bd22d68)
+:   [maven-release-plugin] prepare release 6.0.7
+
+[b12a440](https://github.com/dcache/dcache/commit/b12a4409cefdd34796fc4607343db0e26f2565ee)
+:   gplazma: scitoken add unit tests and fix SciTokenScope
+
+[a38d286](https://github.com/dcache/dcache/commit/a38d2869ab92e1b453252b41b8530015c6726fce)
+:   webdav : set Access-Control-Allow-Credentials to true
+
+[49c7a2e](https://github.com/dcache/dcache/commit/49c7a2e26538b0d331eee5f313529432fa0425a2)
+:   canl: update to version 2.5.1
+
+[c76d011](https://github.com/dcache/dcache/commit/c76d0114259fab21c828821f663abd9e8ce28b24)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.0.6
 
 ### chimera

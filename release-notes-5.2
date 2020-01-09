@@ -89,6 +89,44 @@ transfers.
 We gratefully acknowledge code and documentation contributions from Christoph Anton Mitterer and Onno Zweers.
 
 
+## Release 5.2.13
+
+### canl
+
+The current release updated lib version to 2.5.1.
+
+### gplazma
+
+The current release fixed URL-prefix SciToken parsing and error handling if JWT contains
+malformed SciToken scopes.
+
+### webdav
+
+When making a cross-origin call to webdav door from e.g.
+the frontend by using dcache-view, this call would be
+blocked if the client want to forward the user certificate.
+This is now fixed.
+
+
+### Changelog 5.2.12..5.2.13
+
+<!-- git log 5.2.12..5.2.13 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[5bcc20e](https://github.com/dcache/dcache/commit/5bcc20e875a1ce1b31102b9e40165f8c139f1adc)
+:   [maven-release-plugin] prepare release 5.2.13
+
+[cb79d64](https://github.com/dcache/dcache/commit/cb79d6470148d90bbd6b07bf94fd3bef73f46a9d)
+:   gplazma: scitoken add unit tests and fix SciTokenScope
+
+[1d0a126](https://github.com/dcache/dcache/commit/1d0a126659cf9e6aa1ad42d2742e69c1ec124367)
+:   webdav : set Access-Control-Allow-Credentials to true
+
+[5713218](https://github.com/dcache/dcache/commit/5713218e0de83cf43117a1fa1ad55f31ffab40a9)
+:   canl: update to version 2.5.1
+
+[6b66cf2](https://github.com/dcache/dcache/commit/6b66cf24a0519fb44dcf8c8a8365789d1a92affc)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.2.12
 
 ### chimera

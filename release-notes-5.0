@@ -78,6 +78,26 @@ This release breaks compatibility with pools running dcache version 3.2 or earli
 We thank HTW Berlin students Marcel Munce, Ferdinand Wolff and MaKrHTW (???) as well
 as Onno Zweers from surfSARA for their contributions.
 
+## Release 5.0.29
+
+### canl
+
+The current release updated lib version to 2.5.1.
+
+
+### Changelog 5.0.28..5.0.29
+
+<!-- git log 5.0.28..5.0.29 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[035e1c5](https://github.com/dcache/dcache/commit/035e1c50e05de5d54b9b83c616cdde122d47f1e2)
+:   [maven-release-plugin] prepare release 5.0.29
+
+[f980837](https://github.com/dcache/dcache/commit/f980837b3ac981f6f42458706f0dfd1272d2aec4)
+:   canl: update to version 2.5.1
+
+[51fb90a](https://github.com/dcache/dcache/commit/51fb90ae690dfd36501ab9c6d54fddae205a2917)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.0.28
 
 ### config
