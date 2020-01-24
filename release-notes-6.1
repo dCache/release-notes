@@ -122,6 +122,13 @@ serialization schema.
 ### Missing Files
 
 ### NFS
+The admin command 'show clients' is updated to accept `address/netmask` or `pattern` as a host argument,
+for example:
+```
+admin > show clients 10.1.1.0/24
+admin > show clients fe80::eef4:bbff:fed2:f9d0
+admin > show clients wn*.dcache.org
+```
 
 ### PNFS Manager
 
