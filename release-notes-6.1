@@ -70,7 +70,11 @@ HTML header: <title>dCache 6.1 Release Notes</title>
 
 ## Incompatibilities
 
-(tbd, this section uses markdown formatting)
+Starting release 6.1 the `BerkeleyDBMetaDataRepository` is the default metadata repository for the pools.
+Sites that was not explitirly specifing `pool.plugins.meta` property have to set the old default value:
+```
+pool.plugins.meta=org.dcache.pool.repository.meta.file.FileMetaDataRepository
+```
 
 ## Acknowledgments
 
@@ -141,6 +145,8 @@ Starting from 6.1.0 the pool to pool transfers can be optionaly configured to us
  - CROSSZONES: TLS is used only when source and dstination pools are in different zones.
  
 NOTE, that in the current implementation `CROSSZONES` has the same effect as `ALWAYS`.
+
+The BerkeleyDBMetaDataRepository is now default format for pools metadata.
 
 ### Pool Manager
 
