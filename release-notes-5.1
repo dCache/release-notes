@@ -93,6 +93,45 @@ Lea Morschel also provided documentation and code refinements.
 Other contributions originated from a lecture at HTW Berlin; many thanks to Jonas Grabber, "tabea", "Co" and "xpinkyx" for their contributions.
 
 
+## Release 5.1.19
+
+### cell
+
+
+Curator client was not able to restore the connection to ZK server after
+network partitioning. The is now fixed.
+
+
+### skel
+
+The current relase fixed tape-reserved size calculation.
+### webdav
+
+The current release fixed, where the WebDAV door failed to follow RFC 4918.
+This make some clients reject dCache WebDAV door as a valid WebDAV
+endpoint.
+
+
+
+### Changelog 5.1.18..5.1.19
+
+<!-- git log 5.1.18..5.1.19 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[44d7c94](https://github.com/dcache/dcache/commit/44d7c94b352df28f3f2514b81e758d8ddd144c34)
+:   [maven-release-plugin] prepare release 5.1.19
+
+[06467af](https://github.com/dcache/dcache/commit/06467afd26189a84360a4a073e6efcfff88432fb)
+:   Fix tape-reserved size calculation
+
+[d940db9](https://github.com/dcache/dcache/commit/d940db90594fc11edd3ef36e4dbd0b225b06423b)
+:   webdav: include DAV header in OPTIONS requests.
+
+[34b2beb](https://github.com/dcache/dcache/commit/34b2bebb53e566025ba1e4a44f4037c15b45b74f)
+:   cells: do not re-define zookeeper watcher
+
+[5f83ba7](https://github.com/dcache/dcache/commit/5f83ba7cef72f417a717f716373ecddba1f0e7bb)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.1.18
 
 ### canl

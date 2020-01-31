@@ -83,6 +83,48 @@ We would like to thank HTW-Berlin students David Linke, Lilit Patzwaldt-Sergoyan
 Quentin Kuth, Sophie Schauer, Viktoriia Sulimenko, Vladimir Vilenchik, Johann Gillhoff and Dieter
 Weber from FZ-Jülich for their contributions.
 
+## Release 6.0.8
+
+### cell
+
+
+Curator client was not able to restore the connection to ZK server after
+network partitioning. The is now fixed.
+
+
+### skel
+
+The current relase fixed tape-reserved size calculation.
+### webdav
+
+The current release fixed, where the WebDAV door failed to follow RFC 4918.
+This make some clients reject dCache WebDAV door as a valid WebDAV
+endpoint.
+
+
+
+### Changelog 6.0.7..6.0.8
+
+<!-- git log 6.0.7..6.0.8 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[c226083](https://github.com/dcache/dcache/commit/c2260837b30b54eae0bb3629e4f8a9d9d7d15748)
+:   [maven-release-plugin] prepare release 6.0.8
+
+[6bf99a6](https://github.com/dcache/dcache/commit/6bf99a6454fdbe8a23f566a9d61d1cad8ab43dec)
+:   Fix tape-reserved size calculation
+
+[cfb0b5d](https://github.com/dcache/dcache/commit/cfb0b5d60a5040c5d1166f8e6c365392111942a4)
+:   webdav: include DAV header in OPTIONS requests.
+
+[df1f7eb](https://github.com/dcache/dcache/commit/df1f7eb11dad90cceedf94f9f2ea6daf231990f8)
+:   cells: do not re-define zookeeper watcher
+
+[eec3431](https://github.com/dcache/dcache/commit/eec3431d475889f2174bd320181431766bdb3b28)
+:   gplazma: multimap support files with multiple primary gids
+
+[eae2717](https://github.com/dcache/dcache/commit/eae271731d5ad839f0c727fb9d1c26682dcbed68)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.0.7
 
 ### canl
