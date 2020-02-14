@@ -83,6 +83,67 @@ We would like to thank HTW-Berlin students David Linke, Lilit Patzwaldt-Sergoyan
 Quentin Kuth, Sophie Schauer, Viktoriia Sulimenko, Vladimir Vilenchik, Johann Gillhoff and Dieter
 Weber from FZ-Jülich for their contributions.
 
+## Release 6.0.9
+
+### dcache-view
+
+dcache-view version 1.6.0 is released, with fixed minor issues and errors.
+
+The new release added  support for server-side-event.
+ Now  cert user are allowed  to perform rename, improved error messages and  increased display time of the notification message is now available.
+
+### dcache-xrootd
+
+Now door does not fail to start if there
+is no voms directory on the host.
+
+### frontend
+
+The current release removed unnecessary login requirement on restores and transfers.
+
+The current release fixed a bug in the frontend if the inotify events are used.
+
+### skel
+
+The current release repaired erroneous batch directives before cell creation.
+
+Now it is fixed and domain is not left in zombie state
+after a fatal error, but restarts,
+as it should.
+
+### srm
+
+Now   host IP is used for comparison when determining if SURL is local.
+
+
+### Changelog 6.0.8..6.0.9
+
+<!-- git log 6.0.8..6.0.9 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[51fa4ed](https://github.com/dcache/dcache/commit/51fa4eddb26feb466c5eaafac5e335760faa951a)
+:   [maven-release-plugin] prepare release 6.0.9
+
+[d09fae7](https://github.com/dcache/dcache/commit/d09fae779aba74a36fe6f38957ef87412f3f74a9)
+:   skel: repair erroneous batch directives before cell creation
+
+[a52cf87](https://github.com/dcache/dcache/commit/a52cf871ebdac6abd92fd26007506260f55bd4d7)
+:   dcache-xrootd: don't initialize delegation provider when there is no gsi module
+
+[42838db](https://github.com/dcache/dcache/commit/42838db6e4018bc0b8102ad99cdebbecd28ed842)
+:   dcache-frontend: remove unnecessary login requirement on restores and transfers
+
+[f68ad94](https://github.com/dcache/dcache/commit/f68ad94aa0be4b76389cfbf5a3af054d2e8bcb6b)
+:   srm: use host IP for comparison when determining if SURL is local
+
+[2a593d9](https://github.com/dcache/dcache/commit/2a593d9bc1ac2f70310f9a6ae57b050e9c20bcf7)
+:   frontend: events inotify fix deadlock
+
+[cdfd8a3](https://github.com/dcache/dcache/commit/cdfd8a33793d779ca075a58dd3a649599159e45e)
+:   dcache, frontend: release dcache-view version 1.6.0
+
+[f46785a](https://github.com/dcache/dcache/commit/f46785a3448816529506b270692b35d2b4a85101)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.0.8
 
 ### cell

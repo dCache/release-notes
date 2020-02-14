@@ -89,6 +89,60 @@ transfers.
 We gratefully acknowledge code and documentation contributions from Christoph Anton Mitterer and Onno Zweers.
 
 
+## Release 5.2.15
+
+### dcache-xrootd
+
+Now door does not fail to start if there
+is no voms directory on the host.
+
+### frontend
+
+The current release removed unnecessary login requirement on restores and transfers.
+
+The current release fixed a bug in the frontend if the inotify events are used.
+
+### skel
+
+The current release repaired erroneous batch directives before cell creation.
+
+Now it is fixed and domain is not left in zombie state
+after a fatal error, but restarts,
+as it should.
+
+### srm
+
+Now   host IP is used for comparison when determining if SURL is local.
+
+
+### Changelog 5.2.14..5.2.15
+
+<!-- git log 5.2.14..5.2.15 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[a178d50](https://github.com/dcache/dcache/commit/a178d50fdb5eb9f14a54810f5e3b2ff7912eb130)
+:   [maven-release-plugin] prepare release 5.2.15
+
+[93f930b](https://github.com/dcache/dcache/commit/93f930b1c00a8915e09ee8113f1050ce30339453)
+:   skel: repair erroneous batch directives before cell creation
+
+[264117c](https://github.com/dcache/dcache/commit/264117c5c910c9c0d9ccd77b0426f5f8945cd196)
+:   dcache-xrootd: don't initialize delegation provider when there is no gsi module
+
+[173c4af](https://github.com/dcache/dcache/commit/173c4af04414a9527eb7ba36c356eb9981b84e67)
+:   dcache-frontend: remove unnecessary login requirement on restores and transfers
+
+[38b27a9](https://github.com/dcache/dcache/commit/38b27a944e171d48afa2cf4766604a4b23cd7f74)
+:   srm: use host IP for comparison when determining if SURL is local
+
+[2296705](https://github.com/dcache/dcache/commit/2296705a5105e8f4b8ce70afea064618852d0a54)
+:   frontend: events inotify fix deadlock
+
+[35fed0c](https://github.com/dcache/dcache/commit/35fed0c6c90da8a26f745663ffad6f1ff35d0d39)
+:   dcache,frontend: release dcache-view version 1.5.6
+
+[9cc78e8](https://github.com/dcache/dcache/commit/9cc78e875da95e97be8b652ba1978b37c4105afb)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.2.14
 
 ### cell

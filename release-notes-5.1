@@ -93,6 +93,52 @@ Lea Morschel also provided documentation and code refinements.
 Other contributions originated from a lecture at HTW Berlin; many thanks to Jonas Grabber, "tabea", "Co" and "xpinkyx" for their contributions.
 
 
+## Release 5.1.20
+
+### frontend
+
+The current release removed unnecessary login requirement on restores and transfers.
+
+The current release fixed a bug in the frontend if the inotify events are used.
+
+### skel
+
+The current release repaired erroneous batch directives before cell creation.
+
+Now it is fixed and domain is not left in zombie state
+after a fatal error, but restarts,
+as it should.
+
+### srm
+
+Now   host IP is used for comparison when determining if SURL is local.
+
+
+### Changelog 5.1.19..5.1.20
+
+<!-- git log 5.1.19..5.1.20 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[462bd7c](https://github.com/dcache/dcache/commit/462bd7cc2427b9d765c44254060ae2b76bbc2884)
+:   [maven-release-plugin] prepare release 5.1.20
+
+[e049838](https://github.com/dcache/dcache/commit/e049838e4bcb5e0114770fa9442be30d7b53dcd4)
+:   skel: repair erroneous batch directives before cell creation
+
+[eb3ec8e](https://github.com/dcache/dcache/commit/eb3ec8e24baa4cd6e0744ed58fa47720611d8826)
+:   dcache-frontend: remove unnecessary login requirement on restores and transfers
+
+[2483270](https://github.com/dcache/dcache/commit/248327062c67e3f4e113d7c65e8bc62d4fd6e218)
+:   srm: use host IP for comparison when determining if SURL is local
+
+[ba8781b](https://github.com/dcache/dcache/commit/ba8781b47987098cb1c61a916244ea15d39dc128)
+:   frontend: events inotify fix deadlock
+
+[156099d](https://github.com/dcache/dcache/commit/156099d1df126f367eb309751b9eedd9231dd7ae)
+:   dcache,frontend: release dcache-view version 1.5.6
+
+[87278e8](https://github.com/dcache/dcache/commit/87278e8b91c3605099c8b38b320b511c693b340a)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.1.19
 
 ### cell
