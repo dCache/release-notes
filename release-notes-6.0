@@ -83,6 +83,26 @@ We would like to thank HTW-Berlin students David Linke, Lilit Patzwaldt-Sergoyan
 Quentin Kuth, Sophie Schauer, Viktoriia Sulimenko, Vladimir Vilenchik, Johann Gillhoff and Dieter
 Weber from FZ-Jülich for their contributions.
 
+## Release 6.0.10
+
+### frontend
+
+The current release fixed rename operation handling and added support for OIDC names and Client-IDs with spaces.
+
+
+### Changelog 6.0.9..6.0.10
+
+<!-- git log 6.0.9..6.0.10 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[bee6677](https://github.com/dcache/dcache/commit/bee6677c5636143da84333c67477c3451277b616)
+:   [maven-release-plugin] prepare release 6.0.10
+
+[6d50111](https://github.com/dcache/dcache/commit/6d50111f7c16065aa1bc1f6605db787d32b35a8c)
+:   dcache, frontend: release dcache-view version 1.6.1
+
+[6d8d0e3](https://github.com/dcache/dcache/commit/6d8d0e32b61b2868255c37ea017b391639fff1ba)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.0.9
 
 ### dcache-view

@@ -78,6 +78,26 @@ This release breaks compatibility with pools running dcache version 3.2 or earli
 We thank HTW Berlin students Marcel Munce, Ferdinand Wolff and MaKrHTW (???) as well
 as Onno Zweers from surfSARA for their contributions.
 
+## Release 5.0.32
+
+### frontend
+
+The current release added  support for OIDC names and Client-IDs with spaces.
+
+
+### Changelog 5.0.31..5.0.32
+
+<!-- git log 5.0.31..5.0.32 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[bd15b47](https://github.com/dcache/dcache/commit/bd15b47a0fd3c8c0f2d75af106e5279f7398e930)
+:   [maven-release-plugin] prepare release 5.0.32
+
+[3a61be3](https://github.com/dcache/dcache/commit/3a61be3c3fbe01098ebbada8dc08eac3a838ed8d)
+:   dcache, frontend: release dcache-view version 1.5.7
+
+[07762f7](https://github.com/dcache/dcache/commit/07762f72d303fa590176559813ce5a567a53958d)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.0.31
 
 ### frontend
