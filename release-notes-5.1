@@ -93,6 +93,62 @@ Lea Morschel also provided documentation and code refinements.
 Other contributions originated from a lecture at HTW Berlin; many thanks to Jonas Grabber, "tabea", "Co" and "xpinkyx" for their contributions.
 
 
+## Release 5.1.22
+
+### frontend
+
+From RESTful admin API, the POST to
+`pools/{name}/usage/mode -d {"rdonly":true}` failed  but `{"rdonly": "true"}` succeeded.
+
+This is fixed now and both boolean and string work.
+
+The current release fixed stack trace in logs.
+
+
+### Changelog 5.1.21..5.1.22
+
+<!-- git log 5.1.21..5.1.22 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[b3747a1](https://github.com/dcache/dcache/commit/b3747a159b9681bc0a2e0b0cfd8f7a8f3ae09a0f)
+:   [maven-release-plugin] prepare release 5.1.22
+
+[3626313](https://github.com/dcache/dcache/commit/3626313250ba1b6413dd42d4ad8297ad0bd37720)
+:   dcache-frontend: allow pool enable/disable to use boolean JSON value
+
+[c7759c4](https://github.com/dcache/dcache/commit/c7759c44ba11ebc03b49175a4b82396e23862f20)
+:   dcache-frontend,history: protect against missing highest bin in histogram data
+
+[c6d1545](https://github.com/dcache/dcache/commit/c6d1545532e8d58f75c57299ac656d96b81abcb2)
+:   [maven-release-plugin] prepare for next development iteration
+
+## Release 5.1.22
+
+### frontend
+
+From RESTful admin API, the POST to
+`pools/{name}/usage/mode -d {"rdonly":true}` failed  but `{"rdonly": "true"}` succeeded.
+
+This is fixed now and both boolean and string work.
+
+The current release fixed stack trace in logs.
+
+
+### Changelog 5.1.21..5.1.22
+
+<!-- git log 5.1.21..5.1.22 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[b3747a1](https://github.com/dcache/dcache/commit/b3747a159b9681bc0a2e0b0cfd8f7a8f3ae09a0f)
+:   [maven-release-plugin] prepare release 5.1.22
+
+[3626313](https://github.com/dcache/dcache/commit/3626313250ba1b6413dd42d4ad8297ad0bd37720)
+:   dcache-frontend: allow pool enable/disable to use boolean JSON value
+
+[c7759c4](https://github.com/dcache/dcache/commit/c7759c44ba11ebc03b49175a4b82396e23862f20)
+:   dcache-frontend,history: protect against missing highest bin in histogram data
+
+[c6d1545](https://github.com/dcache/dcache/commit/c6d1545532e8d58f75c57299ac656d96b81abcb2)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.1.21
 
 ### frontend

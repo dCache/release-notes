@@ -83,6 +83,74 @@ We would like to thank HTW-Berlin students David Linke, Lilit Patzwaldt-Sergoyan
 Quentin Kuth, Sophie Schauer, Viktoriia Sulimenko, Vladimir Vilenchik, Johann Gillhoff and Dieter
 Weber from FZ-Jülich for their contributions.
 
+## Release 6.0.11
+
+### frontend
+
+From RESTful admin API, the POST to
+`pools/{name}/usage/mode -d {"rdonly":true}` failed  but `{"rdonly": "true"}` succeeded.
+
+This is fixed now and both boolean and string work.
+
+The current release fixed a bug where an SSE client that receives many events without the
+connection breaking will eventually exhause all memory in the JVM.
+
+The current release fixed stack trace in logs.
+
+
+### Changelog 6.0.10..6.0.11
+
+<!-- git log 6.0.10..6.0.11 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[672a02e](https://github.com/dcache/dcache/commit/672a02e9201d3b5dd99130cadd25291b8685877b)
+:   [maven-release-plugin] prepare release 6.0.11
+
+[f28c1fe](https://github.com/dcache/dcache/commit/f28c1fe7b6875b80e3bf49bcc45081ecbb8e73de)
+:   dcache-frontend: allow pool enable/disable to use boolean JSON value
+
+[59390f2](https://github.com/dcache/dcache/commit/59390f28121c67183b61a4568d85c48e98d85615)
+:   dcache-frontend,history: protect against missing highest bin in histogram data
+
+[482c1e0](https://github.com/dcache/dcache/commit/482c1e067bc2f320575750b20f657e44435a5dc8)
+:   frontend: fix memory leak in long-running SSE connections
+
+[52d90a3](https://github.com/dcache/dcache/commit/52d90a38ef85eac2b1bf281d72c2d508d08868ba)
+:   [maven-release-plugin] prepare for next development iteration
+
+## Release 6.0.11
+
+### frontend
+
+From RESTful admin API, the POST to
+`pools/{name}/usage/mode -d {"rdonly":true}` failed  but `{"rdonly": "true"}` succeeded.
+
+This is fixed now and both boolean and string work.
+
+The current release fixed a bug where an SSE client that receives many events without the
+connection breaking will eventually exhause all memory in the JVM.
+
+The current release fixed stack trace in logs.
+
+
+### Changelog 6.0.10..6.0.11
+
+<!-- git log 6.0.10..6.0.11 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[672a02e](https://github.com/dcache/dcache/commit/672a02e9201d3b5dd99130cadd25291b8685877b)
+:   [maven-release-plugin] prepare release 6.0.11
+
+[f28c1fe](https://github.com/dcache/dcache/commit/f28c1fe7b6875b80e3bf49bcc45081ecbb8e73de)
+:   dcache-frontend: allow pool enable/disable to use boolean JSON value
+
+[59390f2](https://github.com/dcache/dcache/commit/59390f28121c67183b61a4568d85c48e98d85615)
+:   dcache-frontend,history: protect against missing highest bin in histogram data
+
+[482c1e0](https://github.com/dcache/dcache/commit/482c1e067bc2f320575750b20f657e44435a5dc8)
+:   frontend: fix memory leak in long-running SSE connections
+
+[52d90a3](https://github.com/dcache/dcache/commit/52d90a38ef85eac2b1bf281d72c2d508d08868ba)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.0.10
 
 ### frontend

@@ -89,6 +89,74 @@ transfers.
 We gratefully acknowledge code and documentation contributions from Christoph Anton Mitterer and Onno Zweers.
 
 
+## Release 5.2.17
+
+### frontend
+
+From RESTful admin API, the POST to
+`pools/{name}/usage/mode -d {"rdonly":true}` failed  but `{"rdonly": "true"}` succeeded.
+
+This is fixed now and both boolean and string work.
+
+The current release fixed a bug where an SSE client that receives many events without the
+connection breaking will eventually exhause all memory in the JVM.
+
+The current release fixed stack trace in logs.
+
+
+### Changelog 5.2.16..5.2.17
+
+<!-- git log 5.2.16..5.2.17 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[e7a24a8](https://github.com/dcache/dcache/commit/e7a24a80a4740fd74c8d1a1a4d6db0b86d341fa7)
+:   [maven-release-plugin] prepare release 5.2.17
+
+[f1d3759](https://github.com/dcache/dcache/commit/f1d3759bff8501e5b0d33f5d08a2f42ade47f297)
+:   dcache-frontend: allow pool enable/disable to use boolean JSON value
+
+[fcfe98a](https://github.com/dcache/dcache/commit/fcfe98a33a59e3bc6d1d2b42ff08bf13c9632c65)
+:   dcache-frontend,history: protect against missing highest bin in histogram data
+
+[d80363a](https://github.com/dcache/dcache/commit/d80363a724e068060e04e5dd268d3ce5ecc407be)
+:   frontend: fix memory leak in long-running SSE connections
+
+[35014bb](https://github.com/dcache/dcache/commit/35014bb4ddd14398295a82f4d7a9649363238ee3)
+:   [maven-release-plugin] prepare for next development iteration
+
+## Release 5.2.17
+
+### frontend
+
+From RESTful admin API, the POST to
+`pools/{name}/usage/mode -d {"rdonly":true}` failed  but `{"rdonly": "true"}` succeeded.
+
+This is fixed now and both boolean and string work.
+
+The current release fixed a bug where an SSE client that receives many events without the
+connection breaking will eventually exhause all memory in the JVM.
+
+The current release fixed stack trace in logs.
+
+
+### Changelog 5.2.16..5.2.17
+
+<!-- git log 5.2.16..5.2.17 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[e7a24a8](https://github.com/dcache/dcache/commit/e7a24a80a4740fd74c8d1a1a4d6db0b86d341fa7)
+:   [maven-release-plugin] prepare release 5.2.17
+
+[f1d3759](https://github.com/dcache/dcache/commit/f1d3759bff8501e5b0d33f5d08a2f42ade47f297)
+:   dcache-frontend: allow pool enable/disable to use boolean JSON value
+
+[fcfe98a](https://github.com/dcache/dcache/commit/fcfe98a33a59e3bc6d1d2b42ff08bf13c9632c65)
+:   dcache-frontend,history: protect against missing highest bin in histogram data
+
+[d80363a](https://github.com/dcache/dcache/commit/d80363a724e068060e04e5dd268d3ce5ecc407be)
+:   frontend: fix memory leak in long-running SSE connections
+
+[35014bb](https://github.com/dcache/dcache/commit/35014bb4ddd14398295a82f4d7a9649363238ee3)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.2.16
 
 ### frontend
