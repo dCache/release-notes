@@ -139,14 +139,6 @@ admin > show clients fe80::eef4:bbff:fed2:f9d0
 admin > show clients wn*.dcache.org
 ```
 
-Each NFS door gets an unique identifiert that becomes a part of nfs state ids. This prevents unlikely
-event of nfs mover conflicts. The unique id for each door stored in zookeepr as:
-
-```
-/dcache/nfs/doors/<cell>@<domain>/state-handler-id
-```
-
-
 ### PNFS Manager
 
 ### Pool
