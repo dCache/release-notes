@@ -184,9 +184,7 @@
      <notes-url>release-notes-6.1.shtml</notes-url>
      <version-prefix>6.1.</version-prefix>
 
-   </releases>
-
-      <release version="0" recommended="1">
+        <release version="0" recommended="1">
         <date>16.3.2020</date>
         <package name="Debian package">
           <download-url>_VERSION-1_all.deb</download-url>
@@ -200,7 +198,9 @@
           <download-url>-VERSION.tar.gz</download-url>
           <md5sum>ba3fbeba6c45ce12f4b770185a90a2e7</md5sum>
         </package>
-      </release>
+       </release>
+
+    </releases>
 
       
 
