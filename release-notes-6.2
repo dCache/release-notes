@@ -104,6 +104,13 @@ HTML header: <title>dCache 6.2 Release Notes</title>
 
 ### NFS
 
+Each NFS door gets an unique identifiert that becomes a part of nfs state ids. This prevents unlikely
+event of nfs mover conflicts. The unique id for each door stored in zookeepr as:
+
+```
+/dcache/nfs/doors/<cell>@<domain>/state-handler-id
+```
+
 ### PNFS Manager
 
 ### Pool
