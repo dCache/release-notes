@@ -1115,7 +1115,23 @@
       <notes-url>release-notes-5.0.shtml</notes-url>
       <version-prefix>5.0.</version-prefix>
       
-      <release version="32" recommended="1">
+      <release version="33" recommended="1">
+        <date>16.3.2020</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>42b5e12e7547907a429c5a26368cb437</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>6d0babf91985824332c2c62813532b9a</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>9d0ea3f10694c951c6a817d607f27320</md5sum>
+        </package>
+      </release>
+
+      <release version="32">
         <date>2.3.2020</date>
         <package name="Debian package">
           <download-url>_VERSION-1_all.deb</download-url>

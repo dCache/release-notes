@@ -78,6 +78,35 @@ This release breaks compatibility with pools running dcache version 3.2 or earli
 We thank HTW Berlin students Marcel Munce, Ferdinand Wolff and MaKrHTW (???) as well
 as Onno Zweers from surfSARA for their contributions.
 
+## Release 5.0.33
+
+### frontend
+
+
+From RESTful admin API, the POST to
+`pools/{name}/usage/mode -d {"rdonly":true}` failed  but `{"rdonly": "true"}` succeeded.
+
+This is fixed now and both boolean and string work.
+
+The current release fixed stack trace in logs.
+
+
+### Changelog 5.0.32..5.0.33
+
+<!-- git log 5.0.32..5.0.33 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[7c5f528](https://github.com/dcache/dcache/commit/7c5f5289987ad0468c96465930c89396d97b0b85)
+:   [maven-release-plugin] prepare release 5.0.33
+
+[7d16cda](https://github.com/dcache/dcache/commit/7d16cda225b63c26d5fafd311f8b319e75004804)
+:   dcache-frontend: allow pool enable/disable to use boolean JSON value
+
+[7e5fc48](https://github.com/dcache/dcache/commit/7e5fc483932abc7fc71a3c89194ca9f1f9dc4745)
+:   dcache-frontend,history: protect against missing highest bin in histogram data
+
+[6cb80d6](https://github.com/dcache/dcache/commit/6cb80d64b002c0d8bf456adadcb88c53264e606c)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.0.32
 
 ### dcacheview
