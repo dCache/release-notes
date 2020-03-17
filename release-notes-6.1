@@ -116,11 +116,47 @@ Fixed operation with read-only database cponnections.
 
 ### Frontend
 
+As part of the effort (in progress) to provide enhanced support for QoS,
+the RESTful QoS transition API and implementation has been revisited.
+First, the way QoS was being evaluated (counting all pins) has been 
+corrected by using a QoS owned pin.  Next, in addition to pinning,  
+QoS changes now involve modification of the access latency and  
+retention policy values for the file in the namespace.  The frontend
+notifies PnfsManager of these transitions, and this notification
+then gets relayed to resilience.  Some internal refactoring of 
+the QoS logic out of frontend and into core was also done.
+
+An inefficiency resulting in the double fetch of sweeper data
+from the pools was fixed.  
+
+The restores and transfers admin pages were erroneously requiring 
+user login; this has been eliminated.
+
+For the API enabling and disabling pools, a bug preventing the
+expression of the flag using a boolean rather than a string, e.g.,
+```
+pools/{name}/usage/mode -d {"rdonly":true} 
+```
+rather than
+```
+pools/{name}/usage/mode -d {"rdonly":"true"})
+```
+has been fixed.
+
 ### FTP
 
 ### gplazma
 
 ### History
+
+Some commands available on the frontend for refreshing and adjusting
+the timeout of pool data collection were missing from the history service;
+these have now been made available.
+
+Also addressed were null-pointer issues arising from the arrival of
+incompletely initialized data from the pools; code was refactored to
+make sure composed objects do not have empty fields; also
+added a few extra checks for missing data.
 
 ### Hoppingmanager
 
@@ -141,6 +177,9 @@ admin > show clients wn*.dcache.org
 
 ### PNFS Manager
 
+Notification is now sent when access latency or retention policy changes for a file
+(in order to support the RESTful transition API and management of QoS by resilience).
+
 ### Pool
 Starting from 6.1.0 the pool to pool transfers can be optionaly configured to use TLS. A new propertry
 `pool.enable.encrypted.p2p-transfers` is introduced that accepts three values:
@@ -153,9 +192,33 @@ NOTE, that in the current implementation `CROSSZONES` has the same effect as `AL
 
 The BerkeleyDBMetaDataRepository is now default format for pools metadata.
 
+An efficiency in the processing of sweeper data for frontend histogram display, one 
+which could result in CPU spiking on the pool node, has been fixed via an in-memory
+optimization replacing callouts to the repository store.
+
+The pool transfer service now incorporates both older and newer xrootd version
+numbers for compatibility (2.7, 4).
+
 ### Pool Manager
 
+The network hostname of the pool is now made available to the selection unit
+in order to support the xrootd 'tried' query element; a small fix was also 
+added to restore backward compatibility with older pools that do not so advertise 
+their host name to the pool monitor.
+
+The selection algorithm has been modified to support excluding tried hosts.
+
 ### Resilience
+
+Modifications were made to couple resilience more tightly to QoS transition requests; 
+it can now manage transitions for "resilient" files between tape and disk.  This means that it will 
+make replicas for a NEARLINE file which has become ONLINE, and can cache all replicas for an 
+ONLINE file that has become NEARLINE, provided that a file belongs to a storage unit 
+with a non-null '-required' value.
+
+A small bug (null pointer exception) which could occur if a file staged from tape no longer exists 
+on any pool that is part of a resilient poolgroup has been fixed.   There were also two minor 
+code improvements involving object comparisons.
 
 ### Space Manager
 
@@ -171,7 +234,50 @@ The BerkeleyDBMetaDataRepository is now default format for pools metadata.
 
 ### XRootD
 
+The dCache XrootD door now observes the xrootd protocol 'tried=host1,host2,...' query element.  
+What this means is that if the xrootd client (xrdcp) should decide to retry a failed transaction 
+by returning to the dCache door, the hosts listed as having been previously tried will be used
+to exclude potential pools for the transfer.  Should no other pools be available, dCache
+will behave the same as when a file is unavailable (it will wait indefinitely until the client
+gives up).
+
+Pool and door compatibility based on changed version numbers has now been fixed so that
+older doors will work with newer pools and vice versa.
+
+Error handling (mapping of error types to codes returned to the xrootd client) was
+refined to make it more consistent and conform more closely with the xrootd protocol.
+
+The version number indicated by dCache now should reflect the actual xrootd protocol
+version being used (it was formerly fixed, incorrectly, at 2.7).
+
+The xrootd client is now redirected to the pool using an actual hostname rather than
+IP address, for the sake of compatibility with newer xrootd version which adhere more
+strictly to RFC 5280 (4.2.1.6.  Subject Alternative Name).  This is essential for
+eventual support of TLS.
+
+Two internal changes in advance of future features (TLS, SciTokens) have been
+added:  the door now uses a caching login strategy, similarly to most of the
+other dCache doors; it now also supports authorization handlers which need
+to access login strategies (both of these will be necessary for SciTokens).
+
+A bug in the delegation provider requiring that a VOMS directory be defined even 
+if the GSI module is not being used has been fixed.
+
+A bug preventing read paths from being observed by the list command has been fixed.
+
+A bug preventing  xrdcp -C <checksum type> from returning the correct checksum
+when multiple checksums are defined on the pools has been fixed.
+
+
 ### Zookeeper
+
+### Batch/Startup scripts
+
+The batch scripts for the alarms service and xrootd doors were erroneously configured not to
+exit and restart on fatal errors; if there were unhandled exceptions during startup, these
+two services would simply hang, making detection of their status (e.g., through external 
+monitoring) difficult.  The scripts have been fixed to conform to the exit/restart
+sequence used by all other services.
 
 
 ### Changelog from 6.0.0 to 6.1.0
@@ -190,5 +296,3 @@ In order to run the git log command given above, make sure that
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" type="text/javascript"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
         integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-
-
