@@ -64,6 +64,8 @@ HTML header: <title>dCache 6.2 Release Notes</title>
 
 ## Highlights
 
+ - basis support for extended attributes.
+
 ## Incompatibilities
 
 ## Acknowledgments
@@ -130,6 +132,13 @@ event of nfs mover conflicts. The unique id for each door stored in zookeepr as:
 ### Transfer Manager
 
 ### WebDAV
+Webdav door can pass `xattr.` prefixed url params as extended attributes to pool. For example:
+
+```
+    $ curl --upload-file file.txt \
+        https://localhost:2881/tape/file.txt?xattr.key1=value1&xattr.key2=value2"
+```
+This information will be available to HSM as part of storage info.
 
 ### XRootD
 
