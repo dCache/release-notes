@@ -95,12 +95,12 @@ latency.
 
 A new serializer is available in dCache, which improves the speed of internal message passing between cells.
 As this feature has not been tested very extensively and it's possible that sites may experience unforeseen
-behavior, the new serializer have to be explicitlry enaled as:
+behavior, the new serializer has to be explicitly enabled as:
  
 ```dcache.broker.channel.msg-payload-serializer = experimental```
 
-NOTE: when divverent cells are not on the same bug-fix release, then dCache will allways wall back to standard
-serialization schema.
+NOTE: when different cells are not on the same bug-fix release, then dCache will allways fall back to the standard
+serialization protocol.
 
 ### Admin
 
