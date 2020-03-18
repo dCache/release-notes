@@ -71,7 +71,7 @@ HTML header: <title>dCache 6.1 Release Notes</title>
 ## Incompatibilities
 
 Starting release 6.1 the `BerkeleyDBMetaDataRepository` is the default metadata repository for the pools.
-Sites that was not explitirly specifing `pool.plugins.meta` property have to set the old default value:
+Sites that was not explicitly specifying `pool.plugins.meta` property have to set the old default value:
 ```
 pool.plugins.meta=org.dcache.pool.repository.meta.file.FileMetaDataRepository
 ```
@@ -95,12 +95,12 @@ latency.
 
 A new serializer is available in dCache, which improves the speed of internal message passing between cells.
 As this feature has not been tested very extensively and it's possible that sites may experience unforeseen
-behavior, the new serializer have to be explicitlry enaled as:
+behavior, the new serializer has to be explicitly enabled as:
  
 ```dcache.broker.channel.msg-payload-serializer = experimental```
 
-NOTE: when divverent cells are not on the same bug-fix release, then dCache will allways wall back to standard
-serialization schema.
+NOTE: when different cells are not of the same bug-fix release, then dCache will always fall back to using the standard
+serialization protocol.
 
 ### Admin
 
