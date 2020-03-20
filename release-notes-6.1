@@ -102,17 +102,9 @@ behavior, the new serializer has to be explicitly enabled as:
 NOTE: when different cells are not of the same bug-fix release, then dCache will always fall back to using the standard
 serialization protocol.
 
-### Admin
-
-### Alarms
-
-### Billing
-
 ### Chimera
 Removed unneccesary requests to DB on new file creation.
 Fixed operation with read-only database cponnections.
-
-### DCAP
 
 ### Frontend
 
@@ -143,10 +135,6 @@ pools/{name}/usage/mode -d {"rdonly":"true"})
 ```
 has been fixed.
 
-### FTP
-
-### gplazma
-
 ### History
 
 Some commands available on the frontend for refreshing and adjusting
@@ -157,14 +145,6 @@ Also addressed were null pointer issues arising from the arrival of
 incompletely initialized data from the pools; code was refactored to
 make sure composed objects do not have empty fields; in addition,
 a few extra checks for missing data are now made.
-
-### Hoppingmanager
-
-### httpd
-
-### Info
-
-### Missing Files
 
 ### NFS
 The admin command 'show clients' is updated to accept `address/netmask` or `pattern` as a host argument,
@@ -220,18 +200,6 @@ A small bug (null pointer exception) which could occur if a file staged from tap
 on any pool that is part of a resilient poolgroup has been fixed.   There were also two minor 
 code improvements involving object comparisons.
 
-### Space Manager
-
-### SRM / SRM Manager
-
-### Statistics
-
-### Topo
-
-### Transfer Manager
-
-### WebDAV
-
 ### XRootD
 
 The dCache XrootD door now observes the xrootd protocol 'tried=host1,host2,...' query element.  
@@ -266,9 +234,6 @@ A bug preventing read paths from being observed by the list command has been fix
 
 A bug preventing  xrdcp -C &lt;checksum type&gt; from returning the correct checksum
 when multiple checksums are defined on the pools has been fixed.
-
-
-### Zookeeper
 
 ### Batch/Startup scripts
 
