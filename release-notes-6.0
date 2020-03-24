@@ -83,6 +83,41 @@ We would like to thank HTW-Berlin students David Linke, Lilit Patzwaldt-Sergoyan
 Quentin Kuth, Sophie Schauer, Viktoriia Sulimenko, Vladimir Vilenchik, Johann Gillhoff and Dieter
 Weber from FZ-Jülich for their contributions.
 
+## Release 6.0.12
+
+### dcache
+
+QOS migration policy engine was  raising JVM error when no tape pool found. 
+This is now fixed and the normal behavior is that HTTP error code reported back with `No HSM pool found`.
+ 
+### frontend
+
+The current release improved error responses and they are more specific  now.
+
+The current release fixed the NPE  stack trace arised because the pool
+data could be sent with a default sweeper data
+object. 
+
+
+### Changelog 6.0.11..6.0.12
+
+<!-- git log 6.0.11..6.0.12 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[e685df0](https://github.com/dcache/dcache/commit/e685df02e362afaca66566d1ec5f2a66d9553fa2)
+:   [maven-release-plugin] prepare release 6.0.12
+
+[7b2a4b3](https://github.com/dcache/dcache/commit/7b2a4b375104b1b6aeb8aeab84d9f6af03d7cd7c)
+:   dcache-frontend: make ErrorResponseProvider return the more specific error message
+
+[febb2ee](https://github.com/dcache/dcache/commit/febb2ee64e91404a8b36d006af7c13cc235372ee)
+:   dcache: qos migration policy engine should not raise JVM error when no tape pool foundMotivation:
+
+[8cdca60](https://github.com/dcache/dcache/commit/8cdca60787f391a955ac3295b7776f795f7f943b)
+:   dcache-history,dcache-frontend: guard against unconfigured sweeper histogram
+
+[f879381](https://github.com/dcache/dcache/commit/f8793814f65c1c4c9758cf4ed4a2ef81c8722c6e)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.0.11
 
 ### frontend

@@ -184,7 +184,23 @@
      <notes-url>release-notes-6.1.shtml</notes-url>
      <version-prefix>6.1.</version-prefix>
 
-        <release version="0" recommended="1">
+        <release version="1" recommended="1">
+        <date>24.3.2020</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>e4a5969ee5f8cc42e4664e6369e10e82</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>c479f55c951eeb279ffdfeb2e92e9aef</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>4ff7d61cee538f35106acde2497f17a4</md5sum>
+        </package>
+      </release>
+
+      <release version="0">
         <date>16.3.2020</date>
         <package name="Debian package">
           <download-url>_VERSION-1_all.deb</download-url>
@@ -223,7 +239,23 @@
      <notes-url>release-notes-6.0.shtml</notes-url>
      <version-prefix>6.0.</version-prefix>
     
-     <release version="11" recommended="1">
+     <release version="12" recommended="1">
+        <date>24.3.2020</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>3b0fd6b16a286e42b123b1466b36be07</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>57846baae03b017477f37a6ce96d5e3b</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>832dd192dc4d3387b524befd826d75d5</md5sum>
+        </package>
+      </release>
+
+      <release version="11">
         <date>16.3.2020</date>
         <package name="Debian package">
           <download-url>_VERSION-1_all.deb</download-url>
@@ -437,7 +469,23 @@
      <notes-url>release-notes-5.2.shtml</notes-url>
      <version-prefix>5.2.</version-prefix>
 
-      <release version="17" recommended="1">
+      <release version="18" recommended="1">
+        <date>24.3.2020</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>efe45c680d3af4c8a6c75f3f7422fdbe</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>20f30d6f84a0be858383b118171fdc6d</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>a5c6b94138b199a6c04589fdc79ec03c</md5sum>
+        </package>
+      </release>
+
+      <release version="17">
         <date>16.3.2020</date>
         <package name="Debian package">
           <download-url>_VERSION-1_all.deb</download-url>
@@ -754,7 +802,23 @@
      <notes-url>release-notes-5.1.shtml</notes-url>
      <version-prefix>5.1.</version-prefix>
 
-      <release version="22" recommended="1">
+      <release version="23" recommended="1">
+        <date>24.3.2020</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>6145c930528b302acd502834f45ac8de</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>3bbc68c918120b1776920fdcae1889a0</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>76246f82531b5aaee15ed922317226a0</md5sum>
+        </package>
+      </release>
+
+      <release version="22">
         <date>16.3.2020</date>
         <package name="Debian package">
           <download-url>_VERSION-1_all.deb</download-url>
@@ -1154,7 +1218,23 @@
       <notes-url>release-notes-5.0.shtml</notes-url>
       <version-prefix>5.0.</version-prefix>
       
-      <release version="33" recommended="1">
+      <release version="34" recommended="1">
+        <date>24.3.2020</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>fdbb98faa3022c471715fa9db86da1fd</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>5e81a9cfb5759d6faab504540a235043</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>4f6e1fb64044a05ca493ff4ee8f49848</md5sum>
+        </package>
+      </release>
+
+      <release version="33">
         <date>16.3.2020</date>
         <package name="Debian package">
           <download-url>_VERSION-1_all.deb</download-url>
