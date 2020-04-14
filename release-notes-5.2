@@ -89,6 +89,32 @@ transfers.
 We gratefully acknowledge code and documentation contributions from Christoph Anton Mitterer and Onno Zweers.
 
 
+## Release 5.2.19
+
+### nearline-storage
+
+There were issues  in pool space allocation/de-allocation in conjunction
+to HSM connectivity and handling restore errors resulting in failing stage end up with used space miscalculation:
+`pool_read, fault occurred in repository: Internal repository error. Pool restart required:,
+ cause: java.lang.IllegalArgumentException: Cannot set used space to a negative value`.
+
+This is now fixed and disk copy is removed if restore from HSM failed.
+
+
+
+### Changelog 5.2.18..5.2.19
+
+<!-- git log 5.2.18..5.2.19 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[5cda208](https://github.com/dcache/dcache/commit/5cda20825fbd4f693c672f799d3a23ff9d2e3919)
+:   [maven-release-plugin] prepare release 5.2.19
+
+[8b69757](https://github.com/dcache/dcache/commit/8b69757ff636e55f2226b3b64ade8ad4c9ba0ba9)
+:   nearline-storage: remove disk copy if restore from HSM failed
+
+[45c56be](https://github.com/dcache/dcache/commit/45c56be26f961e1938b6eb9d12d6a0df13107c42)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.2.18
 
 ### dcache

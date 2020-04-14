@@ -85,6 +85,32 @@ pools.
 
 
 
+## Release 6.1.2
+
+### nearline-storage
+
+There were issues  in pool space allocation/de-allocation in conjunction
+to HSM connectivity and handling restore errors resulting in failing stage end up with used space miscalculation:
+`pool_read, fault occurred in repository: Internal repository error. Pool restart required:,
+ cause: java.lang.IllegalArgumentException: Cannot set used space to a negative value`.
+
+This is now fixed and disk copy is removed if restore from HSM failed.
+
+
+
+### Changelog 6.1.1..6.1.2
+
+<!-- git log 6.1.1..6.1.2 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[9d24d15](https://github.com/dcache/dcache/commit/9d24d152b3f7a8e31f67a6847ceec5bb68380917)
+:   [maven-release-plugin] prepare release 6.1.2
+
+[efe932b](https://github.com/dcache/dcache/commit/efe932bcae1f764d0d041111074430bb2f678796)
+:   nearline-storage: remove disk copy if restore from HSM failed
+
+[225cb96](https://github.com/dcache/dcache/commit/225cb9644f0172adf6fdc5f0c8319215f8c2329d)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.1.1
 
 ### dcache
