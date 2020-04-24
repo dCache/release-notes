@@ -85,6 +85,53 @@ pools.
 
 
 
+## Release 6.1.3
+
+### frontend
+
+When frontend is run in a core domain and there is
+no history service reachable, the retry on no route
+to cell ends up spamming the message queues. This is now fixed.
+
+
+### login-broker
+
+The `lb set update` command ignored the provided value and set the
+existing one again. This is now fixed and  `lb update time`s can be modified through admin interface.
+
+### xrootd
+
+The current release fixed compatible level security for sigver. 
+
+The xrootd client has a command-line option, `--path`, which
+tells the server to create missing directories. This option
+is included in two-party copy, but setting it for TPC has
+no effect. TPCs which wish to write to dCache (as destination)
+to a non-existent subdirectory fail. This is now fixed and dCache no longer fails in these cases.
+
+
+### Changelog 6.1.2..6.1.3
+
+<!-- git log 6.1.2..6.1.3 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[00c175b](https://github.com/dcache/dcache/commit/00c175b6bd480deb28d085fbda75159392dee6e4)
+:   [maven-release-plugin] prepare release 6.1.3
+
+[de8e13a](https://github.com/dcache/dcache/commit/de8e13ad617d481035d91fb551f4964215ad841c)
+:   login-broker: fix 'lb set update' command
+
+[db91dfd](https://github.com/dcache/dcache/commit/db91dfdbda690bbc03ee6cebc71649a7666cb929)
+:   dcache-xrootd: always create missing directories on write
+
+[60dd143](https://github.com/dcache/dcache/commit/60dd143bfd9e3e3798a3001c85855a20bfc45c9d)
+:   dcache-xrootd: fix compatible level security for sigver
+
+[5eb7b0d](https://github.com/dcache/dcache/commit/5eb7b0d8ed73c2c53255ae15699343016c8b0b89)
+:   dcache-frontend: remove retry flag on sendAndWait to history service
+
+[e6ca223](https://github.com/dcache/dcache/commit/e6ca223b5d619d395b9ded8730a8e40940dc4945)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.1.2
 
 ### nearline-storage

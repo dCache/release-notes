@@ -78,6 +78,45 @@ This release breaks compatibility with pools running dcache version 3.2 or earli
 We thank HTW Berlin students Marcel Munce, Ferdinand Wolff and MaKrHTW (???) as well
 as Onno Zweers from surfSARA for their contributions.
 
+## Release 5.0.35
+
+### frontend
+
+When frontend is run in a core domain and there is
+no history service reachable, the retry on no route
+to cell ends up spamming the message queues. This is now fixed.
+
+
+### xrootd
+
+The current release fixed compatible level security for sigver. 
+
+The xrootd client has a command-line option, `--path`, which
+tells the server to create missing directories. This option
+is included in two-party copy, but setting it for TPC has
+no effect. TPCs which wish to write to dCache (as destination)
+to a non-existent subdirectory fail. This is now fixed and dCache no longer fails in these cases.
+
+
+### Changelog 5.0.34..5.0.35
+
+<!-- git log 5.0.34..5.0.35 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[ff35a45](https://github.com/dcache/dcache/commit/ff35a45a9261f8d1165030f2210ff5a0c4470206)
+:   [maven-release-plugin] prepare release 5.0.35
+
+[b2221af](https://github.com/dcache/dcache/commit/b2221af01f208746be798016ee9a99f36e8600d9)
+:   dcache-xrootd: always create missing directories on write
+
+[ae0c458](https://github.com/dcache/dcache/commit/ae0c4581b7c022af40b203f6081ac50db4f2bdef)
+:   dcache-xrootd: fix compatible level security for sigver
+
+[58754d4](https://github.com/dcache/dcache/commit/58754d4f6dd2c5b949bbfddcb2948ccaaf691d79)
+:   dcache-frontend: remove retry flag on sendAndWait to history service
+
+[43ce3d1](https://github.com/dcache/dcache/commit/43ce3d10eab6ff318acb781be31cbfecefde6823)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.0.34
 
 ### dcache

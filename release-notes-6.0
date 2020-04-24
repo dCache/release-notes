@@ -83,6 +83,61 @@ We would like to thank HTW-Berlin students David Linke, Lilit Patzwaldt-Sergoyan
 Quentin Kuth, Sophie Schauer, Viktoriia Sulimenko, Vladimir Vilenchik, Johann Gillhoff and Dieter
 Weber from FZ-Jülich for their contributions.
 
+## Release 6.0.14
+
+### frontend
+
+When frontend is run in a core domain and there is
+no history service reachable, the retry on no route
+to cell ends up spamming the message queues. This is now fixed.
+
+
+### login-broker
+
+The `lb set update` command ignored the provided value and set the
+existing one again. This is now fixed and  `lb update time`s can be modified through admin interface.
+
+### nfs
+
+The current release added modifications such as do not wait for mover to shutdown for reads, which was  blocking client and wait until mover is actually stopped. This modification resulted slight performance improvement for IO on small files.
+
+
+### xrootd
+
+The current release fixed compatible level security for sigver. 
+
+The xrootd client has a command-line option, `--path`, which
+tells the server to create missing directories. This option
+is included in two-party copy, but setting it for TPC has
+no effect. TPCs which wish to write to dCache (as destination)
+to a non-existent subdirectory fail. This is now fixed and dCache no longer fails in these cases.
+
+
+### Changelog 6.0.13..6.0.14
+
+<!-- git log 6.0.13..6.0.14 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[cd0a013](https://github.com/dcache/dcache/commit/cd0a013178828551de98cc65ad9dfce351216ac3)
+:   [maven-release-plugin] prepare release 6.0.14
+
+[78c7f22](https://github.com/dcache/dcache/commit/78c7f220bb9691b79b746d26eeea18353117122a)
+:   login-broker: fix 'lb set update' command
+
+[8674d1c](https://github.com/dcache/dcache/commit/8674d1c72c7c80fb6f3ce7c1cc07e977289fc411)
+:   nfs: do not wait for mover to shutdown for reads
+
+[074ef81](https://github.com/dcache/dcache/commit/074ef8175646796a313b20b8607bd4c12c0a2633)
+:   dcache-xrootd: always create missing directories on write
+
+[53e40c4](https://github.com/dcache/dcache/commit/53e40c47af4ca45c98275c92c2515192846c3052)
+:   dcache-xrootd: fix compatible level security for sigver
+
+[c196673](https://github.com/dcache/dcache/commit/c1966736a7c7dc410cb29ce5d63bb6523208097b)
+:   dcache-frontend: remove retry flag on sendAndWait to history service
+
+[7f899f3](https://github.com/dcache/dcache/commit/7f899f30186393810f1b7a36e4d350c9b336a52f)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.0.13
 
 ### nearline-storage
