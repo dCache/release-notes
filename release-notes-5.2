@@ -89,6 +89,62 @@ transfers.
 We gratefully acknowledge code and documentation contributions from Christoph Anton Mitterer and Onno Zweers.
 
 
+## Release 5.2.21
+
+### frontend
+
+
+The unix xrootd tpc security plugin was included in order to
+enable the dCache TPC client to use a dCache pool as source
+when signed hash verification is on. However, this is now fixed  and
+no special configuration necessary for organizations (like Tier 1)
+needing to communicate with EOS.
+
+
+### pool
+
+When making an HTTP third-party copy (HTTP-TPC), dCache no longer sends
+the 'Authorization' HTTP request header in any subsequent request when
+the remote server responds with a redirection.
+
+
+
+The unix xrootd tpc security plugin was included in order to
+enable the dCache TPC client to use a dCache pool as source
+when signed hash verification is on. However, this is now fixed  and
+no special configuration necessary for organizations (like Tier 1)
+needing to communicate with EOS.  
+
+
+
+### Changelog 5.2.20..5.2.21
+
+<!-- git log 5.2.20..5.2.21 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[86cf625](https://github.com/dcache/dcache/commit/86cf6255eb03d115c5aef468073857ecb6ce683f)
+:   [maven-release-plugin] prepare release 5.2.21
+
+[b6f83b6](https://github.com/dcache/dcache/commit/b6f83b65cd971274a58d9742b3a9c500191ed54c)
+:   pool (xrootd): make tpc security plugin default unix
+
+[5931f53](https://github.com/dcache/dcache/commit/5931f5369970a8cbc29025d176b31c995695f24d)
+:   docs: add missing architecture diagram
+
+[2c0713b](https://github.com/dcache/dcache/commit/2c0713b645110b5c55d454f0f499459cc5a6f36c)
+:   frontend: honour door and user root for inotify subscriptions
+
+[f48066b](https://github.com/dcache/dcache/commit/f48066b7c2cd5b560c881bdc572d82ceafcc5be8)
+:   frontend: refactor inotify client-path to dCache-path mapping
+
+[7503540](https://github.com/dcache/dcache/commit/75035403dd1ad1f42fb78a50b3208f4e5146af4a)
+:   frontend: add SelectionContext for event subscription
+
+[d4d4e26](https://github.com/dcache/dcache/commit/d4d4e263eae06bbe7095437928032db28dcdd413)
+:   pool: drop Authorization HTTP header on redirected
+
+[eb1a180](https://github.com/dcache/dcache/commit/eb1a1802da5d06301ffdb5df9b85d63a3f66b158)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.2.20
 
 ### frontend

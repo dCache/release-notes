@@ -83,6 +83,65 @@ We would like to thank HTW-Berlin students David Linke, Lilit Patzwaldt-Sergoyan
 Quentin Kuth, Sophie Schauer, Viktoriia Sulimenko, Vladimir Vilenchik, Johann Gillhoff and Dieter
 Weber from FZ-Jülich for their contributions.
 
+## Release 6.0.15
+
+### frontend
+
+
+The unix xrootd tpc security plugin was included in order to
+enable the dCache TPC client to use a dCache pool as source
+when signed hash verification is on. However, this is now fixed  and
+no special configuration necessary for organizations (like Tier 1)
+needing to communicate with EOS.
+
+
+### pool
+
+When making an HTTP third-party copy (HTTP-TPC), dCache no longer sends
+the 'Authorization' HTTP request header in any subsequent request when
+the remote server responds with a redirection.
+
+
+
+The unix xrootd tpc security plugin was included in order to
+enable the dCache TPC client to use a dCache pool as source
+when signed hash verification is on. However, this is now fixed  and
+no special configuration necessary for organizations (like Tier 1)
+needing to communicate with EOS.  
+
+
+
+### Changelog 6.0.14..6.0.15
+
+<!-- git log 6.0.14..6.0.15 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[ac1c43f](https://github.com/dcache/dcache/commit/ac1c43f5e1094d4183390ec4f3f3ebbc7068911a)
+:   [maven-release-plugin] prepare release 6.0.15
+
+[ee7fbbd](https://github.com/dcache/dcache/commit/ee7fbbd77b1f5f6139a74c1ebc2ae88960d9c846)
+:   pool (xrootd): make tpc security plugin default unix
+
+[9350a99](https://github.com/dcache/dcache/commit/9350a99def516ac2f09617b0041dbcd67b4aca4a)
+:   docs: add missing architecture diagram
+
+[cb96be6](https://github.com/dcache/dcache/commit/cb96be6dd62eae1a5ecbfd51fe16984f29e6813a)
+:   frontend: honour door and user root for inotify subscriptions
+
+[fc2e677](https://github.com/dcache/dcache/commit/fc2e677db3d8f232906b46abaf3c628e43e484fc)
+:   frontend: refactor inotify client-path to dCache-path mapping
+
+[ca8e483](https://github.com/dcache/dcache/commit/ca8e4831214a28107d6e5c55212dc44b74488574)
+:   frontend: add SelectionContext for event subscription
+
+[dd80e6e](https://github.com/dcache/dcache/commit/dd80e6ee5b98dba796b9d0113e9c658ad0989758)
+:   docs: UserGuide fix missing back-tick
+
+[b15426d](https://github.com/dcache/dcache/commit/b15426da052b92b0301cca2f5978c88ab87ee692)
+:   pool: drop Authorization HTTP header on redirected
+
+[c7ceb0a](https://github.com/dcache/dcache/commit/c7ceb0a0691f186a582e598fb63dc80f5107a272)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.0.14
 
 ### frontend

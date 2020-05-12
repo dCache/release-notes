@@ -78,6 +78,31 @@ This release breaks compatibility with pools running dcache version 3.2 or earli
 We thank HTW Berlin students Marcel Munce, Ferdinand Wolff and MaKrHTW (???) as well
 as Onno Zweers from surfSARA for their contributions.
 
+## Release 5.0.36
+
+### pool
+
+The unix xrootd tpc security plugin was included in order to
+enable the dCache TPC client to use a dCache pool as source
+when signed hash verification is on. However, this is now fixed  and
+no special configuration necessary for organizations (like Tier 1)
+needing to communicate with EOS.  
+
+
+
+### Changelog 5.0.35..5.0.36
+
+<!-- git log 5.0.35..5.0.36 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[ebd370f](https://github.com/dcache/dcache/commit/ebd370f65de9f9bd5fafd0de0e80ca2abb4119a9)
+:   [maven-release-plugin] prepare release 5.0.36
+
+[2df3093](https://github.com/dcache/dcache/commit/2df3093461a2c8d3d7b4728c6b768ebdac02c161)
+:   pool (xrootd): make tpc security plugin default unix
+
+[71828df](https://github.com/dcache/dcache/commit/71828df22abbea6aeb9483b5a8ece47923cf2fa7)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.0.35
 
 ### frontend

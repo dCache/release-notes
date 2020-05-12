@@ -85,6 +85,65 @@ pools.
 
 
 
+## Release 6.1.4
+
+### frontend
+
+
+The unix xrootd tpc security plugin was included in order to
+enable the dCache TPC client to use a dCache pool as source
+when signed hash verification is on. However, this is now fixed  and
+no special configuration necessary for organizations (like Tier 1)
+needing to communicate with EOS.
+
+
+### pool
+
+When making an HTTP third-party copy (HTTP-TPC), dCache no longer sends
+the 'Authorization' HTTP request header in any subsequent request when
+the remote server responds with a redirection.
+
+
+
+The unix xrootd tpc security plugin was included in order to
+enable the dCache TPC client to use a dCache pool as source
+when signed hash verification is on. However, this is now fixed  and
+no special configuration necessary for organizations (like Tier 1)
+needing to communicate with EOS.  
+
+
+
+### Changelog 6.1.3..6.1.4
+
+<!-- git log 6.1.3..6.1.4 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[981eb95](https://github.com/dcache/dcache/commit/981eb95553cf3638c46cd26319fa6adcbb7ef280)
+:   [maven-release-plugin] prepare release 6.1.4
+
+[55499a0](https://github.com/dcache/dcache/commit/55499a0df962087716290d9db3b7bad89b406925)
+:   pool (xrootd): make tpc security plugin default unix
+
+[ff320a7](https://github.com/dcache/dcache/commit/ff320a7f787d5f4a410fa3f2ede68ef863829d47)
+:   docs: add missing architecture diagram
+
+[e49bc52](https://github.com/dcache/dcache/commit/e49bc52c1a970358f8dcbe0d858e1f47a3e56adf)
+:   frontend: honour door and user root for inotify subscriptions
+
+[97838fa](https://github.com/dcache/dcache/commit/97838fae4ade584dcf9f9b056e4b06ebe9699281)
+:   frontend: refactor inotify client-path to dCache-path mapping
+
+[28d7d6b](https://github.com/dcache/dcache/commit/28d7d6bbc1efdec1e34ef82ee2e15c06e63d61cc)
+:   frontend: add SelectionContext for event subscription
+
+[16396cf](https://github.com/dcache/dcache/commit/16396cf6ba581d594493b285d5e1a66346684557)
+:   docs: UserGuide fix missing back-tick
+
+[67d57d1](https://github.com/dcache/dcache/commit/67d57d1132d1724dcc7ec9cfdb1c27f56518a5af)
+:   pool: drop Authorization HTTP header on redirected
+
+[4bedd32](https://github.com/dcache/dcache/commit/4bedd328b4559bc9f43de075c039cb4ca9ee62ea)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.1.3
 
 ### frontend
