@@ -64,8 +64,11 @@ HTML header: <title>dCache 6.2 Release Notes</title>
 
 ## Highlights
 
- - basis support for extended attributes.
+ - Improved pool startup time with BerkeleyDB medadata repository 
+ - Basis support for extended attributes.
  - Java 11 runtime required
+ - TLS support for xrootd
+ - SciToken support with xrootd
 
 ## Incompatibilities
 
@@ -125,6 +128,8 @@ event of nfs mover conflicts. The unique id for each door stored in zookeepr as:
 
 ### Pool
 
+Pools that use BerkeleyDBReplicaStore have impoved startp time by reducing the number of stat requests to the underlaying filesystem. 
+
 ### Pool Manager
 
 ### Resilience
@@ -132,6 +137,7 @@ event of nfs mover conflicts. The unique id for each door stored in zookeepr as:
 ### Space Manager
 
 ### SRM / SRM Manager
+Removed `hiden` possibility to generate perfomance HTML reports and plots.
 
 ### Statistics
 
