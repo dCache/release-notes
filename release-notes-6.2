@@ -69,6 +69,7 @@ HTML header: <title>dCache 6.2 Release Notes</title>
  - Java 11 runtime required
  - TLS support for xrootd
  - SciToken support with xrootd
+ - New telemetry service
 
 ## Incompatibilities
 
@@ -83,6 +84,20 @@ HTML header: <title>dCache 6.2 Release Notes</title>
 
 
 ## Release 6.2.0
+
+An optional telememetry service is added to collect dCache sage statistics by dCache.org. The `telemetry`
+cell have to explicitly defined in a layout file as well as enabled:
+
+```
+[telemetryDomain]
+[telemetryDomain/telemetry]
+telemetry.cell.enable=true
+telemetry.instance.site-name=dCache instance on \${host.name}
+telemetry.instance.location.latitude=53.5772
+telemetry.instance.location.longitude=9.8772
+```
+
+The dcache version, online capacity, site name and optional location will be sent to stats.dcache.org collector.
 
 ### Cells
 
@@ -140,6 +155,9 @@ Pools that use BerkeleyDBReplicaStore have impoved startp time by reducing the n
 Removed `hiden` possibility to generate perfomance HTML reports and plots.
 
 ### Statistics
+
+### Telemetry
+An optional telememetry service is added to collect dCache sage statistics by dCache.org.
 
 ### Topo
 
