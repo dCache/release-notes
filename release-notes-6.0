@@ -83,6 +83,28 @@ We would like to thank HTW-Berlin students David Linke, Lilit Patzwaldt-Sergoyan
 Quentin Kuth, Sophie Schauer, Viktoriia Sulimenko, Vladimir Vilenchik, Johann Gillhoff and Dieter
 Weber from FZ-Jülich for their contributions.
 
+## Release 6.0.16
+
+### pool
+
+Pool was loosing capacity when an upload with known size (e.g.,
+HTTP, HTTP-TPC, FTP) fails under certain circumstances. In particular,
+HTTP-TPC was particularly prone to this failure mode. This is now fixed.
+
+
+### Changelog 6.0.15..6.0.16
+
+<!-- git log 6.0.15..6.0.16 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[69a414b](https://github.com/dcache/dcache/commit/69a414b5d518ca5ece07660991acf1c07d7a4b89)
+:   [maven-release-plugin] prepare release 6.0.16
+
+[14d7012](https://github.com/dcache/dcache/commit/14d7012d1230f781c9cb4d90aed8113f879e3e79)
+:   pool: repository account capacity correctly if file channel closed
+
+[6bedeeb](https://github.com/dcache/dcache/commit/6bedeeba445d8387e03ae1c5301fa7bc0da07e4a)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.0.15
 
 ### frontend

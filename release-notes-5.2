@@ -89,6 +89,28 @@ transfers.
 We gratefully acknowledge code and documentation contributions from Christoph Anton Mitterer and Onno Zweers.
 
 
+## Release 5.2.22
+
+### pool
+
+Pool was loosing capacity when an upload with known size (e.g.,
+HTTP, HTTP-TPC, FTP) fails under certain circumstances. In particular,
+HTTP-TPC was particularly prone to this failure mode. This is now fixed.
+
+
+### Changelog 5.2.21..5.2.22
+
+<!-- git log 5.2.21..5.2.22 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[0157190](https://github.com/dcache/dcache/commit/01571900bf183b1fd9372559f2a226be29a7ddaf)
+:   [maven-release-plugin] prepare release 5.2.22
+
+[626080c](https://github.com/dcache/dcache/commit/626080cca79459e8b5aad2619726ad82615c9826)
+:   pool: repository account capacity correctly if file channel closed
+
+[8fad854](https://github.com/dcache/dcache/commit/8fad854091a74a3239cad559f209fade2813dc92)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.2.21
 
 ### frontend

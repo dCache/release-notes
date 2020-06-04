@@ -85,6 +85,52 @@ pools.
 
 
 
+## Release 6.1.5
+
+### pool
+
+Pool was loosing capacity when an upload with known size (e.g.,
+HTTP, HTTP-TPC, FTP) fails under certain circumstances. In particular,
+HTTP-TPC was particularly prone to this failure mode. This is now fixed.
+
+### xrootd
+
+Recently, a  support for the xrootd cgi `tried=,` was introduced  in order to avoid, under
+an xrootd redirect, reasking for a pool that was
+experiencing some IO or disk failure on the node.
+Unfortunately, the xrootd client does not reserve
+this option only for IO or server failures, but
+will use it in case connectivity to the redirected
+endpoint fails. This was happening particularly during
+TLS testing.  
+The current release introduce an option to enable this
+support, which is off by default.
+In the case of activation, the adminstrators
+are urged to make sure that all pools and doors
+that may become a TPC source for an `xroots`
+(TLS) transfer have at least OPTIONAL capability
+for TLS.
+
+
+### Changelog 6.1.4..6.1.5
+
+<!-- git log 6.1.4..6.1.5 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[01521fe](https://github.com/dcache/dcache/commit/01521fe8f9d979ed95eaf44a81e5f366df401972)
+:   [maven-release-plugin] prepare release 6.1.5
+
+[9e17bb0](https://github.com/dcache/dcache/commit/9e17bb09984cd203fdbda5a748b7d8ed219d867a)
+:   pool: repository account capacity correctly if file channel closed
+
+[1f5b1ac](https://github.com/dcache/dcache/commit/1f5b1acb3e17cba3d27b48d98548c871e045867b)
+:   dcache-xrootd: make 'tried'/excluded hosts an optional feature
+
+[df80b16](https://github.com/dcache/dcache/commit/df80b16b64666b99dfdef69c740fa64ebd1d532f)
+:   docs: TheBook update index to include the chapter on Kafka
+
+[d618231](https://github.com/dcache/dcache/commit/d618231ef1f79691703c59dbbe74a406522e5b1f)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.1.4
 
 ### frontend
