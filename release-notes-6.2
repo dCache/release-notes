@@ -139,6 +139,19 @@ event of nfs mover conflicts. The unique id for each door stored in zookeepr as:
 /dcache/nfs/doors/<cell>@<domain>/state-handler-id
 ```
 
+The NFS transfer service was returning to nfs clients a multipath adrress list that contains duplicate entries. This was triggering kernel warnings like:
+
+```
+[Di Apr 23 13:50:01 2019] RPC:   addr 131.169.a.b already in xprt switch
+[Di Apr 23 13:50:01 2019] RPC:   rpc_clnt_test_xprt failed: -98 addr 131.169.a.b not added
+[Di Apr 23 13:50:02 2019] RPC:   addr 131.169.a.c already in xprt switch
+[Di Apr 23 13:50:02 2019] RPC:   rpc_clnt_test_xprt failed: -98 addr 131.169.a.c not added
+[Di Apr 23 13:55:00 2019] RPC:   addr 131.169.a.d already in xprt switch
+[Di Apr 23 13:55:00 2019] RPC:   rpc_clnt_test_xprt failed: -98 addr 131.169.a.d not added
+```
+
+This is fixed now.
+
 ### PNFS Manager
 
 ### Pool
