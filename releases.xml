@@ -217,7 +217,7 @@
         </package>
       </release-->
 
-      <release version="4">
+      <release version="4" recommended="1">
         <date>12.5.2020</date>
         <package name="Debian package">
           <download-url>_VERSION-1_all.deb</download-url>
@@ -323,7 +323,7 @@
      <notes-url>release-notes-6.0.shtml</notes-url>
      <version-prefix>6.0.</version-prefix>
 
-     <release version="16" recommended="1">
+     <!--release version="16" recommended="1">
         <date>4.6.2020</date>
         <package name="Debian package">
           <download-url>_VERSION-1_all.deb</download-url>
@@ -337,9 +337,9 @@
           <download-url>-VERSION.tar.gz</download-url>
           <md5sum>b8ed953469b7c4f95fae25f17755f35c</md5sum>
         </package>
-      </release>
+      </release-->
 
-      <release version="15">
+      <release version="15" recommended="1">
         <date>12.5.2020</date>
         <package name="Debian package">
           <download-url>_VERSION-1_all.deb</download-url>
@@ -617,7 +617,7 @@
      <notes-url>release-notes-5.2.shtml</notes-url>
      <version-prefix>5.2.</version-prefix>
 
-      <release version="22" recommended="1">
+      <!--release version="22" recommended="1">
         <date>4.6.2020</date>
         <package name="Debian package">
           <download-url>_VERSION-1_all.deb</download-url>
@@ -631,9 +631,9 @@
           <download-url>-VERSION.tar.gz</download-url>
           <md5sum>3f9f7e9e0a5a15f6e441265bf9620db8</md5sum>
         </package>
-      </release>
+      </release-->
 
-      <release version="21">
+      <release version="21" recommended="1">
         <date>12.5.2020</date>
         <package name="Debian package">
           <download-url>_VERSION-1_all.deb</download-url>
