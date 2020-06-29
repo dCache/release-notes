@@ -70,6 +70,7 @@ HTML header: <title>dCache 6.2 Release Notes</title>
  - TLS support for xrootd
  - SciToken support with xrootd
  - New telemetry service
+ - running dcache domains as systemd services for RPM based distros
 
 ## Incompatibilities
 
@@ -97,6 +98,9 @@ telemetry.instance.site-name=dCache instance on \${host.name}
 telemetry.instance.location.latitude=53.5772
 telemetry.instance.location.longitude=9.8772
 ```
+
+Starting from version 2.2.0 dcache domain processes can be mnaged as systemd services. However, this functionality was available for debian-based systems only. With version 6.2.0 systemd integration is added into RPM packages as wel. As RHEL-6 based systems the legacy,
+sysV-like daemon still available. Please check the [documentation](https://github.com/dCache/dcache/blob/master/docs/TheBook/src/main/markdown/install.md#using-systemd-service) for furder information.
 
 The dcache version, online capacity, site name and optional location will be sent to stats.dcache.org collector.
 
