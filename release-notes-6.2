@@ -65,17 +65,17 @@ HTML header: <title>dCache 6.2 Release Notes</title>
 ## Highlights
 
  - Improved pool startup time with BerkeleyDB medadata repository 
- - Basis support for extended attributes.
+ - Basis support for extended attributes
  - Java 11 runtime required
  - TLS support for xrootd
- - SciToken support with xrootd
+ - SciToken support with XRootD
  - New telemetry service
- - running dcache domains as systemd services for RPM based distros
+ - Running dcache domains as systemd services for RPM based distros
 
 ## Incompatibilities
 
  - Minimal PostgreSQL version is 9.5
- - Now on dCache requires Java 11 for runtime
+ - From now on dCache requires Java 11 for runtime
  - dCache now requires ZooKeeper version 3.5
  - Dropped compatibiity with EGEE rpms 
 
@@ -87,8 +87,8 @@ HTML header: <title>dCache 6.2 Release Notes</title>
 
 ## Release 6.2.0
 
-An optional telememetry service is added to collect dCache sage statistics by dCache.org. The `telemetry`
-cell have to explicitly defined in a layout file as well as enabled:
+An optional telememetry service is added to collect dCache statistics by dCache.org. The `telemetry`
+cell has to be explicitly defined in a layout file as well as enabled:
 
 ```
 [telemetryDomain]
@@ -99,10 +99,10 @@ telemetry.instance.location.latitude=53.5772
 telemetry.instance.location.longitude=9.8772
 ```
 
-Starting from version 2.2.0 dcache domain processes can be mnaged as systemd services. However, this functionality was available for debian-based systems only. With version 6.2.0 systemd integration is added into RPM packages as wel. As RHEL-6 based systems the legacy,
-sysV-like daemon still available. Please check the [documentation](https://github.com/dCache/dcache/blob/master/docs/TheBook/src/main/markdown/install.md#using-systemd-service) for furder information.
+The dcache version, online capacity, site name and optional location will be sent to the stats.dcache.org collector.
 
-The dcache version, online capacity, site name and optional location will be sent to stats.dcache.org collector.
+Starting from version 2.2.0 dcache domain processes can be managed as systemd services. However, this functionality was available for debian-based systems only. With version 6.2.0 systemd integration is added into RPM packages as wel. As RHEL-6 based systems the legacy,
+the sysV-like daemon is still available. Please check the [documentation](https://github.com/dCache/dcache/blob/master/docs/TheBook/src/main/markdown/install.md#using-systemd-service) for further information.
 
 ### Cells
 
@@ -114,7 +114,7 @@ The dcache version, online capacity, site name and optional location will be sen
 
 ### Chimera
 
-The minimal PosgreSQL version is changes to 9.5.
+The minimal PosgreSQL version is changed to 9.5.
 A new table `t_xattr (inumber, key, value)` is introduced to store user defined extended attributes. 
 
 ### DCAP
@@ -138,13 +138,13 @@ A new table `t_xattr (inumber, key, value)` is introduced to store user defined 
 ### NFS
 
 Each NFS door gets an unique identifiert that becomes a part of nfs state ids. This prevents unlikely
-event of nfs mover conflicts. The unique id for each door stored in zookeepr as:
+event of nfs mover conflicts. The unique id for each door is stored in zookeeper as:
 
 ```
 /dcache/nfs/doors/<cell>@<domain>/state-handler-id
 ```
 
-The NFS transfer service was returning to nfs clients a multipath adrress list that contains duplicate entries. This was triggering kernel warnings like:
+The NFS transfer service was returning a multipath address list to nfs clients that contains duplicate entries. This was triggering kernel warnings like:
 
 ```
 [Di Apr 23 13:50:01 2019] RPC:   addr 131.169.a.b already in xprt switch
@@ -157,13 +157,13 @@ The NFS transfer service was returning to nfs clients a multipath adrress list t
 
 This is fixed now.
 
-The discovery of NFS4 domain, which is used by idmapper, made more robust against invalid configurations of dns resolver.
+The discovery of an NFS4 domain, which is used by idmapper, is made more robust against invalid configurations of the dns resolver.
 
 ### PNFS Manager
 
 ### Pool
 
-Pools that use BerkeleyDBReplicaStore have impoved startp time by reducing the number of stat requests to the underlaying filesystem. 
+Pools that use BerkeleyDBReplicaStore have impoved startup time by reducing the number of stat requests to the underlying filesystem. 
 
 ### Pool Manager
 
@@ -172,25 +172,25 @@ Pools that use BerkeleyDBReplicaStore have impoved startp time by reducing the n
 ### Space Manager
 
 ### SRM / SRM Manager
-Removed `hiden` possibility to generate perfomance HTML reports and plots.
+Removed `hidden` possibility to generate perfomance HTML reports and plots.
 
 ### Statistics
 
 ### Telemetry
-An optional telememetry service is added to collect dCache sage statistics by dCache.org.
+An optional telememetry service is added to collect dCache statistics by dCache.org.
 
 ### Topo
 
 ### Transfer Manager
 
 ### WebDAV
-Webdav door can pass `xattr.` prefixed url params as extended attributes to pool. For example:
+A Webdav door can pass `xattr.` prefixed url params as extended attributes to a pool. For example:
 
 ```
     $ curl --upload-file file.txt \
         https://localhost:2881/tape/file.txt?xattr.key1=value1&xattr.key2=value2"
 ```
-This information will be available to HSM as part of storage info.
+This information will be available to an HSM as part of the storage info.
 
 ### XRootD
 
