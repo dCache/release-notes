@@ -71,6 +71,7 @@ HTML header: <title>dCache 6.2 Release Notes</title>
  - SciToken support with XRootD
  - New telemetry service
  - Running dcache domains as systemd services for RPM based distros
+ - The Cleaner cell may be run in high availability mode
 
 ## Incompatibilities
 
@@ -197,6 +198,9 @@ This information will be available to an HSM as part of the storage info.
 ### Zookeeper
 
 The ZooKeeper ensemble which is used by dCache is required to be of version 3.5. Version 3.4 will no longer be supported.
+
+### Cleaner
+The Cleaner cell may be run in high availability mode. Several Cleaners negotiate leadership via ZooKeeper and only the leader is active at any point in time. When the leader disappears, a new leader is elected automatically.
 
 ### Changelog from 6.1.0 to 6.2.0
 
