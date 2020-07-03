@@ -78,6 +78,41 @@ This release breaks compatibility with pools running dcache version 3.2 or earli
 We thank HTW Berlin students Marcel Munce, Ferdinand Wolff and MaKrHTW (???) as well
 as Onno Zweers from surfSARA for their contributions.
 
+## Release 5.0.37
+
+### dcache-xrootd
+
+
+
+The version is upgrated to xrootd4j 3.5.7 with lossen username validation, so that
+
+usernames like `foo.1234:56` are no longer rejected.
+
+
+The current release fixed  java.lang.IllegalStateException: ChecksumChannel must not be written to after getChecksums.
+
+TPC client first will be shut down when
+the pool netty channel goes inactive.
+
+
+
+
+### Changelog 5.0.36..5.0.37
+
+<!-- git log 5.0.36..5.0.37 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[c57beae](https://github.com/dcache/dcache/commit/c57beae579c3252159b15ad834e759b926864278)
+:   [maven-release-plugin] prepare release 5.0.37
+
+[43b7357](https://github.com/dcache/dcache/commit/43b7357982cc6eba7836df6b06ab197ece4ab0bc)
+:   dcache-xrootd: bump to xrootd4j 3.4.7
+
+[79c7b05](https://github.com/dcache/dcache/commit/79c7b05a607d51732df979dfb092a01d4d8cd571)
+:   dcache-xrootd: cancel TPC transfer when client disconnects unexpectedly from pool
+
+[ba3e17c](https://github.com/dcache/dcache/commit/ba3e17c1f6491538d3c141e296f23134b6dae225)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.0.36
 
 ### pool

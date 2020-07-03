@@ -85,6 +85,98 @@ pools.
 
 
 
+## Release 6.1.6
+
+### common
+
+dCache no longer logs OIDC access tokens or macaroon.
+
+
+The current release fixed  a bug where SRM complains `enum constant IGTF_LOA_CEDER does not
+exist`.
+
+### dcache
+
+Priviously we have introduced support for the xrootd cgi `tried=,`, which was  an optional feature because this exclusion
+can put access to the file into an indefinitely suspended state for all clients.
+
+The current relase fixed the latter problem and when 'tried' is activated (the only time
+excluded hosts can be non-empty), failure to read the file will not put the
+request container into the SUSPENDED state.
+
+### dcache-xrootd
+
+The version is upgrated to xrootd4j 3.5.7 with lossen username validation, so that
+
+usernames like `foo.1234:56` are no longer rejected. 
+
+
+The current release fixed  java.lang.IllegalStateException: ChecksumChannel must not be written to after getChecksums.
+
+TPC client first will be shut down when
+the pool netty channel goes inactive.
+
+
+
+### pnfsmanager
+
+
+The current release fixed a  NullPointerException when a file is deleted while a directory listing
+is being compiled.
+
+### pool
+
+When a legacy mover is killed by job timeout manager thread interruption
+mechanism is used. As mover thread is taken from a thread pool, the next
+task might see this interrupted state, if not cleared. This state can be
+checked bu other components and trigger false errors: java.lang.InterruptedException THREAD_INTERRUPTED: InterruptedException.
+
+This is now fixed and  pool is not disabled itself after slow running mover is killed by jtm.
+
+
+### Changelog 6.1.5..6.1.6
+
+<!-- git log 6.1.5..6.1.6 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[bad07a9](https://github.com/dcache/dcache/commit/bad07a91293204c73a1eeede19c7e0e095040d26)
+:   [maven-release-plugin] prepare release 6.1.6
+
+[eb80e6c](https://github.com/dcache/dcache/commit/eb80e6c709030a40b32f0e533e497bea5ee9520b)
+:   pnfsmanager: avoid NPE if file is deleted during directory listing
+
+[7def465](https://github.com/dcache/dcache/commit/7def465d4607b1b1a254435af3d1110291d9e725)
+:   common: do not log bearer token values.
+
+[9ee0b74](https://github.com/dcache/dcache/commit/9ee0b7403e18a92dfa7a6ed2c4f27c4e64c15690)
+:   pool: rework interrupt processing in AbstractMoverProtocolTransferService
+
+[efd886b](https://github.com/dcache/dcache/commit/efd886bead5d8501d2ce74d40228fa1ba334d403)
+:   common: fix LoAPrincipal deserialisation
+
+[09545db](https://github.com/dcache/dcache/commit/09545db4d026f9f73b6e71c1f8f6087206878076)
+:   dcache-xrootd: bump to xrootd4j 3.5.7
+
+[68a06d6](https://github.com/dcache/dcache/commit/68a06d6be277d7e4456a4e9551532e6f2379f6ec)
+:   pool: clean interrupted state after mover complete (again)
+
+[a8c34de](https://github.com/dcache/dcache/commit/a8c34deb0a27cefe83bc70a94ab337d125057fd0)
+:   pinmanager: use PoolManagerStub when talking to pool manager
+
+[aec2ba0](https://github.com/dcache/dcache/commit/aec2ba0ba1e829532e30255d6e9f673b6bd99bc7)
+:   dcache (pool manager): override suspend when "excluded" (hosts) is not empty'
+
+[b5a45cc](https://github.com/dcache/dcache/commit/b5a45cc9a08a1afccdf1d6f74ac8705f14400a5e)
+:   pool: clear mover thread's interrupted state before returning to pool
+
+[7071492](https://github.com/dcache/dcache/commit/7071492b8dc3a39e0d481139048a47b17e3c5290)
+:   Wrap the shutDown in try ... catch for InterruptedException.
+
+[d91aa82](https://github.com/dcache/dcache/commit/d91aa82aaf8db52f020b271beb567cc258c6b652)
+:   dcache-xrootd: cancel TPC transfer when client disconnects unexpectedly from pool
+
+[7bab3ea](https://github.com/dcache/dcache/commit/7bab3eabee39d373880b2bd880217bc77fc07ead)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.1.5
 
 ### pool

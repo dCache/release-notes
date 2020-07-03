@@ -93,6 +93,41 @@ Lea Morschel also provided documentation and code refinements.
 Other contributions originated from a lecture at HTW Berlin; many thanks to Jonas Grabber, "tabea", "Co" and "xpinkyx" for their contributions.
 
 
+## Release 5.1.26
+
+### dcache-xrootd
+
+
+
+The version is upgrated to xrootd4j 3.5.7 with lossen username validation, so that
+
+usernames like `foo.1234:56` are no longer rejected.
+
+
+The current release fixed  java.lang.IllegalStateException: ChecksumChannel must not be written to after getChecksums.
+
+TPC client first will be shut down when
+the pool netty channel goes inactive.
+
+
+
+
+### Changelog 5.1.25..5.1.26
+
+<!-- git log 5.1.25..5.1.26 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[2a79d33](https://github.com/dcache/dcache/commit/2a79d338624a26c207f92c1eccd95be1713abe10)
+:   [maven-release-plugin] prepare release 5.1.26
+
+[a107444](https://github.com/dcache/dcache/commit/a107444393ff7495cbf4c70fbdd4af50e5bcbc66)
+:   dcache-xrootd: bump to xrootd4j 3.4.7
+
+[abe0c02](https://github.com/dcache/dcache/commit/abe0c0284ef120610790bf576042eea077632ab7)
+:   dcache-xrootd: cancel TPC transfer when client disconnects unexpectedly from pool
+
+[1fd0d60](https://github.com/dcache/dcache/commit/1fd0d60f9ef2fb0d97aea8dc95d0c16892b7b3fe)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.1.25
 
 ### pool

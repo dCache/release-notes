@@ -83,6 +83,80 @@ We would like to thank HTW-Berlin students David Linke, Lilit Patzwaldt-Sergoyan
 Quentin Kuth, Sophie Schauer, Viktoriia Sulimenko, Vladimir Vilenchik, Johann Gillhoff and Dieter
 Weber from FZ-Jülich for their contributions.
 
+## Release 6.0.17
+
+### common
+
+dCache no longer logs OIDC access tokens or macaroon.
+
+
+### dcache-xrootd
+
+The version is upgrated to xrootd4j 3.5.7 with lossen username validation, so that
+
+usernames like `foo.1234:56` are no longer rejected. 
+
+
+The current release fixed  java.lang.IllegalStateException: ChecksumChannel must not be written to after getChecksums.
+
+TPC client first will be shut down when
+the pool netty channel goes inactive.
+
+
+
+### pnfsmanager
+
+
+The current release fixed a  NullPointerException when a file is deleted while a directory listing
+is being compiled.
+
+### pool
+
+When a legacy mover is killed by job timeout manager thread interruption
+mechanism is used. As mover thread is taken from a thread pool, the next
+task might see this interrupted state, if not cleared. This state can be
+checked bu other components and trigger false errors: java.lang.InterruptedException THREAD_INTERRUPTED: InterruptedException.
+
+This is now fixed and  pool is not disabled itself after slow running mover is killed by jtm.
+
+
+### Changelog 6.0.16..6.0.17
+
+<!-- git log 6.0.16..6.0.17 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[c6d2083](https://github.com/dcache/dcache/commit/c6d20836c947389ae960bd3848a4993989a273cd)
+:   [maven-release-plugin] prepare release 6.0.17
+
+[8fc20e2](https://github.com/dcache/dcache/commit/8fc20e25e8ea859a6ffe0eb59491d8b278fe0bef)
+:   pnfsmanager: avoid NPE if file is deleted during directory listing
+
+[ff57c72](https://github.com/dcache/dcache/commit/ff57c727e7e95c8a0200e2a3d12b1ed4e01ab038)
+:   common: do not log bearer token values.
+
+[f2b406a](https://github.com/dcache/dcache/commit/f2b406a079d92aee2b9d329799cd5275f6692460)
+:   pool: rework interrupt processing in AbstractMoverProtocolTransferService
+
+[a7afcc5](https://github.com/dcache/dcache/commit/a7afcc5dcc51781d975e26f3ed992829e6a3087c)
+:   dcache-xrootd: bump to xrootd4j 3.5.7
+
+[d4e2007](https://github.com/dcache/dcache/commit/d4e2007141e733474f2a6fce015ad5d437fa2b9d)
+:   pool: clean interrupted state after mover complete (again)
+
+[44a2463](https://github.com/dcache/dcache/commit/44a246390534868ac6f33a49c63b66c45d04e8a3)
+:   pinmanager: use PoolManagerStub when talking to pool manager
+
+[751ed1a](https://github.com/dcache/dcache/commit/751ed1a17f347c99ce05825b89e2a40f4ed91bc6)
+:   pool: clear mover thread's interrupted state before returning to pool
+
+[1a437ec](https://github.com/dcache/dcache/commit/1a437ecb1a6223e3035fccd181a840373930787d)
+:   Wrap the client shutdown in try ... catch for InterruptedException.
+
+[28e89f7](https://github.com/dcache/dcache/commit/28e89f7b87b4f89c7faf2d3e23b5549357cae762)
+:   dcache-xrootd: cancel TPC transfer when client disconnects unexpectedly from pool
+
+[1a0de70](https://github.com/dcache/dcache/commit/1a0de70c1e5787ac69e9ad4891596e6282ad29c5)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.0.16
 
 ### pool
