@@ -157,16 +157,7 @@ This is now fixed and  pool is not disabled itself after slow running mover is k
 [1a0de70](https://github.com/dcache/dcache/commit/1a0de70c1e5787ac69e9ad4891596e6282ad29c5)
 :   [maven-release-plugin] prepare for next development iteration
 
-## Release 6.0.16
 
-### pool
-
-Pool was loosing capacity when an upload with known size (e.g.,
-HTTP, HTTP-TPC, FTP) fails under certain circumstances. In particular,
-HTTP-TPC was particularly prone to this failure mode. This is now fixed.
-
-
-### Changelog 6.0.15..6.0.16
 
 <!-- git log 6.0.15..6.0.16 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
 
