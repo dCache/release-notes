@@ -78,7 +78,8 @@ HTML header: <title>dCache 6.2 Release Notes</title>
  - Minimal PostgreSQL version is 9.5
  - From now on dCache requires Java 11 for runtime
  - dCache now requires ZooKeeper version 3.5
- - Dropped compatibiity with EGEE rpms 
+ - The systemd dcache.service replaced by dcache.target
+ - Dropped compatibiity with EGEE rpms
 
 ## Acknowledgments
 
@@ -102,8 +103,8 @@ telemetry.instance.location.longitude=9.8772
 
 The dcache version, online capacity, site name and optional location will be sent to the stats.dcache.org collector.
 
-Starting from version 2.2.0 dcache domain processes can be managed as systemd services. However, this functionality was available for debian-based systems only. With version 6.2.0 systemd integration is added into RPM packages as wel. As RHEL-6 based systems the legacy,
-the sysV-like daemon is still available. Please check the [documentation](https://github.com/dCache/dcache/blob/master/docs/TheBook/src/main/markdown/install.md#using-systemd-service) for further information.
+Starting from version 3.2.0 dcache domain processes can be managed as systemd services. However, this functionality was available for debian-based systems only. With version 6.2.0 systemd integration is added into RPM packages as well. The Debian based installations `must stop dcache.service` manually before installing new package. Please check the [documentation](https://github.com/dCache/dcache/blob/master/docs/TheBook/src/main/markdown/install.md#using-systemd-service) for further information. To support RHEL-6 based systems, the legacy
+sysV-like daemon still available.
 
 ### Cells
 
