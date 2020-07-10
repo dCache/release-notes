@@ -83,6 +83,26 @@ We would like to thank HTW-Berlin students David Linke, Lilit Patzwaldt-Sergoyan
 Quentin Kuth, Sophie Schauer, Viktoriia Sulimenko, Vladimir Vilenchik, Johann Gillhoff and Dieter
 Weber from FZ-Jülich for their contributions.
 
+## Release 6.0.18
+
+### pool
+
+The current release fixed interrupted p2p transfer issue and the pool should not be disabled.
+
+
+### Changelog 6.0.17..6.0.18
+
+<!-- git log 6.0.17..6.0.18 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[332cd57](https://github.com/dcache/dcache/commit/332cd57ed6ffe593de04c3a9b8a4e130a944872c)
+:   [maven-release-plugin] prepare release 6.0.18
+
+[8800539](https://github.com/dcache/dcache/commit/8800539e6ee035fdba5fc04a68366c691d867c72)
+:   pool: rework interrupt processing on p2p
+
+[84cbff4](https://github.com/dcache/dcache/commit/84cbff463cbdff8f42ac52a002c08f0e7ff27eb5)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.0.17
 
 ### common
