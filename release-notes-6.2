@@ -114,6 +114,11 @@ sysV-like daemon still available.
 
 ### Billing
 
+The data from the mover info message and door request message has been combined into a single message 
+when reporting to the kafka server. Kafka receives a request message type with mover info integrated,
+if it exists.  A failed door request or a remove request (which also uses DoorRequestInfoMessage) 
+will simply have a ``null`` mover message field.
+
 ### Chimera
 
 The minimal PosgreSQL version is changed to 9.5.
@@ -198,6 +203,33 @@ A Webdav door can pass `xattr.` prefixed url params as extended attributes to a 
 This information will be available to an HSM as part of the storage info.
 
 ### XRootD
+
+TLS can now be enabled for connections to both door and pool.   Please read the documentation
+in _The Book_ for details (https://dcache.org/old/manuals/Book-6.2/config-xrootd.shtml#tls).  There
+is also further information in the xrootd.properties file.
+
+SciToken support has been added to the xrootd door.  Please read the documentation
+in _The Book_ for details (https://dcache.org/old/manuals/Book-6.2/config-xrootd.shtml, under "SciTokens").
+There is also further information in the xrootd.properties file.
+
+When using TPC with GSI, the option to fall back to generating a proxy from the
+host certificate or to use a proxy provided at a given path instead of a delegated one,
+can cause issues if third-party source endpoints do not have a mapping for the
+proxy DN.  Before 6.2, this fallback was automatic, but with 6.2 it can be controlled
+via the property
+
+```
+    xrootd.gsi.tpc.delegation-only=true
+```
+
+Turn on fallback (set this property to false) only if you are certain all potential
+endpoints will recognize the alternate DN.
+
+As a reminder:  we have also changed the dCache door to behave like the xrootd server
+and create missing directories (see [229210209c]); the default pool plugin has also 
+been changed to ``unix`` (rather than undefined), as this is needed for TPC with dCache 
+and EOS sources (but is otherwise ignored): see [a5482ad5f2]).
+
 
 ### Zookeeper
 
