@@ -83,6 +83,45 @@ We would like to thank HTW-Berlin students David Linke, Lilit Patzwaldt-Sergoyan
 Quentin Kuth, Sophie Schauer, Viktoriia Sulimenko, Vladimir Vilenchik, Johann Gillhoff and Dieter
 Weber from FZ-Jülich for their contributions.
 
+## Release 6.0.19
+
+### cleaner
+
+Database passwords can now be stored in a dedicated file.
+
+
+### pool
+
+Failing HTTP-TPC transfers where the remote party sends a 
+malformed RFC 3230 checksum value are now fixed.
+
+
+### util
+
+The current release fixed pgpass file handling for jdbc URLs with options, like 
+jdbc:postgresql://dbhost:5432/foo?prepareThreshold=3
+
+
+
+### Changelog 6.0.18..6.0.19
+
+<!-- git log 6.0.18..6.0.19 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[db9f98c3be](https://github.com/dcache/dcache/commit/db9f98c3be0be7f29c6ae32520592acdd695b5dd)
+:   [maven-release-plugin] prepare release 6.0.19
+
+[7bed59181a](https://github.com/dcache/dcache/commit/7bed59181a74b62357aad4be16accd239f665782)
+:   pool: do not fail transfer if RFC3230 is badly formed.
+
+[4b9b9a1deb](https://github.com/dcache/dcache/commit/4b9b9a1deb4c8d3fc0b4a7b374c0bbc1006242d9)
+:   util: fix pgpass support for jdbc urls with options
+
+[3109f11ed8](https://github.com/dcache/dcache/commit/3109f11ed87675ce22e04f9a78b3dc9ada397884)
+:   cleaner: add support for db password file
+
+[2d3fd04004](https://github.com/dcache/dcache/commit/2d3fd04004bcc1b8be867c0b54adae98d5e6f1ec)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.0.18
 
 ### pool
