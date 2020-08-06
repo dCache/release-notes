@@ -195,7 +195,6 @@
        <download-url-prefix>repo/6.2/dcache</download-url-prefix>
        <notes-url>release-notes-6.2.shtml</notes-url>
        <version-prefix>6.2.</version-prefix>
-   </releases>
 
       <release version="0" recommended="1">
         <date>6.8.2020</date>
@@ -213,9 +212,10 @@
         </package>
       </release>
 
-      
    <release>
    </release>
+ </releases>
+
 </series>
 
 <series id="server-6.1">
