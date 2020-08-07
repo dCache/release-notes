@@ -87,6 +87,50 @@ HTML header: <title>dCache 6.2 Release Notes</title>
 
 
 
+## Release 6.2.1
+
+### macaroons
+
+Fixed macaroons validation where in case of multiple combined caveats for some of them only the digital signature was checked.
+
+### resilience
+
+If a FileOperation is canceled while its subtask is running a NullPointerException was thrown. This is now fixed.
+
+### rpm
+
+dCache rpm-package requires now Java 11.
+
+### systemd
+
+dCache forces now the use of systemctl on systemd-capable systems.
+
+
+### Changelog 6.2.0..6.2.1
+
+<!-- git log 6.2.0..6.2.1 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[130a5c708a](https://github.com/dcache/dcache/commit/130a5c708a0455b0aee63f2d1a677ac9de461c63)
+:   [maven-release-plugin] prepare release 6.2.1
+
+[61d44927ef](https://github.com/dcache/dcache/commit/61d44927ef728513ef3afce7cc5a24642d466680)
+:   dcache-resilience: avoid NPE in file operation cancel
+
+[916d8c4e04](https://github.com/dcache/dcache/commit/916d8c4e04a6e9173cf0b629b33535c9b8b352bb)
+:   pool: fix issue #5491 NoSuchFileException
+
+[9a2dea5446](https://github.com/dcache/dcache/commit/9a2dea544659aa29537e2c96651acd320341851e)
+:   macaroons: verifyCaveat should return false for unprocessed caveats
+
+[b970c780e8](https://github.com/dcache/dcache/commit/b970c780e848372016e09812d910b975addb4d29)
+:   rpm: make dcache package depend on java-11
+
+[c47ffcf8b9](https://github.com/dcache/dcache/commit/c47ffcf8b96a4d22791205db3f5b4f01539684d8)
+:   systemd: add option to enforce systemd
+
+[fa4f6851fc](https://github.com/dcache/dcache/commit/fa4f6851fc58a30e6bb4fa21fc3d05d8260ca9e0)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.2.0
 
 An optional telememetry service is added to collect dCache statistics by dCache.org. The `telemetry`

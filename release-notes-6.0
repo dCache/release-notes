@@ -83,6 +83,33 @@ We would like to thank HTW-Berlin students David Linke, Lilit Patzwaldt-Sergoyan
 Quentin Kuth, Sophie Schauer, Viktoriia Sulimenko, Vladimir Vilenchik, Johann Gillhoff and Dieter
 Weber from FZ-Jülich for their contributions.
 
+## Release 6.0.20
+
+### macaroons
+
+Fixed macaroons validation where in case of multiple combined caveats for some of them only the digital signature was checked.
+
+### resilience
+
+If a FileOperation is canceled while its subtask is running a NullPointerException was thrown. This is now fixed.
+
+
+### Changelog 6.0.19..6.0.20
+
+<!-- git log 6.0.19..6.0.20 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[0b4e7d1fa6](https://github.com/dcache/dcache/commit/0b4e7d1fa670cf2942a59466d037c51516ef7489)
+:   [maven-release-plugin] prepare release 6.0.20
+
+[eff9c3f075](https://github.com/dcache/dcache/commit/eff9c3f075bc8b63cd0820e0a5dbbdc029853ae7)
+:   dcache-resilience: avoid NPE in file operation cancel
+
+[bc17f5eadd](https://github.com/dcache/dcache/commit/bc17f5eaddcadcb018087944559ef4f535f43b98)
+:   macaroons: verifyCaveat should return false for unprocessed caveats
+
+[a21de12fd3](https://github.com/dcache/dcache/commit/a21de12fd372b2deeffc41de3ec64ccbcfb80dc3)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.0.19
 
 ### cleaner

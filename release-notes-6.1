@@ -85,6 +85,33 @@ pools.
 
 
 
+## Release 6.1.9
+
+### macaroons
+
+Fixed macaroons validation where in case of multiple combined caveats for some of them only the digital signature was checked.
+
+### resilience
+
+If a FileOperation is canceled while its subtask is running a NullPointerException was thrown. This is now fixed.
+
+
+### Changelog 6.1.8..6.1.9
+
+<!-- git log 6.1.8..6.1.9 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[45124a1c28](https://github.com/dcache/dcache/commit/45124a1c28b9a51029e73eb14876f1227a0ad4ae)
+:   [maven-release-plugin] prepare release 6.1.9
+
+[3c2936e497](https://github.com/dcache/dcache/commit/3c2936e4979a7ab609c69bae7d9ef7fab2a532ca)
+:   dcache-resilience: avoid NPE in file operation cancel
+
+[a104e9220a](https://github.com/dcache/dcache/commit/a104e9220ad4ed216609b3f8199e7573b2dbe6a1)
+:   macaroons: verifyCaveat should return false for unprocessed caveats
+
+[432e9508e3](https://github.com/dcache/dcache/commit/432e9508e3114a284a01e3a8fb41ce1da6768bde)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.1.8
 
 ### cleaner
