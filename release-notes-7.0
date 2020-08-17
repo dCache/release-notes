@@ -105,6 +105,34 @@ HTML header: <title>dCache 7.0 Release Notes</title>
 
 ### NFS
 
+With addition of externted attributes support into NFS, some magic dot file can be exposed
+through standard tools. With dCache 7.0.0 the directory tags can be in read-only mode accessed
+with `getfattr` of with `attr` command line tools:
+
+```
+$ getfattr  -L .
+user.dcache.tag.AccessLatency
+user.dcache.tag.OSMTemplate
+user.dcache.tag.RetentionPolicy
+user.dcache.tag.sGroup
+
+$ getfattr -n user.dcache.tag.OSMTemplate .
+user.dcache.tag.OSMTemplate="StoreName test\012"
+
+With attr:
+
+$ attr -q -l .
+dcache.tag.AccessLatency
+dcache.tag.OSMTemplate
+dcache.tag.RetentionPolicy
+dcache.tag.sGroup
+
+$ attr -q -g dcache.tag.OSMTemplate .
+StoreName test
+```
+
+This functionality requires a xattr capable nfs client, which is linux kernel 5.9 or later.
+
 ### Pinmanager
 
 ### PNFS Manager
