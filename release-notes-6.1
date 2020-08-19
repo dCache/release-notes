@@ -85,6 +85,56 @@ pools.
 
 
 
+## Release 6.1.10
+
+### dcache
+
+There have been several occasions where in a dCache instance using an embedded ZooKeeper server such HA services stopped working because 
+an ephemeral node was elected leader that has no associated service anymore; it should have been deleted. 
+This state might go undetected for a longer time, and removing such stale nodes in order for the services to continue functioning as intended requires manual intervention.
+
+This is fixed now and the functioning of HA services using ZooKeeper-based leader elections is more reliable.
+
+### resilience
+
+A more robust handling of PSU changes which remove pool, unit or group
+mappings was introduced.
+
+Recently introduced improvements changed the way resilience handles file "removal"
+(no longer setting the repository entry to 'removed'
+but simply by caching the replica).
+This change, however, did not take into account
+the handling of broken files.  Encountering
+a broken file, it would indiscriminately attempt
+to remove it, whether it was cached or not;
+this was leading to an infinite loop, with the
+file operation continuously iterating without
+doing any further work. This situation could potentially hang the pool scans
+(if there are as many broken files as there are
+scan threads), and even the file operation
+queue. The current release fixed this issue and there is no  any potential for stalled
+operations when encountering broken replicas.
+
+
+### Changelog 6.1.9..6.1.10
+
+<!-- git log 6.1.9..6.1.10 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[e42123433e](https://github.com/dcache/dcache/commit/e42123433e18193c98f6796619d8756a8f8c340c)
+:   [maven-release-plugin] prepare release 6.1.10
+
+[b70f8fc044](https://github.com/dcache/dcache/commit/b70f8fc0445f01486f1b257e679b8d5757ea29a1)
+:   dcache-core: fix embedded ZooKeeper persisting stale ephemeral nodes
+
+[5b5e14425b](https://github.com/dcache/dcache/commit/5b5e14425b03ec951c316fb97c827879a5f1467e)
+:   dcache-resilience: ignore broken cached files
+
+[0ba3237d8a](https://github.com/dcache/dcache/commit/0ba3237d8a03dc6745dd8c30313076290f79c6e0)
+:   dcache-resilience: protect access of pool info map against NoSuchElementException
+
+[1e7bc1129d](https://github.com/dcache/dcache/commit/1e7bc1129d94463fad7d9807fb2666105b40d596)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.1.9
 
 ### macaroons
