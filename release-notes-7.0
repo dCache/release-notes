@@ -64,7 +64,7 @@ HTML header: <title>dCache 7.0 Release Notes</title>
 
 ## Highlights
 
-(tbd, this section uses markdown formatting)
+ - dCache internal copy triggerd by `srmcp` uses HTTP, was DCAP
 
 ## Incompatibilities
 
