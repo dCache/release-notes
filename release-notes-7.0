@@ -68,7 +68,7 @@ HTML header: <title>dCache 7.0 Release Notes</title>
 
 ## Incompatibilities
 
-(tbd, this section uses markdown formatting)
+- the argument of `kill client` admin command of NFS door accepts client session id
 
 ## Acknowledgments
 
@@ -132,6 +132,22 @@ StoreName test
 ```
 
 This functionality requires a xattr capable nfs client, which is linux kernel 5.9 or later.
+
+The admins interface of NFS doors is updated to remove redundant informaion from the output of `show clients` command:
+
+```
+    [dcache-lab000] (NFS-dcache-lab007@core-dcache-lab007) admin > show clients
+        /11.19.15.23:967:Linux NFSv4.1 ani:v4.1
+            5f4ccad3000300010000000000000001 max slot: 15/0
+    
+    [dcache-lab000] (NFS-dcache-lab007@core-dcache-lab007) admin >
+```
+
+The argument of `kill client` admin accepts client's session id. For instance, to kill the client from example above:
+
+```
+[dcache-lab000] (NFS-dcache-lab007@core-dcache-lab007) admin > kill client 5f4ccad3000300010000000000000001
+```
 
 ### Pinmanager
 
