@@ -89,6 +89,26 @@ transfers.
 We gratefully acknowledge code and documentation contributions from Christoph Anton Mitterer and Onno Zweers.
 
 
+## Release 5.2.28
+
+### nfs
+
+The current release fixed previously observed  infinite WRITE+COMMIT loop.
+
+
+### Changelog 5.2.27..5.2.28
+
+<!-- git log 5.2.27..5.2.28 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[8106b2761c](https://github.com/dcache/dcache/commit/8106b2761ced40ca9dd6020d03485ea328201424)
+:   [maven-release-plugin] prepare release 5.2.28
+
+[70626265fe](https://github.com/dcache/dcache/commit/70626265fe7c985d48c8a194d61f432ff62dc385)
+:   nfs-proxy: op WRITE must use the same verifier as COMMIT
+
+[8d542a3cef](https://github.com/dcache/dcache/commit/8d542a3cef889b3e4734ce5acffde1742e0d1a54)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.2.27
 
 ### dcache

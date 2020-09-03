@@ -85,6 +85,26 @@ pools.
 
 
 
+## Release 6.1.11
+
+### nfs
+
+The current release fixed previously observed  infinite WRITE+COMMIT loop.
+
+
+### Changelog 6.1.10..6.1.11
+
+<!-- git log 6.1.10..6.1.11 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[0d59a8a090](https://github.com/dcache/dcache/commit/0d59a8a0902d58864561ee8d986a1a9040bcb137)
+:   [maven-release-plugin] prepare release 6.1.11
+
+[0aae861a17](https://github.com/dcache/dcache/commit/0aae861a17f29d56ff3c29435326e009263fb1a1)
+:   nfs-proxy: op WRITE must use the same verifier as COMMIT
+
+[9fd3c6d73a](https://github.com/dcache/dcache/commit/9fd3c6d73a61e2ed5cf4f7db33ec011617549470)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.1.10
 
 ### dcache

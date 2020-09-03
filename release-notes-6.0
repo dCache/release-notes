@@ -83,6 +83,26 @@ We would like to thank HTW-Berlin students David Linke, Lilit Patzwaldt-Sergoyan
 Quentin Kuth, Sophie Schauer, Viktoriia Sulimenko, Vladimir Vilenchik, Johann Gillhoff and Dieter
 Weber from FZ-Jülich for their contributions.
 
+## Release 6.0.22
+
+### nfs
+
+The current release fixed previously observed  infinite WRITE+COMMIT loop.
+
+
+### Changelog 6.0.21..6.0.22
+
+<!-- git log 6.0.21..6.0.22 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[046e32aa7d](https://github.com/dcache/dcache/commit/046e32aa7d797a63480eb43e2e2f5b3b03a8bef5)
+:   [maven-release-plugin] prepare release 6.0.22
+
+[18f2c91e4e](https://github.com/dcache/dcache/commit/18f2c91e4e1143f1b06d4bc27c6bc8e7ef55f8ea)
+:   nfs-proxy: op WRITE must use the same verifier as COMMIT
+
+[31e8877b0d](https://github.com/dcache/dcache/commit/31e8877b0d35f9ef6ef8676e011b7e98deb016e5)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.0.21
 
 ### dcache

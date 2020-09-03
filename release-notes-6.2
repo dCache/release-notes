@@ -87,6 +87,26 @@ HTML header: <title>dCache 6.2 Release Notes</title>
 
 
 
+## Release 6.2.3
+
+### nfs
+
+The current release fixed previously observed  infinite WRITE+COMMIT loop.
+
+
+### Changelog 6.2.2..6.2.3
+
+<!-- git log 6.2.2..6.2.3 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[2bd19d2080](https://github.com/dcache/dcache/commit/2bd19d208000e03052ec0e54043326c1fc19040f)
+:   [maven-release-plugin] prepare release 6.2.3
+
+[0709f64e67](https://github.com/dcache/dcache/commit/0709f64e6751d04f72897a29067efcabdb2547a1)
+:   nfs-proxy: op WRITE must use the same verifier as COMMIT
+
+[295ed840a9](https://github.com/dcache/dcache/commit/295ed840a93905d94901c106e401cfdc9ba94a2b)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.2.2
 
 ### dcache
