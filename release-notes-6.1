@@ -85,6 +85,48 @@ pools.
 
 
 
+## Release 6.1.12
+
+### gplazma
+
+X.509 certificates that use the "SHA-384 with RSA" algorithm are now
+logged with this name instead of the raw OID value.
+
+### httpd
+
+The current release fix pool usage color scheme css used for UsageInto and PoolInfo pages.
+
+
+### pool
+
+dCache pools that are undertaking HTTP-TPC transfers will now wait
+longer for the remote servers to complete any post-transfer activity.
+Transfers that involve heavily loaded remote servers are now more likely
+to succeed.
+
+
+### Changelog 6.1.11..6.1.12
+
+<!-- git log 6.1.11..6.1.12 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[a7fe40d85b](https://github.com/dcache/dcache/commit/a7fe40d85ba47b9379b961f7f9703b26320ff39e)
+:   [maven-release-plugin] prepare release 6.1.12
+
+[ae6616d5db](https://github.com/dcache/dcache/commit/ae6616d5dbc0a961561256c804397a3404aee1c1)
+:   pool: http-tpc increase timeout waiting for remote server post-processing
+
+[39952d5fbc](https://github.com/dcache/dcache/commit/39952d5fbc2443875168b7d44346f25e039d2db2)
+:   gplazma: include additional algorithm in LoginResultPrinter
+
+[bc2be58a21](https://github.com/dcache/dcache/commit/bc2be58a2122613def820b61ab700ea5ec5342a2)
+:   httpd: fix pool usage color scheme css
+
+[d85bdc4d42](https://github.com/dcache/dcache/commit/d85bdc4d42ed7f6f738b7776f14dd0aafa25e07d)
+:   correct snapshot version for logback-test-config
+
+[a73c8d4074](https://github.com/dcache/dcache/commit/a73c8d40744f9fa04a081170a20113a653820c0b)
+:   correct snapshot version
+
 ## Release 6.1.11
 
 ### nfs

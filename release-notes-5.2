@@ -89,6 +89,37 @@ transfers.
 We gratefully acknowledge code and documentation contributions from Christoph Anton Mitterer and Onno Zweers.
 
 
+## Release 5.2.29
+
+### gplazma
+
+X.509 certificates that use the "SHA-384 with RSA" algorithm are now
+logged with this name instead of the raw OID value.
+
+### pool
+
+dCache pools that are undertaking HTTP-TPC transfers will now wait
+longer for the remote servers to complete any post-transfer activity.
+Transfers that involve heavily loaded remote servers are now more likely
+to succeed.
+
+
+### Changelog 5.2.28..5.2.29
+
+<!-- git log 5.2.28..5.2.29 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[7c683c7860](https://github.com/dcache/dcache/commit/7c683c786070b175c0884590b4eef70d193663cc)
+:   [maven-release-plugin] prepare release 5.2.29
+
+[7b8aabe43f](https://github.com/dcache/dcache/commit/7b8aabe43f846bf7bf13b841aeb3403c7beb4e3c)
+:   pool: http-tpc increase timeout waiting for remote server post-processing
+
+[1b72a1696d](https://github.com/dcache/dcache/commit/1b72a1696d65172076bbf9b7b433a0586d049673)
+:   gplazma: include additional algorithm in LoginResultPrinter
+
+[5a791039b5](https://github.com/dcache/dcache/commit/5a791039b5ee81a22426f731cb3f664f928b83cb)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.2.28
 
 ### nfs

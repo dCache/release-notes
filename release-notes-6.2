@@ -87,6 +87,54 @@ HTML header: <title>dCache 6.2 Release Notes</title>
 
 
 
+## Release 6.2.4
+
+### gplazma
+
+X.509 certificates that use the "SHA-384 with RSA" algorithm are now
+logged with this name instead of the raw OID value.
+
+### httpd
+
+The current release fix pool usage color scheme css used for UsageInto and PoolInfo pages.
+
+
+### pool
+
+dCache pools that are undertaking HTTP-TPC transfers will now wait
+longer for the remote servers to complete any post-transfer activity.
+Transfers that involve heavily loaded remote servers are now more likely
+to succeed.
+
+
+### Changelog 6.2.3..6.2.4
+
+<!-- git log 6.2.3..6.2.4 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[1e55f3b3ff](https://github.com/dcache/dcache/commit/1e55f3b3ff02dd96c62a0870da851c73c6077eb6)
+:   [maven-release-plugin] prepare release 6.2.4
+
+[317ce07c20](https://github.com/dcache/dcache/commit/317ce07c20e6407a4bda7f509782f1dee515da20)
+:   fix error, tag 6.2 instead 6.2.3
+
+[f485ddc295](https://github.com/dcache/dcache/commit/f485ddc295333bb2d00c3467d48724eb116f6f17)
+:   srm-common: make X509 client authn optional, support bearer tokens
+
+[7f6978aae7](https://github.com/dcache/dcache/commit/7f6978aae7be7d34d6094fdee7de0013264b01c0)
+:   gplazma: include additional algorithm in LoginResultPrinter
+
+[20a7493253](https://github.com/dcache/dcache/commit/20a7493253a46b88a3e4990ad466502d861e310f)
+:   pool: http-tpc increase timeout waiting for remote server post-processing
+
+[819d18a334](https://github.com/dcache/dcache/commit/819d18a33454a871dc048fb0623df72672867ceb)
+:   httpd: fix pool usage color scheme css
+
+[65c01798d0](https://github.com/dcache/dcache/commit/65c01798d0bf5e28dbbe0402e4dd1364acebead7)
+:   correct snapshot version for logback-test-config
+
+[2352b87474](https://github.com/dcache/dcache/commit/2352b87474a93474afc7414f70f0b927def6230e)
+:   correct snapshot version
+
 ## Release 6.2.3
 
 ### nfs
