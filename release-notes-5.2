@@ -89,6 +89,33 @@ transfers.
 We gratefully acknowledge code and documentation contributions from Christoph Anton Mitterer and Onno Zweers.
 
 
+## Release 5.2.30
+
+### chimera
+
+Filenames containing brackets are no longer treated as magic dot files.
+
+### dcap
+
+Sometimes file restores on dCap door were hanging. This is now fixed.
+
+
+### Changelog 5.2.29..5.2.30
+
+<!-- git log 5.2.29..5.2.30 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[41bda767cb](https://github.com/dcache/dcache/commit/41bda767cb20f3a749368945779bb8888db21dbf)
+:   [maven-release-plugin] prepare release 5.2.30
+
+[d2fefff34d](https://github.com/dcache/dcache/commit/d2fefff34d234a3b3b21d130f34e2bbaddb56cfe)
+:   [maven-release-plugin] prepare for next development iteration
+
+[36ee505c16](https://github.com/dcache/dcache/commit/36ee505c16bb0d1f88946aca5468dd873cde8a8c)
+:   dcap: fix automatic door retry on transient errors
+
+[73e6adba0f](https://github.com/dcache/dcache/commit/73e6adba0f16b7ff4200a72bcd6e39dde9fabcef)
+:   chimera: fix dot file parser to handle weird file names
+
 ## Release 5.2.29
 
 ### gplazma
