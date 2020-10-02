@@ -155,6 +155,8 @@ The argument of `kill client` admin accepts client's session id. For instance, t
 
 ### Pool
 
+Removed admin/setup command `set duplicate request`. The correspoding behaviour was dropped since dcache 3.0.
+
 ### Poolmanager
 
 ### Resilience
