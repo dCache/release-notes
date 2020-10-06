@@ -83,6 +83,60 @@ We would like to thank HTW-Berlin students David Linke, Lilit Patzwaldt-Sergoyan
 Quentin Kuth, Sophie Schauer, Viktoriia Sulimenko, Vladimir Vilenchik, Johann Gillhoff and Dieter
 Weber from FZ-Jülich for their contributions.
 
+## Release 6.0.25
+
+### enstore
+
+Enstore storage info provides works with URI based tape locations now.
+
+### pool
+
+
+The HTTP-TPC PUSH requests (which use the HTTP PUT request to send data)
+are now more robust against slow remote servers that redirect the
+transfer.
+
+The current release fixed  NullPointerException bug in MongoDB-backed pool metadata storage 
+and SpotBugs NORMAL-level warning.
+
+With the chenges introduced in current release, when using HTTP-TPC, the timeouts dCache pool uses when requesting
+information from the remote server have been adjusted, based on
+operational experience. In general, dCache will now wait longer for the
+remote server to complete any post-processing before giving up and
+failing the transfer.
+
+
+### Changelog 6.0.24..6.0.25
+
+<!-- git log 6.0.24..6.0.25 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[32d890de2a](https://github.com/dcache/dcache/commit/32d890de2ad3022c59089605be0cb73bb1f9e83c)
+:   [maven-release-plugin] prepare release 6.0.25
+
+[6721d7ec5e](https://github.com/dcache/dcache/commit/6721d7ec5ecd706e7a7d7661776f9badaadb6527)
+:   chimera: update EnstoreStorageInfoExtractor to use FileState
+
+[328a8c2161](https://github.com/dcache/dcache/commit/328a8c2161aaabb1a2f2912a3ae8e2a6d2d4b62c)
+:   chimera: use UTF-8 constant instead of string in ChimeraEnstoreStorageInfoExtractor
+
+[d1d5ebb0b6](https://github.com/dcache/dcache/commit/d1d5ebb0b6deb71951fa78efc69f7f7619813ac8)
+:   enstore: populate the correct storage info information on set
+
+[9b2df0fd20](https://github.com/dcache/dcache/commit/9b2df0fd20b9fd6be3df0e38dc216ae3cd596e32)
+:   pool: http-tpc adjust GET and HEAD request timeouts
+
+[62b036ae01](https://github.com/dcache/dcache/commit/62b036ae0124814606ff4750ab258aa5b8f0500f)
+:   libs: use mockito 3.2.4, powermock 2.0.4 and hamcrest 2.2
+
+[c562e7b129](https://github.com/dcache/dcache/commit/c562e7b1293733de7d2ac2ad678f35c7ae970173)
+:   pool: http-tpc PUT request are repeatable
+
+[6f0ca2134f](https://github.com/dcache/dcache/commit/6f0ca2134fda5a271135901fbcefa04b8f34c65f)
+:   pool: support removing MongoDB storage-info entry
+
+[ca20fb6433](https://github.com/dcache/dcache/commit/ca20fb64336533c4cda6ab43d5c2384a5cd0255a)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.0.24
 
 ### chimera

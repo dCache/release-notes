@@ -89,6 +89,60 @@ transfers.
 We gratefully acknowledge code and documentation contributions from Christoph Anton Mitterer and Onno Zweers.
 
 
+## Release 5.2.31
+
+### enstore
+
+Enstore storage info provides works with URI based tape locations now.
+
+### pool
+
+
+The HTTP-TPC PUSH requests (which use the HTTP PUT request to send data)
+are now more robust against slow remote servers that redirect the
+transfer.
+
+The current release fixed  NullPointerException bug in MongoDB-backed pool metadata storage 
+and SpotBugs NORMAL-level warning.
+
+With the chenges introduced in current release, when using HTTP-TPC, the timeouts dCache pool uses when requesting
+information from the remote server have been adjusted, based on
+operational experience. In general, dCache will now wait longer for the
+remote server to complete any post-processing before giving up and
+failing the transfer.
+
+
+### Changelog 5.2.30..5.2.31
+
+<!-- git log 5.2.30..5.2.31 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[3c9a2be99f](https://github.com/dcache/dcache/commit/3c9a2be99f37999f5fb344454462f3ebbc95948f)
+:   [maven-release-plugin] prepare release 5.2.31
+
+[dcef888b84](https://github.com/dcache/dcache/commit/dcef888b84e14c563867ce94058c8b72bd3ea6ed)
+:   chimera: update EnstoreStorageInfoExtractor to use FileState
+
+[5c035f0c74](https://github.com/dcache/dcache/commit/5c035f0c7488f203ab4505701aa9d3a3bcacd968)
+:   chimera: use UTF-8 constant instead of string in ChimeraEnstoreStorageInfoExtractor
+
+[7a712ca254](https://github.com/dcache/dcache/commit/7a712ca254bec4eb4e16c47bff24f74e29a3dde2)
+:   enstore: populate the correct storage info information on set
+
+[e92f10a1f4](https://github.com/dcache/dcache/commit/e92f10a1f44eaa03c0782b5bdce0bcec98ce2084)
+:   pool: http-tpc adjust GET and HEAD request timeouts
+
+[0791c30021](https://github.com/dcache/dcache/commit/0791c3002158d5e0a19f2ce40196e5171267c0ae)
+:   libs: use mockito 3.2.4, powermock 2.0.4 and hamcrest 2.2
+
+[8199d0d4b5](https://github.com/dcache/dcache/commit/8199d0d4b5369b0d650f6866d124c1c1982c209c)
+:   pool: http-tpc PUT request are repeatable
+
+[ec068b4983](https://github.com/dcache/dcache/commit/ec068b498309904d7562f339ffa4f8bea6823a30)
+:   pool: support removing MongoDB storage-info entry
+
+[3c1314cab5](https://github.com/dcache/dcache/commit/3c1314cab50cf8dff4c93b7acd4e4157190b9f75)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.2.30
 
 ### chimera

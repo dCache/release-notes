@@ -85,6 +85,57 @@ pools.
 
 
 
+## Release 6.1.14
+
+### enstore
+
+Enstore storage info provides works with URI based tape locations now.
+
+### pool
+
+
+The HTTP-TPC PUSH requests (which use the HTTP PUT request to send data)
+are now more robust against slow remote servers that redirect the
+transfer.
+
+The current release fixed  NullPointerException bug in MongoDB-backed pool metadata storage 
+and SpotBugs NORMAL-level warning.
+
+With the chenges introduced in current release, when using HTTP-TPC, the timeouts dCache pool uses when requesting
+information from the remote server have been adjusted, based on
+operational experience. In general, dCache will now wait longer for the
+remote server to complete any post-processing before giving up and
+failing the transfer.
+
+
+### Changelog 6.1.13..6.1.14
+
+<!-- git log 6.1.13..6.1.14 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[2f5383a4e3](https://github.com/dcache/dcache/commit/2f5383a4e3af56065cd635da7a2dec0095545784)
+:   [maven-release-plugin] prepare release 6.1.14
+
+[5dcb95190c](https://github.com/dcache/dcache/commit/5dcb95190cee53a6ce8d974c4fff8ae80f649710)
+:   chimera: update EnstoreStorageInfoExtractor to use FileState
+
+[bdb2a822f2](https://github.com/dcache/dcache/commit/bdb2a822f25a134e9a6ce4defc0b684063a41079)
+:   chimera: use UTF-8 constant instead of string in ChimeraEnstoreStorageInfoExtractor
+
+[f212438e29](https://github.com/dcache/dcache/commit/f212438e290f57abdb8127e2091e88f9761334e3)
+:   enstore: populate the correct storage info information on set
+
+[b834910bbe](https://github.com/dcache/dcache/commit/b834910bbedcfec2918799a8f8ea81d1e1ac9702)
+:   pool: http-tpc adjust GET and HEAD request timeouts
+
+[8d505d8c97](https://github.com/dcache/dcache/commit/8d505d8c97ee13181e2dd272762b84fb77a2c76a)
+:   pool: http-tpc PUT request are repeatable
+
+[7ed0edb4e2](https://github.com/dcache/dcache/commit/7ed0edb4e20bc078ae84b0bbf690ec201ab5a0d4)
+:   pool: support removing MongoDB storage-info entry
+
+[d8ba33ff6c](https://github.com/dcache/dcache/commit/d8ba33ff6ce2ac4f09bf145eb3f541ddec6825ae)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.1.13
 
 ### dcap

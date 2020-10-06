@@ -87,6 +87,63 @@ HTML header: <title>dCache 6.2 Release Notes</title>
 
 
 
+## Release 6.2.6
+
+### nfs
+
+If door failed to start a mover due to timeout or `no route to cell`,
+then pool selection or mover start is retried. However, as the retry
+procedure in the transfer class was not idempotent, the `nfs` door has
+it's own workaround to avoid extra pool selection. This partial
+solution plays not well with retry logic of transfer class and
+produced inconsistent results. 
+This is fixed now and lost messages to start mover successfully delivered after number of retries.
+
+### pool
+
+
+The HTTP-TPC PUSH requests (which use the HTTP PUT request to send data)
+are now more robust against slow remote servers that redirect the
+transfer.
+
+The current release fixed  NullPointerException bug in MongoDB-backed pool metadata storage 
+and SpotBugs NORMAL-level warning.
+
+With the chenges introduced in current release, when using HTTP-TPC, the timeouts dCache pool uses when requesting
+information from the remote server have been adjusted, based on
+operational experience. In general, dCache will now wait longer for the
+remote server to complete any post-processing before giving up and
+failing the transfer.
+
+
+### Changelog 6.2.5..6.2.6
+
+<!-- git log 6.2.5..6.2.6 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[3c8b6b0e56](https://github.com/dcache/dcache/commit/3c8b6b0e56d73ed6434d520b0bff16e738ce84c1)
+:   [maven-release-plugin] prepare release 6.2.6
+
+[1bcc96fbbd](https://github.com/dcache/dcache/commit/1bcc96fbbd7e19b6fb293afdada8a53b7a935235)
+:   chimera: update EnstoreStorageInfoExtractor to use FileState
+
+[f29ccdb158](https://github.com/dcache/dcache/commit/f29ccdb15837200958cc9b99b79d80c3101a6bba)
+:   chimera: use UTF-8 constant instead of string in ChimeraEnstoreStorageInfoExtractor
+
+[a24c79412b](https://github.com/dcache/dcache/commit/a24c79412b6370846288659d2708150fd8b8a3e4)
+:   pool: http-tpc adjust GET and HEAD request timeouts
+
+[c45529130d](https://github.com/dcache/dcache/commit/c45529130d70b95033f93ba93c07f3129c5ef14e)
+:   pool: http-tpc PUT request are repeatable
+
+[7b710e4a16](https://github.com/dcache/dcache/commit/7b710e4a16d84c64806c3b3a3d8753ea4bc5c5aa)
+:   nfs: drop internal mover re-start loop
+
+[31d869d32f](https://github.com/dcache/dcache/commit/31d869d32f8ea84e9f4c2d9409fa7765371553f0)
+:   pool: support removing MongoDB storage-info entry
+
+[7dfbe630ce](https://github.com/dcache/dcache/commit/7dfbe630cea5f0b15acfc34609085f7a3db05bec)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.2.5
 
 ### dcap
