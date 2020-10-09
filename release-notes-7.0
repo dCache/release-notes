@@ -179,6 +179,14 @@ Removed admin/setup command `set duplicate request`. The correspoding behaviour 
 
 ### Zookeeper
 
+### Cleaner
+
+The HsmCleaner regularly fetches HSM locations for deletion from the trash table and caches them
+locally for batched dispatch. This number can now be limited in order to prevent running
+out of memory if the trash table is too large. The default value is
+```
+cleaner.limits.hsm-max-cached-locations = 12000
+```
 
 ### Changelog from 6.2.0 to 7.0.0
 
