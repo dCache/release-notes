@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #  The next (currently unreleased) version of dCache
-NEXT_RELEASE=6.2
+NEXT_RELEASE=7.0
 
 #  Path within the filesystem corresponding to the web-server's root
 WEB_ROOT="../.."
