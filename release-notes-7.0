@@ -149,6 +149,10 @@ The argument of `kill client` admin accepts client's session id. For instance, t
 [dcache-lab000] (NFS-dcache-lab007@core-dcache-lab007) admin > kill client 5f4ccad3000300010000000000000001
 ```
 
+The NFS door update to support `secure/insecure` export options that requires clients to use privilaged port.
+This option typically used to disallow user-space nfs clients as they might spoof request credentials. The default
+is `insecure`.
+
 ### Pinmanager
 
 ### PNFS Manager
