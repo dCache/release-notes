@@ -83,6 +83,26 @@ We would like to thank HTW-Berlin students David Linke, Lilit Patzwaldt-Sergoyan
 Quentin Kuth, Sophie Schauer, Viktoriia Sulimenko, Vladimir Vilenchik, Johann Gillhoff and Dieter
 Weber from FZ-Jülich for their contributions.
 
+## Release 6.0.26
+
+### pool
+
+dCache pools now support GSI-based xrootd-TPC by default.
+
+
+### Changelog 6.0.25..6.0.26
+
+<!-- git log 6.0.25..6.0.26 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[426663d3bb](https://github.com/dcache/dcache/commit/426663d3bb60fd78d48ef18847901ae93eb5d332)
+:   [maven-release-plugin] prepare release 6.0.26
+
+[94f963b84b](https://github.com/dcache/dcache/commit/94f963b84b5f50d4ec7133a734fdb0553c97c50c)
+:   pool: update xrootd-tpc authenication default
+
+[76aada58de](https://github.com/dcache/dcache/commit/76aada58de9a6bce8c653ec8c889f2555b619bb1)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.0.25
 
 ### enstore
