@@ -69,6 +69,7 @@ HTML header: <title>dCache 7.0 Release Notes</title>
 ## Incompatibilities
 
 - the argument of `kill client` admin command of NFS door accepts client session id
+- dropped support for pcells GUI
 
 ## Acknowledgments
 
@@ -78,6 +79,8 @@ HTML header: <title>dCache 7.0 Release Notes</title>
 ## Release 7.0.0
 
 ### Admin
+
+The `pcells` GUI was abandoned for a while. With version 7.0 dCache have dropped the corresponding componnents in admin door.
 
 ### Alarms
 
