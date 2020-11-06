@@ -93,39 +93,13 @@ We gratefully acknowledge code and documentation contributions from Christoph An
 
 ### pool
 
-### webdav
+The mover thread is not interrupted outside of IO activity to avoid disabling of repository.
 
-
-### Changelog 5.2.32..5.2.33
-
-<!-- git log 5.2.32..5.2.33 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
-
-[602fd7e2bd](https://github.com/dcache/dcache/commit/602fd7e2bd9f17e9a7c35fdcca036704ff348cf7)
-:   [maven-release-plugin] prepare release 5.2.33
-
-[159e747540](https://github.com/dcache/dcache/commit/159e747540ba2cf13b8035fb7580955f637ddc15)
-:   pool: http-tpc do not loop if HEAD 'Content-Length' response is missing
-
-[8719827577](https://github.com/dcache/dcache/commit/8719827577e6d7e7c7d56a74316d8a540c978a9c)
-:   webdav:HTTPS PUT req issue
-
-[cdcb683830](https://github.com/dcache/dcache/commit/cdcb6838306726e749b52e6c0fd0fb36bfc9236d)
-:   pool: preserve CDC on p2p transfer
-
-[0ab6ff2db4](https://github.com/dcache/dcache/commit/0ab6ff2db4a53099b2c6a71273df07ff2b38edbc)
-:   pool: http-tpc drop 'Accept-Encoding' on HEAD requests
-
-[1822d0399a](https://github.com/dcache/dcache/commit/1822d0399ac2e10a09634fb4d93840e88506a1db)
-:   pool: detach IO thread when mover finished
-
-[e381a7dca9](https://github.com/dcache/dcache/commit/e381a7dca9086507db3ac370d0b845c3301d1788)
-:   [maven-release-plugin] prepare for next development iteration
-
-## Release 5.2.33
-
-### pool
+HTTP-TPC transfers where dCache pushes data to an Apache server (for example as used by Dynafed) will now work for zero-length files.
 
 ### webdav
+
+HTTPS-PUT requests are now possible.
 
 
 ### Changelog 5.2.32..5.2.33
