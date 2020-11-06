@@ -83,6 +83,70 @@ We would like to thank HTW-Berlin students David Linke, Lilit Patzwaldt-Sergoyan
 Quentin Kuth, Sophie Schauer, Viktoriia Sulimenko, Vladimir Vilenchik, Johann Gillhoff and Dieter
 Weber from FZ-Jülich for their contributions.
 
+## Release 6.0.27
+
+### pool
+
+### webdav
+
+
+### Changelog 6.0.26..6.0.27
+
+<!-- git log 6.0.26..6.0.27 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[7045cbd023](https://github.com/dcache/dcache/commit/7045cbd023cc93baaad5b788fc9e1bec099bbc8e)
+:   [maven-release-plugin] prepare release 6.0.27
+
+[dc91e503c8](https://github.com/dcache/dcache/commit/dc91e503c8942157b29d5354a0a3fd53711da1a1)
+:   pool: http-tpc do not loop if HEAD 'Content-Length' response is missing
+
+[c7f59c4136](https://github.com/dcache/dcache/commit/c7f59c4136ea95b78dc6b80b4ccde3be1f941002)
+:   webdav:HTTPS PUT req issue
+
+[772dfb4d70](https://github.com/dcache/dcache/commit/772dfb4d700abb666e3ec20f5a4be9e178fcca8d)
+:   pool: preserve CDC on p2p transfer
+
+[03f76b3825](https://github.com/dcache/dcache/commit/03f76b38259a86b535db4bffca5986118575ae61)
+:   pool: http-tpc drop 'Accept-Encoding' on HEAD requests
+
+[104e1f3d29](https://github.com/dcache/dcache/commit/104e1f3d29e8544746fa56651dcca42fdfb759d5)
+:   pool: detach IO thread when mover finished
+
+[60ceb8f322](https://github.com/dcache/dcache/commit/60ceb8f322f7eee9689bee7a7de715f4654211fc)
+:   [maven-release-plugin] prepare for next development iteration
+
+## Release 6.0.27
+
+### pool
+
+### webdav
+
+
+### Changelog 6.0.26..6.0.27
+
+<!-- git log 6.0.26..6.0.27 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[7045cbd023](https://github.com/dcache/dcache/commit/7045cbd023cc93baaad5b788fc9e1bec099bbc8e)
+:   [maven-release-plugin] prepare release 6.0.27
+
+[dc91e503c8](https://github.com/dcache/dcache/commit/dc91e503c8942157b29d5354a0a3fd53711da1a1)
+:   pool: http-tpc do not loop if HEAD 'Content-Length' response is missing
+
+[c7f59c4136](https://github.com/dcache/dcache/commit/c7f59c4136ea95b78dc6b80b4ccde3be1f941002)
+:   webdav:HTTPS PUT req issue
+
+[772dfb4d70](https://github.com/dcache/dcache/commit/772dfb4d700abb666e3ec20f5a4be9e178fcca8d)
+:   pool: preserve CDC on p2p transfer
+
+[03f76b3825](https://github.com/dcache/dcache/commit/03f76b38259a86b535db4bffca5986118575ae61)
+:   pool: http-tpc drop 'Accept-Encoding' on HEAD requests
+
+[104e1f3d29](https://github.com/dcache/dcache/commit/104e1f3d29e8544746fa56651dcca42fdfb759d5)
+:   pool: detach IO thread when mover finished
+
+[60ceb8f322](https://github.com/dcache/dcache/commit/60ceb8f322f7eee9689bee7a7de715f4654211fc)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.0.26
 
 ### pool
