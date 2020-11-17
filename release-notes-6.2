@@ -106,6 +106,43 @@ This does not affect functionality.
 (tbd, this section uses markdown formatting)
 
 
+## Release 6.2.9
+
+### dcache
+
+The log files now can be enforced even with systemd deployments.
+
+`dcache.log.destination` property has been introduced which  controls the log
+destination. The default value `console` preserves the current
+behaviour: systemd services log to journald, system-V services log to
+stdout (redirected to /var/log/dcache/.log).
+
+The option `file` instruct logback to send message to the location
+defined by `dcache.log.file` property. The plain file FileAppender is
+used as dCache packages already comes with pre-defined logrotate
+configuration.
+
+### xrootd
+
+The xrootd4j version was updated to 4.0.4
+
+
+### Changelog 6.2.8..6.2.9
+
+<!-- git log 6.2.8..6.2.9 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[f8ffbdacd4](https://github.com/dcache/dcache/commit/f8ffbdacd4e5c3204bf5204a17d6360f483efe7e)
+:   [maven-release-plugin] prepare release 6.2.9
+
+[88ef6a9fc5](https://github.com/dcache/dcache/commit/88ef6a9fc52d8397d0126db13685e30ebb87ce19)
+:   logging: add an option to control logger destination
+
+[ec72bc0f61](https://github.com/dcache/dcache/commit/ec72bc0f61bb352ce6a3e874ba4c62dea622ce16)
+:   pom: update to xrootd4j 4.0.4
+
+[64961d79a9](https://github.com/dcache/dcache/commit/64961d79a97f668396f3e3a5a35e4c9fa81d353b)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.2.8
 
 ### common-auth

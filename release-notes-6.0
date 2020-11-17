@@ -84,6 +84,27 @@ Quentin Kuth, Sophie Schauer, Viktoriia Sulimenko, Vladimir Vilenchik, Johann Gi
 Weber from FZ-Jülich for their contributions.
 
 
+## Release 6.0.28
+
+### xrood
+
+The xrootd4j version was updated to 3.5.8.
+
+
+
+### Changelog 6.0.27..6.0.28
+
+<!-- git log 6.0.27..6.0.28 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[d647526b1f](https://github.com/dcache/dcache/commit/d647526b1f5b9b3e3ddcfa5dd432dfc3a76c2526)
+:   [maven-release-plugin] prepare release 6.0.28
+
+[42a2d62d79](https://github.com/dcache/dcache/commit/42a2d62d79fd20f4bc79fa921bd67ada630cec68)
+:   pom: update xrootd4j to 3.5.8
+
+[5f17f7552c](https://github.com/dcache/dcache/commit/5f17f7552c6c4498ef9d1ed530e9a6842afbf6a4)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.0.27
 
 ### pool
