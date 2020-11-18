@@ -189,11 +189,21 @@ Removed admin/setup command `set duplicate request`. The correspoding behaviour 
 ### Cleaner
 
 The HsmCleaner regularly fetches HSM locations for deletion from the trash table and caches them
-locally for batched dispatch. This number can now be limited in order to prevent running
-out of memory if the trash table is too large. The default value is
+locally for batched dispatch. The maximum number of cached delete locations can now be
+limited in order to prevent running out of memory if the trash table is too large.
+The default value is
 ```
 cleaner.limits.hsm-max-cached-locations = 12000
 ```
+
+### HA Services
+
+The high available services PinManager and Cleaner have acquired new debug commands in the
+admin interface related to their HA participation starting with `ha [...]`.
+When using `ha get role` or `ha release leaderhip` it is usually most sensible to
+explicitly specify the fully qualified cell@domain name it should be sent to, especially
+in the case of the well-known PinManager cell.
+
 
 ### Changelog from 6.2.0 to 7.0.0
 
