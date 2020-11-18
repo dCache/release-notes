@@ -83,6 +83,12 @@ We would like to thank HTW-Berlin students David Linke, Lilit Patzwaldt-Sergoyan
 Quentin Kuth, Sophie Schauer, Viktoriia Sulimenko, Vladimir Vilenchik, Johann Gillhoff and Dieter
 Weber from FZ-Jülich for their contributions.
 
+## Release 6.0.29
+
+The current release fixes EGI-SVG-2020-16939 vulnerabilities.
+
+
+
 
 ## Release 6.0.28
 
