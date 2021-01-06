@@ -105,6 +105,30 @@ HTML header: <title>dCache 7.1 Release Notes</title>
 
 ### Pinmanager
 
+The pinmanager service regularly runs background processes for expiring and removing pins. For several reasons,
+large numbers of pins to be unpinned may accumulate in the PinManager's trash table, primarily if the mentioned
+processes are not running for a longer time, thus threatening to overwhelm the system by trying to execute all
+unpin tasks in one go.
+
+This version introduces 'chunked unpinning', with which only a certain configurable number of available unpin
+tasks will be handled per run. This number can be configured:
+```
+pinmanager.max-unpins-per-run=200
+```
+
+Additionally, two new pin states were added: READY_TO_UNPIN, which is the initial state for an expired pin, and
+FAILED_TO_UNPIN, into which a pin transitions when the unpin attempt failed. Only pins in state READY_TO_UNPIN
+are selected for processing.
+
+Therefore a new process regularly resets all pins in state FAILED_TO_UNPIN back to state READY_TO_UNPIN in
+order to make them eligible to be attempted again. The period in which to reset all pins that failed to unpin
+can be configured as well:
+```
+pinmanager.reset-failed-unpins-period=2
+pinmanager.reset-failed-unpins-period.unit=HOURS
+```
+
+
 ### PNFS Manager
 
 ### Pool
