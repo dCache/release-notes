@@ -84,6 +84,54 @@ pools.
 (tbd, this section uses markdown formatting)
 
 
+## Release 6.1.19
+
+### pool
+
+The current release fix a problem where, under heavy load, redirected https transfers result
+in garbled SSL information, preventing the HTTP client from working.
+
+### services
+
+Recovery processe in the case where a pool's message queue is overloaded,
+as old (and now useless) requests may be simply discarded is improved.
+
+
+### webdav
+
+There were  reports of the access log file missing entries. This problem
+seems to be triggered if the client disconnects before dCache has
+finished processing the request, which is certainly true for cancelled
+HTTP-TPC transfers. This is now fixed.
+
+### xrootd
+
+The xroot protocol access log entries for the xrootd door and pool have
+been enhanced to include information about the kXR_query requests.
+
+
+### Changelog 6.1.18..6.1.19
+
+<!-- git log 6.1.18..6.1.19 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[dfdaadc123](https://github.com/dcache/dcache/commit/dfdaadc12372bfd87f010a3d65c9bdd4f4b0e9e6)
+:   [maven-release-plugin] prepare release 6.1.19
+
+[6c2d8c9918](https://github.com/dcache/dcache/commit/6c2d8c9918ea86b3cd6b8a9591d3e9fb7c5f1f8e)
+:   prepare for next development iteration
+
+[d261fe34cf](https://github.com/dcache/dcache/commit/d261fe34cf8c433e101e7b88addf4a52af675f02)
+:   TransferManager: choose better pool query message TTL
+
+[bbae4d1252](https://github.com/dcache/dcache/commit/bbae4d12523222e9ec896ceef00387a61cf6e41a)
+:   webdav/frontend: ensure cancelled HTTP-TPC transfers are logged
+
+[d44f28bdc1](https://github.com/dcache/dcache/commit/d44f28bdc186a9f237ab9572a501c014cf7611c1)
+:   xrootd/pool: improve access log to record more details of kXR_query
+
+[8336e2cc85](https://github.com/dcache/dcache/commit/8336e2cc85b21b2910037477af2ddb37c7ba9664)
+:   pool: https avoid sharing SSLEngine between TCP connections
+
 ## Release 6.1.18
 
 The current release fixes EGI-SVG-2020-16939 vulnerabilities.

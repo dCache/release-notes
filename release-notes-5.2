@@ -89,6 +89,55 @@ transfers.
 We gratefully acknowledge code and documentation contributions from Christoph Anton Mitterer and Onno Zweers.
 
 
+## Release 5.2.36
+
+### pool
+
+The current release fixed a problem where redirected transfers involving the client uses
+HTTPS when communicating directly with the pool would fail under
+moderate-to-heavy load.
+
+### services
+
+Recovery processe in the case where a pool's message queue is overloaded,
+as old (and now useless) requests may be simply discarded is improved.
+
+
+### webdav
+
+There were  reports of the access log file missing entries. This problem
+seems to be triggered if the client disconnects before dCache has
+finished processing the request, which is certainly true for cancelled
+HTTP-TPC transfers. This is now fixed.
+
+### xrootd
+
+The xroot protocol access log entries for the xrootd door and pool have
+been enhanced to include information about the kXR_query requests.
+
+
+### Changelog 5.2.35..5.2.36
+
+<!-- git log 5.2.35..5.2.36 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[d39c06f950](https://github.com/dcache/dcache/commit/d39c06f950f10025ef5578962e77773b53bb5677)
+:   [maven-release-plugin] prepare release 5.2.36
+
+[96b935b718](https://github.com/dcache/dcache/commit/96b935b718fc0a20d349f5ec0702953b5b969b2b)
+:   prepare for next development iteration
+
+[536001c6ec](https://github.com/dcache/dcache/commit/536001c6ecb9649209a62cf9bdad12a03e84c0ed)
+:   TransferManager: choose better pool query message TTL
+
+[e704af39ff](https://github.com/dcache/dcache/commit/e704af39ff732c672a2173336421cf93005df3e5)
+:   webdav/frontend: ensure cancelled HTTP-TPC transfers are logged
+
+[93372bb01d](https://github.com/dcache/dcache/commit/93372bb01d19e074e69b8ec6ee9ff28da9b07689)
+:   xrootd/pool: improve access log to record more details of kXR_query
+
+[32cce2a363](https://github.com/dcache/dcache/commit/32cce2a3639554902cff4902ddc8f74c4ff7438b)
+:   pool: fix HTTPS support under heavy load
+
 ## Release 5.2.35
 
 The current release fixes EGI-SVG-2020-16939 vulnerabilities.

@@ -106,6 +106,85 @@ This does not affect functionality.
 (tbd, this section uses markdown formatting)
 
 
+## Release 6.2.11
+
+### nfs
+
+The new version of nfs4j-0.21.1 fixed readdir reply size miscalculation for NFSv3.
+
+### pool
+
+The current release fix a problem where, under heavy load, redirected https transfers result
+in garbled SSL information, preventing the HTTP client from working.
+
+### services
+
+Recovery processe in the case where a pool's message queue is overloaded,
+as old (and now useless) requests may be simply discarded is improved.
+
+
+### vehicles
+
+The current release improved  memory consumption on pools.
+
+### webdav
+
+There were  reports of the access log file missing entries. This problem
+seems to be triggered if the client disconnects before dCache has
+finished processing the request, which is certainly true for cancelled
+HTTP-TPC transfers. This is now fixed.
+
+### xrootd
+
+xrootd4j-authz-plugin-alice is updated to 1.2.0.
+
+The xroot protocol access log entries for the xrootd door and pool have
+been enhanced to include information about the kXR_query requests.
+
+
+### Changelog 6.2.10..6.2.11
+
+<!-- git log 6.2.10..6.2.11 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[ec8b1e67a8](https://github.com/dcache/dcache/commit/ec8b1e67a870c3bde851ac4cac44a9a25add95bb)
+:   [maven-release-plugin] prepare release 6.2.11
+
+[78040db522](https://github.com/dcache/dcache/commit/78040db522d076afa40015c55588745f2edc221b)
+:   prepare for next development iteration
+
+[3689629eb1](https://github.com/dcache/dcache/commit/3689629eb13d242a26a1457049440c8e2fcf434c)
+:   [maven-release-plugin] prepare release 6.2.10
+
+[01f71f5f59](https://github.com/dcache/dcache/commit/01f71f5f59863f3443e417cd36a860860cbb536a)
+:   TransferManager: choose better pool query message TTL
+
+[4597553c31](https://github.com/dcache/dcache/commit/4597553c31bf59f076656320e53bec66d2627046)
+:   webdav/frontend: ensure cancelled HTTP-TPC transfers are logged
+
+[15fede73da](https://github.com/dcache/dcache/commit/15fede73da00907d989ed5bfbf85425315920e65)
+:   xrootd/pool: improve access log to record more details of kXR_query
+
+[0fff2d36db](https://github.com/dcache/dcache/commit/0fff2d36db108738ffd511ef71c619e5dd3d5cbf)
+:   libs: use nfs4j-0.21.1
+
+[42e840560b](https://github.com/dcache/dcache/commit/42e840560b939aa0eeb7ff0db3986ffd7d177cf6)
+:   vehicles: internalize common strings in StorageInfo
+
+[25bbf82fba](https://github.com/dcache/dcache/commit/25bbf82fbafb3ae2a466edca9fb2433542da8821)
+:   pool: sort flush queue only if we going to use the result
+
+[932055e31b](https://github.com/dcache/dcache/commit/932055e31b98d0b79e8e5968378955b6df7e4950)
+:   pool: https avoid sharing SSLEngine between TCP connections
+
+[04c96a851f](https://github.com/dcache/dcache/commit/04c96a851fa6f10238fce9c61b2e9ca9d6ec3306)
+:   removing commit-msg file
+
+[395acb44d6](https://github.com/dcache/dcache/commit/395acb44d63ef13b4148900c24db690b50c323e3)
+:   updated alice-plugin version to 1.2.0
+
+[851452f57d](https://github.com/dcache/dcache/commit/851452f57d78295df147c38948e7722ebf19cf1a)
+:   pom.xml:update xrootd4j-authz-plugin-alice version to 1.2.0
+
 ## Release 6.2.10
 
 The current release fixes EGI-SVG-2020-16939 vulnerabilities.

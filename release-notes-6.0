@@ -83,6 +83,58 @@ We would like to thank HTW-Berlin students David Linke, Lilit Patzwaldt-Sergoyan
 Quentin Kuth, Sophie Schauer, Viktoriia Sulimenko, Vladimir Vilenchik, Johann Gillhoff and Dieter
 Weber from FZ-Jülich for their contributions.
 
+## Release 6.0.30
+
+### pool
+
+The current release fixed a problem where redirected transfers involving the client uses
+HTTPS when communicating directly with the pool would fail under
+moderate-to-heavy load.
+
+### services
+
+Recovery processe in the case where a pool's message queue is overloaded,
+as old (and now useless) requests may be simply discarded is improved.
+
+
+### webdav
+
+There were  reports of the access log file missing entries. This problem
+seems to be triggered if the client disconnects before dCache has
+finished processing the request, which is certainly true for cancelled
+HTTP-TPC transfers. This is now fixed.
+
+### xrootd
+
+The xroot protocol access log entries for the xrootd door and pool have
+been enhanced to include information about the kXR_query requests.
+
+
+### Changelog 6.0.29..6.0.30
+
+<!-- git log 6.0.29..6.0.30 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[f984cc20f0](https://github.com/dcache/dcache/commit/f984cc20f09cc007b836e7c7febbbc9e6a7c6787)
+:   [maven-release-plugin] prepare release 6.0.30
+
+[9cd191c748](https://github.com/dcache/dcache/commit/9cd191c7485aa9a7a83c8f11c04caf99aeb09da0)
+:   pom: fix release branch name
+
+[5778be0325](https://github.com/dcache/dcache/commit/5778be0325a3064f588785b3f81db8fdd6d9d637)
+:   prepare for next development iteration
+
+[d70e594ae9](https://github.com/dcache/dcache/commit/d70e594ae907275d203ee38296c7c6718ddff398)
+:   TransferManager: choose better pool query message TTL
+
+[146e55d202](https://github.com/dcache/dcache/commit/146e55d202c383ce053166495b4741c1623af3c8)
+:   webdav/frontend: ensure cancelled HTTP-TPC transfers are logged
+
+[2625c3709e](https://github.com/dcache/dcache/commit/2625c3709ec01b0bde4f88b7e045f01152ef1247)
+:   xrootd/pool: improve access log to record more details of kXR_query
+
+[14deee45a0](https://github.com/dcache/dcache/commit/14deee45a02e80538c1549d3c329024eabdcf37e)
+:   pool: fix HTTPS support under heavy load
+
 ## Release 6.0.29
 
 The current release fixes EGI-SVG-2020-16939 vulnerabilities.
