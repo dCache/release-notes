@@ -84,6 +84,64 @@ pools.
 (tbd, this section uses markdown formatting)
 
 
+## Release 6.1.20
+
+### book
+
+
+A new section is added to the xrootd chapter explaining the need for
+SAN extensions on the hostcert in the case of hostname aliasing.
+
+### ftp
+
+Globus transfer service can now list directories that contain incomplete
+files, those that are still being uploaded.
+
+The FTP no longer leaking sockets when dynamically calculating file
+checksums (e.g., MD5). In practise, this issue only affects transfers
+via the Globus transfer service.
+
+The current release fixed  Globus transfer service directory listing for `medium` size
+directories.
+
+The current release fixed  Globus transfers hanging when `verify file integrity after transfer`
+is enabled and the pool is not configured to calculate an MD5 checksum.
+
+Honour the `ftp.net.internal` configuration property for dynamic
+checksum calculation.
+
+
+### Changelog 6.1.19..6.1.20
+
+<!-- git log 6.1.19..6.1.20 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[fbd737286b](https://github.com/dcache/dcache/commit/fbd737286b1e6e5a0bdd88d725cd99e9cdd4d225)
+:   [maven-release-plugin] prepare release 6.1.20
+
+[656a324c27](https://github.com/dcache/dcache/commit/656a324c278732b3f02f0aef6bac1315728b33bf)
+:   ftp: do not leak sockets when calculating checksums dynamically
+
+[095b02d305](https://github.com/dcache/dcache/commit/095b02d3056d3f760e509bbda3aa57ebed2decb4)
+:   ftp: add work-around to calculate MD5 for Globus
+
+[98468678f7](https://github.com/dcache/dcache/commit/98468678f70facfa85616185c5e0d91ba2f3ee9b)
+:   ftp: add place-holder file size work-around for Globus directory listing
+
+[2783011bd3](https://github.com/dcache/dcache/commit/2783011bd333695d4c43e9b22a6265ecc46eb221)
+:   rpm take build directory path into quotes
+
+[bfb3454e7b](https://github.com/dcache/dcache/commit/bfb3454e7b578a30967f305555374581234370c7)
+:   ftp: fix MLSC support for medium-length directories
+
+[fc7564fb5a](https://github.com/dcache/dcache/commit/fc7564fb5aaa5efe1bd167a17cfbbbbb8ec5c1b1)
+:   ftp: fix on-the-fly checksum calculation
+
+[79f4c75126](https://github.com/dcache/dcache/commit/79f4c7512632d34a63533f4389cc017e12803db5)
+:   book: document host alias issue with xroot TPC
+
+[ad4f26096e](https://github.com/dcache/dcache/commit/ad4f26096ed695866dfea0370c9bdd03ae2e8934)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.1.19
 
 ### pool
