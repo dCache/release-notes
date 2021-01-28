@@ -167,7 +167,31 @@
     <br/>
   </preamble>
 
-  <!--
+  <series id="server-7.0">
+    <title>server 7.0.x</title>
+    <description>
+      <p>dCache 7.0 is a Feature Release, introducing following highlights:  </p>
+      <ul>
+	      <li>dCache internal copy triggerd by `srmcp` uses HTTP, was DCAP</li>
+	      <li>The high available services PinManager and Cleaner have acquired new debug commands</li>	      
+      </ul>
+      <p>Incompatibilities</p>
+      <li>The argument of `kill client` admin command of NFS door accepts client session id</li>
+      <li>Dropped support for pcells GUI</li>     
+      <p>dCache v7.0 requires a JVM supporting Java 8 or Java 11.</p>
+    </description>
+    <releases>
+       <name>dCache VERSION</name>
+       <download-url-prefix>repo/7.0/dcache</download-url-prefix>
+       <notes-url>release-notes-7.0.shtml</notes-url>
+       <version-prefix>7.0.</version-prefix>
+       </releases>
+       <release>
+    </release>
+   </series>
+   
+
+   <!--
       A tentative feature list for dCache v6.2:
       - basic support for extended attributes
       - full TLS support for all internal messages
