@@ -178,16 +178,35 @@
       <p>Incompatibilities</p>
       <li>The argument of `kill client` admin command of NFS door accepts client session id</li>
       <li>Dropped support for pcells GUI</li>     
-      <p>dCache v7.0 requires a JVM supporting Java 8 or Java 11.</p>
+      <p>dCache v7.0 requires Java 11.</p>
     </description>
     <releases>
        <name>dCache VERSION</name>
        <download-url-prefix>repo/7.0/dcache</download-url-prefix>
        <notes-url>release-notes-7.0.shtml</notes-url>
        <version-prefix>7.0.</version-prefix>
-       </releases>
+     
+
+      <release version="0" recommended="1">
+        <date>8.2.2021</date>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>0a727329d5585d53928a9aedfd74a5e5</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>6ba40c6f54bafaabd4a51578de79fafc</md5sum>
+        </package>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>8a393fd24de0b6a208880e4039ae5b85</md5sum>
+        </package>
+      </release>
+
+      
        <release>
-    </release>
+       </release>
+     </releases>       
    </series>
    
 
