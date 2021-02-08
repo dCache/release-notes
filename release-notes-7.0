@@ -58,7 +58,7 @@ HTML header: <title>dCache 7.0 Release Notes</title>
 <div class="row">
 
 <div class="page-header">
-<h1>What's new in dCache 4.2<br/>
+<h1>What's new in dCache 7.0<br/>
 <small>Release notes</small></h1>
 </div>
 
@@ -81,7 +81,6 @@ HTML header: <title>dCache 7.0 Release Notes</title>
 ### Admin
 
 The `pcells` GUI was abandoned for a while. With version 7.0 dCache have dropped the corresponding componnents in admin door.
-
 
 
 ### Cleaner
@@ -155,14 +154,11 @@ This option typically used to disallow user-space nfs clients as they might spoo
 is `insecure`.
 
 
-
 ### Pool
 
 Removed admin/setup command `set duplicate request`. The correspoding behaviour was dropped since dcache 3.0.
 
 
-
-### Zookeeper
 
 
 ### Changelog from 6.2.0 to 7.0.0
