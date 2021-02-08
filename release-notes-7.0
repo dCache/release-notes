@@ -64,11 +64,11 @@ HTML header: <title>dCache 7.0 Release Notes</title>
 
 ## Highlights
 
- - dCache internal copy triggerd by `srmcp` uses HTTP, was DCAP
+ - dCache internal copy triggerd by `srmcp` uses HTTP (was DCAP)
 
 ## Incompatibilities
 
-- the argument of `kill client` admin command of NFS door accepts client session id
+- the argument of the `kill client` admin command for the NFS door accepts client session id
 - dropped support for pcells GUI
 
 ## Acknowledgments
@@ -80,7 +80,7 @@ HTML header: <title>dCache 7.0 Release Notes</title>
 
 ### Admin
 
-The `pcells` GUI was abandoned for a while. With version 7.0 dCache have dropped the corresponding componnents in admin door.
+The `pcells` GUI was abandoned a while ago. With version 7.0 dCache has dropped the corresponding components in the admin door.
 
 
 ### Cleaner
@@ -105,7 +105,7 @@ in the case of the well-known PinManager cell.
 
 ### NFS
 
-With addition of externted attributes support into NFS, some magic dot file can be exposed
+With the addition of external attributes support into NFS, some magic dot files can be exposed
 through standard tools. With dCache 7.0.0 the directory tags can be in read-only mode accessed
 with `getfattr` of with `attr` command line tools:
 
@@ -131,9 +131,9 @@ $ attr -q -g dcache.tag.OSMTemplate .
 StoreName test
 ```
 
-This functionality requires a xattr capable nfs client, which is linux kernel 5.9 or later.
+This functionality requires a xattr-capable NFS client, which is linux kernel 5.9 or later.
 
-The admins interface of NFS doors is updated to remove redundant informaion from the output of `show clients` command:
+The admin interface for NFS doors has been updated to remove redundant information from the output of the `show clients` command:
 
 ```
     [dcache-lab000] (NFS-dcache-lab007@core-dcache-lab007) admin > show clients
@@ -143,22 +143,20 @@ The admins interface of NFS doors is updated to remove redundant informaion from
     [dcache-lab000] (NFS-dcache-lab007@core-dcache-lab007) admin >
 ```
 
-The argument of `kill client` admin accepts client's session id. For instance, to kill the client from example above:
+The argument of `kill client` accepts the client's session id. For instance, to kill the client from example above:
 
 ```
 [dcache-lab000] (NFS-dcache-lab007@core-dcache-lab007) admin > kill client 5f4ccad3000300010000000000000001
 ```
 
-The NFS door update to support `secure/insecure` export options that requires clients to use privilaged port.
-This option typically used to disallow user-space nfs clients as they might spoof request credentials. The default
+The NFS door has also been updated to support `secure/insecure` export options specifying whether clients are required to use a privilaged port.
+This option typically is used to disallow user-space NFS clients, as they might spoof request credentials. The default
 is `insecure`.
 
 
 ### Pool
 
-Removed admin/setup command `set duplicate request`. The correspoding behaviour was dropped since dcache 3.0.
-
-
+Removed admin/setup command `set duplicate request`. The correspoding behaviour had been dropped since dcache 3.0.
 
 
 ### Changelog from 6.2.0 to 7.0.0
