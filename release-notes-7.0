@@ -82,9 +82,9 @@ HTML header: <title>dCache 7.0 Release Notes</title>
 
 The `pcells` GUI was abandoned for a while. With version 7.0 dCache have dropped the corresponding componnents in admin door.
 
-### Alarms
+<!--### Alarms
 
-### Billing
+### Billing-->
 
 ### Cleaner
 
@@ -96,13 +96,13 @@ The default value is
 cleaner.limits.hsm-max-cached-locations = 12000
 ```
 
-### DCAP
+<!--### DCAP
 
 ### Frontend
 
 ### FTP
 
-### gplazma
+### gplazma-->
 
 ### HA Services
 
@@ -112,7 +112,7 @@ When using `ha get role` or `ha release leaderhip` it is usually most sensible t
 explicitly specify the fully qualified cell@domain name it should be sent to, especially
 in the case of the well-known PinManager cell.
 
-### History
+<!--### History
 
 ### Hoppingmanager
 
@@ -120,7 +120,7 @@ in the case of the well-known PinManager cell.
 
 ### Info
 
-### Missing Files
+### Missing Files-->
 
 ### NFS
 
@@ -172,15 +172,15 @@ The NFS door update to support `secure/insecure` export options that requires cl
 This option typically used to disallow user-space nfs clients as they might spoof request credentials. The default
 is `insecure`.
 
-### Pinmanager
+<!--### Pinmanager
 
-### PNFS Manager
+### PNFS Manager-->
 
 ### Pool
 
 Removed admin/setup command `set duplicate request`. The correspoding behaviour was dropped since dcache 3.0.
 
-### Poolmanager
+<!--### Poolmanager
 
 ### Resilience
 
@@ -200,7 +200,7 @@ Removed admin/setup command `set duplicate request`. The correspoding behaviour 
 
 ### XRootD
 
-### Zookeeper
+### Zookeeper-->
 
 
 ### Changelog from 6.2.0 to 7.0.0
