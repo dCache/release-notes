@@ -67,6 +67,7 @@ HTML header: <title>dCache 7.1 Release Notes</title>
 ## Incompatibilities
 
 - dropped sysV-like service file `/etc/rc.d/init.d/dcache-server`
+- dropped `remove-precious-files-on-delete` property
 
 ## Acknowledgments
 
@@ -134,6 +135,9 @@ pinmanager.reset-failed-unpins-period.unit=HOURS
 ### PNFS Manager
 
 ### Pool
+
+The  `remove-precious-files-on-delete` proerty is removed. As a result, the precious replicas are always removed
+when file deleted in the namespace.
 
 ### Poolmanager
 
