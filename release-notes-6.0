@@ -83,6 +83,60 @@ We would like to thank HTW-Berlin students David Linke, Lilit Patzwaldt-Sergoyan
 Quentin Kuth, Sophie Schauer, Viktoriia Sulimenko, Vladimir Vilenchik, Johann Gillhoff and Dieter
 Weber from FZ-Jülich for their contributions.
 
+## Release 6.0.32
+
+### biiling
+
+The current relase fixed  unit info for bandwidth measurements in billing.properties (bytes/sec, not MiB/sec).
+
+
+H: 926593db81 6c4faecd00 ccf4760d4b ff4c87638f 61b7931b78
+R: 7.0.1 6.2.13 6.1.21 6.0.32 5.2.38
+### frontend
+
+Frontend now logs any time it returns 500 Internal Server Error to the
+client.
+
+dcache-view Previously displayed   MB/sec for transfer rate, but the
+value is the old KB/sec. This is now improved and pages display the values advertised.
+
+
+### pool
+
+The current release assures  now  that  checksum scanner wiill mark files broken and sends alarm.
+
+
+### webdav
+
+An HTTP-TPC transfer will abort automatically if transfer-manager is
+restarted, without waiting for the client (FTS) to time-out.
+
+
+### Changelog 6.0.31..6.0.32
+
+<!-- git log 6.0.31..6.0.32 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[35e807978b](https://github.com/dcache/dcache/commit/35e807978b2904bc5a994439c9b2be4fcbfe1add)
+:   [maven-release-plugin] prepare release 6.0.32
+
+[ff4c87638f](https://github.com/dcache/dcache/commit/ff4c87638f1095099d15473af1784413f62d84e3)
+:   dcache-pool: Assure checksum scanner marks files broken and sends alarm
+
+[730ff2d04d](https://github.com/dcache/dcache/commit/730ff2d04db3e6099994700864688794ac11e39c)
+:   webdav/transfermanager: fail gracefully on restart, for perf marker
+
+[e32207f4c1](https://github.com/dcache/dcache/commit/e32207f4c1ba9d5e2e508d5223637ad73a7202a0)
+:   default: fix unit info for bandwidth measurements in billing.properties
+
+[4787b1cc0e](https://github.com/dcache/dcache/commit/4787b1cc0e18232904c9b19972edd4d51b6dcb99)
+:   frontend: create a log entry when we return 500 Internal Server Error
+
+[ecde32dece](https://github.com/dcache/dcache/commit/ecde32deceba90c9e61978cd7ce86c193c596a5c)
+:   dcache-frontend: change transfer rate to compute what it advertised
+
+[1bfe66ab92](https://github.com/dcache/dcache/commit/1bfe66ab925519623e527dc256b62ca65b09720b)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.0.31
 
 ### book

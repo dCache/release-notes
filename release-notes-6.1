@@ -84,6 +84,60 @@ pools.
 (tbd, this section uses markdown formatting)
 
 
+## Release 6.1.21
+
+### biiling
+
+The current relase fixed  unit info for bandwidth measurements in billing.properties (bytes/sec, not MiB/sec).
+
+
+H: 926593db81 6c4faecd00 ccf4760d4b ff4c87638f 61b7931b78
+R: 7.0.1 6.2.13 6.1.21 6.0.32 5.2.38
+### frontend
+
+Frontend now logs any time it returns 500 Internal Server Error to the
+client.
+
+dcache-view Previously displayed   MB/sec for transfer rate, but the
+value is the old KB/sec. This is now improved and pages display the values advertised.
+
+
+### pool
+
+The current release assures  now  that  checksum scanner wiill mark files broken and sends alarm.
+
+
+### webdav
+
+An HTTP-TPC transfer will abort automatically if transfer-manager is
+restarted, without waiting for the client (FTS) to time-out.
+
+
+### Changelog 6.1.20..6.1.21
+
+<!-- git log 6.1.20..6.1.21 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[963dc9a352](https://github.com/dcache/dcache/commit/963dc9a35278bde605aeec0fb7136d5d50a50165)
+:   [maven-release-plugin] prepare release 6.1.21
+
+[ccf4760d4b](https://github.com/dcache/dcache/commit/ccf4760d4b048a07790cb93c44de9cc164228901)
+:   dcache-pool: Assure checksum scanner marks files broken and sends alarm
+
+[57f9e32948](https://github.com/dcache/dcache/commit/57f9e3294819041ce92141bc579870163215dc0b)
+:   webdav/transfermanager: fail gracefully on restart, for perf marker
+
+[99654d07e1](https://github.com/dcache/dcache/commit/99654d07e194ac490e79ed01292ae74d8f7a8c7d)
+:   default: fix unit info for bandwidth measurements in billing.properties
+
+[cb742ca1a9](https://github.com/dcache/dcache/commit/cb742ca1a9ad0980102bcaa46c9a1474402c12cb)
+:   frontend: create a log entry when we return 500 Internal Server Error
+
+[b95b867193](https://github.com/dcache/dcache/commit/b95b867193f27fe5a2614b55dd2c391882d4b8d5)
+:   dcache-frontend: change transfer rate to compute what it advertised
+
+[c8a36e7b27](https://github.com/dcache/dcache/commit/c8a36e7b27ddec60b9abfb4db7f5539183267ba8)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.1.20
 
 ### book

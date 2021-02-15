@@ -89,6 +89,60 @@ transfers.
 We gratefully acknowledge code and documentation contributions from Christoph Anton Mitterer and Onno Zweers.
 
 
+## Release 5.2.38
+
+### biiling
+
+The current relase fixed  unit info for bandwidth measurements in billing.properties (bytes/sec, not MiB/sec).
+
+
+H: 926593db81 6c4faecd00 ccf4760d4b ff4c87638f 61b7931b78
+R: 7.0.1 6.2.13 6.1.21 6.0.32 5.2.38
+### frontend
+
+Frontend now logs any time it returns 500 Internal Server Error to the
+client.
+
+dcache-view Previously displayed   MB/sec for transfer rate, but the
+value is the old KB/sec. This is now improved and pages display the values advertised.
+
+
+### pool
+
+The current release assures  now  that  checksum scanner wiill mark files broken and sends alarm.
+
+
+### webdav
+
+An HTTP-TPC transfer will abort automatically if transfer-manager is
+restarted, without waiting for the client (FTS) to time-out.
+
+
+### Changelog 5.2.37..5.2.38
+
+<!-- git log 5.2.37..5.2.38 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[068123e993](https://github.com/dcache/dcache/commit/068123e993b08dc8cb6c6b9602bfb4506ff36e45)
+:   [maven-release-plugin] prepare release 5.2.38
+
+[61b7931b78](https://github.com/dcache/dcache/commit/61b7931b7833eb2ebd598ab3a85856e6a1fa7a4f)
+:   dcache-pool: Assure checksum scanner marks files broken and sends alarm
+
+[d02f0380b5](https://github.com/dcache/dcache/commit/d02f0380b5b128970a9405029fc6f35b66c272ca)
+:   webdav/transfermanager: fail gracefully on restart, for perf marker
+
+[ed2367b8cc](https://github.com/dcache/dcache/commit/ed2367b8ccaf7ef873e1da1e2b7b0cdd3a05c33a)
+:   default: fix unit info for bandwidth measurements in billing.properties
+
+[c55a211984](https://github.com/dcache/dcache/commit/c55a2119846e43017e03356b363edaf8c40491ca)
+:   frontend: create a log entry when we return 500 Internal Server Error
+
+[d51ea7af92](https://github.com/dcache/dcache/commit/d51ea7af925010d3027dca1bb1723eba8c0cf74c)
+:   dcache-frontend: change transfer rate to compute what it advertised
+
+[37e81a4d9a](https://github.com/dcache/dcache/commit/37e81a4d9a15fbcd8c77d8621aac4b3a1d03c97f)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.2.37
 
 ### book

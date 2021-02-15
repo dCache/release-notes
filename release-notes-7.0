@@ -76,6 +76,71 @@ HTML header: <title>dCache 7.0 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 7.0.1
+
+### biiling
+
+The current relase fixed  unit info for bandwidth measurements in billing.properties (bytes/sec, not MiB/sec).
+
+
+H: 926593db81 6c4faecd00 ccf4760d4b ff4c87638f 61b7931b78
+R: 7.0.1 6.2.13 6.1.21 6.0.32 5.2.38
+### frontend
+
+Frontend now logs any time it returns 500 Internal Server Error to the
+client.
+
+dcache-view Previously displayed   MB/sec for transfer rate, but the
+value is the old KB/sec. This is now improved and pages display the values advertised.
+
+
+### pool
+
+Less memory consumption by pool, especially on startup.
+
+The current release assures  now  that  checksum scanner wiill mark files broken and sends alarm.
+
+
+### webdav
+
+An HTTP-TPC transfer will abort automatically if transfer-manager is
+restarted, without waiting for the client (FTS) to time-out.
+
+
+### Changelog 7.0.0..7.0.1
+
+<!-- git log 7.0.0..7.0.1 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[58013c124f](https://github.com/dcache/dcache/commit/58013c124fe31f8465d8a3138097b66139804ef7)
+:   [maven-release-plugin] prepare release 7.0.1
+
+[926593db81](https://github.com/dcache/dcache/commit/926593db81a2a77b186ba7e3a782efe2aa66b46a)
+:   dcache-pool: Assure checksum scanner marks files broken and sends alarm
+
+[36d1ecb8b4](https://github.com/dcache/dcache/commit/36d1ecb8b4b75997b5c2d07a09aac233103f3a98)
+:   pool: do not re-read storage info when creating CacheRepositoryEntry
+
+[76ee34de41](https://github.com/dcache/dcache/commit/76ee34de414ab7b13d6917b7f8d31acd659bb37b)
+:   webdav/transfermanager: fail gracefully on restart, for perf marker
+
+[9b40626893](https://github.com/dcache/dcache/commit/9b40626893a49f9b80a92f3bc1c8bedb5404c6e1)
+:   default: fix unit info for bandwidth measurements in billing.properties
+
+[52be56e3a8](https://github.com/dcache/dcache/commit/52be56e3a86e02c6b1190f7a139fd7a5ff7c6c77)
+:   frontend: create a log entry when we return 500 Internal Server Error
+
+[b977d966eb](https://github.com/dcache/dcache/commit/b977d966ebcbc306c3b3dac22f5bbb2ca18dcaaa)
+:   pool: do not update file size on flush
+
+[b9f9f93b6d](https://github.com/dcache/dcache/commit/b9f9f93b6d4f13f23832e96d7237496fd715f6fe)
+:   dcache-frontend: change transfer rate to compute what it advertised
+
+[e97dd2115e](https://github.com/dcache/dcache/commit/e97dd2115e81935329489d9dff1f915977092673)
+:   pool: use soft reference to storage info object
+
+[bfc41bed21](https://github.com/dcache/dcache/commit/bfc41bed213f575788307a215131146930b2001f)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 7.0.0
 
 ### Admin
