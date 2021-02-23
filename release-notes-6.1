@@ -84,6 +84,28 @@ pools.
 (tbd, this section uses markdown formatting)
 
 
+## Release 6.1.22
+
+### webdav
+
+Restarting transfermanager while there are ongoing HTTP-TPC transfers no
+longer results in an endless loop, with transfermanager logging a
+message every ~5 seconds per ongoing HTTP-TPC transfer.
+
+
+### Changelog 6.1.21..6.1.22
+
+<!-- git log 6.1.21..6.1.22 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[b44f6b5668](https://github.com/dcache/dcache/commit/b44f6b5668acd798a52c0583effa5c0e6676a37d)
+:   [maven-release-plugin] prepare release 6.1.22
+
+[5c5a996be9](https://github.com/dcache/dcache/commit/5c5a996be9cd3802c9342cd84e5b87359faf5a4c)
+:   webdav-transfermanager: fail gracefully if transfermanager restarted
+
+[704d9b5ccd](https://github.com/dcache/dcache/commit/704d9b5ccdd502a4466ceff8daa9cdf7bea290d4)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.1.21
 
 ### biiling

@@ -83,6 +83,28 @@ We would like to thank HTW-Berlin students David Linke, Lilit Patzwaldt-Sergoyan
 Quentin Kuth, Sophie Schauer, Viktoriia Sulimenko, Vladimir Vilenchik, Johann Gillhoff and Dieter
 Weber from FZ-Jülich for their contributions.
 
+## Release 6.0.33
+
+### webdav
+
+Restarting transfermanager while there are ongoing HTTP-TPC transfers no
+longer results in an endless loop, with transfermanager logging a
+message every ~5 seconds per ongoing HTTP-TPC transfer.
+
+
+### Changelog 6.0.32..6.0.33
+
+<!-- git log 6.0.32..6.0.33 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[3be5f99a7a](https://github.com/dcache/dcache/commit/3be5f99a7ac92c75769e304c918b1c11954a5844)
+:   [maven-release-plugin] prepare release 6.0.33
+
+[f6ce92b2fa](https://github.com/dcache/dcache/commit/f6ce92b2fa7454bc583d16294bc0a0a940d8c051)
+:   webdav-transfermanager: fail gracefully if transfermanager restarted
+
+[274de5626e](https://github.com/dcache/dcache/commit/274de5626ef502e926936bb6344fc20acad02ceb)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.0.32
 
 ### biiling

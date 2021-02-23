@@ -106,6 +106,44 @@ This does not affect functionality.
 (tbd, this section uses markdown formatting)
 
 
+## Release 6.2.14
+
+### gplazma
+
+dCache now supports OPs that assert group-membership with
+eduPersonEntitlement claims (as described by AARC guideline G002). The
+multimap plugin may be used to map these to corresponding group/gid
+values
+
+### webdav
+
+Restarting transfermanager while there are ongoing HTTP-TPC transfers no
+longer results in an endless loop, with transfermanager logging a
+message every ~5 seconds per ongoing HTTP-TPC transfer.
+
+
+### Changelog 6.2.13..6.2.14
+
+<!-- git log 6.2.13..6.2.14 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[315ad704aa](https://github.com/dcache/dcache/commit/315ad704aab7c9938228b1ff235923d37037080d)
+:   [maven-release-plugin] prepare release 6.2.14
+
+[8f289b6d0c](https://github.com/dcache/dcache/commit/8f289b6d0c7416a7824d8658435a12f33e736e3f)
+:   Revert "pool: do not update file size on flush"
+
+[96bcb14900](https://github.com/dcache/dcache/commit/96bcb1490059fcce74fcca191ad5adbd33f6144d)
+:   gplazma: add support for eduPersonEntitlement assertions
+
+[e3d68154eb](https://github.com/dcache/dcache/commit/e3d68154eb7a39992f69be65032895e393fd5f74)
+:   build(deps): bump version.jackson from 2.10.1 to 2.12.1
+
+[d430a76b9b](https://github.com/dcache/dcache/commit/d430a76b9b732f962c489fec92e05e1de37048e0)
+:   webdav-transfermanager: fail gracefully if transfermanager restarted
+
+[544829d5ce](https://github.com/dcache/dcache/commit/544829d5ce3c0ea723dcae6c04de08795ddbb9ee)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.2.13
 
 ### biiling

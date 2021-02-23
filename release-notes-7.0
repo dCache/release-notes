@@ -76,6 +76,52 @@ HTML header: <title>dCache 7.0 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 7.0.2
+
+### chimera
+
+The DiskCleaner has been observed to cause high memory loads, even crash if the trash table is very large.
+This is now fixed and the  DiskCleaner does not run out of memory due to large numbers of trash table entries.
+
+### gplazma
+
+dCache now supports OPs that assert group-membership with
+eduPersonEntitlement claims (as described by AARC guideline G002). The
+multimap plugin may be used to map these to corresponding group/gid
+values
+
+### webdav
+
+Restarting transfermanager while there are ongoing HTTP-TPC transfers no
+longer results in an endless loop, with transfermanager logging a
+message every ~5 seconds per ongoing HTTP-TPC transfer.
+
+
+### Changelog 7.0.1..7.0.2
+
+<!-- git log 7.0.1..7.0.2 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[455482d077](https://github.com/dcache/dcache/commit/455482d0773a1f92bfe50b5c245c50881d827fb9)
+:   [maven-release-plugin] prepare release 7.0.2
+
+[8712352a7b](https://github.com/dcache/dcache/commit/8712352a7ba0c1a1849b3cb383c7b288ac6d846b)
+:   Revert "pool: do not update file size on flush"
+
+[265c2d4e54](https://github.com/dcache/dcache/commit/265c2d4e54dcb40a66864972c72a8a89e4a22ab3)
+:   gplazma: add support for eduPersonEntitlement assertions
+
+[5c1d745ac6](https://github.com/dcache/dcache/commit/5c1d745ac657b095865cb5806a8360497fe1fe59)
+:   build(deps): bump version.jackson from 2.10.1 to 2.12.1
+
+[e5dec6ce08](https://github.com/dcache/dcache/commit/e5dec6ce08beeb7e484ff39b3a282d291e0bf3e5)
+:   webdav-transfermanager: fail gracefully if transfermanager restarted
+
+[f22a8994a5](https://github.com/dcache/dcache/commit/f22a8994a54c88b380cff827429b779b826d09eb)
+:   dcache-chimera: chunking disk cleaner's trash table access
+
+[c9bb2ec389](https://github.com/dcache/dcache/commit/c9bb2ec389115206f859a879f1043948ca75f591)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 7.0.1
 
 ### biiling
