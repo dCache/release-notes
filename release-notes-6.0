@@ -83,6 +83,78 @@ We would like to thank HTW-Berlin students David Linke, Lilit Patzwaldt-Sergoyan
 Quentin Kuth, Sophie Schauer, Viktoriia Sulimenko, Vladimir Vilenchik, Johann Gillhoff and Dieter
 Weber from FZ-Jülich for their contributions.
 
+## Release 6.0.34
+
+### admin
+
+The current release fixed  doors `login dump cache` admin command  to show the
+information sent by the door along with the login result.
+
+### common
+
+Printing of bearer tokens is improved to provide better assurance that
+bearer tokens are not leaked.
+
+### gplazma
+
+All login failures are now recoreded in pinboard as a single-line
+summary, explaining why the login attempt failed.
+
+### webdav
+
+The current release fixed  a regression where dCache would complain about badly formatted IPv6
+addresses, preventing those addresses from being included in the access
+log files.
+
+The current release fixed a regression where dCache would complain about badly formatted IPv6
+addresses, preventing those addresses from being included in the access
+log files.
+
+### xroot
+
+The current relase updated xrootd4j to 4.0.5 which fixes improper use of destination token when
+contacting source server during third-pary transfer.
+
+
+
+
+### Changelog 6.0.33..6.0.34
+
+<!-- git log 6.0.33..6.0.34 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[b34635122f](https://github.com/dcache/dcache/commit/b34635122fb940321a86da00d33b32579be78f66)
+:   [maven-release-plugin] prepare release 6.0.34
+
+[865bdf8dfa](https://github.com/dcache/dcache/commit/865bdf8dfaf5debe7ccfca445489ba40f2cd5d5a)
+:   dcache-xroot: update to xrootd4j-4.0.5
+
+[8c5293dab9](https://github.com/dcache/dcache/commit/8c5293dab9f2cd545eb87d942300121f7067e0b3)
+:   webdav/frontend: fix IPv6 address logging
+
+[fce01957dd](https://github.com/dcache/dcache/commit/fce01957dd96d18fe8a6e53da4be228f2f3b95dc)
+:   common: update how BearerToken is shown in Subjects#toString
+
+[753d5d9d48](https://github.com/dcache/dcache/commit/753d5d9d485c803ad5564e5ff8c69af9c849bfc0)
+:   authn: add missing hashCode and equals methods for PasswordCredential
+
+[7a57d1e4ae](https://github.com/dcache/dcache/commit/7a57d1e4aea08fb50419b666abcfcda9cb6372d3)
+:   authn: fix "login dump cache" admin command output
+
+[e82f149825](https://github.com/dcache/dcache/commit/e82f1498251414b29e1fc7e7ee518c471843117d)
+:   gplazma: provide single-line summary in pinboard for each login failure
+
+[349bca2cf5](https://github.com/dcache/dcache/commit/349bca2cf5bd351b1d1dcff36bc00c24e9d89525)
+:   authn: log failures in UnionLoginStrategy
+
+[39a3095843](https://github.com/dcache/dcache/commit/39a30958435bbdab4f09e856907f563f47f8fe22)
+:   authn: add missing hashCode and equals methods for BearerTokenCredential
+
+[cbe4dab3e8](https://github.com/dcache/dcache/commit/cbe4dab3e853af38700c7c3ca91b0af35ca35583)
+:   common: Update BearerToken representation to include some information
+
+[0c7ce71267](https://github.com/dcache/dcache/commit/0c7ce71267a1b0baa9f21f13b058336bf62d5d77)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.0.33
 
 ### webdav

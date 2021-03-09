@@ -76,6 +76,85 @@ HTML header: <title>dCache 7.0 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 7.0.3
+
+### admin
+
+The current release fixed  doors `login dump cache` admin command  to show the
+information sent by the door along with the login result.
+
+### common
+
+Printing of bearer tokens is improved to provide better assurance that
+bearer tokens are not leaked.
+
+### gplazma
+
+All login failures are now recoreded in pinboard as a single-line
+summary, explaining why the login attempt failed.
+
+### namespace
+
+Now Path information available for all transfers.
+
+### webdav
+
+The current release fixed  a regression where dCache would complain about badly formatted IPv6
+addresses, preventing those addresses from being included in the access
+log files.
+
+The current release fixed a regression where dCache would complain about badly formatted IPv6
+addresses, preventing those addresses from being included in the access
+log files.
+
+### xroot
+
+The current relase updated xrootd4j to 4.0.5 which fixes improper use of destination token when
+contacting source server during third-pary transfer.
+
+
+
+
+### Changelog 7.0.2..7.0.3
+
+<!-- git log 7.0.2..7.0.3 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[73d46a8ec3](https://github.com/dcache/dcache/commit/73d46a8ec39cba1180d7fa0fa142079db4d104ae)
+:   [maven-release-plugin] prepare release 7.0.3
+
+[d9c9835a14](https://github.com/dcache/dcache/commit/d9c9835a14a0456ef8a674cb7938cec4142bb4c3)
+:   dcache-xroot: update to xrootd4j-4.0.5
+
+[ba533a26ed](https://github.com/dcache/dcache/commit/ba533a26ed0b24e525c1727177b7b1d7ef2cb906)
+:   webdav/frontend: fix IPv6 address logging
+
+[81acb053be](https://github.com/dcache/dcache/commit/81acb053be6fa32ae3bbf77274f2b72b3b0788c6)
+:   common: update how BearerToken is shown in Subjects#toString
+
+[dac8e11ea4](https://github.com/dcache/dcache/commit/dac8e11ea4a46fc755886331976df85ad1b336e8)
+:   authn: add missing hashCode and equals methods for PasswordCredential
+
+[8b1ee224e3](https://github.com/dcache/dcache/commit/8b1ee224e3efd6583820252d7e03203e4ecfb2a4)
+:   authn: fix "login dump cache" admin command output
+
+[243db3d569](https://github.com/dcache/dcache/commit/243db3d569e29606a96b4634009b2c3aed395945)
+:   gplazma: provide single-line summary in pinboard for each login failure
+
+[5cfad134d8](https://github.com/dcache/dcache/commit/5cfad134d8e2ec42386502a00b41a879b10f8746)
+:   authn: add missing hashCode and equals methods for BearerTokenCredential
+
+[0adbbd788f](https://github.com/dcache/dcache/commit/0adbbd788fad9ed3f19c732d572061c867c08e8a)
+:   common: Update BearerToken representation to include some information
+
+[152bcb41e2](https://github.com/dcache/dcache/commit/152bcb41e2eb070d522dce8bf66677b463cca635)
+:   namespace: ensure that file's path always set on GetAttributes
+
+[e536672911](https://github.com/dcache/dcache/commit/e536672911ab5da9a7d4efa4f48a26f327dfce5d)
+:   authn: log failures in UnionLoginStrategy
+
+[5d949b937a](https://github.com/dcache/dcache/commit/5d949b937aaf0fa68b0943e39d650d1bcabf86a8)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 7.0.2
 
 ### chimera
