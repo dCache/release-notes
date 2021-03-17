@@ -106,6 +106,33 @@ This does not affect functionality.
 (tbd, this section uses markdown formatting)
 
 
+## Release 6.2.16
+
+### Changes affecting multiple services
+
+Sometimes file checksums are missing in namespace. Transfer requiring checksum verification fails then with an error saying that "No checksums found", but doesn't log a stack trace server side anymore.
+
+### dcache-xroot
+
+During periods of heavy usage on a pool node, if I/O stalls during read, the xroot client may try to reconnect and continue reading. This release fixes a bug which fails the transfer on the attempted reconnect with a "uuid no longer valid" error (because the file mover has already been closed and removed).  Clients should now be able to resume reading the file on retry.
+
+
+### Changelog 6.2.15..6.2.16
+
+<!-- git log 6.2.15..6.2.16 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[ac73913b6b](https://github.com/dcache/dcache/commit/ac73913b6b1078236d18dfc7bbf4fd926bf632d8)
+:   [maven-release-plugin] prepare release 6.2.16
+
+[d4883ca2c3](https://github.com/dcache/dcache/commit/d4883ca2c3dcb600e99237e4c845fd10445774e2)
+:   dcache-xroot: Allow client to reattempt open on pool when I/O stalls
+
+[b4349ced2f](https://github.com/dcache/dcache/commit/b4349ced2f83b5e11b605276b68ab7c7b1e0b112)
+:   check if checksums are present and throw CacheException if they are not
+
+[41fc04fd04](https://github.com/dcache/dcache/commit/41fc04fd0462b798cd1ee812d6ab4eaa59db3ec6)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.2.15
 
 ### admin
