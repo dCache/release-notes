@@ -108,6 +108,35 @@ HTML header: <title>dCache 7.1 Release Notes</title>
 
 Removed RHEL6 specific workaround of re-ordering pool's IP addresses.
 
+The NFS door is updated to allow create, update and remove of dirictory tags as extended attributes:
+```
+$ cat '.(tags)()'
+.(tag)(OSMTemplate)
+.(tag)(sGroup)
+
+$ attr -l .
+Attribute "dcache.tag.OSMTemplate" has a 15 byte value for .
+Attribute "dcache.tag.sGroup" has a 8 byte value for .
+
+$ attr -s dcache.tag.foo -V bar .
+Attribute "dcache.tag.foo" set to a 3 byte value for .:
+bar
+
+$ cat '.(tags)()'
+.(tag)(OSMTemplate)
+.(tag)(foo)
+.(tag)(sGroup)
+
+$ cat '.(tag)(foo)'
+bar
+$
+
+$ attr -r dcache.tag.foo  .
+$ cat '.(tags)()'
+.(tag)(OSMTemplate)
+.(tag)(sGroup)
+```
+
 ### Pinmanager
 
 The pinmanager service regularly runs background processes for expiring and removing pins. For several reasons,
