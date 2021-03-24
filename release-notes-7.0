@@ -76,6 +76,26 @@ HTML header: <title>dCache 7.0 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 7.0.5
+
+### nfs
+
+Fixes regression introduced in 6.2.15.
+
+
+### Changelog 7.0.4..7.0.5
+
+<!-- git log 7.0.4..7.0.5 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[782cd8dcea](https://github.com/dcache/dcache/commit/782cd8dceaf24c882c8d2e0563c03db37c6e73d8)
+:   [maven-release-plugin] prepare release 7.0.5
+
+[dccd058e85](https://github.com/dcache/dcache/commit/dccd058e85b0ef06b0bcc3a2619c4a926accc098)
+:   nfs: fix access to path before namespace info available
+
+[558492cee0](https://github.com/dcache/dcache/commit/558492cee0d8b0db27f6d72123253a6be899eae8)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 7.0.4
 
 ### Changes affecting multiple services
