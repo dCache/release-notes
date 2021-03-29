@@ -76,6 +76,78 @@ HTML header: <title>dCache 7.0 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 7.0.6
+
+### pool
+
+There are several cases when pool scans the various hsm queus:
+ on mover start, to check load assumptions,  on heartbeat, to populate pool manager with load information,
+ on `info` command, to report load numbers to admin interface of   dcache-view collectors
+
+As this is O(n) operation, in case of a large queues those scans
+might take seconds, which is unacceptable, especially wen starting
+a new mover. 
+
+This is now fixed and getting hsm start is O(1) and doesn't impact pools operation
+
+### xrootd
+
+
+Now the door will ignore `xrootd.enable.tried-hosts` property if property false instead of returning errror. 
+
+
+### Changelog 7.0.5..7.0.6
+
+<!-- git log 7.0.5..7.0.6 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[26b5e779f2](https://github.com/dcache/dcache/commit/26b5e779f24d8dc5ec156d4fbbc6d99896562b6b)
+:   [maven-release-plugin] prepare release 7.0.6
+
+[29af66f70d](https://github.com/dcache/dcache/commit/29af66f70d5bfcb4245b19f9d9adfc93baa4a16c)
+:   pool: don't scan flush/restore/remove queue to get stats
+
+[80d7559ba5](https://github.com/dcache/dcache/commit/80d7559ba538b0da2481a8811f78245b5528b012)
+:   dcache-xroot: (door) ignore tried if property false instead of returning error
+
+[cd318fcb77](https://github.com/dcache/dcache/commit/cd318fcb775c2d3601f9ebb2dac7089912b7c907)
+:   [maven-release-plugin] prepare for next development iteration
+
+## Release 7.0.6
+
+### pool
+
+There are several cases when pool scans the various hsm queus:
+ on mover start, to check load assumptions,  on heartbeat, to populate pool manager with load information,
+ on `info` command, to report load numbers to admin interface of   dcache-view collectors
+
+As this is O(n) operation, in case of a large queues those scans
+might take seconds, which is unacceptable, especially wen starting
+a new mover. 
+
+This is now fixed and getting hsm start is O(1) and doesn't impact pools operation
+
+### xrootd
+
+
+Now the door will ignore `xrootd.enable.tried-hosts` property if property false instead of returning errror. 
+
+
+### Changelog 7.0.5..7.0.6
+
+<!-- git log 7.0.5..7.0.6 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[26b5e779f2](https://github.com/dcache/dcache/commit/26b5e779f24d8dc5ec156d4fbbc6d99896562b6b)
+:   [maven-release-plugin] prepare release 7.0.6
+
+[29af66f70d](https://github.com/dcache/dcache/commit/29af66f70d5bfcb4245b19f9d9adfc93baa4a16c)
+:   pool: don't scan flush/restore/remove queue to get stats
+
+[80d7559ba5](https://github.com/dcache/dcache/commit/80d7559ba538b0da2481a8811f78245b5528b012)
+:   dcache-xroot: (door) ignore tried if property false instead of returning error
+
+[cd318fcb77](https://github.com/dcache/dcache/commit/cd318fcb775c2d3601f9ebb2dac7089912b7c907)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 7.0.5
 
 ### nfs
