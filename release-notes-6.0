@@ -83,6 +83,38 @@ We would like to thank HTW-Berlin students David Linke, Lilit Patzwaldt-Sergoyan
 Quentin Kuth, Sophie Schauer, Viktoriia Sulimenko, Vladimir Vilenchik, Johann Gillhoff and Dieter
 Weber from FZ-Jülich for their contributions.
 
+## Release 6.0.36
+
+### poolmanager
+
+When poolmanager requests that a pool stage a file, the pool may return
+the special error code HSM_DELAY_ERROR (10013). On receiving this
+error, poolmanager suspends the request.
+
+This is now fixed.
+
+### xrootd
+
+
+xrootd4j is updated to  3.5.10.
+
+
+### Changelog 6.0.35..6.0.36
+
+<!-- git log 6.0.35..6.0.36 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[f1244eb678](https://github.com/dcache/dcache/commit/f1244eb678c652e152779053b134b90b135887f5)
+:   [maven-release-plugin] prepare release 6.0.36
+
+[e6b18058fd](https://github.com/dcache/dcache/commit/e6b18058fdf2ae2cd7a5756980b5fea5d9ccbfe2)
+:   dcache-xrootd: update xrootd4j to 3.5.10
+
+[d39899ef6a](https://github.com/dcache/dcache/commit/d39899ef6ab7f8ec4fdeb608f5a21d847a8c0263)
+:   poolmanager: fix NPE if pool delays stage without giving a reason
+
+[4475c907ac](https://github.com/dcache/dcache/commit/4475c907ac3f7d1b01aa66fadf10daa68f3964ec)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.0.35
 
 ### Changes affecting multiple services

@@ -84,6 +84,38 @@ pools.
 (tbd, this section uses markdown formatting)
 
 
+## Release 6.1.26
+
+### poolmanager
+
+When poolmanager requests that a pool stage a file, the pool may return
+the special error code HSM_DELAY_ERROR (10013). On receiving this
+error, poolmanager suspends the request.
+
+This is now fixed.
+
+### xrootd
+
+
+xrootd4j is updated to  3.5.10.
+
+
+### Changelog 6.1.25..6.1.26
+
+<!-- git log 6.1.25..6.1.26 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[8d04f449c1](https://github.com/dcache/dcache/commit/8d04f449c1febf44ac0b2bc3bdfa89ec52b21b83)
+:   [maven-release-plugin] prepare release 6.1.26
+
+[41dcbb8ea3](https://github.com/dcache/dcache/commit/41dcbb8ea36104b200d32fda8fcfb81a728c93c3)
+:   dcache-xrootd: update xrootd4j to 3.5.10
+
+[cf3ecd8722](https://github.com/dcache/dcache/commit/cf3ecd8722c049e51adc5f482336987efb5e02e7)
+:   poolmanager: fix NPE if pool delays stage without giving a reason
+
+[04efa36e50](https://github.com/dcache/dcache/commit/04efa36e50e1a7460ecc44185661c5b7fbb8bfec)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.1.25
 
 ### xrootd

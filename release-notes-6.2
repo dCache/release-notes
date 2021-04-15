@@ -106,6 +106,51 @@ This does not affect functionality.
 (tbd, this section uses markdown formatting)
 
 
+## Release 6.2.19
+
+### nearline-storage
+
+The current release fixed  store cancel regression.
+
+### pool
+
+As in distributed system packet loss (due to timeout or re-connects)
+can't be avoid, dCache retries many of requests. However, this is not
+the case for mover redirects. If a door did not receive reqirect
+information, then transfer will never happen.
+This is now fixed and re-send redirect if client is not connected within 5sec.
+
+### poolmanager
+
+When poolmanager requests that a pool stage a file, the pool may return
+the special error code HSM_DELAY_ERROR (10013). On receiving this
+error, poolmanager suspends the request.
+
+This is now fixed.
+
+
+### Changelog 6.2.18..6.2.19
+
+<!-- git log 6.2.18..6.2.19 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[780e7dcaad](https://github.com/dcache/dcache/commit/780e7dcaad07c1b73d4b01a4bd356e694f882ea1)
+:   [maven-release-plugin] prepare release 6.2.19
+
+[a53f00cca9](https://github.com/dcache/dcache/commit/a53f00cca981d4b96467a76b2e96234f41ab0f35)
+:   nearline-storage: fix store cancel regression
+
+[cb0388a2d2](https://github.com/dcache/dcache/commit/cb0388a2d237c367a5afda6dfe00c82857740d2d)
+:   pool: re-send redirect if client is not connected within 5sec
+
+[a1ad7f7e7a](https://github.com/dcache/dcache/commit/a1ad7f7e7a1f3053dd910c10d2eb5921fb31051c)
+:   poolmanager: fix NPE if pool delays stage without giving a reason
+
+[79ab2fd0f4](https://github.com/dcache/dcache/commit/79ab2fd0f4b8223c9f47101971314b6365c7d970)
+:   nearline-storage: introduce  FlushRequest#getReplicaCreationTime
+
+[c1e5a4aa6b](https://github.com/dcache/dcache/commit/c1e5a4aa6bf7ca94744641598f0bab9df6f45124)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.2.18
 
 ### pool

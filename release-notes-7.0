@@ -76,6 +76,58 @@ HTML header: <title>dCache 7.0 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 7.0.7
+
+### nearline-storage
+
+The current release fixed  store cancel regression.
+
+### pool
+
+As in distributed system packet loss (due to timeout or re-connects)
+can't be avoid, dCache retries many of requests. However, this is not
+the case for mover redirects. If a door did not receive reqirect
+information, then transfer will never happen.
+This is now fixed and re-send redirect if client is not connected within 5sec.
+
+### poolmanager
+
+The current release fixed a (vanishingly small) likelihood of a pool-manager suspending
+transfers if a read request triggers staging or pool-to-pool and the
+pool responds amazingly quickly.
+
+When poolmanager requests that a pool stage a file, the pool may return
+the special error code HSM_DELAY_ERROR (10013). On receiving this
+error, poolmanager suspends the request.
+
+This is now fixed.
+
+
+### Changelog 7.0.6..7.0.7
+
+<!-- git log 7.0.6..7.0.7 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[6f018a97e0](https://github.com/dcache/dcache/commit/6f018a97e0d7053dabdcc105311a682830fd866d)
+:   [maven-release-plugin] prepare release 7.0.7
+
+[2ab2677a7b](https://github.com/dcache/dcache/commit/2ab2677a7b498d6fbf8a03a8e9ab3709013738dd)
+:   poolmanager: fix rogue 'null' value in `_fifo` from commit 1501f056ce
+
+[257ba14348](https://github.com/dcache/dcache/commit/257ba143487a86c173f02eeff5ce716c952738aa)
+:   nearline-storage: fix store cancel regression
+
+[6e4dfca2a1](https://github.com/dcache/dcache/commit/6e4dfca2a104a5b987b535a5c406c637eb4dfff7)
+:   pool: re-send redirect if client is not connected within 5sec
+
+[db8bc2af5c](https://github.com/dcache/dcache/commit/db8bc2af5c808f54852416a9fe76c45ca971fb3e)
+:   poolmanager: fix NPE if pool delays stage without giving a reason
+
+[da6af7e414](https://github.com/dcache/dcache/commit/da6af7e414a41a4c0e47b0266db2a0e9059490b6)
+:   nearline-storage: introduce  FlushRequest#getReplicaCreationTime
+
+[71ec930d83](https://github.com/dcache/dcache/commit/71ec930d8302cb890c198040c41431fca3fa4ebd)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 7.0.6
 
 ### pool
