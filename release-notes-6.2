@@ -106,6 +106,75 @@ This does not affect functionality.
 (tbd, this section uses markdown formatting)
 
 
+## Release 6.2.20
+
+### dcache-xroot
+
+The cirrent release fixed memory leak, race and other small issues with reconnect to pool.
+
+
+### frontend
+
+The `dcache-view.endpoints.webdav` property now overrides any
+auto-discovered WebDAV endpoint, making explicit configuration easier.
+
+### pnfsmanager
+
+
+
+A regression is fixed the prevents creating a symbolic link.
+
+### systemd
+
+`dcache-generator` now successfully runs after restart.
+
+### xrootd
+
+xrootd4j is updated to 4.0.6.
+
+
+The current relase has updated to xrootd4j library to 4.0.6.
+
+The correct subject is used to access the path for both GSI and SciToken protocols.
+
+
+### Changelog 6.2.19..6.2.20
+
+<!-- git log 6.2.19..6.2.20 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[489a117972](https://github.com/dcache/dcache/commit/489a117972be75b7e380e6f5b47d7bc79692b38c)
+:   [maven-release-plugin] prepare release 6.2.20
+
+[2046a18e14](https://github.com/dcache/dcache/commit/2046a18e149071ac47b56ef13339dd665f5c176a)
+:   pool: make sure that RepositoryChannel when createChannel detects error
+
+[b4a55acb9b](https://github.com/dcache/dcache/commit/b4a55acb9b03e3f204748519aa7dfda68da17032)
+:   update to xrootd 4.0.7
+
+[22f919abd0](https://github.com/dcache/dcache/commit/22f919abd09c8aee8535ec3c12aa4a7117079599)
+:   dcache-xrootd: update to xrootd4j 4.0.6
+
+[fd9c6640ff](https://github.com/dcache/dcache/commit/fd9c6640ffbb16e39a36c4abac24de1f8a6b07ed)
+:   frontend: bump version of dCacheView
+
+[2a1a2c8bc0](https://github.com/dcache/dcache/commit/2a1a2c8bc0ae39e4c0c1ca20c3a3293abcba4a37)
+:   pnfsmanager: fix NPE regression from 3dfed7e8b0
+
+[2fdc1d9894](https://github.com/dcache/dcache/commit/2fdc1d989435a2e87ad33a9cae9d076cc3257517)
+:   dcache-xroot: fix memory leak, race and other small issues with reconnect to pool
+
+[e0b500e7b3](https://github.com/dcache/dcache/commit/e0b500e7b3a3a8b36dd45986f55a5550d86ac2cb)
+:   dcache-xroot: store most recent login subject in door
+
+[9d354f1fa1](https://github.com/dcache/dcache/commit/9d354f1fa159bd83131352e1856d184a8ba3e8b5)
+:   frontend: bump dCacheView to v1.6.2
+
+[c7fa0f6870](https://github.com/dcache/dcache/commit/c7fa0f6870378096214ff016b43f0dc8f43860d1)
+:   systemd: fix generator run after reboot
+
+[3a41bdc6eb](https://github.com/dcache/dcache/commit/3a41bdc6ebf356a4f330a6fb200f727d5071d9e2)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.2.19
 
 ### nearline-storage

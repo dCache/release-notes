@@ -84,6 +84,47 @@ pools.
 (tbd, this section uses markdown formatting)
 
 
+## Release 6.1.27
+
+### dcache-xroot
+
+The cirrent release fixed memory leak, race and other small issues with reconnect to pool.
+
+
+### frontend
+
+The `dcache-view.endpoints.webdav` property now overrides any
+auto-discovered WebDAV endpoint, making explicit configuration easier.
+
+### pnfsmanager
+
+
+
+A regression is fixed the prevents creating a symbolic link.
+
+
+### Changelog 6.1.26..6.1.27
+
+<!-- git log 6.1.26..6.1.27 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[3082ef649a](https://github.com/dcache/dcache/commit/3082ef649a9c8ead13d60733209d42cda48a0af1)
+:   [maven-release-plugin] prepare release 6.1.27
+
+[0ee97b506b](https://github.com/dcache/dcache/commit/0ee97b506bcc8c3e676874e120ef10f81e50f561)
+:   frontend: bump version of dCacheView
+
+[6559fcd58b](https://github.com/dcache/dcache/commit/6559fcd58bafff3602aeded99c3875ae78714c42)
+:   pnfsmanager: fix NPE regression from 3dfed7e8b0
+
+[09f09d99bc](https://github.com/dcache/dcache/commit/09f09d99bc7a530aaef788217b5de59d4a19c416)
+:   dcache-xroot: fix memory leak, race and other small issues with reconnect to pool
+
+[cdd91e3a52](https://github.com/dcache/dcache/commit/cdd91e3a5228ff6af2213f664c65461b7c7bb9d3)
+:   frontend: bump dCacheView to v1.6.2
+
+[cc1948c443](https://github.com/dcache/dcache/commit/cc1948c443c9358fafde1556d3ece00252f3e161)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.1.26
 
 ### poolmanager

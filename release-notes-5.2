@@ -89,6 +89,42 @@ transfers.
 We gratefully acknowledge code and documentation contributions from Christoph Anton Mitterer and Onno Zweers.
 
 
+## Release 5.2.43
+
+### dcache-xroot
+
+The cirrent release fixed memory leak, race and other small issues with reconnect to pool.
+
+
+### frontend
+
+The `dcache-view.endpoints.webdav` property now overrides any
+auto-discovered WebDAV endpoint, making explicit configuration easier.
+
+The current release fixed several reported problems in dCacheView, including
+
+requesting a "one week" macaroon was failing and  uploading files did not show transfer progress.
+
+
+### Changelog 5.2.42..5.2.43
+
+<!-- git log 5.2.42..5.2.43 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[6d6ed20b03](https://github.com/dcache/dcache/commit/6d6ed20b03dcfc8e4a231366e7ed21bd0727df9e)
+:   [maven-release-plugin] prepare release 5.2.43
+
+[4834572874](https://github.com/dcache/dcache/commit/4834572874e23aedf6a6bea7e4c4ee88134a95a4)
+:   frontend: bump version of dCacheView (5.2)
+
+[94cc441151](https://github.com/dcache/dcache/commit/94cc441151eb22cdb0ba7a662dcd71edc610fbcf)
+:   dcache-xroot: fix memory leak, race and other small issues with reconnect to pool
+
+[52d43f5ee6](https://github.com/dcache/dcache/commit/52d43f5ee662dfe518b3c72d64ab57f1dbbfa430)
+:   frontend: bump dCacheView to v1.5.8
+
+[90bd19a430](https://github.com/dcache/dcache/commit/90bd19a43059b720c60513c6c768828e88db89d6)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.2.42
 
 ### poolmanager

@@ -83,6 +83,38 @@ We would like to thank HTW-Berlin students David Linke, Lilit Patzwaldt-Sergoyan
 Quentin Kuth, Sophie Schauer, Viktoriia Sulimenko, Vladimir Vilenchik, Johann Gillhoff and Dieter
 Weber from FZ-Jülich for their contributions.
 
+## Release 6.0.37
+
+### dcache-xroot
+
+The cirrent release fixed memory leak, race and other small issues with reconnect to pool.
+
+
+### frontend
+
+The `dcache-view.endpoints.webdav` property now overrides any
+auto-discovered WebDAV endpoint, making explicit configuration easier.
+
+
+### Changelog 6.0.36..6.0.37
+
+<!-- git log 6.0.36..6.0.37 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[0d48c036b9](https://github.com/dcache/dcache/commit/0d48c036b97714eb203aa195f35db3423e9d8d0e)
+:   [maven-release-plugin] prepare release 6.0.37
+
+[74d80f1452](https://github.com/dcache/dcache/commit/74d80f14528a04691ecd5a158e1d412575d16dd0)
+:   frontend: bump version of dCacheView
+
+[9a279d99de](https://github.com/dcache/dcache/commit/9a279d99de26e92a372f37aead05cc7d62eb79a0)
+:   dcache-xroot: fix memory leak, race and other small issues with reconnect to pool
+
+[97f318309d](https://github.com/dcache/dcache/commit/97f318309d147c161723607af1a736e020295825)
+:   frontend: bump dCacheView to v1.6.2
+
+[2c161c1ce5](https://github.com/dcache/dcache/commit/2c161c1ce5bb5b760580e6949539c635be5cfb12)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.0.36
 
 ### poolmanager

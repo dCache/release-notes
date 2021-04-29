@@ -76,6 +76,107 @@ HTML header: <title>dCache 7.0 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 7.0.8
+
+### dcache-xroot
+
+The cirrent release fixed memory leak, race and other small issues with reconnect to pool.
+
+
+### frontend
+
+The `dcache-view.endpoints.webdav` property now overrides any
+auto-discovered WebDAV endpoint, making explicit configuration easier.
+
+A client may now request that the permissions of a file or directory is
+modified through the frontend.
+
+
+A file or directory's `mode (Unix permission) is now available through
+frontend.
+
+
+### pnfsmanager
+
+
+
+A regression is fixed the prevents creating a symbolic link.
+
+Users with a UPLOAD-only macaroon are now able to create subdirectories
+within their allowed upload subtree.
+
+### systemd
+
+`dcache-generator` now successfully runs after restart.
+
+### webdav
+
+dCache WebDAV door now provides simple text error messages for clients
+(such as rclone) that cannot consume error responses that are HTML
+web-pages. Web-browser based browsing and access in unaffected.
+
+### xrootd
+
+xrootd4j is updated to 4.0.6.
+
+
+The current relase has updated to xrootd4j library to 4.0.6.
+
+The correct subject is used to access the path for both GSI and SciToken protocols.
+
+
+### Changelog 7.0.7..7.0.8
+
+<!-- git log 7.0.7..7.0.8 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[ee51beb626](https://github.com/dcache/dcache/commit/ee51beb626d02a0fe244d6007440769d6e42f428)
+:   [maven-release-plugin] prepare release 7.0.8
+
+[002bf89ae3](https://github.com/dcache/dcache/commit/002bf89ae39004a79572b2923561c62bc60e8b0d)
+:   frontend: always report 'mode' Unix permissions
+
+[e995f02fb4](https://github.com/dcache/dcache/commit/e995f02fb4b6d61671e2b6d28bd93827338e3a51)
+:   pnfsmanager: filter high-order bits from POSIX mode
+
+[230b768ca4](https://github.com/dcache/dcache/commit/230b768ca4eb9f96e0da44098a8d575a12c68f01)
+:   frontend: allow a user to change Unix permissions
+
+[2f8791a2e6](https://github.com/dcache/dcache/commit/2f8791a2e6ad96707688f35fdf8c9f2f09a74026)
+:   pool: make sure that RepositoryChannel when createChannel detects error
+
+[39a998cc25](https://github.com/dcache/dcache/commit/39a998cc25670fc265b840683da988ececfd5ac1)
+:   webdav: generate short error messages for non-web clients
+
+[5849f0d41f](https://github.com/dcache/dcache/commit/5849f0d41f9846ab3709e57303f385606dddc8d0)
+:   update to xrootd 4.0.7
+
+[6fefa7a4f9](https://github.com/dcache/dcache/commit/6fefa7a4f997d9b2b6f17c317fadf3737c2ac978)
+:   dcache-xrootd: update to xrootd4j 4.0.6
+
+[6dd4b8d9b6](https://github.com/dcache/dcache/commit/6dd4b8d9b61d842bbdc0b703cc06982997c194c5)
+:   frontend: bump version of dCacheView
+
+[56322f3a28](https://github.com/dcache/dcache/commit/56322f3a28e50142defe5378eb1c430367de6176)
+:   pnfsmanager: fix NPE regression from 3dfed7e8b0
+
+[7fbd834dc7](https://github.com/dcache/dcache/commit/7fbd834dc710f529632196230d518acbe783234e)
+:   pnfsmanager: allow UPLOAD users to create sub-directories
+
+[3feefb5941](https://github.com/dcache/dcache/commit/3feefb59415bac2dfe7a354bb437c436a2d6fe5e)
+:   dcache-xroot: fix memory leak, race and other small issues with reconnect to pool
+
+[fb866e9676](https://github.com/dcache/dcache/commit/fb866e96769323632f5ca2ae5dcddd94f7544e97)
+:   dcache-xroot: store most recent login subject in door
+
+[eb067ec817](https://github.com/dcache/dcache/commit/eb067ec817a258dee67968a7b87b004a5604c9d2)
+:   frontend: bump dCacheView to v1.6.2
+
+[bee1d2b821](https://github.com/dcache/dcache/commit/bee1d2b8213a50f837ef91eb916002e5a761651f)
+:   systemd: fix generator run after reboot
+
+[fff5313877](https://github.com/dcache/dcache/commit/fff53138775c36eb8852b5b7f6e74b260ff165fd)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 7.0.7
 
 ### nearline-storage
