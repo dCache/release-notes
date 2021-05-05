@@ -84,6 +84,36 @@ pools.
 (tbd, this section uses markdown formatting)
 
 
+## Release 6.1.28
+
+### frontend
+
+
+frontend/api readers and writers always zero issue is fixed now
+
+### gplazma
+
+The LDAP plugin behaviuor now more closely follows that of other mapping
+plugins. This allows deployments where LDAP is tried first and, if that
+fails to identify the user, fall-back strategies are used.
+
+
+### Changelog 6.1.27..6.1.28
+
+<!-- git log 6.1.27..6.1.28 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[111a1acf66](https://github.com/dcache/dcache/commit/111a1acf664f7f9cfb1a812e993555b502f18cda)
+:   [maven-release-plugin] prepare release 6.1.28
+
+[ba7873346e](https://github.com/dcache/dcache/commit/ba7873346ef5739c26a6488baa11458b41ac6d65)
+:   gplazma: ldap throw exception if no principal is added
+
+[19d4f66382](https://github.com/dcache/dcache/commit/19d4f66382a69d5c053c49390e320beb96285e07)
+:   poolV4: fix reader/writer counts
+
+[ecdf313739](https://github.com/dcache/dcache/commit/ecdf31373912dcf645d51ba31943e8321b8c2469)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.1.27
 
 ### dcache-xroot

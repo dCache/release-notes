@@ -83,6 +83,36 @@ We would like to thank HTW-Berlin students David Linke, Lilit Patzwaldt-Sergoyan
 Quentin Kuth, Sophie Schauer, Viktoriia Sulimenko, Vladimir Vilenchik, Johann Gillhoff and Dieter
 Weber from FZ-Jülich for their contributions.
 
+## Release 6.0.38
+
+### frontend
+
+
+frontend/api readers and writers always zero issue is fixed now
+
+### gplazma
+
+The LDAP plugin behaviuor now more closely follows that of other mapping
+plugins. This allows deployments where LDAP is tried first and, if that
+fails to identify the user, fall-back strategies are used.
+
+
+### Changelog 6.0.37..6.0.38
+
+<!-- git log 6.0.37..6.0.38 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[23e64d4572](https://github.com/dcache/dcache/commit/23e64d4572f0e17f6cb96dcd0a9594191e0e9763)
+:   [maven-release-plugin] prepare release 6.0.38
+
+[4888d19195](https://github.com/dcache/dcache/commit/4888d1919587b66b55aa77d61d48423a60f328cf)
+:   gplazma: ldap throw exception if no principal is added
+
+[95140318b2](https://github.com/dcache/dcache/commit/95140318b2f7fa9e8eabe1b259d75419c061cd9a)
+:   poolV4: fix reader/writer counts
+
+[b54daad652](https://github.com/dcache/dcache/commit/b54daad652920a9873d754d98d1603db26ada31e)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.0.37
 
 ### dcache-xroot

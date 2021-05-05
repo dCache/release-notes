@@ -76,6 +76,46 @@ HTML header: <title>dCache 7.0 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 7.0.9
+
+### frontend
+
+
+frontend/api readers and writers always zero issue is fixed now
+
+### gplazma
+
+The LDAP plugin behaviuor now more closely follows that of other mapping
+plugins. This allows deployments where LDAP is tried first and, if that
+fails to identify the user, fall-back strategies are used.
+
+### pool
+
+The  pool size reporting when static/runtime config is not defined now is improved.
+
+
+### Changelog 7.0.8..7.0.9
+
+<!-- git log 7.0.8..7.0.9 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[7ae177fb95](https://github.com/dcache/dcache/commit/7ae177fb95c166e3bd9551a4ad7fbac61f937489)
+:   [maven-release-plugin] prepare release 7.0.9
+
+[9e9125c973](https://github.com/dcache/dcache/commit/9e9125c9738e0cc666d94a7d189f856c4559f5fe)
+:   gplazma: ldap throw exception if no principal is added
+
+[e6087754cb](https://github.com/dcache/dcache/commit/e6087754cb7da928698e5a64a7ad81b75ef3f356)
+:   poolV4: fix reader/writer counts
+
+[023e383a70](https://github.com/dcache/dcache/commit/023e383a70bc978c545b3f5373c4f8ddfc755ff5)
+:   pool: remove invalid test case of configured space
+
+[3a7c4a3e45](https://github.com/dcache/dcache/commit/3a7c4a3e4503a83e7b43b3b39d19262fe228a0c2)
+:   pool: fix pool size reporting when static/runtime config is not defined.
+
+[d64e64df21](https://github.com/dcache/dcache/commit/d64e64df21c249d84ca7b5c6f5b9ff5f238866fa)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 7.0.8
 
 ### dcache-xroot
