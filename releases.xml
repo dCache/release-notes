@@ -167,6 +167,54 @@
     <br/>
   </preamble>
 
+  
+
+  <series id="server-7.1">
+     <title>server 7.1.x</title>
+     <description>
+        <p>dCache 7.1 is a Feature Release, introducing following highlights: </p>               
+        <ul>
+		<li>The NFS door is updated to allow create, update and remove of dirictory tags as extended attributes</li>
+		<li>This version introduces `chunked unpinning`</li>	
+        </ul>
+	<p>Incompatibilities</p>
+        <li>Dropped compatibility with version 5.2 and older</li>
+        <li>Dropped sysV-like service file `/etc/rc.d/init.d/dcache-server`</li>
+        <li>Dropped `remove-precious-files-on-delete` property</li>
+	<li>the debian package explicitly depends on `rsyslog` package</li>	
+        <p>dCache v7.1 requires a JVM supporting  Java 11.</p>
+     </description>
+
+     <releases>
+	<name>dCache VERSION</name>
+        <download-url-prefix>repo/7.1/dcache</download-url-prefix>
+        <notes-url>release-notes-7.1.shtml</notes-url>
+	<version-prefix>7.1.</version-prefix>
+	<release version="0" recommended="1">
+        <date>5.5.2021</date>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>28728b5189478b459bc59137cd8cff92</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>e01b1ef11c77cb774206cbd431efa350</md5sum>
+        </package>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>3f29c5ed23e86c263e38309c54957439</md5sum>
+        </package>
+      </release>
+	
+      </releases>
+
+            
+  </series>
+
+
+
+
+
   <series id="server-7.0">
     <title>server 7.0.x</title>
     <description>
