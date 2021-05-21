@@ -174,7 +174,7 @@
      <description>
         <p>dCache 7.1 is a Feature Release, introducing following highlights: </p>               
         <ul>
-		<li>The NFS door is updated to allow create, update and remove of dirictory tags as extended attributes</li>
+		<li>The NFS door is updated to allow create, update and remove of directory tags as extended attributes</li>
 		<li>This version introduces `chunked unpinning`</li>	
         </ul>
 	<p>Incompatibilities</p>
