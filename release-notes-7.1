@@ -80,6 +80,77 @@ HTML header: <title>dCache 7.1 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 7.1.1
+
+### ftp
+
+
+Globus transfer agent is now able to create symbolic links.
+
+### gplazma
+
+Now oidc support fetching username and groups direct from OP.
+
+### nfs
+
+The current release introduced  `nfs.clientdb.config` property prefix to populate the
+BerkeleyDB configuration and now 
+    the nfs door is not picky about free disk space in /var/lib/dcache/nfs
+and     the BerkeleyDB used as client store by nfs door can be configured
+    with properties.
+
+
+### pool
+
+dCacheView now works for redirected transfers for non-anonymous data
+access, provided the WebDAV door is using TLS encryption and is
+configured with 'webdav.redirect.allow-https' set to 'true'. 
+
+
+### poolmanager
+
+
+A very rare race-condition is fixed that could be triggered if a pool
+completes a stage or pool-to-pool request (to satisfy a client's read
+request) immediately before dying.
+
+### webdav
+
+dCacheView is able to view and download files when authenticated and
+when the WebDAV door proxies the transfer.
+
+
+### Changelog 7.1.0..7.1.1
+
+<!-- git log 7.1.0..7.1.1 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[16483c8186](https://github.com/dcache/dcache/commit/16483c8186edcce1cca838bf9e1078d21065f0fc)
+:   [maven-release-plugin] prepare release 7.1.1
+
+[1ee983ba18](https://github.com/dcache/dcache/commit/1ee983ba180d36896c1eea16ff2fc575612c2e8d)
+:   nfs: add possibility to configure BerkeleyDB client store
+
+[c569dffef4](https://github.com/dcache/dcache/commit/c569dffef482caf1f73fee89e4c0c54e1ebcf8d0)
+:   gplamza: oidc support fetching username and groups direct from OP
+
+[82357af862](https://github.com/dcache/dcache/commit/82357af8626028b1eddc4764aaaa3ec8e8569672)
+:   webdav: use Jetty's built-in support for CORS
+
+[d4a2b660c4](https://github.com/dcache/dcache/commit/d4a2b660c4dfc62a6eb0293e2b16f524cffdb2a8)
+:   poolmanager: fix _waitingFor access outside of synchronized block
+
+[a838083860](https://github.com/dcache/dcache/commit/a8380838601618f77576de71990ad19931ad0b0a)
+:   ftp: add support for the SITE SYMLINK command
+
+[a9a0d06bb6](https://github.com/dcache/dcache/commit/a9a0d06bb6b36917346d05a96bb91527f05a3803)
+:   pool: http allow client to send credentials when TLS is used
+
+[7d5983a91c](https://github.com/dcache/dcache/commit/7d5983a91c486504aa0f93ce38ac0c4c45f95364)
+:   dcache-chimera: use RemotePoolMonitor to discover file locality
+
+[283bfe3668](https://github.com/dcache/dcache/commit/283bfe36687ac35d5f09f91a7d0563c79b42bf67)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 7.1.0
 
 

@@ -76,6 +76,70 @@ HTML header: <title>dCache 7.0 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 7.0.10
+
+### ftp
+
+
+Globus transfer agent is now able to create symbolic links.
+
+### nfs
+
+The current release introduced  `nfs.clientdb.config` property prefix to populate the
+BerkeleyDB configuration and now 
+    the nfs door is not picky about free disk space in /var/lib/dcache/nfs
+and     the BerkeleyDB used as client store by nfs door can be configured
+    with properties.
+
+
+### pool
+
+dCacheView now works for redirected transfers for non-anonymous data
+access, provided the WebDAV door is using TLS encryption and is
+configured with 'webdav.redirect.allow-https' set to 'true'. 
+
+
+### poolmanager
+
+
+A very rare race-condition is fixed that could be triggered if a pool
+completes a stage or pool-to-pool request (to satisfy a client's read
+request) immediately before dying.
+
+### webdav
+
+dCacheView is able to view and download files when authenticated and
+when the WebDAV door proxies the transfer.
+
+
+### Changelog 7.0.9..7.0.10
+
+<!-- git log 7.0.9..7.0.10 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[a945dca687](https://github.com/dcache/dcache/commit/a945dca687a5a6586acb9da3d8aab95253f5ced8)
+:   [maven-release-plugin] prepare release 7.0.10
+
+[3b29d2f158](https://github.com/dcache/dcache/commit/3b29d2f15890be5702dcf06cbea08206ca0d0755)
+:   nfs: add possibility to configure BerkeleyDB client store
+
+[19b859edf8](https://github.com/dcache/dcache/commit/19b859edf848e6b4aa31ec1abecf6fb986824f61)
+:   webdav: use Jetty's built-in support for CORS
+
+[6588502fb4](https://github.com/dcache/dcache/commit/6588502fb48ab4f3da1892e7f9e2e43581f72d32)
+:   poolmanager: fix _waitingFor access outside of synchronized block
+
+[56040773c9](https://github.com/dcache/dcache/commit/56040773c94955003fe176ed3b416e1062fececa)
+:   ftp: add support for the SITE SYMLINK command
+
+[aafc2a6127](https://github.com/dcache/dcache/commit/aafc2a6127007b8185614a3cc0b37eb5d8466eb4)
+:   pool: http allow client to send credentials when TLS is used
+
+[c2b910bc7a](https://github.com/dcache/dcache/commit/c2b910bc7a69b461f8620c6eb58334341831fcdb)
+:   dcache-chimera: use RemotePoolMonitor to discover file locality
+
+[64bd5d009b](https://github.com/dcache/dcache/commit/64bd5d009b068a0232ac4fd5b39b93350d49b739)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 7.0.9
 
 ### frontend

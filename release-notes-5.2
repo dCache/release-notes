@@ -89,6 +89,55 @@ transfers.
 We gratefully acknowledge code and documentation contributions from Christoph Anton Mitterer and Onno Zweers.
 
 
+## Release 5.2.45
+
+### ftp
+
+
+Globus transfer agent is now able to create symbolic links.
+
+### pool
+
+dCacheView now works for redirected transfers for non-anonymous data
+access, provided the WebDAV door is using TLS encryption and is
+configured with 'webdav.redirect.allow-https' set to 'true'. 
+
+
+### poolmanager
+
+
+A very rare race-condition is fixed that could be triggered if a pool
+completes a stage or pool-to-pool request (to satisfy a client's read
+request) immediately before dying.
+
+### webdav
+
+dCacheView is able to view and download files when authenticated and
+when the WebDAV door proxies the transfer.
+
+
+### Changelog 5.2.44..5.2.45
+
+<!-- git log 5.2.44..5.2.45 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[eaf7bbb59d](https://github.com/dcache/dcache/commit/eaf7bbb59dbc7924fe4f2660724781210a055d57)
+:   [maven-release-plugin] prepare release 5.2.45
+
+[37b28681fa](https://github.com/dcache/dcache/commit/37b28681facf8d1c06a89e6b6cf4c414364bb8a6)
+:   webdav: use Jetty's built-in support for CORS
+
+[3c97ba8f81](https://github.com/dcache/dcache/commit/3c97ba8f81e0897ef7e4107c781e39957f11678f)
+:   poolmanager: fix _waitingFor access outside of synchronized block
+
+[2a9878b20b](https://github.com/dcache/dcache/commit/2a9878b20bdac9f94f8160842453643a493be232)
+:   ftp: add support for the SITE SYMLINK command
+
+[3852432446](https://github.com/dcache/dcache/commit/385243244633007211fa7f100b666ee7b55a7650)
+:   pool: http allow client to send credentials when TLS is used
+
+[7c8cb60b6a](https://github.com/dcache/dcache/commit/7c8cb60b6a2a5fe41a6e2a94d681fca4695118c5)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.2.44
 
 ### frontend
