@@ -76,6 +76,42 @@ HTML header: <title>dCache 7.0 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 7.0.11
+
+### xroot
+
+The current release fixed the parsing to account for host/error pairs.
+
+
+Upload transfer checksum failure is fixed and the gfal scenario now works.
+
+### xrootd
+
+xrootd4j is updated to new version which fixed problem with netty LogHandler slowing down TPC client
+(cutting bandwidth by a factor of 10).
+
+
+
+
+### Changelog 7.0.10..7.0.11
+
+<!-- git log 7.0.10..7.0.11 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[8860999c50](https://github.com/dcache/dcache/commit/8860999c50455197c94e2be9e70f6f3215addeac)
+:   [maven-release-plugin] prepare release 7.0.11
+
+[3410f5daa5](https://github.com/dcache/dcache/commit/3410f5daa5a9ac826bc67a30dce2aeab1a7ab8c4)
+:   dcache-xrootd: upgrade xrootd4j to 4.0.8
+
+[b0091a2163](https://github.com/dcache/dcache/commit/b0091a21636e8ccf3746082e835adf3c5f2cddb3)
+:   dcache-xroot: parsing of 'triedrc' CGI lacks separation by optional comma
+
+[d90b65521d](https://github.com/dcache/dcache/commit/d90b65521de13251854926d53ab531d064e3db0c)
+:   dcache-xroot: fix upload transfer checksum failure (stable branches)
+
+[e06cf542d8](https://github.com/dcache/dcache/commit/e06cf542d879df60e445feba4a561d3d69110f7a)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 7.0.10
 
 ### ftp

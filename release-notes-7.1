@@ -80,6 +80,45 @@ HTML header: <title>dCache 7.1 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 7.1.2
+
+### xroot
+
+The current release fixed the parsing to account for host/error pairs.
+
+
+Upload transfer checksum failure is fixed and the gfal scenario now works.
+
+### xrootd
+
+xrootd4j is updated to new version which fixed problem with netty LogHandler slowing down TPC client
+(cutting bandwidth by a factor of 10).
+
+
+
+
+### Changelog 7.1.1..7.1.2
+
+<!-- git log 7.1.1..7.1.2 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[a3c10eaf61](https://github.com/dcache/dcache/commit/a3c10eaf615abf800a08d9f65da61513e896092f)
+:   [maven-release-plugin] prepare release 7.1.2
+
+[1c11366198](https://github.com/dcache/dcache/commit/1c11366198a2cfce270a03d5abc554e3a3987139)
+:   dcache-xrootd: upgrade xrootd4j to 4.1.1
+
+[f9724d7c18](https://github.com/dcache/dcache/commit/f9724d7c189ca4787ca2af4530506cfd0ac8cf74)
+:   frontend: bump swagger version to 1.6.2
+
+[3cc313e0d0](https://github.com/dcache/dcache/commit/3cc313e0d00bba30e830e875ca889b1bffaecc03)
+:   dcache-xroot: parsing of 'triedrc' CGI lacks separation by optional comma
+
+[7f52ae130e](https://github.com/dcache/dcache/commit/7f52ae130e13b19025df9736aac2fcc98a0d3139)
+:   dcache-xroot: fix upload transfer checksum failure (stable branches)
+
+[8e395ea228](https://github.com/dcache/dcache/commit/8e395ea2282ea9abdcab7a9ff16de367ac70e16c)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 7.1.1
 
 ### ftp

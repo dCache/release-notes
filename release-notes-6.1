@@ -84,6 +84,32 @@ pools.
 (tbd, this section uses markdown formatting)
 
 
+## Release 6.1.30
+
+### xroot
+
+The current release fixed the parsing to account for host/error pairs.
+
+
+Upload transfer checksum failure is fixed and the gfal scenario now works.
+
+
+### Changelog 6.1.29..6.1.30
+
+<!-- git log 6.1.29..6.1.30 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[06c51b2822](https://github.com/dcache/dcache/commit/06c51b28220a98fdf94c258d6d48ac5cc88c5e70)
+:   [maven-release-plugin] prepare release 6.1.30
+
+[d981ec1a0b](https://github.com/dcache/dcache/commit/d981ec1a0b2e5c34078e220a7fbabdd9bdd54d11)
+:   dcache-xroot: parsing of 'triedrc' CGI lacks separation by optional comma
+
+[6b2efa35f1](https://github.com/dcache/dcache/commit/6b2efa35f1f4a668ce021339b5314dc67fd909d1)
+:   dcache-xroot: fix upload transfer checksum failure (stable branches)
+
+[13d94929b0](https://github.com/dcache/dcache/commit/13d94929b0769148648cb141d5af6e359dacd8d8)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.1.29
 
 ### ftp

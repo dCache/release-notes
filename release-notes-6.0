@@ -83,6 +83,26 @@ We would like to thank HTW-Berlin students David Linke, Lilit Patzwaldt-Sergoyan
 Quentin Kuth, Sophie Schauer, Viktoriia Sulimenko, Vladimir Vilenchik, Johann Gillhoff and Dieter
 Weber from FZ-Jülich for their contributions.
 
+## Release 6.0.40
+
+### xroot
+
+Upload transfer checksum failure is fixed and the gfal scenario now works.
+
+
+### Changelog 6.0.39..6.0.40
+
+<!-- git log 6.0.39..6.0.40 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[c475db6733](https://github.com/dcache/dcache/commit/c475db67330ed9a584a60ff49aa6a7adfd52f640)
+:   [maven-release-plugin] prepare release 6.0.40
+
+[6401fec438](https://github.com/dcache/dcache/commit/6401fec438f62b36cbbbed664451073405883ccc)
+:   dcache-xroot: fix upload transfer checksum failure (stable branches)
+
+[097b8ed059](https://github.com/dcache/dcache/commit/097b8ed059dd3ba530474862152dd60c794486c3)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.0.39
 
 ### ftp
