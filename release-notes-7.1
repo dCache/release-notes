@@ -80,6 +80,43 @@ HTML header: <title>dCache 7.1 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 7.1.3
+
+### checksum
+
+The policies map is now added to the JSON info object that is 
+returned for checksum module information.
+
+### pool
+
+New configuration properties for the pool have been introduced so that
+it is possible to configure how HTTP-TPC verifies the remote server's
+certificate. The defaults are chosen so that, without any explicit
+configuration, the pool continues with its previous behaviour.
+
+It is now possible to configure dCache to support multiple trust stores
+for HTTP-TPC.
+
+
+### Changelog 7.1.2..7.1.3
+
+<!-- git log 7.1.2..7.1.3 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[5a444af4c4](https://github.com/dcache/dcache/commit/5a444af4c4a1c0d4aac99f6024ddbc54c7547aa6)
+:   [maven-release-plugin] prepare release 7.1.3
+
+[644ba31fa0](https://github.com/dcache/dcache/commit/644ba31fa0e80bd28b83e5f530ba6388bc0d9272)
+:   pool: http-tpc add support for multiple trust stores
+
+[d0676b521e](https://github.com/dcache/dcache/commit/d0676b521eb901a69559d6f63113ff7da5a9fdec)
+:   pool: update configuration to split http-tpc and remote-gsiftp CA settings
+
+[bc51d18899](https://github.com/dcache/dcache/commit/bc51d18899d41b91f604551af1e9f7ce59d726f3)
+:   checksum-module: add missing map to JSON info
+
+[be1d4f9678](https://github.com/dcache/dcache/commit/be1d4f967890ab02b959e71156f7b818c1d025ae)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 7.1.2
 
 ### xroot

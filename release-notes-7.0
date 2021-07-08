@@ -76,6 +76,27 @@ HTML header: <title>dCache 7.0 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 7.0.12
+
+### checksum
+
+The policies map is now added to the JSON info object that is 
+returned for checksum module information.
+
+
+### Changelog 7.0.11..7.0.12
+
+<!-- git log 7.0.11..7.0.12 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[e80831a541](https://github.com/dcache/dcache/commit/e80831a541f880234aa354c9b603cd68ec085481)
+:   [maven-release-plugin] prepare release 7.0.12
+
+[e161cb2315](https://github.com/dcache/dcache/commit/e161cb23156944e44d89b3dc0f17945c37aaf554)
+:   checksum-module: add missing map to JSON info
+
+[dae6e789c0](https://github.com/dcache/dcache/commit/dae6e789c00479ba58831743f71e78b38217ff4a)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 7.0.11
 
 ### xroot
