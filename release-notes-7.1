@@ -80,6 +80,44 @@ HTML header: <title>dCache 7.1 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 7.1.4
+
+### chimera
+
+Chimera shell now supports the -R option in the chown command.
+
+### gplazma
+
+The oidc plugin has been updated to provide better handling of expired
+access tokens that are JWT.
+
+### srm
+
+SRM module does not work with IPV6 in dcache 7.1.1 version.
+
+IPV6 logging for SRM is fixed now.
+
+
+
+### Changelog 7.1.3..7.1.4
+
+<!-- git log 7.1.3..7.1.4 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[f738c7af69](https://github.com/dcache/dcache/commit/f738c7af695dcb78193b1a755a38745ae8e3ab5d)
+:   [maven-release-plugin] prepare release 7.1.4
+
+[1d711f5e0e](https://github.com/dcache/dcache/commit/1d711f5e0e67af86ac0c8cf43b752dc7d3a23bb2)
+:   chimerashell: add recursive option to 'chown' command
+
+[f8a210a641](https://github.com/dcache/dcache/commit/f8a210a64160861d31913eadb983960402bc7c55)
+:   gplazma: oidc check token validity if JWT
+
+[0f8c4e8c9b](https://github.com/dcache/dcache/commit/0f8c4e8c9b33aff27a65d241ad6b63340496df65)
+:   SRM : Fix IPV6 logging for SRM
+
+[4b8dfdca15](https://github.com/dcache/dcache/commit/4b8dfdca1565ba28e89c7cb2c88a1d99c3d01669)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 7.1.3
 
 ### checksum

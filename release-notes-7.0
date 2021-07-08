@@ -76,6 +76,26 @@ HTML header: <title>dCache 7.0 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 7.0.13
+
+### chimera
+
+Chimera shell now supports the -R option in the chown command.
+
+
+### Changelog 7.0.12..7.0.13
+
+<!-- git log 7.0.12..7.0.13 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[d4b9d20875](https://github.com/dcache/dcache/commit/d4b9d208752391cc5de279c00ed02060d5a6921b)
+:   [maven-release-plugin] prepare release 7.0.13
+
+[42fa5ad64b](https://github.com/dcache/dcache/commit/42fa5ad64bfcf0c2757b73a3638e68b08eff23c4)
+:   chimerashell: add recursive option to 'chown' command
+
+[13145fd557](https://github.com/dcache/dcache/commit/13145fd5573ae0852a2c9e88c9a0f20d2860875c)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 7.0.12
 
 ### checksum
