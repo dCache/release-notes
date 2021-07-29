@@ -84,6 +84,40 @@ pools.
 (tbd, this section uses markdown formatting)
 
 
+## Release 6.1.31
+
+### dcache-core
+
+The old web pages claim the transfer size and speed are reported in KB and KB/s, although the actually used units are KiB and KiB/s. 
+Reporting the correct unit is important for monitoring. This is now fixed.
+
+
+### gplazma
+
+
+dCache may now be configured so that the multimap `oidc` predicates
+match the `sub` claim value from a specific OAuth2 Provider using the
+format SUBVALUE@OP, where `OP` is the dCache-internal alias for the OP.
+Existing multimap configuration continues to work, but admin is warned
+to update the multimap configuration.
+
+
+### Changelog 6.1.30..6.1.31
+
+<!-- git log 6.1.30..6.1.31 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[22f5f8931c](https://github.com/dcache/dcache/commit/22f5f8931c8b79939abfdd63ff4060f18523f995)
+:   [maven-release-plugin] prepare release 6.1.31
+
+[2d307b91cd](https://github.com/dcache/dcache/commit/2d307b91cdbf1e8020059b4cbc0d6f0e7482b472)
+:   gplazma: multimap now supports OP in 'oidc' predicate
+
+[9295e69c52](https://github.com/dcache/dcache/commit/9295e69c524d65873c3474d9d8aaa602766b0bcb)
+:   dcache-core: correct reported units of transfer size and speed
+
+[64cbad4033](https://github.com/dcache/dcache/commit/64cbad40335bb67b88b69403fa50dccdf936dff7)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.1.30
 
 ### xroot

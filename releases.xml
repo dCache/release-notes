@@ -1053,7 +1053,23 @@
         </package>
       </release-->
 
-      <release version="30" recommended="1">
+      <release version="31" recommended="1">
+        <date>29.7.2021</date>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>4f6332cb0b6c91c9a17ef57c44af99f7</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>2a7590a0ae404fd4e80e77f1a7273768</md5sum>
+        </package>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>15f68669aa9b0a0dce50c7101394ccc8</md5sum>
+        </package>
+      </release>
+
+      <release version="30">
         <date>11.6.2021</date>
         <package name="rpm">
           <download-url>-VERSION-1.noarch.rpm</download-url>
