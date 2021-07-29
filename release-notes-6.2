@@ -106,6 +106,46 @@ This does not affect functionality.
 (tbd, this section uses markdown formatting)
 
 
+## Release 6.2.25
+
+### dcache-core
+
+
+The old web pages claim the transfer size and speed are reported in KB and KB/s, although the actually used units are KiB and KiB/s. 
+Reporting the correct unit is important for monitoring.
+
+### frontend
+
+The current release fixed regression in generating swagger JSON for frontend's REST API.
+
+### gplazma
+
+dCache may now be configured so that the multimap `oidc` predicates
+match the `sub` claim value from a specific OAuth2 Provider using the
+format SUBVALUE@OP, where `OP` is the dCache-internal alias for the OP.
+Existing multimap configuration continues to work, but admin is warned
+to update the multimap configuration.
+
+
+### Changelog 6.2.24..6.2.25
+
+<!-- git log 6.2.24..6.2.25 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[63a0dcafe2](https://github.com/dcache/dcache/commit/63a0dcafe2efa93d353c616c0adca8f6819b1caa)
+:   [maven-release-plugin] prepare release 6.2.25
+
+[fc0932484a](https://github.com/dcache/dcache/commit/fc0932484a3c95ae6fcd250b2ec38db93b8e06a4)
+:   gplazma: multimap now supports OP in 'oidc' predicate
+
+[ec7329cb83](https://github.com/dcache/dcache/commit/ec7329cb83c867055170d8f6d4e2f4cbca3d10de)
+:   frontend: bump swagger version to 1.6.2
+
+[6458e8bb3c](https://github.com/dcache/dcache/commit/6458e8bb3c55282bc1b1c7f9c7c0d2b707dc0024)
+:   dcache-core: correct reported units of transfer size and speed
+
+[f901019cda](https://github.com/dcache/dcache/commit/f901019cda64664dc930294857735abd0511147c)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.2.24
 
 ### checksum
