@@ -81,6 +81,13 @@ HTML header: <title>dCache 7.2 Release Notes</title>
 
 ### Cleaner
 
+Previously, pools were cleaned synchronously one after another by the cleaner component. Doing so in parallel is expected to provide performance benefits.
+The property `cleaner.limits.threads` now also controls the number of pools processed in parallel.
+
+### Checksums
+
+dCache now supports the stronger hash functions SHA-1, SHA-256 and SHA-512.
+
 ### DCAP
 
 ### Frontend
@@ -128,10 +135,6 @@ HTML header: <title>dCache 7.2 Release Notes</title>
 ### XRootD
 
 ### Zookeeper
-
-### Cleaner
-
-### HA Services
 
 ### Changelog from 7.1.0 to 7.2.0
 
