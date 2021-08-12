@@ -80,6 +80,89 @@ HTML header: <title>dCache 7.1 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 7.1.6
+
+### alarms
+
+Clearer documentation for billing/alarms services regarding HA requirements.
+
+
+
+### gplazma
+
+dCache has a new session gPlazma plugin that is designed to be a viable
+alternative to the StorageAuthzDB and KPWD plugins but with shorter
+(hopefully less confusing) configuration, while also being more
+flexible.
+
+
+To support the removal of authzdb plugin, we should provide an easy way
+for sites to migrate their existing configuration from using authzdb (as
+a session plugin) to omnisession.
+
+Sites now have a utility to help them migrating from authzdb to
+omnisession.
+
+Note: it is also possible to use the authzdb plugin as a mapping plugin.
+This utility does not help in migrating that use to some alternative
+solution.
+
+To support the removal of authzdb plugin, we should provide an easy way
+for sites to migrate their existing configuration from using authzdb (as
+a session plugin) to omnisession.
+
+Sites now have a utility to help them migrating from authzdb to
+omnisession.
+
+Note: it is also possible to use the authzdb plugin as a mapping plugin.
+This utility does not help in migrating that use to some alternative
+solution.
+
+
+### skel
+
+Whether a cell/service supports HA or not can
+now be derived from the properties file (except
+for doors).
+
+Please see `<name>.cell.replicable`.
+
+
+### srm
+
+
+The access log file for SRM requests now includes the client-supplied
+list of protocols, if any were provided.
+
+
+### Changelog 7.1.5..7.1.6
+
+<!-- git log 7.1.5..7.1.6 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[a6ec5ccbc4](https://github.com/dcache/dcache/commit/a6ec5ccbc48c1e6a7a14b6f587b6ca1c478ffad6)
+:   [maven-release-plugin] prepare release 7.1.6
+
+[1dd12073d4](https://github.com/dcache/dcache/commit/1dd12073d45f9e10320cad71106562c89dc3ecb7)
+:   rpm: add  dcache-convert-authzdb-to-omnisession into list of packaged files
+
+[5bd6905f3a](https://github.com/dcache/dcache/commit/5bd6905f3a3986c8487254a8a1ea4613588f5384)
+:   gplazma: add util to convert authzdb file to omnisession
+
+[081bd56ce4](https://github.com/dcache/dcache/commit/081bd56ce4f0d4b34b46953848c4e0d7ef4bebe5)
+:   alarms, billing: specify shared rdbms in the case of replicated service
+
+[659043f872](https://github.com/dcache/dcache/commit/659043f87270369f99aef77687792ab0033eeb04)
+:   skel: add explicit replicable property even when value is false
+
+[4d981e053c](https://github.com/dcache/dcache/commit/4d981e053c46dbb1e45a37be8ff300b43ff2970a)
+:   gplazma: add omnisession plugin
+
+[a921793390](https://github.com/dcache/dcache/commit/a9217933902cb568a9435c09f8da103c89946a3b)
+:   srm: log transfer protocols in access log
+
+[c2fedfcfa8](https://github.com/dcache/dcache/commit/c2fedfcfa8f7ae7458eef0b81df6dc0d873a443e)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 7.1.5
 
 ### dcache-core

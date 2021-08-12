@@ -84,6 +84,49 @@ pools.
 (tbd, this section uses markdown formatting)
 
 
+## Release 6.1.32
+
+### alarms
+
+Clearer documentation for billing/alarms services regarding HA requirements.
+
+
+
+### skel
+
+Whether a cell/service supports HA or not can
+now be derived from the properties file (except
+for doors).
+
+Please see `<name>.cell.replicable`.
+
+
+### srm
+
+
+The access log file for SRM requests now includes the client-supplied
+list of protocols, if any were provided.
+
+
+### Changelog 6.1.31..6.1.32
+
+<!-- git log 6.1.31..6.1.32 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[0ed78900af](https://github.com/dcache/dcache/commit/0ed78900af80860d3ecfd7e4dd8d52fa8d2d8bca)
+:   [maven-release-plugin] prepare release 6.1.32
+
+[544331a36f](https://github.com/dcache/dcache/commit/544331a36f6a9c7116221555ecb0e509febb44a7)
+:   alarms, billing: specify shared rdbms in the case of replicated service
+
+[c106c3ea65](https://github.com/dcache/dcache/commit/c106c3ea65373ed5c008d6aa2ac83860cec80a74)
+:   skel: add explicit replicable property even when value is false
+
+[bdbcfe7e4f](https://github.com/dcache/dcache/commit/bdbcfe7e4ffcec786cb5c6a648c7ad4105d11461)
+:   srm: log transfer protocols in access log
+
+[7fe8ab1d71](https://github.com/dcache/dcache/commit/7fe8ab1d71de81edf607dd8c3a88092815399cdc)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.1.31
 
 ### dcache-core
