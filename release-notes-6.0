@@ -83,6 +83,29 @@ We would like to thank HTW-Berlin students David Linke, Lilit Patzwaldt-Sergoyan
 Quentin Kuth, Sophie Schauer, Viktoriia Sulimenko, Vladimir Vilenchik, Johann Gillhoff and Dieter
 Weber from FZ-Jülich for their contributions.
 
+## Release 6.0.43
+
+### srmmanager
+
+A race condition is fixed that, if triggered, results in a memory leak.
+This leak can also affect the TURLs returned by SrmManager, where
+out-of-date information about doors is used.
+
+
+
+### Changelog 6.0.42..6.0.43
+
+<!-- git log 6.0.42..6.0.43 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[4385e5e28f](https://github.com/dcache/dcache/commit/4385e5e28f1f559356cca682cf0d557a1956661d)
+:   [maven-release-plugin] prepare release 6.0.43
+
+[3b17e8be6b](https://github.com/dcache/dcache/commit/3b17e8be6b0057640c6af54fadb0806ebc0821be)
+:   srmmanager: fix race condition in LoginBrokerSubscriber
+
+[6ca5dfba13](https://github.com/dcache/dcache/commit/6ca5dfba137cc30b3548ffcaa85558975dcbcd0a)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.0.42
 
 ### alarms

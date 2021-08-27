@@ -80,6 +80,67 @@ HTML header: <title>dCache 7.1 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 7.1.7
+
+### pnfsmanager
+
+Fixed a problem where dCache accepts a HSM script that, when called to
+flush a file, returns successfully but without providing any URIs on
+stdout. Such requests are considered failed, with the flush request
+blocked until retried explicitly with the queue activate PNFSID
+admin command.
+
+
+### pool
+
+The Kafka message emitted when a file is flushed to tape or staged back
+from tape now includes the locations field: a JSON array of JSON
+Strings, where each JSON String is a tape-location URL.
+For flush operations, this is the (potentially empty, potentially multiple)
+list of URLs returned by the HSM instance.
+For stage operations, this is the (potentially empty, potentially multiple)
+URLs that match the selected HSM instance. Both messages now also
+describe a hsm JSON Object that contain the HSM type, HSM instance name,
+and HSM provider.
+
+
+### srmmanager
+
+A race condition is fixed that, if triggered, results in a memory leak.
+This leak can also affect the TURLs returned by SrmManager, where
+out-of-date information about doors is used.
+
+
+### webdav
+
+Fixed a regression in WebDAV where login failures and attempts to use
+the door anonymously (when this is not allowed) fail without a
+web-browser prompting the user to present their username + password.
+
+
+
+### Changelog 7.1.6..7.1.7
+
+<!-- git log 7.1.6..7.1.7 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[2eb0fc7e3a](https://github.com/dcache/dcache/commit/2eb0fc7e3aed7c43f3b9286bd863233fb688aec2)
+:   [maven-release-plugin] prepare release 7.1.7
+
+[e0f81ef7a6](https://github.com/dcache/dcache/commit/e0f81ef7a62b6d06c854a9842831a793c5984a62)
+:   webdav: fix regression from commit a2b252c07f
+
+[ffe301407a](https://github.com/dcache/dcache/commit/ffe301407a17526a0798bf8d3f735196e405c5f0)
+:   srmmanager: fix race condition in LoginBrokerSubscriber
+
+[b62ff9879a](https://github.com/dcache/dcache/commit/b62ff9879a8391dfd3cf809ca989a1e7741c1826)
+:   pool/pnfsmanager: don't accept a non-Enstore flush without locations
+
+[0119f99b1e](https://github.com/dcache/dcache/commit/0119f99b1e8eb13da89d69d76a07ec970707e46f)
+:   pool: update Kafka tape events to include additional information
+
+[a47f756ba9](https://github.com/dcache/dcache/commit/a47f756ba9f7264795c91120f1f0dd881267b4be)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 7.1.6
 
 ### alarms

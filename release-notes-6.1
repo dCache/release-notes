@@ -84,6 +84,29 @@ pools.
 (tbd, this section uses markdown formatting)
 
 
+## Release 6.1.33
+
+### srmmanager
+
+A race condition is fixed that, if triggered, results in a memory leak.
+This leak can also affect the TURLs returned by SrmManager, where
+out-of-date information about doors is used.
+
+
+
+### Changelog 6.1.32..6.1.33
+
+<!-- git log 6.1.32..6.1.33 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[284f32fbd6](https://github.com/dcache/dcache/commit/284f32fbd667d539383fdc8e7053d5c39178acda)
+:   [maven-release-plugin] prepare release 6.1.33
+
+[8412e3563f](https://github.com/dcache/dcache/commit/8412e3563fa5c3974cfc51c1870f272b72a91db4)
+:   srmmanager: fix race condition in LoginBrokerSubscriber
+
+[1b33c2f3e4](https://github.com/dcache/dcache/commit/1b33c2f3e434ae0adb5e2e368790f115402c633a)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.1.32
 
 ### alarms

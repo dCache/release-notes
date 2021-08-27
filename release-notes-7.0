@@ -76,6 +76,57 @@ HTML header: <title>dCache 7.0 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 7.0.16
+
+### pnfsmanager
+
+Fixed a problem where dCache accepts a HSM script that, when called to
+flush a file, returns successfully but without providing any URIs on
+stdout. Such requests are considered failed, with the flush request
+blocked until retried explicitly with the queue activate PNFSID
+admin command.
+
+
+### pool
+
+The Kafka message emitted when a file is flushed to tape or staged back
+from tape now includes the locations field: a JSON array of JSON
+Strings, where each JSON String is a tape-location URL.
+For flush operations, this is the (potentially empty, potentially multiple)
+list of URLs returned by the HSM instance.
+For stage operations, this is the (potentially empty, potentially multiple)
+URLs that match the selected HSM instance. Both messages now also
+describe a hsm JSON Object that contain the HSM type, HSM instance name,
+and HSM provider.
+
+
+### srmmanager
+
+A race condition is fixed that, if triggered, results in a memory leak.
+This leak can also affect the TURLs returned by SrmManager, where
+out-of-date information about doors is used.
+
+
+
+### Changelog 7.0.15..7.0.16
+
+<!-- git log 7.0.15..7.0.16 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[8b576c0327](https://github.com/dcache/dcache/commit/8b576c03270786c01e806389264788f2edbbff3d)
+:   [maven-release-plugin] prepare release 7.0.16
+
+[4fac4f2af0](https://github.com/dcache/dcache/commit/4fac4f2af0da9542b883c6051a43b7ee80c40c3a)
+:   srmmanager: fix race condition in LoginBrokerSubscriber
+
+[a67cf4b9e1](https://github.com/dcache/dcache/commit/a67cf4b9e1bc0aedb3dc10e1a1485f913cdd342b)
+:   pool/pnfsmanager: don't accept a non-Enstore flush without locations
+
+[928638e5c7](https://github.com/dcache/dcache/commit/928638e5c70f2e993683981c00014ef4ae9130c4)
+:   pool: update Kafka tape events to include additional information
+
+[4a348895e2](https://github.com/dcache/dcache/commit/4a348895e2d2de29e55f75912587b234b9331973)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 7.0.15
 
 ### alarms

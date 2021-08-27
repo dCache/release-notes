@@ -89,6 +89,29 @@ transfers.
 We gratefully acknowledge code and documentation contributions from Christoph Anton Mitterer and Onno Zweers.
 
 
+## Release 5.2.49
+
+### srmmanager
+
+A race condition is fixed that, if triggered, results in a memory leak.
+This leak can also affect the TURLs returned by SrmManager, where
+out-of-date information about doors is used.
+
+
+
+### Changelog 5.2.48..5.2.49
+
+<!-- git log 5.2.48..5.2.49 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[0f9ba984e2](https://github.com/dcache/dcache/commit/0f9ba984e2c3887c96cd708e76d688ad72a9ea98)
+:   [maven-release-plugin] prepare release 5.2.49
+
+[9a59ec4eda](https://github.com/dcache/dcache/commit/9a59ec4eda32a03cc7aa65b3074f9ece6547dc40)
+:   srmmanager: fix race condition in LoginBrokerSubscriber
+
+[1c0cdc0a5a](https://github.com/dcache/dcache/commit/1c0cdc0a5a3d6607b91b031e4c7a85dd687a477c)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 5.2.48
 
 ### alarms

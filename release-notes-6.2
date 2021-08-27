@@ -106,6 +106,57 @@ This does not affect functionality.
 (tbd, this section uses markdown formatting)
 
 
+## Release 6.2.27
+
+### pnfsmanager
+
+Fixed a problem where dCache accepts a HSM script that, when called to
+flush a file, returns successfully but without providing any URIs on
+stdout. Such requests are considered failed, with the flush request
+blocked until retried explicitly with the queue activate PNFSID
+admin command.
+
+
+### pool
+
+The Kafka message emitted when a file is flushed to tape or staged back
+from tape now includes the locations field: a JSON array of JSON
+Strings, where each JSON String is a tape-location URL.
+For flush operations, this is the (potentially empty, potentially multiple)
+list of URLs returned by the HSM instance.
+For stage operations, this is the (potentially empty, potentially multiple)
+URLs that match the selected HSM instance. Both messages now also
+describe a hsm JSON Object that contain the HSM type, HSM instance name,
+and HSM provider.
+
+
+### srmmanager
+
+A race condition is fixed that, if triggered, results in a memory leak.
+This leak can also affect the TURLs returned by SrmManager, where
+out-of-date information about doors is used.
+
+
+
+### Changelog 6.2.26..6.2.27
+
+<!-- git log 6.2.26..6.2.27 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[ef08d9263e](https://github.com/dcache/dcache/commit/ef08d9263e7f17555c00d7a75ec1885871f75772)
+:   [maven-release-plugin] prepare release 6.2.27
+
+[2ed4135f2a](https://github.com/dcache/dcache/commit/2ed4135f2a60fe45db10a3b2194dd9cd206368a7)
+:   srmmanager: fix race condition in LoginBrokerSubscriber
+
+[616fea3eba](https://github.com/dcache/dcache/commit/616fea3eba40690aaf3ecf8e9c80af0acf002433)
+:   pool/pnfsmanager: don't accept a non-Enstore flush without locations
+
+[6528e45d8d](https://github.com/dcache/dcache/commit/6528e45d8da101c8b69abb9230357c0cc49f082f)
+:   pool: update Kafka tape events to include additional information
+
+[9863ed9322](https://github.com/dcache/dcache/commit/9863ed9322cd68e61b84d72d6e726c31abc7d727)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.2.26
 
 ### alarms
