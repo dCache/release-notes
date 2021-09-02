@@ -116,6 +116,8 @@ dCache now supports the stronger hash functions SHA-1, SHA-256 and SHA-512.
 
 ### Pool
 
+Before dCache version 7.2 the scrubber process was starting with the pool startup. As the result, as long as a pool inventary is not complete, the scubber will faill with `Operation not allowed while repository is in state LOADING`. Now on the subber will start only after the inventary is complete.
+
 ### Poolmanager
 
 ### Resilience
