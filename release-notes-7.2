@@ -106,6 +106,19 @@ dCache now supports the stronger hash functions SHA-1, SHA-256 and SHA-512.
 
 ### Frontend
 
+Now, when the file object might have labels the queering file labels, as well as  `set-label` and `rm-label` functions have been added to restFul Api.
+
+To query labels the `curl  -v   http://localhost:3880/api/v1/namespace/path/filename\?label=true` should be used.
+
+To add a new label:
+
+`curl   -X  POST  -H "Accept: application/json"  -H "Content-Type: application/json"  http://localhost:3880/api/v1/namespace/path/filename -d  '{"action" : "set-label",    "label" : "label" }'` 
+
+And to remove existing label 
+
+`curl   -X  POST  -H "Accept: application/json"  -H "Content-Type: application/json"  http://localhost:3880/api/v1/namespace/path/filename -d  '{"action" : "rm-label",    "label" : "label" }'`
+
+
 ### FTP
 
 ### gplazma
