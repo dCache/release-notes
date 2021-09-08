@@ -77,6 +77,18 @@ HTML header: <title>dCache 7.2 Release Notes</title>
 
 Updated mina-sshd library to version 2.7.0 with various security enhancements.
 
+Now it is possible to add a label to a file.
+
+The supporting addmin commands for adding,removing and quering labels of a file object are available now:
+
+`labels get path` lists the lables of a file.
+
+`lables rm path labelname` removes the given lable from a file.
+
+`lable add path  lablename`  adds a new label to a file.
+
+`ls_virtualdir` lists all the files having the given label.
+
 ### Alarms
 
 ### Billing
