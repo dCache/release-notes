@@ -83,6 +83,27 @@ We would like to thank HTW-Berlin students David Linke, Lilit Patzwaldt-Sergoyan
 Quentin Kuth, Sophie Schauer, Viktoriia Sulimenko, Vladimir Vilenchik, Johann Gillhoff and Dieter
 Weber from FZ-Jülich for their contributions.
 
+## Release 6.0.44
+
+### dcache-xroot
+
+The next release of xrootd4j is used now, which improves handling TPC
+read requests.
+
+
+### Changelog 6.0.43..6.0.44
+
+<!-- git log 6.0.43..6.0.44 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[f86d20c494](https://github.com/dcache/dcache/commit/f86d20c494f701286ff8ad85057ecca5ee1c4a67)
+:   [maven-release-plugin] prepare release 6.0.44
+
+[fa1b4ba1b1](https://github.com/dcache/dcache/commit/fa1b4ba1b137b9a0b87940e4ded67c6d108bf0e9)
+:   dcache-xroot: bump dependency to next xrootd4j release
+
+[6323e314b7](https://github.com/dcache/dcache/commit/6323e314b7189096cf4a253100bf52638a002406)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.0.43
 
 ### srmmanager

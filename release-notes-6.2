@@ -106,6 +106,52 @@ This does not affect functionality.
 (tbd, this section uses markdown formatting)
 
 
+## Release 6.2.28
+
+### dcache-xroot
+
+The next release of xrootd4j is used now, which improves handling TPC
+read requests.
+
+### namespace-chimera
+
+There are less operations on the database now as the filesize doesn't
+get updated after a file was flushed to tape.
+
+### pool,
+
+### webdav
+
+The webdav admin interface has been extended to include monitoring
+information about on-going transfers. The command can optionally show
+pool information if transfer-manager is update; updating
+transfer-manager is not required by this change. Percent transfer
+progress for PULL requests is optionally available if pools are updated;
+updating pools is not required by this change.
+
+
+### Changelog 6.2.27..6.2.28
+
+<!-- git log 6.2.27..6.2.28 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[6be706def4](https://github.com/dcache/dcache/commit/6be706def4c3032b49e9ba6f4d7bfaec32eafc6e)
+:   [maven-release-plugin] prepare release 6.2.28
+
+[c6e80f9c4a](https://github.com/dcache/dcache/commit/c6e80f9c4aca4da8a5bc11fdeb5ea9761bbc755c)
+:   namespace-chimera: ignore file size update on file flush
+
+[b86f7dfcf7](https://github.com/dcache/dcache/commit/b86f7dfcf7a356d779c4019c86a7cbcf27af2fbc)
+:   webdav: add 'http-tpc ls' admin command
+
+[be2289ff80](https://github.com/dcache/dcache/commit/be2289ff805f1cd154a51d74d2b80c76847f35e6)
+:   pool/webdav: http-tpc add RemoteConnections perfmarker metadata
+
+[f1b2c262b0](https://github.com/dcache/dcache/commit/f1b2c262b09f7c82f25203dd5246cce0ea50cd36)
+:   dcache-xroot: bump dependency to next xrootd4j release
+
+[e57b3578cd](https://github.com/dcache/dcache/commit/e57b3578cde41d3ac2470d6ac61776213ca8ad53)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.2.27
 
 ### pnfsmanager
