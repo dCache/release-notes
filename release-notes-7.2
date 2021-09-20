@@ -106,18 +106,33 @@ dCache now supports the stronger hash functions SHA-1, SHA-256 and SHA-512.
 
 ### Frontend
 
-Now, when the file object might have labels the queering file labels, as well as  `set-label` and `rm-label` functions have been added to restFul Api.
+In the case that the file object has labels, these can now be queried, set and removed through a RESTful API.
 
-To query labels the `curl  -v   http://localhost:3880/api/v1/namespace/path/filename\?label=true` should be used.
+To query labels, the `curl  -v   http://localhost:3880/api/v1/namespace/path/filename\?label=true` should be used.
 
 To add a new label:
 
 `curl   -X  POST  -H "Accept: application/json"  -H "Content-Type: application/json"  http://localhost:3880/api/v1/namespace/path/filename -d  '{"action" : "set-label",    "label" : "label" }'`
 
-And to remove existing label
+And to remove an existing label:
 
 `curl   -X  POST  -H "Accept: application/json"  -H "Content-Type: application/json"  http://localhost:3880/api/v1/namespace/path/filename -d  '{"action" : "rm-label",    "label" : "label" }'`
 
+The RESTful API for the quota system (see further below) allows for creating (POST), modifying (PATCH), listing (GET) and removing (DELETE) both user and group quotas.
+
+All commands except GET require admin privileges.  For GET, anonymous users are blocked.  Otherwise, a full list of quotas can be obtained using:
+
+`curl   -X  GET  -H "Accept: application/json" http://localhost:3880/api/v1/quota/user `
+
+`curl   -X  GET  -H "Accept: application/json" http://localhost:3880/api/v1/quota/user `
+
+The list can be limited to the quota for the user's uid or primary gid by appending the query '\?user=true', or, if known, a GET can be issued with the id as final path element:
+
+`curl   -X  GET  -H "Accept: application/json" http://localhost:3880/api/v1/quota/user/4215 `
+
+etc.
+
+A full description of the API is available through the Swagger interface (https://localhost:3880/api/v1).
 
 ### FTP
 
@@ -155,7 +170,7 @@ The default has been chosen to match an installation having close to 1B chimea f
 
 This means that quota enforcement is eventual. If user ran out of allocated quota they still will be able to write data over quota until next update happens. Likewise removing over quota data will not be noticed by qouta system until next update.
 
-Admin uset can interact with quota system via ```PnfsManager``` admin interface. For this commands:
+Admin user can interact with quota system via ```PnfsManager``` admin interface. For this commands:
 
 ```
 	set group quota [OPTIONS] <gid>  # Set group quota
