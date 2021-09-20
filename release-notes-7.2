@@ -77,13 +77,13 @@ HTML header: <title>dCache 7.2 Release Notes</title>
 
 Updated mina-sshd library to version 2.7.0 with various security enhancements.
 
-Now it is possible to add a label to a file.
+It is now possible to add a label to a file.
 
-The supporting addmin commands for adding,removing and quering labels of a file object are available now:
+The following admin commands for adding, removing and querying labels of a file object are available:
 
-`labels get path` lists the lables of a file.
+`labels get path` lists the labels of a file.
 
-`lables rm path labelname` removes the given lable from a file.
+`lables rm path labelname` removes the given label from a file.
 
 `lable add path  lablename`  adds a new label to a file.
 
@@ -91,11 +91,20 @@ The supporting addmin commands for adding,removing and quering labels of a file 
 
 ### Alarms
 
+Documentation has been added specifying that the alarms service is not replicable.
+
 ### Billing
+
+Documentation has been added specifying that billing is replicable only if it shares an underlying store (i.e., an RDBMS instance).
+
+### Bulk
+
+In preparation for future integration of tape recall optimization scheduling, some of the bulk processing has been adjusted to ensure the highest possible throughput to the scheduling endpoint.  These changes are largely invisible to the user.
 
 ### Cleaner
 
 Previously, pools were cleaned synchronously one after another by the cleaner component. Doing so in parallel is expected to provide performance benefits.
+
 The property `cleaner.limits.threads` now also controls the number of pools processed in parallel.
 
 ### Checksums
@@ -106,7 +115,7 @@ dCache now supports the stronger hash functions SHA-1, SHA-256 and SHA-512.
 
 ### Frontend
 
-In the case that the file object has labels, these can now be queried, set and removed through a RESTful API.
+If the file object has labels, these can now be queried, set and removed through a RESTful API.
 
 To query labels, the `curl  -v   http://localhost:3880/api/v1/namespace/path/filename\?label=true` should be used.
 
@@ -118,7 +127,7 @@ And to remove an existing label:
 
 `curl   -X  POST  -H "Accept: application/json"  -H "Content-Type: application/json"  http://localhost:3880/api/v1/namespace/path/filename -d  '{"action" : "rm-label",    "label" : "label" }'`
 
-The RESTful API for the quota system (see further below) allows for creating (POST), modifying (PATCH), listing (GET) and removing (DELETE) both user and group quotas.
+A RESTful API for the quota system (see further below) has been implemented; it allows for creating (POST), modifying (PATCH), listing (GET) and removing (DELETE) both user and group quotas.
 
 All commands except GET require admin privileges.  For GET, anonymous users are blocked.  Otherwise, a full list of quotas can be obtained using:
 
@@ -133,6 +142,10 @@ The list can be limited to the quota for the user's uid or primary gid by append
 etc.
 
 A full description of the API is available through the Swagger interface (https://localhost:3880/api/v1).
+
+In reporting movers (api/v1/pools/{pool}/movers), a problem with counts has been fixed so that both active and queued movers are included, and so that these are correctly broken down by their I/O activity (read/write).
+
+In reporting pool usage (api/v1/pools/{pool}/usage), the csm (checksum) module object was missing profile information; this is now included.
 
 ### FTP
 
@@ -154,23 +167,26 @@ A full description of the API is available through the Swagger interface (https:
 
 ### PNFS Manager
 
-Release 7.2 inroduces user and group quota implementation. The quota system operates on chimera namespace. It periodically counts space usage broken down by Retention Policy, by UID and by GID and stores these counts in two chimera DB tables - t_user_quota and t_group_quota. Besides space counts these tables hold quota limits for each space count category by UID and by GID. A null for a limit means "no quota". If there is no entries in these tables for a UID or GIDs means "no quota" for that UID or GID. CUSTODIAL Retention Policy corresponds to files going to tape, REPLICA corresponds to disk-only files and OUTPUT currently is not used in dCache.  Quota is controlled by the master switch:
+Release 7.2 introduces a user and group quota implementation. The quota system operates on the chimera namespace. It periodically counts space usage broken down by Retention Policy, UID and GID, and stores these counts in two chimera DB tables –– t_user_quota and t_group_quota. Besides space counts these tables hold quota limits for each space count category by UID and by GID. A null for a limit means "no quota". No entries in these tables for a UID or GIDs means "no quota" for that UID or GID. CUSTODIAL Retention Policy corresponds to files going to tape, REPLICA corresponds to disk-only files, and OUTPUT currently is not used in dCache.  The quota system is controlled by the master switch:
+
 ```
         dcache.enable.quota
 ```
-which by default is false. To enable quota this variable has to be set to true on hosts running ```PnfsManager``` and ```NFS``` services.
 
-Queries executed by periodic updates may run significant time on chimera back-end. Therefore default update frequency is once a day:
+which by default is false. To enable the quota system, this variable has to be set to true on hosts running  the ```PnfsManager``` and ```NFS``` services.
+
+Queries executed by periodic updates may run for a significant amount of time on the chimera back-end. Therefore default update frequency is once a day:
 
 ```
 	pnfsmanager.quota.update.interval=1
 	(one-of?MILLISECONDS|SECONDS|MINUTES|HOURS|DAYS)pnfsmanager.quota.update.interval.time.unit = DAYS
 ```
-The default has been chosen to match an installation having close to 1B chimea file entries. On smaller insalaltoin is is adviseable to increase the frequency by decreasing above interval value.
 
-This means that quota enforcement is eventual. If user ran out of allocated quota they still will be able to write data over quota until next update happens. Likewise removing over quota data will not be noticed by qouta system until next update.
+The default has been chosen to match an installation having close to 1B chimera file entries. On smaller installations it is advisable to increase the frequency by decreasing the above interval value.
 
-Admin user can interact with quota system via ```PnfsManager``` admin interface. For this commands:
+This means that quota enforcement is eventual. If users run out of allocated quota they still will be able to write data over quota until the next update happens. Likewise, removing over quota data will not be noticed by the system until the next update.
+
+An admin user can interact with the quota system via the ```PnfsManager``` admin interface. For this, the following commands are provided:
 
 ```
 	set group quota [OPTIONS] <gid>  # Set group quota
@@ -179,17 +195,21 @@ Admin user can interact with quota system via ```PnfsManager``` admin interface.
 	show user quota [-h] [-uid=<string>]  # Print user quota
 
 ```
-are provided. Use ```help <command>``` to learn how to use the command.
+Use ```help <command>``` to learn how to use the command.
 
-User facing quota interface is implemented through RESTFul interface.
+A user-facing quota interface is implemented through RESTFul frontend (see above).
 
 ### Pool
 
-Before dCache version 7.2 the scrubber process was starting with the pool startup. As the result, as long as a pool inventary is not complete, the scubber will faill with `Operation not allowed while repository is in state LOADING`. Now on the subber will start only after the inventary is complete.
+Before dCache version 7.2, the scrubber process was starting with the pool startup. As a result, as long as a pool inventory is not complete, the scrubber will fail with `Operation not allowed while repository is in state LOADING`. With this version, the scrubber now will start only after the inventory is complete.
 
 ### Poolmanager
 
 ### Resilience
+
+### Security (common)
+
+A general change to the internal SSL handlers to enable, where possible, a pass-through to native SSL on the node (usually OpenSSL) rather than using the Java implementation has been made.  This change affects xrootd, https (webdav) and gsi (GridFTP).  It should give improved performance (up to about 20%) when data is being encrypted.
 
 ### Space Manager
 
@@ -197,14 +217,14 @@ Before dCache version 7.2 the scrubber process was starting with the pool startu
 
 ### SRM Manager
 
-Optimally recalling data from tape is achieved by reducing the number of tape mounts and on-tape seeks by recalling as much volume
-as possible per mount. To that end a dedicated scheduling strategy exclusively for `bring-online` requests is introduced into the
-`SrmManager`. It is capable of clustering requests by tape according to a set of configurable criteria before passing them on to
-the rest of the system. In its current state it requires two files with information on targeted tapes, their capacity and occupancy
-as well as the mapping of tape-resident files to tape name. The file formats are described in the book.
+Optimally recalling data from tape is achieved by reducing the number of tape mounts and on-tape seeks by recalling as much volume as possible per mount. To that end a dedicated scheduling strategy exclusively for `bring-online` requests is introduced into the `SrmManager`. It is capable of clustering requests by tape according to a set of configurable criteria before passing them on to the rest of the system. In its current state it requires two files with information on targeted tapes, their capacity and occupancy as well as the mapping of tape-resident files to tape name. The file formats are described in the book.
 
 The scheduler can be activated by adding the following line to the srmmanager section of the properties file:
-` srmmanager.plugins.enable-bring-online-clustering = true`
+
+```
+srmmanager.plugins.enable-bring-online-clustering = true
+```
+
 and configured as described in the book.
 
 It is important to note that the scheduler can only be effective when a dCache instance contains exactly one SrmManager.
@@ -218,7 +238,21 @@ It is important to note that the scheduler can only be effective when a dCache i
 
 ### WebDAV
 
+### WebUI (dCacheView)
+
+The admin view now includes a separate page for plots of file lifetimes by pool group.  All file lifetime plots have been simplified to a single data series (average lifetime).  The viewport on the pool plots page has also been adjusted for easier scrolling on smaller (laptop) screens.  The "print" button on the magnified plots dialog has been removed because it is not supported in all browsers.
+
+For the new quota system, a quota view consisting of a read-only table has been added to the admin view.  A similar table (limited to the user's quotas) also appears in the UserProfile view.
+
 ### XRootD
+
+Several important fixes have gone in since 7.1.  
+
+First, the parsing of the 'triedrc' CGI was incomplete; it now properly accounts for error code/message pairings.  
+
+Second, a race condition which was causing certain clients to report that a file is not found when requesting the checksum for an upload (persist on successful close) transfer was previously fixed in the door.  This fix has now been migrated to the pool (where it really belongs) and made more robust.
+
+Finally, the third-party-copy client has been changed to conform with the behavior of the SLAC vanilla client so that it requests the exact number of remaining bytes on the final read chunk.  This should eliminate an issue previously encountered with a particular CEPH plugin.  The default chunk size has also been increased to 8 MiB to match the SLAC client.
 
 ### Zookeeper
 
