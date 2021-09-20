@@ -115,6 +115,8 @@ dCache now supports the stronger hash functions SHA-1, SHA-256 and SHA-512.
 
 ### Frontend
 
+#### File labels support 
+
 If the file object has labels, these can now be queried, set and removed through a RESTful API.
 
 To query labels, the `curl  -v   http://localhost:3880/api/v1/namespace/path/filename\?label=true` should be used.
@@ -126,6 +128,8 @@ To add a new label:
 And to remove an existing label:
 
 `curl   -X  POST  -H "Accept: application/json"  -H "Content-Type: application/json"  http://localhost:3880/api/v1/namespace/path/filename -d  '{"action" : "rm-label",    "label" : "label" }'`
+
+#### Quota support
 
 A RESTful API for the quota system (see further below) has been implemented; it allows for creating (POST), modifying (PATCH), listing (GET) and removing (DELETE) both user and group quotas.
 
@@ -142,6 +146,8 @@ The list can be limited to the quota for the user's uid or primary gid by append
 etc.
 
 A full description of the API is available through the Swagger interface (https://localhost:3880/api/v1).
+
+#### Bug fixes
 
 In reporting movers (api/v1/pools/{pool}/movers), a problem with counts has been fixed so that both active and queued movers are included, and so that these are correctly broken down by their I/O activity (read/write).
 
