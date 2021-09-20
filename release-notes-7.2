@@ -112,9 +112,9 @@ To query labels the `curl  -v   http://localhost:3880/api/v1/namespace/path/file
 
 To add a new label:
 
-`curl   -X  POST  -H "Accept: application/json"  -H "Content-Type: application/json"  http://localhost:3880/api/v1/namespace/path/filename -d  '{"action" : "set-label",    "label" : "label" }'` 
+`curl   -X  POST  -H "Accept: application/json"  -H "Content-Type: application/json"  http://localhost:3880/api/v1/namespace/path/filename -d  '{"action" : "set-label",    "label" : "label" }'`
 
-And to remove existing label 
+And to remove existing label
 
 `curl   -X  POST  -H "Accept: application/json"  -H "Content-Type: application/json"  http://localhost:3880/api/v1/namespace/path/filename -d  '{"action" : "rm-label",    "label" : "label" }'`
 
@@ -138,6 +138,35 @@ And to remove existing label
 ### Pinmanager
 
 ### PNFS Manager
+
+Release 7.2 inroduces user and group quota implementation. The quota system operates on chimera namespace. It periodically counts space usage broken down by Retention Policy, by UID and by GID and stores these counts in two chimera DB tables - t_user_quota and t_group_quota. Besides space counts these tables hold quota limits for each space count category by UID and by GID. A null for a limit means "no quota". If there is no entries in these tables for a UID or GIDs means "no quota" for that UID or GID. CUSTODIAL Retention Policy corresponds to files going to tape, REPLICA corresponds to disk-only files and OUTPUT currently is not used in dCache.  Quota is controlled by the master switch:
+```
+        dcache.enable.quota
+```
+which by default is false. To enable quota this variable has to be set to true on hosts running ```PnfsManager``` and ```NFS``` services.
+
+Queries executed by periodic updates may run significant time on chimera back-end. Therefore default update frequency is once a day:
+
+```
+	pnfsmanager.quota.update.interval=1
+	(one-of?MILLISECONDS|SECONDS|MINUTES|HOURS|DAYS)pnfsmanager.quota.update.interval.time.unit = DAYS
+```
+The default has been chosen to match an installation having close to 1B chimea file entries. On smaller insalaltoin is is adviseable to increase the frequency by decreasing above interval value.
+
+This means that quota enforcement is eventual. If user ran out of allocated quota they still will be able to write data over quota until next update happens. Likewise removing over quota data will not be noticed by qouta system until next update.
+
+Admin uset can interact with quota system via ```PnfsManager``` admin interface. For this commands:
+
+```
+	set group quota [OPTIONS] <gid>  # Set group quota
+	set user quota [OPTIONS] <uid>  # Set user quota
+	show group quota [-gid=<string>] [-h]  # Print group quota
+	show user quota [-h] [-uid=<string>]  # Print user quota
+
+```
+are provided. Use ```help <command>``` to learn how to use the command.
+
+User facing quota interface is implemented through RESTFul interface.
 
 ### Pool
 
@@ -182,7 +211,397 @@ It is important to note that the scheduler can only be effective when a dCache i
 
 <!-- git log 7.1..7.2 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
 
-(tbd as soon as the branching is done)
+[12d1e46](https://github.com/dCache/dcache/commit/12d1e4662603880e69d9a7001744cf8e7d33fa63)
+:   [maven-release-plugin] prepare branch 7.2
+
+[ff88aac](https://github.com/dCache/dcache/commit/ff88aace014dd0720a854087c782ae1492c1cb93)
+:   nfs: fix typo pricipal -> principal
+
+[adec8b1](https://github.com/dCache/dcache/commit/adec8b122b7eca1f1a8e4172caac87facc94bc9d)
+:   libs: use zookeeper 3.5.9
+
+[e3990d6](https://github.com/dCache/dcache/commit/e3990d64dd314b33d504c9462bb22f15a872caf3)
+:   srm-server: make trs admin commands use rwlock
+
+[3438812](https://github.com/dCache/dcache/commit/343881257ec56804adad2228da3a4ed86021c593)
+:   frontend: add service to provide Storage resource reporting
+
+[49d8ba6](https://github.com/dCache/dcache/commit/49d8ba6c9e0c2f1bb665717286b8054bd52300dd)
+:   dcache: Modernize PoolStatisticsV0
+
+[7effd50](https://github.com/dCache/dcache/commit/7effd509eb93272d9fe02ca0b03efb54928f611e)
+:   webdav: update representation of symbolic links in HTML page
+
+[5e77f79](https://github.com/dCache/dcache/commit/5e77f79168b834961cb4acd302464ea9e39cca20)
+:   book: described trs admin commands
+
+[9071fa1](https://github.com/dCache/dcache/commit/9071fa1af6f2ded438effebd5d1d87750f13e387)
+:   srm-server: add trs configuration admin commands
+
+[97c54ae](https://github.com/dCache/dcache/commit/97c54aec8ee19a13a1c65cf5cd8abce76dc1f761)
+:   dcache: remove redundant file
+
+[c756308](https://github.com/dCache/dcache/commit/c756308cf168ec85a13d95de72250283afc936d1)
+:   src: don't use com.google.common.io.ByteStreams
+
+[4b6338f](https://github.com/dCache/dcache/commit/4b6338fce6f8d7089914c5223a063b9e3a9e835d)
+:   pool: remove dead code in org.dcache.pool.p2p.Companion
+
+[2fc1f8d](https://github.com/dCache/dcache/commit/2fc1f8db21f22a24bfbf16ccbc6621d9d15d9bea)
+:   restful: provide functionality to remove or add labels of a file
+
+[84b45e6](https://github.com/dCache/dcache/commit/84b45e6f119145b33003f45f6308177b7a5d2327)
+:   namespace-chimera: ignore file size update on file flush
+
+[1a5b28d](https://github.com/dCache/dcache/commit/1a5b28d9905d1b9c98cd948e34d6828546a27e12)
+:   book: added clarification to trs description
+
+[9602167](https://github.com/dCache/dcache/commit/9602167f2ec4d5822f874e4e35d92d06f5fa8552)
+:   pool: scrubber should ignore the files if checksum is missing
+
+[862093f](https://github.com/dCache/dcache/commit/862093fa3b8f8eb4080d398cf11b05c146348ea3)
+:   billing: reduce unhelpful log spamming
+
+[278f712](https://github.com/dCache/dcache/commit/278f712ff7a8951fc28e40ae4cf2aea95da958ac)
+:   pool: add Repository#waitForLoad method
+
+[05ee28c](https://github.com/dCache/dcache/commit/05ee28ce8425e1d9c0af188d94c6487838afa463)
+:   webdav: add 'http-tpc ls' admin command
+
+[bf7610a](https://github.com/dCache/dcache/commit/bf7610a6ff2089a63acb4b7892b39aace03fc375)
+:   book: describe srm tape recall scheduler and file formats
+
+[e975365](https://github.com/dCache/dcache/commit/e9753656dbb5bcad8b82f72a9755cd3fb8c5f780)
+:   build(deps): bump jetty-webapp from 9.4.41.v20210516 to 9.4.43.v20210629
+
+[a24b2c8](https://github.com/dCache/dcache/commit/a24b2c8ba73b194fc4e632b6883359d4e2fcf13e)
+:   dcache-xroot: bump dependency to next xrootd4j release
+
+[cd8bf7b](https://github.com/dCache/dcache/commit/cd8bf7b429472e5e20ddda62d89fbdc53c14c767)
+:   src: unify all instances of logger to a same style
+
+[fae6d73](https://github.com/dCache/dcache/commit/fae6d73ba894d8fb1c8ed998a2732720aa70a087)
+:   srm-server: add tape info provider SPI and JSON support
+
+[61decad](https://github.com/dCache/dcache/commit/61decad4189f745ae1c3a53bd10c315c3fe3455c)
+:   libs: use sshd-core 2.7.0
+
+[33dcbda](https://github.com/dCache/dcache/commit/33dcbda977f97b4907241b8a963522aaf91341da)
+:   src: unify all instances of logger to a same style
+
+[c4f755b](https://github.com/dCache/dcache/commit/c4f755baf1d2a6abae19305887418c12d01aba6d)
+:   ssh: remote unnecessary String#valueOf call in logging
+
+[4a1ffa1](https://github.com/dCache/dcache/commit/4a1ffa1ddc0a9d7a86ae4824e7932d7092672e7e)
+:   webdav: fix regression from commit a2b252c07f
+
+[6f69d12](https://github.com/dCache/dcache/commit/6f69d121217ac8c6980c16ba52de273c2221774f)
+:   testing: consolidate builder classes
+
+[184c826](https://github.com/dCache/dcache/commit/184c826e4062fe562deea213c6341051a9c6d113)
+:   srmmanager: fix race condition in LoginBrokerSubscriber
+
+[53c4ba1](https://github.com/dCache/dcache/commit/53c4ba166199dafd27f61f3c24cc76b17181c3cc)
+:   dcache-frontend: add RESTFUL quota resource
+
+[9212aa4](https://github.com/dCache/dcache/commit/9212aa48c88620412f9669064c0f66b79f244f1a)
+:   Revert "libs: use sshd-core 2.7.0"
+
+[f27c206](https://github.com/dCache/dcache/commit/f27c2067ec88fbdabe1bf466052794f8d76fe58f)
+:   libs: use sshd-core 2.7.0
+
+[5b07905](https://github.com/dCache/dcache/commit/5b0790501f9a4ab5c8459489a1e9e8195b5dd972)
+:   pool/pnfsmanager: don't accept a non-Enstore flush without locations
+
+[5e6d306](https://github.com/dCache/dcache/commit/5e6d3062d792c522eb65121d89f2b75f2e4e8d7a)
+:   pool: update Kafka tape events to include additional information
+
+[7daf803](https://github.com/dCache/dcache/commit/7daf80372aca4eae6d01d2a7b00c6aeb118fb0fe)
+:   github: add citation file
+
+[eb588fd](https://github.com/dCache/dcache/commit/eb588fd3c2fc4f45820e7d1b94f538146530143c)
+:   dcache-core: add quota messaging and support in PnfsManager
+
+[6e9fefe](https://github.com/dCache/dcache/commit/6e9fefe5ec8e6ad98872ee9bb03cf0d73ec1239b)
+:   namespace: add delete quota to driver and PnfsManager admin commands
+
+[f338304](https://github.com/dCache/dcache/commit/f3383040bb2785a8c40290fcee92b0eedea0b6c5)
+:   common: support requirements on parsed value in ByteSizeParser
+
+[6c34d24](https://github.com/dCache/dcache/commit/6c34d246cafed05b83465a30475f0222e32a2e64)
+:   common: Update ByteSizeParser to support multiple representations
+
+[5bf281a](https://github.com/dCache/dcache/commit/5bf281a125f8b189b3b6494a2d81171bcc5cb18d)
+:   common: update ByteSizeParser to follow builder pattern
+
+[6809690](https://github.com/dCache/dcache/commit/68096908b5f508ed4fdeb9229d183a90211e2f9c)
+:   pnfsmanager: fix regression introduced with commit 61a4e8dc4e
+
+[c53315f](https://github.com/dCache/dcache/commit/c53315faecdfc9e0d0c6a6f38b224c145994b1dd)
+:   common: provide more diagnostic information
+
+[a1f1aff](https://github.com/dCache/dcache/commit/a1f1aff3b8195a5ddb890d86f0970e3787923cb1)
+:   pool: improve flush information
+
+[bacafac](https://github.com/dCache/dcache/commit/bacaface743f8d645c1f956cd1a1143f79636542)
+:   Motivation:
+
+[302db70](https://github.com/dCache/dcache/commit/302db70188c6b13a369ac690ed61eac462204be1)
+:   Revert "dcache-xroot: prevent attempt to write to channel for which checksum has been computed"
+
+[489af68](https://github.com/dCache/dcache/commit/489af68fbc21d2eef6050c77bd161be433af6f47)
+:   srm: add srm bring-online request scheduler
+
+[3b89d2e](https://github.com/dCache/dcache/commit/3b89d2e6966ee5847e399f1b8c37f36265128d27)
+:   dcache-xroot: prevent attempt to write to channel for which checksum has been computed
+
+[0a1d34d](https://github.com/dCache/dcache/commit/0a1d34dba1a2325802a04bcd5d33776913f5291e)
+:   restfulapi:  add restful Api call  to query the lable of a givin file object
+
+[e54e3c4](https://github.com/dCache/dcache/commit/e54e3c493704540888833cb2780f1f543c0e4b80)
+:   skel, pool.xml: fix regressions from 13117-13118
+
+[4697c7a](https://github.com/dCache/dcache/commit/4697c7a978de92ce97e10a7a5dd170acdf7d3e56)
+:   dcache-xroot: increase server-side frame size to 8 MiB
+
+[8567435](https://github.com/dCache/dcache/commit/85674350990a49ec728391a3c89fc53ee3672f9f)
+:   dcache-xroot: increase tpc client block/chunk size to 8 MiB
+
+[d0bae1f](https://github.com/dCache/dcache/commit/d0bae1f294ed756c907f81a6b078863b562f72e1)
+:   Revert "libs: use sshd-core 2.7.0"
+
+[81e676d](https://github.com/dCache/dcache/commit/81e676d65814c858fb3f8fc89887bb7d10e41206)
+:   libs: use sshd-core 2.7.0
+
+[d84c908](https://github.com/dCache/dcache/commit/d84c9082e9095fbab758ca1c392f730d197e0318)
+:   PnfsManager: improve wording of quota command
+
+[13215ee](https://github.com/dCache/dcache/commit/13215eead7910ca2911f2e368fbb98c5717a034c)
+:   rpm: add  dcache-convert-authzdb-to-omnisession into list of packaged files
+
+[ae11f68](https://github.com/dCache/dcache/commit/ae11f686ec3baa39083ff4a7ecdd844cb239baf9)
+:   skel: add explicit replicable property even when value is false
+
+[03ca593](https://github.com/dCache/dcache/commit/03ca5936f180b84b420cf6383b2a625803e1bfcc)
+:   alarms, billing: specify shared rdbms in the case of replicated service
+
+[061ce56](https://github.com/dCache/dcache/commit/061ce569f667131aa0a84214ce40392c4516cc3e)
+:   build(deps): bump commons-compress from 1.19 to 1.21
+
+[a733b3f](https://github.com/dCache/dcache/commit/a733b3fbe605c6b2fedf85dfeb6af0d55a242183)
+:   gplazma: add util to convert authzdb file to omnisession
+
+[e160a3c](https://github.com/dCache/dcache/commit/e160a3c8f69144dda1d6aeb725e43f307ad1a25f)
+:   gplazma: add omnisession plugin
+
+[f33acca](https://github.com/dCache/dcache/commit/f33accaa9d746ed4940bd9b276774c9ae6ea5759)
+:   srm: log transfer protocols in access log
+
+[7f1f63a](https://github.com/dCache/dcache/commit/7f1f63a7a24bf3eadf731164727daebc301e9e59)
+:   gplazma: multimap now supports OP in 'oidc' predicate
+
+[33868f5](https://github.com/dCache/dcache/commit/33868f57335df7029edd97eff876140a5fcf7403)
+:   dcache-frontend: remove unreachable catch clause
+
+[69f9ece](https://github.com/dCache/dcache/commit/69f9ece1b7fcd879bcd13a5b8984cea06271185f)
+:   dcache: use charset constant instead of String-based dynamic discovery
+
+[a6a096d](https://github.com/dCache/dcache/commit/a6a096d74f2cacfedb2c717db237565a850fbbe7)
+:   core: fix NPE in TryCatchTemplate
+
+[0c19f64](https://github.com/dCache/dcache/commit/0c19f644a86a3d11de5049002135753afe64b7f6)
+:   dcache-core: add checksums sha-1, sha-256 and sha-512
+
+[37ae4b8](https://github.com/dCache/dcache/commit/37ae4b8d7970fdf4e365ab3b38b6311673b703ff)
+:   dcache-core: correct reported units of transfer size and speed
+
+[2cf3ce5](https://github.com/dCache/dcache/commit/2cf3ce5245b24cb4e1843a40ca77a412caa420c2)
+:   nearline: add simulated stage delay options to FileSystemNearlineStorage
+
+[a95a832](https://github.com/dCache/dcache/commit/a95a8328c7fbe8f5038a78d036587225aff3ef90)
+:   dcache-bulk: make SignalAware reusable
+
+[8218698](https://github.com/dCache/dcache/commit/8218698ea08d98e8d189fa62ab08f5442cb53ca0)
+:   starting with a few macaroon hands-on examples
+
+[56154bc](https://github.com/dCache/dcache/commit/56154bc722e96b8c287ef6a7aa2c8a2938dad382)
+:   qos-engine: use batching to notify concerning completed actions
+
+[554f4e2](https://github.com/dCache/dcache/commit/554f4e28d64b34e99245222e4842ec4747cefebb)
+:   dcache-xroot: move upload commit for persist-on-successful-close to the pool
+
+[61a4e8d](https://github.com/dCache/dcache/commit/61a4e8dc4e4877316f3779dfc1a04acd40419067)
+:   Implementation of UID/GID quota system in dCache
+
+[695b7c8](https://github.com/dCache/dcache/commit/695b7c886029859b44feace8056a0dec3ab8fc46)
+:   skel: remove obsolete python scripts
+
+[0067f72](https://github.com/dCache/dcache/commit/0067f72e8f3c481b3f97f5705779d56e23af1cbf)
+:   pool: simplify inotify support in pool.
+
+[9a2c99a](https://github.com/dCache/dcache/commit/9a2c99a54aa8b9b03e8fe79890642fa88bef1927)
+:   gplazma: oidc check token validity if JWT
+
+[0ed6b58](https://github.com/dCache/dcache/commit/0ed6b58a7a6c089d266c9fd2fa6e59f2da958910)
+:   chimerashell: add recursive option to 'chown' command
+
+[17e7c30](https://github.com/dCache/dcache/commit/17e7c30b26f56bc537ac3a97c6ab39331f226db3)
+:   Added a link to the user guide to the main README
+
+[4d5f054](https://github.com/dCache/dcache/commit/4d5f054b37c1efce9d7521335e24aa1270eef345)
+:   SRM : Fix IPV6 logging for SRM
+
+[75b395b](https://github.com/dCache/dcache/commit/75b395b3ba0fba2ec752c43d14de7823b3d143bc)
+:   dcache-chimera: introducing parallel pool cleaning
+
+[ab900b8](https://github.com/dCache/dcache/commit/ab900b870bfb18bae4b8a9dc5273f7758df59f42)
+:   dcache-qos: cast non-Object arrays to varargs Object[]
+
+[a5f691f](https://github.com/dCache/dcache/commit/a5f691fdc3fd9cf099d90fffaf5161937ae9fa5c)
+:   qos-adjuster: add waiting queue and state; polling
+
+[e5bbab7](https://github.com/dCache/dcache/commit/e5bbab767fa77839b86447a4c9ae37a1fb666f83)
+:   dcache-chimera:add admin commands to support add/remove file lables
+
+[dc4e6db](https://github.com/dCache/dcache/commit/dc4e6db1b5bf014e9ccbf4d9cbeb1bdcf4fb6a35)
+:   frontend: fix wrong success on not defined  action
+
+[ac3a3e4](https://github.com/dCache/dcache/commit/ac3a3e48fc39c14b953e1fed171976528da6f143)
+:   pool: http-tpc add support for multiple trust stores
+
+[ab72c86](https://github.com/dCache/dcache/commit/ab72c86d51010d6aaeccbd54299eb45fd60a80cb)
+:   pool: update configuration to split http-tpc and remote-gsiftp CA settings
+
+[4154dc1](https://github.com/dCache/dcache/commit/4154dc159359a03525f6955e18f542131a89bd11)
+:   build(deps): bump jetty-servlets
+
+[ae40d43](https://github.com/dCache/dcache/commit/ae40d436c787a20840cb96de4ee5517ea117a131)
+:   checksum-module: add missing map to JSON info
+
+[e22b598](https://github.com/dCache/dcache/commit/e22b598e82f918a6e0c09ea335159b35c98c090c)
+:   pool: update ReplicaDescriptor to implement AutoCloseable
+
+[b7d7ee0](https://github.com/dCache/dcache/commit/b7d7ee0c937cd1567e922d0131fcaf9abc6682b5)
+:   pool: checksum scanner: don't create EnumSet of OpenOption in a loop
+
+[d9ac931](https://github.com/dCache/dcache/commit/d9ac931609549828f7a00085cc7dbdb2cfe0cbdc)
+:   chimera:adding labels metadata  to file objects
+
+[5393593](https://github.com/dCache/dcache/commit/53935931e22d69268ea95dd5cc589960bfd0d8a7)
+:   dcache-qos (10.6): qos scanner admin interface, local client and remote receiver
+
+[3e29dd3](https://github.com/dCache/dcache/commit/3e29dd3043b0e90d4d69fa6f61d0074092684a6e)
+:   bulk: change PIN, UNPIN and UPDATE-QOS to breadth-first
+
+[0c555c8](https://github.com/dCache/dcache/commit/0c555c869854ab073af0f78356ab2e0b1b8b75eb)
+:   build(deps): bump httpclient from 4.5.3 to 4.5.13
+
+[a705b0a](https://github.com/dCache/dcache/commit/a705b0aab51e5e553b502aef885eb8df2adf6212)
+:   ssh: update DirectCommand to use SshOutputStream
+
+[ddd6c88](https://github.com/dCache/dcache/commit/ddd6c88ccd24ace11ec4c834466ef71328a9f941)
+:   common-security, doors: switch to openssl where possible
+
+[f64a880](https://github.com/dCache/dcache/commit/f64a88005f9f5bb677e71002286c74fdadc4c0b2)
+:   FsSqlDriver: use more conservative SQL query as default, so that system tests passs. Move more advanced SQL query to psql specific driver.
+
+[a96ca9e](https://github.com/dCache/dcache/commit/a96ca9e003dc63e8f9ff974694a42abdbfcbebe7)
+:   User guide: bulk-request URLs contain /api/v1
+
+[1848354](https://github.com/dCache/dcache/commit/18483549e88fe44d3ad7d7dab16c97424dbf7add)
+:   srm: remove redundant Pgpass class
+
+[8b0bcba](https://github.com/dCache/dcache/commit/8b0bcba923b9f7598e0ece26582a9f6f6645caf1)
+:   ssh: drop custom AuthorizedKeyParser
+
+[cb7282c](https://github.com/dCache/dcache/commit/cb7282cefedbd748ae1e0573c39bf1fdffd62d62)
+:   dcache-qos (10.4/5): qos scanner handlers
+
+[f76991c](https://github.com/dCache/dcache/commit/f76991c49821cc2cd5409931a2bae624ec0245ff)
+:   dcache-xrootd: upgrade xrootd4j to 4.1.1
+
+[a63e603](https://github.com/dCache/dcache/commit/a63e6030a0e098d92b51d93ed1fdfc07fca2ac9c)
+:   Namespace: add FS stat cache table
+
+[b19bb24](https://github.com/dCache/dcache/commit/b19bb247a2224e09d2c1bc30f866a351b41fcc43)
+:   Fix typo
+
+[2133f6e](https://github.com/dCache/dcache/commit/2133f6ea0d698ba7f493ea257b011666a7b0c20a)
+:   dcache-xroot: parsing of 'triedrc' CGI lacks separation by optional comma
+
+[77eadb3](https://github.com/dCache/dcache/commit/77eadb32ae9a38f82680c864435c9d7a0f93c1d6)
+:   nfs: add possibility to configure BerkeleyDB client store
+
+[2c09996](https://github.com/dCache/dcache/commit/2c09996ebb43fb9ff835a08ad453795fa02e7009)
+:   poolmanager: fix _waitingFor access outside of synchronized block
+
+[6fa08f5](https://github.com/dCache/dcache/commit/6fa08f5eb17d141091d0ae2a3ec75747cfeb153a)
+:   ftp: add support for the SITE SYMLINK command
+
+[bf463de](https://github.com/dCache/dcache/commit/bf463de8a450ad094f4cab04a144ffb0ab26f14b)
+:   pool: http allow client to send credentials when TLS is used
+
+[0a22bac](https://github.com/dCache/dcache/commit/0a22bac97f677a253148c36d1efb051dcacbeb2a)
+:   gplamza: oidc support fetching username and groups direct from OP
+
+[275df29](https://github.com/dCache/dcache/commit/275df29bd48d5e75ff389ceea6f8693c0035c879)
+:   build: disable stack-trace trimming in surefire
+
+[e780ace](https://github.com/dCache/dcache/commit/e780ace57d9a5b2d770014ab721803306d98619e)
+:   build(deps): bump jetty-io from 9.4.35.v20201120 to 9.4.40.v20210413
+
+[206185d](https://github.com/dCache/dcache/commit/206185d9eade066b2761c281b9ea6958f9108683)
+:   frontend: bump swagger version to 1.6.2
+
+[838d422](https://github.com/dCache/dcache/commit/838d42213e40383d9907e754a1069f1e030235ad)
+:   runtime: force JVM exit on OutOfMemoryError
+
+[c2bc2ae](https://github.com/dCache/dcache/commit/c2bc2ae28d53131d6c04e2852e54c606d2b557fa)
+:   runtime: enable Java flight recorder attach listener
+
+[939673d](https://github.com/dCache/dcache/commit/939673d8dc9db3688ab8b78c19effb12aeee552f)
+:   dcache-qos (10.3): pool operation map and counters
+
+[84d65bc](https://github.com/dCache/dcache/commit/84d65bca9ebdffbb4d3380152d981f860335032c)
+:   dcache (request container): extract reusable deliverables and endpoint from unit test suite
+
+[6c7b4da](https://github.com/dCache/dcache/commit/6c7b4daac141ce3cbe8963ca4da8ed7e7990a301)
+:   nearline: don't use guava to sort the output of various 'ls' commands
+
+[9f69e5c](https://github.com/dCache/dcache/commit/9f69e5c4467f36e69ec8a8e9514f0c691a82f5a8)
+:   dcache-chimera: use RemotePoolMonitor to discover file locality
+
+[a31b429](https://github.com/dCache/dcache/commit/a31b42913364cff3617693d9ced8981248ac74f9)
+:   poolmanager: remove redundant test in WatchdogThread
+
+[959cac7](https://github.com/dCache/dcache/commit/959cac7483d785cf91be1537e760aba8e01ae3cd)
+:   ftp:clean dead code
+
+[6d7b6a4](https://github.com/dCache/dcache/commit/6d7b6a41c58063b774f3e4ae09fef16b3326d2fc)
+:   book: add cleaner chapter
+
+[4a1b405](https://github.com/dCache/dcache/commit/4a1b405c4be227652f63166130c76c081f8446f6)
+:   webdav: use Jetty's built-in support for CORS
+
+[f26be37](https://github.com/dCache/dcache/commit/f26be3769f5c677967945aedff9b368166eed3b8)
+:   pool: build list metadata entries only when we are going to use it
+
+[99b4d18](https://github.com/dCache/dcache/commit/99b4d18cba3b6336566de0107f20db3de51d072f)
+:   pool: use Set#of to construct O_READ and O_RW constants
+
+[e78b504](https://github.com/dCache/dcache/commit/e78b504defd7db0349fe6b5c28e78391e818d588)
+:   pool: remove invalid test case of configured space
+
+[b4f957b](https://github.com/dCache/dcache/commit/b4f957b4b946d8a1227c4c45d8a839898416dad8)
+:   pool: fix pool size reporting when static/runtime config is not defined.
+
+[f40adce](https://github.com/dCache/dcache/commit/f40adce841c2378e239702f7b0137aa10c992b80)
+:   poolV4: fix reader/writer counts
+
+[14a5fc5](https://github.com/dCache/dcache/commit/14a5fc52b701f297c2389d7abe7422d2742f03e0)
+:   [maven-release-plugin] prepare for next development iteration
+
+
 
 
 
