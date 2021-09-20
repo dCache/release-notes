@@ -173,6 +173,7 @@ In reporting pool usage (api/v1/pools/{pool}/usage), the csm (checksum) module o
 
 ### PNFS Manager
 
+#### User and group quota
 Release 7.2 introduces a user and group quota implementation. The quota system operates on the chimera namespace. It periodically counts space usage broken down by Retention Policy, UID and GID, and stores these counts in two chimera DB tables –– t_user_quota and t_group_quota. Besides space counts these tables hold quota limits for each space count category by UID and by GID. A null for a limit means "no quota". No entries in these tables for a UID or GIDs means "no quota" for that UID or GID. CUSTODIAL Retention Policy corresponds to files going to tape, REPLICA corresponds to disk-only files, and OUTPUT currently is not used in dCache.  The quota system is controlled by the master switch:
 
 ```
@@ -204,6 +205,21 @@ An admin user can interact with the quota system via the ```PnfsManager``` admin
 Use ```help <command>``` to learn how to use the command.
 
 A user-facing quota interface is implemented through RESTFul frontend (see above).
+
+#### File system statistics
+
+Added functionality to cache total files and total space used on DB 
+backend. Added two properties that control the behavior how often heavy query that calculates total number of files and total used space in the namespace us run:
+
+```
+    pnfsmanager.fs-stat-cache.time = 3600
+    pnfsmanager.fs-stat-cache.time.unit = SECONDS
+```
+
+The resulting numbers are typically seen when running `df` command mounted 
+Chimera file system.
+This patch has shown to speed up NFS availablity (among other things) after 
+startup especially on large installations.
 
 ### Pool
 
