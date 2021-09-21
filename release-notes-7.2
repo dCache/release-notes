@@ -139,7 +139,7 @@ All commands except GET require admin privileges.  For GET, anonymous users are 
 
 `curl   -X  GET  -H "Accept: application/json" http://localhost:3880/api/v1/quota/user `
 
-`curl   -X  GET  -H "Accept: application/json" http://localhost:3880/api/v1/quota/user `
+`curl   -X  GET  -H "Accept: application/json" http://localhost:3880/api/v1/quota/group `
 
 The list can be limited to the quota for the user's uid or primary gid by appending the query '\?user=true', or, if known, a GET can be issued with the id as final path element:
 
@@ -210,18 +210,16 @@ A user-facing quota interface is implemented through RESTFul frontend (see above
 
 #### File system statistics
 
-Added functionality to cache total files and total space used on DB 
-backend. Added two properties that control the behavior how often heavy query that calculates total number of files and total used space in the namespace us run:
+Added functionality to cache total files and total space used on DB backend. Added two properties that control how often heavy queries that calculates the total number of files and total used space in the namespace us ru
 
 ```
     pnfsmanager.fs-stat-cache.time = 3600
     pnfsmanager.fs-stat-cache.time.unit = SECONDS
 ```
 
-The resulting numbers are typically seen when running `df` command mounted 
-Chimera file system.
-This patch has shown to speed up NFS availablity (among other things) after 
-startup especially on large installations.
+The resulting numbers are typically seen when running `df` command mounted Chimera file system.
+
+This patch has shown to speed up NFS availablity (among other things) after startup, especially on large installations.
 
 ### Pool
 
