@@ -77,18 +77,6 @@ HTML header: <title>dCache 7.2 Release Notes</title>
 
 Updated mina-sshd library to version 2.7.0 with various security enhancements.
 
-It is now possible to add a label to a file.
-
-The following admin commands for adding, removing and querying labels of a file object are available:
-
-`labels get path` lists the labels of a file.
-
-`lables rm path labelname` removes the given label from a file.
-
-`lable add path  lablename`  adds a new label to a file.
-
-`ls_virtualdir labelname` lists all the files having the given label.
-
 ### Alarms
 
 Documentation has been added specifying that the alarms service is not replicable.
@@ -110,6 +98,20 @@ The property `cleaner.limits.threads` now also controls the number of pools proc
 ### Checksums
 
 dCache now supports the stronger hash functions SHA-1, SHA-256 and SHA-512.
+
+### Chimera (Shell)
+
+It is now possible to add a label to a file.
+
+The following admin commands for adding, removing and querying labels of a file object are available:
+
+`labels get path` lists the labels of a file.
+
+`label rm path labelname` removes the given label from a file.
+
+`label add path labelname`  adds a new label to a file.
+
+`ls_virtualdir labelname` lists all the files having the given label.
 
 ### DCAP
 
