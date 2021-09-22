@@ -76,6 +76,34 @@ HTML header: <title>dCache 7.0 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 7.0.18
+
+### frontend
+
+SRR returns data now with official json schema
+
+### webdav
+
+Fix how sym-links are shown in the static HTML (web-browser) view from
+the WebDAV door.
+
+
+### Changelog 7.0.17..7.0.18
+
+<!-- git log 7.0.17..7.0.18 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[63bf70887a](https://github.com/dcache/dcache/commit/63bf70887a272e26c383ae7314050964c66b111e)
+:   [maven-release-plugin] prepare release 7.0.18
+
+[e6e25ab6b1](https://github.com/dcache/dcache/commit/e6e25ab6b1936785945aa481e37d4ad9f555812b)
+:   frontend: add service to provide Storage resource reporting
+
+[f5541353e5](https://github.com/dcache/dcache/commit/f5541353e55de38b2257268cfeea0b3d81b07999)
+:   webdav: update representation of symbolic links in HTML page
+
+[7e9f49aa1b](https://github.com/dcache/dcache/commit/7e9f49aa1be50c3332123ee21b225d4e69e6d0a7)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 7.0.17
 
 ### dcache-xroot
