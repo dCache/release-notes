@@ -117,7 +117,7 @@ The following admin commands for adding, removing and querying labels of a file 
 
 ### Frontend
 
-#### File labels support 
+#### File labels support
 
 If the file object has labels, these can now be queried, set and removed through a RESTful API.
 
@@ -195,14 +195,12 @@ The default has been chosen to match an installation having close to 1B chimera 
 
 This means that quota enforcement is eventual. If users run out of allocated quota they still will be able to write data over quota until the next update happens. Likewise, removing over quota data will not be noticed by the quota system until the next update.
 
-Internally the quota check involves holding two maps `<uid, Quota>` (user quota map) and `<gid, Quota>` (group quota map) in memory at the level of `JdbcFs`. When create entry function is called the uid, gid and Retention Policy (based on RetentionPolicy tag of the parent directory or default retention policy if there is no tag) are used to check if maps have necessary entries and exception is thrown if space counts  exceed limits. Both maps are refreshed in memory from DB back-end every minute to pick possible new entries and new limits as well as to eventually catch the updated space usage counts. 
+Internally the quota check involves holding two maps `<uid, Quota>` (user quota map) and `<gid, Quota>` (group quota map) in memory at the level of `JdbcFs`. When create entry function is called the uid, gid and Retention Policy (based on RetentionPolicy tag of the parent directory or default retention policy if there is no tag) are used to check if maps have necessary entries and exception is thrown if space counts  exceed limits. Both maps are refreshed in memory from DB back-end every minute to pick possible new entries and new limits as well as to eventually catch the updated space usage counts.
 
-From above follows that quota system is not going to work well with explicit 
-space reservations (or space reservations expressed as WriteToken tag) on dCache installations having both disk-only and tape-backed pools. 
-It requires RetentionPolicy tag. Although, since a general practice is to not to mix files with different retention policies under the same directories, this could work if RetentionPolicy tag is added to the containing directories.
+From above follows that quota system is not going to work well with explicit space reservations (or space reservations expressed as WriteToken tag) on dCache installations having both disk-only and tape-backed pools. It requires RetentionPolicy tag. Although, since a general practice is to not to mix files with different retention policies under the same directories, this could work if RetentionPolicy tag is added to the containing directories.
 
-On tape-only or disk-only installations, where Retention Policy of files is 
-unambiguous, the quota can rely on default, system-wide Retention policy value. On tape-only system, the default value supplied with dCache distribution is good:  
+On tape-only or disk-only installations, where Retention Policy of files is
+unambiguous, the quota can rely on default, system-wide Retention policy value. On tape-only system, the default value supplied with dCache distribution is good:
 ```
     (one-of?CUSTODIAL|REPLICA|OUTPUT)dcache.default-retention-policy=CUSTODIAL
 ```
@@ -211,8 +209,7 @@ On disk-only systems, it needs to be set to :
     dcache.default-retention-policy=REPLICA
 ```
 
-On a mixed system, a `dcache.default-retention-policy=CUSTODIAL` can be utilized for files bound to tape and RetentionPolicy tag can be set in the root of the directrory tree 
-where disk-only files are stored. 
+On a mixed system, a `dcache.default-retention-policy=CUSTODIAL` can be utilized for files bound to tape and RetentionPolicy tag can be set in the root of the directrory tree where disk-only files are stored.
 
 An admin user can interact with the quota system via the ```PnfsManager``` admin interface. For this, the following commands are provided:
 
@@ -220,10 +217,14 @@ An admin user can interact with the quota system via the ```PnfsManager``` admin
 	set group quota [OPTIONS] <gid>  # Set group quota
 	set user quota [OPTIONS] <uid>  # Set user quota
 
+	remove group quota <gid>  # remove group quota
+	remove user quota <uid>  # remove user quota
+
 	show group quota [-gid=<string>] [-h]  # Print group quota
 	show user quota [-h] [-uid=<string>]  # Print user quota
 
 ```
+
 Use ```help <command>``` to learn how to use the command.
 
 A user-facing quota interface is implemented through RESTFul frontend (see above).
@@ -288,9 +289,9 @@ For the new quota system, a quota view consisting of a read-only table has been 
 
 ### XRootD
 
-Several important fixes have gone in since 7.1.  
+Several important fixes have gone in since 7.1.
 
-First, the parsing of the 'triedrc' CGI was incomplete; it now properly accounts for error code/message pairings.  
+First, the parsing of the 'triedrc' CGI was incomplete; it now properly accounts for error code/message pairings.
 
 Second, a race condition which was causing certain clients to report that a file is not found when requesting the checksum for an upload (persist on successful close) transfer was previously fixed in the door.  This fix has now been migrated to the pool (where it really belongs) and made more robust.
 
