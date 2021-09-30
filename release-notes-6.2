@@ -106,6 +106,39 @@ This does not affect functionality.
 (tbd, this section uses markdown formatting)
 
 
+## Release 6.2.30
+
+### gplazma
+
+During the auth phase of the login process, the group membership
+information contained in a 'wlcg.groups' claim from the OP is now
+available as OpenIdGroupPrincipal principals. Subsequent plugins (e.g.,
+multimap) may be used to convert these principals to more directly
+useful principals.
+
+
+### pool
+
+A rare NullPointerException for HTTP-TPC transfers is fixed.
+
+
+
+### Changelog 6.2.29..6.2.30
+
+<!-- git log 6.2.29..6.2.30 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[d372de5fa1](https://github.com/dcache/dcache/commit/d372de5fa161253838a249b4da5d679523fb8295)
+:   [maven-release-plugin] prepare release 6.2.30
+
+[8481729ace](https://github.com/dcache/dcache/commit/8481729ace7fd4f3b873fbca4ffd158782df534b)
+:   gplazma: oidc add support for the 'wlcg.groups' claim
+
+[e664995cdd](https://github.com/dcache/dcache/commit/e664995cdd562c6df97b98e17384f35a4ec3196c)
+:   pool: http-tpc fix NPE when monitoring network traffic
+
+[3d87507028](https://github.com/dcache/dcache/commit/3d87507028157a193df6e562c6af297729fa2cf5)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.2.29
 
 ### frontend

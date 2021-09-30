@@ -80,6 +80,42 @@ HTML header: <title>dCache 7.1 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 7.1.10
+
+### chimera
+
+When moving from dcache.db.password to dcache.db.password.file (pgpass),
+the dcache.conf is world readable. This had the unfortunate side effect
+that the "chimera" shell command throwed an Exception. This is fixed now
+and the shell interface works with a password file.
+
+
+### gplazma
+
+During the auth phase of the login process, the group membership
+information contained in a 'wlcg.groups' claim from the OP is now
+available as OpenIdGroupPrincipal principals. Subsequent plugins (e.g.,
+multimap) may be used to convert these principals to more directly
+useful principals.
+
+
+
+### Changelog 7.1.9..7.1.10
+
+<!-- git log 7.1.9..7.1.10 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[f89ea8bdf3](https://github.com/dcache/dcache/commit/f89ea8bdf3e0902a75e03d4db08a3ff303a6ee22)
+:   [maven-release-plugin] prepare release 7.1.10
+
+[5eff87cc6d](https://github.com/dcache/dcache/commit/5eff87cc6dcc93050259c3829be32154b231b537)
+:   gplazma: oidc add support for the 'wlcg.groups' claim
+
+[006f78d5f3](https://github.com/dcache/dcache/commit/006f78d5f3caa95f9e61382e3cca4fdaefdb1647)
+:   chimera: adding password.file to chimera
+
+[4a1d4efcf8](https://github.com/dcache/dcache/commit/4a1d4efcf86935236b287f4f76e9d73765064d61)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 7.1.9
 
 ### frontend
