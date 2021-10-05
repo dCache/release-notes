@@ -173,9 +173,10 @@
       <title>server 7.2.x</title>
 
       <description>
-          <p>dCache 7.2 is a Feature Release ...</p>
+          <p>dCache 7.2 is a Feature Release introducing following highlights:</p>
           <ul>
-              <li>Major feature</li>
+	      <li>This version introduces a quota system and support for file labels.</li>
+              <li>Support for a dedicated scheduling strategy for bring-online requests was added to SRM-Manager</li>
           </ul>
           <p>dCache v7.2 requires a JVM supporting Java 11.</p>
       </description>
