@@ -186,8 +186,6 @@
           <download-url-prefix>repo/7.2/dcache</download-url-prefix>
           <notes-url>release-notes-7.2.shtml</notes-url>
          <version-prefix>7.2.</version-prefix>
-      </releases>
-
       <release version="0" recommended="1">
         <date>5.10.2021</date>
         <package name="rpm">
@@ -207,6 +205,7 @@
       
       <release>
       </release>
+      </releases>
   </series>
 
 
