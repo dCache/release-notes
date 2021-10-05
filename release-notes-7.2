@@ -113,8 +113,6 @@ The following admin commands for adding, removing and querying labels of a file 
 
 `ls_virtualdir labelname` lists all the files having the given label.
 
-### DCAP
-
 ### Frontend
 
 #### File labels support
@@ -154,24 +152,6 @@ A full description of the API is available through the Swagger interface (https:
 In reporting movers (api/v1/pools/{pool}/movers), a problem with counts has been fixed so that both active and queued movers are included, and so that these are correctly broken down by their I/O activity (read/write).
 
 In reporting pool usage (api/v1/pools/{pool}/usage), the csm (checksum) module object was missing profile information; this is now included.
-
-### FTP
-
-### gplazma
-
-### History
-
-### Hoppingmanager
-
-### httpd
-
-### Info
-
-### Missing Files
-
-### NFS
-
-### Pinmanager
 
 ### PNFS Manager
 
@@ -246,17 +226,9 @@ This patch has shown to speed up NFS availablity (among other things) after star
 
 Before dCache version 7.2, the scrubber process was starting with the pool startup. As a result, as long as a pool inventory is not complete, the scrubber will fail with `Operation not allowed while repository is in state LOADING`. With this version, the scrubber now will start only after the inventory is complete.
 
-### Poolmanager
-
-### Resilience
-
 ### Security (common)
 
 A general change to the internal SSL handlers to enable, where possible, a pass-through to native SSL on the node (usually OpenSSL) rather than using the Java implementation has been made.  This change affects xrootd, https (webdav) and gsi (GridFTP).  It should give improved performance (up to about 20%) when data is being encrypted.
-
-### Space Manager
-
-### SRM
 
 ### SRM Manager
 
@@ -271,15 +243,6 @@ srmmanager.plugins.enable-bring-online-clustering = true
 and configured as described in the book.
 
 It is important to note that the scheduler can only be effective when a dCache instance contains exactly one SrmManager.
-
-
-### Statistics
-
-### Topo
-
-### Transfer Managers
-
-### WebDAV
 
 ### WebUI (dCacheView)
 
@@ -296,8 +259,6 @@ First, the parsing of the 'triedrc' CGI was incomplete; it now properly accounts
 Second, a race condition which was causing certain clients to report that a file is not found when requesting the checksum for an upload (persist on successful close) transfer was previously fixed in the door.  This fix has now been migrated to the pool (where it really belongs) and made more robust.
 
 Finally, the third-party-copy client has been changed to conform with the behavior of the SLAC vanilla client so that it requests the exact number of remaining bytes on the final read chunk.  This should eliminate an issue previously encountered with a particular CEPH plugin.  The default chunk size has also been increased to 8 MiB to match the SLAC client.
-
-### Zookeeper
 
 ### Changelog from 7.1.0 to 7.2.0
 
