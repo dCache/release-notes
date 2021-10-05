@@ -169,6 +169,47 @@
 
   
 
+  <series id="server-7.2">
+      <title>server 7.2.x</title>
+
+      <description>
+          <p>dCache 7.2 is a Feature Release ...</p>
+          <ul>
+              <li>Major feature</li>
+          </ul>
+          <p>dCache v7.2 requires a JVM supporting Java 11.</p>
+      </description>
+
+      <releases>
+          <name>dCache VERSION</name>
+          <download-url-prefix>repo/7.2/dcache</download-url-prefix>
+          <notes-url>release-notes-7.2.shtml</notes-url>
+         <version-prefix>7.2.</version-prefix>
+      </releases>
+
+      <release version="0" recommended="1">
+        <date>5.10.2021</date>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>235954060866bed09d629595d771e4fa</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>10495cd388dfd6c4f20e7bec3d7b9baf</md5sum>
+        </package>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>894d6b15b337f8d4f999273724ccba66</md5sum>
+        </package>
+      </release>
+
+      
+      <release>
+      </release>
+  </series>
+
+
+
   <series id="server-7.1">
      <title>server 7.1.x</title>
      <description>
