@@ -76,6 +76,69 @@ This release doesn't have any incompatibilities.
 (tbd, this section uses markdown formatting)
 
 
+## Release 7.2.1
+
+### acl
+
+
+The group ACEs now  apply to desired group instead of to a users with the
+same numeric id.
+
+### gplazma
+
+The `WLCG Common JWT Profiles` (v1.0) describes the `wlcg.groups` claim
+for expressing group-membership. We are increasingly seeing this being
+used as the OIDC equivalent to the group-membership expressed through
+the VOMS extension.
+
+During the auth phase of the login process, the group membership
+information contained in a `wlcg.groups` claim from the OP is now
+available as OpenIdGroupPrincipal principals. Subsequent plugins (e.g.,
+multimap) may be used to convert these principals to more directly
+useful principals.
+
+### srm-server
+
+The current release fixed a potential  NPE by not deleting tape objects and checking for as well as handling null values appropriately.
+
+### webdav
+
+dCache now responds with a 507 (Insufficient Storage) on GET request if
+dCache must do a pool-to-pool internal-transfer or stage the file but no
+pools have sufficient free capacity to support this.
+
+
+### Changelog 7.2.0..7.2.1
+
+<!-- git log 7.2.0..7.2.1 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[09aac3a496](https://github.com/dcache/dcache/commit/09aac3a496815b06d788e0003ac8060da8baadce)
+:   [maven-release-plugin] prepare release 7.2.1
+
+[672dbc04d2](https://github.com/dcache/dcache/commit/672dbc04d2e56a72c31a77a0bd63d53794c9e710)
+:   all: reformat code using Google Style Sheet
+
+[6a36cbf12c](https://github.com/dcache/dcache/commit/6a36cbf12cd5b511d30da16232ad2cb040d924ac)
+:   acl: set IDENTIFIER_GROUP flag if WHO is GROUP or OWNER_GROUP
+
+[a314c63346](https://github.com/dcache/dcache/commit/a314c63346ed501ffe31beb0f8cfd359fe6318d4)
+:   Fix code format
+
+[ee5dcef4e9](https://github.com/dcache/dcache/commit/ee5dcef4e90a9fd7a11b1d221dd2d998e1d7ed81)
+:   webdav: return 507 if insufficient space on GET request
+
+[30c76de0c7](https://github.com/dcache/dcache/commit/30c76de0c75ebd83584764cccaa11861d303bae0)
+:   gplazma: scitoken make ExemptFromNamespaceChecks principal optional
+
+[c60c9f0841](https://github.com/dcache/dcache/commit/c60c9f08413e0309b0b0358a5da98b6a51f45cb2)
+:   gplazma/pnfsmanager: update namespace so scitoken 'scope' takes priority
+
+[6cbecb1993](https://github.com/dcache/dcache/commit/6cbecb19931115c75992be75125ea62abf1e76ac)
+:   srm-server: fix potential NPE in trs
+
+[462dd9bdf4](https://github.com/dcache/dcache/commit/462dd9bdf48e672280b66991327d17b5927b54ac)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 7.2.0
 
 ### Admin

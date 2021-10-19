@@ -106,6 +106,59 @@ This does not affect functionality.
 (tbd, this section uses markdown formatting)
 
 
+## Release 6.2.31
+
+### acl
+
+
+The group ACEs now  apply to desired group instead of to a users with the
+same numeric id.
+
+### gplazma
+
+The `WLCG Common JWT Profiles` (v1.0) describes the `wlcg.groups` claim
+for expressing group-membership. We are increasingly seeing this being
+used as the OIDC equivalent to the group-membership expressed through
+the VOMS extension.
+
+During the auth phase of the login process, the group membership
+information contained in a `wlcg.groups` claim from the OP is now
+available as OpenIdGroupPrincipal principals. Subsequent plugins (e.g.,
+multimap) may be used to convert these principals to more directly
+useful principals.
+
+### webdav
+
+dCache now responds with a 507 (Insufficient Storage) on GET request if
+dCache must do a pool-to-pool internal-transfer or stage the file but no
+pools have sufficient free capacity to support this.
+
+
+### Changelog 6.2.30..6.2.31
+
+<!-- git log 6.2.30..6.2.31 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[7b81d48510](https://github.com/dcache/dcache/commit/7b81d4851020ee6d84bd6f007fb70c9acc9b78a0)
+:   [maven-release-plugin] prepare release 6.2.31
+
+[1732b4a2aa](https://github.com/dcache/dcache/commit/1732b4a2aa04fda9a396e6d07b9422ae7f26b53c)
+:   all: reformat code using Google Style Sheet
+
+[7045c15fce](https://github.com/dcache/dcache/commit/7045c15fce8f41c202207f214ca3d5a029fd5683)
+:   acl: set IDENTIFIER_GROUP flag if WHO is GROUP or OWNER_GROUP
+
+[17ef1d8a3a](https://github.com/dcache/dcache/commit/17ef1d8a3a5ed988fdc1ff6bf0c3f71fe9985b24)
+:   webdav: return 507 if insufficient space on GET request
+
+[84e995f98e](https://github.com/dcache/dcache/commit/84e995f98ecfed11153293f4f33d89cf267531c2)
+:   gplazma: scitoken make ExemptFromNamespaceChecks principal optional
+
+[4f3fa2bd4c](https://github.com/dcache/dcache/commit/4f3fa2bd4c51630d124fca7253f752d4a21fa5e9)
+:   gplazma/pnfsmanager: update namespace so scitoken 'scope' takes priority
+
+[669f19df79](https://github.com/dcache/dcache/commit/669f19df7929b9e93db8e3ed6ac95e42c74aacb8)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.2.30
 
 ### gplazma

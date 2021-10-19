@@ -80,6 +80,66 @@ HTML header: <title>dCache 7.1 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 7.1.11
+
+### acl
+
+
+The group ACEs now  apply to desired group instead of to a users with the
+same numeric id.
+
+### gplazma
+
+The `WLCG Common JWT Profiles` (v1.0) describes the `wlcg.groups` claim
+for expressing group-membership. We are increasingly seeing this being
+used as the OIDC equivalent to the group-membership expressed through
+the VOMS extension.
+
+During the auth phase of the login process, the group membership
+information contained in a `wlcg.groups` claim from the OP is now
+available as OpenIdGroupPrincipal principals. Subsequent plugins (e.g.,
+multimap) may be used to convert these principals to more directly
+useful principals.
+
+### webdav
+
+dCache now responds with a 507 (Insufficient Storage) on GET request if
+dCache must do a pool-to-pool internal-transfer or stage the file but no
+pools have sufficient free capacity to support this.
+
+The current release  fixed ASCII error response and 
+Non-HTML error responses from the WebDAV door (for non-webbrowsers) are
+no longer truncated.
+
+
+### Changelog 7.1.10..7.1.11
+
+<!-- git log 7.1.10..7.1.11 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[02deb42f3b](https://github.com/dcache/dcache/commit/02deb42f3be67c7c4bb0890371a1dcdf303ee155)
+:   [maven-release-plugin] prepare release 7.1.11
+
+[8ec9acd863](https://github.com/dcache/dcache/commit/8ec9acd8632ebcd207377f7a5611881229236b37)
+:   all: reformat code using Google Style Sheet
+
+[b0d3d9b041](https://github.com/dcache/dcache/commit/b0d3d9b0413f5a8711504a1273d0317e07c82708)
+:   acl: set IDENTIFIER_GROUP flag if WHO is GROUP or OWNER_GROUP
+
+[496881e878](https://github.com/dcache/dcache/commit/496881e8789e26185f74d0587c04d49d4eb3107c)
+:   webdav: return 507 if insufficient space on GET request
+
+[9f5c1153de](https://github.com/dcache/dcache/commit/9f5c1153decd0155cd4c68b6d16986fc879e3923)
+:   gplazma: scitoken make ExemptFromNamespaceChecks principal optional
+
+[d180714826](https://github.com/dcache/dcache/commit/d180714826ef28e3f7d0ad8177111bbf2bc79bd8)
+:   gplazma/pnfsmanager: update namespace so scitoken 'scope' takes priority
+
+[b5b70b6cca](https://github.com/dcache/dcache/commit/b5b70b6ccaf33f372d7026bf74a31c5b591e4b0f)
+:   webdav: fix ASCII error response
+
+[f439933c84](https://github.com/dcache/dcache/commit/f439933c8438e3f7eafc021ced9b307893ff0cf6)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 7.1.10
 
 ### chimera

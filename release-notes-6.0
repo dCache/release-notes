@@ -83,6 +83,28 @@ We would like to thank HTW-Berlin students David Linke, Lilit Patzwaldt-Sergoyan
 Quentin Kuth, Sophie Schauer, Viktoriia Sulimenko, Vladimir Vilenchik, Johann Gillhoff and Dieter
 Weber from FZ-Jülich for their contributions.
 
+## Release 6.0.46
+
+### acl
+
+
+The group ACEs now  apply to desired group instead of to a users with the
+same numeric id.
+
+
+### Changelog 6.0.45..6.0.46
+
+<!-- git log 6.0.45..6.0.46 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[afec1d9804](https://github.com/dcache/dcache/commit/afec1d9804258b0fb7fe9bcab96d4269158a560a)
+:   [maven-release-plugin] prepare release 6.0.46
+
+[73ace761ec](https://github.com/dcache/dcache/commit/73ace761ec079cc4a29ef771d1badd26d30fe7df)
+:   acl: set IDENTIFIER_GROUP flag if WHO is GROUP or OWNER_GROUP
+
+[73ccd9aa9c](https://github.com/dcache/dcache/commit/73ccd9aa9cc3c6bbea2bb9195f7a2b62f13dcb67)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.0.45
 
 ### frontend
