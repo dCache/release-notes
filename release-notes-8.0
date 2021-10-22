@@ -66,6 +66,8 @@ HTML header: <title>dCache 8.0 Release Notes</title>
 
 ## Incompatibilities
 
+- the `mountd` service is started only if NFS v3 is enabled
+
 ## Acknowledgments
 
 (tbd, this section uses markdown formatting)
@@ -100,6 +102,7 @@ HTML header: <title>dCache 8.0 Release Notes</title>
 ### Missing Files
 
 ### NFS
+The `mountd` server is started only if NFSv3 is enabled.
 
 ### Pinmanager
 
