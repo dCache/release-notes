@@ -71,6 +71,159 @@ Support for a dedicated scheduling strategy for bring-online requests was added 
 
 This release doesn't have any incompatibilities.
 
+## Release 7.2.2
+
+### billing
+
+
+Billing will no longer throw a NullPointerException with certain
+information from an NFS door serving an NFSv3 client.
+
+
+
+### dcache
+
+
+Running TPC HTTP(s) transfers with gridsite delegation against
+hosts on dual stack noticed this exception:
+java.lang.IllegalArgumentException:  '[xxxx:xxxxx:xxx:xxx:fe03:7377]'
+is not an IP string literal. this is now fixed
+
+### ftp
+
+
+Now  file sizes for LIST output in bytes is displayed.
+
+
+
+The FTP door should be more robust against a (currently unknown) bug
+that results in the ftp session attempting to send progress queries to
+the pool after that is no longer possible.
+
+
+
+
+### gplazma
+
+
+
+The banfile and scitoken plugins, and the two admin commands test login and explain login are updated to accept the username: prefix
+(e.g., username:paul). The prefix user: continues to work but is
+now deprecated.
+
+### nfs
+
+An  exception for access check in ChimeraVfs has been fixed.
+
+Tag update regression was fixed.
+
+### pool
+
+
+The current release improved error messaging if a setup file badly
+configures an HSM instance.
+
+
+A bug is fixed where removing a create hsm statement in a pool's setup
+file and running the reload command kills the pool.
+
+
+### srm-server
+
+NullPointerException when a tape with expired requests does not have an oldest request age value  has been fixed.
+
+### srmclient
+
+
+
+
+The RPM packaging system and related software (e.g,. yum) now
+understands that the srm-client package requires java.
+
+### xroot
+
+
+xrootd4j has been upgraded to 4.2.2 with a fixed  regression introduced into the unix protocol plugin.
+
+
+
+The documentation  concerning TLS properties has been fixed.
+
+
+
+### Changelog 7.2.1..7.2.2
+
+<!-- git log 7.2.1..7.2.2 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[a4abef2012](https://github.com/dcache/dcache/commit/a4abef2012021f843935b3116b75e3e38cbfc0ec)
+:   [maven-release-plugin] prepare release 7.2.2
+
+[8006da747a](https://github.com/dcache/dcache/commit/8006da747a64b23e0b935ad5c6cfdd7f8024a3ac)
+:   srm-server: Fix NullPointerException in SRM TRS
+
+[a8700de057](https://github.com/dcache/dcache/commit/a8700de0571be7b4cea13aa3330dae4e933e6779)
+:   nfs: fix tag update regression
+
+[9866499238](https://github.com/dcache/dcache/commit/98664992382308385783fe8ec61f3357078f0607)
+:   srmclient: add Java-11 dependency
+
+[df4bc057b3](https://github.com/dcache/dcache/commit/df4bc057b3ab8cfeadbb4d3c380f92b4161096e5)
+:   pool: add support for stateful NearlineStorage
+
+[65df64150f](https://github.com/dcache/dcache/commit/65df64150f9b67c77cd7626e249409a2edc6e722)
+:   core: update config testing to honour CellLifeCycleAware mocks
+
+[19e6d6c8a2](https://github.com/dcache/dcache/commit/19e6d6c8a2f502bd6a0753bd9d5e4fe60f5c8151)
+:   bootstrap: startup can hide bugs
+
+[e19425b263](https://github.com/dcache/dcache/commit/e19425b26311ae7f625ef0b0fe7ab6f7e1ff187f)
+:   dcache-xroot, book, skel: fix documentation concerning TLS properties
+
+[556106b7b0](https://github.com/dcache/dcache/commit/556106b7b0052f4401e01b503f1917f1e2c1ee69)
+:   bootstrap: fix two problems with how bugs are reported on startup
+
+[c3173860f3](https://github.com/dcache/dcache/commit/c3173860f380936f4f95a743d26b8131927694dd)
+:   ftp: try harder to ensure any timer tasks are cancelled
+
+[3b65a4fae7](https://github.com/dcache/dcache/commit/3b65a4fae7bc9a9b35ddcae6ff2d697063005f9a)
+:   pool: removing hsm with `reload` command kills pool
+
+[8e18034673](https://github.com/dcache/dcache/commit/8e180346735510ef4b9272e8f7772d5117eabf36)
+:   Handle IPv6 address when running HTTP(s) TPC with gridsite delegation
+
+[d7b600c972](https://github.com/dcache/dcache/commit/d7b600c972f134581e4a5d27b1da0c98cb6ec29a)
+:   Auto create table for TransferManager persistency
+
+[e0c8816ffd](https://github.com/dcache/dcache/commit/e0c8816ffda8b2384f64a0bcb45efdcbd687f958)
+:   gplazma: switch from `user:` to `username:`
+
+[38eac1c7e7](https://github.com/dcache/dcache/commit/38eac1c7e757a909b82ab342bd7959ca78e69d0f)
+:   ftp: show file sizes for LIST output in bytes
+
+[f427ba7044](https://github.com/dcache/dcache/commit/f427ba7044c0e562089ff62bc5b6f26636ad6e4f)
+:   dcache-xroot: upgrade xrootd4j to 4.2.2
+
+[b6c8502e3e](https://github.com/dcache/dcache/commit/b6c8502e3e8fdfe0f87387e11ee995458164fba9)
+:   util/frontend: change transfer rate to double
+
+[e7129fbcf3](https://github.com/dcache/dcache/commit/e7129fbcf381dcacbdaf40d3a8c9b12e593ea827)
+:   bootstrap: don't hide bugs in 'create' command
+
+[67825f2bcf](https://github.com/dcache/dcache/commit/67825f2bcf3328eaf95963c408a0b615e8298f75)
+:   ftp: ensure cell is killed even if shutdown triggers a bug
+
+[7a55a57b65](https://github.com/dcache/dcache/commit/7a55a57b658328a1bc79d70b4ad685ef73625382)
+:   nfs-vfs: fix access check in ChimeraVfs (fixes 19fa7cf2425)
+
+[9e65e4a96e](https://github.com/dcache/dcache/commit/9e65e4a96ec2700d600c5f97e5e8b0c4582b3b4b)
+:   billing: fix NPE in billing from NFSv3 message
+
+[be19093a68](https://github.com/dcache/dcache/commit/be19093a686441ce2f9b7220a9c320cd48917a50)
+:   pool: improve error message on badly configured hsm instance
+
+[57f35a9242](https://github.com/dcache/dcache/commit/57f35a924217d02793c7d574d88cc8a6192eb0d4)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 7.2.1
 
 ### acl

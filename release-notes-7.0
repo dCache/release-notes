@@ -76,6 +76,111 @@ HTML header: <title>dCache 7.0 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 7.0.21
+
+### billing
+
+
+Billing will no longer throw a NullPointerException with certain
+information from an NFS door serving an NFSv3 client.
+
+
+
+### ftp
+
+
+Now  file sizes for LIST output in bytes is displayed.
+
+
+
+The FTP door should be more robust against a (currently unknown) bug
+that results in the ftp session attempting to send progress queries to
+the pool after that is no longer possible.
+
+
+
+
+### gplazma
+
+
+
+The banfile and scitoken plugins, and the two admin commands test login and explain login are updated to accept the username: prefix
+(e.g., username:paul). The prefix user: continues to work but is
+now deprecated.
+
+### nfs
+
+An  exception for access check in ChimeraVfs has been fixed.
+
+Tag update regression was fixed.
+
+### pool
+
+
+The current release improved error messaging if a setup file badly
+configures an HSM instance.
+
+
+A bug is fixed where removing a create hsm statement in a pool's setup
+file and running the reload command kills the pool.
+
+
+### xroot
+
+
+The documentation  concerning TLS properties has been fixed.
+
+
+
+### Changelog 7.0.20..7.0.21
+
+<!-- git log 7.0.20..7.0.21 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[578377fdfa](https://github.com/dcache/dcache/commit/578377fdfa9c41df9ac589e179370361bc750473)
+:   [maven-release-plugin] prepare release 7.0.21
+
+[97dafdb437](https://github.com/dcache/dcache/commit/97dafdb43794608781e4a622df97d0e96c09fab7)
+:   nfs: fix tag update regression
+
+[e2c0b446b6](https://github.com/dcache/dcache/commit/e2c0b446b68d021b81fb909d01a6e1fa0190bfee)
+:   dcache-xroot, book, skel: fix documentation concerning TLS properties
+
+[e1af2e8856](https://github.com/dcache/dcache/commit/e1af2e8856a5733e0cb6f54ccede5b143fa18c7a)
+:   bootstrap: fix two problems with how bugs are reported on startup
+
+[8efa6545e0](https://github.com/dcache/dcache/commit/8efa6545e06237b06982b9755f8ede1bfe2a0f8d)
+:   ftp: try harder to ensure any timer tasks are cancelled
+
+[b60bf17333](https://github.com/dcache/dcache/commit/b60bf1733365b6fc5709766c8429d3ac0b9a736a)
+:   pool: removing hsm with `reload` command kills pool
+
+[ac2a5189f1](https://github.com/dcache/dcache/commit/ac2a5189f14bb1cb7ce5c3ccafae0ab7cdebb5bc)
+:   gplazma: switch from `user:` to `username:`
+
+[9b554fa9d7](https://github.com/dcache/dcache/commit/9b554fa9d7b6abfca0547447ff31db256ff7448b)
+:   ftp: show file sizes for LIST output in bytes
+
+[19f260a8fe](https://github.com/dcache/dcache/commit/19f260a8fe8bac9b523c1d4e8f6f9b42af5372ec)
+:   util/frontend: change transfer rate to double
+
+[ba338bfa5a](https://github.com/dcache/dcache/commit/ba338bfa5a54c632e81b1835993c194bfd6d6901)
+:   bootstrap: don't hide bugs in 'create' command
+
+[e68710872b](https://github.com/dcache/dcache/commit/e68710872b15920934be156df1c9206f87707730)
+:   ftp: ensure cell is killed even if shutdown triggers a bug
+
+[de432b4856](https://github.com/dcache/dcache/commit/de432b48560f073c51ac44dc58a89701a68b4619)
+:   nfs-vfs: fix access check in ChimeraVfs (fixes 19fa7cf2425)
+
+[c8b5d284ca](https://github.com/dcache/dcache/commit/c8b5d284ca7b72cace8b275f778a107b55267875)
+:   billing: fix NPE in billing from NFSv3 message
+
+[c1ae57fc1c](https://github.com/dcache/dcache/commit/c1ae57fc1c22de8603dc97129e3cda993f603a46)
+:   pool: improve error message on badly configured hsm instance
+
+[4e75d12e5c](https://github.com/dcache/dcache/commit/4e75d12e5c620ca7692b3fa2c68b3d91bf9605e3)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 7.0.20
 
 ### acl

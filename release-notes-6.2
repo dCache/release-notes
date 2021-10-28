@@ -106,6 +106,104 @@ This does not affect functionality.
 (tbd, this section uses markdown formatting)
 
 
+## Release 6.2.32
+
+### billing
+
+
+Billing will no longer throw a NullPointerException with certain
+information from an NFS door serving an NFSv3 client.
+
+
+
+### ftp
+
+
+Now  file sizes for LIST output in bytes is displayed.
+
+
+
+The FTP door should be more robust against a (currently unknown) bug
+that results in the ftp session attempting to send progress queries to
+the pool after that is no longer possible.
+
+
+
+
+### gplazma
+
+
+
+The banfile and scitoken plugins, and the two admin commands test login and explain login are updated to accept the username: prefix
+(e.g., username:paul). The prefix user: continues to work but is
+now deprecated.
+
+### pool
+
+
+The current release improved error messaging if a setup file badly
+configures an HSM instance.
+
+
+A bug is fixed where removing a create hsm statement in a pool's setup
+file and running the reload command kills the pool.
+
+
+### xroot
+
+
+The documentation  concerning TLS properties has been fixed.
+
+
+
+
+
+
+
+
+### Changelog 6.2.31..6.2.32
+
+<!-- git log 6.2.31..6.2.32 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[0cbce3329c](https://github.com/dcache/dcache/commit/0cbce3329cfbc3b0ad38ad9cab644dffe682ca78)
+:   [maven-release-plugin] prepare release 6.2.32
+
+[07b0d2977e](https://github.com/dcache/dcache/commit/07b0d2977ebbacf9e1e32da3a04ae15388fb29d0)
+:   dcache-xroot, book, skel: fix documentation concerning TLS properties
+
+[5f2ebb2fe9](https://github.com/dcache/dcache/commit/5f2ebb2fe9cbd295dcc779c4da76e076abec0657)
+:   bootstrap: fix two problems with how bugs are reported on startup
+
+[a399cadf23](https://github.com/dcache/dcache/commit/a399cadf2357f719e811893e2baa85efb714a9e3)
+:   ftp: try harder to ensure any timer tasks are cancelled
+
+[31c80a16fb](https://github.com/dcache/dcache/commit/31c80a16fbd870448ac666ddf690f49bbc78c095)
+:   pool: removing hsm with `reload` command kills pool
+
+[e49357d577](https://github.com/dcache/dcache/commit/e49357d577d7004480f341552d8eaac5c1782e3a)
+:   gplazma: switch from `user:` to `username:`
+
+[504eeda1ba](https://github.com/dcache/dcache/commit/504eeda1baee31856fe0382614debfe069c39ac5)
+:   ftp: show file sizes for LIST output in bytes
+
+[99f40a20d2](https://github.com/dcache/dcache/commit/99f40a20d2fe02e10c8c593a04d2c198bbf3e78c)
+:   util/frontend: change transfer rate to double
+
+[5fac1c3c5c](https://github.com/dcache/dcache/commit/5fac1c3c5c9d989fe2f7b703ca4c48fadcd76012)
+:   bootstrap: don't hide bugs in 'create' command
+
+[06eed198e2](https://github.com/dcache/dcache/commit/06eed198e2ec157cba6628867f7803386b23e021)
+:   ftp: ensure cell is killed even if shutdown triggers a bug
+
+[f7f6f04770](https://github.com/dcache/dcache/commit/f7f6f0477061d32ae8d817fd74314113bbb34cec)
+:   billing: fix NPE in billing from NFSv3 message
+
+[2f683966e4](https://github.com/dcache/dcache/commit/2f683966e49951a73984ecf9615c5dea8e9dbfbd)
+:   pool: improve error message on badly configured hsm instance
+
+[5e54ee71b5](https://github.com/dcache/dcache/commit/5e54ee71b552c80fd75e7d226048550ddd4b688b)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.2.31
 
 ### acl
