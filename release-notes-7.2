@@ -71,27 +71,9 @@ Support for a dedicated scheduling strategy for bring-online requests was added 
 
 This release doesn't have any incompatibilities.
 
-## Acknowledgments
-
-(tbd, this section uses markdown formatting)
-
-
 ## Release 7.2.1
 
-### Runtime
-
-When debugging an issue on a running system often we need to collect jvm performance stats with 'Java flight recorder'.
-Starting from release 7.2 the Java flight recorder attach listener is enabled by default. Site admins can collect and
-provide developers with additional information when high CPU load or memory consuption is observed as:
-
-```
-jcmd <pid> JFR.start duration=60s filename=/tmp/dcache.jfr,
-```
-
-Please note, that `jcmd` command is a part of `java-11-openjdk-devel` package (on RHEL and clones)
-
 ### acl
-
 
 The group ACEs now  apply to desired group instead of to a users with the
 same numeric id.
@@ -152,6 +134,18 @@ pools have sufficient free capacity to support this.
 :   [maven-release-plugin] prepare for next development iteration
 
 ## Release 7.2.0
+
+### Runtime
+
+When debugging an issue on a running system often we need to collect jvm performance stats with 'Java flight recorder'.
+Starting from release 7.2 the Java flight recorder attach listener is enabled by default. Site admins can collect and
+provide developers with additional information when high CPU load or memory consuption is observed as:
+
+```
+jcmd <pid> JFR.start duration=60s filename=/tmp/dcache.jfr,
+```
+
+> Please note, that `jcmd` command is a part of `java-11-openjdk-devel` package (on RHEL and clones)
 
 ### Admin
 
