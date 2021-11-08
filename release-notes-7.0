@@ -76,6 +76,41 @@ HTML header: <title>dCache 7.0 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 7.0.22
+
+### chimera
+
+A bug is fixed that triggered downstream errors when getUid() is called.
+
+### universal-spring-cell
+
+This patch fixes a problem where a call to api/PoolManager returned 404
+not found. The JSON serialized object is returned now as before.
+
+### xrootd
+
+The xrootd4j version was updated to 4.0.10 
+
+
+### Changelog 7.0.21..7.0.22
+
+<!-- git log 7.0.21..7.0.22 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[eaf27ff842](https://github.com/dcache/dcache/commit/eaf27ff842dfc41cf161d2089a333a8a4e21ccc6)
+:   [maven-release-plugin] prepare release 7.0.22
+
+[7f2eb19f6d](https://github.com/dcache/dcache/commit/7f2eb19f6da0b63b90c90f8d576e8c4576c02e24)
+:   dcache-chimera: add Unix principal conversion to AccessControlContext subject
+
+[602eee40c3](https://github.com/dcache/dcache/commit/602eee40c37c25a0237176bc6d8cf0dc12cb5bd8)
+:   pom.xml: bump to xrootd4j 4.0.10
+
+[6a355b64d7](https://github.com/dcache/dcache/commit/6a355b64d7e77142b49779143a61272665004b3f)
+:   universal-spring-cell: allow for serialization of Optional
+
+[2d53a49c89](https://github.com/dcache/dcache/commit/2d53a49c89e3bd8ee2843a9f5458a775718b5f26)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 7.0.21
 
 ### billing

@@ -71,6 +71,86 @@ Support for a dedicated scheduling strategy for bring-online requests was added 
 
 This release doesn't have any incompatibilities.
 
+## Release 7.2.3
+
+### chimera
+
+Added information to the cleaner admin info output, showing which pools are in the
+process of being cleaned.
+
+A bug is fixed that triggered downstream errors when getUid() is called.
+
+### gftp door
+
+The GFTP door was running into out-of-memory errors. This is fixed now.
+
+### frontend
+
+api/v1/namespace/path is extended by adding 'pin' and 'unpin' activities to the POST method.
+
+### frontend, chimera
+
+The behaviour of pin/unpin to api/v1/namespace/path POST was fixed to not remove the qos pin.
+
+### universal-spring-cell
+
+This patch fixes a problem where a call to api/PoolManager returned 404
+not found. The JSON serialized object is returned now as before.
+
+### xrootd
+
+The xroot4j version was updated to 4.2.3
+
+
+### Changelog 7.2.2..7.2.3
+
+<!-- git log 7.2.2..7.2.3 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[90f94d25f3](https://github.com/dcache/dcache/commit/90f94d25f3ba1e9b46cee424488473b89902acbb)
+:   [maven-release-plugin] prepare release 7.2.3
+
+[d7eda62d77](https://github.com/dcache/dcache/commit/d7eda62d77b0a41243cad93ff9e10323b46483c7)
+:   common-security: revert GSI/FTP to Java SSL
+
+[fbf0c0810e](https://github.com/dcache/dcache/commit/fbf0c0810ed96066e823d6fcf010651ac9ec639f)
+:   dcache-frontend,dcache-chimera: fix pin/unpin in REST and NFS to use UID as request id
+
+[7d0c535992](https://github.com/dcache/dcache/commit/7d0c5359920f2af61262d4e57ee896a94e5f6139)
+:   srm-server: trs fix logging
+
+[eede36fa09](https://github.com/dcache/dcache/commit/eede36fa0951838ac46c2b61f910c46d23690770)
+:   srm-server: trs -- improve tape info fetching
+
+[8b6dcf34f9](https://github.com/dcache/dcache/commit/8b6dcf34f95bdf68152279967286d2b0a2a97345)
+:   dcache-chimera: add Unix principal conversion to AccessControlContext subject
+
+[5b250e549e](https://github.com/dcache/dcache/commit/5b250e549e8e3cb97d33ec79a5e70a0304a54634)
+:   dcache-chimera: add which pools are being cleaned to cleaner admin info
+
+[4dc9f2b94b](https://github.com/dcache/dcache/commit/4dc9f2b94b2733634b27eb229a11b0a1bebe0592)
+:   dcache-frontend: add 'pin' and 'unpin' activities to namespace resource POST method
+
+[a2cf3d8ff2](https://github.com/dcache/dcache/commit/a2cf3d8ff2beedf983da1c082c143062a97efdfb)
+:   srm-server: add trs logging
+
+[7624bbccde](https://github.com/dcache/dcache/commit/7624bbccdeccd79679de280eeb34919397cf507d)
+:   srm-server: revert unnecessary type change
+
+[61f12b59d8](https://github.com/dcache/dcache/commit/61f12b59d8ceccc584b5cd55566c8a2dd495e9f6)
+:   pom.xml: bump to xrootd4j 4.2.3
+
+[3364f25836](https://github.com/dcache/dcache/commit/3364f258364b68cd6b97f1dde0e2f08d264cfcfb)
+:   universal-spring-cell: allow for serialization of Optional
+
+[d09ef7f063](https://github.com/dcache/dcache/commit/d09ef7f0633123d8a5050fb27c1775695c699d94)
+:   srm-server: trs -- use Optional types, add unit tests
+
+[b5ca9b0b1d](https://github.com/dcache/dcache/commit/b5ca9b0b1d8888860926527e3a5c91b8f252b3e8)
+:   [maven-release-plugin] prepare for next development iteration
+
+[324d79bfde](https://github.com/dcache/dcache/commit/324d79bfde9d49f68b63929eec75d930f95e8e23)
+:   Update install.md
+
 ## Release 7.2.2
 
 ### billing

@@ -106,6 +106,34 @@ This does not affect functionality.
 (tbd, this section uses markdown formatting)
 
 
+## Release 6.2.33
+
+### universal-spring-cell
+
+This patch fixes a problem where a call to api/PoolManager returned 404
+not found. The JSON serialized object is returned now as before.
+
+### xrootd
+
+The xrootd4j version was updated to 4.0.10 
+
+
+### Changelog 6.2.32..6.2.33
+
+<!-- git log 6.2.32..6.2.33 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[f2e6b97ff2](https://github.com/dcache/dcache/commit/f2e6b97ff26844d89c370b0492edf9b8d20de476)
+:   [maven-release-plugin] prepare release 6.2.33
+
+[e992fa127b](https://github.com/dcache/dcache/commit/e992fa127b91788c50d47b7d8dfaf0d737d87685)
+:   pom.xml: bump to xrootd4j 4.0.10
+
+[56a103196e](https://github.com/dcache/dcache/commit/56a103196e7ae4c0292466f6c29f63644378a9de)
+:   universal-spring-cell: allow for serialization of Optional
+
+[83c1c32f4f](https://github.com/dcache/dcache/commit/83c1c32f4f202f3d17d2b2861a3d585f463636ec)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.2.32
 
 ### billing
