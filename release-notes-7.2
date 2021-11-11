@@ -71,6 +71,91 @@ Support for a dedicated scheduling strategy for bring-online requests was added 
 
 This release doesn't have any incompatibilities.
 
+## Release 7.2.4
+
+### bulk
+
+The way Bulk handles pin requests was changed to provide greater
+throughput and reliability.
+
+### ftp
+
+The FTP door now provides more succinct information on pinboard, should
+use less CPU and take better advantage of the available cores.
+
+### libraries
+
+The canl version was updated to version 2.6.0 to fix a bug that made
+dCache no longer accept certificates issued by a trusted CA after that
+CA updated their CA certificate while keeping the public/private
+key-pair the same.
+
+### pnfsmanager
+
+Attempts to create a file where the parent directory is either missing
+or not a directory now provide clearer error messages.
+
+### pool
+
+The pool is updated to support stateful NearlineStorage plugins
+that can fail during initialisation.
+
+The pool now provides more information for bugs reported as
+java.lang.IllegalStateException: Handle is closed.
+
+### webdav
+
+The HTTP-TPC response is improved if a client attempts to pull a file
+into a non-existing directory, or attempts to use an existing file as an
+ancestor directory.
+
+### xrootd
+
+Improved exception handling for Xrootd.
+
+The xrootd4j version was updated to 4.2.4
+
+
+### Changelog 7.2.3..7.2.4
+
+<!-- git log 7.2.3..7.2.4 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[7e8bd48424](https://github.com/dcache/dcache/commit/7e8bd4842460ec03432f7b5b6b995c066774b4eb)
+:   [maven-release-plugin] prepare release 7.2.4
+
+[9313fad943](https://github.com/dcache/dcache/commit/9313fad94329a1d38fb0ebe748755b9bad6da4c7)
+:   pom.xml: update to xrootd4j 4.2.4/4.1.5
+
+[bc5a8c3146](https://github.com/dcache/dcache/commit/bc5a8c3146f93b00d3369a4ddc68b6d61eb1ae0a)
+:   libraries: upgrade version of canl
+
+[45c8c8ae7a](https://github.com/dcache/dcache/commit/45c8c8ae7a1def25d25327806556db1d6031acc2)
+:   dcache-bulk: fix handling of asynchronous pin requests
+
+[354c514596](https://github.com/dcache/dcache/commit/354c5145967497d0f4121ed0a05c2dcaf4b1608b)
+:   dcache-frontend: support different attribute styles for bulk request
+
+[ff1ca76ef4](https://github.com/dcache/dcache/commit/ff1ca76ef479aa423d889efdfe95c0962906ce42)
+:   pool: update `NearlineStorage` to allow the `start` method to fail.
+
+[dbd4ca9c7e](https://github.com/dcache/dcache/commit/dbd4ca9c7e438baa7cce8aee2e12df5613221fe2)
+:   pool: provide more information when handle is double-closed
+
+[caa67359e8](https://github.com/dcache/dcache/commit/caa67359e805d8a3d8e26b1c70014d5e3d8e2259)
+:   dcache-xrootd: Alternate fix for client write to closed checksum channel
+
+[5291aa0316](https://github.com/dcache/dcache/commit/5291aa0316000fbe5b29d82094d25ac98646ee5d)
+:   pnfsmanager: fix confusing error message.
+
+[331b056cbc](https://github.com/dcache/dcache/commit/331b056cbc9b1cb20a3ad990fc8b48d6da5083a3)
+:   webdav: fix error handling for bad paths
+
+[f7ebd146b3](https://github.com/dcache/dcache/commit/f7ebd146b35f3c5efe213520480c9e315a26448a)
+:   ftp: switch to more reasonable logging of Subject
+
+[84467de11c](https://github.com/dcache/dcache/commit/84467de11cbe480fade8a052f757bbb9cf2f0345)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 7.2.3
 
 ### chimera

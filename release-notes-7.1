@@ -80,6 +80,67 @@ HTML header: <title>dCache 7.1 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 7.1.14
+
+### ftp
+
+The FTP door now provides more succinct information on pinboard, should
+use less CPU and take better advantage of the available cores.
+
+### pnfsmanager
+
+Attempts to create a file where the parent directory is either missing
+or not a directory now provide clearer error messages.
+
+### pool
+
+The pool now provides more information for bugs reported as
+java.lang.IllegalStateException: Handle is closed.
+
+### webdav
+
+The HTTP-TPC response is improved if a client attempts to pull a file
+into a non-existing directory, or attempts to use an existing file as an
+ancestor directory.
+
+### xrootd
+
+Improved exception handling for Xrootd.
+
+The xrootd4j version was updated to 4.1.5
+
+
+### Changelog 7.1.13..7.1.14
+
+<!-- git log 7.1.13..7.1.14 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[627f228b04](https://github.com/dcache/dcache/commit/627f228b044ee2959aac7b62e13653f42047e6da)
+:   [maven-release-plugin] prepare release 7.1.14
+
+[ff2b9005ed](https://github.com/dcache/dcache/commit/ff2b9005ed8b14bf48c248321a8f9da74c341678)
+:   pom.xml: update to xrootd4j 4.2.4/4.1.5
+
+[f4e62f137f](https://github.com/dcache/dcache/commit/f4e62f137f0120be5fa3591aa7cb22bb63bc6324)
+:   dcache-frontend: support different attribute styles for bulk request
+
+[70aa74ad54](https://github.com/dcache/dcache/commit/70aa74ad54f129b9e0c4fcd3fd0003c3b76df1e8)
+:   pool: provide more information when handle is double-closed
+
+[ee37092e3b](https://github.com/dcache/dcache/commit/ee37092e3bf8b3a5b1e6a79bbe7366f24264a3b0)
+:   dcache-xrootd: Alternate fix for client write to closed checksum channel
+
+[f6b02dde77](https://github.com/dcache/dcache/commit/f6b02dde77903c883f09a0e8df416fb17d87018b)
+:   pnfsmanager: fix confusing error message.
+
+[fc5a158903](https://github.com/dcache/dcache/commit/fc5a1589030d560eac86cbb552ebce1826d6b4cc)
+:   webdav: fix error handling for bad paths
+
+[44112cc4ff](https://github.com/dcache/dcache/commit/44112cc4ffe6fc085e63ddd63d3c666ad99d3b64)
+:   ftp: switch to more reasonable logging of Subject
+
+[d97f62b854](https://github.com/dcache/dcache/commit/d97f62b854d27dbf874ec324b416e827426e590c)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 7.1.13
 
 ### chimera

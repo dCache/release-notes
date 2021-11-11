@@ -106,6 +106,59 @@ This does not affect functionality.
 (tbd, this section uses markdown formatting)
 
 
+## Release 6.2.34
+
+### ftp
+
+The FTP door now provides more succinct information on pinboard, should
+use less CPU and take better advantage of the available cores.
+
+### pnfsmanager
+
+Attempts to create a file where the parent directory is either missing
+or not a directory now provide clearer error messages.
+
+### pool
+
+The pool now provides more information for bugs reported as
+java.lang.IllegalStateException: Handle is closed.
+
+### webdav
+
+The HTTP-TPC response is improved if a client attempts to pull a file
+into a non-existing directory, or attempts to use an existing file as an
+ancestor directory.
+
+### xrootd
+
+Improved exception handling for Xrootd.
+
+
+### Changelog 6.2.33..6.2.34
+
+<!-- git log 6.2.33..6.2.34 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[dbf2413c8e](https://github.com/dcache/dcache/commit/dbf2413c8eb47d6bb54915a7c727426cac431ba3)
+:   [maven-release-plugin] prepare release 6.2.34
+
+[df638f6c0b](https://github.com/dcache/dcache/commit/df638f6c0bafb9333b4b05f264901c69cd370424)
+:   pool: provide more information when handle is double-closed
+
+[b3fc7e18cd](https://github.com/dcache/dcache/commit/b3fc7e18cda63e87353b91ab8a27247ca28d5aa1)
+:   dcache-xrootd: Alternate fix for client write to closed checksum channel
+
+[4e182448f8](https://github.com/dcache/dcache/commit/4e182448f8cd91319a6683fa4ed1f51c78fa360d)
+:   pnfsmanager: fix confusing error message.
+
+[9d7dda31e7](https://github.com/dcache/dcache/commit/9d7dda31e7f07746983fff185ea26031cbf21611)
+:   webdav: fix error handling for bad paths
+
+[13cfb3a620](https://github.com/dcache/dcache/commit/13cfb3a620cdf844f9aca6711ddae21575f719e8)
+:   ftp: switch to more reasonable logging of Subject
+
+[6ef7512ab7](https://github.com/dcache/dcache/commit/6ef7512ab7f5bcc4630f4a929eb1dbac1740dd3e)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.2.33
 
 ### universal-spring-cell

@@ -76,6 +76,62 @@ HTML header: <title>dCache 7.0 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 7.0.23
+
+### ftp
+
+The FTP door now provides more succinct information on pinboard, should
+use less CPU and take better advantage of the available cores.
+
+### pnfsmanager
+
+Attempts to create a file where the parent directory is either missing
+or not a directory now provide clearer error messages.
+
+### pool
+
+The pool now provides more information for bugs reported as
+java.lang.IllegalStateException: Handle is closed.
+
+### webdav
+
+The HTTP-TPC response is improved if a client attempts to pull a file
+into a non-existing directory, or attempts to use an existing file as an
+ancestor directory.
+
+### xrootd
+
+Improved exception handling for Xrootd.
+
+
+### Changelog 7.0.22..7.0.23
+
+<!-- git log 7.0.22..7.0.23 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[ce7aabc449](https://github.com/dcache/dcache/commit/ce7aabc44979a55145dc0042c167372cefa91a98)
+:   [maven-release-plugin] prepare release 7.0.23
+
+[104e7a6df6](https://github.com/dcache/dcache/commit/104e7a6df6e76972a3823d415f9f5360b8d537ed)
+:   dcache-frontend: support different attribute styles for bulk request
+
+[10c3f64e23](https://github.com/dcache/dcache/commit/10c3f64e234dfe9eebb26e774ae798441f347c6a)
+:   pool: provide more information when handle is double-closed
+
+[8e6dded13b](https://github.com/dcache/dcache/commit/8e6dded13b7f6b99b27f8799223fb07bcc4bef0a)
+:   dcache-xrootd: Alternate fix for client write to closed checksum channel
+
+[f57cf49e7c](https://github.com/dcache/dcache/commit/f57cf49e7c589917ad79e566c671a617dff7e732)
+:   pnfsmanager: fix confusing error message.
+
+[56f0bfc7f8](https://github.com/dcache/dcache/commit/56f0bfc7f8f640f30f5b184aca5da95e05835ada)
+:   webdav: fix error handling for bad paths
+
+[0cd25c99d7](https://github.com/dcache/dcache/commit/0cd25c99d7f91b6523ba65bc29492d9e3e8b949c)
+:   ftp: switch to more reasonable logging of Subject
+
+[03c699c7ab](https://github.com/dcache/dcache/commit/03c699c7ab4e5b2d198bbe72681e1a5ee3cc3cef)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 7.0.22
 
 ### chimera
