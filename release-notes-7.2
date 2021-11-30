@@ -71,6 +71,132 @@ Support for a dedicated scheduling strategy for bring-online requests was added 
 
 This release doesn't have any incompatibilities.
 
+## Release 7.2.5
+
+### dcache-core
+
+
+The current release fixed  NPE in TransferManager when no pool was selected before transfer is cancelled.
+
+### frontend
+
+The current release fixed handling of SRR requests over IPv6.
+
+### gplazma
+
+
+The scitoken plugin now supports OPs that publish their public keys
+without any corresponding ID (i.e., no kid value).
+
+
+### nfsv
+
+
+nfs can  write into space reservations now.
+
+### pinmanager
+
+
+A more detailed pinmanager log entry is provided for pin requests that
+are caught in a retry loop, and eventually time out.
+
+### resilience
+
+A runtime exception triggered by side effect of logging has been fixed.
+
+### storagedescriptor
+
+
+
+The script for generating SRR records (from the info service output) has
+been updated. The field `lastupdated` has been adjusted to the correct
+name `latestupdate`.
+
+
+
+### webdav
+
+A bug is fixed where HTTP-TPC PULL request can fail (under heavy load)
+with the downloaded file being deleted, but dCache reports the transfer
+as successful.
+
+
+dCache now  provides a faster respones to the HTTP-TPC client (typically FTS)
+should the door decide to fail a transfer.
+
+The WebDAV door should be now  faster at accepting new transfers and faster
+at handling transfer completions when handling many small transfers.
+
+
+The HTTP-TPC support in the WebDAV door is now e more robust to high
+number of transfers finishing concurrently.
+
+
+### xroot
+
+
+Now it is possible to support kXR_delete as a write request on the pool.
+
+### xrootd4j
+
+Library updates for xrootd4j which contains fix for Unix Protocol.
+
+
+### Changelog 7.2.4..7.2.5
+
+<!-- git log 7.2.4..7.2.5 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[90ec3b60fe](https://github.com/dcache/dcache/commit/90ec3b60fe8dd99b81853e81e85e7bf69b5607d4)
+:   [maven-release-plugin] prepare release 7.2.5
+
+[999fee1296](https://github.com/dcache/dcache/commit/999fee12963e5a0da9cf015ab70da22f669f7e9b)
+:   webdav: http-tpc improve throughput with short transfers
+
+[071e6914eb](https://github.com/dcache/dcache/commit/071e6914ebaa9f779c05fe1b86ee079cbfb5b368)
+:   frontend: fix handling of SRR requests over IPv6
+
+[b9ff1db9e6](https://github.com/dcache/dcache/commit/b9ff1db9e69373d1788d33fc668c80dff3a5293f)
+:   rpm: include default rsyslog configuration
+
+[36c108d0de](https://github.com/dcache/dcache/commit/36c108d0dea58925e074155d05d18d31bcbeac12)
+:   webdav: http-tpc don't wait if door fails transfer
+
+[5a49c6a506](https://github.com/dcache/dcache/commit/5a49c6a5067336e1affe3399694e1f21d955cf94)
+:   webdav: http-tpc avoid resetting transfer state
+
+[7794d6bdb2](https://github.com/dcache/dcache/commit/7794d6bdb288a1e51a8f8bbdebe907f88480b9f9)
+:   dcache-core: fix NPE in TransferManager when no pool was selected before transfer is cancelled
+
+[02244c83dc](https://github.com/dcache/dcache/commit/02244c83dc72824ca034086264ea27cce0e89e9c)
+:   resilience: fix runtime exception triggered by side effect of logging
+
+[59d5c6fa99](https://github.com/dcache/dcache/commit/59d5c6fa9957ac113f61c400825b1b14f433f195)
+:   gplazma: scitoken add support for OPs that advertise keys without kid
+
+[417d0d9616](https://github.com/dcache/dcache/commit/417d0d96160fab558db67b530b86272b822291b5)
+:   nfsv: convert UnixNumericXxxPrincipal into dCache analogs
+
+[f5b0e71449](https://github.com/dcache/dcache/commit/f5b0e71449db361c742822b77a54abbbf72748c9)
+:   webdav: http-tpc move transfer finalisation off of message queue
+
+[183a51bed6](https://github.com/dcache/dcache/commit/183a51bed6fc34638b79915c748e25c5fb63c059)
+:   pom.xml: update xrootd4j dependencies to 4.2.5/4.1.6/4.0.11
+
+[8e382cea4f](https://github.com/dcache/dcache/commit/8e382cea4f6b6274b0601c092f3e13315b1ccfe3)
+:   CanlContextFactory: throw FileNotFound for missing ca certs dir
+
+[a5ce12b212](https://github.com/dcache/dcache/commit/a5ce12b212706c5e1a5a859e91fdbabee0a66c7d)
+:   pinmanager: provide more details information on timeout
+
+[6e5981526b](https://github.com/dcache/dcache/commit/6e5981526b798c41dcf68aea4e37567fb6b082c4)
+:   storagedescriptor: fix element name to 'latestupdate'
+
+[d874e60106](https://github.com/dcache/dcache/commit/d874e601062b3bd36470830734e1788f43f81082)
+:   dcache-xroot: support kXR_delete as a write request on the pool
+
+[184152bba0](https://github.com/dcache/dcache/commit/184152bba013db20fb9c5e771bad3fca88cd93f4)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 7.2.4
 
 ### bulk

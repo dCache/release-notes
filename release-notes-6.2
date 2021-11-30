@@ -106,6 +106,121 @@ This does not affect functionality.
 (tbd, this section uses markdown formatting)
 
 
+## Release 6.2.35
+
+### dcache-core
+
+
+The current release fixed  NPE in TransferManager when no pool was selected before transfer is cancelled.
+
+### frontend
+
+The current release fixed handling of SRR requests over IPv6.
+
+### gplazma
+
+
+The scitoken plugin now supports OPs that publish their public keys
+without any corresponding ID (i.e., no kid value).
+
+
+### pinmanager
+
+
+A more detailed pinmanager log entry is provided for pin requests that
+are caught in a retry loop, and eventually time out.
+
+### resilience
+
+A runtime exception triggered by side effect of logging has been fixed.
+
+### storagedescriptor
+
+
+
+The script for generating SRR records (from the info service output) has
+been updated. The field `lastupdated` has been adjusted to the correct
+name `latestupdate`.
+
+
+
+### webdav
+
+A bug is fixed where HTTP-TPC PULL request can fail (under heavy load)
+with the downloaded file being deleted, but dCache reports the transfer
+as successful.
+
+
+dCache now  provides a faster respones to the HTTP-TPC client (typically FTS)
+should the door decide to fail a transfer.
+
+The WebDAV door should be now  faster at accepting new transfers and faster
+at handling transfer completions when handling many small transfers.
+
+
+The HTTP-TPC support in the WebDAV door is now e more robust to high
+number of transfers finishing concurrently.
+
+
+### xroot
+
+
+Now it is possible to support kXR_delete as a write request on the pool.
+
+### xrootd4j
+
+Library updates for xrootd4j which contains fix for Unix Protocol.
+
+
+### Changelog 6.2.34..6.2.35
+
+<!-- git log 6.2.34..6.2.35 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[cd05a920c8](https://github.com/dcache/dcache/commit/cd05a920c835bdb6142dc14c76ffc79a2d8499a9)
+:   [maven-release-plugin] prepare release 6.2.35
+
+[f48b03a893](https://github.com/dcache/dcache/commit/f48b03a8932582844bef54b712a1a3a9e6859e4e)
+:   webdav: http-tpc improve throughput with short transfers
+
+[d4b48a7161](https://github.com/dcache/dcache/commit/d4b48a7161a9f0ef37f39d3f581b15bb7a487250)
+:   frontend: fix handling of SRR requests over IPv6
+
+[94d1af20cb](https://github.com/dcache/dcache/commit/94d1af20cbffb89bbfbd7d2b75de7cb95c91979a)
+:   webdav: http-tpc don't wait if door fails transfer
+
+[d158aaf301](https://github.com/dcache/dcache/commit/d158aaf301818b1f5ce31b9e7cc999e42b25a97f)
+:   webdav: http-tpc avoid resetting transfer state
+
+[11ed3886a8](https://github.com/dcache/dcache/commit/11ed3886a899435996515b8663a7d82877c8c105)
+:   dcache-core: fix NPE in TransferManager when no pool was selected before transfer is cancelled
+
+[9388fa02cb](https://github.com/dcache/dcache/commit/9388fa02cb16a7fecbbaad309953b26e85a232fe)
+:   resilience: fix runtime exception triggered by side effect of logging
+
+[84deca3d27](https://github.com/dcache/dcache/commit/84deca3d27af61d0e0640f9f9ba897b7435b0369)
+:   gplazma: scitoken add support for OPs that advertise keys without kid
+
+[5941661529](https://github.com/dcache/dcache/commit/59416615297ea1654ef90c1263a55929171a9e50)
+:   webdav: http-tpc move transfer finalisation off of message queue
+
+[435261c4ba](https://github.com/dcache/dcache/commit/435261c4ba1acf93a8f674e3d68d8da881b8d4f6)
+:   pom.xml: update xrootd4j dependencies to 4.2.5/4.1.6/4.0.11
+
+[04f2272903](https://github.com/dcache/dcache/commit/04f2272903a4c0c1773c2fb0515f946fa2d96b99)
+:   CanlContextFactory: throw FileNotFound for missing ca certs dir
+
+[0097c289b1](https://github.com/dcache/dcache/commit/0097c289b13937b6a2e073b8486c8a29e3ccb207)
+:   pinmanager: provide more details information on timeout
+
+[f429b91125](https://github.com/dcache/dcache/commit/f429b9112531b9eed8f53716a95883683cd21a68)
+:   storagedescriptor: fix element name to 'latestupdate'
+
+[16f1aaf0fd](https://github.com/dcache/dcache/commit/16f1aaf0fd536bcef0afdd41cf5d6e52f950d073)
+:   dcache-xroot: support kXR_delete as a write request on the pool
+
+[da1e8dabc3](https://github.com/dcache/dcache/commit/da1e8dabc39faab6af3a5e5b25c75be28cf1a89a)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.2.34
 
 ### ftp
