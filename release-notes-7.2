@@ -75,7 +75,6 @@ This release doesn't have any incompatibilities.
 
 ### dcache-core
 
-
 The current release fixed  NPE in TransferManager when no pool was selected before transfer is cancelled.
 
 ### frontend
@@ -84,18 +83,14 @@ The current release fixed handling of SRR requests over IPv6.
 
 ### gplazma
 
-
 The scitoken plugin now supports OPs that publish their public keys
 without any corresponding ID (i.e., no kid value).
 
-
-### nfsv
-
+### nfs
 
 nfs can  write into space reservations now.
 
 ### pinmanager
-
 
 A more detailed pinmanager log entry is provided for pin requests that
 are caught in a retry loop, and eventually time out.
@@ -106,20 +101,15 @@ A runtime exception triggered by side effect of logging has been fixed.
 
 ### storagedescriptor
 
-
-
 The script for generating SRR records (from the info service output) has
 been updated. The field `lastupdated` has been adjusted to the correct
 name `latestupdate`.
-
-
 
 ### webdav
 
 A bug is fixed where HTTP-TPC PULL request can fail (under heavy load)
 with the downloaded file being deleted, but dCache reports the transfer
 as successful.
-
 
 dCache now  provides a faster respones to the HTTP-TPC client (typically FTS)
 should the door decide to fail a transfer.
@@ -134,13 +124,20 @@ number of transfers finishing concurrently.
 
 ### xroot
 
-
 Now it is possible to support kXR_delete as a write request on the pool.
 
 ### xrootd4j
 
 Library updates for xrootd4j which contains fix for Unix Protocol.
 
+### Packaging
+
+Starting from dcache-7.2.5 the rpm package includes `rsyslog` configuration to produce classic log files in `/var/log/dcache` directory in addition to
+journal entries. To enable the logging into files the `/etc/systemd/journald.conf` should be configured as:
+
+```
+ForwardToSyslog=yes
+```
 
 ### Changelog 7.2.4..7.2.5
 
