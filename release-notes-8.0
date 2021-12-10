@@ -67,6 +67,7 @@ HTML header: <title>dCache 8.0 Release Notes</title>
 ## Incompatibilities
 
 - the `mountd` service is started only if NFS v3 is enabled
+- removed historic code of `HSM flush manager`
 
 ## Acknowledgments
 
@@ -88,7 +89,14 @@ HTML header: <title>dCache 8.0 Release Notes</title>
 ### Frontend
 
 ### FTP
+[cvoss@zitpcx27542] zitosm-ma01.desy.de $ time md5sum rfile.303
+md5sum: rfile.303: Input/output error
 
+real    0m2.475s
+user    0m0.003s
+sys     0m0.000s
+[cvoss@zitpcx27542] zitosm-ma01.desy.de $ cat ".(get)(rfile.303)(locality)"
+NEARLINE
 ### gplazma
 
 ### History
@@ -109,6 +117,8 @@ The `mountd` server is started only if NFSv3 is enabled.
 ### PNFS Manager
 
 ### Pool
+
+Removed support of unused  centralized flush manager.
 
 ### Poolmanager
 
