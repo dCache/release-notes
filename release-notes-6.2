@@ -106,6 +106,73 @@ This does not affect functionality.
 (tbd, this section uses markdown formatting)
 
 
+## Release 6.2.36
+
+### dcache
+
+The RemoteTransferManager now  better describes the current state of a
+transfer.
+
+### gplazma
+
+The `scitoken` gplazma plugin now supports extracting the `sub` and
+`wlcg.groups` claims in the same fashion as the `oidc` plugin.
+
+### pool
+
+The current release fixed open queue flag when template defined by queue define class.
+
+
+
+
+The current release fixed open queue flag when template defined by `queue define class` issue.
+
+### webdav
+
+
+The WebDAV door's `http-tpc ls` command now has the possibility to show
+the current state of the transfer. This may be useful diagnosing
+transfers spending a lot of time deciding on which pool to transfer
+should take place.
+
+
+### Changelog 6.2.35..6.2.36
+
+<!-- git log 6.2.35..6.2.36 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[0328238eec](https://github.com/dcache/dcache/commit/0328238eeceabd853b3292aac6301214462f9ada)
+:   [maven-release-plugin] prepare release 6.2.36
+
+[ec93df914d](https://github.com/dcache/dcache/commit/ec93df914dcb3316eda6e4d3dac2af417929a199)
+:   RemoteTransferManager: update state description
+
+[abba94dfe7](https://github.com/dcache/dcache/commit/abba94dfe7febe3d6909a31b504ed148428a4990)
+:   webdav: http-tpc add "prep" duration to 'http-tpc ls' command
+
+[68a2218f06](https://github.com/dcache/dcache/commit/68a2218f06c8191f7a14867fa1a84d2db4c2ef50)
+:   webdav: http-tpc show whether transfer is queued on pool
+
+[d6ed8385da](https://github.com/dcache/dcache/commit/d6ed8385da70b27dcfb3ced20c340a6c35a64520)
+:   webdav: http-tpc update 'http-tpc ls' command to include state
+
+[841af52850](https://github.com/dcache/dcache/commit/841af52850646e8667594cec717d99ea55823fb7)
+:   glazma: scitoken add support for additional principals
+
+[8fcac9689f](https://github.com/dcache/dcache/commit/8fcac9689f560937d231676db0220cff115d09c1)
+:   srr: limit publisched endpoints to GLOBAL scope
+
+[599f1a341d](https://github.com/dcache/dcache/commit/599f1a341d4fff5c2aeb7bbb662d3dc8186fabcb)
+:   Revert "frontend: fix handling of SRR requests over IPv6"
+
+[e7a663a145](https://github.com/dcache/dcache/commit/e7a663a145662e75412f015fd2bcf027b2ba7664)
+:   pool: adjust StorageClassContainerTest for dcache pre- 7.1
+
+[90206858a7](https://github.com/dcache/dcache/commit/90206858a713d794b6920395e6e73aa7f9819ed2)
+:   pool: fix open queue flag when template defined by `queue define class`
+
+[ae3916b98d](https://github.com/dcache/dcache/commit/ae3916b98dd04f13c34e00767bcd379eddc6474d)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.2.35
 
 ### dcache-core

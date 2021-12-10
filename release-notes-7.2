@@ -71,6 +71,83 @@ Support for a dedicated scheduling strategy for bring-online requests was added 
 
 This release doesn't have any incompatibilities.
 
+## Release 7.2.6
+
+### core
+
+
+Macaroons created with both a "path" caveat and "root" caveat work as
+expected.
+
+### dcache
+
+The RemoteTransferManager now  better describes the current state of a
+transfer.
+
+### gplazma
+
+The `scitoken` gplazma plugin now supports extracting the `sub` and
+`wlcg.groups` claims in the same fashion as the `oidc` plugin.
+
+### pool
+
+
+The current release fixed open queue flag when template defined by `queue define class` issue.
+
+### webdav
+
+
+The WebDAV door's `http-tpc ls` command now has the possibility to show
+the current state of the transfer. This may be useful diagnosing
+transfers spending a lot of time deciding on which pool to transfer
+should take place.
+
+
+Macaroon requests with a path in the request URL and with a non-default
+door root now generate correct macaroons. WebDAV doors with '/' root
+are unaffected by this problem.
+
+
+### Changelog 7.2.5..7.2.6
+
+<!-- git log 7.2.5..7.2.6 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[6e3816cb12](https://github.com/dcache/dcache/commit/6e3816cb123f43f4eb11c24e1ebc19c3cf21c967)
+:   [maven-release-plugin] prepare release 7.2.6
+
+[5a0e179a94](https://github.com/dcache/dcache/commit/5a0e179a94f8354d4137aff59be60c4450154a8b)
+:   RemoteTransferManager: update state description
+
+[32da6ef8ef](https://github.com/dcache/dcache/commit/32da6ef8ef482731cb5a8e5a509ccb57b1d65333)
+:   webdav: http-tpc add "prep" duration to 'http-tpc ls' command
+
+[04933fa957](https://github.com/dcache/dcache/commit/04933fa957ed670ec8d1a686417dbeb8e479bdac)
+:   webdav: http-tpc show whether transfer is queued on pool
+
+[1ffdd14c44](https://github.com/dcache/dcache/commit/1ffdd14c44b14689643926b9bd01c8749f9b1a8b)
+:   webdav: http-tpc update 'http-tpc ls' command to include state
+
+[e4ac684b4c](https://github.com/dcache/dcache/commit/e4ac684b4c6d7e74ab4464569fab6d9814ba49a1)
+:   glazma: scitoken add support for additional principals
+
+[7333b9c923](https://github.com/dcache/dcache/commit/7333b9c92331694c3ce4103bc29c83c4e5327bf9)
+:   srr: limit publisched endpoints to GLOBAL scope
+
+[59e00cd64b](https://github.com/dcache/dcache/commit/59e00cd64bba2ccae4ebec29fd85fc789813d317)
+:   core: fix macaroon behaviour with root and path
+
+[03011c2abe](https://github.com/dcache/dcache/commit/03011c2abe2265847736ccf5628c9b8617b2f0e0)
+:   webdav: ensure URL-path request macaroon have relative "path" caveat
+
+[e777580ad2](https://github.com/dcache/dcache/commit/e777580ad2cd5c55bf12e4e3f909352dd8d943fb)
+:   pool: fix open queue flag when template defined by `queue define class`
+
+[b28ba03f8e](https://github.com/dcache/dcache/commit/b28ba03f8e212e775528acd809b04f5870145299)
+:   srm-server: trs don't cache tape names forever
+
+[bda7d82b0a](https://github.com/dcache/dcache/commit/bda7d82b0a449fbe77578393ddbc49b5cf06277f)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 7.2.5
 
 ### dcache-core
