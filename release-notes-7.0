@@ -76,6 +76,54 @@ HTML header: <title>dCache 7.0 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 7.0.26
+
+### common-security
+
+A better error message is logged when attempting to use a password-protected credential:
+`java.io.IOException: Error decrypting private key: the password is incorrect or the PEM data is corrupted.`
+
+### pool
+
+This patch introduces the flag `-noheader` for use with `rep ls -s`
+that produces output similiar to what we used to see in previous
+dCache releases. In addition, a bug is fixed that prevented printing
+of precious and sticky file counts.
+
+### webdav
+
+The HTTP-TPC should have fewer failed transfers when faced with many
+short-lived transfers.
+
+It's now possible to access a summary of HTTP-TPC transfers and
+configuration information via the WebDAV door's info admin command.
+
+
+### Changelog 7.0.25..7.0.26
+
+<!-- git log 7.0.25..7.0.26 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[668e8e308b](https://github.com/dcache/dcache/commit/668e8e308be97553318bbebc46d0cf0c2506c85d)
+:   [maven-release-plugin] prepare release 7.0.26
+
+[db29849a38](https://github.com/dcache/dcache/commit/db29849a38422785c84f96921e01008f5de2e7e9)
+:   common-security: prevent NPE on password protected cert
+
+[be4b78ee00](https://github.com/dcache/dcache/commit/be4b78ee00088a040d98e23dfcb1330f0d08f184)
+:   webdav: http-tpc update heuristics for failing transfer
+
+[76afc8b04f](https://github.com/dcache/dcache/commit/76afc8b04f10324b3936c84ab335aa2548347ae4)
+:   Remove double whitespaces
+
+[915588d535](https://github.com/dcache/dcache/commit/915588d535be0ff3b58f9019b3690c1bd358c4a4)
+:   webdav: http-tpc provide status information in 'info' admin command
+
+[b01928e780](https://github.com/dcache/dcache/commit/b01928e7802775969dfd84016d560d6e6c01129c)
+:   pool: fix rep ls formating
+
+[f722aa856e](https://github.com/dcache/dcache/commit/f722aa856e5da1932c2bcbb75f521176de2dd456)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 7.0.25
 
 ### dcache

@@ -80,6 +80,54 @@ HTML header: <title>dCache 7.1 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 7.1.17
+
+### common-security
+
+A better error message is logged when attempting to use a password-protected credential:
+`java.io.IOException: Error decrypting private key: the password is incorrect or the PEM data is corrupted.`
+
+### pool
+
+This patch introduces the flag `-noheader` for use with `rep ls -s`
+that produces output similiar to what we used to see in previous
+dCache releases. In addition, a bug is fixed that prevented printing
+of precious and sticky file counts.
+
+### webdav
+
+The HTTP-TPC should have fewer failed transfers when faced with many
+short-lived transfers.
+
+It's now possible to access a summary of HTTP-TPC transfers and
+configuration information via the WebDAV door's info admin command.
+
+
+### Changelog 7.1.16..7.1.17
+
+<!-- git log 7.1.16..7.1.17 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[bb15d06c9d](https://github.com/dcache/dcache/commit/bb15d06c9d406f2411402c76f936921b433e177a)
+:   [maven-release-plugin] prepare release 7.1.17
+
+[a937edc8d5](https://github.com/dcache/dcache/commit/a937edc8d50722adf83bcfb8b5523f29fe4ea5c5)
+:   common-security: prevent NPE on password protected cert
+
+[2d9f491ad1](https://github.com/dcache/dcache/commit/2d9f491ad1810c14847b50a628f2581ab8b68834)
+:   webdav: http-tpc update heuristics for failing transfer
+
+[4bd9078c05](https://github.com/dcache/dcache/commit/4bd9078c05c8b261b24dcf53baee55f9407b75dc)
+:   Remove double whitespaces
+
+[fba43968de](https://github.com/dcache/dcache/commit/fba43968de71c85bd6298daa626c05b128974ce7)
+:   webdav: http-tpc provide status information in 'info' admin command
+
+[a2c4b59d6a](https://github.com/dcache/dcache/commit/a2c4b59d6a65073b71c6ff672eed692a5f5f6d83)
+:   pool: fix rep ls formating
+
+[26fee00471](https://github.com/dcache/dcache/commit/26fee00471b126586d4ececa578e5c1d0bd03f1e)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 7.1.16
 
 ### core

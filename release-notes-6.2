@@ -106,6 +106,41 @@ This does not affect functionality.
 (tbd, this section uses markdown formatting)
 
 
+## Release 6.2.37
+
+### common-security
+
+A better error message is logged when attempting to use a password-protected credential:
+`java.io.IOException: Error decrypting private key: the password is incorrect or the PEM data is corrupted.`
+
+### webdav
+
+The HTTP-TPC should have fewer failed transfers when faced with many
+short-lived transfers.
+
+It's now possible to access a summary of HTTP-TPC transfers and
+configuration information via the WebDAV door's info admin command.
+
+
+### Changelog 6.2.36..6.2.37
+
+<!-- git log 6.2.36..6.2.37 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[6fdd3a905c](https://github.com/dcache/dcache/commit/6fdd3a905cea52398933ead85afe30e8b4f83b89)
+:   [maven-release-plugin] prepare release 6.2.37
+
+[ada24fcd35](https://github.com/dcache/dcache/commit/ada24fcd3537e5a526ea2e690992e49a384bab7d)
+:   common-security: prevent NPE on password protected cert
+
+[d625f40a4e](https://github.com/dcache/dcache/commit/d625f40a4e17b5ee5d10abf1d3f58fdcf0ecf874)
+:   webdav: http-tpc update heuristics for failing transfer
+
+[f06d3fa1af](https://github.com/dcache/dcache/commit/f06d3fa1af29cb96c459de79701a22b9af3726cc)
+:   webdav: http-tpc provide status information in 'info' admin command
+
+[27da72f0ed](https://github.com/dcache/dcache/commit/27da72f0ede7425f9b0507432c8b67fd9f371d40)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.2.36
 
 ### dcache

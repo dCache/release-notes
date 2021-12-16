@@ -71,6 +71,74 @@ Support for a dedicated scheduling strategy for bring-online requests was added 
 
 This release doesn't have any incompatibilities.
 
+## Release 7.2.7
+
+### common-security
+
+A better error message is logged when attempting to use a password-protected credential:
+`java.io.IOException: Error decrypting private key: the password is incorrect or the PEM data is corrupted.`
+
+### nfs
+
+With this change, pool doesn't enter an infinite retry loop if staging is not allowed on this pool.
+
+### pnfsmanager
+
+Files written directly by encp (Enstore) can be read by dCache again.
+The revert cost 5% in performance on write. We will try to address the performance hit asap.
+
+### pool
+
+This patch introduces the flag `-noheader` for use with `rep ls -s`
+that produces output similiar to what we used to see in previous
+dCache releases. In addition, a bug is fixed that prevented printing
+of precious and sticky file counts.
+
+Pool statistic files are now copied without throwing an exception.
+
+### webdav
+
+The HTTP-TPC should have fewer failed transfers when faced with many
+short-lived transfers.
+
+It's now possible to access a summary of HTTP-TPC transfers and
+configuration information via the WebDAV door's info admin command.
+
+
+### Changelog 7.2.6..7.2.7
+
+<!-- git log 7.2.6..7.2.7 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[21d84be630](https://github.com/dcache/dcache/commit/21d84be630cd8c2efe3d6d5b07419f41d8426114)
+:   [maven-release-plugin] prepare release 7.2.7
+
+[a1a9a31503](https://github.com/dcache/dcache/commit/a1a9a315030311a3d03f4f2781bd88fdb54a5acc)
+:   common-security: prevent NPE on password protected cert
+
+[ee04084970](https://github.com/dcache/dcache/commit/ee04084970ca47d138af59d0da1c99c94b832020)
+:   webdav: http-tpc update heuristics for failing transfer
+
+[5d53d308e7](https://github.com/dcache/dcache/commit/5d53d308e775df0ac50ab9ae14e96e634c0b7855)
+:   Remove double whitespaces
+
+[9c202de000](https://github.com/dcache/dcache/commit/9c202de00071c04ae764edc01c836bdd8161e18a)
+:   chimera/pnfsmanager: restore compatibility with Enstore - restore ability to read files written directly by encp (Enstore client).
+
+[57bc507924](https://github.com/dcache/dcache/commit/57bc5079246be1119ac9c5e4364ba0cf3710314a)
+:    nfs: propagate `permission denied` on stage requests
+
+[699da511b4](https://github.com/dcache/dcache/commit/699da511b49fabab7f763b794c28ed3824815b48)
+:   webdav: http-tpc provide status information in 'info' admin command
+
+[1c2771773b](https://github.com/dcache/dcache/commit/1c2771773b9b4d61b5648c74f48e205e81d92883)
+:   pool: fix rep ls formating
+
+[1f6b78d7b5](https://github.com/dcache/dcache/commit/1f6b78d7b5841821d694ebdc8fddc735d952ee34)
+:   pool: fix pool statistic file overwrite option
+
+[6cec90347f](https://github.com/dcache/dcache/commit/6cec90347fe6cb242281b987bbb8b895f3741c8c)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 7.2.6
 
 ### core
