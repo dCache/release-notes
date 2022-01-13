@@ -71,6 +71,104 @@ Support for a dedicated scheduling strategy for bring-online requests was added 
 
 This release doesn't have any incompatibilities.
 
+## Release 7.2.8
+
+### Changes affecting multiple services
+
+dCache provides marginally better performance for HTTP-TPC, which starts
+to become significant when transferring many small files.
+
+### dcacheview
+
+This patch introduces some improved icons and other minor visual tweaks.
+
+### gplazma
+
+The 'scitoken' gplazma plugin will now accept WLCG AuthZ tokens without
+direct authorisation statements.  When accepting such a token, the
+plugin refrains from adding any of the additional principals from the
+configuration property; only the principals directly from the token are
+added.
+
+dCache will now reject WLCG-AuthZ-JWT profile tokens with a 'wlcg.ver'
+claim that it does not support. Other tokens (e.g., SciTokens) are
+unaffected by this change.
+
+The token-based authentication gPlazma plugins (scitoken, oidc) now
+include the identity of the OP that created the token. The multimap
+plugin is updated to support matching on this principal.
+
+### loginbroker
+
+This patch fixes SRM based upload or download where the client requests an
+xroot-based transfer. The SRM door will now also consider any xroot
+door with xrootd.security.tls.mode configured to OPTIONAL when
+building a TURL targeting either xroot or xroots protocols.
+
+### pnfsmanager
+
+PnfsManager now has two commands, 'reset chimera stats' and 'reset stats',
+to support resetting the gauge and counter statistics available through
+the 'info' command.
+
+dCache no longer leaks information about whether or not files exist when
+using macaroons or Scitokens / WLCG AuthZ JWT profile tokens.
+
+### webdav
+
+The WebDAV door cannot send the HTTP response to some HTTP request if
+the client has already disconnected. dCache no longer logs an error
+that it cannot send the HTTP response.
+
+A client that disconnects during a proxied HTTP transfer (GET or PUT) is
+no longer logged in the WebDAV door's log file; instead, it is logged in
+the cell's pinboard. The billing message is updated to make it clearer
+what went wrong.
+
+
+### Changelog 7.2.7..7.2.8
+
+<!-- git log 7.2.7..7.2.8 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[6351804eb5](https://github.com/dcache/dcache/commit/6351804eb51b0aff1c3bd207e260e5a1ef7c604c)
+:   [maven-release-plugin] prepare release 7.2.8
+
+[63e035cfd6](https://github.com/dcache/dcache/commit/63e035cfd6cfc054fb49b6ea36fc805dbc991691)
+:   gplazma: scitoken fix/improve support for group-based AuthN in WLCG profile
+
+[304bc36936](https://github.com/dcache/dcache/commit/304bc36936298bf4e8bc5b352b53f5c5817b14f0)
+:   gplazma: scitoken/oidc/multimap add support for OP principal
+
+[3b7d463834](https://github.com/dcache/dcache/commit/3b7d4638348698966a21e0f15a0a28138c3c5e25)
+:   skel: bump logback to 1.2.10
+
+[8534813023](https://github.com/dcache/dcache/commit/85348130231d2e73d6ca79963cf1976a35efdecb)
+:   pnfsmanager: add support for resetting gauge and counter statistics
+
+[8229fc9eb8](https://github.com/dcache/dcache/commit/8229fc9eb85975eff75b7c94ff5cc01fa46f239a)
+:   loginbroker: add support for multiple protocol families
+
+[61e47caa89](https://github.com/dcache/dcache/commit/61e47caa89ae5acc40793161ee28b56688ff4816)
+:   dcacheview: upgrade to dCacheView 2.0.1
+
+[55f999ccb6](https://github.com/dcache/dcache/commit/55f999ccb62d2aa62807b59d682f5bf54e126679)
+:   webdav/transfermanager: skip PnfsManager lookup if possible
+
+[05bede5d29](https://github.com/dcache/dcache/commit/05bede5d290d4ce0217d40a274f1a4e30a089d59)
+:   webdav: better logging if client disconnects during proxied transfer
+
+[ebbc63ddfb](https://github.com/dcache/dcache/commit/ebbc63ddfb43e9ac1962ed0a8c1c7823e3702184)
+:   webdav: don't log an error if client disconnects before response sent
+
+[dc1dc553c0](https://github.com/dcache/dcache/commit/dc1dc553c0206e0614cf525dc565be04de359026)
+:   PnfsManager: check restrictions before resolving path to PNFS-ID
+
+[bf0ef165a3](https://github.com/dcache/dcache/commit/bf0ef165a39879eb4b87a6abfd87af8455667571)
+:   gplazma: scitoken validate 'wlcg.ver' claim
+
+[a2945ee543](https://github.com/dcache/dcache/commit/a2945ee54313ead3cc556589ea3703ac6b7b5894)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 7.2.7
 
 ### common-security

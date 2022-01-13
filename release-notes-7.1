@@ -80,6 +80,73 @@ HTML header: <title>dCache 7.1 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 7.1.18
+
+### gplazma
+
+dCache will now reject WLCG-AuthZ-JWT profile tokens with a 'wlcg.ver'
+claim that it does not support. Other tokens (e.g., SciTokens) are
+unaffected by this change.
+
+### loginbroker
+
+This patch fixes SRM based upload or download where the client requests an
+xroot-based transfer. The SRM door will now also consider any xroot
+door with xrootd.security.tls.mode configured to OPTIONAL when
+building a TURL targeting either xroot or xroots protocols.
+
+### pnfsmanager
+
+PnfsManager now has two commands, 'reset chimera stats' and 'reset stats',
+to support resetting the gauge and counter statistics available through
+the 'info' command.
+
+dCache no longer leaks information about whether or not files exist when
+using macaroons or Scitokens / WLCG AuthZ JWT profile tokens.
+
+### webdav
+
+The WebDAV door cannot send the HTTP response to some HTTP request if
+the client has already disconnected. dCache no longer logs an error
+that it cannot send the HTTP response.
+
+A client that disconnects during a proxied HTTP transfer (GET or PUT) is
+no longer logged in the WebDAV door's log file; instead, it is logged in
+the cell's pinboard. The billing message is updated to make it clearer
+what went wrong.
+
+
+### Changelog 7.1.17..7.1.18
+
+<!-- git log 7.1.17..7.1.18 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[9b96f2f3e5](https://github.com/dcache/dcache/commit/9b96f2f3e59eb57db508a6390c9e2ff67751a10f)
+:   [maven-release-plugin] prepare release 7.1.18
+
+[b10b30a994](https://github.com/dcache/dcache/commit/b10b30a9945bdebea28265f98f69cb608c163c02)
+:   skel: bump logback to 1.2.10
+
+[10b2efbd6d](https://github.com/dcache/dcache/commit/10b2efbd6dad740912f2efff9dcac1ee618bf7ac)
+:   pnfsmanager: add support for resetting gauge and counter statistics
+
+[42d0a65a39](https://github.com/dcache/dcache/commit/42d0a65a3994443a8c1745ca40507243cb28d383)
+:   loginbroker: add support for multiple protocol families
+
+[470381fdf8](https://github.com/dcache/dcache/commit/470381fdf85bea56586b2730fc5f336577143bda)
+:   webdav: better logging if client disconnects during proxied transfer
+
+[4e0886e453](https://github.com/dcache/dcache/commit/4e0886e453723c399ef9c9ea004f86777e1f9a38)
+:   webdav: don't log an error if client disconnects before response sent
+
+[77bb939a49](https://github.com/dcache/dcache/commit/77bb939a49d67842a22c5c0188ce954527868f60)
+:   PnfsManager: check restrictions before resolving path to PNFS-ID
+
+[5c168160c1](https://github.com/dcache/dcache/commit/5c168160c1375a1cfa65c046fac92101a4f562ee)
+:   gplazma: scitoken validate 'wlcg.ver' claim
+
+[46ec2ef88b](https://github.com/dcache/dcache/commit/46ec2ef88bcaa949dc5b1b6a9322a315d2033d94)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 7.1.17
 
 ### common-security
