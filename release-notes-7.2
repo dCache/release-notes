@@ -73,11 +73,6 @@ This release doesn't have any incompatibilities.
 
 ## Release 7.2.8
 
-### Changes affecting multiple services
-
-dCache provides marginally better performance for HTTP-TPC, which starts
-to become significant when transferring many small files.
-
 ### dcacheview
 
 This patch introduces some improved icons and other minor visual tweaks.
@@ -124,6 +119,11 @@ A client that disconnects during a proxied HTTP transfer (GET or PUT) is
 no longer logged in the WebDAV door's log file; instead, it is logged in
 the cell's pinboard. The billing message is updated to make it clearer
 what went wrong.
+
+### webdav, transfermanager
+
+dCache provides marginally better performance for HTTP-TPC, which starts
+to become significant when transferring many small files.
 
 
 ### Changelog 7.2.7..7.2.8
