@@ -112,6 +112,16 @@ NEARLINE
 ### NFS
 The `mountd` server is started only if NFSv3 is enabled.
 
+Exposed files PNFSID, checksum and locality as read-only extended attribyutes.
+```
+$ attr -l file1.txt
+Attribute "dcache.id" has a 36 byte value for file1.txt
+Attribute "dcache.locality" has a 8 byte value for file1.txt
+Attribute "dcache.checksum" has a 10 byte value for file1.txt
+```
+
+> NOTE: this functionality is in `BETA` state and should be used with cation and client side caching might produce wrong results
+
 ### Pinmanager
 
 ### PNFS Manager
