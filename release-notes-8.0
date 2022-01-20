@@ -64,6 +64,8 @@ HTML header: <title>dCache 8.0 Release Notes</title>
 
 ## Highlights
 
+- better nfs v4.x performance of state validation in highly concurrent environment
+
 ## Incompatibilities
 
 - the `mountd` service is started only if NFS v3 is enabled
@@ -121,6 +123,8 @@ Attribute "dcache.checksum" has a 10 byte value for file1.txt
 ```
 
 > NOTE: this functionality is in `BETA` state and should be used with cation and client side caching might produce wrong results
+
+Update NFS4J library to 0.23.x version with various fixes and improvements.
 
 ### Pinmanager
 
