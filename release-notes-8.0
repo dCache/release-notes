@@ -126,6 +126,9 @@ Attribute "dcache.checksum" has a 10 byte value for file1.txt
 
 Update NFS4J library to 0.23.x version with various fixes and improvements.
 
+In version 8.0.0 we have introduced a workaround for linux NFSv4.1/pNFS client race condition that under high write IO workload the
+client might close a file, despite the fact that not all VM dirty pages are flushed and putting the client into unresponsive state.
+
 ### Pinmanager
 
 ### PNFS Manager
