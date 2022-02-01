@@ -65,6 +65,7 @@ HTML header: <title>dCache 8.1 Release Notes</title>
 ## Highlights
 
 ## Incompatibilities
+- the `org.dcache.net.localaddresses` accepts host names
 
 ## Acknowledgments
 
@@ -76,6 +77,20 @@ HTML header: <title>dCache 8.1 Release Notes</title>
 ### Admin
 
 ### Billing
+
+### Cells
+
+If dCache runs in NAT environment then login broker and pools
+should publish externally published addresses and names. The
+
+`org.dcache.net.localaddresses`
+
+property allows to specify the desired IP address. However,
+in dynamic environments, like kubernetes the ip address is not
+known in advance, but the exposed service name. 
+
+To support operation in such environemnts the property handling is
+update to support host names.
 
 ### Cleaner
 
