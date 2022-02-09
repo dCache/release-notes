@@ -165,6 +165,182 @@ Removed support of unused  centralized flush manager.
 
 (tbd as soon as the branching is done)
 
+[a8cb617f44](https://github.com/dcache/dcache/commit/a8cb617f445532bfb8398f20db0e3c80879f662a)
+:   [maven-release-plugin] prepare for next development iteration
+
+[a8b9c63d61](https://github.com/dcache/dcache/commit/a8b9c63d61efd019673cf5c06b20084b8fec47df)
+:   [maven-release-plugin] prepare release 8.0.0
+
+[5b44b8e61e](https://github.com/dcache/dcache/commit/5b44b8e61eabe9aed7bd69eaf5291eede3988251)
+:   common: provide reasonable error message if path is not absolute
+
+[b0812a7572](https://github.com/dcache/dcache/commit/b0812a75721d1a2416aa9848ca2ffe8eeab89874)
+:   pool: fix NPE on attempt by client to read from a broken replica
+
+[8323f0172d](https://github.com/dcache/dcache/commit/8323f0172dde3ba2b145bd5986c92be5d51366ef)
+:   common-security: re-read server credentials on context re-creation
+
+[d2ed77eabd](https://github.com/dcache/dcache/commit/d2ed77eabdae8fed72bb9d0a01d38cd653d43959)
+:   rest api: add checksum paramater to namespace resource
+
+[8b28862cda](https://github.com/dcache/dcache/commit/8b28862cda66882b5f288f5d8cb62f15a00eda24)
+:   frontend: update dCacheView to v2.0.2
+
+[0a0a095821](https://github.com/dcache/dcache/commit/0a0a095821a489e9a23a035862929bc65728fce1)
+:   TransferManager: log bugs with corresponding stack-trace
+
+[ff4077fa10](https://github.com/dcache/dcache/commit/ff4077fa1087857a1a63f96760d0a472a7629f77)
+:   CopyManager: reply success when the target transfer completes.
+
+[d4c5943b94](https://github.com/dcache/dcache/commit/d4c5943b94d5dfb793f71b54d4031f5414670fc5)
+:   pool: only send new URLs when flushing file
+
+[33f2937057](https://github.com/dcache/dcache/commit/33f29370573f8aaa949105b78e73e89ae620f345)
+:   [maven-release-plugin] prepare branch 8.0
+
+[ca1e3c7ce8](https://github.com/dcache/dcache/commit/ca1e3c7ce8f1cae591db18e4f27942b00b4d6b55)
+:   nfs4.1: limit layout-recall workaround to flex_files layout only
+
+[c0c77a2828](https://github.com/dcache/dcache/commit/c0c77a2828f34df504d136dddd1824ee7e2f1383)
+:   skel: minor improvements to example configuration for needrestart
+
+[a6230571ed](https://github.com/dcache/dcache/commit/a6230571ed25694fa1eba9c47ede3e8392e2e536)
+:   common: add support for "group" principals in various places
+
+[143802520a](https://github.com/dcache/dcache/commit/143802520ae513518913335242ef340e405d790c)
+:   qos-verifier: (2 of 8) pool selection utilities
+
+[4f561f9914](https://github.com/dcache/dcache/commit/4f561f9914ddb2d63a72b0b6fcdc5b832b03f605)
+:   dcache-xroot: set default TLS to OPTIONAL
+
+[6f415a50e9](https://github.com/dcache/dcache/commit/6f415a50e9325621c79b2c25aa3d6c5160f1774f)
+:   dcache-core: fix admin command to query pins by state
+
+[b2cdfac20a](https://github.com/dcache/dcache/commit/b2cdfac20a3a1dda56f79451647cdcb042ea28a0)
+:   util: drop Transfer#get/getOnlineFilesOnly
+
+[1746a22e62](https://github.com/dcache/dcache/commit/1746a22e62a71c3f16beca3e4232997cd9a460c4)
+:   gplazma: oidc rewrite OidcAuthPluginTest
+
+[7582bf9434](https://github.com/dcache/dcache/commit/7582bf94341e24a097a1eeb915f136a3d7440f6f)
+:   gplazma: oidc add support for profiles
+
+[40603217d9](https://github.com/dcache/dcache/commit/40603217d9f6bc4dbc5b1a05d07fc8882f3519fb)
+:   gplazma: oidc fix minor/typo errors in IdentityProviderTests
+
+[2671c9ffae](https://github.com/dcache/dcache/commit/2671c9ffae70abca03381d17ff583375602d1810)
+:   srm-server: log trs tape queue states when tape requests are added
+
+[86cbd0cddc](https://github.com/dcache/dcache/commit/86cbd0cddc5df08bc823172cab1e965795b36a27)
+:   chimera: remove unused constructor in ChimeraDirectoryEntry
+
+[5a001af333](https://github.com/dcache/dcache/commit/5a001af33339992ac78300db66cc6ec4923da046)
+:   nfs4.1: recall write layout on close
+
+[d232f34c85](https://github.com/dcache/dcache/commit/d232f34c8512fd8757168877633f191b713914f3)
+:   libs: use nfs4j-0.23.0
+
+[a85e84ba8a](https://github.com/dcache/dcache/commit/a85e84ba8a232051cec87c5f730372649cec344c)
+:   book: Add chapter about telemetry cell to index
+
+[0b15b16b53](https://github.com/dcache/dcache/commit/0b15b16b5352d218afd246be5417105e76db8185)
+:   book: Add chapter about telemetry cell
+
+[ece6360996](https://github.com/dcache/dcache/commit/ece6360996a15ac183cecde6ba85b4cf238b281b)
+:   gplazma: oidc add support for offline JWT validation
+
+[6b99107559](https://github.com/dcache/dcache/commit/6b99107559f041d4f962c84da91072dc1cc71c38)
+:   nfs4: expose pnfsid, checksum, locality as extended attribytes
+
+[da1fcdc883](https://github.com/dcache/dcache/commit/da1fcdc8832261cb4d242ee7298b76a1573d3c42)
+:   telemetry: Add command to display data
+
+[8baabae881](https://github.com/dcache/dcache/commit/8baabae881fb0388c75da68e952b967ef012e72e)
+:   libs: update ZooKeeper version
+
+[b8639d1f80](https://github.com/dcache/dcache/commit/b8639d1f80cc3bb5860c1306abb2f3c454667585)
+:   nfs: use local pool monitor for reads
+
+[d38d5e940e](https://github.com/dcache/dcache/commit/d38d5e940e8f7bf0308d1229ebb28527538c2d15)
+:   dcache-chimera: avoid conversion id->path->id on getLocality
+
+[0191f0b40e](https://github.com/dcache/dcache/commit/0191f0b40ee34adc86386a04d6bae285421d8a63)
+:   common: move Jdbc base classes from qos
+
+[c7711c7ab0](https://github.com/dcache/dcache/commit/c7711c7ab06d955d86d88a04565f32ca9459d6e3)
+:   skel: bump logback to 1.2.10
+
+[ac93764537](https://github.com/dcache/dcache/commit/ac937645371062bd05154afb842de95d4009369e)
+:   book: fix typo
+
+[3223a9faad](https://github.com/dcache/dcache/commit/3223a9faad6912ce599b2fa59323d35f84036969)
+:   qos-verifier: (1 of 8) data store interfaces and implementation (jdbc)
+
+[8a4a02cd02](https://github.com/dcache/dcache/commit/8a4a02cd02f6385af3b3a350010a012ed151b7e5)
+:   gplazma: oidc support chaining of TokenProcessor implementations
+
+[1f63fbbeab](https://github.com/dcache/dcache/commit/1f63fbbeab60928d2e0f50fc504be226660095c4)
+:   pnfsmanager: add support for resetting gauge and counter statistics
+
+[1947b9386f](https://github.com/dcache/dcache/commit/1947b9386f24d69fda4cb27c71c48197d94b9a98)
+:   libs: use jline2-2.14.6 with small bugfix
+
+[30828d4930](https://github.com/dcache/dcache/commit/30828d49303a368d2b8b1c93262552956e080bfc)
+:   loginbroker: add support for multiple protocol families
+
+[a8cb617f44](https://github.com/dcache/dcache/commit/a8cb617f445532bfb8398f20db0e3c80879f662a)
+:   [maven-release-plugin] prepare for next development iteration
+
+[a8b9c63d61](https://github.com/dcache/dcache/commit/a8b9c63d61efd019673cf5c06b20084b8fec47df)
+:   [maven-release-plugin] prepare release 8.0.0
+
+[5b44b8e61e](https://github.com/dcache/dcache/commit/5b44b8e61eabe9aed7bd69eaf5291eede3988251)
+:   common: provide reasonable error message if path is not absolute
+
+[b0812a7572](https://github.com/dcache/dcache/commit/b0812a75721d1a2416aa9848ca2ffe8eeab89874)
+:   pool: fix NPE on attempt by client to read from a broken replica
+
+[8323f0172d](https://github.com/dcache/dcache/commit/8323f0172dde3ba2b145bd5986c92be5d51366ef)
+:   common-security: re-read server credentials on context re-creation
+
+[d2ed77eabd](https://github.com/dcache/dcache/commit/d2ed77eabdae8fed72bb9d0a01d38cd653d43959)
+:   rest api: add checksum paramater to namespace resource
+
+[8b28862cda](https://github.com/dcache/dcache/commit/8b28862cda66882b5f288f5d8cb62f15a00eda24)
+:   frontend: update dCacheView to v2.0.2
+
+[0a0a095821](https://github.com/dcache/dcache/commit/0a0a095821a489e9a23a035862929bc65728fce1)
+:   TransferManager: log bugs with corresponding stack-trace
+
+[ff4077fa10](https://github.com/dcache/dcache/commit/ff4077fa1087857a1a63f96760d0a472a7629f77)
+:   CopyManager: reply success when the target transfer completes.
+
+[d4c5943b94](https://github.com/dcache/dcache/commit/d4c5943b94d5dfb793f71b54d4031f5414670fc5)
+:   pool: only send new URLs when flushing file
+
+[33f2937057](https://github.com/dcache/dcache/commit/33f29370573f8aaa949105b78e73e89ae620f345)
+:   [maven-release-plugin] prepare branch 8.0
+
+[ca1e3c7ce8](https://github.com/dcache/dcache/commit/ca1e3c7ce8f1cae591db18e4f27942b00b4d6b55)
+:   nfs4.1: limit layout-recall workaround to flex_files layout only
+
+[c0c77a2828](https://github.com/dcache/dcache/commit/c0c77a2828f34df504d136dddd1824ee7e2f1383)
+:   skel: minor improvements to example configuration for needrestart
+
+[a6230571ed](https://github.com/dcache/dcache/commit/a6230571ed25694fa1eba9c47ede3e8392e2e536)
+:   common: add support for "group" principals in various places
+
+[143802520a](https://github.com/dcache/dcache/commit/143802520ae513518913335242ef340e405d790c)
+:   qos-verifier: (2 of 8) pool selection utilities
+
+[4f561f9914](https://github.com/dcache/dcache/commit/4f561f9914ddb2d63a72b0b6fcdc5b832b03f605)
+:   dcache-xroot: set default TLS to OPTIONAL
+
+[6f415a50e9](https://github.com/dcache/dcache/commit/6f415a50e9325621c79b2c25aa3d6c5160f1774f)
+:   dcache-core: fix admin command to query pins by state
+
+
+
 
 </div>
 </div>
