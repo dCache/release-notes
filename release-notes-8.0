@@ -286,59 +286,6 @@ Removed support of unused  centralized flush manager.
 [30828d4930](https://github.com/dcache/dcache/commit/30828d49303a368d2b8b1c93262552956e080bfc)
 :   loginbroker: add support for multiple protocol families
 
-[a8cb617f44](https://github.com/dcache/dcache/commit/a8cb617f445532bfb8398f20db0e3c80879f662a)
-:   [maven-release-plugin] prepare for next development iteration
-
-[a8b9c63d61](https://github.com/dcache/dcache/commit/a8b9c63d61efd019673cf5c06b20084b8fec47df)
-:   [maven-release-plugin] prepare release 8.0.0
-
-[5b44b8e61e](https://github.com/dcache/dcache/commit/5b44b8e61eabe9aed7bd69eaf5291eede3988251)
-:   common: provide reasonable error message if path is not absolute
-
-[b0812a7572](https://github.com/dcache/dcache/commit/b0812a75721d1a2416aa9848ca2ffe8eeab89874)
-:   pool: fix NPE on attempt by client to read from a broken replica
-
-[8323f0172d](https://github.com/dcache/dcache/commit/8323f0172dde3ba2b145bd5986c92be5d51366ef)
-:   common-security: re-read server credentials on context re-creation
-
-[d2ed77eabd](https://github.com/dcache/dcache/commit/d2ed77eabdae8fed72bb9d0a01d38cd653d43959)
-:   rest api: add checksum paramater to namespace resource
-
-[8b28862cda](https://github.com/dcache/dcache/commit/8b28862cda66882b5f288f5d8cb62f15a00eda24)
-:   frontend: update dCacheView to v2.0.2
-
-[0a0a095821](https://github.com/dcache/dcache/commit/0a0a095821a489e9a23a035862929bc65728fce1)
-:   TransferManager: log bugs with corresponding stack-trace
-
-[ff4077fa10](https://github.com/dcache/dcache/commit/ff4077fa1087857a1a63f96760d0a472a7629f77)
-:   CopyManager: reply success when the target transfer completes.
-
-[d4c5943b94](https://github.com/dcache/dcache/commit/d4c5943b94d5dfb793f71b54d4031f5414670fc5)
-:   pool: only send new URLs when flushing file
-
-[33f2937057](https://github.com/dcache/dcache/commit/33f29370573f8aaa949105b78e73e89ae620f345)
-:   [maven-release-plugin] prepare branch 8.0
-
-[ca1e3c7ce8](https://github.com/dcache/dcache/commit/ca1e3c7ce8f1cae591db18e4f27942b00b4d6b55)
-:   nfs4.1: limit layout-recall workaround to flex_files layout only
-
-[c0c77a2828](https://github.com/dcache/dcache/commit/c0c77a2828f34df504d136dddd1824ee7e2f1383)
-:   skel: minor improvements to example configuration for needrestart
-
-[a6230571ed](https://github.com/dcache/dcache/commit/a6230571ed25694fa1eba9c47ede3e8392e2e536)
-:   common: add support for "group" principals in various places
-
-[143802520a](https://github.com/dcache/dcache/commit/143802520ae513518913335242ef340e405d790c)
-:   qos-verifier: (2 of 8) pool selection utilities
-
-[4f561f9914](https://github.com/dcache/dcache/commit/4f561f9914ddb2d63a72b0b6fcdc5b832b03f605)
-:   dcache-xroot: set default TLS to OPTIONAL
-
-[6f415a50e9](https://github.com/dcache/dcache/commit/6f415a50e9325621c79b2c25aa3d6c5160f1774f)
-:   dcache-core: fix admin command to query pins by state
-
-[b2cdfac20a](https://github.com/dcache/dcache/commit/b2cdfac20a3a1dda56f79451647cdcb042ea28a0)
-:   util: drop Transfer#get/getOnlineFilesOnly
 
 
 
