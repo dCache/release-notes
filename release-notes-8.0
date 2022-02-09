@@ -163,8 +163,6 @@ Removed support of unused  centralized flush manager.
 
 <!-- git log 7.2..8.0 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
 
-(tbd as soon as the branching is done)
-
 [a8cb617f44](https://github.com/dcache/dcache/commit/a8cb617f445532bfb8398f20db0e3c80879f662a)
 :   [maven-release-plugin] prepare for next development iteration
 
@@ -338,6 +336,10 @@ Removed support of unused  centralized flush manager.
 
 [6f415a50e9](https://github.com/dcache/dcache/commit/6f415a50e9325621c79b2c25aa3d6c5160f1774f)
 :   dcache-core: fix admin command to query pins by state
+
+[b2cdfac20a](https://github.com/dcache/dcache/commit/b2cdfac20a3a1dda56f79451647cdcb042ea28a0)
+:   util: drop Transfer#get/getOnlineFilesOnly
+
 
 
 
