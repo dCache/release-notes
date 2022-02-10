@@ -76,6 +76,52 @@ HTML header: <title>dCache 7.0 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 7.0.29
+
+### common
+
+A  bug was fixed  where dCache will no longer accept certificates issued by a
+trusted CA after that CA updates their CA certificate while keeping the
+public/private key-pair the same. This is typically done to change
+something in CA's certificate.
+
+There are places where dCache configuration requires an absolute path.
+In some places attempting to use a relative path will yield an unhepful
+`null` in the log file. This is now fixed, so a meaningful error
+message is logged instead.
+
+### pool
+
+An NPE  on attempt by client to read from a broken replica is fixed now.
+
+### webdav
+
+The current release fixed handling of `webdav.authz.allowed-paths` so it no longer triggers a
+NullPointerException.
+
+
+### Changelog 7.0.28..7.0.29
+
+<!-- git log 7.0.28..7.0.29 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[e78e047486](https://github.com/dcache/dcache/commit/e78e0474868eea2c93e8d8cafbfcac60f3051b64)
+:   [maven-release-plugin] prepare release 7.0.29
+
+[f0473acaeb](https://github.com/dcache/dcache/commit/f0473acaebfe10bc117b25d7b0dd30fbea6192a9)
+:   pool: fix NPE on attempt by client to read from a broken replica
+
+[b5d6ffefc2](https://github.com/dcache/dcache/commit/b5d6ffefc2dc63e6066024653684526619314c57)
+:   webdav: fix NPE if 'webdav.authz.allowed-paths' disallows a request
+
+[e1abc5ba77](https://github.com/dcache/dcache/commit/e1abc5ba771875ba6354e0aa2200fda9d80dc13f)
+:   libraries: upgrade version of canl
+
+[dba6c0d781](https://github.com/dcache/dcache/commit/dba6c0d78133ab11c943ccbb2198fe4e274602a4)
+:   common: provide reasonable error message if path is not absolute
+
+[f38e28bedb](https://github.com/dcache/dcache/commit/f38e28bedb19fea987cd07684a3533fbf6a30bbd)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 7.0.27
 
 ### gplazma

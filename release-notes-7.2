@@ -71,6 +71,55 @@ Support for a dedicated scheduling strategy for bring-online requests was added 
 
 This release doesn't have any incompatibilities.
 
+## Release 7.2.10
+
+### common
+
+
+The current release fixed certificate reload when updated.
+
+There are places where dCache configuration requires an absolute path.
+In some places attempting to use a relative path will yield an unhepful
+`null` in the log file. This is now fixed, so a meaningful error
+message is logged instead.
+
+### pool
+
+An NPE  on attempt by client to read from a broken replica is fixed now.
+
+### rest
+
+### webdav
+
+The current release fixed handling of `webdav.authz.allowed-paths` so it no longer triggers a
+NullPointerException.
+
+
+### Changelog 7.2.9..7.2.10
+
+<!-- git log 7.2.9..7.2.10 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[034deb4042](https://github.com/dcache/dcache/commit/034deb40428ca92120a3cf28a7f10fc8ac2e2e66)
+:   [maven-release-plugin] prepare release 7.2.10
+
+[bfff8d424f](https://github.com/dcache/dcache/commit/bfff8d424f2d47ee5bc964a6effea4ee527451c8)
+:   webdav: fix NPE if 'webdav.authz.allowed-paths' disallows a request
+
+[16f7723398](https://github.com/dcache/dcache/commit/16f7723398fb21568d50073bcb19f1ec98280181)
+:   common: provide reasonable error message if path is not absolute
+
+[55cfd70b30](https://github.com/dcache/dcache/commit/55cfd70b30a2601c90f0850ff78f8cf93d9deb6c)
+:   pool: fix NPE on attempt by client to read from a broken replica
+
+[1de476bd75](https://github.com/dcache/dcache/commit/1de476bd75f0b6f8d901d006419f3d6502135505)
+:   common-security: re-read server credentials on context re-creation
+
+[9afb28cf3e](https://github.com/dcache/dcache/commit/9afb28cf3ea8b2c3d12713076e6571b41f34ae3c)
+:   rest api: add checksum parameter to namespace resource
+
+[65359b538f](https://github.com/dcache/dcache/commit/65359b538f3cfce564427007ba2acbb655253735)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 7.2.8
 
 ### dcacheview
