@@ -149,6 +149,11 @@ Removed support of unused  centralized flush manager.
 
 ### Statistics
 
+### Telemetry
+
+Added a command, `print data`, that prints data that is
+send to the collector.
+
 ### Topo
 
 ### Transfer Managers
