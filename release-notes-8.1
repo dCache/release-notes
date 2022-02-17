@@ -66,6 +66,7 @@ HTML header: <title>dCache 8.1 Release Notes</title>
 
 ## Incompatibilities
 - the `org.dcache.net.localaddresses` accepts host names
+- NFS transfers will fail with EIO for broken files
 
 ## Acknowledgments
 
@@ -115,6 +116,8 @@ update to support host names.
 ### Missing Files
 
 ### NFS
+
+If requested files has in a `BROKEN` state, then NFS door will tell client to try later. Though, some `BROKEN` files can be fixed by sysadmins, typically nfs client will block and bekome inresponceive. To avoid hanging nfs clients, startng with this release NFS door will fail request to broken files and return EIO error to a client application.
 
 ### Pinmanager
 
