@@ -82,6 +82,12 @@ HTML header: <title>dCache 8.0 Release Notes</title>
 
 ### Billing
 
+### Bulk
+
+The handling of pin requests was fixed to be fully asynchronous and not time out.
+There was also regression fix for aborted requests which would leave the request
+in the STARTED state instead of completing.
+
 ### Cleaner
 
 ### Checksums
@@ -90,15 +96,19 @@ HTML header: <title>dCache 8.0 Release Notes</title>
 
 ### Frontend
 
-### FTP
-[cvoss@zitpcx27542] zitosm-ma01.desy.de $ time md5sum rfile.303
-md5sum: rfile.303: Input/output error
+A small fix to transfer rate to a double so that very fast transfers do not
+get rounded down to 0.  'pin' and 'unpin' were added to the namespace resource POST method
+for individual files.  In both REST and NFS (dot command), pin and unpin was modified to use
+the uid as request id.  Bulk requests were fixed to support any combination of attribute styles 
+(camel-, snake- and kebab-case) for a given request.
 
-real    0m2.475s
-user    0m0.003s
-sys     0m0.000s
-[cvoss@zitpcx27542] zitosm-ma01.desy.de $ cat ".(get)(rfile.303)(locality)"
-NEARLINE
+Clearer error message which does not denote a bug when CA certs directory is missing and
+HTTPS is configured.
+
+### FTP
+
+GSIFTP was reverted to use the Java SSL library instead of OpenSSL (API incompatibilities).
+
 ### gplazma
 
 ### History
@@ -141,6 +151,8 @@ Removed support of unused  centralized flush manager.
 
 ### Resilience
 
+There was a fix to a runtime exception triggered as a side effect of logging.
+
 ### Space Manager
 
 ### SRM
@@ -160,7 +172,18 @@ send to the collector.
 
 ### WebDAV
 
+Clearer error message which does not denote a bug when CA certs directory is missing and
+HTTPS is configured.
+
+When 
+
 ### XRootD
+
+Since 7.2 there have been a number of upgrades and fixes for important regressions.  These have
+been noted in the time-releases.  The most significant were a fix to handle clients writing to
+a closed checksum channel, to support delete requests on the pool, and to provide a workaround
+for older xroot clients using prime values in the GSI handshake shorter than the recommended
+length.
 
 ### Zookeeper
 
