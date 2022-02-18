@@ -85,7 +85,7 @@ HTML header: <title>dCache 8.0 Release Notes</title>
 ### Bulk
 
 The handling of pin requests was fixed to be fully asynchronous and not time out.
-There was also regression fix for aborted requests which would leave the request
+There was also a regression fix for aborted requests which would leave the request
 in the STARTED state instead of completing.
 
 ### Cleaner
@@ -96,7 +96,7 @@ in the STARTED state instead of completing.
 
 ### Frontend
 
-A small fix to transfer rate to a double so that very fast transfers do not
+Transfer rate was changed to a double value so that very fast transfers do not
 get rounded down to 0.  'pin' and 'unpin' were added to the namespace resource POST method
 for individual files.  In both REST and NFS (dot command), pin and unpin was modified to use
 the uid as request id.  Bulk requests were fixed to support any combination of attribute styles 
@@ -174,8 +174,6 @@ send to the collector.
 
 Clearer error message which does not denote a bug when CA certs directory is missing and
 HTTPS is configured.
-
-When 
 
 ### XRootD
 
