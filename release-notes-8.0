@@ -88,6 +88,10 @@ The handling of pin requests was fixed to be fully asynchronous and not time out
 There was also a regression fix for aborted requests which would leave the request
 in the STARTED state instead of completing.
 
+### Chimera-shell
+
+The chimera shell now supports creation symbolic and hard links.
+
 ### Cleaner
 
 ### Checksums
@@ -105,11 +109,29 @@ the uid as request id.  Bulk requests were fixed to support any combination of a
 Clearer error message which does not denote a bug when CA certs directory is missing and
 HTTPS is configured.
 
+The "key" field of alarm log entries is now build as a colon-separated
+list of keywords.
+
+
 ### FTP
 
 GSIFTP was reverted to use the Java SSL library instead of OpenSSL (API incompatibilities).
 
 ### gplazma
+
+It is now possible to configure a group name using the simple `group`
+prefix in the banfile and scitokens gPlazma plugins.  This prefix will
+also work for the "test login" and "explain login" admin commands.
+
+The oidc plugin is now able to accept a JWT access token without
+querying the user-info endpoint.  If the token is not a JWT then the
+oidc plugin will call the user-info endpoint to discover the necessary
+information about the user.
+
+The oidc gPlazma plugin now supports the 'aud' claim.  The list of
+allowed audience values is configured via the
+'gplazma.oidc.audience-targets' configuration property.
+
 
 ### History
 
@@ -146,6 +168,24 @@ client might close a file, despite the fact that not all VM dirty pages are flus
 ### Pool
 
 Removed support of unused  centralized flush manager.
+
+When transferring files with HTTP-TPC, the pool will try to reuse TCP
+connections.  Idle connections are closed only if they are idle for
+too long or if a maximum number of connections is reached.  The exact
+behaviour is configurable.  This is helpful when transferring many
+files with the same remote endpoint, particularly if the files are
+small.
+
+Previously, when a client downloads a file via HTTP, the pool
+considers the transfer complete only after the client disconnects from
+the pool (or the pool disconnects the client due to inactivity).  Now,
+if the client requests the entire file's contents then the pool will
+consider the transfer complete once all the data has been sent.  A
+request for partial file contents will continue to follow the existing
+behaviour.
+
+The NearlineStorage interface is updated to support stateful plugins
+that can fail during initialisation.
 
 ### Poolmanager
 
