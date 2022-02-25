@@ -78,10 +78,6 @@ HTML header: <title>dCache 8.0 Release Notes</title>
 
 ## Release 8.0.0
 
-### Admin
-
-### Billing
-
 ### Bulk
 
 The handling of pin requests was fixed to be fully asynchronous and not time out.
@@ -92,11 +88,6 @@ in the STARTED state instead of completing.
 
 The chimera shell now supports creation symbolic and hard links.
 
-### Cleaner
-
-### Checksums
-
-### DCAP
 
 ### Frontend
 
@@ -133,16 +124,6 @@ allowed audience values is configured via the
 'gplazma.oidc.audience-targets' configuration property.
 
 
-### History
-
-### Hoppingmanager
-
-### httpd
-
-### Info
-
-### Missing Files
-
 ### NFS
 The `mountd` server is started only if NFSv3 is enabled.
 
@@ -160,10 +141,6 @@ Update NFS4J library to 0.23.x version with various fixes and improvements.
 
 In version 8.0.0 we have introduced a workaround for linux NFSv4.1/pNFS client race condition that under high write IO workload the
 client might close a file, despite the fact that not all VM dirty pages are flushed and putting the client into unresponsive state.
-
-### Pinmanager
-
-### PNFS Manager
 
 ### Pool
 
@@ -187,28 +164,16 @@ behaviour.
 The NearlineStorage interface is updated to support stateful plugins
 that can fail during initialisation.
 
-### Poolmanager
 
 ### Resilience
 
 There was a fix to a runtime exception triggered as a side effect of logging.
 
-### Space Manager
-
-### SRM
-
-### SRM Manager
-
-### Statistics
 
 ### Telemetry
 
 Added a command, `print data`, that prints data that is
 send to the collector.
-
-### Topo
-
-### Transfer Managers
 
 ### WebDAV
 
@@ -223,7 +188,6 @@ a closed checksum channel, to support delete requests on the pool, and to provid
 for older xroot clients using prime values in the GSI handshake shorter than the recommended
 length.
 
-### Zookeeper
 
 ### Changelog from 7.2.0 to 8.0.0
 
