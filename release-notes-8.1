@@ -121,6 +121,10 @@ If requested files has in a `BROKEN` state, then NFS door will tell client to tr
 
 ### Pinmanager
 
+### Plugin
+
+Plugins can use admin commands now if they implement `CellDynamicCommandProvider`. If an instance of the plugin is created in a pool, its annotated commands are added with the instance name as a prefix. By deleting the plugin instance, the added commands are also removed.
+
 ### PNFS Manager
 
 ### Pool
