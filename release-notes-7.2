@@ -71,6 +71,86 @@ Support for a dedicated scheduling strategy for bring-online requests was added 
 
 This release doesn't have any incompatibilities.
 
+## Release 7.2.11
+
+### Changes affecting multiple services
+
+The OIDC 'sub' (subject) and 'jti' (JWT ID) claims are logged to
+access log file for WebDav, frontend and SRM doors if OIDC is used.
+
+### admin
+
+### bulk
+
+dCache now returns 404 instead of 403 if a submitted id in GET or PATCH
+bulk-request is not recognized by the service.
+
+Jobs which originally got stuck in STARTED state now complete;
+their failure information contains the reason for premature
+completion.
+
+### frontend
+
+The property `frontend.srr.public=true|false` is added to
+frontend to control SRR resource restriction. The default
+value is false.
+
+### ftp
+
+The FTP cell is killed asynchronously now after the session terminates
+so the door will remain responsive when many clients terminate their
+FTP session concurrently.
+
+### pool
+
+HTTP-TPC transfers now prefer IPv6 address, if both endpoints support
+it.
+
+If a HSM script survives SIGTERM it will now be stopped
+with SIGKILL and a warning is logged. This reduces expired
+or canceled requests staying in CANCELED state.
+
+If a NFS mover is killed twice it's now logged without a stack trace.
+This provides more stable NFS error recovery, too.
+
+
+### Changelog 7.2.10..7.2.11
+
+<!-- git log 7.2.10..7.2.11 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[abafc5e050](https://github.com/dcache/dcache/commit/abafc5e05052e980b71e2c589c16414af3dac712)
+:   [maven-release-plugin] prepare release 7.2.11
+
+[2328d630e4](https://github.com/dcache/dcache/commit/2328d630e42c029b53b15ab8afad4d4c0420332d)
+:   frontend: make srr resources public
+
+[f3f48d6e65](https://github.com/dcache/dcache/commit/f3f48d6e65ccfa314943ef73fc8476cf56152f89)
+:   webdav/frontend/srm/gplazma: log OIDC 'sub' and 'jti' claims
+
+[7653bc78df](https://github.com/dcache/dcache/commit/7653bc78df6ae770c0b5db21b4ac1291734c1e57)
+:   ftp: kill cell asynchronously
+
+[b2de5dcdcd](https://github.com/dcache/dcache/commit/b2de5dcdcd66c2cd3870e63a628a18b13f974a67)
+:   pool: http-tpc prefer IPv6 address
+
+[bd807f0da4](https://github.com/dcache/dcache/commit/bd807f0da4de10cf8b75b7e6c7b024221ae73b73)
+:   pool: handle multiple shutdowns of a nfs mover
+
+[3607a08821](https://github.com/dcache/dcache/commit/3607a08821a8adafeba2fdb1f9b68e251fae18b5)
+:   dcache-bulk: aborted request gets stuck in the STARTED state
+
+[dc2a01fea6](https://github.com/dcache/dcache/commit/dc2a01fea69078e05a28d4cca36118ae29cf3511)
+:   pool: try to forcefully kill HSM process if needed
+
+[8fbab1884e](https://github.com/dcache/dcache/commit/8fbab1884e9c199f4bb0082d489db99afb252d14)
+:   admin shell: fix line termination in SshOutputStream
+
+[e858de6448](https://github.com/dcache/dcache/commit/e858de6448478d15fc5a0c1952dac4e7ac8f0e9a)
+:   [maven-release-plugin] prepare for next development iteration
+
+[0970afbe2d](https://github.com/dcache/dcache/commit/0970afbe2d0f7a6d746355397e5053967ff24e48)
+:   bulk, frontend-rest: return 404, not 403, when request id does not exist
+
 ## Release 7.2.10
 
 ### common

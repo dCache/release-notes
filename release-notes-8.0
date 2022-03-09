@@ -76,6 +76,113 @@ HTML header: <title>dCache 8.0 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 8.0.1
+
+### Changes affecting multiple services
+
+The OIDC 'sub' (subject) and 'jti' (JWT ID) claims are logged to
+access log file for WebDav, frontend and SRM doors if OIDC is used.
+
+### #
+
+### admin
+
+### bulk
+
+Request-specific pinning is enabled now, but generic
+unpinning is still possible.
+
+dCache now returns 404 instead of 403 if a submitted id in GET or PATCH
+bulk-request is not recognized by the service.
+
+Jobs which originally got stuck in STARTED state now complete;
+their failure information contains the reason for premature
+completion.
+
+### frontend
+
+The property `frontend.srr.public=true|false` is added to
+frontend to control SRR resource restriction. The default
+value is false.
+
+### ftp
+
+The FTP cell is killed asynchronously now after the session terminates
+so the door will remain responsive when many clients terminate their
+FTP session concurrently.
+
+### pool
+
+HTTP-TPC transfers now prefer IPv6 address, if both endpoints support
+it.
+
+If a HSM script survives SIGTERM it will now be stopped
+with SIGKILL and a warning is logged. This reduces expired
+or canceled requests staying in CANCELED state.
+
+If a NFS mover is killed twice it's now logged without a stack trace.
+This provides more stable NFS error recovery, too.
+
+### webdav
+
+Fix handling of 'webdav.authz.allowed-paths' so it no longer triggers a
+NullPointerException if a request targets a path that is not in allowed-paths.
+
+### xroot
+
+Change default TLS to OPTIONAL on pools so defaults for
+xroot TLS are uniform on pools and doors.
+
+
+### Changelog 8.0.0..8.0.1
+
+<!-- git log 8.0.0..8.0.1 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[df6fcc1f9a](https://github.com/dcache/dcache/commit/df6fcc1f9a6985cd78ea26a783217034d3e055b0)
+:   [maven-release-plugin] prepare release 8.0.1
+
+[fc1d423b3d](https://github.com/dcache/dcache/commit/fc1d423b3d77633deac200c5e14df2258e2c4767)
+:   frontend: make srr resources public
+
+[8fee90cce9](https://github.com/dcache/dcache/commit/8fee90cce9aa19dd28c10dbb28e9073f4a2a4a5b)
+:   webdav/frontend/srm/gplazma: log OIDC 'sub' and 'jti' claims
+
+[ca3dbb82f4](https://github.com/dcache/dcache/commit/ca3dbb82f41f11250fcb32cc57b248a0757f5445)
+:   ftp: kill cell asynchronously
+
+[57bceb1b2f](https://github.com/dcache/dcache/commit/57bceb1b2ffc0f39aa383e78292dd6267d233863)
+:   pool: http-tpc prefer IPv6 address
+
+[d8fe9f420c](https://github.com/dcache/dcache/commit/d8fe9f420ccf245c35df18bf33f6d531de7ed6f5)
+:   pool: handle multiple shutdowns of a nfs mover
+
+[3ef40e0f64](https://github.com/dcache/dcache/commit/3ef40e0f64db7e67c0054601c122e8c50c6b93ee)
+:   dcache-bulk: aborted request gets stuck in the STARTED state
+
+[bb223954b7](https://github.com/dcache/dcache/commit/bb223954b7fd2ef3f6eafec261ae59ce0b6987ec)
+:   dcache-bulk: pin by request id and unpin optionally by request
+
+[2b4c8a148c](https://github.com/dcache/dcache/commit/2b4c8a148c098fea04c36cdc00ceea2d0a372d3e)
+:   pool: try to forcefully kill HSM process if needed
+
+[a4b8babd1a](https://github.com/dcache/dcache/commit/a4b8babd1a40feed79c8c0f924727b5a04089524)
+:   admin shell: fix line termination in SshOutputStream
+
+[cdbe5ad0f2](https://github.com/dcache/dcache/commit/cdbe5ad0f2280363948a3bdca02175133b2cad21)
+:   dcache-xroot: set default TLS to OPTIONAL for pools
+
+[edf2a83165](https://github.com/dcache/dcache/commit/edf2a8316579bff26863c3e7e83ad7d5b9f9e5e6)
+:   bulk, frontend-rest: return 404, not 403, when request id does not exist
+
+[b241a4c150](https://github.com/dcache/dcache/commit/b241a4c1500b496eccbc45cae604959d9ed6abd1)
+:   webdav: fix NPE if 'webdav.authz.allowed-paths' disallows a request
+
+[e0b3b623d3](https://github.com/dcache/dcache/commit/e0b3b623d3a326a3c6e7cae85248dc4cf041ed95)
+:   chimera: fix error when adding new label to a file
+
+[a8cb617f44](https://github.com/dcache/dcache/commit/a8cb617f445532bfb8398f20db0e3c80879f662a)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 8.0.0
 
 ### Bulk

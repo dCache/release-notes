@@ -107,6 +107,45 @@ This does not affect functionality.
 (tbd, this section uses markdown formatting)
 
 
+## Release 6.2.41
+
+### frontend
+
+The property `frontend.srr.public=true|false` is added to
+frontend to control SRR resource restriction. The default
+value is false.
+
+### ftp
+
+The FTP cell is killed asynchronously now after the session terminates
+so the door will remain responsive when many clients terminate their
+FTP session concurrently.
+
+### pool
+
+HTTP-TPC transfers now prefer IPv6 address, if both endpoints support
+it.
+
+
+### Changelog 6.2.40..6.2.41
+
+<!-- git log 6.2.40..6.2.41 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[3d046adaea](https://github.com/dcache/dcache/commit/3d046adaea48e7bf64263f1a70ff629758999b7a)
+:   [maven-release-plugin] prepare release 6.2.41
+
+[e17c43ee26](https://github.com/dcache/dcache/commit/e17c43ee261266eeb12857cb581888ec50389264)
+:   frontend: make srr resources public
+
+[9a18970585](https://github.com/dcache/dcache/commit/9a18970585f90a80fa59772c75cdeca1dd12a4a3)
+:   ftp: kill cell asynchronously
+
+[53a22e79ec](https://github.com/dcache/dcache/commit/53a22e79ec40e48cd7fbb34ecacff716e7527357)
+:   pool: http-tpc prefer IPv6 address
+
+[cc2b7dc69a](https://github.com/dcache/dcache/commit/cc2b7dc69ae121cd168fad8454d204e7a4022166)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.2.40
 
 ### common
