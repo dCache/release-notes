@@ -83,9 +83,9 @@ HTML header: <title>dCache 8.0 Release Notes</title>
 The OIDC 'sub' (subject) and 'jti' (JWT ID) claims are logged to
 access log file for WebDav, frontend and SRM doors if OIDC is used.
 
-### #
+### admin-shell
 
-### admin
+Fix the line termination printed to console. It's `\r\n` now.
 
 ### bulk
 
