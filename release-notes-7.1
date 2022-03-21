@@ -165,6 +165,48 @@ NullPointerException.
 [874c4e7a00](https://github.com/dcache/dcache/commit/874c4e7a000eb5371b0ff9582e53af76f59c5e36)
 :   [maven-release-plugin] prepare for next development iteration
 
+
+
+
+## Release 7.1.19
+
+
+### Pool 
+
+The current relase fixed a problem where a file's tape location that used to exist in the
+namespace and was subsequently removed can reappear if the file made
+precious and flushed to tape.
+
+
+### TransferManager
+
+TransferManager  now logs bugs with the corresponding stack-trace,
+making fixes any such bug easier.
+
+### dcahe-core
+
+When asking for count pins `unpin-failed`, only report the number of pins in state `FAILED_TO_UNPIN` and not `PINNING`.
+
+
+### Changelog 7.1.18..7.1.19
+
+
+[b9244d1ec5](https://github.com/dcache/dcache/commit/b9244d1ec58ee5e27fbb0d8221852b1d76f5f4c4)
+:   [maven-release-plugin] prepare release 7.1.19
+
+[374874d77e](https://github.com/dcache/dcache/commit/374874d77e2038c89c8c790323632c816bf42563)
+:   pool: only send new URLs when flushing file
+
+[690a60c4d8](https://github.com/dcache/dcache/commit/690a60c4d80afe0d695f13a00b71b09583e88740)
+:   TransferManager: log bugs with corresponding stack-trace
+
+[a267a7b335](https://github.com/dcache/dcache/commit/a267a7b33510c089e167295c69e3e36ddaf8742e)
+:   dcache-core: fix admin command to query pins by state
+
+[a6d480d918](https://github.com/dcache/dcache/commit/a6d480d918492b928ab46ed318bcbc5e2faee2e3)
+:   [maven-release-plugin] prepare for next development iteration
+
+
 ## Release 7.1.18
 
 ### gplazma
