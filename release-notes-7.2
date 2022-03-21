@@ -202,6 +202,70 @@ NullPointerException.
 [65359b538f](https://github.com/dcache/dcache/commit/65359b538f3cfce564427007ba2acbb655253735)
 :   [maven-release-plugin] prepare for next development iteration
 
+
+## Release 7.2.9
+
+### Pool 
+
+The current relase fixed a problem where a file's tape location that used to exist in the
+namespace and was subsequently removed can reappear if the file made
+precious and flushed to tape.
+
+
+### TransferManager
+
+TransferManager  now logs bugs with the corresponding stack-trace,
+making fixes any such bug easier.
+
+### dcahe-core
+When asking for count pins `unpin-failed`, only report the number of pins in state `FAILED_TO_UNPIN` and not `PINNING`.
+
+
+### srm-server
+Now log `trs tape queue` states when tape requests are added.
+
+
+
+### Changelog 7.2.8..7.2.9
+
+[3f78e6f5b7](https://github.com/dcache/dcache/commit/3f78e6f5b7231444852d8f4543b68041ccb65717)
+:   [maven-release-plugin] prepare release 7.2.9
+
+[3eb7542a49](https://github.com/dcache/dcache/commit/3eb7542a493f4569157b9061c0cc8e4722bee5c3)
+:   CopyManager: reply success when the target transfer completes.
+
+[e41bd289b0](https://github.com/dcache/dcache/commit/e41bd289b04e5257658f034f9e1931a3a7d478a5)
+:   frontend: update dCacheView to v2.0.2
+
+[9b38e4fba2](https://github.com/dcache/dcache/commit/9b38e4fba2a766dedc1256d5c27536d3a6e24f3d)
+:   pool: only send new URLs when flushing file
+
+[dea284457d](https://github.com/dcache/dcache/commit/dea284457d7ddd1d46f602f68ed5aec48b11e00f)
+:   TransferManager: log bugs with corresponding stack-trace
+
+[255ba86249](https://github.com/dcache/dcache/commit/255ba862491d55daed666e0489b9cee36eb52eb7)
+:   dcache-core: fix admin command to query pins by state
+
+[2fc6ff0406](https://github.com/dcache/dcache/commit/2fc6ff040604b9a2438377e0bc1515a1c318adb2)
+:   srm-server: log trs tape queue states when tape requests are added
+
+[3268e0ace8](https://github.com/dcache/dcache/commit/3268e0ace84d19e7766e9a4c94351adee693ef3b)
+:   readme: Remove newline at the end
+
+[8356c837d4](https://github.com/dcache/dcache/commit/8356c837d44caaf4691a6d9505e7ea63a31e50df)
+:   Update config-xrootd.md
+
+[6458b47484](https://github.com/dcache/dcache/commit/6458b474846b46fb21d1f05998a8a573baaa466e)
+:   Update config-xrootd.md
+
+[2e124bb413](https://github.com/dcache/dcache/commit/2e124bb413e7da6310931443a2ab59562c826c00)
+:   book: Add chapter about telemetry cell
+
+[68ade2a7e0](https://github.com/dcache/dcache/commit/68ade2a7e0a9892fce3b45909fa80aa70ed00ca7)
+:   [maven-release-plugin] prepare for next development iteration
+
+
+
 ## Release 7.2.8
 
 ### dcacheview
