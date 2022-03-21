@@ -178,10 +178,6 @@ precious and flushed to tape.
 TransferManager  now logs bugs with the corresponding stack-trace,
 making fixes any such bug easier.
 
-### dcahe-core
-
-When asking for count pins `unpin-failed`, only report the number of pins in state `FAILED_TO_UNPIN` and not `PINNING`.
-
 
 ### Changelog 7.0.27..7.0.28
 
@@ -195,8 +191,6 @@ When asking for count pins `unpin-failed`, only report the number of pins in sta
 [690a60c4d8](https://github.com/dcache/dcache/commit/690a60c4d80afe0d695f13a00b71b09583e88740)
 :   TransferManager: log bugs with corresponding stack-trace
 
-[a267a7b335](https://github.com/dcache/dcache/commit/a267a7b33510c089e167295c69e3e36ddaf8742e)
-:   dcache-core: fix admin command to query pins by state
 
 [a6d480d918](https://github.com/dcache/dcache/commit/a6d480d918492b928ab46ed318bcbc5e2faee2e3)
 :   [maven-release-plugin] prepare for next development iteration

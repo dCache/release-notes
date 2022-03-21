@@ -192,6 +192,43 @@ NullPointerException.
 [a8cc3908f1](https://github.com/dcache/dcache/commit/a8cc3908f15e381a692d43d0ca2e351d6e3c22d9)
 :   [maven-release-plugin] prepare for next development iteration
 
+
+## Release 6.2.39
+
+
+
+### Pool 
+
+The current relase fixed a problem where a file's tape location that used to exist in the
+namespace and was subsequently removed can reappear if the file made
+precious and flushed to tape.
+
+
+### TransferManager
+
+TransferManager  now logs bugs with the corresponding stack-trace,
+making fixes any such bug easier.
+
+
+### Changelog 6.2.38..6.2.39
+
+
+[dda1e54814](https://github.com/dcache/dcache/commit/dda1e54814e73febc90dcc54b72d2c22dd6f447f)
+:   [maven-release-plugin] prepare release 6.2.39
+
+[89add8b061](https://github.com/dcache/dcache/commit/89add8b06144da6ecabbbc309430f6e9d35c091a)
+:   pool: only send new URLs when flushing file
+
+[2d55238b5d](https://github.com/dcache/dcache/commit/2d55238b5d05d0aaf453646aea506994235d9c8b)
+:   TransferManager: log bugs with corresponding stack-trace
+
+[10cc03a78b](https://github.com/dcache/dcache/commit/10cc03a78b780777ea6217e1ed1ddb5bf4bf9f65)
+:   book: Add chapter about telemetry cell
+
+[415450e545](https://github.com/dcache/dcache/commit/415450e5450b8d4b67046248ca570a48adb4c65b)
+:   [maven-release-plugin] prepare for next development iteration
+
+
 ## Release 6.2.38
 
 ### gplazma
