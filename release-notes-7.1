@@ -80,6 +80,82 @@ HTML header: <title>dCache 7.1 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 7.1.22
+
+### dcache-chimera
+
+Cleaner batch delete exception has been fixed.
+
+
+### frontend
+
+A bug is fixed that inverted the property `frontend.srr.public=true`.
+True means now `allow public access` and false does not.
+
+
+### Changelog 7.1.21..7.1.22
+
+<!-- git log 7.1.21..7.1.22 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[ab2f370a27](https://github.com/dcache/dcache/commit/ab2f370a2779b4ffec4672b6bd07c398e32fbf06)
+:   [maven-release-plugin] prepare release 7.1.22
+
+[c3329dd078](https://github.com/dcache/dcache/commit/c3329dd078c953922a704bdafd809b2726337785)
+:   nearline-storage: fix request count on error path in AbstractRequest#failed
+
+[6e158a9066](https://github.com/dcache/dcache/commit/6e158a90663480105949182665712d3c5f3066a5)
+:   nearline-storage: fix queued count when request initialization falied
+
+[9d4691f47e](https://github.com/dcache/dcache/commit/9d4691f47e8ac1814210707dc7f83f626e804f9e)
+:   pool: add bunch of unit tests for NearlineStorageHandlerTest
+
+[0958beb231](https://github.com/dcache/dcache/commit/0958beb23148949e7beeb7cebde7f33e34ee005c)
+:   frontend: fix problem with making SRR resources public
+
+[6ab44887b9](https://github.com/dcache/dcache/commit/6ab44887b9e1879c90021e826749c65643911d82)
+:   dcache-chimera: fix cleaner batch delete exception
+
+[1d4b4c23eb](https://github.com/dcache/dcache/commit/1d4b4c23eb45e157f2c22d6d1d32e82fc62ea21d)
+:   [maven-release-plugin] prepare for next development iteration
+
+## Release 7.1.22
+
+### dcache-chimera
+
+Cleaner batch delete exception has been fixed.
+
+
+### frontend
+
+A bug is fixed that inverted the property `frontend.srr.public=true`.
+True means now `allow public access` and false does not.
+
+
+### Changelog 7.1.21..7.1.22
+
+<!-- git log 7.1.21..7.1.22 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[ab2f370a27](https://github.com/dcache/dcache/commit/ab2f370a2779b4ffec4672b6bd07c398e32fbf06)
+:   [maven-release-plugin] prepare release 7.1.22
+
+[c3329dd078](https://github.com/dcache/dcache/commit/c3329dd078c953922a704bdafd809b2726337785)
+:   nearline-storage: fix request count on error path in AbstractRequest#failed
+
+[6e158a9066](https://github.com/dcache/dcache/commit/6e158a90663480105949182665712d3c5f3066a5)
+:   nearline-storage: fix queued count when request initialization falied
+
+[9d4691f47e](https://github.com/dcache/dcache/commit/9d4691f47e8ac1814210707dc7f83f626e804f9e)
+:   pool: add bunch of unit tests for NearlineStorageHandlerTest
+
+[0958beb231](https://github.com/dcache/dcache/commit/0958beb23148949e7beeb7cebde7f33e34ee005c)
+:   frontend: fix problem with making SRR resources public
+
+[6ab44887b9](https://github.com/dcache/dcache/commit/6ab44887b9e1879c90021e826749c65643911d82)
+:   dcache-chimera: fix cleaner batch delete exception
+
+[1d4b4c23eb](https://github.com/dcache/dcache/commit/1d4b4c23eb45e157f2c22d6d1d32e82fc62ea21d)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 7.1.21
 
 ### frontend

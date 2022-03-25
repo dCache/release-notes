@@ -76,6 +76,172 @@ HTML header: <title>dCache 8.0 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 8.0.2
+
+### dcache-chimera
+
+Cleaner batch delete exception has been fixed.
+
+
+Chimera shell support has been added for getting, adding and removing sha1, sha156 and sha512 valued checksums.
+
+User's guid has been updated.
+
+### dcache-core
+
+Sha-1 checksums can and must now correctly be requested as sha, as defined by RFC 3230.
+
+### frontend
+
+A bug is fixed that inverted the property `frontend.srr.public=true`.
+True means now `allow public access` and false does not.
+
+### nfs
+
+user subject always available in the processing thread.
+
+### srr
+
+
+LinkLocal address will not be  published.
+
+### util
+
+nfs door has been updated  to map broken file to IO error.
+
+
+### Changelog 8.0.1..8.0.2
+
+<!-- git log 8.0.1..8.0.2 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[f5ff9dcb2a](https://github.com/dcache/dcache/commit/f5ff9dcb2a4febc960e93ba4f8b8c1f217d754df)
+:   [maven-release-plugin] prepare release 8.0.2
+
+[ee5c3329de](https://github.com/dcache/dcache/commit/ee5c3329ded46058a8456ccc01dae36c87462823)
+:   srr: don't publish link local addresses (v2)
+
+[1e386a1be7](https://github.com/dcache/dcache/commit/1e386a1be73e8f1c3a589e3a3c645b2509a6899c)
+:   util: treat broken file as unrecoverable error in Trnasfer class
+
+[bd8fefa54a](https://github.com/dcache/dcache/commit/bd8fefa54a8e3ac2d634eea3a2d72d4d5735be58)
+:   nearline-storage: fix request count on error path in AbstractRequest#failed
+
+[4ababb6902](https://github.com/dcache/dcache/commit/4ababb69028830c3eb2069ec594337b77c45d61a)
+:   nearline-storage: fix queued count when request initialization falied
+
+[3e492aef9f](https://github.com/dcache/dcache/commit/3e492aef9fd3fdcce5ca238e6f4d54411e985d8b)
+:   pool: add bunch of unit tests for NearlineStorageHandlerTest
+
+[ee191ff429](https://github.com/dcache/dcache/commit/ee191ff429629b078215b58bdd0cdb1ca0f27355)
+:    UderGuide: describe supported checksums, add example including sha
+
+[c052e902da](https://github.com/dcache/dcache/commit/c052e902da4eb59e63a4be29b2393ad7bff697b9)
+:   frontend: fix problem with making SRR resources public
+
+[80a277d033](https://github.com/dcache/dcache/commit/80a277d033c4aa42ea45c6fd9f259eb6d416d583)
+:   dcache-chimera: add sha checksum commands to chimera shell
+
+[fdbd2cbe2c](https://github.com/dcache/dcache/commit/fdbd2cbe2c8afa15c83f589bf7e77745a5d75947)
+:   dcache-core,common: fix user having to request `sha-1`, not `sha`
+
+[7e189ce96e](https://github.com/dcache/dcache/commit/7e189ce96e16459e628997cdb4c76e07abcb7604)
+:   nfs: enforce subject propagation on RPC level
+
+[0a0b7f6c14](https://github.com/dcache/dcache/commit/0a0b7f6c149c217fdd430838f29dd64f9074bd5c)
+:   dcache-core: prevent ocasional message ttl test failure
+
+[f05ff3b670](https://github.com/dcache/dcache/commit/f05ff3b6700dda0a85a9d8ffcb3d95c59f110d1a)
+:   Fix typo
+
+[c2b795c275](https://github.com/dcache/dcache/commit/c2b795c275a69b1ece06196195a9b74a062301a3)
+:   dcache-chimera: fix cleaner batch delete exception
+
+[8280d097a4](https://github.com/dcache/dcache/commit/8280d097a4e5598403ad6efdf9fd0ad979e477e3)
+:   [maven-release-plugin] prepare for next development iteration
+
+## Release 8.0.2
+
+### dcache-chimera
+
+Cleaner batch delete exception has been fixed.
+
+
+Chimera shell support has been added for getting, adding and removing sha1, sha156 and sha512 valued checksums.
+
+User's guid has been updated.
+
+### dcache-core
+
+Sha-1 checksums can and must now correctly be requested as sha, as defined by RFC 3230.
+
+### frontend
+
+A bug is fixed that inverted the property `frontend.srr.public=true`.
+True means now `allow public access` and false does not.
+
+### nfs
+
+user subject always available in the processing thread.
+
+### srr
+
+
+LinkLocal address will not be  published.
+
+### util
+
+nfs door has been updated  to map broken file to IO error.
+
+
+### Changelog 8.0.1..8.0.2
+
+<!-- git log 8.0.1..8.0.2 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[f5ff9dcb2a](https://github.com/dcache/dcache/commit/f5ff9dcb2a4febc960e93ba4f8b8c1f217d754df)
+:   [maven-release-plugin] prepare release 8.0.2
+
+[ee5c3329de](https://github.com/dcache/dcache/commit/ee5c3329ded46058a8456ccc01dae36c87462823)
+:   srr: don't publish link local addresses (v2)
+
+[1e386a1be7](https://github.com/dcache/dcache/commit/1e386a1be73e8f1c3a589e3a3c645b2509a6899c)
+:   util: treat broken file as unrecoverable error in Trnasfer class
+
+[bd8fefa54a](https://github.com/dcache/dcache/commit/bd8fefa54a8e3ac2d634eea3a2d72d4d5735be58)
+:   nearline-storage: fix request count on error path in AbstractRequest#failed
+
+[4ababb6902](https://github.com/dcache/dcache/commit/4ababb69028830c3eb2069ec594337b77c45d61a)
+:   nearline-storage: fix queued count when request initialization falied
+
+[3e492aef9f](https://github.com/dcache/dcache/commit/3e492aef9fd3fdcce5ca238e6f4d54411e985d8b)
+:   pool: add bunch of unit tests for NearlineStorageHandlerTest
+
+[ee191ff429](https://github.com/dcache/dcache/commit/ee191ff429629b078215b58bdd0cdb1ca0f27355)
+:    UderGuide: describe supported checksums, add example including sha
+
+[c052e902da](https://github.com/dcache/dcache/commit/c052e902da4eb59e63a4be29b2393ad7bff697b9)
+:   frontend: fix problem with making SRR resources public
+
+[80a277d033](https://github.com/dcache/dcache/commit/80a277d033c4aa42ea45c6fd9f259eb6d416d583)
+:   dcache-chimera: add sha checksum commands to chimera shell
+
+[fdbd2cbe2c](https://github.com/dcache/dcache/commit/fdbd2cbe2c8afa15c83f589bf7e77745a5d75947)
+:   dcache-core,common: fix user having to request `sha-1`, not `sha`
+
+[7e189ce96e](https://github.com/dcache/dcache/commit/7e189ce96e16459e628997cdb4c76e07abcb7604)
+:   nfs: enforce subject propagation on RPC level
+
+[0a0b7f6c14](https://github.com/dcache/dcache/commit/0a0b7f6c149c217fdd430838f29dd64f9074bd5c)
+:   dcache-core: prevent ocasional message ttl test failure
+
+[f05ff3b670](https://github.com/dcache/dcache/commit/f05ff3b6700dda0a85a9d8ffcb3d95c59f110d1a)
+:   Fix typo
+
+[c2b795c275](https://github.com/dcache/dcache/commit/c2b795c275a69b1ece06196195a9b74a062301a3)
+:   dcache-chimera: fix cleaner batch delete exception
+
+[8280d097a4](https://github.com/dcache/dcache/commit/8280d097a4e5598403ad6efdf9fd0ad979e477e3)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 8.0.1
 
 ### Changes affecting multiple services

@@ -71,6 +71,160 @@ Support for a dedicated scheduling strategy for bring-online requests was added 
 
 This release doesn't have any incompatibilities.
 
+## Release 7.2.12
+
+### dcache-chimera
+
+Cleaner batch delete exception has been fixed.
+
+
+Chimera shell support has been added for getting, adding and removing sha1, sha156 and sha512 valued checksums.
+
+User's guid has been updated.
+
+### dcache-core
+
+Sha-1 checksums can and must now correctly be requested as sha, as defined by RFC 3230.
+
+### frontend
+
+A bug is fixed that inverted the property `frontend.srr.public=true`.
+True means now `allow public access` and false does not.
+
+### nfs
+
+user subject always available in the processing thread.
+
+### srr
+
+
+LinkLocal address will not be  published.
+
+### util
+
+nfs door has been updated  to map broken file to IO error.
+
+
+### Changelog 7.2.11..7.2.12
+
+<!-- git log 7.2.11..7.2.12 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[f833efb11a](https://github.com/dcache/dcache/commit/f833efb11ab28e58d07580bae4a0e8b52e5903cb)
+:   [maven-release-plugin] prepare release 7.2.12
+
+[2c2c48baf2](https://github.com/dcache/dcache/commit/2c2c48baf22ccf286eef56097653f4a752ea4810)
+:   srr: don't publish link local addresses (v2)
+
+[ee246b02a1](https://github.com/dcache/dcache/commit/ee246b02a1122708622dbbca52cdf136af060801)
+:   util: treat broken file as unrecoverable error in Trnasfer class
+
+[f498803529](https://github.com/dcache/dcache/commit/f498803529c3ef74a99c56e1eab2d6b3f4f499b0)
+:   nearline-storage: fix request count on error path in AbstractRequest#failed
+
+[e00ac992b4](https://github.com/dcache/dcache/commit/e00ac992b4864e6a85b2e4bd676466a9b9bdb52f)
+:   nearline-storage: fix queued count when request initialization falied
+
+[da08b097eb](https://github.com/dcache/dcache/commit/da08b097eb013d43ba7a9065eb9f355d55376c02)
+:   pool: add bunch of unit tests for NearlineStorageHandlerTest
+
+[8fede904e3](https://github.com/dcache/dcache/commit/8fede904e3bedf5852e07b9886a42b01ef5e8e6e)
+:   UserGuide: describe supported checksums, add example including sha
+
+[62757d2630](https://github.com/dcache/dcache/commit/62757d2630cc7b2b69af702bb04ebc289a723a6d)
+:   frontend: fix problem with making SRR resources public
+
+[3a1cb7e1ff](https://github.com/dcache/dcache/commit/3a1cb7e1ff8b0b7710e85ef06c46a2eafe72b2fa)
+:   dcache-chimera: add sha checksum commands to chimera shell
+
+[9f04c91f51](https://github.com/dcache/dcache/commit/9f04c91f5103638834fe95ab4dd89c8a21f98652)
+:   dcache-core,common: fix user having to request `sha-1`, not `sha`
+
+[6a3c3e30a1](https://github.com/dcache/dcache/commit/6a3c3e30a152b73d3f748944bec36de2aeeb45e9)
+:   nfs: enforce subject propagation on RPC level
+
+[f6e1075015](https://github.com/dcache/dcache/commit/f6e1075015425a2b0db585419843eac7dbed153c)
+:   dcache-chimera: fix cleaner batch delete exception
+
+[0e7f23bc05](https://github.com/dcache/dcache/commit/0e7f23bc056d0c3b9293ad85bce654f60b837c80)
+:   [maven-release-plugin] prepare for next development iteration
+
+## Release 7.2.12
+
+### dcache-chimera
+
+Cleaner batch delete exception has been fixed.
+
+
+Chimera shell support has been added for getting, adding and removing sha1, sha156 and sha512 valued checksums.
+
+User's guid has been updated.
+
+### dcache-core
+
+Sha-1 checksums can and must now correctly be requested as sha, as defined by RFC 3230.
+
+### frontend
+
+A bug is fixed that inverted the property `frontend.srr.public=true`.
+True means now `allow public access` and false does not.
+
+### nfs
+
+user subject always available in the processing thread.
+
+### srr
+
+
+LinkLocal address will not be  published.
+
+### util
+
+nfs door has been updated  to map broken file to IO error.
+
+
+### Changelog 7.2.11..7.2.12
+
+<!-- git log 7.2.11..7.2.12 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[f833efb11a](https://github.com/dcache/dcache/commit/f833efb11ab28e58d07580bae4a0e8b52e5903cb)
+:   [maven-release-plugin] prepare release 7.2.12
+
+[2c2c48baf2](https://github.com/dcache/dcache/commit/2c2c48baf22ccf286eef56097653f4a752ea4810)
+:   srr: don't publish link local addresses (v2)
+
+[ee246b02a1](https://github.com/dcache/dcache/commit/ee246b02a1122708622dbbca52cdf136af060801)
+:   util: treat broken file as unrecoverable error in Trnasfer class
+
+[f498803529](https://github.com/dcache/dcache/commit/f498803529c3ef74a99c56e1eab2d6b3f4f499b0)
+:   nearline-storage: fix request count on error path in AbstractRequest#failed
+
+[e00ac992b4](https://github.com/dcache/dcache/commit/e00ac992b4864e6a85b2e4bd676466a9b9bdb52f)
+:   nearline-storage: fix queued count when request initialization falied
+
+[da08b097eb](https://github.com/dcache/dcache/commit/da08b097eb013d43ba7a9065eb9f355d55376c02)
+:   pool: add bunch of unit tests for NearlineStorageHandlerTest
+
+[8fede904e3](https://github.com/dcache/dcache/commit/8fede904e3bedf5852e07b9886a42b01ef5e8e6e)
+:   UserGuide: describe supported checksums, add example including sha
+
+[62757d2630](https://github.com/dcache/dcache/commit/62757d2630cc7b2b69af702bb04ebc289a723a6d)
+:   frontend: fix problem with making SRR resources public
+
+[3a1cb7e1ff](https://github.com/dcache/dcache/commit/3a1cb7e1ff8b0b7710e85ef06c46a2eafe72b2fa)
+:   dcache-chimera: add sha checksum commands to chimera shell
+
+[9f04c91f51](https://github.com/dcache/dcache/commit/9f04c91f5103638834fe95ab4dd89c8a21f98652)
+:   dcache-core,common: fix user having to request `sha-1`, not `sha`
+
+[6a3c3e30a1](https://github.com/dcache/dcache/commit/6a3c3e30a152b73d3f748944bec36de2aeeb45e9)
+:   nfs: enforce subject propagation on RPC level
+
+[f6e1075015](https://github.com/dcache/dcache/commit/f6e1075015425a2b0db585419843eac7dbed153c)
+:   dcache-chimera: fix cleaner batch delete exception
+
+[0e7f23bc05](https://github.com/dcache/dcache/commit/0e7f23bc056d0c3b9293ad85bce654f60b837c80)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 7.2.11
 
 ### Changes affecting multiple services
