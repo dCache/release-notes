@@ -76,6 +76,28 @@ HTML header: <title>dCache 8.0 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 8.0.3
+
+### dcache-xroot
+
+A ZTN token can now be given without further downstream
+tokens expressed, and full authorization of the subject
+will take place.
+
+
+### Changelog 8.0.2..8.0.3
+
+<!-- git log 8.0.2..8.0.3 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[e7fc0dc8e9](https://github.com/dcache/dcache/commit/e7fc0dc8e9eb20acd4f60af84d185dfbb491d7e8)
+:   [maven-release-plugin] prepare release 8.0.3
+
+[40681c2702](https://github.com/dcache/dcache/commit/40681c2702e0cc0fa0f0be15af38c532d35901de)
+:   dcache-xroot: Allow ZTN authentication to function as fallback authorization
+
+[fa567e2bc2](https://github.com/dcache/dcache/commit/fa567e2bc2afd7ea15fa57725844f79512f27cb8)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 8.0.2
 
 ### dcache-chimera
