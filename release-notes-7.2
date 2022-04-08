@@ -71,6 +71,42 @@ Support for a dedicated scheduling strategy for bring-online requests was added 
 
 This release doesn't have any incompatibilities.
 
+## Release 7.2.14
+
+### pnfsmanager
+
+Doors no longer allow a user to discover whether or not a file or
+directory exists within directories they cannot access.
+
+### pom
+
+Updated spring libs to version 5.2.20, CVE-2022-22965
+
+### pool
+
+The pool now provides more information when a migration job was
+cancelled.
+
+
+### Changelog 7.2.13..7.2.14
+
+<!-- git log 7.2.13..7.2.14 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[a18f2adb33](https://github.com/dcache/dcache/commit/a18f2adb33807df61a011a015e0a418932ff3b45)
+:   [maven-release-plugin] prepare release 7.2.14
+
+[b95737de1e](https://github.com/dcache/dcache/commit/b95737de1ec0b19a4d76e237dc168dcda9653e96)
+:   pom: update spring libs to 5.2.20
+
+[f4c804724c](https://github.com/dcache/dcache/commit/f4c804724c52aeac6d7f3786a9504289afa70ecd)
+:   pool: describe why migration job was cancelled
+
+[e9ee3233ae](https://github.com/dcache/dcache/commit/e9ee3233aef6427a68ca037167e48ba26b428f08)
+:   pnfsmanager: avoid leaking whether or not file exists
+
+[e263b9ace3](https://github.com/dcache/dcache/commit/e263b9ace3981fa1eeb99e8a4b5b985826dc57ba)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 7.2.13
 
 ### dcache-xroot

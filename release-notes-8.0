@@ -76,6 +76,42 @@ HTML header: <title>dCache 8.0 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 8.0.4
+
+### pnfsmanager
+
+Doors no longer allow a user to discover whether or not a file or
+directory exists within directories they cannot access.
+
+### pom
+
+Updated spring libs to version 5.2.20, CVE-2022-22965
+
+### pool
+
+The pool now provides more information when a migration job was
+cancelled.
+
+
+### Changelog 8.0.3..8.0.4
+
+<!-- git log 8.0.3..8.0.4 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[5d7043b9e6](https://github.com/dcache/dcache/commit/5d7043b9e610bf56790554602eea120d97899350)
+:   [maven-release-plugin] prepare release 8.0.4
+
+[6654c88269](https://github.com/dcache/dcache/commit/6654c88269fb4acf1fb1da0cfd6c562e81ebf162)
+:   pom: update spring libs to 5.2.20
+
+[3506bcd74f](https://github.com/dcache/dcache/commit/3506bcd74f0e413d612021ac23a5794e8c5a55b6)
+:   pool: describe why migration job was cancelled
+
+[9f0d88d370](https://github.com/dcache/dcache/commit/9f0d88d3704f9e47a0a8f16fbd451203d5e55ebc)
+:   pnfsmanager: avoid leaking whether or not file exists
+
+[476efc5c11](https://github.com/dcache/dcache/commit/476efc5c11cf83c46ce07601d02fcdb3cc7de833)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 8.0.3
 
 ### dcache-xroot

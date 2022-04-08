@@ -107,6 +107,34 @@ This does not affect functionality.
 (tbd, this section uses markdown formatting)
 
 
+## Release 6.2.43
+
+### pnfsmanager
+
+Doors no longer allow a user to discover whether or not a file or
+directory exists within directories they cannot access.
+
+### pom
+
+Updated spring libs to version 5.2.20, CVE-2022-22965
+
+
+### Changelog 6.2.42..6.2.43
+
+<!-- git log 6.2.42..6.2.43 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[ceb303f5e6](https://github.com/dcache/dcache/commit/ceb303f5e6ee44b512b4be385eaf09e81ed94d82)
+:   [maven-release-plugin] prepare release 6.2.43
+
+[f45fce2e15](https://github.com/dcache/dcache/commit/f45fce2e15b4160b14f3629983863e62134d22cd)
+:   pnfsmanager: avoid leaking whether or not file exists
+
+[1294a04939](https://github.com/dcache/dcache/commit/1294a049398a771d78ac504fb50e05ecffef871b)
+:   pom: update spring libs to 5.2.20
+
+[dd3d12ba71](https://github.com/dcache/dcache/commit/dd3d12ba7138734fc0b2a5eb871f60081b61db6c)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.2.42
 
 ### dcache-chimera

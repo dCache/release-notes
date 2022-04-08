@@ -80,6 +80,34 @@ HTML header: <title>dCache 7.1 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 7.1.24
+
+### pnfsmanager
+
+Doors no longer allow a user to discover whether or not a file or
+directory exists within directories they cannot access.
+
+### pom
+
+Updated spring libs to version 5.2.20, CVE-2022-22965
+
+
+### Changelog 7.1.23..7.1.24
+
+<!-- git log 7.1.23..7.1.24 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[a4bb32c195](https://github.com/dcache/dcache/commit/a4bb32c19582b4de4f469459c1b06dac2233b912)
+:   [maven-release-plugin] prepare release 7.1.24
+
+[d0034a46ef](https://github.com/dcache/dcache/commit/d0034a46efc83556b59e5c889f45d623efa4c059)
+:   pom: update spring libs to 5.2.20
+
+[ad33bcd006](https://github.com/dcache/dcache/commit/ad33bcd0062e8077ec69a6c68644ab547e4c7a93)
+:   pnfsmanager: avoid leaking whether or not file exists
+
+[7e75efc6b7](https://github.com/dcache/dcache/commit/7e75efc6b75a604a735bdc863e8f5d1f7731cc55)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 7.1.23
 
 ### dcache-xroot
