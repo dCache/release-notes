@@ -117,7 +117,7 @@ update to support host names.
 
 ### NFS
 
-If requested files has in a `BROKEN` state, then NFS door will tell client to try later. Though, some `BROKEN` files can be fixed by sysadmins, typically nfs client will block and bekome inresponceive. To avoid hanging nfs clients, startng with this release NFS door will fail request to broken files and return EIO error to a client application.
+If requested files has in a `BROKEN` state, then NFS door will tell client to try later. Though, some `BROKEN` files can be fixed by sysadmins, typically nfs client will block and bekome inresponceive. To avoid hanging nfs clients, startng with this release NFS door will fail request to broken files and return EIO error to a client application
 
 ### Pinmanager
 
@@ -126,6 +126,8 @@ If requested files has in a `BROKEN` state, then NFS door will tell client to tr
 Plugins can use admin commands now if they implement `CellDynamicCommandProvider`. If an instance of the plugin is created in a pool, its annotated commands are added with the instance name as a prefix. By deleting the plugin instance, the added commands are also removed.
 
 ### PNFS Manager
+
+Fixes file attribute change time update on modification of extended attributes for PostgreSQL backend.
 
 ### Pool
 
