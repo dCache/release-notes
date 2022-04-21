@@ -76,6 +76,29 @@ HTML header: <title>dCache 8.0 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 8.0.5
+
+### script
+
+Direct deprecation warnings are now redirected to stderr.
+
+
+### Changelog 8.0.4..8.0.5
+
+<!-- git log 8.0.4..8.0.5 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[2901d045e5](https://github.com/dcache/dcache/commit/2901d045e56f98ae9a2df1f29b4c125a3816dc5c)
+:   [maven-release-plugin] prepare release 8.0.5
+
+[b9e835c028](https://github.com/dcache/dcache/commit/b9e835c028298c14373e2bdef3a9218c5455ef55)
+:   info: fix broken unit-test, remove redundant one
+
+[1eb775efa2](https://github.com/dcache/dcache/commit/1eb775efa28d7000b078feadc2c10600da198860)
+:   dcache script: redirect deprecation warning to stderr
+
+[bf93e96c83](https://github.com/dcache/dcache/commit/bf93e96c83d473202c85bd695b2c51adcf0272d9)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 8.0.4
 
 ### pnfsmanager
