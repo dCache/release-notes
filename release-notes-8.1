@@ -149,6 +149,12 @@ Fixes file attribute change time update on modification of extended attributes f
 
 ### WebDAV
 
+webdav.redirect.allow-https and pool.enable.encrypted-transfers are now set by default to true.
+The reason is that HTTPS redirects from HTTP are dangerous and are going to  be blocked soon (or already blocked ) by all browsers  due to abuse.
+The original HTTPS link should be now redirected to HTTPS and not to HTTP.
+
+webdav.redirect.allow-https and pool.enable.encrypted-transfers are now set by default to true.
+
 ### XRootD
 
 ### Zookeeper
