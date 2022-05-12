@@ -107,6 +107,58 @@ This does not affect functionality.
 (tbd, this section uses markdown formatting)
 
 
+## Release 6.2.45
+
+### dcache
+
+Improved documentation for kafka Producer  properties.
+
+
+Improved error message for inexistent statistics path.
+
+### dcache-xroot
+
+The current relase Updated master xrootd4j to 4.3.0.
+
+
+### frontend
+
+NPE is fixed when SRR when space information is not available yet.
+
+### xrootd
+
+Rendezvous TPC without requiring a JWT token to be passed
+by the third-party client is possible (again).
+
+
+### Changelog 6.2.44..6.2.45
+
+<!-- git log 6.2.44..6.2.45 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[ce13ea9f9c](https://github.com/dcache/dcache/commit/ce13ea9f9c4d595fe15f878f68c59d41f8d7d7f5)
+:   [maven-release-plugin] prepare release 6.2.45
+
+[5356036597](https://github.com/dcache/dcache/commit/5356036597bcfae428870aed73ec3598abed0206)
+:   dcache:improve documentation for kafka properties
+
+[b7816f31bc](https://github.com/dcache/dcache/commit/b7816f31bc2feac2f05b7547ed29054b6c8e0bdf)
+:   added missing import statement to XrootdRedirectHandler
+
+[cc9fe9c458](https://github.com/dcache/dcache/commit/cc9fe9c45891e4fb9dcbd654c3fbfdcdbeeace9a)
+:   dcache-xrootd: fix TPC rendezvous to work with token authorization
+
+[9074653311](https://github.com/dcache/dcache/commit/9074653311fcae23b9742313e372e8d7c39dd814)
+:   frontend: fix NPE in SRR when space information is not available yet.
+
+[4d87218ff8](https://github.com/dcache/dcache/commit/4d87218ff82d6800f03a4df0016f3a9263592f65)
+:   dcache-xroot: update master xrootd4j to 4.3.0, and stable branches to next minor version
+
+[552471dd34](https://github.com/dcache/dcache/commit/552471dd34ddf98e0680d71e73dea63eba11c694)
+:   dcache-core: improve error message for inexistent statistics path
+
+[298769c978](https://github.com/dcache/dcache/commit/298769c97888094235e38ba34f8ff93fb53b6ec8)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.2.44
 
 Technical release
