@@ -75,9 +75,7 @@ HTML header: <title>dCache 8.1 Release Notes</title>
 
 ## Release 8.1.0
 
-### Admin
 
-### Billing
 
 ### Cells
 
@@ -93,33 +91,15 @@ known in advance, but the exposed service name.
 To support operation in such environemnts the property handling is
 update to support host names.
 
-### Cleaner
 
-### Checksums
 
-### DCAP
 
-### Frontend
-
-### FTP
-
-### gplazma
-
-### History
-
-### Hoppingmanager
-
-### httpd
-
-### Info
-
-### Missing Files
 
 ### NFS
 
 If requested files has in a `BROKEN` state, then NFS door will tell client to try later. Though, some `BROKEN` files can be fixed by sysadmins, typically nfs client will block and bekome inresponceive. To avoid hanging nfs clients, startng with this release NFS door will fail request to broken files and return EIO error to a client application
 
-### Pinmanager
+
 
 ### Plugin
 
@@ -129,23 +109,7 @@ Plugins can use admin commands now if they implement `CellDynamicCommandProvider
 
 Fixes file attribute change time update on modification of extended attributes for PostgreSQL backend.
 
-### Pool
 
-### Poolmanager
-
-### Resilience
-
-### Space Manager
-
-### SRM
-
-### SRM Manager
-
-### Statistics
-
-### Topo
-
-### Transfer Managers
 
 ### WebDAV
 
@@ -153,11 +117,8 @@ webdav.redirect.allow-https and pool.enable.encrypted-transfers are now set by d
 The reason is that HTTPS redirects from HTTP are dangerous and are going to  be blocked soon (or already blocked ) by all browsers  due to abuse.
 The original HTTPS link should be now redirected to HTTPS and not to HTTP.
 
-webdav.redirect.allow-https and pool.enable.encrypted-transfers are now set by default to true.
+`webdav.redirect.allow-https` and `pool.enable.encrypted-transfers` are now set by default to true.
 
-### XRootD
-
-### Zookeeper
 
 ### Changelog from 8.0.0 to 8.1.0
 
