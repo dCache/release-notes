@@ -167,6 +167,47 @@
     <br/>
   </preamble>
 
+	   <series id="server-8.1">
+            <title>server 8.1.x</title>
+
+            <description>
+                <p>dCache 8.1 is a Feature Release introducing following highlights:</p>
+                <ul>
+                    <li>`webdav.redirect.allow-https` and `pool.enable.encrypted-transfers` are now set by default to true</li>
+	    </ul>
+		 <p>Incompatibilities</p>
+        	<li>the `org.dcache.net.localaddresses` accepts host names</li>
+        	<li>NFS transfers will fail with EIO for broken files</li>
+
+                <p>dCache v8.1 requires a JVM supporting  Java 11.</p>
+            </description>
+
+            <releases>
+                <name>dCache VERSION</name>
+                <download-url-prefix>repo/8.1/dcache</download-url-prefix>
+                <notes-url>release-notes-8.1.shtml</notes-url>
+                <version-prefix>8.1.</version-prefix>
+           
+
+      <release version="0" recommended="1">
+        <date>19.5.2022</date>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>dcc3ddf8faf7f1d58a16fea00e20838c</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>af72eeee7ac27f53b9fe4b35b45314d2</md5sum>
+        </package>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>455143c5a3b69f555f54e136f4e6f4a4</md5sum>
+        </package>
+      </release>
+
+      </releases>
+        </series>
+
   
 
    <series id="server-8.0">
