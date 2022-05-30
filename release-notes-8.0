@@ -105,6 +105,35 @@ Rendezvous TPC without requiring a JWT token to be passed
 by the third-party client is possible (again).
 
 
+
+### Changelog 8.0.5..8.0.6
+
+[a92fa0cf2d](https://github.com/dcache/dcache/commit/a92fa0cf2d4e82b66526f958e71c68adc2abfcb4)
+:   [maven-release-plugin] prepare release 8.0.6
+
+[d488867ee8](https://github.com/dcache/dcache/commit/d488867ee851522bc7c0003038f4bbf427e3c50f)
+:   dcache:improve documentation for kafka properties
+
+[4389adec33](https://github.com/dcache/dcache/commit/4389adec331fc3b1867ebeab021e2dec603f8153)
+:   nfs: re-send kill only for write movers
+
+[cc04c4f5dd](https://github.com/dcache/dcache/commit/cc04c4f5dd5693e83a0b08f65d2871dd87061c2c)
+:   dcache-xrootd: fix TPC rendezvous to work with token authorization
+
+[675302e989](https://github.com/dcache/dcache/commit/675302e989d9a55f92562ed6bb6fc142c76fbe9d)
+:   dcache-core: improve error message for inexistent statistics path
+
+[2fe8b1446f](https://github.com/dcache/dcache/commit/2fe8b1446f1d8b615638db666a44c019102a9307)
+:   frontend: fix NPE in SRR when space information is not available yet.
+
+[b01c233ed6](https://github.com/dcache/dcache/commit/b01c233ed64420f27ee7eea2e1983b922f717489)
+:   dcache-xroot: update master xrootd4j to 4.3.0, and stable branches to next minor version
+
+[c5b07458ac](https://github.com/dcache/dcache/commit/c5b07458ac13d55064a512bc0ea80928e9411494)
+:   [maven-release-plugin] prepare for next development iteration
+
+
+
 ## Release 8.0.5
 
 ### script
