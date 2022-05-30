@@ -126,7 +126,347 @@ The original HTTPS link should be now redirected to HTTPS and not to HTTP.
 
 <!-- git log 8.0..8.1 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
 
-(tbd as soon as the branching is done)
+
+
+[09e692e41a](https://github.com/dcache/dcache/commit/09e692e41aa5f0998f385ea7db64cf403ebb128a)
+:   nfs: re-send kill only for write movers
+
+[eb5864149d](https://github.com/dcache/dcache/commit/eb5864149d2095d3e886cb997b13a0dca65cf41c)
+:   frontend: fix NPE in SRR when space information is not available yet.
+
+[577cbd9abb](https://github.com/dcache/dcache/commit/577cbd9abb036f395ba0d2034349e0ccd1a15543)
+:   [maven-release-plugin] prepare branch 8.1
+
+[4a05dddfaf](https://github.com/dcache/dcache/commit/4a05dddfaf33715a085cbb7c78ed136ffc902d86)
+:   Revert "[maven-release-plugin] prepare for next development iteration"
+
+[0c3417b3ea](https://github.com/dcache/dcache/commit/0c3417b3ead9b39f3d8728f856626c95506d81d2)
+:   [maven-release-plugin] prepare for next development iteration
+
+[765e5ed06d](https://github.com/dcache/dcache/commit/765e5ed06dca932888018a74da1276e958f28540)
+:   [maven-release-plugin] prepare branch 8.2
+
+[695bd193b9](https://github.com/dcache/dcache/commit/695bd193b97047db0d46e26598a78c49c3a4f358)
+:   dcache-qos: completed verifier, configuration and frontend changes
+
+[f1de7dab2f](https://github.com/dcache/dcache/commit/f1de7dab2faee54cf6cc69847226c737b9ee826d)
+:   dcache-core: improve error message for inexistent statistics path
+
+[4b0e5ec8bb](https://github.com/dcache/dcache/commit/4b0e5ec8bb06a853886e0bd512acb8b95bd1b4b6)
+:   Revert "dcache-core: improve error message for inexistent statistics path"
+
+[e22c49e391](https://github.com/dcache/dcache/commit/e22c49e391462bbfd8a12d2243d0dc7758e97278)
+:   chimera: fix creation time attribute for tags
+
+[07395c66e8](https://github.com/dcache/dcache/commit/07395c66e8ae1b2538ea488dd53665fef2c5e57e)
+:   dcache-xroot: modify xrootd.plugin defaults and update documentation
+
+[8414c3acae](https://github.com/dcache/dcache/commit/8414c3acae3a164534b247f6404dd1c3185f64d2)
+:   dcache-xroot: support multiple protocol door
+
+[6d8da2c902](https://github.com/dcache/dcache/commit/6d8da2c902f25666ffebeb88dc54878b18821d76)
+:   dcache-xrootd: fix TPC rendezvous to work with token authorization
+
+[2f33524268](https://github.com/dcache/dcache/commit/2f33524268ccc1ca40b28f2e11ee770e7dad423f)
+:   dcache-xroot: update master xrootd4j to 4.3.0, and stable branches to next minor version
+
+[8f1c2348c2](https://github.com/dcache/dcache/commit/8f1c2348c2ddf1aef93f167803216769a0136e87)
+:   dcache-core: improve error message for inexistent statistics path
+
+[0d5779e5ba](https://github.com/dcache/dcache/commit/0d5779e5ba2dcc662e03757706cca8daef913386)
+:   gplazma: inject gPlazma as a bean
+
+[0552410450](https://github.com/dcache/dcache/commit/05524104505f85288ef0dc3d86a383600a54af34)
+:   dcahce: set https  redirect to true by default
+
+[6fe8767c04](https://github.com/dcache/dcache/commit/6fe8767c04fb5711b20f9123bffe18f71d708402)
+:   dcache-nearline-plugin: set API jar scope to `provided`
+
+[f576cc856c](https://github.com/dcache/dcache/commit/f576cc856c2be84fb113980cf0fa2d132fb51098)
+:   info: fix broken unit-test, remove redundant one
+
+[315e8321f9](https://github.com/dcache/dcache/commit/315e8321f98908b54b7116a9444816bff3b0df45)
+:   dcache script: redirect deprecation warning to stderr
+
+[5829498dc9](https://github.com/dcache/dcache/commit/5829498dc9c925b70d5b71b1ab34ac5345c6e365)
+:   chimera: fix ctime change on xattr update for postgresql
+
+[4e9b323cdb](https://github.com/dcache/dcache/commit/4e9b323cdbd5f0e70c154ce8bb21b8d620371fdf)
+:   configuration: enable quota, set quota update interval to 12 hours and disable pinning of online files
+
+[4c3a7ffc66](https://github.com/dcache/dcache/commit/4c3a7ffc665a69294cb47cf494da0e6e9a648635)
+:   nfs: add client IP into layout error logs
+
+[7f6331e421](https://github.com/dcache/dcache/commit/7f6331e421ed9838c88c839c717183e47c3d28e5)
+:   pool: remove dead code to set buffer IO sizes
+
+[8269a85c7a](https://github.com/dcache/dcache/commit/8269a85c7a6f6b4a4608dc60c01756c52f9cfad3)
+:   nfs: expose files creation time over NFS
+
+[f07a947d78](https://github.com/dcache/dcache/commit/f07a947d78b8a296d10e8d502c6c4d553c0c178f)
+:   dcap: drop magic way to set IO buffer sizes
+
+[ca1254d42e](https://github.com/dcache/dcache/commit/ca1254d42eda8705c0ba5e330f905bbf7a7e4f26)
+:   docker: fix version number in pom
+
+[41c331d334](https://github.com/dcache/dcache/commit/41c331d33421a2da4ed4d3caed1b9569e158d859)
+:   pom: update spring libs to 5.2.20
+
+[9187b08fb5](https://github.com/dcache/dcache/commit/9187b08fb524d6d0b3ee64b1802cff1480ca50f5)
+:   pool: describe why migration job was cancelled
+
+[6af465f4a7](https://github.com/dcache/dcache/commit/6af465f4a76d28b010d9d1e9876f6b844661101e)
+:   pnfsmanager: avoid leaking whether or not file exists
+
+[56d53d3ddb](https://github.com/dcache/dcache/commit/56d53d3ddbfd8f894e07efac12a623c5b2ecafa1)
+:   pool: fix javadoc, remove unused code
+
+[013f2a49ea](https://github.com/dcache/dcache/commit/013f2a49eabbb5d6fd0f33198b266de7d847c4d4)
+:   docs: UserGuide add picture of tape silo
+
+[234f6597a1](https://github.com/dcache/dcache/commit/234f6597a1da8ec7841ffccc7a838cdb1e55dc17)
+:   docs: UserGuide add chapter on tertiary storage
+
+[fb6f283dc0](https://github.com/dcache/dcache/commit/fb6f283dc052302c4cb377a22dbc7b5f2cc61a37)
+:   dcache-xroot: Allow ZTN authentication to function as fallback authorization
+
+[c33f75b45e](https://github.com/dcache/dcache/commit/c33f75b45e261a53b45311b64e945a7c68a7f7db)
+:   srr: don't publish link local addresses (v2)
+
+[a713663443](https://github.com/dcache/dcache/commit/a71366344358715e2f82f451fb673bc55cda1fda)
+:   UderGuide: describe supported checksums, add example including sha
+
+[5001ee852b](https://github.com/dcache/dcache/commit/5001ee852bbb4eb2ffca26b3349f603b37b23787)
+:   frontend: fix problem with making SRR resources public
+
+[71c8dfbbba](https://github.com/dcache/dcache/commit/71c8dfbbba1afc763537bf1b5b9cfecc41b9013b)
+:   dcache-chimera: add sha checksum commands to chimera shell
+
+[3d53086c84](https://github.com/dcache/dcache/commit/3d53086c8482ad3ca30b320579fcdeedee8b1056)
+:   dcache-core,common: fix user having to request `sha-1`, not `sha`
+
+[b5975f050c](https://github.com/dcache/dcache/commit/b5975f050cab553a6f30f37d4a42061e2702f6db)
+:   nfs: enforce subject propagation on RPC level
+
+[1dbf30759b](https://github.com/dcache/dcache/commit/1dbf30759b0ee930ecc67c92f435c7a1d2687baf)
+:   nearline-storage: fix request count on error path in AbstractRequest#failed
+
+[9a2cd70e1b](https://github.com/dcache/dcache/commit/9a2cd70e1b55b6d39d84ac43b0da8747465a8918)
+:   nearline-storage: fix queued count when request initialization falied
+
+[fe7116ae98](https://github.com/dcache/dcache/commit/fe7116ae98773f059098cc4448777481f9f52820)
+:   pool: add javadoc to StorageClassContainer#flushAll method
+
+[c7d9b20a6b](https://github.com/dcache/dcache/commit/c7d9b20a6b9d4c440b3f359ef86b76c335a91e5e)
+:   qos-verifier: (3 of 9) operation filters and interfaces
+
+[b08b32fefc](https://github.com/dcache/dcache/commit/b08b32fefc58b29ad8f5c4b972588c775ae78f28)
+:   dcache-info: fix javadocs, remove explicit time calculation
+
+[edb81b0cc1](https://github.com/dcache/dcache/commit/edb81b0cc1120721137e15f32800ee4dc7a740c4)
+:   Fix typo
+
+[a8df0f2145](https://github.com/dcache/dcache/commit/a8df0f2145f4ff901938a30fc819af650253549a)
+:   dcache-core: prevent ocasional message ttl test failure
+
+[0830782114](https://github.com/dcache/dcache/commit/0830782114eaaa03915e271d9a8654b7c183a570)
+:   dcache-chimera: fix cleaner batch delete exception
+
+[a88bade0dc](https://github.com/dcache/dcache/commit/a88bade0dc9a56f9979e5613b03929a8069ecd26)
+:   pool, plugin: Add admin commands for plugins
+
+[2f9b5d39d5](https://github.com/dcache/dcache/commit/2f9b5d39d57f69842c2c2e8be8d49f27ed09f25b)
+:   dcache-core: remove unused code
+
+[5c16473dce](https://github.com/dcache/dcache/commit/5c16473dce23219350e7cb9ce3e42d2c7daba3b0)
+:   dcache-core: simplify stream operations
+
+[3351df28ab](https://github.com/dcache/dcache/commit/3351df28abfb6aada436723c0a01af42409c0827)
+:   frontend: make srr resources public
+
+[eaa7811d19](https://github.com/dcache/dcache/commit/eaa7811d19fc256d39c64055d072fcb6fc9e19dc)
+:   chimera: harmonise FileNotFoundChimeraFsException message
+
+[e9cc80f47e](https://github.com/dcache/dcache/commit/e9cc80f47e49d17ccb67ca62f734555c94b41e57)
+:   webdav/frontend/srm/gplazma: log OIDC 'sub' and 'jti' claims
+
+[025f579eb1](https://github.com/dcache/dcache/commit/025f579eb1ca4ae11b4c3dd99ddcaaf51a096fc0)
+:   ftp: kill cell asynchronously
+
+[da994201f1](https://github.com/dcache/dcache/commit/da994201f1e90191030a631c54241c8bbe240565)
+:   scripts: configure JVM to use OS-supplied IP address order
+
+[755ee365e5](https://github.com/dcache/dcache/commit/755ee365e5eb5c237c3bc8f4da146e18c29fa661)
+:   pool: http-tpc prefer IPv6 address
+
+[c5b35bf48e](https://github.com/dcache/dcache/commit/c5b35bf48ec185b9677063fee3c8408bd3425b62)
+:   book: mention ZooKeeper-side config format changes
+
+[1046ba5dd0](https://github.com/dcache/dcache/commit/1046ba5dd076c8b455431e8aeeebf500af5d31a5)
+:   skel: added example configuration for needrestart
+
+[d5ee2eac69](https://github.com/dcache/dcache/commit/d5ee2eac6942ee0e9e5b5e14f05b5f3881907086)
+:   cells: publish fake local addresses to lm
+
+[4d33fbc576](https://github.com/dcache/dcache/commit/4d33fbc57631c3bdd4ebe88b82b057f73e89033c)
+:   common-security: add test for server cred reload
+
+[49b0ec33e5](https://github.com/dcache/dcache/commit/49b0ec33e5caa91360224304a7419c9c19daa394)
+:   pool: add bunch of unit tests for NearlineStorageHandlerTest
+
+[03ad2301b3](https://github.com/dcache/dcache/commit/03ad2301b31d5c22228458c998973bd4b1544917)
+:   Update macaroons.md
+
+[f8a5fdb429](https://github.com/dcache/dcache/commit/f8a5fdb429a4ecb616736624961115e3148fb5ea)
+:   Update macaroons.md
+
+[cb0482bf88](https://github.com/dcache/dcache/commit/cb0482bf88ee3015fdc57340c245a52d4eae70e7)
+:   Update macaroons.md
+
+[d977eba72a](https://github.com/dcache/dcache/commit/d977eba72ac67a65420894ace10ad3247e69ce8a)
+:   Update macaroons.md
+
+[3a739b80f9](https://github.com/dcache/dcache/commit/3a739b80f966ad3d934a45f3afb837e63fe70107)
+:   Update macaroons.md
+
+[ac63c4a5ee](https://github.com/dcache/dcache/commit/ac63c4a5ee2a2946063f1371bc733debc1690ae8)
+:   Update macaroons.md
+
+[842db493c4](https://github.com/dcache/dcache/commit/842db493c426d374ff626932ae320d46d6c89c73)
+:   Update macaroons.md
+
+[b17fbc2be8](https://github.com/dcache/dcache/commit/b17fbc2be848d2c8edd9f7c0d338303c35dd7332)
+:   Update macaroons.md
+
+[adaa8bc47e](https://github.com/dcache/dcache/commit/adaa8bc47ee43c19753d93dd92b3a41220bdaea7)
+:   util: treat broken file as unrecoverable error in Trnasfer class
+
+[0d97495de3](https://github.com/dcache/dcache/commit/0d97495de3c63a87ebc3d7cbc8fe614f396e89ea)
+:   pool: handle multiple shutdowns of a nfs mover
+
+[66f188fabb](https://github.com/dcache/dcache/commit/66f188fabb4a130d72562e0b041af03178188506)
+:   gplazma: oidc further simplify by removing HttpJsonNode
+
+[f4b492170d](https://github.com/dcache/dcache/commit/f4b492170d105aeb32b545eda68dc5e979370d64)
+:   gplazma2: fix junit assert deprecation warnings
+
+[53674527ca](https://github.com/dcache/dcache/commit/53674527cabf2bbb54a938fc8b719466dc1b3e70)
+:   build(deps): bump postgresql from 42.2.25 to 42.3.3
+
+[fb67d1e86e](https://github.com/dcache/dcache/commit/fb67d1e86eeced0e347ab753573dd774420e9a76)
+:   dcache-bulk: aborted request gets stuck in the STARTED state
+
+[2f10e66861](https://github.com/dcache/dcache/commit/2f10e66861687468659b01f816e7bf59e21243f8)
+:   dcache-bulk: pin by request id and unpin optionally by request
+
+[5bfd812c6d](https://github.com/dcache/dcache/commit/5bfd812c6d71f2b8ef92e1f5e495cfcba98206dd)
+:   gplazma: oidc use single discover document cache
+
+[5b74c10b0e](https://github.com/dcache/dcache/commit/5b74c10b0efa046c8a79b6c6abada4f5caa8d7cb)
+:   gplazma: oidc support authz and non-authz identities
+
+[982f89b0ff](https://github.com/dcache/dcache/commit/982f89b0ffb5e1b6c4920c131e86fefe5d379e58)
+:   pool: try to forcefully kill HSM process if needed
+
+[11a12b457d](https://github.com/dcache/dcache/commit/11a12b457d50c4125f865c1545de12e3e8dde2cc)
+:   gplazma: drop `gplazma.scitoken.dcache-supports-exempt-principal`
+
+[dfa548cbba](https://github.com/dcache/dcache/commit/dfa548cbbaeacdcd6456f65fae5d183f6c0568f0)
+:   systemtest: fix two issues with oidc support
+
+[b55910af5c](https://github.com/dcache/dcache/commit/b55910af5cb5e0bb60c39a3232c6415a4d979348)
+:   admin shell: fix line termination in SshOutputStream
+
+[8502a2034e](https://github.com/dcache/dcache/commit/8502a2034ebddd8798ccb4c2675b32e2d90af5c4)
+:   dcache-xroot: set default TLS to OPTIONAL for pools
+
+[7c4a5103f6](https://github.com/dcache/dcache/commit/7c4a5103f68bf8e212d529120756c849058c7fd6)
+:   bulk, frontend-rest: return 404, not 403, when request id does not exist
+
+[1869af4faf](https://github.com/dcache/dcache/commit/1869af4fafe22edc56a83eb23cbd9f33369bcea7)
+:   vehicles: fix regression in GenericStorageInfo
+
+[0c4a4c15ce](https://github.com/dcache/dcache/commit/0c4a4c15ce4a2a6765a0bcd991657ac126f3b368)
+:   webdav: fix NPE if 'webdav.authz.allowed-paths' disallows a request
+
+[764bce1011](https://github.com/dcache/dcache/commit/764bce101134607f456d88fddcf29c0ee10160e7)
+:   chimera: fix error when adding new label to a file
+
+[363757a62c](https://github.com/dcache/dcache/commit/363757a62cad15ea95af8d0fc2dd29ade9caf50c)
+:   book: fix typo in config-nfs
+
+[6b2d4a5e14](https://github.com/dcache/dcache/commit/6b2d4a5e1436c934800d3e6ee03211ff17d3bae3)
+:   book: describe secure/insecure export options by nfs.
+
+[330c90b84c](https://github.com/dcache/dcache/commit/330c90b84c25bcd90cb56332b59685bd9f199123)
+:   common: simplify Callables#getLastModifiedTime
+
+[07f325899d](https://github.com/dcache/dcache/commit/07f325899d22559cc302b3a66ab82064ae019bbd)
+:   gplazma: oidc add support for SciTokens and AuthZ-WG profile tokens
+
+[5d603029b2](https://github.com/dcache/dcache/commit/5d603029b210de2a970bb57c57e9e79a17aea0af)
+:   vehicles - clarify semantics of the StorageInfo#locations method.
+
+[f8533a3b58](https://github.com/dcache/dcache/commit/f8533a3b5843c6663b889de6f9ce4117fe411daa)
+[09e692e41a](https://github.com/dcache/dcache/commit/09e692e41aa5f0998f385ea7db64cf403ebb128a)
+:   nfs: re-send kill only for write movers
+
+[eb5864149d](https://github.com/dcache/dcache/commit/eb5864149d2095d3e886cb997b13a0dca65cf41c)
+:   frontend: fix NPE in SRR when space information is not available yet.
+
+[577cbd9abb](https://github.com/dcache/dcache/commit/577cbd9abb036f395ba0d2034349e0ccd1a15543)
+:   [maven-release-plugin] prepare branch 8.1
+
+[4a05dddfaf](https://github.com/dcache/dcache/commit/4a05dddfaf33715a085cbb7c78ed136ffc902d86)
+:   Revert "[maven-release-plugin] prepare for next development iteration"
+
+[0c3417b3ea](https://github.com/dcache/dcache/commit/0c3417b3ead9b39f3d8728f856626c95506d81d2)
+:   [maven-release-plugin] prepare for next development iteration
+
+[765e5ed06d](https://github.com/dcache/dcache/commit/765e5ed06dca932888018a74da1276e958f28540)
+:   [maven-release-plugin] prepare branch 8.2
+
+[695bd193b9](https://github.com/dcache/dcache/commit/695bd193b97047db0d46e26598a78c49c3a4f358)
+:   dcache-qos: completed verifier, configuration and frontend changes
+
+[f1de7dab2f](https://github.com/dcache/dcache/commit/f1de7dab2faee54cf6cc69847226c737b9ee826d)
+:   dcache-core: improve error message for inexistent statistics path
+
+[4b0e5ec8bb](https://github.com/dcache/dcache/commit/4b0e5ec8bb06a853886e0bd512acb8b95bd1b4b6)
+:   Revert "dcache-core: improve error message for inexistent statistics path"
+
+[e22c49e391](https://github.com/dcache/dcache/commit/e22c49e391462bbfd8a12d2243d0dc7758e97278)
+:   chimera: fix creation time attribute for tags
+
+[07395c66e8](https://github.com/dcache/dcache/commit/07395c66e8ae1b2538ea488dd53665fef2c5e57e)
+:   dcache-xroot: modify xrootd.plugin defaults and update documentation
+
+[8414c3acae](https://github.com/dcache/dcache/commit/8414c3acae3a164534b247f6404dd1c3185f64d2)
+:   dcache-xroot: support multiple protocol door
+
+[6d8da2c902](https://github.com/dcache/dcache/commit/6d8da2c902f25666ffebeb88dc54878b18821d76)
+:   dcache-xrootd: fix TPC rendezvous to work with token authorization
+
+[2f33524268](https://github.com/dcache/dcache/commit/2f33524268ccc1ca40b28f2e11ee770e7dad423f)
+:   dcache-xroot: update master xrootd4j to 4.3.0, and stable branches to next minor version
+
+[8f1c2348c2](https://github.com/dcache/dcache/commit/8f1c2348c2ddf1aef93f167803216769a0136e87)
+:   dcache-core: improve error message for inexistent statistics path
+
+[0d5779e5ba](https://github.com/dcache/dcache/commit/0d5779e5ba2dcc662e03757706cca8daef913386)
+:   gplazma: inject gPlazma as a bean
+
+[0552410450](https://github.com/dcache/dcache/commit/05524104505f85288ef0dc3d86a383600a54af34)
+:   dcahce: set https  redirect to true by default
+
+[6fe8767c04](https://github.com/dcache/dcache/commit/6fe8767c04fb5711b20f9123bffe18f71d708402)
+:   dcache-nearline-plugin: set API jar scope to `provided`
+
+[f576cc856c](https://github.com/dcache/dcache/commit/f576cc856c2be84fb113980cf0fa2d132fb51098)
+:   info: fix broken unit-test, remove redundant one
+:
+
+
 
 
 </div>
