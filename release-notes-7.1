@@ -80,6 +80,40 @@ HTML header: <title>dCache 7.1 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 7.1.27
+
+### info
+
+The delay between messages sent by info was increased to reduce log messages of "DGA {...} triggering too quickly".
+
+### pool
+
+If the scrubber state file is empty, scrubber will now log a more
+helpful error message and proceed scrubbing the pool.
+
+
+### Changelog 7.1.26..7.1.27
+
+<!-- git log 7.1.26..7.1.27 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[44c101487e](https://github.com/dcache/dcache/commit/44c101487ee76cffb53613516ad2a99648937305)
+:   [maven-release-plugin] prepare release 7.1.27
+
+[261aabfc01](https://github.com/dcache/dcache/commit/261aabfc01a3e8ffa9b91e8dd079bb70a48adecb)
+:   pool: improve handling empty saved state by scrubber
+
+[d5c4f497ed](https://github.com/dcache/dcache/commit/d5c4f497ed89a727ee473d0a9740a0f412881089)
+:   dcache-xroot,pom.xml: bump xrootd4j to 4.3.1
+
+[97daa810ed](https://github.com/dcache/dcache/commit/97daa810edf5c9a652b6316a1073f72953d66cc4)
+:   dcache-xroot: flesh out channel inactive and exception caught
+
+[8b684ed5b5](https://github.com/dcache/dcache/commit/8b684ed5b5a756266e1ecc016a10074093d2e716)
+:   info: increase delay between messages
+
+[1f966c9051](https://github.com/dcache/dcache/commit/1f966c905182f2fa88456cfc1b8b88a56ca44321)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 7.1.26
 
 ### dcache

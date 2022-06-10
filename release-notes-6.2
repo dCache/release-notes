@@ -107,6 +107,48 @@ This does not affect functionality.
 (tbd, this section uses markdown formatting)
 
 
+## Release 6.2.46
+
+### debian
+
+Added explicit dependency on rsyslog for debian packages so there are no
+errors during installation.
+
+### info
+
+The delay between messages sent by info was increased to reduce log messages of "DGA {...} triggering too quickly".
+
+### pool
+
+If the scrubber state file is empty, scrubber will now log a more
+helpful error message and proceed scrubbing the pool.
+
+
+### Changelog 6.2.45..6.2.46
+
+<!-- git log 6.2.45..6.2.46 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[b2e85ba189](https://github.com/dcache/dcache/commit/b2e85ba189af2105b60e66a24297e49a8498c1b5)
+:   [maven-release-plugin] prepare release 6.2.46
+
+[8bc07b2d64](https://github.com/dcache/dcache/commit/8bc07b2d6460ce3a43bf1c9aa02bbc619ad5484a)
+:   pool: improve handling empty saved state by scrubber
+
+[3d291c54d1](https://github.com/dcache/dcache/commit/3d291c54d1a5a0a4d861f7727b91e36fb4344c5d)
+:   dcache-xroot,pom.xml: bump xrootd4j to 4.3.1
+
+[335c2b8d01](https://github.com/dcache/dcache/commit/335c2b8d015cb5fcdeb31bd85499f819eb96e674)
+:   dcache-xroot: flesh out channel inactive and exception caught
+
+[7a2a773261](https://github.com/dcache/dcache/commit/7a2a773261ea8e7e1825d8f9b3c33bb7984e2886)
+:   info: increase delay between messages
+
+[43fc1560a8](https://github.com/dcache/dcache/commit/43fc1560a8edf946ff46826a92a77f35807feeb0)
+:   deb: add explicit dependency on rsyslog package
+
+[e2001056ca](https://github.com/dcache/dcache/commit/e2001056caddd7c4e235d5bf792a14f602a05b60)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.2.45
 
 ### dcache

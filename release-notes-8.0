@@ -76,6 +76,47 @@ HTML header: <title>dCache 8.0 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 8.0.7
+
+### ChimeraVfs
+
+This release restores the ability to modify file levels.
+
+### info
+
+The delay between messages sent by info was increased to reduce log messages of "DGA {...} triggering too quickly".
+
+### pool
+
+If the scrubber state file is empty, scrubber will now log a more
+helpful error message and proceed scrubbing the pool.
+
+
+### Changelog 8.0.6..8.0.7
+
+<!-- git log 8.0.6..8.0.7 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[5781884976](https://github.com/dcache/dcache/commit/57818849768e6ca666e01b8450f713578684a0a8)
+:   [maven-release-plugin] prepare release 8.0.7
+
+[4a2eb74fab](https://github.com/dcache/dcache/commit/4a2eb74fab50194df3aa153bef9f5651f883832e)
+:   pool: improve handling empty saved state by scrubber
+
+[b90c4fbec2](https://github.com/dcache/dcache/commit/b90c4fbec2b726a5e75dd427e78d6fb484ad1ea0)
+:   dcache-xroot,pom.xml: bump xrootd4j to 4.3.1
+
+[bf11ceecbb](https://github.com/dcache/dcache/commit/bf11ceecbbd094bde20745c101b8ff3adb2d2426)
+:   dcache-xroot: flesh out channel inactive and exception caught
+
+[42f94b841e](https://github.com/dcache/dcache/commit/42f94b841edb73d80283bd47d65d07c87d64d344)
+:   info: increase delay between messages
+
+[f0d69b8c0f](https://github.com/dcache/dcache/commit/f0d69b8c0f14f25fb940c46dd3936f8a29839fdd)
+:   ChimeraVfs: Check file level in addition to inode type when disallowing file size change
+
+[ce556c9015](https://github.com/dcache/dcache/commit/ce556c9015298206baad5897fcf5476b83162452)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 8.0.6
 
 ### dcache

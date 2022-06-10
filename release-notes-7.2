@@ -71,6 +71,47 @@ Support for a dedicated scheduling strategy for bring-online requests was added 
 
 This release doesn't have any incompatibilities.
 
+## Release 7.2.17
+
+### ChimeraVfs
+
+This release restores the ability to modify file levels.
+
+### info
+
+The delay between messages sent by info was increased to reduce log messages of "DGA {...} triggering too quickly".
+
+### pool
+
+If the scrubber state file is empty, scrubber will now log a more
+helpful error message and proceed scrubbing the pool.
+
+
+### Changelog 7.2.16..7.2.17
+
+<!-- git log 7.2.16..7.2.17 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[617359eb22](https://github.com/dcache/dcache/commit/617359eb2213d90bfe83f2c3e913aae174116c9b)
+:   [maven-release-plugin] prepare release 7.2.17
+
+[0fb0b3bdbc](https://github.com/dcache/dcache/commit/0fb0b3bdbcc67ffc461216d084d097f1a8422923)
+:   pool: improve handling empty saved state by scrubber
+
+[d9b3dff4ef](https://github.com/dcache/dcache/commit/d9b3dff4efa92df66fc8c767593cec3dff491f0f)
+:   dcache-xroot,pom.xml: bump xrootd4j to 4.3.1
+
+[ed50d1efee](https://github.com/dcache/dcache/commit/ed50d1efee708cac043eb775e933404f632fc74d)
+:   dcache-xroot: flesh out channel inactive and exception caught
+
+[6a2daf6b18](https://github.com/dcache/dcache/commit/6a2daf6b18c10c1c2c7bc4b6811a4849bf37a89c)
+:   info: increase delay between messages
+
+[44c356058a](https://github.com/dcache/dcache/commit/44c356058a03114746aa80e45aa65b58e3f6ebf5)
+:   ChimeraVfs: Check file level in addition to inode type when disallowing file size change
+
+[cfcd34c4e7](https://github.com/dcache/dcache/commit/cfcd34c4e796335db8c27de34f5b7b2206402174)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 7.2.16
 
 ### dcache
