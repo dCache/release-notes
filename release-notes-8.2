@@ -64,7 +64,11 @@ HTML header: <title>dCache 8.2 Release Notes</title>
 
 ## Highlights
 
+- support for nested groups in the PoolManager
+
 ## Incompatibilities
+
+- pool group names can't start with `@` symbol.
 
 ## Acknowledgments
 
@@ -108,6 +112,17 @@ HTML header: <title>dCache 8.2 Release Notes</title>
 ### Pool
 
 ### Poolmanager
+
+PoolManager is update to support pool groups that contains other pool groups. For example:
+
+```
+psu create pgroup -dynamic -tags=hw-class=IO io-pools
+psu create pgroup -dynamic -tags=hw-class=replica replica-pools
+psu create pgroup all-pools
+psu addto pgroup all-pools @io-pools @replica-pools
+```
+
+The values prefixed by `@` to `psu addto pgroup` command threaded as groups.
 
 ### Resilience
 
