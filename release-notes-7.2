@@ -71,6 +71,43 @@ Support for a dedicated scheduling strategy for bring-online requests was added 
 
 This release doesn't have any incompatibilities.
 
+## Release 7.2.18
+
+### frontend
+
+Anonymous access receives a 401 error and doesn't trigger a stack-trace
+when unlimitedVisibility is set to false.
+
+clearOnSuccess, clearOnFailure and cancelOnFailure can have boolean and string values now.
+
+### pool
+
+A bug is fixed where the checksum calculation would fail for empty
+files.
+
+
+### Changelog 7.2.17..7.2.18
+
+<!-- git log 7.2.17..7.2.18 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[d822ccf0a8](https://github.com/dcache/dcache/commit/d822ccf0a80b03aa5abbb780bb444bdeafcc59a2)
+:   [maven-release-plugin] prepare release 7.2.18
+
+[67055873da](https://github.com/dcache/dcache/commit/67055873daabf07c0b76cc58f8a4b11ae6321fac)
+:   dcache-frontend: protect against RuntimeError in case of denied anonymous access
+
+[cd88da4c98](https://github.com/dcache/dcache/commit/cd88da4c9809ccc9f2de1750178d5847d3509a46)
+:   restore inadvertently removed 'target' extraction in toBulkRequest()
+
+[51291bfc85](https://github.com/dcache/dcache/commit/51291bfc857af2676796ac3ab924d6377f94c57d)
+:   dcache-frontend: bulk-requests POST, allow either string or boolean for boolean values
+
+[56e2b54a5f](https://github.com/dcache/dcache/commit/56e2b54a5f166b4c52cd0c23d7b0054078e6b65b)
+:   pool: don't treat an empty file as a sparse file
+
+[d92924806c](https://github.com/dcache/dcache/commit/d92924806c04aa16ef7ccda748ddcb579ba0c77f)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 7.2.17
 
 ### ChimeraVfs

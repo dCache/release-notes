@@ -107,6 +107,35 @@ This does not affect functionality.
 (tbd, this section uses markdown formatting)
 
 
+## Release 6.2.47
+
+### frontend
+
+Anonymous access receives a 401 error and doesn't trigger a stack-trace
+when unlimitedVisibility is set to false.
+
+### pool
+
+A bug is fixed where the checksum calculation would fail for empty
+files.
+
+
+### Changelog 6.2.46..6.2.47
+
+<!-- git log 6.2.46..6.2.47 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[c7eb0eb98f](https://github.com/dcache/dcache/commit/c7eb0eb98f61420133e207ed1fcd97b531ceb7a7)
+:   [maven-release-plugin] prepare release 6.2.47
+
+[ae1901aaa6](https://github.com/dcache/dcache/commit/ae1901aaa619defeb6beb26e208181fc099a9da4)
+:   dcache-frontend: protect against RuntimeError in case of denied anonymous access
+
+[433c089118](https://github.com/dcache/dcache/commit/433c0891188de13a34d555d752719d278155cf86)
+:   pool: don't treat an empty file as a sparse file
+
+[543750af21](https://github.com/dcache/dcache/commit/543750af2191b1fcdbdf0a6001e7a8c1312c09ae)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 6.2.46
 
 ### debian

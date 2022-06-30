@@ -72,6 +72,43 @@ HTML header: <title>dCache 8.1 Release Notes</title>
 
 
 
+## Release 8.1.2
+
+### frontend
+
+Anonymous access receives a 401 error and doesn't trigger a stack-trace
+when unlimitedVisibility is set to false.
+
+clearOnSuccess, clearOnFailure and cancelOnFailure can have boolean and string values now.
+
+### pool
+
+A bug is fixed where the checksum calculation would fail for empty
+files.
+
+
+### Changelog 8.1.1..8.1.2
+
+<!-- git log 8.1.1..8.1.2 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[2f444d9da7](https://github.com/dcache/dcache/commit/2f444d9da7b06f73298c928d8cd42702b3657a1e)
+:   [maven-release-plugin] prepare release 8.1.2
+
+[a6071e2e52](https://github.com/dcache/dcache/commit/a6071e2e52c7fc3f9dd03082cd0943277c9c8a2b)
+:   dcache-frontend: protect against RuntimeError in case of denied anonymous access
+
+[09af00232d](https://github.com/dcache/dcache/commit/09af00232d43f01d656a1e81a3900da7a1cab4e7)
+:   restore inadvertently removed 'target' extraction in toBulkRequest()
+
+[48e05d777b](https://github.com/dcache/dcache/commit/48e05d777b512c6eb89ba26f5157a12dd0fd9af5)
+:   dcache-frontend: bulk-requests POST, allow either string or boolean for boolean values
+
+[c1c1342269](https://github.com/dcache/dcache/commit/c1c13422690cb0ff33bcf5cbcc7d07a670ad1a52)
+:   pool: don't treat an empty file as a sparse file
+
+[1ffa039957](https://github.com/dcache/dcache/commit/1ffa039957695cbd114339119f658bc539d3769a)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 8.1.1
 
 ### ChimeraVfs

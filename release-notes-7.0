@@ -76,6 +76,43 @@ HTML header: <title>dCache 7.0 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 7.0.36
+
+### frontend
+
+Anonymous access receives a 401 error and doesn't trigger a stack-trace
+when unlimitedVisibility is set to false.
+
+clearOnSuccess, clearOnFailure and cancelOnFailure can have boolean and string values now.
+
+### pool
+
+A bug is fixed where the checksum calculation would fail for empty
+files.
+
+
+### Changelog 7.0.35..7.0.36
+
+<!-- git log 7.0.35..7.0.36 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[56620b4c1c](https://github.com/dcache/dcache/commit/56620b4c1ce28ff54f7ba526df66f9969f76e329)
+:   [maven-release-plugin] prepare release 7.0.36
+
+[9a6c0a8ce0](https://github.com/dcache/dcache/commit/9a6c0a8ce0911f3ac1e967344ab37d1d2686741a)
+:   dcache-frontend: protect against RuntimeError in case of denied anonymous access
+
+[5d5933b754](https://github.com/dcache/dcache/commit/5d5933b7547a421ee35b3b484d648e3a02408f67)
+:   restore inadvertently removed 'target' extraction in toBulkRequest()
+
+[1653e01498](https://github.com/dcache/dcache/commit/1653e01498eb3d4e218f9aeb3e3d4a3857b7e1be)
+:   dcache-frontend: bulk-requests POST, allow either string or boolean for boolean values
+
+[99b66657d3](https://github.com/dcache/dcache/commit/99b66657d3ca9a55de0baf0074f57ba7df9ac4df)
+:   pool: don't treat an empty file as a sparse file
+
+[d0dcd7a365](https://github.com/dcache/dcache/commit/d0dcd7a36555461d70f180b0f76bb83715ea81b0)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 7.0.35
 
 ### debian
