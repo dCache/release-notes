@@ -76,6 +76,24 @@ HTML header: <title>dCache 7.0 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 7.0.37
+
+### frontend
+
+
+### Changelog 7.0.36..7.0.37
+
+<!-- git log 7.0.36..7.0.37 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[812313e745](https://github.com/dcache/dcache/commit/812313e74593ff287c105a1442e0bea70e507113)
+:   [maven-release-plugin] prepare release 7.0.37
+
+[ae71eaa25f](https://github.com/dcache/dcache/commit/ae71eaa25f6de70d53dff2d8cbf64a8e33d7863b)
+:   dcache-frontend,bulk: fix typing of argument values
+
+[fda7c37650](https://github.com/dcache/dcache/commit/fda7c3765053059a5cbf8cd0566e75c3bcc33e70)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 7.0.36
 
 ### frontend

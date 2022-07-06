@@ -76,6 +76,24 @@ HTML header: <title>dCache 8.0 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 8.0.9
+
+### frontend
+
+
+### Changelog 8.0.8..8.0.9
+
+<!-- git log 8.0.8..8.0.9 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[7887ef8a2d](https://github.com/dcache/dcache/commit/7887ef8a2dcb64b947dc13df54164fc1cdf9faa1)
+:   [maven-release-plugin] prepare release 8.0.9
+
+[30ec4454d5](https://github.com/dcache/dcache/commit/30ec4454d5aeb7444caa53f37d42e2c093ed93d3)
+:   dcache-frontend,bulk: fix typing of argument values
+
+[baf0d890f8](https://github.com/dcache/dcache/commit/baf0d890f891cee5ba4921c709697faec3ed370a)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 8.0.8
 
 ### frontend
