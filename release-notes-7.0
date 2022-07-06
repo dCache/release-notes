@@ -78,8 +78,11 @@ HTML header: <title>dCache 7.0 Release Notes</title>
 
 ## Release 7.0.37
 
-### frontend
+### frontend, bulk
 
+Both numeric and string values for PIN lifetime are
+valid now. Also, skipDirs for DELETE can be both boolean and string.
+All other current arguments are required to be strings, as before.
 
 ### Changelog 7.0.36..7.0.37
 
