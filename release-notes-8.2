@@ -69,6 +69,7 @@ HTML header: <title>dCache 8.2 Release Notes</title>
 ## Incompatibilities
 
 - pool group names can't start with `@` symbol.
+- hard links on directories is not allowed
 
 ## Acknowledgments
 
@@ -108,6 +109,10 @@ HTML header: <title>dCache 8.2 Release Notes</title>
 ### Pinmanager
 
 ### PNFS Manager
+Historically, dCache namespace was allowing hard links on directories. This violates
+POSIX restrictions and source of file system cyclic loops. With release dCache release 8.2
+creation of hard links on directories is not allowed any more. The existing hard links will
+work as before, however, recommended to be replace with soft links.
 
 ### Pool
 
