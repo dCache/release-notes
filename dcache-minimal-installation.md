@@ -79,7 +79,6 @@ In the setup of dCache, there are three main places for configuration files:
 The folder **/usr/share/dcache/defaults** contains the default settings of the dCache. If one of the default configuration values needs to be changed, copy the default setting of this value from one of the files in **/usr/share/dcache/defaults** to the file **/etc/dcache/dcache.conf**, which initially is empty and update the value.
 
 
-### Minimal Setup in this example 
 #### Grouping CELLs - Single process:
 - Shared JVM
 - Shared CPU
