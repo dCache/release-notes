@@ -36,6 +36,7 @@ are the only uncommented lines in the file **/var/lib/pgsql/10/data/pg_hba.conf*
 
 
 > createuser -U postgres --no-superuser --no-createrole --createdb --no-password dcache
+> 
 > createdb -U dcache chimera
 
 And run the command `dcache database update`.
@@ -169,7 +170,19 @@ pool.wait-for-files=${pool.path}/data
 ```
 
 
+# Starting dCache
+
+Finally, dCache can be started now.
+There are two ways to start dCache. These are as a classic sysV -like daemon or as a systemd service. The
+latter one is preferred and enforced by default when the hosts operating system supports it. To change this
+be behavior set
+
+dcache.systemd.strict=false
+
+in dcache.conf or in the layout file.
+
   > systemctl daemon-reload 
+  > 
   >  systemctl status dcache@* 
 
 # Grouping CELLsPool-In different processes:
