@@ -1,22 +1,21 @@
 
    
      
-     **Minimum System Requirements**
-     -----------------------------
+## Minimum System Requirements
 
-   ### Hardware:
+   #### Hardware:
 - Contemporary CPU
 - At least 1 GiB of RAM
 - At least 500 MiB free disk space
    
- ### Software:
+ #### Software:
 - OpenJDK 11
  > yum install java-11-openjdk
 - Postgres SQL Server 9.5 or later
 
 - ZooKeeper version 3.5 (in case of a standalone ZooKeeper installation)
 
-## Installing PostgreSQL
+### Installing PostgreSQL
 
 To keep this simple, we are assuming the database will run on the same machine as the dCache services that
 use it.
@@ -44,6 +43,7 @@ And run the command `dcache database update`.
 
 
 ## Installing dCache
+
 All dCache packages are available directly from our website’s dCache releases page, under the Downloads
 section.
 
@@ -78,8 +78,8 @@ In the setup of dCache, there are three main places for configuration files:
 The folder **/usr/share/dcache/defaults** contains the default settings of the dCache. If one of the default configuration values needs to be changed, copy the default setting of this value from one of the files in **/usr/share/dcache/defaults** to the file **/etc/dcache/dcache.conf**, which initially is empty and update the value.
 
 
-## Minimal Setup in this example - Grouping CELLs
-# Single process:
+## Minimal Setup in this example 
+# Grouping CELLs - Single process:
 - Shared JVM
 - Shared CPU
 - Shared Log files
@@ -170,12 +170,19 @@ pool.wait-for-files=${pool.path}/data
 
 
   > systemctl daemon-reload 
-
   >  systemctl status dcache@* 
-  >  
-###Grouping CELLs - On a different hosts:
+
+# Grouping CELLsPool-In different processes:
+ - Independent JVMs
+ - Shared CPU
+ - Per-process Log file
+ - All components run the same version (you can run different versions if needed)
+
+
+
+# Grouping CELLs - On a different hosts:
 - Share-nothing option
-- Components can run different, but compatible versions..
+- Components can run different, but compatible versions.
 
 
 
