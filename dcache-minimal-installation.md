@@ -208,6 +208,41 @@ our simple installation with just one domain hosting several services this would
  - All components run the same version (you can run different versions if needed)
 
 
+```ini
+dcache.enable.space-reservation = false
+
+[central]
+dcache.broker.scheme = core
+
+
+
+[central/zookeeper]
+[central/admin]
+[central/pnfsmanager]
+ pnfsmanager.default-retention-policy = REPLICA
+ pnfsmanager.default-access-latency = ONLINE
+[central/gplazma]
+
+
+
+[central/cleaner]
+[central/poolmanager]
+[central/billing]
+
+
+
+[doors]
+[doors/webdav]
+ webdav.authn.basic = true
+ 
+[pools]
+[pools/pool]
+pool.name=pool1
+pool.path=/srv/dcache/pool-1
+pool.wait-for-files=${pool.path}/data
+```
+
+
 
 # Grouping CELLs - On a different hosts:
 - Share-nothing option
