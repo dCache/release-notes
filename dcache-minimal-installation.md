@@ -1,6 +1,4 @@
 
-+  [Installing a dCache instance](#installing-a-dcache-instance)  
-
    
      
      **Minimum System Requirements**
@@ -169,6 +167,21 @@ pool.name=pool1
 pool.path=/srv/dcache/pool-1
 pool.wait-for-files=${pool.path}/data
 ```
+
+
+  > systemctl daemon-reload 
+
+  >  systemctl status dcache@* 
+  >  
+###Grouping CELLs - On a different hosts:
+- Share-nothing option
+- Components can run different, but compatible versions..
+
+
+
+
+
+
 
 
     
