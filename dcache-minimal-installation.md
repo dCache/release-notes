@@ -1,7 +1,7 @@
 
    
      
-## Minimum System Requirements
+### Minimum System Requirements
 
    #### Hardware:
 - Contemporary CPU
@@ -32,7 +32,7 @@ are the only uncommented lines in the file **/var/lib/pgsql/10/data/pg_hba.conf*
     host    all         all         ::1/128                             trust    
    
    
-   ## Creating PostgreSQL users and databases    
+   ### Creating PostgreSQL users and databases    
 
 
 > createuser -U postgres --no-superuser --no-createrole --createdb --no-password dcache
@@ -43,7 +43,7 @@ And run the command `dcache database update`.
 
 
 
-## Installing dCache
+### Installing dCache
 
 All dCache packages are available directly from our website’s dCache releases page, under the Downloads
 section.
@@ -53,7 +53,7 @@ section.
 
 
 
-Four main components in dCache
+### Four main components in dCache
 -------------
 
 All components are CELLs: they are independent and can interact with each other (send messages).
@@ -79,8 +79,8 @@ In the setup of dCache, there are three main places for configuration files:
 The folder **/usr/share/dcache/defaults** contains the default settings of the dCache. If one of the default configuration values needs to be changed, copy the default setting of this value from one of the files in **/usr/share/dcache/defaults** to the file **/etc/dcache/dcache.conf**, which initially is empty and update the value.
 
 
-## Minimal Setup in this example 
-# Grouping CELLs - Single process:
+### Minimal Setup in this example 
+#### Grouping CELLs - Single process:
 - Shared JVM
 - Shared CPU
 - Shared Log files
@@ -170,19 +170,36 @@ pool.wait-for-files=${pool.path}/data
 ```
 
 
-# Starting dCache
+## Starting dCache
 
-Finally, dCache can be started now.
-There are two ways to start dCache. These are as a classic sysV -like daemon or as a systemd service. The
-latter one is preferred and enforced by default when the hosts operating system supports it. To change this
-be behavior set
+There are two ways to start dCache: 1) using sysV-like daemon, 2) Using systemd service.
+
+##### Using sysV -like daemon
+ The the 2nd one is preferred and enforced by default when the hosts operating system supports it. To change this behavior set
 
 dcache.systemd.strict=false
 
-in dcache.conf or in the layout file.
+> dcache start
+
+
+> dcache status
+
+
+The domain log file (/var/log/dcache/dCacheDomain.log) also contains some details, logged as dCache
+starts
+
+Using systemd service dCache uses systemd’s generator functionality to create a service for each defined
+domain in the layout file. That’s why, before starting the service all dynamic systemd units should be
+generated:
 
   > systemctl daemon-reload 
-  > 
+
+
+To inspect all generated units of dcache.target the systemd list-dependencies command can be used. In
+our simple installation with just one domain hosting several services this would look like
+
+> systemctl list-dependencies dcache.target
+
   >  systemctl status dcache@* 
 
 # Grouping CELLsPool-In different processes:
