@@ -146,5 +146,29 @@ dcache pool create /srv/dcache/pool-1 pool1 dCacheDomain
 The `/etc/dcache/layouts/mylayout.conf` file should be updated to have
 an additional `pool` service:
 
+```ini
+dcache.enable.space-reservation = false
+
+[dCacheDomain]
+ dcache.broker.scheme = none
+[dCacheDomain/zookeeper]
+[dCacheDomain/admin]
+[dCacheDomain/pnfsmanager]
+ pnfsmanager.default-retention-policy = REPLICA
+ pnfsmanager.default-access-latency = ONLINE
+
+[dCacheDomain/cleaner]
+[dCacheDomain/poolmanager]
+[dCacheDomain/billing]
+[dCacheDomain/gplazma]
+[dCacheDomain/webdav]
+ webdav.authn.basic = true
+
+[dCacheDomain/pool]
+pool.name=pool1
+pool.path=/srv/dcache/pool-1
+pool.wait-for-files=${pool.path}/data
+```
+
 
     
