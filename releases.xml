@@ -191,10 +191,6 @@
 
       <release version="4" recommended="1">
         <date>27.7.2022</date>
-        <package name="">
-          <download-url/>
-          <md5sum>0a2031783a25a918524871bd00c63a41</md5sum>
-        </package>
         <package name="rpm">
           <download-url>-VERSION-1.noarch.rpm</download-url>
           <md5sum>8004dc51557d5076853c4fcbc8df1334</md5sum>
@@ -207,11 +203,7 @@
           <download-url>_VERSION-1_all.deb</download-url>
           <md5sum>70a86427920242a3cdb979cb97984cf4</md5sum>
         </package>
-        <package name="">
-          <download-url/>
-          <md5sum>d0b6dac129ac927b4884f68efaa09a9e</md5sum>
-        </package>
-      </release>
+       </release>
 
       <release version="3">
         <date>6.7.2022</date>
@@ -305,10 +297,6 @@
 
       <release version="10" recommended="1">
         <date>27.7.2022</date>
-        <package name="">
-          <download-url/>
-          <md5sum>52aea558240a8ff7f87faa1d67004ee8</md5sum>
-        </package>
         <package name="rpm">
           <download-url>-VERSION-1.noarch.rpm</download-url>
           <md5sum>8d1a842ea7de693d648de8964c4505fc</md5sum>
@@ -320,10 +308,6 @@
         <package name="Debian package">
           <download-url>_VERSION-1_all.deb</download-url>
           <md5sum>e1c66cf4081f13ed083a7b03552f73e7</md5sum>
-        </package>
-        <package name="">
-          <download-url/>
-          <md5sum>5093395486c8f18039dbfafc6bbb4281</md5sum>
         </package>
       </release>
 
@@ -514,10 +498,6 @@
          <version-prefix>7.2.</version-prefix>
       <release version="20" recommended="1">
         <date>27.7.2022</date>
-        <package name="">
-          <download-url/>
-          <md5sum>e7d9064852f07d3f487b56b4a3bd042d</md5sum>
-        </package>
         <package name="rpm">
           <download-url>-VERSION-1.noarch.rpm</download-url>
           <md5sum>860cbb0932449630615f2118065f04af</md5sum>
@@ -530,11 +510,7 @@
           <download-url>_VERSION-1_all.deb</download-url>
           <md5sum>55c55fc6dffdd79fc922a83255f57403</md5sum>
         </package>
-        <package name="">
-          <download-url/>
-          <md5sum>fecb6a81f29e5e967d18d4e750b8459f</md5sum>
-        </package>
-      </release>
+       </release>
 
       <release version="19">
         <date>6.7.2022</date>
@@ -887,10 +863,6 @@
 	<version-prefix>7.1.</version-prefix>
 	<release version="30" recommended="1">
         <date>27.7.2022</date>
-        <package name="">
-          <download-url/>
-          <md5sum>6e933c80a1218554273ff99a10f2fba2</md5sum>
-        </package>
         <package name="rpm">
           <download-url>-VERSION-1.noarch.rpm</download-url>
           <md5sum>76346c056043fea782327f3e046dd636</md5sum>
@@ -903,11 +875,7 @@
           <download-url>_VERSION-1_all.deb</download-url>
           <md5sum>59f49567706c3dd19f71ba5d8573c87e</md5sum>
         </package>
-        <package name="">
-          <download-url/>
-          <md5sum>049667f4b7dff0c0c3a9bf585dae6940</md5sum>
-        </package>
-      </release>
+        </release>
 
       <release version="29">
         <date>6.7.2022</date>
