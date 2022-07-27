@@ -117,6 +117,47 @@ feature.
 [c02d6ece3c](https://github.com/dcache/dcache/commit/c02d6ece3c20e77e791d97078d68789d454b3383)
 :   [maven-release-plugin] prepare for next development iteration
 
+## Release 8.0.10
+
+### dcache-bulk
+
+Runtime exceptions do not kill the queue thread now
+and do not leave the request in a stalled state.
+
+### webdav
+
+
+Existing monitoring information does not show HTTP-TPC transfers, which
+may result in admins being unaware of dCache activity.
+
+This is now fixed and The Active Transfers page (from httpd) and the transfers resource (from
+frontend) now include HTTP-TPC transfers.
+
+WebDAV HTTP-TPC now supports multiple RemoteTransferManager services,
+which allows for high-availability deployments.  The WebDAV door and all
+RemoteTransferManager services must be upgraded to support this new
+feature.
+
+
+### Changelog 8.0.9..8.0.10
+
+<!-- git log 8.0.9..8.0.10 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[1e11319d30](https://github.com/dcache/dcache/commit/1e11319d305f3fe00069bab504ed617898d52c7f)
+:   [maven-release-plugin] prepare release 8.0.10
+
+[f8020c82cf](https://github.com/dcache/dcache/commit/f8020c82cfdcd90d2137388290d1476d0a654a7f)
+:   dcache-bulk: (version 1) handle unexpected exceptions in queue
+
+[1fca124200](https://github.com/dcache/dcache/commit/1fca124200792cd153521af3b5d02ab56201b252)
+:   webdav/httpd/frontend: add HTTP-TPC transfers to transfer list
+
+[b35d3e847a](https://github.com/dcache/dcache/commit/b35d3e847a263dd4b7984ef2ea57f581deef83e3)
+:   webdav/transfermanager: support multiple RemoteTransferManager
+
+[c02d6ece3c](https://github.com/dcache/dcache/commit/c02d6ece3c20e77e791d97078d68789d454b3383)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 8.0.9
 
 ### frontend, bulk
