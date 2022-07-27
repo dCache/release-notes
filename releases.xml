@@ -1388,10 +1388,6 @@
 
       <release version="38" recommended="1">
         <date>27.7.2022</date>
-        <package name="">
-          <download-url/>
-          <md5sum>1beb19b5adc72a6740d9f638da06f97c</md5sum>
-        </package>
         <package name="rpm">
           <download-url>-VERSION-1.noarch.rpm</download-url>
           <md5sum>5867e78c287f5a3fb56dc6c8fbc1e49d</md5sum>
@@ -1404,11 +1400,7 @@
           <download-url>_VERSION-1_all.deb</download-url>
           <md5sum>b9532a4ccb265083132d171df249a35d</md5sum>
         </package>
-        <package name="">
-          <download-url/>
-          <md5sum>ea405b3c247dd4228ff9fa704403d91e</md5sum>
-        </package>
-      </release>
+        </release>
 
       <release version="37">
         <date>6.7.2022</date>
