@@ -189,7 +189,31 @@
                 <version-prefix>8.1.</version-prefix>
            
 
-      <release version="3" recommended="1">
+      <release version="4" recommended="1">
+        <date>27.7.2022</date>
+        <package name="">
+          <download-url/>
+          <md5sum>0a2031783a25a918524871bd00c63a41</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>8004dc51557d5076853c4fcbc8df1334</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>e679296d65b6b73d70e9b513d7fade51</md5sum>
+        </package>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>70a86427920242a3cdb979cb97984cf4</md5sum>
+        </package>
+        <package name="">
+          <download-url/>
+          <md5sum>d0b6dac129ac927b4884f68efaa09a9e</md5sum>
+        </package>
+      </release>
+
+      <release version="3">
         <date>6.7.2022</date>
         <package name="rpm">
           <download-url>-VERSION-1.noarch.rpm</download-url>
