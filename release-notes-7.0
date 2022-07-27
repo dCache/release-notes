@@ -76,6 +76,27 @@ HTML header: <title>dCache 7.0 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 7.0.38
+
+### dcache-bulk
+
+Runtime exceptions do not kill the queue thread now
+and do not leave the request in a stalled state.
+
+
+### Changelog 7.0.37..7.0.38
+
+<!-- git log 7.0.37..7.0.38 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[113733fba8](https://github.com/dcache/dcache/commit/113733fba8e5d9ae633e11bc24deeb0fae86398e)
+:   [maven-release-plugin] prepare release 7.0.38
+
+[893a316349](https://github.com/dcache/dcache/commit/893a316349f7e0b44ef25ea9a71eca5d654f7cfa)
+:   dcache-bulk: (version 1) handle unexpected exceptions in queue
+
+[b5f9f0bc09](https://github.com/dcache/dcache/commit/b5f9f0bc09bab9d8093ec871ff4dd51020a8c7a6)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 7.0.37
 
 ### frontend, bulk
