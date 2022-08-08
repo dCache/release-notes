@@ -65,13 +65,36 @@ HTML header: <title>dCache 8.1 Release Notes</title>
 ## Highlights
 
 `webdav.redirect.allow-https` and `pool.enable.encrypted-transfers` are now set by default to true.
-It is important to note, that the pools must be updated to 8.1.
+It is important to note, that if the lower  versions of dCache for pools this properties should be manually set to true. 
 
 ## Incompatibilities
 - the `org.dcache.net.localaddresses` accepts host names
 - NFS transfers will fail with EIO for broken files
 
 
+
+## Release 8.1.5
+
+### dcache
+
+A clarification on authorized keys format has been added.
+
+
+
+
+
+### Changelog 8.1.4..8.1.5
+
+<!-- git log 8.1.4..8.1.5 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[0bd81d6b58](https://github.com/dcache/dcache/commit/0bd81d6b58e7067110ee98a1770db6197d7cc75b)
+:   [maven-release-plugin] prepare release 8.1.5
+
+[49a91502f0](https://github.com/dcache/dcache/commit/49a91502f0d81fa6d83f8a78425a1d78ef34c39a)
+:   Add clarification on authorized keys format
+
+[c0ae075aef](https://github.com/dcache/dcache/commit/c0ae075aefacba3599cb834e54f47265e36b4652)
+:   [maven-release-plugin] prepare for next development iteration
 
 ## Release 8.1.4
 

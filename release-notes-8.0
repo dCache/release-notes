@@ -76,6 +76,29 @@ HTML header: <title>dCache 8.0 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 8.0.11
+
+### dcache
+
+A clarification on authorized keys format has been added.
+
+
+
+
+
+### Changelog 8.0.10..8.0.11
+
+<!-- git log 8.0.10..8.0.11 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[d7dba3390a](https://github.com/dcache/dcache/commit/d7dba3390add55c981c6a57550164cce220203b6)
+:   [maven-release-plugin] prepare release 8.0.11
+
+[f03030ce4d](https://github.com/dcache/dcache/commit/f03030ce4dd8cc4ef9b1d505696fea324e90a807)
+:   Add clarification on authorized keys format
+
+[843aa5336c](https://github.com/dcache/dcache/commit/843aa5336cb2bf48e74cd9cf79414e1e702015cc)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 8.0.10
 
 ### dcache-bulk
