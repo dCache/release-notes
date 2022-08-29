@@ -53,21 +53,6 @@ section.
 
 
 
-### Four main components in dCache
--------------
-
-All components are CELLs: they are independent and can interact with each other (send messages).
-
-
-#### DOOR 
- - user entry points (WebDav, NFS, FTP, DCAP, XROOT) 
-#### PoolManager
-- request distribution uni
-#### Namespace
-- metadata DB, POSIX layer
-#### POOL
- - data storage nodes, talk all protocols
-
 ### Configuration files
 
 In the setup of dCache, there are three main places for configuration files:
@@ -77,6 +62,33 @@ In the setup of dCache, there are three main places for configuration files:
 -   **/etc/dcache/layouts**
 
 The folder **/usr/share/dcache/defaults** contains the default settings of the dCache. If one of the default configuration values needs to be changed, copy the default setting of this value from one of the files in **/usr/share/dcache/defaults** to the file **/etc/dcache/dcache.conf**, which initially is empty and update the value.
+
+### Four main components in dCache
+-------------
+
+All components are CELLs and they are independent and can interact with each other (send messages).
+For the minimal instalation of dCache the following cells must be configured in **/etc/dcache/dcache.conf** file.
+
+
+#### DOOR 
+ - User entry points (WebDav, NFS, FTP, DCAP, XROOT) 
+ - 
+#### PoolManager
+- The heart of a dCache System is the poolmanager. When a user performs an action on a file - reading or writing - a transfer request is sent to the dCache system. The poolmanager then decides how to handle this request.
+
+#### Namespace
+- The namespace provides a single rooted hierarchical file system view of the stored data
+- metadata DB, POSIX layer
+
+#### POOL
+ - Data storage nodes, talk all protocols
+
+Billing cell not clear?
+
+#### Zookeeper
+
+#### PNFSManager -????
+
 
 
 #### Grouping CELLs - Single process:
@@ -100,15 +112,12 @@ dcache.enable.space-reservation = false
 [dCacheDomain]
  dcache.broker.scheme = none
 [dCacheDomain/zookeeper]
-[dCacheDomain/admin]
 [dCacheDomain/pnfsmanager]
  pnfsmanager.default-retention-policy = REPLICA
  pnfsmanager.default-access-latency = ONLINE
 
-[dCacheDomain/cleaner]
 [dCacheDomain/poolmanager]
 [dCacheDomain/billing]
-[dCacheDomain/gplazma]
 [dCacheDomain/webdav]
  webdav.authn.basic = true
  
@@ -117,7 +126,8 @@ dcache.enable.space-reservation = false
 
 > **NOTE**
 >
->In this first installation of dCache your dCache will not be connected to a tape sytem. Therefore please change the values for pnfsmanager.default-retention-policy and pnfsmanager.default-access-latency in the file **/etc/dcache/dcache.conf**.
+> In this first installation of dCache your dCache will not be connected to a tape sytem. 
+> Therefore the values for pnfsmanager.default-retention-policy and pnfsmanager.default-access-latency must be changed in the file **/etc/dcache/dcache.conf**. ????
 
 
 >
@@ -125,7 +135,7 @@ dcache.enable.space-reservation = false
 >     pnfsmanager.default-access-latency=ONLINE
 
 
-now we can add a new cell; Pool
+Now we can add a new cell: Pool using the following command.
 
  > dcache pool create /srv/dcache/pool-A poolA dCacheDomain
 
@@ -141,7 +151,7 @@ dcache pool create /srv/dcache/pool-1 pool1 dCacheDomain
 |in file:/etc/dcache/layouts/mylayout.conf.
 ```
 
-The `/etc/dcache/layouts/mylayout.conf` file should be updated to have
+Now if we open  `/etc/dcache/layouts/mylayout.conf` file, it should be updated to have
 an additional `pool` service:
 
 ```ini
@@ -198,8 +208,9 @@ To inspect all generated units of dcache.target the systemd list-dependencies co
 our simple installation with just one domain hosting several services this would look like
 
 > systemctl list-dependencies dcache.target
+> systemctl status dcache@* 
 
-  >  systemctl status dcache@* 
+In the above example all cells have 
 
 # Grouping CELLsPool-In different processes:
  - Independent JVMs
@@ -249,7 +260,18 @@ pool.wait-for-files=${pool.path}/data
 - Components can run different, but compatible versions.
 
 
-
+Services communicate with each other by sending messages. This is true for both our single-domain dCache
+instance and one spanning many thousands of machines. The difference is that, when a dCache instance
+spans multiple domains, there needs to be some mechanism for sending messages between services located
+in different domains.
+This is done by establishing tunnels between domains. A tunnel is a TCP connection over which all messages
+from one domain to the other are sent.
+To reduce the number of TCP connections, domains may be configured to be core domains or satellite
+domains. Core domains have tunnels to all other core domains. Satellite domains have tunnels to all core
+domains.
+The simplest deployment has a single core domain and all other domains as satellite domains. This is a
+spoke deployment, where messages from a service in any satellite domain is sent directly to the core domain,
+but messages between services in different satellite domains are relayed through the core domain.
 
 
 
