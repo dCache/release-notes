@@ -72,12 +72,12 @@ For the minimal instalation of dCache the following cells must be configured in 
 
 #### DOOR 
  - User entry points (WebDav, NFS, FTP, DCAP, XROOT) 
- - 
+ 
 #### PoolManager
 - The heart of a dCache System is the poolmanager. When a user performs an action on a file - reading or writing - a transfer request is sent to the dCache system. The poolmanager then decides how to handle this request.
 
 #### Namespace
-- The namespace provides a single rooted hierarchical file system view of the stored data
+- The namespace provides a single rooted hierarchical file system view of the stored data.
 - metadata DB, POSIX layer
 
 #### POOL
@@ -95,6 +95,7 @@ Billing cell not clear?
 
 
 # Grouping CELLs - Single process:
+
 - Shared JVM
 - Shared CPU
 - Shared Log files
@@ -209,12 +210,28 @@ our simple installation with just one domain hosting several services this would
 > systemctl list-dependencies dcache.target
 > systemctl status dcache@* 
 
-In the above example all cells have shared the same process. the next configuration will demonstarait how to configure dCache by grouping cells in different processes.
- 
- 
+```console-root
+systemctl list-dependencies dcache.target
+|dcache.target
+|● ├─dcache@coreDomain.service
+|● ├─dcache@namespaceDomain.service
+|● ├─dcache@zookeeperDomain.service
+|● ├─dcache@poolDomain.service
+|● └─dcache@poolmanagerDomain.service
+
+
+
+```
+
+In the next  step, we will split the services into three domains.
+There is nothing special about having three domains. At one extreme, dCache will work correctly if everything
+runs in a single domain. On the other extreme, you can configure dCache to run each service in a separate
+domain. Although the latter deployment is the most flexible, there is some overhead in having many domains,
+so the optimal approach is usually somewhere in between these two extremes.
  The difference is that, when a dCache instance
 spans multiple domains, there needs to be some mechanism for sending messages between services located
 in different domains.
+
 This is done by establishing tunnels between domains. A tunnel is a TCP connection over which all messages
 from one domain to the other are sent.
 To reduce the number of TCP connections, domains may be configured to be core domains or satellite
@@ -225,6 +242,7 @@ spoke deployment, where messages from a service in any satellite domain is sent 
 but messages between services in different satellite domains are relayed through the core domain.
 
 # Grouping CELLs - In different processes:
+
  - Independent JVMs
  - Shared CPU
  - Per-process Log file
@@ -234,14 +252,14 @@ but messages between services in different satellite domains are relayed through
 ```ini
 dcache.enable.space-reservation = false
 
-[centralDomain]
+[corelDomain]
 dcache.broker.scheme = core
-[centralDomain/zookeeper]
-[centralDomain/pnfsmanager]
+[corelDomain/zookeeper]
+[corelDomain/pnfsmanager]
  pnfsmanager.default-retention-policy = REPLICA
  pnfsmanager.default-access-latency = ONLINE
 
-[centralDomain/poolmanager]
+[corelDomain/poolmanager]
 
 [doorsDomain]
 [doors/webdav]
@@ -255,10 +273,44 @@ pool.wait-for-files=${pool.path}/data
 ```
 
 
+```ini
+dcache status
+|DOMAIN
+|centralDomain
+|doorsDomain
+|poolsDomain
+STATUS PID USER
+LOG
+stopped
+dcache /var/log/dcache/centralDomain.log
+stopped
+dcache /var/log/dcache/doorsDomain.log
+stopped
+dcache /var/log/dcache/poolsDomain.log
+
+```
 
 # Grouping CELLs - On a different hosts:
 - Share-nothing option
 - Components can run different, but compatible versions.
+
+```ini
+
+[core-${host.name}]
+
+
+
+[core-${host.name}/poolmanager]
+
+[core-${host.name}/pnfsmanager]
+
+
+[core-${host.name}/nfs]
+chimera.db.url=jdbc:postgresql://${chimera.db.host}/${chimera.db.name}?prepareThreshold=3&targetServerType=master&ApplicationName=${nfs.cell.name}
+
+[admin]
+[core-${host.name}/admin]
+```
 
 
 
