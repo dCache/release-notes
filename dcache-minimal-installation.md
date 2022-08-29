@@ -209,9 +209,20 @@ our simple installation with just one domain hosting several services this would
 > systemctl list-dependencies dcache.target
 > systemctl status dcache@* 
 
-In the above example all cells have 
-
+In the above example all cells have shared the same process. the next configuration will demonstarait how to configure dCache by grouping cells in different processes.
  
+ 
+ The difference is that, when a dCache instance
+spans multiple domains, there needs to be some mechanism for sending messages between services located
+in different domains.
+This is done by establishing tunnels between domains. A tunnel is a TCP connection over which all messages
+from one domain to the other are sent.
+To reduce the number of TCP connections, domains may be configured to be core domains or satellite
+domains. Core domains have tunnels to all other core domains. Satellite domains have tunnels to all core
+domains.
+The simplest deployment has a single core domain and all other domains as satellite domains. This is a
+spoke deployment, where messages from a service in any satellite domain is sent directly to the core domain,
+but messages between services in different satellite domains are relayed through the core domain.
 
 # Grouping CELLs - In different processes:
  - Independent JVMs
@@ -225,17 +236,12 @@ dcache.enable.space-reservation = false
 
 [centralDomain]
 dcache.broker.scheme = core
-
-
-
 [centralDomain/zookeeper]
 [centralDomain/pnfsmanager]
  pnfsmanager.default-retention-policy = REPLICA
  pnfsmanager.default-access-latency = ONLINE
 
-
 [centralDomain/poolmanager]
-
 
 [doorsDomain]
 [doors/webdav]
