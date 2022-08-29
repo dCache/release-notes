@@ -66,7 +66,7 @@ The folder **/usr/share/dcache/defaults** contains the default settings of the d
 ### Four main components in dCache
 -------------
 
-All components are CELLs and they are independent and can interact with each other (send messages).
+All components are CELLs and they are independent and can interact with each other by sending messages.
 For the minimal instalation of dCache the following cells must be configured in **/etc/dcache/dcache.conf** file.
 
 
@@ -86,6 +86,7 @@ For the minimal instalation of dCache the following cells must be configured in 
 Billing cell not clear?
 
 #### Zookeeper
+
 
 #### PNFSManager -????
 
@@ -160,15 +161,11 @@ dcache.enable.space-reservation = false
 [dCacheDomain]
  dcache.broker.scheme = none
 [dCacheDomain/zookeeper]
-[dCacheDomain/admin]
 [dCacheDomain/pnfsmanager]
  pnfsmanager.default-retention-policy = REPLICA
  pnfsmanager.default-access-latency = ONLINE
 
-[dCacheDomain/cleaner]
 [dCacheDomain/poolmanager]
-[dCacheDomain/billing]
-[dCacheDomain/gplazma]
 [dCacheDomain/webdav]
  webdav.authn.basic = true
 
@@ -212,7 +209,7 @@ our simple installation with just one domain hosting several services this would
 
 In the above example all cells have 
 
-# Grouping CELLsPool-In different processes:
+# Grouping CELLs -In different processes:
  - Independent JVMs
  - Shared CPU
  - Per-process Log file
@@ -232,14 +229,9 @@ dcache.broker.scheme = core
 [central/pnfsmanager]
  pnfsmanager.default-retention-policy = REPLICA
  pnfsmanager.default-access-latency = ONLINE
-[central/gplazma]
 
 
-
-[central/cleaner]
 [central/poolmanager]
-[central/billing]
-
 
 
 [doors]
@@ -260,8 +252,7 @@ pool.wait-for-files=${pool.path}/data
 - Components can run different, but compatible versions.
 
 
-Services communicate with each other by sending messages. This is true for both our single-domain dCache
-instance and one spanning many thousands of machines. The difference is that, when a dCache instance
+ It is worth noticing that, when a dCache instance
 spans multiple domains, there needs to be some mechanism for sending messages between services located
 in different domains.
 This is done by establishing tunnels between domains. A tunnel is a TCP connection over which all messages
