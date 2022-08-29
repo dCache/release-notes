@@ -314,6 +314,26 @@ chimera.db.url=jdbc:postgresql://${chimera.db.host}/${chimera.db.name}?prepareTh
 
 
 
+###### HA and dCache
+
+```ini
+[dCacheDomain/cleaner]
+cleaner.cell.name=cleaner1
+cleaner.enable.hsm = true
+cleaner.limits.threads = 2
+cleaner.limits.period = 30
+
+[dCacheDomain/cleaner]
+cleaner.cell.name=cleaner2
+cleaner.enable.hsm = true
+
+[dCacheDomain/cleaner]
+cleaner.cell.name=cleaner3
+cleaner.enable.hsm = false
+
+```
+
+
 
 
 
