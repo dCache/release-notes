@@ -86,13 +86,15 @@ For the minimal instalation of dCache the following cells must be configured in 
 Billing cell not clear?
 
 #### Zookeeper
+ - A distributed directory and coordination service that dCache relies on.
 
 
 #### PNFSManager -????
+  -Manages the pnfs file system (hierarchy), pnfs database, meta-data. 
 
 
 
-#### Grouping CELLs - Single process:
+# Grouping CELLs - Single process:
 - Shared JVM
 - Shared CPU
 - Shared Log files
@@ -181,12 +183,12 @@ pool.wait-for-files=${pool.path}/data
 There are two ways to start dCache: 1) using sysV-like daemon, 2) Using systemd service.
 
 ##### Using sysV -like daemon
+
  The the 2nd one is preferred and enforced by default when the hosts operating system supports it. To change this behavior set
 
 dcache.systemd.strict=false
 
 > dcache start
-
 
 > dcache status
 
@@ -209,7 +211,9 @@ our simple installation with just one domain hosting several services this would
 
 In the above example all cells have 
 
-# Grouping CELLs -In different processes:
+ 
+
+# Grouping CELLs - In different processes:
  - Independent JVMs
  - Shared CPU
  - Per-process Log file
@@ -219,26 +223,25 @@ In the above example all cells have
 ```ini
 dcache.enable.space-reservation = false
 
-[central]
+[centralDomain]
 dcache.broker.scheme = core
 
 
 
-[central/zookeeper]
-[central/admin]
-[central/pnfsmanager]
+[centralDomain/zookeeper]
+[centralDomain/pnfsmanager]
  pnfsmanager.default-retention-policy = REPLICA
  pnfsmanager.default-access-latency = ONLINE
 
 
-[central/poolmanager]
+[centralDomain/poolmanager]
 
 
-[doors]
+[doorsDomain]
 [doors/webdav]
  webdav.authn.basic = true
  
-[pools]
+[poolsDomain]
 [pools/pool]
 pool.name=pool1
 pool.path=/srv/dcache/pool-1
@@ -252,17 +255,6 @@ pool.wait-for-files=${pool.path}/data
 - Components can run different, but compatible versions.
 
 
- It is worth noticing that, when a dCache instance
-spans multiple domains, there needs to be some mechanism for sending messages between services located
-in different domains.
-This is done by establishing tunnels between domains. A tunnel is a TCP connection over which all messages
-from one domain to the other are sent.
-To reduce the number of TCP connections, domains may be configured to be core domains or satellite
-domains. Core domains have tunnels to all other core domains. Satellite domains have tunnels to all core
-domains.
-The simplest deployment has a single core domain and all other domains as satellite domains. This is a
-spoke deployment, where messages from a service in any satellite domain is sent directly to the core domain,
-but messages between services in different satellite domains are relayed through the core domain.
 
 
 
