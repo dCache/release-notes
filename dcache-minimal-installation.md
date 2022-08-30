@@ -90,7 +90,7 @@ Billing cell not clear?
 
 
 #### PNFSManager -????
-  -Manages the pnfs file system (hierarchy), pnfs database, meta-data. 
+  - Manages the pnfs file system (hierarchy), pnfs database, meta-data. 
 
 
 
@@ -160,7 +160,6 @@ an additional `pool` service:
 
 ```ini
 dcache.enable.space-reservation = false
-
 [dCacheDomain]
  dcache.broker.scheme = none
 [dCacheDomain/zookeeper]
@@ -214,7 +213,7 @@ our simple installation with just one domain hosting several services this would
 systemctl list-dependencies dcache.target
 |dcache.target
 |● ├─dcache@coreDomain.service
-|● ├─dcache@namespaceDomain.service
+|● ├─dcache@NamespaceDomain.service
 |● ├─dcache@zookeeperDomain.service
 |● ├─dcache@poolDomain.service
 |● └─dcache@poolmanagerDomain.service
@@ -290,6 +289,27 @@ dcache /var/log/dcache/poolsDomain.log
 
 ```
 
+
+###### HA and dCache
+
+```ini
+[dCacheDomain/cleaner]
+cleaner.cell.name=cleaner1
+cleaner.enable.hsm = true
+cleaner.limits.threads = 2
+cleaner.limits.period = 30
+
+[dCacheDomain/cleaner]
+cleaner.cell.name=cleaner2
+cleaner.enable.hsm = true
+
+[dCacheDomain/cleaner]
+cleaner.cell.name=cleaner3
+cleaner.enable.hsm = false
+
+```
+
+
 # Grouping CELLs - On a different hosts:
 - Share-nothing option
 - Components can run different, but compatible versions.
@@ -310,27 +330,6 @@ chimera.db.url=jdbc:postgresql://${chimera.db.host}/${chimera.db.name}?prepareTh
 
 [admin]
 [core-${host.name}/admin]
-```
-
-
-
-###### HA and dCache
-
-```ini
-[dCacheDomain/cleaner]
-cleaner.cell.name=cleaner1
-cleaner.enable.hsm = true
-cleaner.limits.threads = 2
-cleaner.limits.period = 30
-
-[dCacheDomain/cleaner]
-cleaner.cell.name=cleaner2
-cleaner.enable.hsm = true
-
-[dCacheDomain/cleaner]
-cleaner.cell.name=cleaner3
-cleaner.enable.hsm = false
-
 ```
 
 
