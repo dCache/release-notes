@@ -76,7 +76,7 @@ For the minimal instalation of dCache the following cells must be configured in 
 #### PoolManager
 - The heart of a dCache System is the poolmanager. When a user performs an action on a file - reading or writing - a transfer request is sent to the dCache system. The poolmanager then decides how to handle this request.
 
-#### Namespace
+#### PNFSManager
 - The namespace provides a single rooted hierarchical file system view of the stored data.
 - metadata DB, POSIX layer
 
@@ -88,9 +88,6 @@ Billing cell not clear?
 #### Zookeeper
  - A distributed directory and coordination service that dCache relies on.
 
-
-#### PNFSManager -????
-  - Manages the pnfs file system (hierarchy), pnfs database, meta-data. 
 
 
 
@@ -264,13 +261,53 @@ dcache.broker.scheme = core
 [doors/webdav]
  webdav.authn.basic = true
  
-[poolsDomain]
-[pools/pool]
+[poolsDomainA]
+[poolsDomainA/pool]
 pool.name=pool1
 pool.path=/srv/dcache/pool-1
 pool.wait-for-files=${pool.path}/data
 ```
 
+[poolsDomainB]
+[poolsDomainB/pool]
+pool.name=pool1
+pool.path=/srv/dcache/pool-1
+pool.wait-for-files=${pool.path}/data
+```
+
+
+
+
+
+```ini
+dcache.enable.space-reservation = false
+
+[corelDomain]
+dcache.broker.scheme = core
+[corelDomain/zookeeper]
+[corelDomain/pnfsmanager]
+ pnfsmanager.default-retention-policy = REPLICA
+ pnfsmanager.default-access-latency = ONLINE
+
+[corelDomain/poolmanager]
+
+[doorsDomain]
+[doors/webdav]
+ webdav.authn.basic = true
+ 
+[poolsDomainA]
+[poolsDomainA/pool]
+pool.name=pool1
+pool.path=/srv/dcache/pool-1
+pool.wait-for-files=${pool.path}/data
+```
+
+[poolsDomainB]
+[poolsDomainB/pool]
+pool.name=pool1
+pool.path=/srv/dcache/pool-1
+pool.wait-for-files=${pool.path}/data
+```
 
 ```ini
 dcache status
@@ -289,25 +326,6 @@ dcache /var/log/dcache/poolsDomain.log
 
 ```
 
-
-###### HA and dCache
-
-```ini
-[dCacheDomain/cleaner]
-cleaner.cell.name=cleaner1
-cleaner.enable.hsm = true
-cleaner.limits.threads = 2
-cleaner.limits.period = 30
-
-[dCacheDomain/cleaner]
-cleaner.cell.name=cleaner2
-cleaner.enable.hsm = true
-
-[dCacheDomain/cleaner]
-cleaner.cell.name=cleaner3
-cleaner.enable.hsm = false
-
-```
 
 
 # Grouping CELLs - On a different hosts:
