@@ -171,6 +171,7 @@ dcache.enable.space-reservation = false
 pool.name=pool1
 pool.path=/srv/dcache/pool-1
 pool.wait-for-files=${pool.path}/data
+
 ```
 
 
@@ -272,6 +273,7 @@ pool.wait-for-files=${pool.path}/data
 pool.name=pool1
 pool.path=/srv/dcache/pool-1
 pool.wait-for-files=${pool.path}/data
+
 ```
 
 
@@ -317,6 +319,7 @@ chimera.db.url=jdbc:postgresql://${chimera.db.host}/${chimera.db.name}?prepareTh
 
 [admin]
 [core-${host.name}/admin]
+
 ```
 
 
