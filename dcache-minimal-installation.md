@@ -266,7 +266,6 @@ dcache.broker.scheme = core
 pool.name=pool1
 pool.path=/srv/dcache/pool-1
 pool.wait-for-files=${pool.path}/data
-```
 
 [poolsDomainB]
 [poolsDomainB/pool]
