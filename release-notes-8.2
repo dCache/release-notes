@@ -122,6 +122,10 @@ file creation time PnfsManager will include CREATION_TIME attribute whenever STO
 
 Added `rm kill` command that canceles a pending file remove request from HSM.
 
+When pool decides which storage class to flush it uses the last submition time. However, submition
+time is re-set when pool fails to flush the file and re-submit the file again. Starting with 8.2 pool
+will sort the flushing based on time when files are created on pool.
+
 ### Poolmanager
 
 PoolManager is update to support pool groups that contains other pool groups. For example:
