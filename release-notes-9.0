@@ -64,6 +64,8 @@ HTML header: <title>dCache 9.0 Release Notes</title>
 
 ## Highlights
 
+- dCache now supports Java 17 as its platform
+
 ## Incompatibilities
 
 ## Acknowledgments
