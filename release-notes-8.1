@@ -72,6 +72,85 @@ It is important to note, that if the lower  versions of dCache for pools this pr
 - NFS transfers will fail with EIO for broken files
 
 
+## Release 8.1.6
+
+### common
+
+dCache now reports RemoteTransferManager as being replicable.
+
+### dcache-xroot
+
+#  Description in mark-down; terminate with a line containin only '--'
+
+### webdav
+
+Fix a bug where the WebDAV door will continue attempting to kill a
+cancelled HTTP-TPC transfer indefinitely if the corresponding
+RemoteTransferManager cell has been switched off. 
+
+The current release fixed a NullPointerException when reporting on active transfers if the
+client has disconnected but the door has not yet cancelled the transfer.
+
+### xroot
+
+Documentation now offers some explicit
+guidance as to pool configuration for
+xrootd reqarding memory.
+
+### xrootd4j
+
+A potential for DOS in xrootd write was fixed.
+
+
+
+### Changelog 8.1.5..8.1.6
+
+<!-- git log 8.1.5..8.1.6 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[195c921ce2](https://github.com/dcache/dcache/commit/195c921ce2e0b2ed6209587f913933aa2503ee5e)
+:   [maven-release-plugin] prepare release 8.1.6
+
+[13040398d9](https://github.com/dcache/dcache/commit/13040398d9300194974c8383ada95355695d09bf)
+:   Update dcache-minimal-installation.md
+
+[83240cf253](https://github.com/dcache/dcache/commit/83240cf2539066cda9e9c460dbf8b7219b9c3c24)
+:   Update dcache-minimal-installation.md
+
+[93df95e785](https://github.com/dcache/dcache/commit/93df95e785354155e344a6361ddbb5ad303236c0)
+:   Update dcache-minimal-installation.md
+
+[e6b63e67b8](https://github.com/dcache/dcache/commit/e6b63e67b8ebea89bd3a4c83cc3971cfa175d7f8)
+:   dcache-xroot:  interrupt doOnOpen thread in the event of channel inactive
+
+[071119e63e](https://github.com/dcache/dcache/commit/071119e63e3af39aa49010cb54d7f400efddb830)
+:   Update dcache-minimal-installation.md
+
+[683bf1b558](https://github.com/dcache/dcache/commit/683bf1b558467158575dd0ae7e0bd64aa52c41f0)
+:   webdav: http-tpc do not keep retrying to cancel transfer
+
+[0bb2b44085](https://github.com/dcache/dcache/commit/0bb2b440858b867ac84e966a8fa169ba20d8537b)
+:   Update dcache-minimal-installation.md
+
+[bc4726759e](https://github.com/dcache/dcache/commit/bc4726759e12db62dc3b5b2ef77b41242f461d97)
+:   Update dcache-minimal-installation.md
+
+[281fce96cf](https://github.com/dcache/dcache/commit/281fce96cf36ee2481e6d373c1d84c80440c1edf)
+:   Create dcache-minimal-installation.md
+
+[9a0cf9d7cb](https://github.com/dcache/dcache/commit/9a0cf9d7cb44cc58e118c37dd13dfd24728db5f2)
+:   webdav: fix NPE if client aborts transfer
+
+[8b611559db](https://github.com/dcache/dcache/commit/8b611559db76c3ebf29cb919130c8b82d697a791)
+:   dcache-xroot: add Book section on direct memory requirements for pools*
+
+[6f10d17ca9](https://github.com/dcache/dcache/commit/6f10d17ca92b550bc6e11c52d4ae09b76826a228)
+:   pom.xml:  update to latest xrootd4j bugfix
+
+[d3bf904d37](https://github.com/dcache/dcache/commit/d3bf904d37ca03ef8a500c6cba3915de85017d1b)
+:   [maven-release-plugin] prepare for next development iteration
+
+[0704524aa5](https://github.com/dcache/dcache/commit/0704524aa554f8a43d43ec2cd0311d9906eb1da5)
+:   properties: report that remote transfer manager is replicable
 
 ## Release 8.1.5
 

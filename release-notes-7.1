@@ -80,26 +80,28 @@ HTML header: <title>dCache 7.1 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
-## Release 7.1.30
+## Release 7.1.31
 
-### dcache-bulk
+### xrootd4j
 
-Runtime exceptions do not kill the queue thread now
-and do not leave the request in a stalled state.
+A potential for DOS in xrootd write was fixed.
 
 
-### Changelog 7.1.29..7.1.30
 
-<!-- git log 7.1.29..7.1.30 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+### Changelog 7.1.30..7.1.31
 
-[14808d7405](https://github.com/dcache/dcache/commit/14808d7405a8ed55422745a488c96521a2c730e8)
-:   [maven-release-plugin] prepare release 7.1.30
+<!-- git log 7.1.30..7.1.31 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
 
-[3e3e594403](https://github.com/dcache/dcache/commit/3e3e59440360603e181b72042f19f1b43d2db2fd)
-:   dcache-bulk: (version 1) handle unexpected exceptions in queue
+[f03aa7d4bd](https://github.com/dcache/dcache/commit/f03aa7d4bde64fbf3b8e8041f4641ef03ce0a9e6)
+:   [maven-release-plugin] prepare release 7.1.31
 
-[655fe50b96](https://github.com/dcache/dcache/commit/655fe50b96748389c88f3a0d0eb762b90c0425fc)
+[0ef2ca9f8b](https://github.com/dcache/dcache/commit/0ef2ca9f8bf5d7a8a3acd9c96c71ea15eb0ea443)
+:   pom.xml: update to latest xrootd4j bugfix
+
+[328f4c202b](https://github.com/dcache/dcache/commit/328f4c202b19eb8f030942d14a973609de2e7475)
 :   [maven-release-plugin] prepare for next development iteration
+
+
 
 ## Release 7.1.30
 

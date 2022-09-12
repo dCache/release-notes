@@ -71,6 +71,61 @@ Support for a dedicated scheduling strategy for bring-online requests was added 
 
 This release doesn't have any incompatibilities.
 
+
+## Release 7.2.22
+
+### common
+
+dCache now reports RemoteTransferManager as being replicable.
+
+### dcache-xroot
+
+#  Description in mark-down; terminate with a line containin only '--'
+
+### webdav
+
+Fix a bug where the WebDAV door will continue attempting to kill a
+cancelled HTTP-TPC transfer indefinitely if the corresponding
+RemoteTransferManager cell has been switched off. 
+
+The current release fixed a NullPointerException when reporting on active transfers if the
+client has disconnected but the door has not yet cancelled the transfer.
+
+### xroot
+
+Documentation now offers some explicit
+guidance as to pool configuration for
+xrootd reqarding memory.
+
+
+### Changelog 7.2.21..7.2.22
+
+<!-- git log 7.2.21..7.2.22 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[616282d9d1](https://github.com/dcache/dcache/commit/616282d9d1886b7313bee67202cc259258010fe1)
+:   [maven-release-plugin] prepare release 7.2.22
+
+[7194d3caef](https://github.com/dcache/dcache/commit/7194d3caef3d9ab1a05a57475322663acb47feb8)
+:   dcache-xroot:  interrupt doOnOpen thread in the event of channel inactive
+
+[a08ec82ca1](https://github.com/dcache/dcache/commit/a08ec82ca1b8156e93e0a5f223f4269528e5d6f1)
+:   webdav: http-tpc do not keep retrying to cancel transfer
+
+[0b0a79c5ad](https://github.com/dcache/dcache/commit/0b0a79c5ad5a7d08a79163177f0451c2cd5c9d12)
+:   webdav: fix NPE if client aborts transfer
+
+[dd504beb38](https://github.com/dcache/dcache/commit/dd504beb386311fc696c4f547a854346e4b26db0)
+:   dcache-xroot: add Book section on direct memory requirements for pools*
+
+[5c49935a70](https://github.com/dcache/dcache/commit/5c49935a7010e886010b130a3173d838eb8a09f3)
+:   pom.xml: update to latest xrootd4j bugfix
+
+[76725e6b46](https://github.com/dcache/dcache/commit/76725e6b46a3e39221815a26c652517be7418c54)
+:   [maven-release-plugin] prepare for next development iteration
+
+[408fc0fab2](https://github.com/dcache/dcache/commit/408fc0fab27f1bc09b658417b4a2c35e98066169)
+:   properties: report that remote transfer manager is replicable
+
 ## Release 7.2.21
 
 ### dcache
