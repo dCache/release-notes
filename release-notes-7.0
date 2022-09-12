@@ -97,6 +97,27 @@ A potential for DOS in xrootd write was fixed.
 [05e6a04ee2](https://github.com/dcache/dcache/commit/05e6a04ee20f59f8a9ec46a562605fb143d5b1f9)
 :   [maven-release-plugin] prepare for next development iteration
 
+## Release 7.0.39
+
+### xrootd4j
+
+A potential for DOS in xrootd write was fixed.
+
+
+
+### Changelog 7.0.38..7.0.39
+
+<!-- git log 7.0.38..7.0.39 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[5a6f77513e](https://github.com/dcache/dcache/commit/5a6f77513e5d15194dda08d131d3a7576f19b0f5)
+:   [maven-release-plugin] prepare release 7.0.39
+
+[f50b1f3c9b](https://github.com/dcache/dcache/commit/f50b1f3c9bf86bde0c2a5d0c8db860c3fe2df442)
+:   pom.xml: update to latest xrootd4j bugfix
+
+[05e6a04ee2](https://github.com/dcache/dcache/commit/05e6a04ee20f59f8a9ec46a562605fb143d5b1f9)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 7.0.38
 
 ### dcache-bulk

@@ -90,6 +90,65 @@ dCache now reports RemoteTransferManager as being replicable.
 
 Fix a bug where the WebDAV door will continue attempting to kill a
 cancelled HTTP-TPC transfer indefinitely if the corresponding
+RemoteTransferManager cell has been switched off.
+
+The current release fixed a NullPointerException when reporting on active transfers if the
+client has disconnected but the door has not yet cancelled the transfer.
+
+### xroot
+
+Documentation now offers some explicit
+guidance as to pool configuration for
+xrootd reqarding memory.
+
+### xrootd4j
+
+A potential for DOS in xrootd write was fixed.
+
+
+
+### Changelog 8.0.11..8.0.12
+
+<!-- git log 8.0.11..8.0.12 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[2c4134828e](https://github.com/dcache/dcache/commit/2c4134828e485d9611de1de0370d588ad23f15a3)
+:   [maven-release-plugin] prepare release 8.0.12
+
+[6c1b92bd5b](https://github.com/dcache/dcache/commit/6c1b92bd5bebce26006c7163df6a59c456a935b6)
+:   dcache-xroot:  interrupt doOnOpen thread in the event of channel inactive
+
+[4122a3b15e](https://github.com/dcache/dcache/commit/4122a3b15e88d8121dd3a29c07c957979f12e1b9)
+:   webdav: http-tpc do not keep retrying to cancel transfer
+
+[48ad0f7042](https://github.com/dcache/dcache/commit/48ad0f7042ce604b349c402759729b7659d6977f)
+:   webdav: fix NPE if client aborts transfer
+
+[9a4b63f79e](https://github.com/dcache/dcache/commit/9a4b63f79e7f207ca8afd0909bea1fbd600921d1)
+:   dcache-xroot: add Book section on direct memory requirements for pools*
+
+[b028c0ae2a](https://github.com/dcache/dcache/commit/b028c0ae2afc7522e6c0f1d99dbf24d16cd5b214)
+:   pom.xml: update to latest xrootd4j bugfix
+
+[d7892ccb7f](https://github.com/dcache/dcache/commit/d7892ccb7f2ced5fd8216cf24129ef2fcddd39ad)
+:   [maven-release-plugin] prepare for next development iteration
+
+[141a314453](https://github.com/dcache/dcache/commit/141a31445322127e5ad4c30518662ec508a60320)
+:   properties: report that remote transfer manager is replicable
+
+## Release 8.0.12
+
+### common
+
+dCache now reports RemoteTransferManager as being replicable.
+
+### dcache-xroot
+
+#  Description in mark-down; terminate with a line containin only '--'
+
+### webdav
+
+Fix a bug where the WebDAV door will continue attempting to kill a
+cancelled HTTP-TPC transfer indefinitely if the corresponding
 RemoteTransferManager cell has been switched off. 
 
 The current release fixed a NullPointerException when reporting on active transfers if the
