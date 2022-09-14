@@ -2174,7 +2174,23 @@
        <notes-url>release-notes-6.2.shtml</notes-url>
        <version-prefix>6.2.</version-prefix>
 
-      <release version="47" recommended="1">
+      <release version="48" recommended="1">
+        <date>14.9.2022</date>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>43ad3c766f1c1a4bf3bec3720a778968</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>3910a52f3608b82c9add3406604e91a8</md5sum>
+        </package>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>c93b1421d91eff1d3ecad6332cea02ff</md5sum>
+        </package>
+      </release>
+
+      <release version="47">
         <date>30.6.2022</date>
         <package name="rpm">
           <download-url>-VERSION-1.noarch.rpm</download-url>
