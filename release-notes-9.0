@@ -67,6 +67,7 @@ HTML header: <title>dCache 9.0 Release Notes</title>
 - dCache now supports Java 17 as its platform
 
 ## Incompatibilities
+- DCAP and NFS doors will fail the request if file's storage unit is not configured at the PoolManager
 
 ## Acknowledgments
 
@@ -85,6 +86,8 @@ HTML header: <title>dCache 9.0 Release Notes</title>
 
 ### DCAP
 
+The DCAP door will fail the request if file's storage unit is not configured at the PoolManager, as all other doors already do.
+
 ### Frontend
 
 ### FTP
@@ -102,6 +105,8 @@ HTML header: <title>dCache 9.0 Release Notes</title>
 ### Missing Files
 
 ### NFS
+
+The NFS door will the fail request if file's storage unit is not configured at the PoolManager, as all other doors already do.
 
 ### Pinmanager
 
