@@ -127,8 +127,8 @@ The JSON returned from GET api/v1/bulk-requests is no longer a
 simple array of URLs, but an array of objects with fuller info 
 concerning each request (hence this return value now requires 
 parsing; see the SWAGGER page for fuller information).  All matching
-requests are now returned (rather than those owned by the user), 
-though it is possible to filter the result by comma-delimited list 
+requests are now returned (rather than those owned only by the user), 
+though it is possible to filter the result by a comma-delimited list 
 of user/owner ids.
 
 A new TAPE API has been made available for the purposes of
@@ -160,25 +160,26 @@ for bulk-requests and tape along with their differences.
 
 ### PNFS Manager
 
-Historically, dCache namespace was allowing hard links on directories. This violates
-POSIX restrictions and source of file system cyclic loops. With release dCache release 8.2
+Historically, the dCache namespace was allowing hard links on directories. This violates
+POSIX restrictions and is a source of file system cyclic loops. With dCache release 8.2
 creation of hard links on directories is not allowed any more. The existing hard links will
-work as before, however, recommended to be replace with soft links.
+work as before; however, it is recommended to replace them with soft links.
 
-To allow pool, nearline storage and other components to make a scheduling decisions based on
-file creation time PnfsManager will include CREATION_TIME attribute whenever STORAGEINFO is requested.
+To allow pool, nearline storage and other components to make scheduling decisions based on
+file creation time, PnfsManager will include the CREATION_TIME attribute whenever STORAGEINFO 
+is requested.
 
 ### Pool
 
 Added `rm kill` command that canceles a pending file remove request from HSM.
 
-When pool decides which storage class to flush it uses the last submition time. However, submition
-time is re-set when pool fails to flush the file and re-submit the file again. Starting with 8.2 pool
-will sort the flushing based on time when files are created on pool.
+When a pool decides which storage class to flush it uses the last submission time. However, submission
+time is re-set when a pool fails to flush the file and re-submit the file. Starting with 8.2, 
+a pool will sort the flushing based on the time when files are created on the pool.
 
 ### Poolmanager
 
-PoolManager is update to support pool groups that contains other pool groups. For example:
+PoolManager has been updated to support pool groups that contain other pool groups. For example:
 
 ```
 psu create pgroup -dynamic -tags=hw-class=IO io-pools
@@ -187,7 +188,7 @@ psu create pgroup all-pools
 psu addto pgroup all-pools @io-pools @replica-pools
 ```
 
-The values prefixed by `@` to `psu addto pgroup` command threaded as groups.
+The values prefixed by `@` in the `psu addto pgroup` command are treated as groups.
 
 
 ### Resilience / QoS Engine
@@ -234,7 +235,7 @@ Details are available in the xroot chaper of The Book.
 
 ### Zookeeper
 
-Zookeeper version is update to the latest stable release 5.7.1
+The Zookeeper version has been updated to the latest stable release 5.7.1
 
 ### Changelog from 8.1.0 to 8.2.0
 
