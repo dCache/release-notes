@@ -82,6 +82,25 @@ HTML header: <title>dCache 9.0 Release Notes</title>
 
 ### Cleaner
 
+The `cleaner` service, originally a single cell, now consists of two parts: one cell for disk cleaning (`cleaner-disk`), one for hsm
+cleaning (`cleaner-hsm`). They can be deployed as desired, be assigned different resources and each run in HA mode.
+This will hopefully improve performance issues and help admins configure and understand cleaner behaviour.
+
+Be aware that the property names have changed their prefixes from `cleaner.<something>` to `cleaner-disk.<something>` and
+`cleaner-hsm.<something>`, while some admin commands have lost the "hsm" String from their name.
+Example setup:
+
+```
+[dCacheDomain]
+[dCacheDomain/cleaner-disk]
+cleaner-disk.cell.name=cleaner-disk1
+
+[dCacheDomain/cleaner-disk]
+cleaner-disk.cell.name=cleaner-disk2
+
+[dCacheDomain/cleaner-hsm]
+```
+
 ### Checksums
 
 ### DCAP
