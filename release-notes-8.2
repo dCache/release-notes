@@ -110,6 +110,8 @@ chapter on the bulk service.
 
 ### Cleaner
 
+An admin command was added to the `cleaner` cell that allows forgetting a pool, meaning removing any corresponding delete target entries from the cleaner's trash table database. If the requested pool is not currently blacklisted, the admin is required to explicitly enforce the operation.
+
 ### Checksums
 
 ### DCAP
@@ -216,6 +218,8 @@ uses a database whereas none was used by Resilience.
 ### Topo
 
 ### Transfer Managers
+
+`RemoteTransferManager` is now replicable, which allows for high-availability deployments when the WebDAV door and all RemoteTransferManager services are upgraded to support this new feature.
 
 ### WebDAV
 
