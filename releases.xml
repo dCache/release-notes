@@ -176,6 +176,7 @@
                 <ul>
 			<li>Support for nested groups in the PoolManager</li>
 			<li>The bulk service has undergone a major revision</li>
+			<li>A new TAPE API has been made available for the purposes of bulk staging</li>	
 		</ul>
 	    <p>Incompatibilities</p>
 
