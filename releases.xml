@@ -191,7 +191,7 @@
                 <version-prefix>8.2.</version-prefix>
             <release>
             </release>
-            </releases>
+           
 
       <release version="0" recommended="1">
         <date>28.9.2022</date>
@@ -207,8 +207,9 @@
           <download-url>_VERSION-1_all.deb</download-url>
           <md5sum>854146b82cc38014eba5c6d77fa17428</md5sum>
         </package>
-      </release>
+       </release>
 
+      </releases>
       
         </series>
 
