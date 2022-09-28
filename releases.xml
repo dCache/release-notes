@@ -174,7 +174,8 @@
             <description>
                 <p>dCache 8.2 is a Golden Release introducing the following highlights:</p>
                 <ul>
-			<li>Support for nested groups in the PoolManager</li><li>The bulk service has undergone a major revision</li>
+			<li>Support for nested groups in the PoolManager</li>
+			<li>The bulk service has undergone a major revision</li>
 		</ul>
 	    <p>Incompatibilities</p>
 
