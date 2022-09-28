@@ -167,6 +167,53 @@
     <br/>
   </preamble>
 
+
+	   <series id="server-8.2">
+            <title>server 8.2.x</title>
+
+            <description>
+                <p>dCache 8.2 is a Golden Release introducing the following highlights:</p>
+                <ul>
+			<li>Support for nested groups in the PoolManager</li><li>The bulk service has undergone a major revision</li>
+		</ul>
+	    <p>Incompatibilities</p>
+
+	    <li>pool group names cannot start with `@` symbol</li>
+                <li>hard links on directories is not allowed</li><li>GET `api/v1/bulk-requests` has a new return value</li>
+
+                <p>dCache v8.0 requires a JVM supporting  Java 11.</p>
+            </description>
+
+            <releases>
+                <name>dCache VERSION</name>
+                <download-url-prefix>repo/8.2/dcache</download-url-prefix>
+                <notes-url>release-notes-8.2.shtml</notes-url>
+                <version-prefix>8.2.</version-prefix>
+            <release>
+            </release>
+            </releases>
+
+      <release version="0" recommended="1">
+        <date>28.9.2022</date>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>34b026f41eeeb5257f5598a1df080a7c</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>5033521f4cd1926cc18aa04d4175ca56</md5sum>
+        </package>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>854146b82cc38014eba5c6d77fa17428</md5sum>
+        </package>
+      </release>
+
+      
+        </series>
+
+
+
 	   <series id="server-8.1">
             <title>server 8.1.x</title>
 
@@ -176,10 +223,9 @@
                     <li>`webdav.redirect.allow-https` and `pool.enable.encrypted-transfers` are now set by default to true</li>
 	    </ul>
 		 <p>Incompatibilities</p>
-        	<li>the `org.dcache.net.localaddresses` accepts host names</li>
-        	<li>NFS transfers will fail with EIO for broken files</li>
-
-                <p>dCache v8.1 requires a JVM supporting  Java 11.</p>
+		 <li>the `org.dcache.net.localaddresses` accepts host names</li>
+		 <li>NFS transfers will fail with EIO for broken files</li>
+		 <p>dCache v8.1 requires a JVM supporting  Java 11.</p>
             </description>
 
             <releases>
