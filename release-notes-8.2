@@ -79,9 +79,6 @@ HTML header: <title>dCache 8.2 Release Notes</title>
 
 ## Release 8.2.0
 
-### Admin
-
-### Billing
 
 ### Bulk
 
@@ -112,9 +109,7 @@ chapter on the bulk service.
 
 An admin command was added to the `cleaner` cell that allows forgetting a pool, meaning removing any corresponding delete target entries from the cleaner's trash table database. If the requested pool is not currently blacklisted, the admin is required to explicitly enforce the operation.
 
-### Checksums
 
-### DCAP
 
 ### Frontend
 
@@ -142,23 +137,6 @@ in the User Guide (Frontend/BulkRequests) which details the APIs
 for bulk-requests and tape along with their differences.
 
 
-### FTP
-
-### gplazma
-
-### History
-
-### Hoppingmanager
-
-### httpd
-
-### Info
-
-### Missing Files
-
-### NFS
-
-### Pinmanager
 
 ### PNFS Manager
 
@@ -207,19 +185,7 @@ Note that a major change between Resilience and QoS is that the QoS Verifier
 uses a database whereas none was used by Resilience.
 
 
-### Space Manager
 
-### SRM
-
-### SRM Manager
-
-### Statistics
-
-### Topo
-
-### Transfer Managers
-
-### WebDAV
 
 ### XRootD
 
@@ -242,6 +208,229 @@ The Zookeeper version has been updated to the latest stable release 5.7.1
 ### Changelog from 8.1.0 to 8.2.0
 
 <!-- git log 8.1..8.2 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[9a09718207](https://github.com/dcache/dcache/commit/9a097182078568cef5feae5371eb5d599e6a4ef2)
+:   [maven-release-plugin] prepare for next development iteration
+
+[826c56fe3d](https://github.com/dcache/dcache/commit/826c56fe3dc7de2bce50627dcd96bd51d0f1046b)
+:   [maven-release-plugin] prepare release 8.2.0
+
+[283c8b75c3](https://github.com/dcache/dcache/commit/283c8b75c3ec9d886e6984606b15e4d8d4a6bf67)
+:   nfs4: return EACCESS when stage is not allowed
+
+[312ea69bdf](https://github.com/dcache/dcache/commit/312ea69bdf1472d3873d92d5a9c07c6543b3a5f7)
+:   gplazma: vo-group plugin
+
+[3d04e98d26](https://github.com/dcache/dcache/commit/3d04e98d26ec6855ec110eeb1f33a5e3dc6bfa44)
+:   [maven-release-plugin] prepare branch 8.2
+
+[e04424facf](https://github.com/dcache/dcache/commit/e04424facf5a1c79831b711800becbb4e07cf409)
+:   gplazma: update gplazma config loader to use ParsableFile
+
+[7f1cdae61b](https://github.com/dcache/dcache/commit/7f1cdae61b351ad42a3809bc6e73a2e67c64d3dc)
+:   gplazma: fix year in copyright statement
+
+[3829bcd5e9](https://github.com/dcache/dcache/commit/3829bcd5e9a7604c07f263c2665ee1cdea53330c)
+:   common: add hashCode and equals methods for Result
+
+[317f9a6832](https://github.com/dcache/dcache/commit/317f9a6832184823c515a71e8cff6a463538e878)
+:   pool: order storage classes by oldest entry in the queue
+
+[e929f9c0e9](https://github.com/dcache/dcache/commit/e929f9c0e9b4761a3094313dfecd1f440069d666)
+:   util,namespace: ensure that files' creation time is always populated
+
+[e0ebf992f3](https://github.com/dcache/dcache/commit/e0ebf992f37d72b6a580812e73870d71d658c4cf)
+:   Revert "common: remove orphaned test file"
+
+[70f97b6766](https://github.com/dcache/dcache/commit/70f97b67663b8f74db5c6aafed3686d28a1da786)
+:   common: remove orphaned test file
+
+[89dbaec931](https://github.com/dcache/dcache/commit/89dbaec931d2ad04aeddc47826cbdb4ae9af0746)
+:   gplazma: switch configuration parser to use LineBasedParser
+
+[31aa21f2f9](https://github.com/dcache/dcache/commit/31aa21f2f962af7e00e7b1850fce63d7e796dec6)
+:   gplazma: refactor ConfigurationParserFactory layer
+
+[ac18e03164](https://github.com/dcache/dcache/commit/ac18e031642a9a5ecee0f14f8d6cbebc9f3d5d09)
+:   gplazma: remove dead code
+
+[5a3b0909aa](https://github.com/dcache/dcache/commit/5a3b0909aa2ea66a8ca8589abcc9afdaa6f3bcbf)
+:   libs: update to the latest stable zk version 3.7.1
+
+[689f76c38b](https://github.com/dcache/dcache/commit/689f76c38bc141af3e6d3443ea96a619cc90822e)
+:   dcache-bulk,dcache-frontend: modify GET for bulk-requests to be somewhat more useful
+
+[13e497d7b9](https://github.com/dcache/dcache/commit/13e497d7b9d9964f58c81dc921c294347d2e555c)
+:   dcache-xroot:  add configurable internal address for proxying
+
+[1624bee957](https://github.com/dcache/dcache/commit/1624bee957f315b9bb2c859575d73663bc69a1b0)
+:   common: have ParsableFile return Result
+
+[32f3dbaeca](https://github.com/dcache/dcache/commit/32f3dbaeca946848287d475052482584bc9120b0)
+:   nearline: add `rm kill` command to cancel pending removes from HSM
+
+[ad67ecbee2](https://github.com/dcache/dcache/commit/ad67ecbee25d8762cbea7c3ca6587c2e7c659f25)
+:   src: add benchmark module
+
+[c01b89d6e3](https://github.com/dcache/dcache/commit/c01b89d6e37da57955363a34b8cbf58d8d8dc2ef)
+:   dcache-xroot:  add Book section on direct memory requirements for pools
+
+[1bcc5ecebb](https://github.com/dcache/dcache/commit/1bcc5ecebb31fd40cb2ad3ccd91465443d95c855)
+:   dcache-xroot: add optional max write buffer size to decoder
+
+[2bacd47d70](https://github.com/dcache/dcache/commit/2bacd47d7039c3e2135da9f716e69251d87466aa)
+:   webdav: fix NPE if client aborts transfer
+
+[c16d516d4f](https://github.com/dcache/dcache/commit/c16d516d4f6fea1314586035944a6a8e06ac8b68)
+:   webdav: http-tpc do not keep retrying to cancel transfer
+
+[e1d0d7114e](https://github.com/dcache/dcache/commit/e1d0d7114ef25514cce47b4b271a72759156050f)
+:   src: don't use repackaged guava
+
+[8fc9957358](https://github.com/dcache/dcache/commit/8fc99573587bb46608798a20d4ae01616b8c228b)
+:   Revert "src: drop dependency on jython"
+
+[59fd0d8da8](https://github.com/dcache/dcache/commit/59fd0d8da86605e601f984446a51344a47beb127)
+:   gplazma: oidc drop support for 'gplazma.oidc.hostname'
+
+[6b5fa34f0c](https://github.com/dcache/dcache/commit/6b5fa34f0cead8e0077d50f19f728e177ebdc947)
+:   src: drop dependency on jython
+
+[c429647bb5](https://github.com/dcache/dcache/commit/c429647bb575124d71257ccf85486f8a97414938)
+:   build(deps): bump jetty-webapp from 9.4.43.v20210629 to 9.4.44.v20210927
+
+[e769dbc7bc](https://github.com/dcache/dcache/commit/e769dbc7bcf5f83e275fad896d43597eca83f878)
+:   dcache-xroot:  interrupt doOnOpen thread in the event of channel inactive
+
+[0acb2433ea](https://github.com/dcache/dcache/commit/0acb2433ea9096df4eb8593e4c8c79bac3b36e1b)
+:   spacemanager: switch linkgroupauthz file to use ParsableFile
+
+[7bd4abc6c0](https://github.com/dcache/dcache/commit/7bd4abc6c0295037bf1816378ed373012941f17e)
+:   common: add support for discovering file path
+
+[6310d9c9fc](https://github.com/dcache/dcache/commit/6310d9c9fcd35e668a93c7b966d0dfb2db49fdfc)
+:   spacemanager: remove dead code
+
+[7a734e3196](https://github.com/dcache/dcache/commit/7a734e31960bcb53db17cc663314da8c8da2c5fe)
+:   commons: move generic configuration file support
+
+[2b799c6093](https://github.com/dcache/dcache/commit/2b799c609355aaba4bbfe23d31aa3443fd1b55e4)
+:   properties: report that remote transfer manager is replicable
+
+[9873e45b30](https://github.com/dcache/dcache/commit/9873e45b304f8929868b55cf7789154af752b95e)
+:   cleaner: add better cleaner logging
+
+[0dcd5e4fd2](https://github.com/dcache/dcache/commit/0dcd5e4fd24562c860e2c09c640a0d2ac57a602f)
+:   dcache-xroot:  add section to The Book on proxying through the door
+
+[858ea9529c](https://github.com/dcache/dcache/commit/858ea9529cea3562d273381d9b78051d8ee28380)
+:   dcache-xroot: use door address only on PoolManager protocol info
+
+[16376625c2](https://github.com/dcache/dcache/commit/16376625c2726ea86b76bc71308f02b280ea4815)
+:   dcache-xroot:  add proxying capability to door
+
+[7cc887929e](https://github.com/dcache/dcache/commit/7cc887929e8b78b5168ce95ee84a3496ebe05059)
+:   pom.xml:  upgrade xrootd4j to 4.4.0
+
+[651a4e06a8](https://github.com/dcache/dcache/commit/651a4e06a861ad620fb9145ecab5706d77771f7a)
+:   Switch to using grep for the java version check.
+
+[e5b49d81a4](https://github.com/dcache/dcache/commit/e5b49d81a4cc042b01bf4b08e97d30ffd9471729)
+:   chimera: disallow hard links on directories
+
+[1222d3d4ee](https://github.com/dcache/dcache/commit/1222d3d4ee2eeb9e0724e5d3d9c56e1e90ce1b77)
+:   pool: switch from Iterable to Collection
+
+[fa9bbd5059](https://github.com/dcache/dcache/commit/fa9bbd505918d5b87fac02497ffbe6f184691a9c)
+:   docs: update SRR documentation to address WLCG complains
+
+[126560b18c](https://github.com/dcache/dcache/commit/126560b18c9c7709adf9ceb5ff4c49cd2967f4ba)
+:   dcache-bulk: (version 2) handle unexpected exceptions in container manager
+
+[4b9fef7833](https://github.com/dcache/dcache/commit/4b9fef7833af34fc048d648717e59d7cfe4b8230)
+:   build(deps): bump spring-core from 5.2.20.RELEASE to 5.2.22.RELEASE
+
+[e0bd9ce990](https://github.com/dcache/dcache/commit/e0bd9ce9907351dca9a4d474c87d0406a7713a42)
+:   Revert "webdav,dcache: update deprecated netty http usages"
+
+[8b68eeecdb](https://github.com/dcache/dcache/commit/8b68eeecdb4a33abd39b16ef51a9a868d6f93902)
+:   dcache-frontend: move wlcg tape rest resources under common 'tape' path
+
+[7fc973c448](https://github.com/dcache/dcache/commit/7fc973c448bf5524cdd1832395d7fc67af1de6d5)
+:   webdav,dcache: update deprecated netty http usages
+
+[388c7c3a78](https://github.com/dcache/dcache/commit/388c7c3a78be5d1397c75c23c8a8f36f5f432cd4)
+:   pool: minor refactor of ReplicaDescriptor
+
+[4f70939350](https://github.com/dcache/dcache/commit/4f70939350a3a03abf2f8be2a33ee2e6549bef14)
+:   UPDATE_METADATA is needed for staging
+
+[77f0369431](https://github.com/dcache/dcache/commit/77f036943149f6d02899f8d7a7a78ed53f75cadb)
+:   pool: finalise on-the-fly checksums on channel close
+
+[3e9190e04e](https://github.com/dcache/dcache/commit/3e9190e04e28392d86028a264bf7901b88e49fd6)
+:   core: update FileAttributes to allow adding extra checksum values.
+
+[16247d7450](https://github.com/dcache/dcache/commit/16247d7450dbcfd59985a54b3fb9d683465e6d1f)
+:   webdav/httpd/frontend: add HTTP-TPC transfers to transfer list
+
+[62de9e9759](https://github.com/dcache/dcache/commit/62de9e9759813fd375a875638db7f1707dd38d02)
+[9a09718207](https://github.com/dcache/dcache/commit/9a097182078568cef5feae5371eb5d599e6a4ef2)
+:   [maven-release-plugin] prepare for next development iteration
+
+[826c56fe3d](https://github.com/dcache/dcache/commit/826c56fe3dc7de2bce50627dcd96bd51d0f1046b)
+:   [maven-release-plugin] prepare release 8.2.0
+
+[283c8b75c3](https://github.com/dcache/dcache/commit/283c8b75c3ec9d886e6984606b15e4d8d4a6bf67)
+:   nfs4: return EACCESS when stage is not allowed
+
+[312ea69bdf](https://github.com/dcache/dcache/commit/312ea69bdf1472d3873d92d5a9c07c6543b3a5f7)
+:   gplazma: vo-group plugin
+
+[3d04e98d26](https://github.com/dcache/dcache/commit/3d04e98d26ec6855ec110eeb1f33a5e3dc6bfa44)
+:   [maven-release-plugin] prepare branch 8.2
+
+[e04424facf](https://github.com/dcache/dcache/commit/e04424facf5a1c79831b711800becbb4e07cf409)
+:   gplazma: update gplazma config loader to use ParsableFile
+
+[7f1cdae61b](https://github.com/dcache/dcache/commit/7f1cdae61b351ad42a3809bc6e73a2e67c64d3dc)
+:   gplazma: fix year in copyright statement
+
+[3829bcd5e9](https://github.com/dcache/dcache/commit/3829bcd5e9a7604c07f263c2665ee1cdea53330c)
+:   common: add hashCode and equals methods for Result
+
+[317f9a6832](https://github.com/dcache/dcache/commit/317f9a6832184823c515a71e8cff6a463538e878)
+:   pool: order storage classes by oldest entry in the queue
+
+[e929f9c0e9](https://github.com/dcache/dcache/commit/e929f9c0e9b4761a3094313dfecd1f440069d666)
+:   util,namespace: ensure that files' creation time is always populated
+
+[e0ebf992f3](https://github.com/dcache/dcache/commit/e0ebf992f37d72b6a580812e73870d71d658c4cf)
+:   Revert "common: remove orphaned test file"
+
+[70f97b6766](https://github.com/dcache/dcache/commit/70f97b67663b8f74db5c6aafed3686d28a1da786)
+:   common: remove orphaned test file
+
+[89dbaec931](https://github.com/dcache/dcache/commit/89dbaec931d2ad04aeddc47826cbdb4ae9af0746)
+:   gplazma: switch configuration parser to use LineBasedParser
+
+[31aa21f2f9](https://github.com/dcache/dcache/commit/31aa21f2f962af7e00e7b1850fce63d7e796dec6)
+:   gplazma: refactor ConfigurationParserFactory layer
+
+[ac18e03164](https://github.com/dcache/dcache/commit/ac18e031642a9a5ecee0f14f8d6cbebc9f3d5d09)
+:   gplazma: remove dead code
+
+[5a3b0909aa](https://github.com/dcache/dcache/commit/5a3b0909aa2ea66a8ca8589abcc9afdaa6f3bcbf)
+:   libs: update to the latest stable zk version 3.7.1
+
+[689f76c38b](https://github.com/dcache/dcache/commit/689f76c38bc141af3e6d3443ea96a619cc90822e)
+:   dcache-bulk,dcache-frontend: modify GET for bulk-requests to be somewhat more useful
+
+[13e497d7b9](https://github.com/dcache/dcache/commit/13e497d7b9d9964f58c81dc921c294347d2e555c)
+:   dcache-xroot:  add configurable internal address for proxying
+:
+
+
 
 (tbd as soon as the branching is done)
 
