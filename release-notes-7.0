@@ -76,6 +76,33 @@ HTML header: <title>dCache 7.0 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 7.0.40
+
+### gplazma2-grid
+
+An empty requires field in IGTF policy is now accepted. Files with invalid or unexpected policies are ignored.
+
+### webdav
+
+A bug was fixed that caused a NullPointerException while sending Kafka messages.
+
+
+### Changelog 7.0.39..7.0.40
+
+<!-- git log 7.0.39..7.0.40 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[4a0a5ba588](https://github.com/dcache/dcache/commit/4a0a5ba5887b824d85c89ce5f2afe3900bd36857)
+:   [maven-release-plugin] prepare release 7.0.40
+
+[0a3053f9c4](https://github.com/dcache/dcache/commit/0a3053f9c41c64f8d0380324e33becfad0ef8bc9)
+:   dcache: NPE on removal via WebDAV and token
+
+[7fa0cfb3c6](https://github.com/dcache/dcache/commit/7fa0cfb3c6d2768caeafcabc56108536a268ed31)
+:   gplazma2-grid: invalid IGTF policy file should fail with ParserException
+
+[127c85aad3](https://github.com/dcache/dcache/commit/127c85aad33e56cfa3f844b46de7dc77b251745b)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 7.0.39
 
 ### xrootd4j

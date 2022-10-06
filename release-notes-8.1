@@ -73,6 +73,44 @@ It is important to note, that if the lower  versions of dCache for pools this pr
 
 
 
+## Release 8.1.7
+
+### gplazma2-grid
+
+An empty requires field in IGTF policy is now accepted. Files with invalid or unexpected policies are ignored.
+
+### webdav
+
+A bug was fixed that caused a NullPointerException while sending Kafka messages.
+
+jquery was updated to version 3.6.1 and bootstrap was updated to version 5.2.1
+
+
+### Changelog 8.1.6..8.1.7
+
+<!-- git log 8.1.6..8.1.7 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[ec98e3c559](https://github.com/dcache/dcache/commit/ec98e3c559eaf0668af49b4727a47ca062dbe688)
+:   [maven-release-plugin] prepare release 8.1.7
+
+[cc6fa83787](https://github.com/dcache/dcache/commit/cc6fa83787e751df8fa94027c4f30e8154cc7724)
+:   dcache: NPE on removal via WebDAV and token
+
+[61e3d13b04](https://github.com/dcache/dcache/commit/61e3d13b04914f8a1f0270e0d18e700c3cd07bf8)
+:   webdav: update 3rd party js libraries
+
+[e593318904](https://github.com/dcache/dcache/commit/e593318904740e02305ae850acd322256b36d979)
+:   doc:  add recipe to cookbook for migration/draining of resilient pools
+
+[a5960187a9](https://github.com/dcache/dcache/commit/a5960187a9cc556f291417f2cc7c16e50b39daef)
+:   qos-engine: prevent NPE if pool monitor not available
+
+[b7bb56aecc](https://github.com/dcache/dcache/commit/b7bb56aecc63d5341c1a03e9fb50e03c7ebdfede)
+:   gplazma2-grid: invalid IGTF policy file should fail with ParserException
+
+[e090af92b9](https://github.com/dcache/dcache/commit/e090af92b938046c2dd9d313da774caa79685255)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 8.1.6
 
 ### common

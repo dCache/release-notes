@@ -76,6 +76,41 @@ HTML header: <title>dCache 8.0 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 8.0.13
+
+### gplazma2-grid
+
+An empty requires field in IGTF policy is now accepted. Files with invalid or unexpected policies are ignored.
+
+### webdav
+
+A bug was fixed that caused a NullPointerException while sending Kafka messages.
+
+jquery was updated to version 3.6.1 and bootstrap was updated to version 5.2.1
+
+
+### Changelog 8.0.12..8.0.13
+
+<!-- git log 8.0.12..8.0.13 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[530f6ed109](https://github.com/dcache/dcache/commit/530f6ed109d24092d4d223214821413ac2b0e79f)
+:   [maven-release-plugin] prepare release 8.0.13
+
+[58629d1bbf](https://github.com/dcache/dcache/commit/58629d1bbf83ffafdd428700ce21d007fc5ae408)
+:   dcache: NPE on removal via WebDAV and token
+
+[14815d279c](https://github.com/dcache/dcache/commit/14815d279ce7674a8cc65c3a4d02432b734bf386)
+:   webdav: update 3rd party js libraries
+
+[7d17c92cc8](https://github.com/dcache/dcache/commit/7d17c92cc8ff382fb8ffce83af5c01174d949e30)
+:   doc: add recipe to cookbook for migration/draining of resilient pools
+
+[2a4f47be9d](https://github.com/dcache/dcache/commit/2a4f47be9d25d5515a252db05ca07c8b3f0ab050)
+:   gplazma2-grid: invalid IGTF policy file should fail with ParserException
+
+[888fecc199](https://github.com/dcache/dcache/commit/888fecc199ff2cfbb2376741afc46b2d19c61af5)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 8.0.12
 
 ### common
