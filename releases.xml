@@ -183,7 +183,7 @@
 	    <li>pool group names cannot start with `@` symbol</li>
                 <li>hard links on directories is not allowed</li><li>GET `api/v1/bulk-requests` has a new return value</li>
 
-                <p>dCache v8.0 requires a JVM supporting  Java 11.</p>
+                <p>dCache v8.2 requires a JVM supporting  Java 11.</p>
             </description>
 
             <releases>
