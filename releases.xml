@@ -657,7 +657,23 @@
           <download-url-prefix>repo/7.2/dcache</download-url-prefix>
           <notes-url>release-notes-7.2.shtml</notes-url>
          <version-prefix>7.2.</version-prefix>
-      <release version="22" recommended="1">
+      <release version="23" recommended="1">
+        <date>6.10.2022</date>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>cf31ce92e033dd5092f035971e210fae</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>4cbb0208854aeb1c5d88b6d0797920e8</md5sum>
+        </package>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>d00eb3d0d5b387540bcd1c5abaf2a9cb</md5sum>
+        </package>
+      </release>
+
+      <release version="22">
         <date>13.9.2022</date>
         <package name="rpm">
           <download-url>-VERSION-1.noarch.rpm</download-url>

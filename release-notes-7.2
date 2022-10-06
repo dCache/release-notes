@@ -72,6 +72,41 @@ Support for a dedicated scheduling strategy for bring-online requests was added 
 This release doesn't have any incompatibilities.
 
 
+## Release 7.2.23
+
+### gplazma2-grid
+
+An empty requires field in IGTF policy is now accepted. Files with invalid or unexpected policies are ignored.
+
+### webdav
+
+A bug was fixed that caused a NullPointerException while sending Kafka messages.
+
+jquery was updated to version 3.6.1 and bootstrap was updated to version 5.2.1
+
+
+### Changelog 7.2.22..7.2.23
+
+<!-- git log 7.2.22..7.2.23 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[2f4956c120](https://github.com/dcache/dcache/commit/2f4956c120df9116164da39e9b863d7bfcbdc58f)
+:   [maven-release-plugin] prepare release 7.2.23
+
+[8b39f49a8f](https://github.com/dcache/dcache/commit/8b39f49a8fa169c98a542c05e033aeaec80afe74)
+:   dcache: NPE on removal via WebDAV and token
+
+[daeb0e3fb5](https://github.com/dcache/dcache/commit/daeb0e3fb5907a305b31de7c83d6babd72a7b4a8)
+:   webdav: update 3rd party js libraries
+
+[62fbc57f9c](https://github.com/dcache/dcache/commit/62fbc57f9cc1e5ec3bb56ca90060361908b1d19e)
+:   doc: add recipe to cookbook for migration/draining of resilient pools
+
+[7978ac1a94](https://github.com/dcache/dcache/commit/7978ac1a945dd58153be761fefef96250828efdc)
+:   gplazma2-grid: invalid IGTF policy file should fail with ParserException
+
+[2255486e27](https://github.com/dcache/dcache/commit/2255486e2720761807566d87b6dacd97d6c2f9b4)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 7.2.22
 
 ### common
