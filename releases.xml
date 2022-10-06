@@ -195,7 +195,23 @@
             </release>
            
 
-      <release version="0" recommended="1">
+      <release version="1" recommended="1">
+        <date>6.10.2022</date>
+	<package name="rpm">
+	  <download-url>-VERSION-1.noarch.rpm</download-url>
+	  <md5sum>298b116b3aa7eb3c36bbfb1ee10da42f</md5sum>
+	</package>
+	<package name="tgz">
+	  <download-url>-VERSION.tar.gz</download-url>
+	  <md5sum>775d54740d69d3668c1f5d7e8c846d09</md5sum>
+	</package>
+	<package name="deb">
+	  <download-url>_VERSION-1_all.deb</download-url>
+	  <md5sum>6577b0b93b97952adb0d4fbcdd0a15bc</md5sum>
+ 	</package>
+      </release>
+
+      <release version="0">
         <date>28.9.2022</date>
         <package name="rpm">
           <download-url>-VERSION-1.noarch.rpm</download-url>
