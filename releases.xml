@@ -191,9 +191,6 @@
                 <download-url-prefix>repo/8.2/dcache</download-url-prefix>
                 <notes-url>release-notes-8.2.shtml</notes-url>
                 <version-prefix>8.2.</version-prefix>
-            <release>
-            </release>
-           
 
       <release version="1" recommended="1">
         <date>6.10.2022</date>
