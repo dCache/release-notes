@@ -77,6 +77,27 @@ HTML header: <title>dCache 8.2 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 8.2.2
+
+### spacemanager
+
+Fixes NullPointerException that occurs on startup of space manager
+when spacemanager.authz.link-group-file-name is not set.
+
+
+### Changelog 8.2.1..8.2.2
+
+<!-- git log 8.2.1..8.2.2 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[364638a55a](https://github.com/dcache/dcache/commit/364638a55a1ae2f894f933aa4e1aeb5840ca4889)
+:   [maven-release-plugin] prepare release 8.2.2
+
+[db004422fd](https://github.com/dcache/dcache/commit/db004422fd14778020de01a16f8be4896ea6cea9)
+:   dcache-spacemanager: fix NPE when link-group-file-name is not set
+
+[04bdcef478](https://github.com/dcache/dcache/commit/04bdcef47823a2b1f9813132afc2e39305b588b6)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 8.2.1
 
 ### Changes affecting multiple services
