@@ -101,6 +101,9 @@ cleaner-disk.cell.name=cleaner-disk2
 [dCacheDomain/cleaner-hsm]
 ```
 
+Also, an admin command was added to the hsm-cleaner cell that allows forgetting a tape-resident pnfsid, meaning removing any corresponding delete target entries from the cleaner’s trash table database.
+
+
 ### Checksums
 
 ### DCAP
