@@ -76,6 +76,36 @@ HTML header: <title>dCache 8.0 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 8.0.14
+
+### chimera
+
+Pools that are no longer actively being cleaned were previously falsely
+still listed as active in the admin interface when the cleaning attempt
+ended due to an exception. This has been fixed.
+
+### core
+
+If a pin is unpinned while a pin request for that same pin is still
+ongoing in pinmanager, pinning will not be retried.
+
+
+### Changelog 8.0.13..8.0.14
+
+<!-- git log 8.0.13..8.0.14 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[74db9a46fc](https://github.com/dcache/dcache/commit/74db9a46fc39ef46eb7c7bdc2775153a398aa49c)
+:   [maven-release-plugin] prepare release 8.0.14
+
+[57dec67417](https://github.com/dcache/dcache/commit/57dec6741783cafe631c55d8f89dcdafe93e0ad0)
+:   dcache-core: let pinmanager stop retrying pinning upon unpin state
+
+[bf9ee600d4](https://github.com/dcache/dcache/commit/bf9ee600d4d097b487606f68b7a8f3a6b79f470d)
+:   dcache-chimera: disk-cleaner, error handling in parallel pool deletes
+
+[0cd908caac](https://github.com/dcache/dcache/commit/0cd908caac5e50ab9e047ade1b47b45a0ce9f9e7)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 8.0.13
 
 ### gplazma2-grid

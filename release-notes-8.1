@@ -72,6 +72,36 @@ It is important to note, that if the lower  versions of dCache for pools this pr
 - NFS transfers will fail with EIO for broken files
 - The TLS mode of xroot is set to `OPTIONAL`, which requires host certificates on pool to be present
 
+## Release 8.1.8
+
+### chimera
+
+Pools that are no longer actively being cleaned were previously falsely
+still listed as active in the admin interface when the cleaning attempt
+ended due to an exception. This has been fixed.
+
+### core
+
+If a pin is unpinned while a pin request for that same pin is still
+ongoing in pinmanager, pinning will not be retried.
+
+
+### Changelog 8.1.7..8.1.8
+
+<!-- git log 8.1.7..8.1.8 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[ac8dfe894c](https://github.com/dcache/dcache/commit/ac8dfe894c165ab639897666a17bda524a66af5a)
+:   [maven-release-plugin] prepare release 8.1.8
+
+[5acb194cd4](https://github.com/dcache/dcache/commit/5acb194cd489daf17e612d0c3a680601f5482181)
+:   dcache-core: let pinmanager stop retrying pinning upon unpin state
+
+[ef702716e6](https://github.com/dcache/dcache/commit/ef702716e6dd3489207b78308a6f50f64972ec8e)
+:   dcache-chimera: disk-cleaner, error handling in parallel pool deletes
+
+[e17cf2cb4d](https://github.com/dcache/dcache/commit/e17cf2cb4d5f026fa3e91aee3f52ac1ed8549823)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 8.1.7
 
 ### gplazma2-grid

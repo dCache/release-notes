@@ -72,6 +72,42 @@ Support for a dedicated scheduling strategy for bring-online requests was added 
 This release doesn't have any incompatibilities.
 
 
+## Release 7.2.25
+
+### chimera
+
+Pools that are no longer actively being cleaned were previously falsely
+still listed as active in the admin interface when the cleaning attempt
+ended due to an exception. This has been fixed.
+
+### core
+
+If a pin is unpinned while a pin request for that same pin is still
+ongoing in pinmanager, pinning will not be retried.
+
+
+### Changelog 7.2.23..7.2.25
+
+<!-- git log 7.2.23..7.2.25 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[93db528d03](https://github.com/dcache/dcache/commit/93db528d03dc7c3b96653020f319bca7a7672d7c)
+:   [maven-release-plugin] prepare release 7.2.25
+
+[dd6c0ec23e](https://github.com/dcache/dcache/commit/dd6c0ec23e03f3c14de1913c7ec836497c9a3c6a)
+:   pom.xml: fix file
+
+[4f07c497d5](https://github.com/dcache/dcache/commit/4f07c497d598f18a3f479794f2773104b6485699)
+:   [maven-release-plugin] prepare for next development iteration
+
+[6633988fcb](https://github.com/dCache/dcache/commit/6633988fcb390774476ba234bf8baad7358f49a7)
+:   [maven-release-plugin] prepare release 7.2.24
+
+[7a4f9cc6c2](https://github.com/dCache/dcache/commit/7a4f9cc6c2c31175269202cebf6d6a51830995b7)
+:   dcache-core: let pinmanager stop retrying pinning upon unpin state
+
+[bdcf04769b](https://github.com/dCache/dcache/commit/bdcf04769be5edab8026a7b88b499c294f235f2c)
+:   dcache-chimera: disk-cleaner, error handling in parallel pool deletes
+
 ## Release 7.2.23
 
 ### gplazma2-grid
