@@ -129,6 +129,7 @@ The DCAP door will fail the request if file's storage unit is not configured at 
 ### NFS
 
 The NFS door will the fail request if file's storage unit is not configured at the PoolManager, as all other doors already do.
+Added `show open files` command that lists all open files independent from existance of a mover (which is displayed by `show transfers`.
 
 ### Pinmanager
 
