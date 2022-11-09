@@ -76,6 +76,26 @@ HTML header: <title>dCache 8.0 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 8.0.15
+
+### frontend
+
+The current release fixed type default of RESTful pool/nearline/queues resource
+
+
+### Changelog 8.0.14..8.0.15
+
+<!-- git log 8.0.14..8.0.15 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[da56544ded](https://github.com/dcache/dcache/commit/da56544ded00ccbd1a62a5a3070587a67e7d9ae6)
+:   [maven-release-plugin] prepare release 8.0.15
+
+[f04f03b9a6](https://github.com/dcache/dcache/commit/f04f03b9a68d30389b003841db8f15a3d0ebe3c8)
+:   dcache-frontend: fix type default of RESTful pool/nearline/queues resource
+
+[70e662242a](https://github.com/dcache/dcache/commit/70e662242a06a466ff07c7cc2b44e48471438637)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 8.0.14
 
 ### chimera

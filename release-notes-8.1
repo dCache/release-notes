@@ -72,6 +72,44 @@ It is important to note, that if the lower  versions of dCache for pools this pr
 - NFS transfers will fail with EIO for broken files
 - The TLS mode of xroot is set to `OPTIONAL`, which requires host certificates on pool to be present
 
+## Release 8.1.9
+
+### dcache-qos
+
+A  minor regressions in handling of pool info diffs has been fixed.
+
+Full scan of pool info  diff behavior is available.
+
+### frontend
+
+The current release fixed type default of RESTful pool/nearline/queues resource
+
+
+### Changelog 8.1.8..8.1.9
+
+<!-- git log 8.1.8..8.1.9 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[b22f17da2d](https://github.com/dcache/dcache/commit/b22f17da2d13cc595f24c49202d7f2692f3c995b)
+:   [maven-release-plugin] prepare release 8.1.9
+
+[49de71caa6](https://github.com/dcache/dcache/commit/49de71caa6b7f2a70ab5eb349f9fb5873911db94)
+:   dcache-qos:  fix minor regressions in handling of pool info diffs
+
+[6868428e1d](https://github.com/dcache/dcache/commit/6868428e1df12273b8d5d5f1baa0a6e9a0a36629)
+:   dcache-frontend: fix type default of RESTful pool/nearline/queues resource
+
+[2d691fcf0e](https://github.com/dcache/dcache/commit/2d691fcf0e65242e29c6627b8955818bd868cd04)
+:   pom.xml: bump xrootd4j to 4.3.4
+
+[ea1945f5c6](https://github.com/dcache/dcache/commit/ea1945f5c609c87a6446ae31cb5b2eae6dfc8d96)
+:   dcache-qos:  fix two more regressions in the PoolOpChangeHandler
+
+[2f338dadce](https://github.com/dcache/dcache/commit/2f338dadcefeb5d54c29d7b4cbd5e4f37e366a6c)
+:   dcache-qos: add missing pool tag comparison in PoolOpChangeHandler
+
+[c778b23d09](https://github.com/dcache/dcache/commit/c778b23d090bab762dc8019f7f810edcc5d94b06)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 8.1.8
 
 ### chimera
