@@ -72,6 +72,31 @@ It is important to note, that if the lower  versions of dCache for pools this pr
 - NFS transfers will fail with EIO for broken files
 - The TLS mode of xroot is set to `OPTIONAL`, which requires host certificates on pool to be present
 
+## Release 8.1.10
+
+### nearline-storage
+
+A NPE on error path has been fixed.
+
+The  race condition  when  flushing removed file is fixed now.
+
+
+### Changelog 8.1.9..8.1.10
+
+<!-- git log 8.1.9..8.1.10 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[40af9af501](https://github.com/dcache/dcache/commit/40af9af50163f0014dcbf41dd93de33f9238e999)
+:   [maven-release-plugin] prepare release 8.1.10
+
+[3f953b281e](https://github.com/dcache/dcache/commit/3f953b281e1cac0c0ea466cacfa323eedacb0cb7)
+:   nearline-storage: fix race in flushing removed file
+
+[189ba319d1](https://github.com/dcache/dcache/commit/189ba319d1e1a34cffa07ccf992ec6e6bf4f766b)
+:   nearline-storage: fix NPE on error path
+
+[b6cd033067](https://github.com/dcache/dcache/commit/b6cd0330672e78434659b18fb3be8fbd5e89f54e)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 8.1.9
 
 ### dcache-qos

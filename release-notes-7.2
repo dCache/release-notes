@@ -72,6 +72,31 @@ Support for a dedicated scheduling strategy for bring-online requests was added 
 This release doesn't have any incompatibilities.
 
 
+## Release 7.2.27
+
+### nearline-storage
+
+A NPE on error path has been fixed.
+
+The  race condition  when  flushing removed file is fixed now.
+
+
+### Changelog 7.2.26..7.2.27
+
+<!-- git log 7.2.26..7.2.27 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[5cdf29cc8f](https://github.com/dcache/dcache/commit/5cdf29cc8fed465374ba5ac2f570e3412fe2a3de)
+:   [maven-release-plugin] prepare release 7.2.27
+
+[c0cfa5cec8](https://github.com/dcache/dcache/commit/c0cfa5cec864df7d0b006913146293348a616364)
+:   nearline-storage: fix race in flushing removed file
+
+[4ce83bc9b6](https://github.com/dcache/dcache/commit/4ce83bc9b6ded1bb3ae4db67808ca8f57fc27d5b)
+:   nearline-storage: fix NPE on error path
+
+[da729555d0](https://github.com/dcache/dcache/commit/da729555d027bdb1cb9b784ece8f3c5780a05f3c)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 7.2.26
 
 ### frontend

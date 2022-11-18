@@ -76,6 +76,31 @@ HTML header: <title>dCache 8.0 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 8.0.16
+
+### nearline-storage
+
+A NPE on error path has been fixed.
+
+The  race condition  when  flushing removed file is fixed now.
+
+
+### Changelog 8.0.15..8.0.16
+
+<!-- git log 8.0.15..8.0.16 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[aa9bf6d434](https://github.com/dcache/dcache/commit/aa9bf6d4345df7598f6912255b8e4baff75b2d23)
+:   [maven-release-plugin] prepare release 8.0.16
+
+[749bb7ccb8](https://github.com/dcache/dcache/commit/749bb7ccb846474bc08d8bf7d83e94e0d5d61982)
+:   nearline-storage: fix race in flushing removed file
+
+[9b9d6e2929](https://github.com/dcache/dcache/commit/9b9d6e292910edb2a921223a602658ae29b7cc6a)
+:   nearline-storage: fix NPE on error path
+
+[d522b5d708](https://github.com/dcache/dcache/commit/d522b5d70851b976147c447ba19746d54656cafa)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 8.0.15
 
 ### frontend
