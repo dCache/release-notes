@@ -72,6 +72,33 @@ Support for a dedicated scheduling strategy for bring-online requests was added 
 This release doesn't have any incompatibilities.
 
 
+## Release 7.2.28
+
+### chimera
+
+Cleaner cells that do not have leadership will now more strictly enforce not triggering delete runs.
+
+### nfs-proxy
+
+Proxy-IO with posix locks now works as expected.
+
+
+### Changelog 7.2.27..7.2.28
+
+<!-- git log 7.2.27..7.2.28 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[d5ff60f719](https://github.com/dcache/dcache/commit/d5ff60f719b423b453617e43894d9c3dff46873e)
+:   [maven-release-plugin] prepare release 7.2.28
+
+[571b1daebc](https://github.com/dcache/dcache/commit/571b1daebce9fe602d47c02de6b13cd449e9d24d)
+:   nfs-proxy: use open-stateid when proxying IO request to a pool
+
+[73616ac932](https://github.com/dcache/dcache/commit/73616ac9321df0f468065f5df9212ba0f4e990ad)
+:   dcache-chimera: make sure non-leader does not execute clean run
+
+[7034c53d18](https://github.com/dcache/dcache/commit/7034c53d188d82747cb7014c525f40590fa83e5f)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 7.2.27
 
 ### nearline-storage

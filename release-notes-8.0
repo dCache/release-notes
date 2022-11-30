@@ -76,6 +76,33 @@ HTML header: <title>dCache 8.0 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 8.0.17
+
+### chimera
+
+Cleaner cells that do not have leadership will now more strictly enforce not triggering delete runs.
+
+### nfs-proxy
+
+Proxy-IO with posix locks now works as expected.
+
+
+### Changelog 8.0.16..8.0.17
+
+<!-- git log 8.0.16..8.0.17 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[774b0a554d](https://github.com/dcache/dcache/commit/774b0a554dd7b7b8e71d5d0f60a4d440aac27e6f)
+:   [maven-release-plugin] prepare release 8.0.17
+
+[167d77a771](https://github.com/dcache/dcache/commit/167d77a7716872d00397e4b2b7b43d2c06b8f96c)
+:   nfs-proxy: use open-stateid when proxying IO request to a pool
+
+[4296a797ec](https://github.com/dcache/dcache/commit/4296a797ec59c8012b8ce7af15550b72e1fbbef2)
+:   dcache-chimera: make sure non-leader does not execute clean run
+
+[d0ae726b32](https://github.com/dcache/dcache/commit/d0ae726b32afe9bce3cc11352a91665e080bb13f)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 8.0.16
 
 ### nearline-storage

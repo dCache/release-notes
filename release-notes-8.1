@@ -72,6 +72,33 @@ It is important to note, that if the lower  versions of dCache for pools this pr
 - NFS transfers will fail with EIO for broken files
 - The TLS mode of xroot is set to `OPTIONAL`, which requires host certificates on pool to be present
 
+## Release 8.1.11
+
+### chimera
+
+Cleaner cells that do not have leadership will now more strictly enforce not triggering delete runs.
+
+### nfs-proxy
+
+Proxy-IO with posix locks now works as expected.
+
+
+### Changelog 8.1.10..8.1.11
+
+<!-- git log 8.1.10..8.1.11 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[1af1eca1de](https://github.com/dcache/dcache/commit/1af1eca1de77f9f6cf47d3216624dc5fb5fb622b)
+:   [maven-release-plugin] prepare release 8.1.11
+
+[d59e0121e7](https://github.com/dcache/dcache/commit/d59e0121e71f8729106eed6fb5fce03a05daf5ad)
+:   nfs-proxy: use open-stateid when proxying IO request to a pool
+
+[e3b2d23426](https://github.com/dcache/dcache/commit/e3b2d23426d1e3ec4df744a147b703fde6edf188)
+:   dcache-chimera: make sure non-leader does not execute clean run
+
+[d10318cbf2](https://github.com/dcache/dcache/commit/d10318cbf203dd4b8aedf840a80ad991631bd76c)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 8.1.10
 
 ### nearline-storage
