@@ -68,6 +68,7 @@ HTML header: <title>dCache 9.0 Release Notes</title>
 
 ## Incompatibilities
 - DCAP and NFS doors will fail the request if file's storage unit is not configured at the PoolManager
+- linklocal and localhost interfaces are not published by doors and pools.
 
 ## Acknowledgments
 
@@ -105,6 +106,11 @@ Also, an admin command was added to the hsm-cleaner cell that allows forgetting 
 
 
 ### Checksums
+
+### Core
+
+To reduce network configuration based issues starting version 9.o dCache does't publish IPv6 link-local
+as well as locahost IP addresses in login broker. However, the connections or that interfaces are acepted.
 
 ### DCAP
 
