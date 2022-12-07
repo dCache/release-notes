@@ -72,6 +72,38 @@ It is important to note, that if the lower  versions of dCache for pools this pr
 - NFS transfers will fail with EIO for broken files
 - The TLS mode of xroot is set to `OPTIONAL`, which requires host certificates on pool to be present
 
+## Release 8.1.12
+
+### chimera
+
+A bug was fixed that threw a NullPointerExceotion when the associated hsms for a pool are stored as `null`.
+
+### xroot
+
+The default plugins were reordered to conform to ZTN-first.
+
+Update xrootd4j to support kXR_prefname in kXR_locate request.
+
+
+### Changelog 8.1.11..8.1.12
+
+<!-- git log 8.1.11..8.1.12 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[385c05c8ab](https://github.com/dcache/dcache/commit/385c05c8ab04cb9aedfb160e7a629d852bd1e47b)
+:   [maven-release-plugin] prepare release 8.1.12
+
+[fe0fd9c2db](https://github.com/dcache/dcache/commit/fe0fd9c2db2f396277b1bac414459b363e363bf5)
+:   dcache-chimera: prevent PoolInformationBase NPE
+
+[7495897dfc](https://github.com/dcache/dcache/commit/7495897dfc57e5ab69a4be43ef7afce86590b0a4)
+:   pom.xml: update xrootd4j (4.5.3, etc.)
+
+[52199e9cf7](https://github.com/dcache/dcache/commit/52199e9cf716ec36d335a1d91992d59e934ffead)
+:   dcache-xroot:  fix the default order for the gplazma plugins
+
+[09dca91f1d](https://github.com/dcache/dcache/commit/09dca91f1d02bb34325885ff5ab69e452173b977)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 8.1.11
 
 ### chimera

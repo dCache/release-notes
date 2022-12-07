@@ -76,6 +76,33 @@ HTML header: <title>dCache 8.0 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 8.0.18
+
+### chimera
+
+A bug was fixed that threw a NullPointerExceotion when the associated hsms for a pool are stored as `null`.
+
+### xroot
+
+Update xrootd4j to support kXR_prefname in kXR_locate request.
+
+
+### Changelog 8.0.17..8.0.18
+
+<!-- git log 8.0.17..8.0.18 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[ea29bc88f8](https://github.com/dcache/dcache/commit/ea29bc88f8fee2079c081adf608d6899f311ba98)
+:   [maven-release-plugin] prepare release 8.0.18
+
+[34878eab37](https://github.com/dcache/dcache/commit/34878eab373b5a2dbd77286d6351d38463609984)
+:   dcache-chimera: prevent PoolInformationBase NPE
+
+[aba314f3f7](https://github.com/dcache/dcache/commit/aba314f3f7fe29dc9b2ccc18306a66a8cc6cbbf6)
+:   pom.xml: update xrootd4j (4.5.3, etc.)
+
+[54be3df23c](https://github.com/dcache/dcache/commit/54be3df23c7dfa09d51532121cb7ecbdb6796d33)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 8.0.17
 
 ### chimera
