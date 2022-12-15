@@ -78,7 +78,7 @@ HTML header: <title>dCache 8.0 Release Notes</title>
 
 ## Release 8.0.19
 
-### many
+### Pool, Chimera
 
 Prevent NullPointerExceptions in the cleaner and repeating pool restarted messages in PoolManager when pools report null as their connected hsm instances.
 
