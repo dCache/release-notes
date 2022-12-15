@@ -77,6 +77,55 @@ HTML header: <title>dCache 8.2 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 8.2.8
+
+### bulk
+
+Changed bulk request limits to default values that make a little more sense.
+
+
+Stack traces from Jdbc and Hikari should not appear on shutdown if activities were in progress.
+
+
+### frontend
+
+Frontend now returns 500 with error message when services are not reachable.
+
+
+### many
+
+Frontend now returns 500 with error message when services are not reachable.
+
+
+Prevent NullPointerExceptions in the cleaner and repeating pool restarted messages in PoolManager when pools report null as their connected hsm instances.
+
+
+
+### Changelog 8.2.7..8.2.8
+
+<!-- git log 8.2.7..8.2.8 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[4d22a621a3](https://github.com/dcache/dcache/commit/4d22a621a339210a476cce18cd7998afb7d5cebe)
+:   [maven-release-plugin] prepare release 8.2.8
+
+[ec3435f892](https://github.com/dcache/dcache/commit/ec3435f8923ff39cc9da9c25cdea77ff8e4cb7de)
+:   pool,chimera: fix pool pings having a `null`-valued hsm field
+
+[80a4656c69](https://github.com/dcache/dcache/commit/80a4656c69043e5cb3bb6abcccf428eac35c6478)
+:   dcache-bulk:  manage executor and data source shutdown explicitly
+
+[dc727538d2](https://github.com/dcache/dcache/commit/dc727538d2471cfc6d3a91798e7e6400ea7cb4cf)
+:   dcache-bulk:  modify request limits to be something more reasoned
+
+[57ef15f524](https://github.com/dcache/dcache/commit/57ef15f5247ccd101317ff1ffd960df03891acd3)
+:   dcache-frontend: handle parse exceptions in bulk and tape resources
+
+[8199c72549](https://github.com/dcache/dcache/commit/8199c72549bc0fb16aeb38061d306c0eada38cf1)
+:   dcache-qos,frontend:  add exception to remote client method and return 500 if fails
+
+[d7760adb39](https://github.com/dcache/dcache/commit/d7760adb39fc8a37d8453056ee9872423f2f8ed5)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 8.2.7
 
 ### bulk

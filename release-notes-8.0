@@ -76,6 +76,27 @@ HTML header: <title>dCache 8.0 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 8.0.19
+
+### many
+
+Prevent NullPointerExceptions in the cleaner and repeating pool restarted messages in PoolManager when pools report null as their connected hsm instances.
+
+
+
+### Changelog 8.0.18..8.0.19
+
+<!-- git log 8.0.18..8.0.19 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[db22ba4b0e](https://github.com/dcache/dcache/commit/db22ba4b0eaa1bf1acc38e7b79489f297e672502)
+:   [maven-release-plugin] prepare release 8.0.19
+
+[9ef05f6077](https://github.com/dcache/dcache/commit/9ef05f607712ded570a74bcf2bc20a579292e5fa)
+:   pool,chimera: fix pool pings having a `null`-valued hsm field
+
+[9afc115674](https://github.com/dcache/dcache/commit/9afc115674046fa857a3970c18ae018726c719f7)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 8.0.18
 
 ### chimera

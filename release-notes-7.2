@@ -72,6 +72,27 @@ Support for a dedicated scheduling strategy for bring-online requests was added 
 This release doesn't have any incompatibilities.
 
 
+## Release 7.2.30
+
+### many
+
+Prevent NullPointerExceptions in the cleaner and repeating pool restarted messages in PoolManager when pools report null as their connected hsm instances.
+
+
+
+### Changelog 7.2.29..7.2.30
+
+<!-- git log 7.2.29..7.2.30 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[489ab7aa58](https://github.com/dcache/dcache/commit/489ab7aa5860328faea0b164bae83442c1c792cd)
+:   [maven-release-plugin] prepare release 7.2.30
+
+[3a69017bbc](https://github.com/dcache/dcache/commit/3a69017bbce4828aa40125ad8534e5710f2a07aa)
+:   pool,chimera: fix pool pings having a `null`-valued hsm field
+
+[05652c9c5b](https://github.com/dcache/dcache/commit/05652c9c5b6db26031cc8edfa615bbfe84b457bb)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 7.2.29
 
 ### chimera

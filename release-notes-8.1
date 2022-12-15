@@ -72,6 +72,33 @@ It is important to note, that if the lower  versions of dCache for pools this pr
 - NFS transfers will fail with EIO for broken files
 - The TLS mode of xroot is set to `OPTIONAL`, which requires host certificates on pool to be present
 
+## Release 8.1.13
+
+### many
+
+Frontend now returns 500 with error message when services are not reachable.
+
+
+Prevent NullPointerExceptions in the cleaner and repeating pool restarted messages in PoolManager when pools report null as their connected hsm instances.
+
+
+
+### Changelog 8.1.12..8.1.13
+
+<!-- git log 8.1.12..8.1.13 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[8abb67cdbd](https://github.com/dcache/dcache/commit/8abb67cdbdb2d4827069e33b1027cc61d230aa03)
+:   [maven-release-plugin] prepare release 8.1.13
+
+[cd6ad43af2](https://github.com/dcache/dcache/commit/cd6ad43af25f3043b0d35bac8927f4fc2da7f11d)
+:   pool,chimera: fix pool pings having a `null`-valued hsm field
+
+[a5e96a150f](https://github.com/dcache/dcache/commit/a5e96a150faf1a177c4194f50ee736f27d92d955)
+:   dcache-qos,frontend:  add exception to remote client method and return 500 if fails
+
+[bb3ac6a773](https://github.com/dcache/dcache/commit/bb3ac6a773498c341cefd795dac72a5070e38329)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 8.1.12
 
 ### chimera
