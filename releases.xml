@@ -192,7 +192,23 @@
                 <notes-url>release-notes-8.2.shtml</notes-url>
                 <version-prefix>8.2.</version-prefix>
 
-      <release version="8" recommended="1">
+      <release version="9" recommended="1">
+        <date>22.12.2022</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>24c8a2284c0d60c58ccec554d501ec60</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>29d30a30fc614b7c238cd5521869e0e7</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>5196dc3347906a3d7c16e89580e25e5d</md5sum>
+        </package>
+      </release>
+
+      <release version="8">
         <date>15.12.2022</date>
         <package name="Debian package">
           <download-url>_VERSION-1_all.deb</download-url>

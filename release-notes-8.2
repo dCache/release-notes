@@ -77,6 +77,40 @@ HTML header: <title>dCache 8.2 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 8.2.9
+
+### book
+
+Improved documentation: Sites running proxies need to be aware of
+the direct-memory consumption of the xroot proxy door.
+
+Add information on domain naming and uniqueness.
+
+### dcache-frontend, webdav
+
+A `.well-known/security.txt` (see https://securitytxt.org/) is now
+exposed on both the webdav (2880) and frontend (3880) ports.
+
+
+### Changelog 8.2.8..8.2.9
+
+<!-- git log 8.2.8..8.2.9 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[5e7dcdbe74](https://github.com/dcache/dcache/commit/5e7dcdbe74b4c3d00ebfadea4b0d1fcc190a515d)
+:   [maven-release-plugin] prepare release 8.2.9
+
+[b0c817b587](https://github.com/dcache/dcache/commit/b0c817b587921e9b6031fbdbc69ffbf763df731d)
+:   doc: add recommendation for direct memory setting on xrootd proxy door
+
+[fd5404a3ee](https://github.com/dcache/dcache/commit/fd5404a3ee6d22bf7e46ae2f6fefce1fc9133eba)
+:   dcache-frontend,webdav:  add support for .well-known/security.txt
+
+[25066ea2ac](https://github.com/dcache/dcache/commit/25066ea2ac2cd8d75db8e9d6c95b8b424c850969)
+:   book: add NOTE on domain naming, uniqueness
+
+[228eca6d31](https://github.com/dcache/dcache/commit/228eca6d31d7e51ae3fe090e276728b6483833c6)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 8.2.8
 
 ### Bulk
