@@ -89,6 +89,9 @@ This will hopefully improve performance issues and help admins configure and und
 
 Be aware that the property names have changed their prefixes from `cleaner.<something>` to `cleaner-disk.<something>` and
 `cleaner-hsm.<something>`, while some admin commands have lost the "hsm" String from their name.
+Note: As not all previously existing parameters were used to control the behaviour of both the disk and hsm parts of the
+old, combined `cleaner` cell, please check which parameters are carried over to `cleaner-hsm` and `cleaner-disk`, respectively.
+
 Example setup:
 
 ```
