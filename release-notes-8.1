@@ -72,6 +72,39 @@ It is important to note, that if the lower  versions of dCache for pools this pr
 - NFS transfers will fail with EIO for broken files
 - The TLS mode of xroot is set to `OPTIONAL`, which requires host certificates on pool to be present
 
+## Release 8.1.14
+
+### chimera
+
+When receiving a reply from a pool it is no longer waiting for, cleaner-hsm will not send a new delete request 
+or forget the currently-waited-on pool anymore. Logging is added to inform when cleaner-hsm receives 
+a reply from a pool it is no longer waiting for, indicating that the timeout might be too small.
+
+### xroot
+
+There should be no longer exceptions reporting no exception handler to handle
+the exception.
+
+
+### Changelog 8.1.13..8.1.14
+
+<!-- git log 8.1.13..8.1.14 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[efcebc590f](https://github.com/dcache/dcache/commit/efcebc590fa2175498d85e77beb6c790b3a15230)
+:   [maven-release-plugin] prepare release 8.1.14
+
+[de8f09c44c](https://github.com/dcache/dcache/commit/de8f09c44c3c2d6ba8188e14077fdd14cbce08bf)
+:   dcache-xroot: handle outbound errors on channel promise
+
+[c278ddd7ce](https://github.com/dcache/dcache/commit/c278ddd7ce283a752b47e74cc89749d5077efa7f)
+:   dcache-chimera: cleaner better handles stale delete reply
+
+[a35e55f09a](https://github.com/dcache/dcache/commit/a35e55f09a863c609a86ed7bbb4382a9b4d824ee)
+:   book: add NOTE on domain naming, uniqueness
+
+[3d985b4569](https://github.com/dcache/dcache/commit/3d985b45697c55a2ae65ea34ee87b6ef626e7eac)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 8.1.13
 
 ### QoS, Frontend

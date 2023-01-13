@@ -76,6 +76,39 @@ HTML header: <title>dCache 8.0 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 8.0.20
+
+### chimera
+
+When receiving a reply from a pool it is no longer waiting for, cleaner-hsm will not send a new delete request 
+or forget the currently-waited-on pool anymore. Logging is added to inform when cleaner-hsm receives 
+a reply from a pool it is no longer waiting for, indicating that the timeout might be too small.
+
+### xroot
+
+There should be no longer exceptions reporting no exception handler to handle
+the exception.
+
+
+### Changelog 8.0.19..8.0.20
+
+<!-- git log 8.0.19..8.0.20 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[14a861d8ab](https://github.com/dcache/dcache/commit/14a861d8ab5e0ff38f8c4ec152da495fa07b3b95)
+:   [maven-release-plugin] prepare release 8.0.20
+
+[bbb32e627d](https://github.com/dcache/dcache/commit/bbb32e627de836d44c129e610d2a640fd7c03c96)
+:   dcache-xroot: handle outbound errors on channel promise
+
+[9416c5763f](https://github.com/dcache/dcache/commit/9416c5763ff02ff47bae9026adb387e195fe33b2)
+:   dcache-chimera: cleaner better handles stale delete reply
+
+[4c9759811e](https://github.com/dcache/dcache/commit/4c9759811e2fcafa06eabb2000354aa9f9314fc8)
+:   book: add NOTE on domain naming, uniqueness
+
+[cc4e6ab688](https://github.com/dcache/dcache/commit/cc4e6ab688888ba4658ab8d55a9fea899b42aea3)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 8.0.19
 
 ### Pool, Chimera

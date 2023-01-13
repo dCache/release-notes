@@ -72,6 +72,39 @@ Support for a dedicated scheduling strategy for bring-online requests was added 
 This release doesn't have any incompatibilities.
 
 
+## Release 7.2.31
+
+### chimera
+
+When receiving a reply from a pool it is no longer waiting for, cleaner-hsm will not send a new delete request 
+or forget the currently-waited-on pool anymore. Logging is added to inform when cleaner-hsm receives 
+a reply from a pool it is no longer waiting for, indicating that the timeout might be too small.
+
+### xroot
+
+There should be no longer exceptions reporting no exception handler to handle
+the exception.
+
+
+### Changelog 7.2.30..7.2.31
+
+<!-- git log 7.2.30..7.2.31 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[f422670ddb](https://github.com/dcache/dcache/commit/f422670ddb7078c7cd3705a2399ace78c192ba1e)
+:   [maven-release-plugin] prepare release 7.2.31
+
+[06e13ef3ab](https://github.com/dcache/dcache/commit/06e13ef3abf6bdab6507bc07c6542f98a142fb56)
+:   dcache-xroot: handle outbound errors on channel promise
+
+[26d65f2b95](https://github.com/dcache/dcache/commit/26d65f2b959e407c39b26840fc5265a17187c76e)
+:   dcache-chimera: cleaner better handles stale delete reply
+
+[0da9c6fbfa](https://github.com/dcache/dcache/commit/0da9c6fbfac6742586636ef49e0275be4a962f47)
+:   book: add NOTE on domain naming, uniqueness
+
+[7c366f22eb](https://github.com/dcache/dcache/commit/7c366f22ebe15134f8cc28cddb5a91e38e4f4299)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 7.2.30
 
 ### Pool, Chimera
