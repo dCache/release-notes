@@ -72,6 +72,26 @@ It is important to note, that if the lower  versions of dCache for pools this pr
 - NFS transfers will fail with EIO for broken files
 - The TLS mode of xroot is set to `OPTIONAL`, which requires host certificates on pool to be present
 
+## Release 8.1.15
+
+### pool
+
+Updated host certificate is available to https mover. Fixed p2p transfers over HTTPS.
+
+
+### Changelog 8.1.14..8.1.15
+
+<!-- git log 8.1.14..8.1.15 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[aec1f7c24d](https://github.com/dcache/dcache/commit/aec1f7c24d68122a011b14b654766eb821289317)
+:   [maven-release-plugin] prepare release 8.1.15
+
+[b63079bd04](https://github.com/dcache/dcache/commit/b63079bd046d6803115589a918f58a0156f991f3)
+:   pool: reload host certificate if changed
+
+[45f68c1a0e](https://github.com/dcache/dcache/commit/45f68c1a0e5cc28ac840a2d56b55310e7aaab5d2)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 8.1.14
 
 ### chimera

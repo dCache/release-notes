@@ -76,6 +76,26 @@ HTML header: <title>dCache 8.0 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 8.0.21
+
+### pool
+
+Updated host certificate is available to https mover. Fixed p2p transfers over HTTPS.
+
+
+### Changelog 8.0.20..8.0.21
+
+<!-- git log 8.0.20..8.0.21 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[f239437306](https://github.com/dcache/dcache/commit/f239437306f0aa268636e9ac4e3e53c88ad5dc42)
+:   [maven-release-plugin] prepare release 8.0.21
+
+[7bd277c0f5](https://github.com/dcache/dcache/commit/7bd277c0f5de24dec063656441ae4b35074bd3c2)
+:   pool: reload host certificate if changed
+
+[59d3b4b7a1](https://github.com/dcache/dcache/commit/59d3b4b7a1a50bd15edf7d2963f0f5f14d88835e)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 8.0.20
 
 ### chimera
