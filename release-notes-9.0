@@ -69,6 +69,7 @@ HTML header: <title>dCache 9.0 Release Notes</title>
 ## Incompatibilities
 - DCAP and NFS doors will fail the request if file's storage unit is not configured at the PoolManager
 - linklocal and localhost interfaces are not published by doors and pools.
+- DCAP movers always start in `passive` mode
 
 ## Acknowledgments
 
@@ -118,6 +119,11 @@ as well as locahost IP addresses in login broker. However, the connections or th
 ### DCAP
 
 The DCAP door will fail the request if file's storage unit is not configured at the PoolManager, as all other doors already do.
+
+Since dCache 1.7.0 the DCAP door was supporting two modes of establishing data connection  between a client and a pool.Ether
+pool is connected to the client, or the client initiates the connection to a pool. The later one is a firewall friendly behavior,
+but shouldbe requested by a client. Starting with dCache 9.0 the dcap movers will always start in a `passive` mode independent
+from a client preference.
 
 ### Frontend
 
