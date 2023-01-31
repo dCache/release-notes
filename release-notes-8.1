@@ -72,6 +72,48 @@ It is important to note, that if the lower  versions of dCache for pools this pr
 - NFS transfers will fail with EIO for broken files
 - The TLS mode of xroot is set to `OPTIONAL`, which requires host certificates on pool to be present
 
+## Release 8.1.16
+
+### chimera
+
+There should be less load on the trash table database of the cleaner and thus higher performance.
+
+
+### dcache-xroot
+
+With `xrootd.authz.anonymous-operations=READONLY`, anonymous login allows world-readable files to
+be read; with `xrootd.authz.anonymous-operations=NONE`, it does not allow anonymous operations. This is
+for two-party interactions. Third-party copy
+with OIDC tokens will work regardless of the
+value given to this property.
+
+### dcap
+
+Update dcap door to always start mover in a passive mode.
+
+
+### Changelog 8.1.15..8.1.16
+
+<!-- git log 8.1.15..8.1.16 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[c72f58a612](https://github.com/dcache/dcache/commit/c72f58a61290b17cb8c6c226f2a61b0725d2805c)
+:   [maven-release-plugin] prepare release 8.1.16
+
+[e0afa33ae2](https://github.com/dcache/dcache/commit/e0afa33ae2e9c3d570399f3a41968fa0730a46af)
+:   dcap: always enforce passive mode
+
+[945a7a9e59](https://github.com/dcache/dcache/commit/945a7a9e59bbc0c573f5f00705de034825b66ee1)
+:   dcache-xroot: make handling of anonymous restrictions consistent
+
+[e7354ee960](https://github.com/dcache/dcache/commit/e7354ee960c36bfe126f3195bb94c1424c7ca418)
+:   pom.xml: update to next xrood4j version (4.5.4, 4.4.5, 4.3.6, 4.2.10)
+
+[2d64f1510e](https://github.com/dcache/dcache/commit/2d64f1510ef1d72e56880c435b63b507709fd071)
+:   dcache-chimera: reduce frequency of expensive cleaner inode deletion
+
+[4812792a24](https://github.com/dcache/dcache/commit/4812792a242f337b9d90cfb6cebed33f32c39a8a)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 8.1.15
 
 ### pool

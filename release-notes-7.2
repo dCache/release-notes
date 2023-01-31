@@ -72,6 +72,41 @@ Support for a dedicated scheduling strategy for bring-online requests was added 
 This release doesn't have any incompatibilities.
 
 
+## Release 7.2.33
+
+### chimera
+
+There should be less load on the trash table database of the cleaner and thus higher performance.
+
+
+### dcache-xroot
+
+With `xrootd.authz.anonymous-operations=READONLY`, anonymous login allows world-readable files to
+be read; with `xrootd.authz.anonymous-operations=NONE`, it does not allow anonymous operations. This is
+for two-party interactions. Third-party copy
+with OIDC tokens will work regardless of the
+value given to this property.
+
+
+### Changelog 7.2.32..7.2.33
+
+<!-- git log 7.2.32..7.2.33 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[53ec9d5337](https://github.com/dcache/dcache/commit/53ec9d53370c49731ccd1a879bec9f21954218ef)
+:   [maven-release-plugin] prepare release 7.2.33
+
+[cdf7f38be0](https://github.com/dcache/dcache/commit/cdf7f38be07aeba55bb0ed65d37279e9db5f6491)
+:   dcache-xroot: make handling of anonymous restrictions consistent
+
+[2470c0e636](https://github.com/dcache/dcache/commit/2470c0e636a41f97639fbc21d4fc6cf7d84dda2d)
+:   pom.xml: update to next xrood4j version (4.5.4, 4.4.5, 4.3.6, 4.2.10)
+
+[89375abc52](https://github.com/dcache/dcache/commit/89375abc5247b603c28bd88f563b4a9dfca09b7c)
+:   dcache-chimera: reduce frequency of expensive cleaner inode deletion
+
+[3bebca89a7](https://github.com/dcache/dcache/commit/3bebca89a7a9a69c3a63805eef99b30fa519fda0)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 7.2.32
 
 ### pool

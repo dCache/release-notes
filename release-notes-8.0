@@ -76,6 +76,41 @@ HTML header: <title>dCache 8.0 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 8.0.22
+
+### chimera
+
+There should be less load on the trash table database of the cleaner and thus higher performance.
+
+
+### dcache-xroot
+
+With `xrootd.authz.anonymous-operations=READONLY`, anonymous login allows world-readable files to
+be read; with `xrootd.authz.anonymous-operations=NONE`, it does not allow anonymous operations. This is
+for two-party interactions. Third-party copy
+with OIDC tokens will work regardless of the
+value given to this property.
+
+
+### Changelog 8.0.21..8.0.22
+
+<!-- git log 8.0.21..8.0.22 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[7ffcdd9dc3](https://github.com/dcache/dcache/commit/7ffcdd9dc3ec5478ea6c35ae9a10d01a063880d1)
+:   [maven-release-plugin] prepare release 8.0.22
+
+[cd0a97e6bf](https://github.com/dcache/dcache/commit/cd0a97e6bf3f9940bc59b299811a3d331f378eb8)
+:   dcache-xroot: make handling of anonymous restrictions consistent
+
+[85c045b5ab](https://github.com/dcache/dcache/commit/85c045b5ab1130ed1dfef25d158ffb403dc830f8)
+:   pom.xml: update to next xrood4j version (4.5.4, 4.4.5, 4.3.6, 4.2.10)
+
+[6009cb2f7d](https://github.com/dcache/dcache/commit/6009cb2f7d46fd07db2130d9a181f18cef1aba50)
+:   dcache-chimera: reduce frequency of expensive cleaner inode deletion
+
+[909579a03d](https://github.com/dcache/dcache/commit/909579a03d40cf73d66aa85db2993e63770db74b)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 8.0.21
 
 ### pool
