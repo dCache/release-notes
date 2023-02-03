@@ -72,6 +72,51 @@ Support for a dedicated scheduling strategy for bring-online requests was added 
 This release doesn't have any incompatibilities.
 
 
+## Release 7.2.34
+
+### common
+
+Prevent two potential NPEs in common utility methods.
+
+IndexOutOfBoundsException should not occur during timeseries histogram
+creation; stack trace is replaced by a logging statement.
+
+### gplazma
+
+For xrootd "persist on successful close" (POSC), authorization is
+successful for both x509 and OIDC/Scitokens.
+
+### history
+
+The history service should no longer generate the reported
+NaN stack trace in the histogram pipeline.
+
+
+### Changelog 7.2.33..7.2.34
+
+<!-- git log 7.2.33..7.2.34 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[bcf9acf151](https://github.com/dcache/dcache/commit/bcf9acf151856dcb356a8d551f226c092493f7e0)
+:   [maven-release-plugin] prepare release 7.2.34
+
+[64333ff688](https://github.com/dcache/dcache/commit/64333ff688730310e76f394ef865ca87f58a1355)
+:   common: provisional fix for out of bounds error in timeseries histogram
+
+[997597b095](https://github.com/dcache/dcache/commit/997597b095263832f325d03d2e798f1eacf9d4c7)
+:   gplazma: allow upload permissions with MultiTargetRestriction
+
+[fbf9c310b6](https://github.com/dcache/dcache/commit/fbf9c310b64561e76d212b22cb3a78f6e90c26d0)
+:   common: prevent NPE by explict cast of (Double)double in ternary condition
+
+[8472767744](https://github.com/dcache/dcache/commit/8472767744b38d9ec0def426d48bc6f3fffe9e32)
+:   commons:  add null check to nanToZero method
+
+[f0d2ac0003](https://github.com/dcache/dcache/commit/f0d2ac00037c77dbc0143166ea4596c21defb29d)
+:   dcache-history: avoid NaN stack trace in histogram conversion
+
+[ffb3a73581](https://github.com/dcache/dcache/commit/ffb3a73581b55cea10f42ee79aea7a5af78e2c46)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 7.2.33
 
 ### chimera

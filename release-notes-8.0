@@ -76,6 +76,51 @@ HTML header: <title>dCache 8.0 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 8.0.23
+
+### common
+
+Prevent two potential NPEs in common utility methods.
+
+IndexOutOfBoundsException should not occur during timeseries histogram
+creation; stack trace is replaced by a logging statement.
+
+### gplazma
+
+For xrootd "persist on successful close" (POSC), authorization is
+successful for both x509 and OIDC/Scitokens.
+
+### history
+
+The history service should no longer generate the reported
+NaN stack trace in the histogram pipeline.
+
+
+### Changelog 8.0.22..8.0.23
+
+<!-- git log 8.0.22..8.0.23 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[bb35fede39](https://github.com/dcache/dcache/commit/bb35fede39767bd0969f3c18a087f834e3a35787)
+:   [maven-release-plugin] prepare release 8.0.23
+
+[6ae94ef7a2](https://github.com/dcache/dcache/commit/6ae94ef7a256bd6819964c703654175987cbaa3d)
+:   common: provisional fix for out of bounds error in timeseries histogram
+
+[1cb1647b91](https://github.com/dcache/dcache/commit/1cb1647b910fe3486eaac84b5872bc71299c07eb)
+:   gplazma: allow upload permissions with MultiTargetRestriction
+
+[1a0b2b1306](https://github.com/dcache/dcache/commit/1a0b2b1306cc442312be68776b2cc8c3399dd9f0)
+:   common: prevent NPE by explict cast of (Double)double in ternary condition
+
+[013b84e178](https://github.com/dcache/dcache/commit/013b84e1786ea9256f923ee5ad1143fc0afc2997)
+:   commons:  add null check to nanToZero method
+
+[51c4eb323e](https://github.com/dcache/dcache/commit/51c4eb323e2522828cbf331f52b350fc8cca59e8)
+:   dcache-history: avoid NaN stack trace in histogram conversion
+
+[2bc8d6b20d](https://github.com/dcache/dcache/commit/2bc8d6b20d76c2bec93d033f864b094aef354749)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 8.0.22
 
 ### chimera

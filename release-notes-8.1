@@ -72,6 +72,51 @@ It is important to note, that if the lower  versions of dCache for pools this pr
 - NFS transfers will fail with EIO for broken files
 - The TLS mode of xroot is set to `OPTIONAL`, which requires host certificates on pool to be present
 
+## Release 8.1.17
+
+### common
+
+Prevent two potential NPEs in common utility methods.
+
+IndexOutOfBoundsException should not occur during timeseries histogram
+creation; stack trace is replaced by a logging statement.
+
+### gplazma
+
+For xrootd "persist on successful close" (POSC), authorization is
+successful for both x509 and OIDC/Scitokens.
+
+### history
+
+The history service should no longer generate the reported
+NaN stack trace in the histogram pipeline.
+
+
+### Changelog 8.1.16..8.1.17
+
+<!-- git log 8.1.16..8.1.17 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[f0ffeaab32](https://github.com/dcache/dcache/commit/f0ffeaab327a5e388c64b6e26770a92eb07089cd)
+:   [maven-release-plugin] prepare release 8.1.17
+
+[9c6cdac70e](https://github.com/dcache/dcache/commit/9c6cdac70e9b4a8bf37dd0e4828e98d9deb03786)
+:   common: provisional fix for out of bounds error in timeseries histogram
+
+[78f4235f11](https://github.com/dcache/dcache/commit/78f4235f1150474b4b17be390718e1df69bed54d)
+:   gplazma: allow upload permissions with MultiTargetRestriction
+
+[ea8b593624](https://github.com/dcache/dcache/commit/ea8b5936240f79067cb9c68f3362676bec0d406e)
+:   common: prevent NPE by explict cast of (Double)double in ternary condition
+
+[7ad02a50b0](https://github.com/dcache/dcache/commit/7ad02a50b080f02ea2af879ba5c7aa349b381fdb)
+:   commons:  add null check to nanToZero method
+
+[e60fa7ed2f](https://github.com/dcache/dcache/commit/e60fa7ed2fddc163ec6a21ba9cd27a17bcb0316f)
+:   dcache-history: avoid NaN stack trace in histogram conversion
+
+[60d91197f6](https://github.com/dcache/dcache/commit/60d91197f6ee90c08cb431258fd35f14247401ce)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 8.1.16
 
 ### chimera
