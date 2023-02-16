@@ -72,6 +72,64 @@ It is important to note, that if the lower  versions of dCache for pools this pr
 - NFS transfers will fail with EIO for broken files
 - The TLS mode of xroot is set to `OPTIONAL`, which requires host certificates on pool to be present
 
+## Release 8.1.18
+
+### frontend
+
+A property was added to optionally turn off the newer implementation of
+the QoSEngine and revert to the legacy one.
+
+Request for pin without lifetime unit specified works now.
+
+### qos
+
+QoS can now resolve regex in psu when the regex option is `on`.
+
+### qos, resilience
+
+The database properties for qos and resilience are now configurable.
+
+### telemetry
+
+Caught exceptions are now logged without a stacktrace.
+
+### xroot
+
+Clients should be blocked from pre-emptive removal if a 
+file/directory already exists when doing copy.
+
+
+### Changelog 8.1.17..8.1.18
+
+<!-- git log 8.1.17..8.1.18 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[0432d0beac](https://github.com/dcache/dcache/commit/0432d0beac9c5987739c9e9c50c0801f689e8cd7)
+:   [maven-release-plugin] prepare release 8.1.18
+
+[4be93f9869](https://github.com/dcache/dcache/commit/4be93f986949a8c65e4127d6e305030456140a1b)
+:   Lifted the storage unit resolution code out from match method into an auxiliary for reuse (as in master).
+
+[623692f465](https://github.com/dcache/dcache/commit/623692f4652d53951f7c18acbf02c8fe20fe7ad5)
+:   dcache-qos,psu:  allow getStorageUnit to resolve regex
+
+[72c2338e1e](https://github.com/dcache/dcache/commit/72c2338e1eb95ed3b6d2b75ca37de332bc9e4a2c)
+:   dcache-frontend: provide optional legacy qos request in namespace resource
+
+[c30f8c6ad6](https://github.com/dcache/dcache/commit/c30f8c6ad616a28392b27dc6708478b8c8fff63b)
+:   dcache-qos,dcache-resilience:  allow db endpoint to have separately configurable properties
+
+[1fc1c708c4](https://github.com/dcache/dcache/commit/1fc1c708c4a6b8eb70b0e7eb86cfa60a2c1ef1ff)
+:   dcache-frontend:  convert empty to null when processing TimeUnit attribute
+
+[e4a9c5d7e2](https://github.com/dcache/dcache/commit/e4a9c5d7e247050388c4918429fc5f6c4855c780)
+:   dcache-xroot:  return kXR_ItExists error code when file exists
+
+[de58134483](https://github.com/dcache/dcache/commit/de58134483f90d2dcbacdaa1adb468ae7df14fed)
+:   telemetry: Don't log stacktrace for caught expceptions
+
+[2d1ebf3e56](https://github.com/dcache/dcache/commit/2d1ebf3e560932a974024ef63ed6389cff3dd1ea)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 8.1.17
 
 ### common

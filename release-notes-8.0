@@ -76,6 +76,41 @@ HTML header: <title>dCache 8.0 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 8.0.24
+
+### frontend
+
+Request for pin without lifetime unit specified works now.
+
+### telemetry
+
+Caught exceptions are now logged without a stacktrace.
+
+### xroot
+
+Clients should be blocked from pre-emptive removal if a 
+file/directory already exists when doing copy.
+
+
+### Changelog 8.0.23..8.0.24
+
+<!-- git log 8.0.23..8.0.24 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[ed81c6864e](https://github.com/dcache/dcache/commit/ed81c6864ec59809bcc812f7c77ef378a8d8fec7)
+:   [maven-release-plugin] prepare release 8.0.24
+
+[041a529cfb](https://github.com/dcache/dcache/commit/041a529cfbdb34290784a22f970bd5adaf4962c7)
+:   dcache-frontend:  convert empty to null when processing TimeUnit attribute
+
+[7e27eb6a67](https://github.com/dcache/dcache/commit/7e27eb6a676d7de8c50f9a0b8c605f7e5dee5241)
+:   dcache-xroot:  return kXR_ItExists error code when file exists
+
+[a2fcb519a5](https://github.com/dcache/dcache/commit/a2fcb519a53bce663e328ca3ed22e0821bc39108)
+:   telemetry: Don't log stacktrace for caught expceptions
+
+[f51f48c782](https://github.com/dcache/dcache/commit/f51f48c7820f52a333302c1a9d11418bdc8dabf5)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 8.0.23
 
 ### common

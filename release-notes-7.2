@@ -72,6 +72,76 @@ Support for a dedicated scheduling strategy for bring-online requests was added 
 This release doesn't have any incompatibilities.
 
 
+## Release 7.2.35
+
+### frontend
+
+Request for pin without lifetime unit specified works now.
+
+### telemetry
+
+Caught exceptions are now logged without a stacktrace.
+
+### xroot
+
+Clients should be blocked from pre-emptive removal if a 
+file/directory already exists when doing copy.
+
+
+### Changelog 7.2.34..7.2.35
+
+<!-- git log 7.2.34..7.2.35 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[b45130a36d](https://github.com/dcache/dcache/commit/b45130a36de48bda2d53dc30486224fb12759e41)
+:   [maven-release-plugin] prepare release 7.2.35
+
+[583873a5dc](https://github.com/dcache/dcache/commit/583873a5dce84b0928ec06cf916b4f9cbbb5ed94)
+:   dcache-frontend:  convert empty to null when processing TimeUnit attribute
+
+[d4160fc5e1](https://github.com/dcache/dcache/commit/d4160fc5e103e5399e8011716894300bbf7c656c)
+:   dcache-xroot:  return kXR_ItExists error code when file exists
+
+[314c9b0c3c](https://github.com/dcache/dcache/commit/314c9b0c3ce2c268fa0b56a9a1f002b552af31fc)
+:   telemetry: Don't log stacktrace for caught expceptions
+
+[1d6dc12d41](https://github.com/dcache/dcache/commit/1d6dc12d41ae072470830fbf2ceed2f387a37924)
+:   [maven-release-plugin] prepare for next development iteration
+
+## Release 7.2.35
+
+### frontend
+
+Request for pin without lifetime unit specified works now.
+
+### telemetry
+
+Caught exceptions are now logged without a stacktrace.
+
+### xroot
+
+Clients should be blocked from pre-emptive removal if a 
+file/directory already exists when doing copy.
+
+
+### Changelog 7.2.34..7.2.35
+
+<!-- git log 7.2.34..7.2.35 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[b45130a36d](https://github.com/dcache/dcache/commit/b45130a36de48bda2d53dc30486224fb12759e41)
+:   [maven-release-plugin] prepare release 7.2.35
+
+[583873a5dc](https://github.com/dcache/dcache/commit/583873a5dce84b0928ec06cf916b4f9cbbb5ed94)
+:   dcache-frontend:  convert empty to null when processing TimeUnit attribute
+
+[d4160fc5e1](https://github.com/dcache/dcache/commit/d4160fc5e103e5399e8011716894300bbf7c656c)
+:   dcache-xroot:  return kXR_ItExists error code when file exists
+
+[314c9b0c3c](https://github.com/dcache/dcache/commit/314c9b0c3ce2c268fa0b56a9a1f002b552af31fc)
+:   telemetry: Don't log stacktrace for caught expceptions
+
+[1d6dc12d41](https://github.com/dcache/dcache/commit/1d6dc12d41ae072470830fbf2ceed2f387a37924)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 7.2.34
 
 ### common
