@@ -192,7 +192,23 @@
                 <notes-url>release-notes-8.2.shtml</notes-url>
                 <version-prefix>8.2.</version-prefix>
 
-      <release version="14" recommended="1">
+      <release version="15" recommended="1">
+        <date>24.2.2023</date>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>74fa126986c85701e987bbecb57a790a</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>8a51c94a443fdad25a60d1bd67d790f0</md5sum>
+        </package>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>394291860ca4f341421baf96e372d4cd</md5sum>
+        </package>
+      </release>
+
+      <release version="14">
         <date>16.2.2023</date>
         <package name="rpm">
           <download-url>-VERSION-1.noarch.rpm</download-url>
@@ -459,7 +475,23 @@
                 <version-prefix>8.1.</version-prefix>
            
 
-      <release version="18" recommended="1">
+      <release version="19" recommended="1">
+        <date>24.2.2023</date>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>c74a8e524ee98ec80f3126470764d460</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>b5f002010d0d0ae15ceb31dfd99e4dfd</md5sum>
+        </package>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>fdf0ceeb77b4f54ac3c92e51242e95e5</md5sum>
+        </package>
+      </release>
+
+      <release version="18">
         <date>16.2.2023</date>
         <package name="rpm">
           <download-url>-VERSION-1.noarch.rpm</download-url>
@@ -789,7 +821,23 @@
            
            
 
-      <release version="24" recommended="1">
+      <release version="25" recommended="1">
+        <date>24.2.2023</date>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>5ae5a57d3008e7d77dd5c6ef4edbcf58</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>f111ea169268d71f57cbd853f17f2f60</md5sum>
+        </package>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>77bdd97663843cd7e859703b88c54f4f</md5sum>
+        </package>
+      </release>
+
+      <release version="24">
         <date>16.2.2023</date>
         <package name="rpm">
           <download-url>-VERSION-1.noarch.rpm</download-url>
@@ -1214,7 +1262,23 @@
           <download-url-prefix>repo/7.2/dcache</download-url-prefix>
           <notes-url>release-notes-7.2.shtml</notes-url>
          <version-prefix>7.2.</version-prefix>
-      <release version="35" recommended="1">
+      <release version="36" recommended="1">
+        <date>24.2.2023</date>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>4b31a35d73612c1c2cc438decc5d28fc</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>f7f00ace16ff7e8e83a5fbcf34ebcf71</md5sum>
+        </package>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>3cfb87dd5ebe0c135455c61e8a0eec09</md5sum>
+        </package>
+      </release>
+
+      <release version="35">
         <date>16.2.2023</date>
         <package name="rpm">
           <download-url>-VERSION-1.noarch.rpm</download-url>

@@ -72,6 +72,26 @@ It is important to note, that if the lower  versions of dCache for pools this pr
 - NFS transfers will fail with EIO for broken files
 - The TLS mode of xroot is set to `OPTIONAL`, which requires host certificates on pool to be present
 
+## Release 8.1.19
+
+### gplazma
+
+dCache now handles malformed .info policies correctly: logging the problem but continuing to allow logins.
+
+
+### Changelog 8.1.18..8.1.19
+
+<!-- git log 8.1.18..8.1.19 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[345c6b0ed0](https://github.com/dcache/dcache/commit/345c6b0ed066c3573c5c3ced56d8f388d7eadc04)
+:   [maven-release-plugin] prepare release 8.1.19
+
+[e919237442](https://github.com/dcache/dcache/commit/e919237442be7a626df71cd92454b5332b05a3a5)
+:   gplazma: x509 do not report bad .info files as a dCache bug
+
+[ece8f58f10](https://github.com/dcache/dcache/commit/ece8f58f1080a53abbea84b36d44c9e265c9de70)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 8.1.18
 
 ### frontend

@@ -76,6 +76,26 @@ HTML header: <title>dCache 8.0 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 8.0.25
+
+### gplazma
+
+dCache now handles malformed .info policies correctly: logging the problem but continuing to allow logins.
+
+
+### Changelog 8.0.24..8.0.25
+
+<!-- git log 8.0.24..8.0.25 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[62743d50c1](https://github.com/dcache/dcache/commit/62743d50c1936dd71a476ef3393e50e0b8ff13ea)
+:   [maven-release-plugin] prepare release 8.0.25
+
+[1bf94684b6](https://github.com/dcache/dcache/commit/1bf94684b62ccc21566434aa687eed77a663b115)
+:   gplazma: x509 do not report bad .info files as a dCache bug
+
+[6da3201de7](https://github.com/dcache/dcache/commit/6da3201de7f3cea1e24567ff7ddfbed64f4d831c)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 8.0.24
 
 ### frontend
