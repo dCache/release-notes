@@ -71,6 +71,7 @@ HTML header: <title>dCache 9.0 Release Notes</title>
 - linklocal and localhost interfaces are not published by doors and pools.
 - DCAP movers always start in `passive` mode
 - removed experimental message encofing format
+- removed default HSM operation timeout 
 
 ## Acknowledgments
 
@@ -157,6 +158,15 @@ Added `show open files` command that lists all open files independent from exist
 ### PNFS Manager
 
 ### Pool
+
+Typically, when dCache interacts with an HSM there is a timeout on how long such a requests can stay in the HSM queue. Despite the
+fact, that those timeouts are HSM-specific, dCache comes with own default values, which are usually incorrect, thus admin usually
+explicitly set them.
+
+Starting from version 9.0 the default timeout is removed. IOW, there is no timeout for HSM operations, unless explicitly set by admins.
+> NOTE: this change unlikely to break existing setups, as previous timeout values are already stored in the pools setup file.
+
+In addtion a new command `sh|rh|rm unset timeout` is added to drop defined timeouts.
 
 ### Poolmanager
 
