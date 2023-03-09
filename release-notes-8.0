@@ -76,6 +76,28 @@ HTML header: <title>dCache 8.0 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 8.0.26
+
+### frontend
+
+Use of relative path when issuing mv through
+the RESTful /api/v1/namespace was broken. This is fixed now.
+
+
+
+### Changelog 8.0.25..8.0.26
+
+<!-- git log 8.0.25..8.0.26 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[dbcad8ed23](https://github.com/dcache/dcache/commit/dbcad8ed23ec3f40c995c76870268d0a6fdecf56)
+:   [maven-release-plugin] prepare release 8.0.26
+
+[e6afeeba48](https://github.com/dcache/dcache/commit/e6afeeba482709bcbc1dcb5d8e8bd86a6b7cc757)
+:   dcache-frontend: resolve on parent of source when renaming
+
+[f697ff05ec](https://github.com/dcache/dcache/commit/f697ff05ec38827fc0e5b9d86ca4ec787a070b87)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 8.0.25
 
 ### gplazma

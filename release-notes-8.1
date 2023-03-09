@@ -72,6 +72,28 @@ It is important to note, that if the lower  versions of dCache for pools this pr
 - NFS transfers will fail with EIO for broken files
 - The TLS mode of xroot is set to `OPTIONAL`, which requires host certificates on pool to be present
 
+## Release 8.1.20
+
+### frontend
+
+Use of relative path when issuing mv through
+the RESTful /api/v1/namespace was broken. This is fixed now.
+
+
+
+### Changelog 8.1.19..8.1.20
+
+<!-- git log 8.1.19..8.1.20 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[020f2c471a](https://github.com/dcache/dcache/commit/020f2c471aa3ff33fb38197904908e3124755eeb)
+:   [maven-release-plugin] prepare release 8.1.20
+
+[2c5b4b7782](https://github.com/dcache/dcache/commit/2c5b4b77823ac6aef7467d13d15d8aff64230326)
+:   dcache-frontend: resolve on parent of source when renaming
+
+[0fe9948424](https://github.com/dcache/dcache/commit/0fe99484249a712a3bf04d500919e7b3f08126c0)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 8.1.19
 
 ### gplazma
