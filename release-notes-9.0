@@ -67,10 +67,10 @@ HTML header: <title>dCache 9.0 Release Notes</title>
 - dCache now supports Java 17 as its platform
 
 ## Incompatibilities
-- DCAP and NFS doors will fail the request if file's storage unit is not configured at the PoolManager
-- linklocal and localhost interfaces are not published by doors and pools.
+- DCAP and NFS doors will fail the request if file's storage unit is not configured in PoolManager
+- linklocal and localhost interfaces are not published by doors and pools
 - DCAP movers always start in `passive` mode
-- removed experimental message encofing format
+- removed experimental message encoding format
 - removed default HSM operation timeout 
 
 ## Acknowledgments
@@ -86,7 +86,7 @@ HTML header: <title>dCache 9.0 Release Notes</title>
 
 ### Cells
 
-The expereimantal message encoding format is removed. As a result the property `dcache.broker.channel.msg-payload-serializer`
+The expereimantal message encoding format is removed. As a result, the property `dcache.broker.channel.msg-payload-serializer`
 is **immutable** and set to value **standard**.
 
 ### Cleaner
@@ -120,17 +120,17 @@ Also, an admin command was added to the hsm-cleaner cell that allows forgetting 
 
 ### Core
 
-To reduce network configuration based issues starting version 9.o dCache does't publish IPv6 link-local
-as well as locahost IP addresses in login broker. However, the connections or that interfaces are acepted.
+To reduce network-configuration-based issues, starting with version 9.0, dCache does not publish IPv6 link-local
+or locahost IP addresses in the login broker. However, the connections for those interfaces are acepted.
 
 ### DCAP
 
-The DCAP door will fail the request if file's storage unit is not configured at the PoolManager, as all other doors already do.
+The DCAP door will fail the request if a file's storage unit is not configured at the PoolManager, as all other doors already do.
 
-Since dCache 1.7.0 the DCAP door was supporting two modes of establishing data connection  between a client and a pool.Ether
-pool is connected to the client, or the client initiates the connection to a pool. The later one is a firewall friendly behavior,
-but shouldbe requested by a client. Starting with dCache 9.0 the dcap movers will always start in a `passive` mode independent
-from a client preference.
+Since dCache 1.7.0 the DCAP door was supporting two modes of establishing data connection  between a client and a pool. Either
+a pool is connected to the client, or the client initiates the connection to a pool. The latter is a firewall-friendly behavior,
+but should be requested by the client. Starting with dCache 9.0, the DCAP movers will always start in a `passive` mode, independent
+of client preference.
 
 ### Frontend
 
@@ -150,8 +150,8 @@ from a client preference.
 
 ### NFS
 
-The NFS door will the fail request if file's storage unit is not configured at the PoolManager, as all other doors already do.
-Added `show open files` command that lists all open files independent from existance of a mover (which is displayed by `show transfers`.
+The NFS door will fail the request if a file's storage unit is not configured in PoolManager, as all other doors already do.
+The new `show open files` command lists all open files whether or not a mover exists for them (the latter is displayed by `show transfers`).
 
 ### Pinmanager
 
@@ -159,14 +159,14 @@ Added `show open files` command that lists all open files independent from exist
 
 ### Pool
 
-Typically, when dCache interacts with an HSM there is a timeout on how long such a requests can stay in the HSM queue. Despite the
-fact, that those timeouts are HSM-specific, dCache comes with own default values, which are usually incorrect, thus admin usually
-explicitly set them.
+Typically, when dCache interacts with an HSM, there is a timeout on how long such requests can stay in the HSM queue. Despite the
+fact that those timeouts are HSM-specific, dCache comes with its own default values, which are usually incorrect, so admins usually
+end up explicitly setting them.
 
-Starting from version 9.0 the default timeout is removed. IOW, there is no timeout for HSM operations, unless explicitly set by admins.
-> NOTE: this change unlikely to break existing setups, as previous timeout values are already stored in the pools setup file.
+Starting with version 9.0, the default timeout has been removed. This means that there is no timeout for HSM operations unless explicitly set by admins.
+> NOTE: this change is unlikely to break existing setups, as previous timeout values are already stored in the pools setup file.
 
-In addtion a new command `sh|rh|rm unset timeout` is added to drop defined timeouts.
+In addtion, a new command `sh|rh|rm unset timeout` has been added to drop defined timeouts.
 
 ### Poolmanager
 
