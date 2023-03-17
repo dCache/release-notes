@@ -252,7 +252,6 @@ use an RDBMs replica instance rather than the live instance of chimera).
 
 A recipe for the migration/draining of resilient pools has been added to the dCache cookbook.
 
-#
 
 ### XRootD
 
