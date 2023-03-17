@@ -89,7 +89,6 @@ more should be displayed [Y/N].  These commands (see, for instance,
 bulk's `target ls`), when invoked via a non-terminal script, will
 continue automatically to stream chunks back until the end of the list.
 
-### Billing
 
 ### bulk
 * [41a9e807d7] dcache-bulk: fix missing pnfsid on cancel of PIN/STAGE
@@ -164,7 +163,6 @@ cleaner-disk.cell.name=cleaner-disk2
 Also, an admin command was added to the hsm-cleaner cell that allows forgetting a tape-resident pnfsid, meaning removing any corresponding delete target entries from the cleaner’s trash table database.
 
 
-### Checksums
 
 ### Core
 
@@ -208,7 +206,6 @@ activity for a directory.
 The User Guide has been updated to reflect the correct WLCG URL prefix and to
 add more information concerning support for .well-known.
 
-### FTP
 
 ### gplazma
 
@@ -219,22 +216,13 @@ Upload (as in xrootd's -P / persist on successful close) permissions with JWT to
 A bug handling NaN (not a number) errors in histogram conversion has been fixed,
 as well as one for index-out-of-bounds errors in timeseries histograms.
 
-### Hoppingmanager
-
-### httpd
-
-### Info
-
-### Missing Files
 
 ### NFS
 
 The NFS door will fail the request if a file's storage unit is not configured in PoolManager, as all other doors already do.
 The new `show open files` command lists all open files whether or not a mover exists for them (the latter is displayed by `show transfers`).
 
-### Pinmanager
 
-### PNFS Manager
 
 ### Pool
 
@@ -247,7 +235,6 @@ Starting with version 9.0, the default timeout has been removed. This means that
 
 In addtion, a new command `sh|rh|rm unset timeout` has been added to drop defined timeouts.
 
-### Poolmanager
 
 ### QoS Engine
 
@@ -265,19 +252,7 @@ use an RDBMs replica instance rather than the live instance of chimera).
 
 A recipe for the migration/draining of resilient pools has been added to the dCache cookbook.
 
-### Space Manager
-
-### SRM
-
-### SRM Manager
-
-### Statistics
-
-### Topo
-
-### Transfer Managers
-
-### WebDAV
+#
 
 ### XRootD
 
@@ -294,7 +269,6 @@ Improvements to documentation concerning TLS and host cert/key, recommendations 
 usage with door proxy; we have also added an Xroot User Guide page (only minimally populated at the
 moment).
 
-### Zookeeper
 
 ### Changelog from 8.2.0 to 9.0.0
 
