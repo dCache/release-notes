@@ -72,6 +72,48 @@ It is important to note, that if the lower  versions of dCache for pools this pr
 - NFS transfers will fail with EIO for broken files
 - The TLS mode of xroot is set to `OPTIONAL`, which requires host certificates on pool to be present
 
+## Release 8.1.21
+
+### gplazma
+
+It is now possible to configure dCache so the oidc plugin does not check
+audience fields.  This should be used where necessary and only for a
+short transition period.
+
+An OP declaration now supports the `-suppress=offline` argument to force
+dCache to query the userinfo endpoint, even if the access token is a
+JWT.  A warning is logged on startup if offline verification is
+suppressed.
+
+### pom
+
+Update stable branches to include bug fix to the TPC client behavior
+so that it establishes a secure connection to its source when the source TLS
+setting is STRICT.
+
+
+### Changelog 8.1.20..8.1.21
+
+<!-- git log 8.1.20..8.1.21 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[3df945a438](https://github.com/dcache/dcache/commit/3df945a43806c5099f71d07a985442bce75359b9)
+:   [maven-release-plugin] prepare release 8.1.21
+
+[f5020bc7a7](https://github.com/dcache/dcache/commit/f5020bc7a7ae0e3bf0e4bee1175000d991e255a8)
+:   pom.xml: update to next xrood4j version (4.5.5, 4.3.7, 4.2.11)
+
+[596f289db4](https://github.com/dcache/dcache/commit/596f289db4765514bf79b2a5923659112693ca83)
+:   gplazma: oidc add suppress for audience claim verification
+
+[bbaace9c44](https://github.com/dcache/dcache/commit/bbaace9c440e77ed973fc7ca351e55b754ed923f)
+:   gplazma: oidc allow suppression of offline verification
+
+[3da2be5167](https://github.com/dcache/dcache/commit/3da2be5167fbf9534b539dd44d9cdafcf2e658d5)
+:   gplazma: oidc add support for suppress option
+
+[950b5fce85](https://github.com/dcache/dcache/commit/950b5fce85caf3834ce798e9203ba33216b2c544)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 8.1.20
 
 ### frontend

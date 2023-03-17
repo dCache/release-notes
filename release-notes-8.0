@@ -76,6 +76,48 @@ HTML header: <title>dCache 8.0 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 8.0.27
+
+### gplazma
+
+It is now possible to configure dCache so the oidc plugin does not check
+audience fields.  This should be used where necessary and only for a
+short transition period.
+
+An OP declaration now supports the `-suppress=offline` argument to force
+dCache to query the userinfo endpoint, even if the access token is a
+JWT.  A warning is logged on startup if offline verification is
+suppressed.
+
+### pom
+
+Update stable branches to include bug fix to the TPC client behavior
+so that it establishes a secure connection to its source when the source TLS
+setting is STRICT.
+
+
+### Changelog 8.0.26..8.0.27
+
+<!-- git log 8.0.26..8.0.27 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[a1268e7afc](https://github.com/dcache/dcache/commit/a1268e7afc8579c6e500add9650e33d47e75af9f)
+:   [maven-release-plugin] prepare release 8.0.27
+
+[ec8c4f360a](https://github.com/dcache/dcache/commit/ec8c4f360a66230904a2d3923242eb7f5458a68d)
+:   pom.xml: update to next xrood4j version (4.5.5, 4.3.7, 4.2.11)
+
+[653e136e1f](https://github.com/dcache/dcache/commit/653e136e1fd98cfd35cf73a08778f3bd5f93479d)
+:   gplazma: oidc add suppress for audience claim verification
+
+[6af747c189](https://github.com/dcache/dcache/commit/6af747c189d3d1187ecdd43b17a8fd9932973331)
+:   gplazma: oidc allow suppression of offline verification
+
+[f92e0954f6](https://github.com/dcache/dcache/commit/f92e0954f6b6a17499eb85a9545f2389e03e0ea7)
+:   gplazma: oidc add support for suppress option
+
+[28680eb4fe](https://github.com/dcache/dcache/commit/28680eb4fea0a064bf0fe658f8c26ac5920226c5)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 8.0.26
 
 ### frontend
