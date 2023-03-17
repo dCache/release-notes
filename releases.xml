@@ -168,6 +168,56 @@
   </preamble>
 
 
+
+       <series id="server-9.0">
+            <title>server 9.0.x</title>
+
+            <description>
+                <p>dCache 9.0 is a Feature Release introducing following highlights:</p>               
+                <ul>
+                   
+                        <li> dCache now supports Java 17 as its platform</li>
+                        
+                </ul>
+            <p>Incompatibilities</p>
+
+            <li>DCAP and NFS doors will fail the request if file's storage unit is not configured in PoolManager</li>
+                <li>linklocal and localhost interfaces are not published by doors and pools</li>
+		<li>DCAP movers always start in passive mode </li>
+		<li>removed experimental message encoding format</li>
+		<li>removed default HSM operation timeout</li>
+            </description>
+
+            <releases>
+                <name>dCache VERSION</name>
+                <download-url-prefix>repo/9.0/dcache</download-url-prefix>
+                <notes-url>release-notes-9.0.shtml</notes-url>
+                <version-prefix>9.0.</version-prefix>
+            
+            
+      <release version="0" recommended="1">
+        <date>17.3.2023</date>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>ac702bc1b945427a0b134f69f00784a9</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>ee602140a800347c41518cec87616239</md5sum>
+        </package>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>2418bf37e3c58a1f46410e0f84723668</md5sum>
+        </package>
+
+	</release>
+         </release>
+
+      
+        </series>
+
+
+
 	   <series id="server-8.2">
             <title>server 8.2.x</title>
 
