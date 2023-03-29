@@ -76,6 +76,28 @@ HTML header: <title>dCache 8.0 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 8.0.28
+
+### xrootd4j
+
+
+update to next xrootd4j version (4.5.6, 4.4.7, 4.3.8, 4.2.12)
+
+
+
+### Changelog 8.0.27..8.0.28
+
+<!-- git log 8.0.27..8.0.28 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[a51717a7b1](https://github.com/dcache/dcache/commit/a51717a7b1d7c962fdc98a89668d40f94114bfae)
+:   [maven-release-plugin] prepare release 8.0.28
+
+[dd23075a89](https://github.com/dcache/dcache/commit/dd23075a8939e5e89e38d03cc2257713076ffd56)
+:   pom.xml: update to next xrootd4j version (4.5.6, 4.4.7, 4.3.8, 4.2.12)
+
+[a0f30127f9](https://github.com/dcache/dcache/commit/a0f30127f9e1a27d8b170d81b7369efd0c274109)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 8.0.27
 
 ### gplazma
