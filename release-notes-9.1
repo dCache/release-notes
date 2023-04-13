@@ -107,6 +107,56 @@ HTML header: <title>dCache 9.1 Release Notes</title>
 
 ### Pool
 
+Added posibility to dynamically add and remove nearline storage providers, which allows to update the provider without
+restarting the dCache:
+
+```
+    (pool_write@dCacheDomain) admin > hsm show providers
+    PROVIDER DESCRIPTION                                                 DYNAMIC
+    script   Calls out to an HSM integration script.                     no
+    link     Hard links flushed files in another directory.              no
+    copy     Copies files to and from another directory.                 no
+    tar      Bundles files into tar archives (not ready for production). no
+    
+    (pool_write@dCacheDomain) admin > hsm load provider /tmp/dcache-cta-0.6.0
+    New provides:
+    PROVIDER   DESCRIPTION
+    dcache-cta dCache Nearline Storage Driver for CTA. Version: 0.6.0 2022-07-20T09:33:38Z
+    
+    (pool_write@dCacheDomain) admin > hsm show providers
+    PROVIDER   DESCRIPTION                                                                 DYNAMIC
+    script     Calls out to an HSM integration script.                                      no
+    link       Hard links flushed files in another directory.                               no
+    copy       Copies files to and from another directory.                                  no
+    tar        Bundles files into tar archives (not ready for production).                  no
+    dcache-cta dCache Nearline Storage Driver for CTA. Version: 0.6.0 2022-07-20T09:33:38Z yes
+    
+    (pool_write@dCacheDomain) admin > hsm unload provider dcache-cta
+    Removed provides:
+    PROVIDER   DESCRIPTION
+    dcache-cta dCache Nearline Storage Driver for CTA. Version: 0.6.0 2022-07-20T09:33:38Z
+    
+    (pool_write@dCacheDomain) admin > hsm show providers
+    PROVIDER DESCRIPTION                                                 DYNAMIC
+    script   Calls out to an HSM integration script.                     no
+    link     Hard links flushed files in another directory.              no
+    copy     Copies files to and from another directory.                 no
+    tar      Bundles files into tar archives (not ready for production). no
+    
+    (pool_write@dCacheDomain) admin > hsm load provider /tmp/dcache-cta-0.7.0
+    New provides:
+    PROVIDER   DESCRIPTION
+    dcache-cta dCache Nearline Storage Driver for CTA. Version: 0.7.0 2022-11-04T08:32:39Z
+    
+    (pool_write@dCacheDomain) admin > hsm show providers
+    PROVIDER   DESCRIPTION                                                                 DYNAMIC
+    script     Calls out to an HSM integration script.                                      no
+    link       Hard links flushed files in another directory.                               no
+    copy       Copies files to and from another directory.                                  no
+    tar        Bundles files into tar archives (not ready for production).                  no
+    dcache-cta dCache Nearline Storage Driver for CTA. Version: 0.7.0 2022-11-04T08:32:39Z yes
+```
+
 ### Poolmanager
 
 ### Resilience
