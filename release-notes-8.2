@@ -77,6 +77,42 @@ HTML header: <title>dCache 8.2 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 8.2.20
+
+### bulk
+
+QoS properties have been set to default to WLCG values. Also decreased the number of targets in a shallow
+request and increased number of threads available for target activities to 200.
+
+### qos
+
+Proper handling of the QoSModify requests: propagate
+the subject downstream to the actual adjustment tasks.
+
+### webdav
+
+Correct behaviour on redirect with prefix.
+
+
+### Changelog 8.2.19..8.2.20
+
+<!-- git log 8.2.19..8.2.20 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[703caa83d5](https://github.com/dcache/dcache/commit/703caa83d5d3b8d8be506d072c7a29ee93804c17)
+:   [maven-release-plugin] prepare release 8.2.20
+
+[5ce3a48cba](https://github.com/dcache/dcache/commit/5ce3a48cba9b3f74b2740893f812e85311a3edc8)
+:   dcache-bulk:  reset policy defaults
+
+[bc44544ddd](https://github.com/dcache/dcache/commit/bc44544dddac942163112c02bd387d3d8d5a303b)
+:   webdav: preserve request URL in protocol info
+
+[9341981052](https://github.com/dcache/dcache/commit/9341981052fad05f7b14b5d5451a22742eed5d2d)
+:   dcache-qos:  propagate subject to QoS Adjuster
+
+[ed3736f76f](https://github.com/dcache/dcache/commit/ed3736f76f532d6847aa7f5361592dee895b4471)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 8.2.19
 
 ### chimera
