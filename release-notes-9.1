@@ -64,7 +64,12 @@ HTML header: <title>dCache 9.1 Release Notes</title>
 
 ## Highlights
 
+- Improve concurrent file create rate in a single directory
+
 ## Incompatibilities
+
+Starting version 9.1 the nlink count for directories shows only number of subdirectories. Thus, the existing nlink count can be out-of-sync with
+we no automatic re-synchronization is performed.
 
 ## Acknowledgments
 
@@ -108,6 +113,19 @@ The rpm package will call `systemctl daemon-reload` after install or update.
 ### Pinmanager
 
 ### PNFS Manager
+
+The chimera layer supports two new java properties that control parent directory attribyte update on create:
+
+ - chimera_lazy_wcc
+ - chimera_soft_update
+ 
+ The `chimera_lazy_wcc` options instruct dcache not to update directoy attributes right away. Instead the desired information is stored
+ in additiona `t_lazy_wcc` table, that is periodically merged into `t_inodes`. This behavior improves concurrent file create rate in a single directory.
+ The attribute syncronization time is hard-coded and equals to 30 seconds.
+ 
+ The `chimera_soft_update` options tells dcache to check for pending updates in `t_lazy_wcc` on `stat` calls. This option should be enabled, if 30 seconds
+ attribute merge time can't be used (typically NFS write based workloads).
+
 
 ### Pool
 
