@@ -73,6 +73,27 @@ It is important to note, that if the lower  versions of dCache for pools this pr
 - The TLS mode of xroot is set to `OPTIONAL`, which requires host certificates on pool to be present
 
 
+## Release 8.1.24
+
+### systemtest
+
+The `populate` script now generates a valid dCache configuration if
+oidc-agent is installed and at least one configuration has been loaded.
+
+
+### Changelog 8.1.23..8.1.24
+
+<!-- git log 8.1.23..8.1.24 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[023c9395d9](https://github.com/dcache/dcache/commit/023c9395d97f01500f9bcccb0b3696ec87b2447a)
+:   [maven-release-plugin] prepare release 8.1.24
+
+[3160d537bd](https://github.com/dcache/dcache/commit/3160d537bd6c24791031af3be979f044f3fcd9f5)
+:   systemtest: fix support for oidc testing
+
+[bcac98b2d0](https://github.com/dcache/dcache/commit/bcac98b2d0799950cf7a546b5c3e10be4f7d708e)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 8.1.23
 
 ### Technical Release
