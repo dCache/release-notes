@@ -76,6 +76,26 @@ HTML header: <title>dCache 8.0 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 8.0.30
+
+### gplazma
+
+POSC works with tokens when user root is '/'.
+
+
+### Changelog 8.0.29..8.0.30
+
+<!-- git log 8.0.29..8.0.30 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[7ff300522d](https://github.com/dcache/dcache/commit/7ff300522d828f0d5205b002cec74782a97ea811)
+:   [maven-release-plugin] prepare release 8.0.30
+
+[f3cece6f39](https://github.com/dcache/dcache/commit/f3cece6f3997242cbacc78539ac95d8f8111a6b8)
+:   Motivation:
+
+[0c84dd149f](https://github.com/dcache/dcache/commit/0c84dd149f7ecd19280a7499eff87cbc282ad680)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 8.0.29
 
 ### Technical Release
