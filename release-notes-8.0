@@ -78,6 +78,26 @@ HTML header: <title>dCache 8.0 Release Notes</title>
 
 ## Release 8.0.31
 
+### metadata
+
+No user- or admin observable changes.
+
+
+### Changelog 8.0.30..8.0.31
+
+<!-- git log 8.0.30..8.0.31 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[75cec72a0b](https://github.com/dcache/dcache/commit/75cec72a0beabc2beebfa37a3555c6d02efc73e7)
+:   [maven-release-plugin] prepare release 8.0.31
+
+[ae1e840b16](https://github.com/dcache/dcache/commit/ae1e840b161c7b4cdbf4a12d1ce764a1aaf9b163)
+:   metadata: add (some) ORCIDs to CITATION.cff
+
+[f4a6da7e36](https://github.com/dcache/dcache/commit/f4a6da7e369bc7fb69fc9069096fb32edebf75ad)
+:   [maven-release-plugin] prepare for next development iteration
+
+## Release 8.0.31
+
 ### #
 
 
