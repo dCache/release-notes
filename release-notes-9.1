@@ -71,6 +71,7 @@ HTML header: <title>dCache 9.1 Release Notes</title>
 - Starting version 9.1 the nlink count for directories shows only number of subdirectories. Thus, the existing
   nlink count can be out-of-sync with we no automatic re-synchronization is performed.
 - dropped gplazma support for XACML
+- pool binds TCP port for `http` and `xroot` movers on startup
 
 ## Acknowledgments
 
@@ -185,6 +186,10 @@ The `mover ls` command updated to display remote peers IP address for xroot and 
 The `st/rh/rm kill` admin commands accept `*` to cancel all running requests.
 
 Kafka message include pool's local socket address used by the transfer.
+
+The until release 9.1 xroot and http movers ware binding TCP port on a first request and then shutdown the
+socket when no movers runnig. Now on, dCache will binds the ports on startup and keep them for the whole JVM
+lifetime.
 
 ### Poolmanager
 
