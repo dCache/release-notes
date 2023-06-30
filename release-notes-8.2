@@ -78,6 +78,54 @@ HTML header: <title>dCache 8.2 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 8.2.25
+
+### bulk
+
+RuntimeExceptions should not cause the request ls to fail globally.
+
+### other
+
+Update out citations file.
+
+### pnfs
+
+A modest speed-up of directory listing by not always
+resolving symlinks when checking restrictions.
+
+### qos
+
+Two small incompatibilities with subject and attributes are fixed.
+
+Improvements in triggering QoS operation queues, which reduces the
+potential for queue starvation.
+
+
+### Changelog 8.2.24..8.2.25
+
+<!-- git log 8.2.24..8.2.25 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[37235a0946](https://github.com/dcache/dcache/commit/37235a09464d6282f974b2a4a05b17e71e10bfcd)
+:   [maven-release-plugin] prepare release 8.2.25
+
+[68327fdaaf](https://github.com/dcache/dcache/commit/68327fdaaf00044a1f9d8fc7a2edacf21aaf76d2)
+:   dcache-qos(verifier,engine): fix incompatibility issues with Subject and attributes
+
+[f15ba0450a](https://github.com/dcache/dcache/commit/f15ba0450aab5d6690bf715f4929badcf681d934)
+:   dcache-bulk:  catch Exception from getSubject()
+
+[87f87d8d0f](https://github.com/dcache/dcache/commit/87f87d8d0fecf94fbe6e356c48deed2823044fc5)
+:   dcache-qos:  repair faulty queue refresh algorithm in verifier
+
+[316b33a6c5](https://github.com/dcache/dcache/commit/316b33a6c595f2f4041e4c538a913aa0687de79a)
+:   dcache,pnfs:  skip symlink resolution when checking restrictions on directory children during listing
+
+[156a3dc1ed](https://github.com/dcache/dcache/commit/156a3dc1ed6118bd1d0c204b405093b401777e39)
+:   Update the CITATION.cff version field and date-released field for dCache 8.2.
+
+[3c892db9e6](https://github.com/dcache/dcache/commit/3c892db9e6ccdb0872619ad853b857028a368c34)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 8.2.24
 
 ### webdav
