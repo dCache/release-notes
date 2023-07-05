@@ -169,6 +169,53 @@
 
 
 
+   <series id="server-9.1">
+            <title>server 9.1.x</title>
+
+            <description>
+                <p>dCache 9.1 is a Feature Release introducing following highlights:</p>
+                <ul>
+
+			<li> dCache now supports Java 17 as its platform</li>
+			<li> Improve concurrent file create rate in a single directory</li>
+        
+                </ul>
+            <p>Incompatibilities</p>
+
+            <li>Starting version 9.1 the nlink count for directories shows only number of subdirectories. Thus, the existing
+  nlink count can be out-of-sync with we no automatic re-synchronization is performed.</li>
+                <li/>
+                <li>dropped gplazma support for XACML </li>
+                <li>pool binds TCP port for `http` and `xroot` movers on startup</li>
+                
+            </description>
+
+            <releases>
+                <name>dCache VERSION</name>
+                <download-url-prefix>repo/9.1/dcache</download-url-prefix>
+                <notes-url>release-notes-9.1.shtml</notes-url>
+		<version-prefix>9.1.</version-prefix>
+
+
+      <release version="0" recommended="1">
+        <date>5.7.2023</date>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>ef2c0acdb0d99c0a6afbc1fad17a35d3</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>d0bd5164bdbaf52ead30963aa4078364</md5sum>
+        </package>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>32407854fb3f8cd4f40d10935131fd42</md5sum>
+        </package>
+      </release>
+
+      </releases>
+            </series>
+
        <series id="server-9.0">
             <title>server 9.0.x</title>
 
