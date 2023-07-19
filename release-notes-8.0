@@ -76,6 +76,32 @@ HTML header: <title>dCache 8.0 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 8.0.32
+
+### xrootd4j
+
+Update xrootd4j to a new version, that fixes a byte buffer leak in ZTNCredentialUtils.
+
+
+### Changelog 8.0.31..8.0.32
+
+<!-- git log 8.0.31..8.0.32 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[068634ea4d](https://github.com/dcache/dcache/commit/068634ea4de75e18c201e154e3c80b59ec513ecb)
+:   [maven-release-plugin] prepare release 8.0.32
+
+[22046e7e6f](https://github.com/dcache/dcache/commit/22046e7e6f3a280ad820ba0224c822bd25aa7535)
+:   ci: add gitlab-ci.yml
+
+[a14dadf9a8](https://github.com/dcache/dcache/commit/a14dadf9a8b474781f9b68194f903a357a6d0606)
+:   pom.xml: bump xrootd4j to next version (4.5.7, 4.4.8, 4.3.9, 4.2.13)
+
+[893474629f](https://github.com/dcache/dcache/commit/893474629f364076f55896d0cd45c3d465a6b994)
+:   Update the CITATION.cff version field and date-released field for dCache 8.0.
+
+[2bb3a94839](https://github.com/dcache/dcache/commit/2bb3a948392c853537c5dbc57f39e34dba2e3fa9)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 8.0.31
 
 ### metadata
