@@ -66,6 +66,9 @@ HTML header: <title>dCache 9.2 Release Notes</title>
 
 ## Incompatibilities
 
+- prior to version 9.2 dCache NFSv4.1 door will publish only `nfs4_1_files` layout. Now on
+  the door publishes all available layout types
+
 ## Acknowledgments
 
 (tbd, this section uses markdown formatting)
@@ -100,6 +103,10 @@ HTML header: <title>dCache 9.2 Release Notes</title>
 ### Missing Files
 
 ### NFS
+
+Prior to version 9.2 dCache, to support RHEL6 based clients, if no species export options are specified, the NFSv4.1 door
+were publishing only `nfs4_1_files` layout. Now on the door publishes all available layout types. If for whatever reason
+RHEL6 clients are still used, the old behavior can be enforced by `lt=nfsv4_1_files` export option.
 
 ### Pinmanager
 
