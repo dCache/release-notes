@@ -64,10 +64,14 @@ HTML header: <title>dCache 9.2 Release Notes</title>
 
 ## Highlights
 
+- Performance improvements for the concurrent directory creation and removal
+
 ## Incompatibilities
 
 - prior to version 9.2 dCache NFSv4.1 door will publish only `nfs4_1_files` layout. Now on
   the door publishes all available layout types
+
+- dropped reference count tracking for directory tags
 
 ## Acknowledgments
 
@@ -111,6 +115,10 @@ RHEL6 clients are still used, the old behavior can be enforced by `lt=nfsv4_1_fi
 ### Pinmanager
 
 ### PNFS Manager
+
+To remove unused directory tags chimera keeps the reference count (nlink) of tags. This approach creates a 'hot' record that
+serializes all updates to a given top-level tag. Starting 9.2 dCache doesn't rely on ref count anymore and uses conditional DELETE
+which should improve the concurrent directory creation/deletion rate.
 
 ### Pool
 
