@@ -80,6 +80,61 @@ cleaning (`cleaner-hsm`)
 (tbd, this section uses markdown formatting)
 
 
+## Release 9.0.11
+
+### gplazma
+
+
+gPlazma incompatibiliti detween version before and after 8.2.13 has been detected.
+
+This is now fixed.
+
+### pool
+
+
+If http client issues two GET requests then zero-copy enabled http mover will try to remove the IdleStateHandler 
+twice and fail with NoSuchElementException.
+
+This is now fixed.
+
+### qos
+
+A  bug in storing and retrieving `tried` value for verify operation has been fixed.
+
+### xroot
+
+
+Modify mkdir to ignore dir exists on make parent option. The result conforms to vanilla xroot server.
+
+
+
+
+
+### Changelog 9.0.10..9.0.11
+
+<!-- git log 9.0.10..9.0.11 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[6668baca28](https://github.com/dcache/dcache/commit/6668baca28c2e850919131e4f938126dc014c183)
+:   [maven-release-plugin] prepare release 9.0.11
+
+[1ace470660](https://github.com/dcache/dcache/commit/1ace4706600220b99a1b5d65890c7ec71fd1c901)
+:   dcache-gplazma: add serialVersionUID to MultiTargetedRestriction
+
+[e2e56d5120](https://github.com/dcache/dcache/commit/e2e56d5120cfb9856905c0fb6b711dbcf34750f9)
+:   pool: handle double remove of IdleStateHandler
+
+[ce81176547](https://github.com/dcache/dcache/commit/ce81176547dacd4b3962ed067d0cecc2432e7d18)
+:   add desc to OIDC properties
+
+[5fbfe12412](https://github.com/dcache/dcache/commit/5fbfe124127388a3d7a9a03d7413b77c270291dc)
+:   dcache-qos: fix bug in storing and retrieving 'tried' value for verify operation
+
+[7abb11cea5](https://github.com/dcache/dcache/commit/7abb11cea50c917c94d8d4c4252abba940cb107d)
+:   dcache-xroot:  modify mkdir to ignore dir exists on make parent option
+
+[167b1040f1](https://github.com/dcache/dcache/commit/167b1040f141fce1cd5fed79015ca8a812e9d5e0)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 9.0.10
 
 ### vehicles
