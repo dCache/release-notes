@@ -70,8 +70,8 @@ HTML header: <title>dCache 9.2 Release Notes</title>
 
 - prior to version 9.2 dCache NFSv4.1 door will publish only `nfs4_1_files` layout. Now on
   the door publishes all available layout types
-
 - dropped reference count tracking for directory tags
+- dropped support of java options `chimera_soft_update` and `chimera_lazy_wcc` in favor of `chimera.attr-consistency` property
 
 ## Acknowledgments
 
@@ -83,6 +83,25 @@ HTML header: <title>dCache 9.2 Release Notes</title>
 ### Admin
 
 ### Billing
+
+### Chimera
+
+In version 9.0 dcache has introduced the possibility to control parent directory attribute consistency on the creation of
+a filesystem object. This was 
+
+With dcache version 9.0 chimera has introduced `chimera_soft_update` and `chimera_lazy_wcc` Java properties to control the behavior
+of the parent directory attribute update policy. Now those properties are obsolete and replaced by a regular dcache configuration
+property `chimera.attr-consistency`, which takes the following values:
+
+| policy | behaviour                                                                                                                                                                                                                                   |
+|:-------|----------------------------------------------------------------------------------------------|
+| strong | a creation of a filesystem object will right away update parent directory's mtime, ctime, nlink and generation attributes                                                                                                                   |
+| weak   | a creation of a filesystem object will eventually update (after 30 seconds) parent directory's mtime, ctime, nlink and generation attributes. Multiple concurrent modifications to a directory are aggregated into a single attribute update. |
+| soft   | same as weak, however, reading of directory attributes will take into account pending attribute updates.                                                                                                                                    |
+
+Read-write exported NFS doors SHOULD run with `strong consistency` or `soft consistency` to maintain POSIX compliance. Read-only NFS doors might
+run with `weak consistency` if non-up-to-date directory attributes can be tolerated, for example, when accessing existing data, or  `soft consistency`,
+if up-to-date information is desired, typically when seeking newly arrived files through other doors.
 
 ### Cleaner
 
