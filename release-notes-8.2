@@ -78,6 +78,33 @@ HTML header: <title>dCache 8.2 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 8.2.28
+
+### pnfsmanager
+
+List scheduling behavior is now optional.
+
+`pnfsmanager.enable.parallel-listing`  property variable  allows to restore previous behavior - listing requests
+ are dispatched to a single queue that is prrocessed by multiple parallel workers.
+
+dCache admin can change behavior of listing scheduler.
+
+
+
+
+### Changelog 8.2.27..8.2.28
+
+<!-- git log 8.2.27..8.2.28 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[6bf80ef559](https://github.com/dcache/dcache/commit/6bf80ef559e894f3f00a2841b2c8717df742b6fb)
+:   [maven-release-plugin] prepare release 8.2.28
+
+[aeaa5f633a](https://github.com/dcache/dcache/commit/aeaa5f633a2a5ec737fac77866800dd34edc207e)
+:   pnfsmanager: make list scheduling behavior optional (selectable)
+
+[47369afe25](https://github.com/dcache/dcache/commit/47369afe254c403a436658c4cc5f190873839efd)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 8.2.27
 
 ### gplazma

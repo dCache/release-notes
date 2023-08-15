@@ -80,6 +80,33 @@ cleaning (`cleaner-hsm`)
 (tbd, this section uses markdown formatting)
 
 
+## Release 9.0.12
+
+### pnfsmanager
+
+List scheduling behavior is now optional.
+
+`pnfsmanager.enable.parallel-listing`  property variable  allows to restore previous behavior - listing requests
+ are dispatched to a single queue that is prrocessed by multiple parallel workers.
+
+dCache admin can change behavior of listing scheduler.
+
+
+
+
+### Changelog 9.0.11..9.0.12
+
+<!-- git log 9.0.11..9.0.12 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[1c4f133766](https://github.com/dcache/dcache/commit/1c4f13376617af8689d46a192655a2235de96b42)
+:   [maven-release-plugin] prepare release 9.0.12
+
+[e8163995ba](https://github.com/dcache/dcache/commit/e8163995baddae3440419d5d2540c1b3954edb1b)
+:   pnfsmanager: make list scheduling behavior optional (selectable)
+
+[c0f18dde41](https://github.com/dcache/dcache/commit/c0f18dde41d43267c92ea98a4443b0b6bd82006b)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 9.0.11
 
 ### gplazma
