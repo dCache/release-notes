@@ -80,6 +80,27 @@ cleaning (`cleaner-hsm`)
 (tbd, this section uses markdown formatting)
 
 
+## Release 9.0.14
+
+### bulk
+
+Each time a bulk request is started, the container is given a new semaphore based on the number of permits defined for the activity in question.
+This patch sets the default per-container permit values to something more reasonable.
+
+
+### Changelog 9.0.13..9.0.14
+
+<!-- git log 9.0.13..9.0.14 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[e82f3e7f67](https://github.com/dcache/dcache/commit/e82f3e7f67fdd3eab8e20daa32da1f1065cf97a9)
+:   [maven-release-plugin] prepare release 9.0.14
+
+[3c2fed0587](https://github.com/dcache/dcache/commit/3c2fed05877bb51921cd01a2d3cd9816badd990e)
+:   dcache-bulk:  adjust semaphore permits to something more reasonable
+
+[fe7849fa7b](https://github.com/dcache/dcache/commit/fe7849fa7b6a230dc03f1a0c213339e16a30e113)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 9.0.13
 
 ### dcache-bulk

@@ -78,6 +78,34 @@ HTML header: <title>dCache 9.1 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 9.1.6
+
+### bulk
+
+Each time a bulk request is started, the container is given a new semaphore based on the number of permits defined for the activity in question.
+This patch sets the default per-container permit values to something more reasonable.
+
+### pool
+
+Removes hidden default values for pool properties.
+
+
+### Changelog 9.1.5..9.1.6
+
+<!-- git log 9.1.5..9.1.6 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[b6bae48ae4](https://github.com/dcache/dcache/commit/b6bae48ae492758e141ae18db7f894e9b145f147)
+:   [maven-release-plugin] prepare release 9.1.6
+
+[5757f0f8a7](https://github.com/dcache/dcache/commit/5757f0f8a76fd49b1d668c62511b293026b184e5)
+:   pool: remove hidden defaults for rh/rm/sh operations
+
+[0383bd9ae9](https://github.com/dcache/dcache/commit/0383bd9ae90b301a8cddaa1286bfcf6aa7bfb4dd)
+:   dcache-bulk:  adjust semaphore permits to something more reasonable
+
+[4b58dfc336](https://github.com/dcache/dcache/commit/4b58dfc3366560de2b1d57d6fed0897861ce08ed)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 9.1.5
 
 ### dcache-bulk

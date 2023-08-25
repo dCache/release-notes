@@ -78,6 +78,27 @@ HTML header: <title>dCache 8.2 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 8.2.30
+
+### bulk
+
+Each time a bulk request is started, the container is given a new semaphore based on the number of permits defined for the activity in question.
+This patch sets the default per-container permit values to something more reasonable.
+
+
+### Changelog 8.2.29..8.2.30
+
+<!-- git log 8.2.29..8.2.30 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[6f539cb4db](https://github.com/dcache/dcache/commit/6f539cb4dbc3da9bfade558a066aeffbaea28ba2)
+:   [maven-release-plugin] prepare release 8.2.30
+
+[bfa40695c6](https://github.com/dcache/dcache/commit/bfa40695c6f5adbfec64cd962c64b1ee6bc6ad9f)
+:   dcache-bulk:  adjust semaphore permits to something more reasonable
+
+[c23b711102](https://github.com/dcache/dcache/commit/c23b7111027a714975d76e5e237d38c5597eceac)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 8.2.29
 
 ### dcache-bulk
