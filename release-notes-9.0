@@ -80,6 +80,43 @@ cleaning (`cleaner-hsm`)
 (tbd, this section uses markdown formatting)
 
 
+## Release 9.0.15
+
+### logback
+
+Redundant replications of unused log files are removed and the qos activity is now recorded as well.
+
+### qos
+
+A bug was fixed that let to the message queue being blocked.
+
+### webdav
+
+This patch speeds up listing of directories through webdav.
+
+
+### Changelog 9.0.14..9.0.15
+
+<!-- git log 9.0.14..9.0.15 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[91a68c92f7](https://github.com/dcache/dcache/commit/91a68c92f79b9518c2741446266a76545033586b)
+:   [maven-release-plugin] prepare release 9.0.15
+
+[b3c04bc5cd](https://github.com/dcache/dcache/commit/b3c04bc5cd3f8270d58762eaf3db3cb1068c396a)
+:   dcache-webdav:  fix incorrect parameter value given to DcacheDirectoryResource constructor
+
+[c95ffc5a18](https://github.com/dcache/dcache/commit/c95ffc5a18f3ca4e7b916df5fd367ffcbe6f17f8)
+:   dcache-webdav:  improve efficiency of directory listing
+
+[190474bf02](https://github.com/dcache/dcache/commit/190474bf02d66d313ab2f8163671523d24bb432b)
+:   dcache-qos,dcache-bulk:  allow qos update to call engine asynchronously
+
+[029a753ca3](https://github.com/dcache/dcache/commit/029a753ca330556768dc0251f5e3c0cf4167aad7)
+:   skel,logback:  make the .resilience and .qos log files singletons
+
+[ca24625745](https://github.com/dcache/dcache/commit/ca2462574598dda981c5423f35c18af99fa40635)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 9.0.14
 
 ### bulk

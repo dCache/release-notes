@@ -78,6 +78,43 @@ HTML header: <title>dCache 9.1 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 9.1.7
+
+### logback
+
+Redundant replications of unused log files are removed and the qos activity is now recorded as well.
+
+### qos
+
+A bug was fixed that let to the message queue being blocked.
+
+### webdav
+
+This patch speeds up listing of directories through webdav.
+
+
+### Changelog 9.1.6..9.1.7
+
+<!-- git log 9.1.6..9.1.7 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[f1c7029e56](https://github.com/dcache/dcache/commit/f1c7029e56c7113164be408fb28055f132450bc0)
+:   [maven-release-plugin] prepare release 9.1.7
+
+[55981a828f](https://github.com/dcache/dcache/commit/55981a828f70b8e011781878b3995ac4d0faa8b4)
+:   dcache-webdav:  fix incorrect parameter value given to DcacheDirectoryResource constructor
+
+[abaa7f63a9](https://github.com/dcache/dcache/commit/abaa7f63a95b85c17e5332973cfafcc5a582ff48)
+:   dcache-webdav:  improve efficiency of directory listing
+
+[f9ee722ed0](https://github.com/dcache/dcache/commit/f9ee722ed07525f69952ddb3d77f51abf10d2333)
+:   dcache-qos,dcache-bulk:  allow qos update to call engine asynchronously
+
+[bfe7659908](https://github.com/dcache/dcache/commit/bfe76599082e80dde9c104130e8614579d47f0c0)
+:   skel,logback:  make the .resilience and .qos log files singletons
+
+[2cd9410bda](https://github.com/dcache/dcache/commit/2cd9410bda1076ec5899f20f71793fb972853ed3)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 9.1.6
 
 ### bulk
