@@ -78,6 +78,40 @@ HTML header: <title>dCache 9.1 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 9.1.8
+
+### packages
+
+A problem was fixed that prevented `system-test` to run on MacOS.
+
+### webdav
+
+This patch reverts the efficiency improvement of the last patch as it may lead
+to failing requests if set to PERFORMANCE.
+
+
+### Changelog 9.1.7..9.1.8
+
+<!-- git log 9.1.7..9.1.8 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[38ba16024d](https://github.com/dcache/dcache/commit/38ba16024d9199f4d4937c6998e073f1cb7a0b73)
+:   [maven-release-plugin] prepare release 9.1.8
+
+[1107b6d0d2](https://github.com/dcache/dcache/commit/1107b6d0d243bd45ae1d8d0aaaa0f0f31f96b36e)
+:   packages: fix system test populate sed expression
+
+[ad59f486d4](https://github.com/dcache/dcache/commit/ad59f486d42d7a5b87d25b58fd67d96500423dc7)
+:   dcache-webdav: revert improve efficiency of directory listing (14085/14088)
+
+[9d40ee1d88](https://github.com/dcache/dcache/commit/9d40ee1d88ffca1aef53c0d944466e70fd6e81a7)
+:   doc: clean up the multiple protocol configuration explanation for xroot
+
+[6f9597c964](https://github.com/dcache/dcache/commit/6f9597c964bda90240495742726396381980b50a)
+:   ci: pin all jobs to dcache-dev runners (temporary)
+
+[18a1fcbe21](https://github.com/dcache/dcache/commit/18a1fcbe21590af6bbe1a6f87a4c813a249addad)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 9.1.7
 
 ### logback
