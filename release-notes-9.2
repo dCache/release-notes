@@ -136,7 +136,7 @@ RHEL6 clients are still used, the old behavior can be enforced by `lt=nfsv4_1_fi
 ### PNFS Manager
 
 To remove unused directory tags chimera keeps the reference count (nlink) of tags. This approach creates a 'hot' record that
-serializes all updates to a given top-level tag. Starting 9.2 dCache doesn't rely on ref count anymore and uses conditional DELETE
+serializes all updates to a given top-level tag. Starting 9.2 dCache doesn't rely on ref count anymore and uses conditional DELETE,
 which should improve the concurrent directory creation/deletion rate.
 
 ### Pool
@@ -150,6 +150,8 @@ Pools `info` command displays HTTP, HTTPS, NFS and XROOT movers listen ports and
 Billing information from DCAP and FTP movers now on include local socket end point
 
 ### Poolmanager
+
+Re-introduce `wrandom` partition type - a weighted-random pool selection partition, which works as a `WASS` partition, but ignores LRU metric and number of movers.
 
 ### Resilience
 
