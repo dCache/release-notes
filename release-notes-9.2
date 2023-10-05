@@ -169,6 +169,15 @@ Re-introduce `wrandom` partition type - a weighted-random pool selection partiti
 
 ### WebDAV
 
+The WebDAV door now provides limited support for metalink format.
+Metalink is an XML format, described by RFC 5854, that describes how
+to download multiple files.  The initial support is limited to
+describing the files within the targeted directory: there is no
+support for recursion.  The metalink information is available via HTTP
+Content Negotiation (client sends a `Accept:
+application/metalink4+xml` header) or via a `Link` HTTP response
+header (see RFC 6249) when generating the normal HTML output.
+
 ### XRootD
 
 ### Zookeeper
