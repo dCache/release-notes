@@ -1,0 +1,147 @@
+HTML header: <title>dCache 10.0 Release Notes</title>
+             <!--#include virtual="/template/default-head.shtml" -->
+             <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+             <!-- Bootstrap -->
+             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+                   integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"/>
+             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"
+                   integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous"/>
+             <!--link type="text/css" rel="stylesheet" href="jquery.tocify.css" /-->
+             <style type="text/css">
+             h5 {
+                 font-size: 15px;
+                 font-style: italic;
+                 margin-top: 20px;
+             }
+             body {
+                 padding-top: 20px;
+             }
+             @media (max-width: 767px) {
+                 #toc {
+                     position: relative;
+                     width: 100%;
+                     margin: 0px 0px 20px 0px;
+                 }
+             }
+             @media print {
+                 #toc {
+                     display: none;
+                 }
+             }
+             </style>
+
+<div class="container">
+<div id="banner">
+   <div id="bird_large">
+      <img src="/images/dcache-banner.png" class="bird"></img>
+   </div>
+   <div id="sidebar-b">
+      <span class="dcache-nav-bar">
+      <a href="/index.shtml">home</a>
+      |
+      <a href="/news.shtml">news</a>
+      |
+      <a href="/manuals/index.shtml">documentation</a>
+      |
+      <a href="/downloads/IAgree.shtml">downloads</a>
+      |
+      <a href="/feedback.shtml">feedback</a>
+      |
+      <a href="/manuals/googlesearch.shtml">search</a>
+      |
+      <a href="/imprint.shtml">imprint&#160;</a>
+      </span>
+   </div>
+</div>
+<div id="content">
+
+<div class="row">
+
+<div class="page-header">
+<h1>What's new in dCache 10.0<br/>
+<small>Release notes</small></h1>
+</div>
+
+## Highlights
+
+## Incompatibilities
+
+## Acknowledgments
+
+(tbd, this section uses markdown formatting)
+
+
+## Release 10.0.0
+
+### Admin
+
+### Billing
+
+### Cleaner
+
+### Checksums
+
+### DCAP
+
+### Frontend
+
+### FTP
+
+### gplazma
+
+### History
+
+### Hoppingmanager
+
+### httpd
+
+### Info
+
+### Missing Files
+
+### NFS
+
+### Pinmanager
+
+### PNFS Manager
+
+### Pool
+
+### Poolmanager
+
+### Resilience
+
+### Space Manager
+
+### SRM
+
+### SRM Manager
+
+### Statistics
+
+### Topo
+
+### Transfer Managers
+
+### WebDAV
+
+### XRootD
+
+### Zookeeper
+
+### Changelog from 9.2.0 to 10.0.0
+
+<!-- git log 9.2..10.0 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+(tbd as soon as the branching is done)
+
+
+</div>
+</div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" type="text/javascript"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+        integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js" type="text/javascript"></script>
