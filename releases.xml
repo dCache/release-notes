@@ -192,6 +192,24 @@
             <release>
             </release>
             </releases>
+
+      <release version="0" recommended="1">
+        <date>9.10.2023</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>9b62963cda8e0dc4151598a59c4943e8</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>d2a274b862531edb006b7f097b841a81</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>324b39efb80e63d1072cbe5490969690</md5sum>
+        </package>
+      </release>
+
+      
         </series>
 
    <series id="server-9.1">
