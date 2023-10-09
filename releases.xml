@@ -167,7 +167,32 @@
     <br/>
   </preamble>
 
+  <series id="server-9.2">
+            <title>server 9.2.x</title>
 
+            <description>
+                <p>dCache 9.2 is a Feature Release introducing the following highlights:</p>
+                <ul>
+                    <li>Performance improvements for the concurrent directory creation and removal</li>
+                </ul>
+                <p>Incompatibilities:</p>
+                <ul>
+                  <li>prior to version 9.2 dCache NFSv4.1 door will publish only `nfs4_1_files` layout. Now on the door publishes all available layout types </li>
+                  <li>dropped reference count tracking for directory tags</li>
+                  <li>dropped support of java options `chimera_soft_update` and `chimera_lazy_wcc` in favor of `chimera.attr-consistency` property</li>
+                </ul>
+                <p>dCache v9.2 requires a JVM supporting Java 11 or Java 17.</p>
+            </description>
+
+            <releases>
+                <name>dCache VERSION</name>
+                <download-url-prefix>repo/9.2/dcache</download-url-prefix>
+                <notes-url>release-notes-9.2.shtml</notes-url>
+                <version-prefix>9.2.</version-prefix>
+            <release>
+            </release>
+            </releases>
+        </series>
 
    <series id="server-9.1">
             <title>server 9.1.x</title>
