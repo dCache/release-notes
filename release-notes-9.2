@@ -73,10 +73,6 @@ HTML header: <title>dCache 9.2 Release Notes</title>
 - dropped reference count tracking for directory tags
 - dropped support of java options `chimera_soft_update` and `chimera_lazy_wcc` in favor of `chimera.attr-consistency` property
 
-## Acknowledgments
-
-(tbd, this section uses markdown formatting)
-
 ## Release 9.2.0
 
 ## Known issues
@@ -90,8 +86,6 @@ where results exceeding 10K lines prompt the user with [Y/N] for
 further results.   When executing a shell command in non-terminal
 mode, all results are streamed back continuously.  The Bulk commands have
 been converted to use this feature.
-
-### Billing
 
 ### Bulk
 
@@ -169,12 +163,6 @@ Read-write exported NFS doors SHOULD run with `strong consistency` or `soft cons
 run with `weak consistency` if non-up-to-date directory attributes can be tolerated, for example, when accessing existing data, or  `soft consistency`,
 if up-to-date information is desired, typically when seeking newly arrived files through other doors.
 
-### Cleaner
-
-### Checksums
-
-### DCAP
-
 ### Frontend
 
 Aside from bug fixes, the following changes should be noted:
@@ -194,8 +182,6 @@ Aside from bug fixes, the following changes should be noted:
     with this option.
 -   Support for pool migration has been introduced (migrations resource).
     See Swagger pages for details.
-
-### FTP
 
 ### gplazma
 
@@ -219,23 +205,11 @@ upload (e.g., xroot POSC) when using tokens.
 
 The gplazma-xacml plugin has been dropped.
 
-### History
-
-### Hoppingmanager
-
-### httpd
-
-### Info
-
-### Missing Files
-
 ### NFS
 
 Prior to version 9.2 dCache, to support RHEL6 based clients, if no species export options are specified, the NFSv4.1 door
 were publishing only `nfs4_1_files` layout. Now on the door publishes all available layout types. If for whatever reason
 RHEL6 clients are still used, the old behavior can be enforced by `lt=nfsv4_1_files` export option.
-
-### Pinmanager
 
 ### PNFS Manager
 
@@ -303,18 +277,6 @@ Remember *_not_* to run Resilience and QoS simultaneously.
 
 A recipe has been added to the cookbook for migration/draining of resilient pools.
 
-### Space Manager
-
-### SRM
-
-### SRM Manager
-
-### Statistics
-
-### Topo
-
-### Transfer Managers
-
 ### WebDAV
 
 The WebDAV door now provides limited support for metalink format.
@@ -337,8 +299,6 @@ the following should be noted:
 - The efficiency of the stat list (ls -l) has been greatly improved.
 
 An Xroot User Guide page has been started.
-
-### Zookeeper
 
 ### Changelog from 9.1.0 to 9.2.0
 
