@@ -107,6 +107,8 @@ HTML header: <title>dCache 10.0 Release Notes</title>
 
 ### Pool
 
+Admin command `csm info` will display enabled digests for ckecksum calculation.
+
 ### Poolmanager
 
 ### Resilience
