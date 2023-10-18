@@ -210,9 +210,6 @@ so the only way to remove such requests automatically is through the archiver.
 
 ### Chimera
 
-In version 9.0 dcache has introduced the possibility to control parent directory attribute consistency on the creation of
-a filesystem object. This was 
-
 With dcache version 9.0 chimera has introduced `chimera_soft_update` and `chimera_lazy_wcc` Java properties to control the behavior
 of the parent directory attribute update policy. Now those properties are obsolete and replaced by a regular dcache configuration
 property `chimera.attr-consistency`, which takes the following values:
