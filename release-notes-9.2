@@ -302,11 +302,13 @@ Aside from bug fixes, the following significant changes to QoS should be noted:
     book chapter for further details.
 
 -   The DB namespace endpoint can now be configured to be separate from the main Chimera
-    database.  This was useful for Resilience, where all namespace operations were read-only
-    and so could be pointed at a database replica.
+    database (originally introduced/changed for Resilience). In this way, the scanner,
+    whose namespace queries are read-only, could be pointed at a database replica.
 
-    But be aware that *this is not advisable for QoS* because of the new policy engine
-    implementation, which needs to update Chimera tables.
+    This remains possible for QoS, even though the QoSEngine now also is responsible
+    for updating Chimera with file policy state.  These writes are all done via
+    messaging (PnfsHandler) rather than by direct DB connection, so they go to
+    the master Chimera instance.
 
 -   Requests for QoS transitions are now authorized on the basis of role (see under gPlazma).
 
@@ -337,6 +339,7 @@ QoS services.   We encourage you to switch to the latter as soon as is feasible.
 Remember *_not_* to run Resilience and QoS simultaneously.
 
 A recipe has been added to the cookbook for migration/draining of resilient pools.
+This continues to apply in QoS.
 
 ### WebDAV
 
