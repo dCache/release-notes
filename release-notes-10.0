@@ -81,6 +81,22 @@ HTML header: <title>dCache 10.0 Release Notes</title>
 
 ### Checksums
 
+### Configuration
+
+In the container world, it's common to use environment variables to pass the
+configuration parameters. With release 10.0 dCache support injects of environment
+variables into configuration with special values prefixed with `env.`. For example,
+to control wan port numbers with environment variables DCACHE_WAN_PORT_MIN and 
+DCACHE_WAN_PORT_MAX the layout file might have the following configuration:
+
+```
+dcache.net.wan.port.min=${env.DCACHE_WAN_PORT_MIN}
+dcache.net.wan.port.max=${env.DCACHE_WAN_PORT_MAX}
+```
+
+> NOTE: the nested variables are not allowed. E.g. `${env.$VAR1-$VAR2}` will not be resolved.
+
+
 ### DCAP
 
 ### Frontend
