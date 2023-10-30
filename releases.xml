@@ -194,7 +194,7 @@
         <date>27.10.2023</date>
         <package name="rpm">
           <download-url>-VERSION-1.noarch.rpm</download-url>
-          <md5sum>40cc64702ca02e3b4659fc253ef7601f</md5sum>
+          <md5sum>294011815d84a649ae25da3c168d4df1</md5sum>
         </package>
         <package name="tgz">
           <download-url>-VERSION.tar.gz</download-url>
