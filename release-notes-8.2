@@ -78,6 +78,32 @@ HTML header: <title>dCache 8.2 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 8.2.36
+
+### webdav
+
+The urls similar to this `https://door.domain.foo:1234//pnfs/domain.foo/path/to/file`
+were strip  into `/domain.foo/path/to/file`.
+
+The current release fixed the  parsing of urls with two slashes in the path.
+
+
+### Changelog 8.2.35..8.2.36
+
+<!-- git log 8.2.35..8.2.36 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[46b65a2e22](https://github.com/dcache/dcache/commit/46b65a2e22f770e0ba553ddc89ea62d508a1d6bb)
+:   [maven-release-plugin] prepare release 8.2.36
+
+[e2e42899a1](https://github.com/dcache/dcache/commit/e2e42899a1f8806520ca331c61ac3b1253392fe4)
+:   webdav: fix infinite recursion in Requests.stripToPath
+
+[ca01798b71](https://github.com/dcache/dcache/commit/ca01798b71a3e5616d9ce5b4abe9545153e80850)
+:   webdav: fix parsing of urls with two slashes in the path
+
+[be62bce99c](https://github.com/dcache/dcache/commit/be62bce99cfb75e7bde9c62ee8b39e88793c0727)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 8.2.35
 
 ### door

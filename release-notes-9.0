@@ -80,6 +80,32 @@ cleaning (`cleaner-hsm`)
 (tbd, this section uses markdown formatting)
 
 
+## Release 9.0.20
+
+### webdav
+
+The urls similar to this `https://door.domain.foo:1234//pnfs/domain.foo/path/to/file`
+were strip  into `/domain.foo/path/to/file`.
+
+The current release fixed the  parsing of urls with two slashes in the path.
+
+
+### Changelog 9.0.19..9.0.20
+
+<!-- git log 9.0.19..9.0.20 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[73cb1abb7c](https://github.com/dcache/dcache/commit/73cb1abb7c580a731e4c26cc4af2d8e7f211fa70)
+:   [maven-release-plugin] prepare release 9.0.20
+
+[6bc9c4f656](https://github.com/dcache/dcache/commit/6bc9c4f656e55999ba1e7106b299c760e9bbc67f)
+:   webdav: fix infinite recursion in Requests.stripToPath
+
+[b94b640a97](https://github.com/dcache/dcache/commit/b94b640a978dbf83145d0640f9e322f10d1ac556)
+:   webdav: fix parsing of urls with two slashes in the path
+
+[9d6944931a](https://github.com/dcache/dcache/commit/9d6944931a68d0879ccd6c4b4f901ccfb663a86f)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 9.0.19
 
 ### door

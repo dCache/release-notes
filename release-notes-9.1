@@ -78,6 +78,42 @@ HTML header: <title>dCache 9.1 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 9.1.12
+
+### chimera
+
+
+The  rollback of 9.1 to 9.0 db schema was fixed and  possibility to rollback namespace db to an earlier schema version is restored now.
+
+
+
+### webdav
+
+The urls similar to this `https://door.domain.foo:1234//pnfs/domain.foo/path/to/file`
+were strip  into `/domain.foo/path/to/file`.
+
+The current release fixed the  parsing of urls with two slashes in the path.
+
+
+### Changelog 9.1.11..9.1.12
+
+<!-- git log 9.1.11..9.1.12 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[12a3f096d1](https://github.com/dcache/dcache/commit/12a3f096d1dde33badf6192656e17b057881fd3c)
+:   [maven-release-plugin] prepare release 9.1.12
+
+[00acf52639](https://github.com/dcache/dcache/commit/00acf526394f651381b312517091b31d5241e1ca)
+:   chimera: fix rollback of 9.1 to 9.0 db schema
+
+[4632708ac7](https://github.com/dcache/dcache/commit/4632708ac7d7edb6b7e7d12f7ff23aad9e494e96)
+:   webdav: fix infinite recursion in Requests.stripToPath
+
+[99d2444750](https://github.com/dcache/dcache/commit/99d24447508abaebe99b2a9d1795e6c152b42bc2)
+:   webdav: fix parsing of urls with two slashes in the path
+
+[e1f399429b](https://github.com/dcache/dcache/commit/e1f399429b1d4980ac0ce90d7f45c9b2f4a66a6e)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 9.1.11
 
 ### door
