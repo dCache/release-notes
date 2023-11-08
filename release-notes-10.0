@@ -129,7 +129,9 @@ Sites that have tried to run dCache with built-in CEPH decided to go for CephFS 
 scalability and erasure encoding. Thus, built-in CEPH is not recommended for deployments and is removed in version 10.0. Sites that have
 such a setup should migrate pools before updating the dCache.
 
-Admin command `csm info` will display enabled digests for ckecksum calculation.
+Admin command `csm info` will display enabled digests for checksum calculation.
+
+Added property `pool.path.meta` to specify the location of pools metadata directory, defaults to `pool.path`.
 
 ### Poolmanager
 
