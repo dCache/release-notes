@@ -133,6 +133,8 @@ Admin command `csm info` will display enabled digests for checksum calculation.
 
 Added property `pool.path.meta` to specify the location of pools metadata directory, defaults to `pool.path`.
 
+Added pool command `csm use directio on|off` to enable/disable O_DIRECT to bypass the filesystem cache during checksum calculation.
+
 ### Poolmanager
 
 ### Resilience
