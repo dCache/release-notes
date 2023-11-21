@@ -171,7 +171,7 @@
             <title>server 9.2.x</title>
 
             <description>
-                <p>dCache 9.2 is a Feature Release introducing the following highlights:</p>
+                <p>dCache 9.2 is a Golden Release introducing the following highlights:</p>
                 <ul>
                     <li>Performance improvements for the concurrent directory creation and removal</li>
                 </ul>
