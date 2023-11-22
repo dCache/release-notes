@@ -80,6 +80,29 @@ cleaning (`cleaner-hsm`)
 (tbd, this section uses markdown formatting)
 
 
+## Release 9.0.21
+
+### bulk
+
+The current releae  fixed handling of uncaught exception during perform.
+
+
+### Changelog 9.0.20..9.0.21
+
+<!-- git log 9.0.20..9.0.21 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[9df360ef99](https://github.com/dcache/dcache/commit/9df360ef9975a20024f78c5e4d1707736060c220)
+:   [maven-release-plugin] prepare release 9.0.21
+
+[9d3295b813](https://github.com/dcache/dcache/commit/9d3295b813576fb3ad41ee3c4809d196364fb6ac)
+:   dcache-frontend,common:  check parsing of Duration in STAGE
+
+[2e559affff](https://github.com/dcache/dcache/commit/2e559affff5ec9ee8f941b8b0fbb1551f705d7be)
+:   dcache-bulk:  fix handling of uncaught exception during perform
+
+[46b687f78a](https://github.com/dcache/dcache/commit/46b687f78ad8e043fb3f9061718dae875b4884d8)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 9.0.20
 
 ### webdav
