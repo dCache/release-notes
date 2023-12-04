@@ -74,6 +74,40 @@ HTML header: <title>dCache 9.2 Release Notes</title>
 - dropped support of java options `chimera_soft_update` and `chimera_lazy_wcc` in favor of `chimera.attr-consistency` property
 - If upgrading from 8.2, be sure to read also the release notes for 9.0 and 9.1, important changes are described there. See the [9.2 migration guide](https://github.com/dCache/upgrade-guide/blob/master/UPGRADE92.md) for more complete information
 
+## Release 9.2.6
+
+### dependencies
+
+The MongoDB driver was updated. This might lead to different log messages.
+
+### frontend
+
+A bug was fixed that led to an Exception when using qos without policy.
+
+### webdav
+
+If a non-existing well-known resource is requested, it won't log a stacktrace anymore.
+
+
+### Changelog 9.2.5..9.2.6
+
+<!-- git log 9.2.5..9.2.6 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[c0bc7fa627](https://github.com/dcache/dcache/commit/c0bc7fa62747a6d9012ebc4259eec979ea06f305)
+:   [maven-release-plugin] prepare release 9.2.6
+
+[a83cc7fbfd](https://github.com/dcache/dcache/commit/a83cc7fbfd37e6352fd1829a9da47d3df8fcbacd)
+:   pom: Update mongodb-driver
+
+[1b10c15afb](https://github.com/dcache/dcache/commit/1b10c15afb0486d952772540a54d3798b1a0e036)
+:   dcache-frontend:  check for defined arguments with namespace qos
+
+[1748b3b887](https://github.com/dcache/dcache/commit/1748b3b887deae32dd9d176bd779811b8dacbb87)
+:   webdav: do not log  stacktrace if non-existing `well-known` is requested
+
+[9ad93f688c](https://github.com/dcache/dcache/commit/9ad93f688c6656c4e8bd178b565167aacc3e55f8)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 9.2.5
 
 ### bulk

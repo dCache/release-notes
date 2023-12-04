@@ -80,6 +80,26 @@ cleaning (`cleaner-hsm`)
 (tbd, this section uses markdown formatting)
 
 
+## Release 9.0.22
+
+### dependencies
+
+The MongoDB driver was updated. This might lead to different log messages.
+
+
+### Changelog 9.0.21..9.0.22
+
+<!-- git log 9.0.21..9.0.22 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[5ee504f4d6](https://github.com/dcache/dcache/commit/5ee504f4d6ba75708783ccf83da4487d98dbb6de)
+:   [maven-release-plugin] prepare release 9.0.22
+
+[64b2b72b61](https://github.com/dcache/dcache/commit/64b2b72b611a05f5b5dc9932b4e3e43b6c14b1a9)
+:   pom: Update mongodb-driver
+
+[c036f17312](https://github.com/dcache/dcache/commit/c036f17312f0c2ffd4bb18ccc4605610502112c7)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 9.0.21
 
 ### bulk
