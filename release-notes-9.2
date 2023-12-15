@@ -74,6 +74,66 @@ HTML header: <title>dCache 9.2 Release Notes</title>
 - dropped support of java options `chimera_soft_update` and `chimera_lazy_wcc` in favor of `chimera.attr-consistency` property
 - If upgrading from 8.2, be sure to read also the release notes for 9.0 and 9.1, important changes are described there. See the [9.2 migration guide](https://github.com/dCache/upgrade-guide/blob/master/UPGRADE92.md) for more complete information
 
+## Release 9.2.7
+
+### ci
+
+Build and test system improvements.
+
+### cleaner-disk
+
+No more occasional ConcurrentHashMap exceptions in cleaner-disk
+runs due to concurrent pool status changes.
+
+### core
+
+Admin commands with hyphen-containing arguments are no longer trunkated
+prematurely, they are now properly shown and autocompleted.
+
+### qos
+
+Prevent `PropertySetterException` in qos.
+
+### xroot
+
+The change to use effectiveRoot did not take into account Subject = Nobody.
+
+Regression eliminated, previous behavior with anonymous read restored.
+
+Fixes previous fix for xroot descriptor: NPE risk mitigated.
+
+
+### Changelog 9.2.6..9.2.7
+
+<!-- git log 9.2.6..9.2.7 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[a91a3bbb1c](https://github.com/dcache/dcache/commit/a91a3bbb1c86fce121d47a7fae699c6faa4821bf)
+:   [maven-release-plugin] prepare release 9.2.7
+
+[8a60a76165](https://github.com/dcache/dcache/commit/8a60a761656ea7cc93954e4e5c55fa031a7da36f)
+:   dcache-xroot:  check that descriptor is not null before calling close -- fix
+
+[84e5af54cd](https://github.com/dcache/dcache/commit/84e5af54cdb6561f5458a30ebaff64d709d8bdcd)
+:   dcache-xroot:  check that descriptor is not null before calling close
+
+[711b4a38f8](https://github.com/dcache/dcache/commit/711b4a38f86f51e75e3be99ca54f178c063069b5)
+:   cleaner-disk: prevent ConcurrentModificationException in cleaning run
+
+[84026b3779](https://github.com/dcache/dcache/commit/84026b37794a6df28a0fc19e473087bab999d717)
+:   dcache-xroot:  fix effective root when subject is nobody
+
+[95590b4a5f](https://github.com/dcache/dcache/commit/95590b4a5fb63d518fdff6b3e933e9cce4a3c8f3)
+:   dcache-core: fix admin command completion
+
+[e8bc2c0274](https://github.com/dcache/dcache/commit/e8bc2c0274993eaf3dc6f3d4597b11c8300a2e61)
+:   qos: comment out property description
+
+[c2022ea407](https://github.com/dcache/dcache/commit/c2022ea407ff225879e0988721e307a63dce9149)
+:   ci: add exta helm ops to extend timeout and simplify retries
+
+[53afeee632](https://github.com/dcache/dcache/commit/53afeee632d0f4a9f22835110d40bb6089f298d1)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 9.2.6
 
 ### dependencies

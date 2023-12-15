@@ -78,6 +78,52 @@ HTML header: <title>dCache 9.1 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 9.1.15
+
+### cleaner-disk
+
+No more occasional ConcurrentHashMap exceptions in cleaner-disk
+runs due to concurrent pool status changes.
+
+### core
+
+Admin commands with hyphen-containing arguments are no longer trunkated
+prematurely, they are now properly shown and autocompleted.
+
+### xroot
+
+The change to use effectiveRoot did not take into account Subject = Nobody.
+
+Regression eliminated, previous behavior with anonymous read restored.
+
+Fixes previous fix for xroot descriptor: NPE risk mitigated.
+
+
+### Changelog 9.1.14..9.1.15
+
+<!-- git log 9.1.14..9.1.15 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[c12054fd27](https://github.com/dcache/dcache/commit/c12054fd27b80c743e32b1cd8b8f472dd1081593)
+:   [maven-release-plugin] prepare release 9.1.15
+
+[6e0bf1bcb7](https://github.com/dcache/dcache/commit/6e0bf1bcb7c19804a8b507df68e70aeba248dc97)
+:   dcache-xroot:  check that descriptor is not null before calling close -- fix
+
+[4029f935fa](https://github.com/dcache/dcache/commit/4029f935faf1bb827fe470c1eab5fb09c42a90cd)
+:   dcache-xroot:  check that descriptor is not null before calling close
+
+[5f2bbbfb6c](https://github.com/dcache/dcache/commit/5f2bbbfb6c62e49d20b096f7ce669e567dc0a29f)
+:   cleaner-disk: prevent ConcurrentModificationException in cleaning run
+
+[1f868b3224](https://github.com/dcache/dcache/commit/1f868b3224be5ddc35da66286cbe0c2dc1402466)
+:   dcache-xroot:  fix effective root when subject is nobody
+
+[1a63817e9d](https://github.com/dcache/dcache/commit/1a63817e9d7d1dfa29e339f67ea6c935d7ca5f1a)
+:   dcache-core: fix admin command completion
+
+[e870b5ea6b](https://github.com/dcache/dcache/commit/e870b5ea6b45fc8b2d84b692a88a7c5103458e58)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 9.1.14
 
 ### dependencies

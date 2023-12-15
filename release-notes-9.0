@@ -80,6 +80,39 @@ cleaning (`cleaner-hsm`)
 (tbd, this section uses markdown formatting)
 
 
+## Release 9.0.23
+
+### cleaner-disk
+
+No more occasional ConcurrentHashMap exceptions in cleaner-disk
+runs due to concurrent pool status changes.
+
+### xroot
+
+Regression eliminated, previous behavior with anonymous read restored.
+
+Fixes previous fix for xroot descriptor: NPE risk mitigated.
+
+
+### Changelog 9.0.22..9.0.23
+
+<!-- git log 9.0.22..9.0.23 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[5b9380c05f](https://github.com/dcache/dcache/commit/5b9380c05fbb032dc9edb809b72ae14edd593f05)
+:   [maven-release-plugin] prepare release 9.0.23
+
+[befcb48a10](https://github.com/dcache/dcache/commit/befcb48a10a8287a51e4dd5e9f5bc16885b54cbe)
+:   dcache-xroot:  check that descriptor is not null before calling close -- fix
+
+[68dbc75d77](https://github.com/dcache/dcache/commit/68dbc75d77371a412605f13c92edc434a5457b4a)
+:   dcache-xroot:  check that descriptor is not null before calling close
+
+[d412c22478](https://github.com/dcache/dcache/commit/d412c224782a7f5fa52edef0c8a57fb475c3e933)
+:   cleaner-disk: prevent ConcurrentModificationException in cleaning run
+
+[a70934f17f](https://github.com/dcache/dcache/commit/a70934f17f35d2079149d55535ff9b4d2b0ba298)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 9.0.22
 
 ### dependencies
