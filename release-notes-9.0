@@ -73,11 +73,8 @@ cleaning (`cleaner-hsm`)
 - linklocal and localhost interfaces are not published by doors and pools
 - DCAP movers always start in `passive` mode
 - removed experimental message encoding format
-- removed default HSM operation timeout 
-
-## Acknowledgments
-
-(tbd, this section uses markdown formatting)
+- removed default HSM operation timeout
+- With version 9.0.24+, empty and non-existent banfiles will be treated the same
 
 
 ## Release 9.0.24

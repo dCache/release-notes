@@ -68,14 +68,11 @@ HTML header: <title>dCache 9.1 Release Notes</title>
 
 ## Incompatibilities
 
-- Starting version 9.1 the nlink count for directories shows only number of subdirectories. Thus, the existing
-  nlink count can be out-of-sync with we no automatic re-synchronization is performed.
+- Starting with version 9.1 the nlink count for directories shows only number of subdirectories. Thus, the existing
+  nlink count can be out-of-sync with we no automatic re-synchronization is performed
 - dropped gplazma support for XACML
 - pool binds TCP port for `http` and `xroot` movers on startup
-
-## Acknowledgments
-
-(tbd, this section uses markdown formatting)
+- With version 9.1.16+, empty and non-existent banfiles will be treated the same
 
 
 ## Release 9.1.16
