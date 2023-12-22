@@ -78,6 +78,30 @@ HTML header: <title>dCache 8.2 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 8.2.40
+
+### gplazma
+
+Previously, a missing banfile would result in every successive login attempt failing with an NPE. Now, even if configured, an empty or inexistent banfile will be ignored and logins should succeed.
+WARNING: This changes the banfile plugin behaviour! Empty and non-existent banfiles will be treated the same.
+
+
+### Changelog 8.2.39..8.2.40
+
+<!-- git log 8.2.39..8.2.40 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[f02ea04672](https://github.com/dcache/dcache/commit/f02ea04672713033d3b1247bca9aabfe4e92bcee)
+:   [maven-release-plugin] prepare release 8.2.40
+
+[1206a1895f](https://github.com/dcache/dcache/commit/1206a1895fa5f6b2eac964f96f99ec62c983da06)
+:   Fix unit test for commit 6b47354
+
+[3321de1359](https://github.com/dcache/dcache/commit/3321de13599d9cb175a5de830b8f8b5b069dd5e5)
+:   gplazma: configured banfile plugin should ignore non-existent ban file
+
+[1c3a8229b4](https://github.com/dcache/dcache/commit/1c3a8229b42de000ca20bffde88f96d22b205e36)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 8.2.39
 
 ### xroot
