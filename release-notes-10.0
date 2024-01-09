@@ -67,6 +67,7 @@ HTML header: <title>dCache 10.0 Release Notes</title>
 ## Incompatibilities
 
 - dropped native CEPH support. Sites must migrate their pools before updating dCache
+- dropped idle timeout handler in netty based movers (xroot, http)
 
 ## Acknowledgments
 
@@ -134,6 +135,16 @@ Admin command `csm info` will display enabled digests for checksum calculation.
 Added property `pool.path.meta` to specify the location of pools metadata directory, defaults to `pool.path`.
 
 Added pool command `csm use directio on|off` to enable/disable O_DIRECT to bypass the filesystem cache during checksum calculation.
+
+Prior version 10.0 for xroot and http movers dcache hat two ways to detect and cancel idle connections: Job Timeout Manager (jtm)and
+idleHandler. Nowon, the later one is remove and only jtm-baes one is used. The folloing pool properties are obsolete:
+
+```
+pool.mover.xrootd.timeout.idle
+pool.mover.xrootd.timeout.idle.unit
+pool.mover.http.timeout.idle
+pool.mover.http.timeout.idle.unit
+```
 
 ### Poolmanager
 
