@@ -146,6 +146,11 @@ pool.mover.http.timeout.idle
 pool.mover.http.timeout.idle.unit
 ```
 
+Starting version 3.0 has dropped the limit on the maximal number of concurrent p2p transfers for a single pool. This is typically not a problem,
+however, in some situations, namely multiple transfers from many pools to a single one, during rebalancing, for example, a pool might become
+unresponsive due to IO starvation. With version 10.0 the maximal number of concurrent p2p transfers was re-introduced and `pp set max active`
+command is undeprecated. The default value is `unlimited`.
+
 ### Poolmanager
 
 ### Resilience
