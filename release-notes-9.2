@@ -75,6 +75,26 @@ HTML header: <title>dCache 9.2 Release Notes</title>
 - If upgrading from 8.2, be sure to read also the release notes for 9.0 and 9.1, important changes are described there. See the [9.2 migration guide](https://github.com/dCache/upgrade-guide/blob/master/UPGRADE92.md) for more complete information
 - With version 9.2.8+, empty and non-existent banfiles will be treated the same
 
+## Release 9.2.9
+
+### gplazma
+
+A bug is fixed in gPlazma that is triggered when users attempt to authenticate with broken gPlazma configuration or a gPlazma plugin's configuration is broken.
+
+
+### Changelog 9.2.8..9.2.9
+
+<!-- git log 9.2.8..9.2.9 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[ffef10d130](https://github.com/dcache/dcache/commit/ffef10d130988e723d8eacdb18f960c081759e66)
+:   [maven-release-plugin] prepare release 9.2.9
+
+[c7993fe0f3](https://github.com/dcache/dcache/commit/c7993fe0f3f002b734a3b2f6b6ad86f9d42b57f9)
+:   gplazma: fix NPE if gPlazma is rejecting all logins
+
+[42d497e172](https://github.com/dcache/dcache/commit/42d497e172e1e74ce0356820b315e2d9df6a9f8d)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 9.2.8
 
 ### chimera
