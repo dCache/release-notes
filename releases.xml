@@ -190,7 +190,23 @@
                 <notes-url>release-notes-9.2.shtml</notes-url>
                 <version-prefix>9.2.</version-prefix>
 
-      <release version="9" recommended="1">
+      <release version="10" recommended="1">
+        <date>22.1.2024</date>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>095160d857faf9e302077bfbc4aa8c74</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>17d972a94fce4626f12fd96da125daf4</md5sum>
+        </package>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>a1812063b540fbeca1abc0906ee36574</md5sum>
+        </package>
+      </release>
+
+      <release version="9">
         <date>16.1.2024</date>
         <package name="rpm">
           <download-url>-VERSION-1.noarch.rpm</download-url>
