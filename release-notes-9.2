@@ -75,6 +75,30 @@ HTML header: <title>dCache 9.2 Release Notes</title>
 - If upgrading from 8.2, be sure to read also the release notes for 9.0 and 9.1, important changes are described there. See the [9.2 migration guide](https://github.com/dCache/upgrade-guide/blob/master/UPGRADE92.md) for more complete information
 - With version 9.2.8+, empty and non-existent banfiles will be treated the same
 
+## Release 9.2.11
+
+### webdav
+
+
+
+Users have reported severe slow down when runnig listing using webdav.
+
+This is currently fixed.
+
+
+### Changelog 9.2.10..9.2.11
+
+<!-- git log 9.2.10..9.2.11 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[46f47153a8](https://github.com/dcache/dcache/commit/46f47153a8ab5a482455eac681d2dd56d6eef549)
+:   [maven-release-plugin] prepare release 9.2.11
+
+[da22a29c73](https://github.com/dcache/dcache/commit/da22a29c7335be58ec942022d8f7c316c614b096)
+:   webdav: fix slow listing
+
+[2d73d8ba98](https://github.com/dcache/dcache/commit/2d73d8ba9863aa64e3337e33ed3d59f9d5d73c6b)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 9.2.10
 
 ### webdav
