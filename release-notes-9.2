@@ -75,6 +75,41 @@ HTML header: <title>dCache 9.2 Release Notes</title>
 - If upgrading from 8.2, be sure to read also the release notes for 9.0 and 9.1, important changes are described there. See the [9.2 migration guide](https://github.com/dCache/upgrade-guide/blob/master/UPGRADE92.md) for more complete information
 - With version 9.2.8+, empty and non-existent banfiles will be treated the same
 
+## Release 9.2.14
+
+### cells
+
+The error reporting on tunnel disconnect has been fixed.
+
+### srr
+
+The current release  fixed `empty path annotation` warning.
+
+### tape-api
+
+Request supplied paths are now mapped  based on frontend.root.
+
+
+
+### Changelog 9.2.13..9.2.14
+
+<!-- git log 9.2.13..9.2.14 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[7ff7f5ba6a](https://github.com/dcache/dcache/commit/7ff7f5ba6af874fa49acd2e061444fb1b543a5f6)
+:   [maven-release-plugin] prepare release 9.2.14
+
+[f9ef94a8dd](https://github.com/dcache/dcache/commit/f9ef94a8dd176b390e2965bf26670e1ec01c80b6)
+:   tape-api: map request supplied paths based on frontend.root
+
+[2c8a17f3ad](https://github.com/dcache/dcache/commit/2c8a17f3ad429fea54fbf6228911d58d428321d9)
+:   srr: fix "empty path annotation" warning
+
+[fa7cd0ec2e](https://github.com/dcache/dcache/commit/fa7cd0ec2e3f20c551d7f9f891f26010260f7ac5)
+:   cells: fix error reporting on tunnel disconnect
+
+[bb4b067fb9](https://github.com/dcache/dcache/commit/bb4b067fb948cadc16a1461354560c41234c91ef)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 9.2.13
 
 ### core
