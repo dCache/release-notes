@@ -122,6 +122,8 @@ dcache.net.wan.port.max=${env.DCACHE_WAN_PORT_MAX}
 
 ### Pinmanager
 
+A pin request via admin interface no longer waits for the pin to be established before returning.
+
 ### PNFS Manager
 
 ### Pool
