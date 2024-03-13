@@ -80,6 +80,8 @@ HTML header: <title>dCache 10.0 Release Notes</title>
 
 ### Billing
 
+The property `billing.format.json` was added to write the logs in JSON format instead of plain text if it's set to true.
+
 ### Cleaner
 
 ### Checksums
