@@ -75,6 +75,37 @@ HTML header: <title>dCache 9.2 Release Notes</title>
 - If upgrading from 8.2, be sure to read also the release notes for 9.0 and 9.1, important changes are described there. See the [9.2 migration guide](https://github.com/dCache/upgrade-guide/blob/master/UPGRADE92.md) for more complete information
 - With version 9.2.8+, empty and non-existent banfiles will be treated the same
 
+## Release 9.2.17
+
+### common
+
+
+The out-of-box version of ProxyCSRGenerator#generate from CAnL uses SHA1 for proxy delegation, which is banned by modern OSes.
+
+this now fixed and  RHEL9 clients works with proxy delegation without enabling SHA1.
+
+### xroot
+
+Switch to xrootd4j-4.6.0, ew major release with bug fixes and enhancements including the  reload TLS certificate.
+
+
+
+### Changelog 9.2.16..9.2.17
+
+<!-- git log 9.2.16..9.2.17 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[42faeb1884](https://github.com/dcache/dcache/commit/42faeb18842c43e68fff5935b92b903f265799b4)
+:   [maven-release-plugin] prepare release 9.2.17
+
+[973a06353d](https://github.com/dcache/dcache/commit/973a06353d3e5f07146114963e53bb8f141def04)
+:   xroot: switch to xrootd4j-4.6.0
+
+[3eeefe01c2](https://github.com/dcache/dcache/commit/3eeefe01c232ec6be965807b6a9e8f847f0b14a4)
+:   common-security: add custom version of ProxyCSRGenerator#generate
+
+[177d75f696](https://github.com/dcache/dcache/commit/177d75f696cadb558772a1ae069ae9b760fe6d28)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 9.2.16
 
 ### qos
