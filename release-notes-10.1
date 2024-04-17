@@ -63,6 +63,7 @@ HTML header: <title>dCache 10.1 Release Notes</title>
 </div>
 
 ## Highlights
+- Experimental support for NFS-over-TLS
 
 ## Incompatibilities
 - starting with dcache-10.1.0 Java 17 is required for runtime.
@@ -101,6 +102,31 @@ HTML header: <title>dCache 10.1 Release Notes</title>
 ### Missing Files
 
 ### NFS
+
+dCache NFS door supports RPC-over-TLS protocol extension for data-in-transit protection. To work
+with pNFS, host certificates must be installed on NFS doors and pools. As pNFS uses multipath addresses
+for client redirection, the host certificates must include the IPv4/IPv6 records
+in `Subject Alternative Name`.
+
+To enable, the RPC-over-TLS capability on pools and nfs doors the following properties must be enabled:
+
+```
+pool.mover.nfs.enable.rpc-over-tls=true
+nfs.enable.rpc-over-tls=true
+```
+or
+
+```
+dcache.enable.rpc-over-tls=true
+```
+
+To mount with TLS, clients need to run Linux kernel 6.5 or newer.
+
+```
+mount -o xprtsec=tls nfs-door:/data /mnt/
+```
+
+Known issues: NFS-over-TLS is not enforced by export options. The door/pool must be restarted on certificate updates.
 
 ### Pinmanager
 
