@@ -64,6 +64,9 @@ HTML header: <title>dCache 10.0 Release Notes</title>
 
 ## Highlights
 
+- Added pool metadata directory configuration option
+- Use environment variables as configuration properties
+
 ## Incompatibilities
 
 - dropped native CEPH support. Sites must migrate their pools before updating dCache
@@ -71,26 +74,19 @@ HTML header: <title>dCache 10.0 Release Notes</title>
 
 ## Acknowledgments
 
-(tbd, this section uses markdown formatting)
-
+Many Thanks to Petter A. Urkedal and Lukas Mansour for their contributions.
 
 ## Release 10.0.0
-
-### Admin
 
 ### Billing
 
 The property `billing.format.json` was added to write the logs in JSON format instead of plain text if it's set to true.
 
-### Cleaner
-
-### Checksums
-
 ### Configuration
 
 In the container world, it's common to use environment variables to pass the
 configuration parameters. With release 10.0 dCache support injects of environment
-variables into configuration with special values prefixed with `env.`. For example,
+variables into a configuration with special values prefixed with `env.`. For example,
 to control wan port numbers with environment variables DCACHE_WAN_PORT_MIN and 
 DCACHE_WAN_PORT_MAX the layout file might have the following configuration:
 
@@ -104,29 +100,21 @@ dcache.net.wan.port.max=${env.DCACHE_WAN_PORT_MAX}
 
 ### DCAP
 
+Added support for additional Kafka parameters.
+
 ### Frontend
 
 ### FTP
 
+Added support for additional Kafka parameters.
+
 ### gplazma
 
-### History
-
-### Hoppingmanager
-
-### httpd
-
-### Info
-
-### Missing Files
-
-### NFS
+Update OIDC-related documentation.
 
 ### Pinmanager
 
 A pin request via admin interface no longer waits for the pin to be established before returning.
-
-### PNFS Manager
 
 ### Pool
 
@@ -141,7 +129,7 @@ Added property `pool.path.meta` to specify the location of pools metadata direct
 Added pool command `csm use directio on|off` to enable/disable O_DIRECT to bypass the filesystem cache during checksum calculation.
 
 Prior version 10.0 for xroot and http movers dcache hat two ways to detect and cancel idle connections: Job Timeout Manager (jtm)and
-idleHandler. Nowon, the later one is remove and only jtm-baes one is used. The folloing pool properties are obsolete:
+idleHandler. Now, the latter one is removed and only jtm-baes one is used. The following pool properties are obsolete:
 
 ```
 pool.mover.xrootd.timeout.idle
@@ -155,27 +143,9 @@ however, in some situations, namely multiple transfers from many pools to a sing
 unresponsive due to IO starvation. With version 10.0 the maximal number of concurrent p2p transfers was re-introduced and `pp set max active`
 command is undeprecated. The default value is `unlimited`.
 
-### Poolmanager
+### Dependencies
 
-### Resilience
-
-### Space Manager
-
-### SRM
-
-### SRM Manager
-
-### Statistics
-
-### Topo
-
-### Transfer Managers
-
-### WebDAV
-
-### XRootD
-
-### Zookeeper
+Updated external dependencies in preparation for Java17 migration.
 
 ### Changelog from 9.2.0 to 10.0.0
 
