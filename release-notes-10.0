@@ -70,7 +70,7 @@ HTML header: <title>dCache 10.0 Release Notes</title>
 ## Incompatibilities
 
 - dropped native CEPH support. Sites must migrate their pools before updating dCache
-- dropped idle timeout handler in netty based movers (xroot, http)
+- dropped idle timeout handler in netty-based movers (xroot, http)
 
 ## Acknowledgments
 
@@ -95,7 +95,7 @@ dcache.net.wan.port.min=${env.DCACHE_WAN_PORT_MIN}
 dcache.net.wan.port.max=${env.DCACHE_WAN_PORT_MAX}
 ```
 
-> NOTE: the nested variables are not allowed. E.g. `${env.$VAR1-$VAR2}` will not be resolved.
+&gt; NOTE: the nested variables are not allowed. E.g. `${env.$VAR1-$VAR2}` will not be resolved.
 
 
 ### DCAP
