@@ -190,6 +190,24 @@
       <release>
       </release>
     </releases>
+
+      <release version="0" recommended="1">
+        <date>18.4.2024</date>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>9020f50ca2e1d300c550eff0650b2cfc</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>b03f3e42c4e219dba012915084d50d77</md5sum>
+        </package>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>cd495a3b55051171d7ad2854d0ee4a1e</md5sum>
+        </package>
+      </release>
+
+      
   </series>
 
   <series id="server-9.2">
