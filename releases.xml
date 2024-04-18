@@ -167,6 +167,31 @@
     <br/>
   </preamble>
 
+  <series id="server-10.0">
+    <title>server 10.0.x</title>
+    <description>
+      <p>dCache 10.0 is a Feature Release introducing the following highlights:</p>
+      <ul>
+	<li>Added pool metadata directory configuration option</li>
+	<li>Use environment variables as configuration properties</li>
+      </ul>
+      <p>Incompatibilities</p>
+      <ul>
+	<li>dropped native CEPH support. Sites must migrate their pools before updating dCache</li>
+	<li>dropped idle timeout handler in netty based movers (xroot, http)</li>
+      </ul>
+      <p>dCache v10.0 requires a JVM supporting Java 11 or Java 17.</p>
+    </description>
+    <releases>
+      <name>dCache VERSION</name>
+      <download-url-prefix>repo/10.0/dcache</download-url-prefix>
+      <notes-url>release-notes-10.0.shtml</notes-url>
+      <version-prefix>10.0.</version-prefix>
+      <release>
+      </release>
+    </releases>
+  </series>
+
   <series id="server-9.2">
             <title>server 9.2.x</title>
 
