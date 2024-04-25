@@ -91,6 +91,8 @@ HTML header: <title>dCache 10.1 Release Notes</title>
 
 ### gplazma
 
+- `storage.stage` OIDC claims are now supported.
+
 ### History
 
 ### Hoppingmanager
@@ -135,6 +137,9 @@ Known issues: NFS-over-TLS is not enforced by export options. The door/pool must
 ### Pool
 
 ### Poolmanager
+
+- Staging requests now take account of restrictions due to
+  `storage.stage` claims, where present.
 
 ### Resilience
 
