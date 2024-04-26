@@ -79,6 +79,36 @@ Many Thanks to Lars Jansse and Sandro Grizzo for their contributions.
 - If upgrading from 8.2, be sure to read also the release notes for 9.0 and 9.1, important changes are described there. See the [9.2 migration guide](https://github.com/dCache/upgrade-guide/blob/master/UPGRADE92.md) for more complete information
 - With version 9.2.8+, empty and non-existent banfiles will be treated the same
 
+## Release 9.2.18
+
+### webdav
+
+When running multiple Remote Transfermanager, two transfer that were started simultaneously had the
+same ID which led to the second transfer becoming orphan after the first one completed. This is fixed now.
+
+
+### Changelog 9.2.17..9.2.18
+
+<!-- git log 9.2.17..9.2.18 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[9cb77bc505](https://github.com/dcache/dcache/commit/9cb77bc505f2cce7cab391147d4e2e9f33fe174b)
+:   [maven-release-plugin] prepare release 9.2.18
+
+[b0e6eaf759](https://github.com/dcache/dcache/commit/b0e6eaf759afd7f6fa9cbc52aeabce0f31332803)
+:   ci: eplocitly specify kubernetes namespace
+
+[3f06a7a6ad](https://github.com/dcache/dcache/commit/3f06a7a6ad7562583b1de25f5118900123d99608)
+:   ci: fix typo
+
+[5cf1c757c9](https://github.com/dcache/dcache/commit/5cf1c757c954b4dec0b4e568024d67e241b71853)
+:   webdav: use transfermanager+id to identify TPC transfer
+
+[73fbb8b77f](https://github.com/dcache/dcache/commit/73fbb8b77ff5c9880b132724f4be9932d723b9fd)
+:   docs: update oidc chapter to explain trust anchors
+
+[25fe810ba9](https://github.com/dcache/dcache/commit/25fe810ba9cc2256c8577cea6115dadecc8c6410)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 9.2.17
 
 ### common

@@ -76,6 +76,46 @@ HTML header: <title>dCache 10.0 Release Notes</title>
 
 Many Thanks to Petter A. Urkedal and Lukas Mansour for their contributions.
 
+## Release 10.0.1
+
+### rpm
+
+Java 11 will be installed as dependency when Java 17 is not already present.
+
+### webdav
+
+When running multiple Remote Transfermanager, two transfer that were started simultaneously had the
+same ID which led to the second transfer becoming orphan after the first one completed. This is fixed now.
+
+
+### Changelog 10.0.0..10.0.1
+
+<!-- git log 10.0.0..10.0.1 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[1bbfbbf8b9](https://github.com/dcache/dcache/commit/1bbfbbf8b99d2e6426cd20c97c3c84a8929f1822)
+:   [maven-release-plugin] prepare release 10.0.1
+
+[afd5dd5f6e](https://github.com/dcache/dcache/commit/afd5dd5f6e35abc5501b9d06135190bcaa058665)
+:   ci: use almalinux9 for rpm install test
+
+[d9f3706793](https://github.com/dcache/dcache/commit/d9f3706793a92495cf54fd73dd0083d1a856aec3)
+:   docs: update oidc chapter to explain trust anchors
+
+[3c15025ab8](https://github.com/dcache/dcache/commit/3c15025ab8c705b62a4681fe8c1af8c5258ebf54)
+:   rpm: don't force java-11 it java-17 is installed
+
+[61e29f8397](https://github.com/dcache/dcache/commit/61e29f8397a28928b501ede4e8c0fe280b7dd73c)
+:   ci: eplocitly specify kubernetes namespace
+
+[9762947f8a](https://github.com/dcache/dcache/commit/9762947f8a065ca4ec981e2da651661a8b281549)
+:   ci: fix typo
+
+[b6b8386a19](https://github.com/dcache/dcache/commit/b6b8386a19fdd5c23523d932c1e138b3baecaabe)
+:   webdav: use transfermanager+id to identify TPC transfer
+
+[da81c86739](https://github.com/dcache/dcache/commit/da81c86739f8b07cb363e514a11a045af05c60a1)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 10.0.0
 
 ### Billing
