@@ -79,6 +79,29 @@ Many Thanks to Lars Jansse and Sandro Grizzo for their contributions.
 - If upgrading from 8.2, be sure to read also the release notes for 9.0 and 9.1, important changes are described there. See the [9.2 migration guide](https://github.com/dCache/upgrade-guide/blob/master/UPGRADE92.md) for more complete information
 - With version 9.2.8+, empty and non-existent banfiles will be treated the same
 
+## Release 9.2.19
+
+### chimera
+
+Fixed a bug that made it possible to create a loop on directory move.
+
+
+### Changelog 9.2.18..9.2.19
+
+<!-- git log 9.2.18..9.2.19 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[368ce200f4](https://github.com/dcache/dcache/commit/368ce200f439b9dbfcf42d3abe33962734410fac)
+:   [maven-release-plugin] prepare release 9.2.19
+
+[465e00e82a](https://github.com/dcache/dcache/commit/465e00e82a94f5785cd185051cc26cd247a6b12c)
+:   chimera: fix loop creation on directory move
+
+[9a46793677](https://github.com/dcache/dcache/commit/9a46793677b6695b82a4dbf9a34788bc474fc4c3)
+:   ci: drop --ftp-create-dirs option (as we switch to https)
+
+[c0357f4f81](https://github.com/dcache/dcache/commit/c0357f4f8114cafced35b9f39a4d443c962f4ab3)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 9.2.18
 
 ### webdav

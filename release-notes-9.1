@@ -75,6 +75,32 @@ HTML header: <title>dCache 9.1 Release Notes</title>
 - With version 9.1.16+, empty and non-existent banfiles will be treated the same
 
 
+## Release 9.1.17
+
+### chimera
+
+Fixed a bug that made it possible to create a loop on directory move.
+
+
+### Changelog 9.1.16..9.1.17
+
+<!-- git log 9.1.16..9.1.17 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[b98a037678](https://github.com/dcache/dcache/commit/b98a0376784cce57ee82b228cc5ecd65902879dc)
+:   [maven-release-plugin] prepare release 9.1.17
+
+[78f13b366f](https://github.com/dcache/dcache/commit/78f13b366fdf6e93e44ed7e31f4b0320d52800cf)
+:   chimera: fix loop creation on directory move
+
+[7c130c0f8d](https://github.com/dcache/dcache/commit/7c130c0f8d2b47f3101d862a101b1e71fc62e317)
+:   ci: drop --ftp-create-dirs option (as we switch to https)
+
+[61b552dba8](https://github.com/dcache/dcache/commit/61b552dba842cde01f9c2418d38ae19ef169cad5)
+:   ci: use minimal almalinux-9 to upload packages
+
+[913944e9da](https://github.com/dcache/dcache/commit/913944e9dae6298a4dd12cfdad09c4c25c7d00fc)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 9.1.16
 
 ### gplazma

@@ -76,6 +76,29 @@ HTML header: <title>dCache 10.0 Release Notes</title>
 
 Many Thanks to Petter A. Urkedal and Lukas Mansour for their contributions.
 
+## Release 10.0.2
+
+### chimera
+
+Fixed a bug that made it possible to create a loop on directory move.
+
+
+### Changelog 10.0.1..10.0.2
+
+<!-- git log 10.0.1..10.0.2 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[7d72588073](https://github.com/dcache/dcache/commit/7d725880739b24a986373a8b94ec03335b97915d)
+:   [maven-release-plugin] prepare release 10.0.2
+
+[625691108f](https://github.com/dcache/dcache/commit/625691108fa4c8ea3b0874b4eba2471b5fc680fd)
+:   chimera: fix loop creation on directory move
+
+[15f32f5d69](https://github.com/dcache/dcache/commit/15f32f5d690ad66d6cfbad823af35338da29f0d4)
+:   ci: drop --ftp-create-dirs option (as we switch to https)
+
+[865fcb0b03](https://github.com/dcache/dcache/commit/865fcb0b032228b621d8bda20f1f2a6a1fc58cbb)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 10.0.1
 
 ### rpm

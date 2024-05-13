@@ -77,6 +77,29 @@ cleaning (`cleaner-hsm`)
 - With version 9.0.24+, empty and non-existent banfiles will be treated the same
 
 
+## Release 9.0.25
+
+### chimera
+
+Fixed a bug that made it possible to create a loop on directory move.
+
+
+### Changelog 9.0.24..9.0.25
+
+<!-- git log 9.0.24..9.0.25 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[4c73ad6598](https://github.com/dcache/dcache/commit/4c73ad6598495d4cfaf9e84d792ab2f94f4ab8a7)
+:   [maven-release-plugin] prepare release 9.0.25
+
+[383de0d3d7](https://github.com/dcache/dcache/commit/383de0d3d7fc1b7dd76c370c1e4a4d9e8e5abac9)
+:   chimera: fix loop creation on directory move
+
+[32c778ea93](https://github.com/dcache/dcache/commit/32c778ea93b9098af59f1e369813b4aaef911851)
+:   ci: drop --ftp-create-dirs option (as we switch to https)
+
+[d213a956a4](https://github.com/dcache/dcache/commit/d213a956a400a99166cda230c80a160137a0279a)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 9.0.24
 
 ### gplazma
