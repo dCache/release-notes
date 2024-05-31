@@ -75,6 +75,29 @@ HTML header: <title>dCache 9.1 Release Notes</title>
 - With version 9.1.16+, empty and non-existent banfiles will be treated the same
 
 
+## Release 9.1.18
+
+### bulk
+
+Bulk truncates path to 256 characters and this seems to be causing problemsd.
+
+This is now fixed.
+
+
+
+### Changelog 9.1.17..9.1.18
+
+<!-- git log 9.1.17..9.1.18 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[c2a7cc628c](https://github.com/dcache/dcache/commit/c2a7cc628c3a853f473e26d2b35661e32a462e10)
+:   [maven-release-plugin] prepare release 9.1.18
+
+[698c4a49e1](https://github.com/dcache/dcache/commit/698c4a49e1724087ac6cb74d40095dc796503549)
+:   bulk: do not truncate target paths
+
+[1d8fa5d99c](https://github.com/dcache/dcache/commit/1d8fa5d99c75735e61635dad0bfd54f13c1ad686)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 9.1.17
 
 ### chimera

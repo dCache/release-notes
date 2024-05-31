@@ -79,6 +79,48 @@ Many Thanks to Lars Jansse and Sandro Grizzo for their contributions.
 - If upgrading from 8.2, be sure to read also the release notes for 9.0 and 9.1, important changes are described there. See the [9.2 migration guide](https://github.com/dCache/upgrade-guide/blob/master/UPGRADE92.md) for more complete information
 - With version 9.2.8+, empty and non-existent banfiles will be treated the same
 
+## Release 9.2.20
+
+### bulk
+
+Bulk truncates path to 256 characters and this seems to be causing problemsd.
+
+This is now fixed.
+
+
+### pool
+
+
+With CentOS7, the client sends the last request, such that offset+count == filesize. REHL9 sends the last request so that the count is multiple of 4096, which is legal.
+
+The current release fixed miscalculation of offset on short read.
+
+
+### Changelog 9.2.19..9.2.20
+
+<!-- git log 9.2.19..9.2.20 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[f3b6d8e7c9](https://github.com/dcache/dcache/commit/f3b6d8e7c9a456dfa5d68b3180f0b0a77376c459)
+:   [maven-release-plugin] prepare release 9.2.20
+
+[8d7d4661d2](https://github.com/dcache/dcache/commit/8d7d4661d28bd9f86fe4cf47d7cea4a29487775f)
+:   ci: disable srmcp test
+
+[a710037a84](https://github.com/dcache/dcache/commit/a710037a842359edb3a78053c84244bffa12f35e)
+:   ci: use python3 for robot test
+
+[4158c80ae5](https://github.com/dcache/dcache/commit/4158c80ae5d7273464b3454aeb96662e544792ff)
+:   bulk: do not truncate target paths
+
+[9b9714f267](https://github.com/dcache/dcache/commit/9b9714f26764edb37572776bfe0b91287509d58d)
+:   ci: pinpoint postgres helm version
+
+[15ea025a3f](https://github.com/dcache/dcache/commit/15ea025a3fee7ad453d97d83be06194314f53f86)
+:   pool: fix miscalculation of offset on short read.
+
+[39bb2f532d](https://github.com/dcache/dcache/commit/39bb2f532d7772e52791341e39a5fcbb92fc7941)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 9.2.19
 
 ### chimera

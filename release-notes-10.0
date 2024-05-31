@@ -76,6 +76,48 @@ HTML header: <title>dCache 10.0 Release Notes</title>
 
 Many Thanks to Petter A. Urkedal and Lukas Mansour for their contributions.
 
+## Release 10.0.3
+
+### bulk
+
+Bulk truncates path to 256 characters and this seems to be causing problemsd.
+
+This is now fixed.
+
+
+### pool
+
+
+With CentOS7, the client sends the last request, such that offset+count == filesize. REHL9 sends the last request so that the count is multiple of 4096, which is legal.
+
+The current release fixed miscalculation of offset on short read.
+
+
+### Changelog 10.0.2..10.0.3
+
+<!-- git log 10.0.2..10.0.3 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[323581948e](https://github.com/dcache/dcache/commit/323581948ef052e2d412d1a5f68c2ae25373278a)
+:   [maven-release-plugin] prepare release 10.0.3
+
+[13d66ba99e](https://github.com/dcache/dcache/commit/13d66ba99e18dbd17916da22f118b03086e98fed)
+:   ci: disable srmcp test
+
+[db51b8baa0](https://github.com/dcache/dcache/commit/db51b8baa00ab9d090c68d53327430b4f7dc2c3c)
+:   ci: use python3 for robot test
+
+[a8ef6f5a1b](https://github.com/dcache/dcache/commit/a8ef6f5a1bcd2b228e169cbf08b634af55ab33b3)
+:   bulk: do not truncate target paths
+
+[3895809e98](https://github.com/dcache/dcache/commit/3895809e98d87ce4693f55b51aafaaf4a3077595)
+:   ci: pinpoint postgres helm version
+
+[3c827ab76c](https://github.com/dcache/dcache/commit/3c827ab76cf14ac7810c150f1beea1c05f97a837)
+:   pool: fix miscalculation of offset on short read.
+
+[8fe1fa05ec](https://github.com/dcache/dcache/commit/8fe1fa05ece5342549565ba60d1a746776c779e2)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 10.0.2
 
 ### chimera
