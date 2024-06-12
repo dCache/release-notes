@@ -76,6 +76,31 @@ HTML header: <title>dCache 10.0 Release Notes</title>
 
 Many Thanks to Petter A. Urkedal and Lukas Mansour for their contributions.
 
+## Release 10.0.4
+
+### ci
+
+Add option to pipeline to control upload options.
+
+Add comments to various pipeline stages.
+
+
+### Changelog 10.0.3..10.0.4
+
+<!-- git log 10.0.3..10.0.4 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[6f8c437a72](https://github.com/dcache/dcache/commit/6f8c437a725c935ab4aaf31f69e3495d89151093)
+:   [maven-release-plugin] prepare release 10.0.4
+
+[954828e9d0](https://github.com/dcache/dcache/commit/954828e9d0f4fce6b34427e4055d99e8c481bc0f)
+:   ci: add comments to various pipeline stages
+
+[61d8a22c30](https://github.com/dcache/dcache/commit/61d8a22c30e81f068208876c2ea0c7076f5b9ecd)
+:   ci: add property to control upload options
+
+[339aa608a0](https://github.com/dcache/dcache/commit/339aa608a0a4bbb1abd084ccf3eda8e81935758a)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 10.0.3
 
 ### bulk
