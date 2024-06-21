@@ -76,6 +76,26 @@ HTML header: <title>dCache 10.0 Release Notes</title>
 
 Many Thanks to Petter A. Urkedal and Lukas Mansour for their contributions.
 
+## Release 10.0.5
+
+### chimera
+
+Adapt existing `uri_encode` function so that the Enstore HSM script does not fail and the files go to tape successfully.
+
+
+### Changelog 10.0.4..10.0.5
+
+<!-- git log 10.0.4..10.0.5 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[44699ad4ed](https://github.com/dcache/dcache/commit/44699ad4edf8ef9a8224688e6fc4778ab9db8b29)
+:   [maven-release-plugin] prepare release 10.0.5
+
+[37fc60f08f](https://github.com/dcache/dcache/commit/37fc60f08f2024fafd31cafa0159c31eb0e6063d)
+:   chimera: fix uri_encode to handle special characters
+
+[1183d69440](https://github.com/dcache/dcache/commit/1183d694400a82778635a68c6ed837dc9f37101f)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 10.0.4
 
 ### ci

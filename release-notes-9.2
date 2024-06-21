@@ -79,6 +79,40 @@ Many Thanks to Lars Jansse and Sandro Grizzo for their contributions.
 - If upgrading from 8.2, be sure to read also the release notes for 9.0 and 9.1, important changes are described there. See the [9.2 migration guide](https://github.com/dCache/upgrade-guide/blob/master/UPGRADE92.md) for more complete information
 - With version 9.2.8+, empty and non-existent banfiles will be treated the same
 
+## Release 9.2.21
+
+### chimera
+
+Adapt existing `uri_encode` function so that the Enstore HSM script does not fail and the files go to tape successfully.
+
+### ci
+
+CI pipeline improvements.
+
+### dependencies
+
+Update build dependency to be compatible with modern tools.
+
+
+### Changelog 9.2.20..9.2.21
+
+<!-- git log 9.2.20..9.2.21 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[f48df60d4e](https://github.com/dcache/dcache/commit/f48df60d4eb8b24c2e762373dd22d353c7d29638)
+:   [maven-release-plugin] prepare release 9.2.21
+
+[9691e0096c](https://github.com/dcache/dcache/commit/9691e0096ca25d54a819e982034c004ca2a5178f)
+:   dependencies: update modernizer plugin to be compatible with maven 3.9
+
+[6e2c1186bd](https://github.com/dcache/dcache/commit/6e2c1186bd74d8f59915ba2c821f1047c1bf236b)
+:   chimera: fix uri_encode to handle special characters
+
+[f52a0ee2f4](https://github.com/dcache/dcache/commit/f52a0ee2f462b56bbbf299fd7c46400254c962cb)
+:   ci: add property to control upload options
+
+[24759f2e3c](https://github.com/dcache/dcache/commit/24759f2e3cb98838b88197e2903e7a41410d2930)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 9.2.20
 
 ### bulk

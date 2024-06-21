@@ -77,6 +77,33 @@ cleaning (`cleaner-hsm`)
 - With version 9.0.24+, empty and non-existent banfiles will be treated the same
 
 
+## Release 9.0.26
+
+### ci
+
+CI pipeline improvements.
+
+### dependencies
+
+Update build dependency to be compatible with modern tools.
+
+
+### Changelog 9.0.25..9.0.26
+
+<!-- git log 9.0.25..9.0.26 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[d238308384](https://github.com/dcache/dcache/commit/d238308384bd32d08c71fd274a5e596bf40cff03)
+:   [maven-release-plugin] prepare release 9.0.26
+
+[56acff9750](https://github.com/dcache/dcache/commit/56acff9750911a7deefff339c67749eb34e6d61c)
+:   dependencies: update modernizer plugin to be compatible with maven 3.9
+
+[93b95e3a9f](https://github.com/dcache/dcache/commit/93b95e3a9fc71ac8b6c5a9e76ca90efbb0a09578)
+:   ci: add property to control upload options
+
+[6ebc3eea28](https://github.com/dcache/dcache/commit/6ebc3eea28b1ad5ea290c2f764a600ee95d72c61)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 9.0.25
 
 ### chimera
