@@ -76,6 +76,38 @@ HTML header: <title>dCache 10.0 Release Notes</title>
 
 Many Thanks to Petter A. Urkedal and Lukas Mansour for their contributions.
 
+## Release 10.0.6
+
+### chimera
+
+Now it is possible to n read/write CTA and migrated Enstore files without having to set hsmInstance tag in the full directory tree.
+
+### frontend
+
+The current release fixed the issue about failures to invoke WLCG tape API to stage files on files relative to `{webdav,frontend}.root`
+
+It is now possible to call stage API successully on paths ralative to frontend.root.
+
+
+### Changelog 10.0.5..10.0.6
+
+<!-- git log 10.0.5..10.0.6 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[87b2451956](https://github.com/dcache/dcache/commit/87b24519566ea11ad52ecb99ce19c0922d980f52)
+:   [maven-release-plugin] prepare release 10.0.6
+
+[113335cac5](https://github.com/dcache/dcache/commit/113335cac5fde526147d1e7a173eef4f3351ae82)
+:   pom: compile code in the same jvm as maven
+
+[3f116a5169](https://github.com/dcache/dcache/commit/3f116a516944595e3b894859db8b8393f37511cd)
+:   chimera: add CTA HSM StorageInfo extractor
+
+[935670ec59](https://github.com/dcache/dcache/commit/935670ec59c9701238502c8ddd0ef246027f5425)
+:   frontend: handle frontend.root variable properly
+
+[379449ae6e](https://github.com/dcache/dcache/commit/379449ae6ea29fd0e775f549aee01165768bca85)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 10.0.5
 
 ### chimera

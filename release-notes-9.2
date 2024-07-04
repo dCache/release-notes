@@ -79,6 +79,38 @@ Many Thanks to Lars Jansse and Sandro Grizzo for their contributions.
 - If upgrading from 8.2, be sure to read also the release notes for 9.0 and 9.1, important changes are described there. See the [9.2 migration guide](https://github.com/dCache/upgrade-guide/blob/master/UPGRADE92.md) for more complete information
 - With version 9.2.8+, empty and non-existent banfiles will be treated the same
 
+## Release 9.2.22
+
+### chimera
+
+Now it is possible to n read/write CTA and migrated Enstore files without having to set hsmInstance tag in the full directory tree.
+
+### frontend
+
+The current release fixed the issue about failures to invoke WLCG tape API to stage files on files relative to `{webdav,frontend}.root`
+
+It is now possible to call stage API successully on paths ralative to frontend.root.
+
+
+### Changelog 9.2.21..9.2.22
+
+<!-- git log 9.2.21..9.2.22 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[b7f34147e4](https://github.com/dcache/dcache/commit/b7f34147e472b2fbc750c7d83cc7d273e617e731)
+:   [maven-release-plugin] prepare release 9.2.22
+
+[743c52948e](https://github.com/dcache/dcache/commit/743c52948ec2097be294b3a65d945764828598f6)
+:   pom: compile code in the same jvm as maven
+
+[8a428d3316](https://github.com/dcache/dcache/commit/8a428d331697ed48ee701ba4c5f97eaa944e86eb)
+:   chimera: add CTA HSM StorageInfo extractor
+
+[69f2f109ca](https://github.com/dcache/dcache/commit/69f2f109ca6a5098b29341ebb3abc5016b15f742)
+:   frontend: handle frontend.root variable properly
+
+[5652f98acf](https://github.com/dcache/dcache/commit/5652f98acf5aa3a04818b4b001333d7edc9c0e4c)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 9.2.21
 
 ### chimera
