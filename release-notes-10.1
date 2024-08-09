@@ -168,6 +168,301 @@ Known issues: NFS-over-TLS is not enforced by export options. The door/pool must
 
 ### Changelog from 10.0.0 to 10.1.0
 
+[45a2e32c3d](https://github.com/dcache/dcache/commit/45a2e32c3d997f1859400c4e960c39773fde4be6)
+:   [maven-release-plugin] prepare for next development iteration
+
+[289660b28d](https://github.com/dcache/dcache/commit/289660b28d98a5fa7bd03d5e83db498df1f3f871)
+:   [maven-release-plugin] prepare release 10.1.0
+
+[c5301935a6](https://github.com/dcache/dcache/commit/c5301935a64886bf81f67c2794f329015f9792d9)
+:   libs: update mina-sshd  to version 2.13.1
+
+[91d61a6e98](https://github.com/dcache/dcache/commit/91d61a6e980ff94ae48381603222adfe5f0dc543)
+:   github: change mirroring action
+
+[46bebd2785](https://github.com/dcache/dcache/commit/46bebd2785b0f43750c3f1fc18ccfe9db1f8d69d)
+:   ci: use shorter k8s namespace names
+
+[dfabdbb393](https://github.com/dcache/dcache/commit/dfabdbb393f491796627c778860f5d6e8d992e7e)
+:   ci: drop centos-7 based wn. drop cvmfs
+
+[ea976307ef](https://github.com/dcache/dcache/commit/ea976307ef4cd4e2789c23f04af35f5045ec97e3)
+:   ci: split el9 wn initialization from s2 tests
+
+[2fc65adf42](https://github.com/dcache/dcache/commit/2fc65adf423535ec59bb53c6a38f6f2cdafbe2ec)
+:   [maven-release-plugin] prepare branch @{releaseLabel}
+
+[7d0973cc87](https://github.com/dcache/dcache/commit/7d0973cc8784206812ac12b4d655131139c07af3)
+:   http (old): fix links to docu page
+
+[218dbe01f7](https://github.com/dcache/dcache/commit/218dbe01f71450e4de6693c51951bbecbbd5bda3)
+:   Fix issue with infinite replicas when replicas > 1
+
+[9cad174570](https://github.com/dcache/dcache/commit/9cad174570ac938c7e2682d84ba61f4a7287e10f)
+:   Revert "Fix issue with infinite replicas when replicas > 1"
+
+[6e0bd00c0d](https://github.com/dcache/dcache/commit/6e0bd00c0dc795de8edd6a8980fedd532c6824a3)
+:   Fix issue with infinite replicas when replicas > 1
+
+[fdc37638e5](https://github.com/dcache/dcache/commit/fdc37638e56878df0c2f97f66ead9a9e948f4f3f)
+:   book: add perf example
+
+[d8e5a89eb7](https://github.com/dcache/dcache/commit/d8e5a89eb7a1f7a8ecbec0bff8a681ca7ae38644)
+:   ci: use desy nims repo for CentOS7
+
+[6ac5de5586](https://github.com/dcache/dcache/commit/6ac5de558605848716d1fc1e85b554b3987ef382)
+:   dcache: refactor DiskSpaceAllocatorTest
+
+[922ea440d9](https://github.com/dcache/dcache/commit/922ea440d98f2edacb00b7b16d9768f359aff6a3)
+:   frontend: handle frontend.root variable properly
+
+[63ae8dd213](https://github.com/dcache/dcache/commit/63ae8dd21382ac6704bcf390cad39f0707959aba)
+:   add standard Fermilab license/copyright header neglected in the commit 741a27b19c0458bdd2abc0b0b9affdee681c16ed
+
+[741a27b19c](https://github.com/dcache/dcache/commit/741a27b19c0458bdd2abc0b0b9affdee681c16ed)
+:   chimera: add CTA HSM StorageInfo extractor
+
+[3464b9cbad](https://github.com/dcache/dcache/commit/3464b9cbadb448efbc35baa64fce9e099b6a8d4b)
+:   ci: start dcache with old pools
+
+[d321e7e24f](https://github.com/dcache/dcache/commit/d321e7e24fede393880389e4362158c10df60623)
+:   pom: compile code in the same jvm as maven
+
+[99cf65a4b7](https://github.com/dcache/dcache/commit/99cf65a4b78a99f92610ecc30a18af179046f19f)
+:   transfermanager: remote JDO and datanucleaus leftovers
+
+[5a0a09e152](https://github.com/dcache/dcache/commit/5a0a09e152b5a365bf927cfe6e7bc42c79e51d6b)
+:   tpc: Remove remote transfer manager's database (#7598)
+
+[72b593ad33](https://github.com/dcache/dcache/commit/72b593ad3321ff41cbcb60a22c44b3e79742649d)
+:   Update bulk.properties: add comment
+
+[d772420706](https://github.com/dcache/dcache/commit/d77242070692abfdd96757edcad7b3390a6913df)
+:   Revert "Get rid of persistanceManager, persistanceMAnagerFactory and Transaction"
+
+[1f1ab1d729](https://github.com/dcache/dcache/commit/1f1ab1d7291ce154903bf5c8a2d3a91900ef9203)
+:   Get rid of persistanceManager, persistanceMAnagerFactory and Transaction  inside TransferManager class.
+
+[d6ed35753b](https://github.com/dcache/dcache/commit/d6ed35753b9db9ccea15750abf08a8e2503c300f)
+:   pool: add PNFSID to `st ls` and `rh ls` commands (#7596)
+
+[de2f2681ac](https://github.com/dcache/dcache/commit/de2f2681acd0233ab08b797d8ee83e2b0a5b8649)
+:   gplazma: oidc more descriptive offline verification failures
+
+[9c12ffdb1a](https://github.com/dcache/dcache/commit/9c12ffdb1acc76ff6df4b10cb0f180f44e04365d)
+:   nearline-storage: update copy n-s-p to respect c:puts, c:gets, c:remove properties
+
+[100e7d1cc1](https://github.com/dcache/dcache/commit/100e7d1cc14aff3a8f21bb1b7021018895104320)
+:   chimera: fix uri_encode to handle special characters
+
+[17e52201ee](https://github.com/dcache/dcache/commit/17e52201eea85955de25e19e38794469d0e5bc5c)
+:    gplazma token exchange plugin (#7521)
+
+[6a8dc218cf](https://github.com/dcache/dcache/commit/6a8dc218cfe274ff52aee5622901fdf8a0488872)
+:   ci: add comments to various pipeline stages
+
+[a473929c65](https://github.com/dcache/dcache/commit/a473929c65010082cc0545b47a1a144691d9eca0)
+:   ci: add property to control upload options
+
+[fb1f525e38](https://github.com/dcache/dcache/commit/fb1f525e383e36f678f9ddf81fa4ee2169c665d8)
+:   ci: disable srmcp test
+
+[ffee5e0a8c](https://github.com/dcache/dcache/commit/ffee5e0a8c9255c2c3b2e33dc8375b2a3fa608e3)
+
+:   ci: use python3 for robot test
+
+[01a2f778af](https://github.com/dcache/dcache/commit/01a2f778af04f4133749ad625f5615a08835f8ea)
+:   ci: pinpoint postgres helm version
+
+[839fd3e4d4](https://github.com/dcache/dcache/commit/839fd3e4d4e59c97479f699d320499b1431845b2)
+:   Update dcache-minimal-installation.md
+
+[455885658c](https://github.com/dcache/dcache/commit/455885658c10653f7170a88f6726477bad7c14c0)
+:   Update dcache-minimal-installation.md
+
+[e236630e30](https://github.com/dcache/dcache/commit/e236630e3055c911c684262b51aeb04516172766)
+:   Update dcache-minimal-installation.md
+
+[2b9783d20c](https://github.com/dcache/dcache/commit/2b9783d20c3bc7682af809cbb3e705c89585481e)
+:   Update dcache-minimal-installation.md
+
+[8a666a6e48](https://github.com/dcache/dcache/commit/8a666a6e482dfd7f62275c8315b84a8e61921a03)
+:   Update dcache-minimal-installation.md
+
+[3d8d644500](https://github.com/dcache/dcache/commit/3d8d6445002a173ae04cf13e5bbe5432c031dfe0)
+:   Update dcache-minimal-installation.md
+
+[2531962400](https://github.com/dcache/dcache/commit/2531962400ee3c0f6e1e51f305eda9f665a0ef55)
+:   Update dcache-minimal-installation.md
+
+[ebbd182309](https://github.com/dcache/dcache/commit/ebbd18230972deace34edcb9ed0c2c4a550403f0)
+:   Update dcache-minimal-installation.md
+
+[a98b0ccf93](https://github.com/dcache/dcache/commit/a98b0ccf93828c680af0c8ab3d08745d4460ee68)
+:   bulk: do not truncate target paths
+
+[79ea5f837c](https://github.com/dcache/dcache/commit/79ea5f837cc2a57ce7593c7d20346d3537cb06cd)
+:   Update dcache-minimal-installation.md
+
+[c38556ba46](https://github.com/dcache/dcache/commit/c38556ba46e867d89cb23ab33fd958971e8b96e1)
+:   Update dcache-minimal-installation.md
+
+[bc24b22a24](https://github.com/dcache/dcache/commit/bc24b22a2481953ab39408139fd33ae437a76418)
+:   Update dcache-minimal-installation.md
+
+[062ae07e81](https://github.com/dcache/dcache/commit/062ae07e817945e4e41c5ca26464c4ffddcf560c)
+:   Update dcache-minimal-installation.md
+
+[462e5c92ef](https://github.com/dcache/dcache/commit/462e5c92efe8476b5642015551f6095cd65b944a)
+:   Update dcache-minimal-installation.md
+
+[23553513f0](https://github.com/dcache/dcache/commit/23553513f0ee83b301e7fc196ad1afce6e032d2f)
+:   Update dcache-minimal-installation.md
+
+[16cf66414a](https://github.com/dcache/dcache/commit/16cf66414a7a91fbfc94de01e276021d57b94cbc)
+:   Update dcache-minimal-installation.md
+
+[0a87d50b80](https://github.com/dcache/dcache/commit/0a87d50b802c6f128449b0186c6c32b5a528394c)
+:   Update dcache-minimal-installation.md
+
+[c238c6a33f](https://github.com/dcache/dcache/commit/c238c6a33fb643ed39928e4a503a4607d2c216fc)
+:   Update dcache-minimal-installation.md
+
+[22eb51d2f9](https://github.com/dcache/dcache/commit/22eb51d2f92a55a71ecfdd5ad2d9aed9e2c2d7ce)
+:   Update dcache-minimal-installation.md
+
+[0b99890982](https://github.com/dcache/dcache/commit/0b9989098218258bd81ce47ee5f51f661a3056e0)
+:   Update dcache-minimal-installation.md
+
+[495a8eaa52](https://github.com/dcache/dcache/commit/495a8eaa528ca8adc270f9940309b03d80925201)
+:   Update dcache-minimal-installation.md
+
+[84ac6b24e8](https://github.com/dcache/dcache/commit/84ac6b24e869db8331e0fcca223069878803391d)
+:   Update dcache-minimal-installation.md
+
+[0597b1f47a](https://github.com/dcache/dcache/commit/0597b1f47a47738a023b5fc81fe2fec684f80926)
+:   pool: fix miscalculation of offset on short read.
+
+[adce9368f1](https://github.com/dcache/dcache/commit/adce9368f14444d73b6c353cc36228dd36749f1d)
+:   The Kafka bean must be optional for SRM manager.
+
+[72da8e9592](https://github.com/dcache/dcache/commit/72da8e95921603b67384abbbfbb4edd539140514)
+:   chimera: fix loop creation on directory move
+
+[73366d2e65](https://github.com/dcache/dcache/commit/73366d2e651c273e30855b9c4282bd2b18559e59)
+:   build(deps): bump org.bouncycastle:bcprov-jdk18on from 1.77 to 1.78
+
+[bf4e865732](https://github.com/dcache/dcache/commit/bf4e865732f46a755219146359117f775913c406)
+:   chimera: don't update file mtime on hard links creation
+
+[2db51de545](https://github.com/dcache/dcache/commit/2db51de5459440a26c85c454e66dc8cda3e06207)
+:   ci: drop --ftp-create-dirs option (as we switch to https)
+
+[052d56b970](https://github.com/dcache/dcache/commit/052d56b970cadbba2ac3e212870eaf50cb13883b)
+:   Support `storage.stage` restriction checking for staging operations
+
+[c8f4fdfd64](https://github.com/dcache/dcache/commit/c8f4fdfd6439c75a10146e6941e62038eb29176e)
+:   common, gplazma-oidc: Add `storage.stage` to activities
+
+[17e7038602](https://github.com/dcache/dcache/commit/17e7038602463d309a8bd99d89eb5993f3535d6f)
+:   common: Add debug logging to `Restriction` classes
+
+[5a4669cb18](https://github.com/dcache/dcache/commit/5a4669cb185211e62e2746e5229b6a816e180c84)
+:   common: Avoid redundant path resolution
+
+[58aa320d22](https://github.com/dcache/dcache/commit/58aa320d22bd2e5c608bf21c0ddd35664f527328)
+:   common: Improve DenyActivityRestriction tests
+
+[cf8b19ec41](https://github.com/dcache/dcache/commit/cf8b19ec41fea79fd858d47fbc96a15fde0d3519)
+:   ci: use almalinux9 for rpm install test
+
+[5cbe754b81](https://github.com/dcache/dcache/commit/5cbe754b813c625988836a84da2418a219f999e2)
+:   rpm: require java-17
+
+[05b00cd9c2](https://github.com/dcache/dcache/commit/05b00cd9c23d1b9b8757164d7463a7750e5b1f57)
+:   ci: take s2 rpm from nexus yum repo
+
+[2bfe4fae26](https://github.com/dcache/dcache/commit/2bfe4fae2606660fb75c4e13e507cdf74713048e)
+:   ci: eplocitly specify kubernetes namespace
+
+[59b6acfabe](https://github.com/dcache/dcache/commit/59b6acfabe202f00e90adbeeeafdb341be592241)
+:   ci: fix typo
+
+[412bfe2a33](https://github.com/dcache/dcache/commit/412bfe2a33a3c58584b5447c47940b0b396511dd)
+:   webdav: use transfermanager+id to identify TPC transfer
+
+[e3bde268d1](https://github.com/dcache/dcache/commit/e3bde268d1ee65f1990541e96c31a038889aaabf)
+:   docs: update oidc chapter to explain trust anchors
+
+[cff333d1ef](https://github.com/dcache/dcache/commit/cff333d1efb98a355794a7a5b80ecd5e4dc66485)
+:   nfs,pool: expose NFS-over-TLS capability of dCache
+
+[8f1a8aa8f6](https://github.com/dcache/dcache/commit/8f1a8aa8f6c08f12925a3897bde7ab85a76a9b69)
+:   Book: Move HA transfer-man. section out of srm-man.
+
+[16daf3347f](https://github.com/dcache/dcache/commit/16daf3347f126208ac86adb52ef860d877ced5ee)
+:   Add Kafka producer to transfer manager.
+
+[e5386d33a9](https://github.com/dcache/dcache/commit/e5386d33a9b264179129e2f108502f28ce893acb)
+:   Add Kafka producer to SRM manager.
+
+[aff6ed2097](https://github.com/dcache/dcache/commit/aff6ed2097c0ee69b40064cdd432bbfa27f06559)
+:   ci: log job statup time
+
+[3b028b7721](https://github.com/dcache/dcache/commit/3b028b772175cac8945e700de42a6d23ac4a584e)
+:   docs: update BUILDING.md
+
+[afd9270893](https://github.com/dcache/dcache/commit/afd927089305f2cf27261431accee8b48e8a1ebc)
+:   pom: use java17 for compilation
+
+[daae5d5292](https://github.com/dcache/dcache/commit/daae5d5292dc98495030c4d7d5e97e4b8d7c7fd2)
+:   libs: update bouncycastle to 1.77, canl to 2.8.3
+
+[b03dd5ad5c](https://github.com/dcache/dcache/commit/b03dd5ad5c056c5e250324831ea93808676f1900)
+:   ci: generate xunit report for s2
+
+[358bb3b997](https://github.com/dcache/dcache/commit/358bb3b997cc9c627e2a7d8c6d4d85c152690d50)
+:   ci: drop sha1 workaround for rhel9 hosts
+
+[7648539bf0](https://github.com/dcache/dcache/commit/7648539bf054c51c8d3f5812500d456e488a0284)
+:   common-security: add custom version of ProxyCSRGenerator#generate
+
+[dae9682c42](https://github.com/dcache/dcache/commit/dae9682c424e131c77c17b3ec7ca964d4537ce5e)
+:   webdav: httptpc percent-decode local path
+
+[a1403cb023](https://github.com/dcache/dcache/commit/a1403cb023677d5da9ebc9156b8e146924d9d701)
+:   enable all s2 tests
+
+[cd0f95a8a6](https://github.com/dcache/dcache/commit/cd0f95a8a69ce177cbe75f7b0d008211fe13cdae)
+:   ci: show s2 test case error if failed
+
+[1154f5a543](https://github.com/dcache/dcache/commit/1154f5a543f6b8c14012a0cdca9c53af9e9ac7d5)
+:   ci: fix s2 test root directory
+
+[3682618966](https://github.com/dcache/dcache/commit/3682618966f4e34bd65cbd79c7d7da606ed493a8)
+:   ci: enable s2 tests
+
+[40e53dfc7a](https://github.com/dcache/dcache/commit/40e53dfc7a8a0ffd09d1e2fc175353da79341a44)
+:   build(deps): bump io.netty:netty-codec-http
+
+[d26b9ae031](https://github.com/dcache/dcache/commit/d26b9ae03141835db34d5fa813005b5163354428)
+:   qos: add flag to enable/disable role based authorization for transitions
+
+[51f932083c](https://github.com/dcache/dcache/commit/51f932083cda692087a24cee1b42dd62762c5605)
+:   multiple: separate ha command prefix from zk path
+
+[111b700084](https://github.com/dcache/dcache/commit/111b700084963e480982688244197a09f971423f)
+:   chimera: make list method to support virtual directory listing
+
+[cbed2f0b93](https://github.com/dcache/dcache/commit/cbed2f0b937347f929adb1b1ab7b49e2c6b6d182)
+:   Initial cells docu
+
+[8b9fb33eca](https://github.com/dcache/dcache/commit/8b9fb33eca9887b84f2983481bfe53c3839943bc)
+:   [maven-release-plugin] prepare for next development iteration
+
+
+
+
 <!-- git log 10.0..10.1 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
 
 (tbd as soon as the branching is done)
