@@ -79,6 +79,68 @@ Many Thanks to Lars Jansse and Sandro Grizzo for their contributions.
 - If upgrading from 8.2, be sure to read also the release notes for 9.0 and 9.1, important changes are described there. See the [9.2 migration guide](https://github.com/dCache/upgrade-guide/blob/master/UPGRADE92.md) for more complete information
 - With version 9.2.8+, empty and non-existent banfiles will be treated the same
 
+## Release 9.2.23
+
+### CI
+
+Improve our CI pipleline.
+
+### core
+
+Pool migration : fixed behavior of `migration copy` with
+`-replicas=n` (where `n>1`) to behave as expected.
+
+### Libs
+
+Improve and maintain our testing library.
+
+Keeping libraries up to date.
+
+### TAPE-API
+
+Release by relative path works.
+
+
+### Changelog 9.2.22..9.2.23
+
+<!-- git log 9.2.22..9.2.23 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[63803072d4](https://github.com/dcache/dcache/commit/63803072d427e39bff692df28cd2af8bce924404)
+:   [maven-release-plugin] prepare release 9.2.23
+
+[a7aa1b3689](https://github.com/dcache/dcache/commit/a7aa1b36893a0e2117f02a90c79c5475bd7550e8)
+:   WLG TAPE REST API: fix handling of frontend.root in release API
+
+[a219e4457a](https://github.com/dcache/dcache/commit/a219e4457a83bbcddbb710903571df162c7d2295)
+:   gitlab: mirror tags
+
+[3de9e9301c](https://github.com/dcache/dcache/commit/3de9e9301c7d69f0d36c4fccb2a748da0f2253a8)
+:   libs: update mina-sshd  to version 2.13.1
+
+[96ef3777ca](https://github.com/dcache/dcache/commit/96ef3777ca3545179d6527a9db705431d636427c)
+:   Fix issue with infinite replicas when replicas > 1
+
+[6b3ff705aa](https://github.com/dcache/dcache/commit/6b3ff705aa2f96565f9ff12372b6e3a5fa7b48ab)
+:   github: change mirroring action
+
+[7bd322edc4](https://github.com/dcache/dcache/commit/7bd322edc45e72f69bbee9f5bca54f938d86fe3c)
+:   ci: use shorter k8s namespace names
+
+[abe0f45324](https://github.com/dcache/dcache/commit/abe0f45324cd4326a03d9eb905b6b32dd41a8eb4)
+:   pom: add exta java option to run powermock test under java17
+
+[118a5cc34d](https://github.com/dcache/dcache/commit/118a5cc34d83d498e12c2e32e9dde94fe705318b)
+:   ci: sync CI pipeline with master
+
+[fb954fb8ef](https://github.com/dcache/dcache/commit/fb954fb8efce23773aa6de64f608542a949a5d11)
+:   ci: use desy nims repo for CentOS7
+
+[562668fc1e](https://github.com/dcache/dcache/commit/562668fc1ecf8d82cf7ff2024a7c89a4abd56b1d)
+:   ci: use almalinux9 for rpm install test
+
+[2991f5ef12](https://github.com/dcache/dcache/commit/2991f5ef1258d63c75715c687ee884808e408247)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 9.2.22
 
 ### chimera

@@ -76,6 +76,60 @@ HTML header: <title>dCache 10.0 Release Notes</title>
 
 Many Thanks to Petter A. Urkedal and Lukas Mansour for their contributions.
 
+## Release 10.0.7
+
+### CI
+
+Improve our CI pipleline.
+
+### core
+
+Pool migration : fixed behavior of `migration copy` with
+`-replicas=n` (where `n>1`) to behave as expected.
+
+### Libs
+
+Keeping libraries up to date.
+
+### TAPE-API
+
+Release by relative path works.
+
+
+### Changelog 10.0.6..10.0.7
+
+<!-- git log 10.0.6..10.0.7 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[7abb042c1a](https://github.com/dcache/dcache/commit/7abb042c1a96aff019372d4ddc221bb16a1d1e14)
+:   [maven-release-plugin] prepare release 10.0.7
+
+[422aabb2a9](https://github.com/dcache/dcache/commit/422aabb2a93aadf997ad7b05983c9ae2be44885d)
+:   WLG TAPE REST API: fix handling of frontend.root in release API
+
+[9c52354c65](https://github.com/dcache/dcache/commit/9c52354c6588a1bfc5fdcd1fe9ea32961679ed1d)
+:   gitlab: mirror tags
+
+[350ae2b32b](https://github.com/dcache/dcache/commit/350ae2b32b9e8d007c52dd51cd705ecdbf6cad35)
+:   libs: update mina-sshd  to version 2.13.1
+
+[f06f71cbf0](https://github.com/dcache/dcache/commit/f06f71cbf04416293dafee9003d1b7cbfc55f5a9)
+:   Fix issue with infinite replicas when replicas > 1
+
+[516ba4b573](https://github.com/dcache/dcache/commit/516ba4b57326d1b1f3b02c8e67a1df6d3f542588)
+:   github: change mirroring action
+
+[8e80889481](https://github.com/dcache/dcache/commit/8e80889481a2c1759e09f864f0282b7b3a731b9d)
+:   ci: use shorter k8s namespace names
+
+[0eb89d1f0d](https://github.com/dcache/dcache/commit/0eb89d1f0dcef3891ac06313271e838ae6986f85)
+:   ci: sync CI pipeline with master
+
+[169454d112](https://github.com/dcache/dcache/commit/169454d112c644866cd7c1ed461bc3672fe6b097)
+:   ci: use desy nims repo for CentOS7
+
+[88ce98874d](https://github.com/dcache/dcache/commit/88ce98874dc73cdbaff8510d44bcdf70462c4921)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 10.0.6
 
 ### chimera
