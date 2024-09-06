@@ -79,6 +79,43 @@ Many Thanks to Lars Jansse and Sandro Grizzo for their contributions.
 - If upgrading from 8.2, be sure to read also the release notes for 9.0 and 9.1, important changes are described there. See the [9.2 migration guide](https://github.com/dCache/upgrade-guide/blob/master/UPGRADE92.md) for more complete information
 - With version 9.2.8+, empty and non-existent banfiles will be treated the same
 
+## Release 9.2.24
+
+### doc
+
+Better documentation clarifying OIDC provider ID and issue claim.
+
+### webdav
+
+Bumps org.eclipse.jetty:jetty-servlets from 9.4.51.v20230217 to 9.4.52.v20230823.
+Thi has fixed java.lang.NullPointerException: null error on WebDAV Domain due to jetty 9.4.51 bug.
+
+
+### Changelog 9.2.23..9.2.24
+
+<!-- git log 9.2.23..9.2.24 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[bfaeae101e](https://github.com/dcache/dcache/commit/bfaeae101ee6aac5d629d4b2e8d075447a8519e0)
+:   [maven-release-plugin] prepare release 9.2.24
+
+[6394fbecd4](https://github.com/dcache/dcache/commit/6394fbecd4b0cc6d6803c957d01ff5890c5e2c5c)
+:   github: add action for atumatic github-release
+
+[6ab84e51ea](https://github.com/dcache/dcache/commit/6ab84e51ea736a0f57b4452d695fd07b16316e31)
+:   gplazma alise initial version of plugin
+
+[db6ea0f464](https://github.com/dcache/dcache/commit/db6ea0f464f4baf1b57e8f06499814cb74359e00)
+:   common: add issuer URI to OAuthProviderPrincipal
+
+[09e5a49937](https://github.com/dcache/dcache/commit/09e5a499378e0b3f1f4f159103970351dc540cb9)
+:   build(deps): bump org.eclipse.jetty:jetty-servlets
+
+[eb858c9725](https://github.com/dcache/dcache/commit/eb858c9725e930bd593f6bbf4289d5ba6fa9d6f4)
+:   docs: clarify OIDC provider ID and issue claim
+
+[7e6098c30e](https://github.com/dcache/dcache/commit/7e6098c30eaff118f80e93d46824f07f8397f72b)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 9.2.23
 
 ### CI
