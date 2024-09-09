@@ -188,7 +188,7 @@
       <version-prefix>10.1.</version-prefix>
 
       
-    
+    <!--
       <release version="2" recommended="1">
         <date>6.9.2024</date>
         <package name="rpm">
@@ -204,8 +204,8 @@
           <md5sum>c19bdbb6d4389eb20a9b415b731bc494</md5sum>
         </package>
       </release>
-
-      <release version="1">
+-->
+      <release version="1" recommended="1">
         <date>15.8.2024</date>
         <package name="Debian package">
           <download-url>_VERSION-1_all.deb</download-url>
@@ -263,6 +263,7 @@
       <notes-url>release-notes-10.0.shtml</notes-url>
       <version-prefix>10.0.</version-prefix>
 
+<!--
       <release version="8" recommended="1">
         <date>06.09.2024</date>
         <package name="rpm">
@@ -278,8 +279,8 @@
           <md5sum>14772d0cd1d6ba950102be9063e7c603</md5sum>
         </package>
       </release>
-
-      <release version="7">
+-->
+      <release version="7" recommended="1">
         <date>15.08.2024</date>
         <package name="Debian package">
           <download-url>_VERSION-1_all.deb</download-url>
@@ -435,6 +436,7 @@
                 <notes-url>release-notes-9.2.shtml</notes-url>
                 <version-prefix>9.2.</version-prefix>
 
+<!--
       <release version="24" recommended="1">
         <date>06.09.2024</date>
         <package name="rpm">
@@ -450,8 +452,9 @@
           <md5sum>f5c52fad122b05d5b8aea43cab3241e9</md5sum>
         </package>
       </release>
+-->
 
-      <release version="23">
+      <release version="23" recommended="1">
         <date>15.08.2024</date>
         <package name="Debian package">
           <download-url>_VERSION-1_all.deb</download-url>
