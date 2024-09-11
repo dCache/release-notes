@@ -76,6 +76,38 @@ HTML header: <title>dCache 10.0 Release Notes</title>
 
 Many Thanks to Petter A. Urkedal and Lukas Mansour for their contributions.
 
+## Release 10.0.9
+
+### bulk
+
+When specifying an empty target, bulk proceeded to process the request instead of failing fast. This is now fixed.
+
+### gplazma
+
+A previous commit, leading to the last bugfix releases being blacklisted, introduced a regression in the multimap plugin. Where the 'op' principal type is used, logins will fail with dCache logging a stacktrace like
+`java.lang.RuntimeException: Failed to create principal: java.lang.NoSuchMethodException: org.dcache.auth.OAuthProviderPrincipal.<init>(java.lang.String)`.
+This is now fixed.
+
+
+### Changelog 10.0.8..10.0.9
+
+<!-- git log 10.0.8..10.0.9 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[d547d4a58e](https://github.com/dcache/dcache/commit/d547d4a58eb87bd6b276a11380c72bc122bfc7af)
+:   [maven-release-plugin] prepare release 10.0.9
+
+[7a2bfe0a2f](https://github.com/dcache/dcache/commit/7a2bfe0a2f2db70a388af1fce23034dcc2877540)
+:   gplazma: fix broken commit d74d9568167f4
+
+[d74d956816](https://github.com/dcache/dcache/commit/d74d9568167f40abd8167829271c78252723a4c9)
+:   gplazma: multimap fix op regression
+
+[1aff06fe09](https://github.com/dcache/dcache/commit/1aff06fe09423386f6700cda59da052308d71fdb)
+:   bulk: check targets for empty strings
+
+[4678e1b5ae](https://github.com/dcache/dcache/commit/4678e1b5aeda157ce41feff175bff76bc3d0a97d)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 10.0.8
 
 ### doc

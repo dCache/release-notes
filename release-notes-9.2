@@ -79,6 +79,38 @@ Many Thanks to Lars Jansse and Sandro Grizzo for their contributions.
 - If upgrading from 8.2, be sure to read also the release notes for 9.0 and 9.1, important changes are described there. See the [9.2 migration guide](https://github.com/dCache/upgrade-guide/blob/master/UPGRADE92.md) for more complete information
 - With version 9.2.8+, empty and non-existent banfiles will be treated the same
 
+## Release 9.2.25
+
+### bulk
+
+When specifying an empty target, bulk proceeded to process the request instead of failing fast. This is now fixed.
+
+### gplazma
+
+A previous commit, leading to the last bugfix releases being blacklisted, introduced a regression in the multimap plugin. Where the 'op' principal type is used, logins will fail with dCache logging a stacktrace like
+`java.lang.RuntimeException: Failed to create principal: java.lang.NoSuchMethodException: org.dcache.auth.OAuthProviderPrincipal.<init>(java.lang.String)`.
+This is now fixed.
+
+
+### Changelog 9.2.24..9.2.25
+
+<!-- git log 9.2.24..9.2.25 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[8fecee871f](https://github.com/dcache/dcache/commit/8fecee871fa9e0d5c381b5b91806f7cf4749b5d9)
+:   [maven-release-plugin] prepare release 9.2.25
+
+[4d14890f7d](https://github.com/dcache/dcache/commit/4d14890f7deb0f12696229eb5e23a30a90e1d33e)
+:   gplazma: fix broken commit d74d9568167f4
+
+[729ce8f76a](https://github.com/dcache/dcache/commit/729ce8f76a26c565ed1cf8093b3dbf0a9f438b6b)
+:   gplazma: multimap fix op regression
+
+[5708994ab6](https://github.com/dcache/dcache/commit/5708994ab692c17e5e7fe29277e6cff63bc5071f)
+:   bulk: check targets for empty strings
+
+[6043a20af4](https://github.com/dcache/dcache/commit/6043a20af49a69bd66c8e2428b9663ae6355c14a)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 9.2.24
 
 ### doc
