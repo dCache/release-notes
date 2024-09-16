@@ -64,6 +64,8 @@ HTML header: <title>dCache 10.2 Release Notes</title>
 
 ## Highlights
 
+- Expose user/group quotas vie remote quota protocol
+
 ## Incompatibilities
 
 - Pool Manager partitions by default allowed  to stage
@@ -113,6 +115,8 @@ Fixed PoolManager web representation to generate valid html. Updated PoolSelecti
 
 ### NFS
 
+The NFS door has been updated to expose the REPLICA-ONLINE quota via the remote quota protocol, which uses
+UDP protocol. The `nfs.net.rquota.port` property can specify the UDP port number used by the service.
 
 ### Pinmanager
 
