@@ -64,12 +64,13 @@ HTML header: <title>dCache 10.2 Release Notes</title>
 
 ## Highlights
 
-- Expose user/group quotas vie remote quota protocol
+- Expose user/group quotas via remote quota protocol
 
 ## Incompatibilities
 
 - Pool Manager partitions by default allowed  to stage
 - Dropped gPlazma ARGUS plugin
+- When a stage request is canceled in the poolmanager are canceled in the pool too
 
 
 ## Acknowledgments
@@ -129,6 +130,7 @@ Fixed invalid logging format by NFS write operation.
 ### Poolmanager
 
 The `stage-allowed` option in the pool manager is now on `yes` by default.
+When a request in PoolManager that has triggered the stage is canceled, PoolManager will cancel the stage in the pool.
 
 ### Resilience
 
