@@ -76,35 +76,6 @@ HTML header: <title>dCache 10.0 Release Notes</title>
 
 Many Thanks to Petter A. Urkedal and Lukas Mansour for their contributions.
 
-## Release 10.0.8
-
-### doc
-
-Better documentation clarifying OIDC provider ID and issue claim.
-
-
-### Changelog 10.0.7..10.0.8
-
-<!-- git log 10.0.7..10.0.8 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
-
-[0e22cbe693](https://github.com/dcache/dcache/commit/0e22cbe693bc4fdca9a52ccf13d696ee505b564d)
-:   [maven-release-plugin] prepare release 10.0.8
-
-[7ebab3e236](https://github.com/dcache/dcache/commit/7ebab3e236c2a6319b9af8f0230b21b670a42515)
-:   github: add action for atumatic github-release
-
-[3e749187ff](https://github.com/dcache/dcache/commit/3e749187ff8899a5effcd8c45ea1132c2109efa6)
-:   gplazma alise initial version of plugin
-
-[e659623da3](https://github.com/dcache/dcache/commit/e659623da3dc559620fffc805e3d2ae35842cdbd)
-:   common: add issuer URI to OAuthProviderPrincipal
-
-[9468a857c5](https://github.com/dcache/dcache/commit/9468a857c5007161c900a6eb05e663769e22868b)
-:   docs: clarify OIDC provider ID and issue claim
-
-[fa8b721504](https://github.com/dcache/dcache/commit/fa8b7215041be501c208cce4098a7e7a1c2f1a89)
-:   [maven-release-plugin] prepare for next development iteration
-
 ## Release 10.0.9
 
 ### bulk
