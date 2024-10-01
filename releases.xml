@@ -205,7 +205,23 @@
         </package>
       </release>
 -->
-      <release version="3" recommended="1">
+      <release version="4" recommended="1">
+        <date>01.10.2024</date>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>1c0d0aa927c2c96dc79aa03eb5d77dc6</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>c3b4e42f195d1c1614f6e40cfd0242d3</md5sum>
+        </package>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>b75eac5baebf292b78d69c0401a1729f</md5sum>
+        </package>
+      </release>
+
+      <release version="3">
         <date>11.09.2024</date>
         <package name="Debian package">
           <download-url>_VERSION-1_all.deb</download-url>
@@ -296,7 +312,23 @@
         </package>
       </release>
 -->
-      <release version="9" recommended="1">
+      <release version="10" recommended="1">
+        <date>1.10.2024</date>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>7766edcf4026bdb12f67ca5eb3790d7b</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>0dab0326f0f527e11d4090cc9b71e929</md5sum>
+        </package>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>bc47b5bf1323a05e998d24d52d94d63a</md5sum>
+        </package>
+      </release>
+
+      <release version="9">
         <date>11.09.2024</date>
         <package name="Debian package">
           <download-url>_VERSION-1_all.deb</download-url>
@@ -486,7 +518,23 @@
       </release>
 -->
 
-      <release version="25" recommended="1">
+      <release version="26" recommended="1">
+        <date>01.10.2024</date>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>c728784cfb432f38577bc783c963c59e</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>bc7cd6cb3944ffb584633ac4b4cb867a</md5sum>
+        </package>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>544d130787a4b77cb18bb3e417c5d7ee</md5sum>
+        </package>
+      </release>
+
+      <release version="25">
         <date>11.9.2024</date>
         <package name="Debian package">
           <download-url>_VERSION-1_all.deb</download-url>

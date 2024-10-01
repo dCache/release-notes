@@ -76,6 +76,31 @@ HTML header: <title>dCache 10.0 Release Notes</title>
 
 Many Thanks to Petter A. Urkedal and Lukas Mansour for their contributions.
 
+## Release 10.0.10
+
+### bulk
+
+The current release fixed broken command `activities`.
+
+
+
+
+### Changelog 10.0.9..10.0.10
+
+<!-- git log 10.0.9..10.0.10 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[beea266384](https://github.com/dcache/dcache/commit/beea26638455a6fffdda54bbd821aad8c1bc998a)
+:   [maven-release-plugin] prepare release 10.0.10
+
+[5e8991675f](https://github.com/dcache/dcache/commit/5e8991675ff3cbc0435c9a7e3854a8761f623d7f)
+:   ci: run spotbugs only on master branch
+
+[97ace7d80c](https://github.com/dcache/dcache/commit/97ace7d80c8dab87de378e975dbd3ee816cf90ba)
+:   bulk: fix broken command `activities`
+
+[54df6ada6a](https://github.com/dcache/dcache/commit/54df6ada6a197c2661bd655648a547b2803810d9)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 10.0.9
 
 ### bulk
