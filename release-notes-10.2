@@ -127,7 +127,11 @@ UDP protocol. The `nfs.net.rquota.port` property can specify the UDP port number
 ### Pool
 
 Fixed invalid logging format by NFS write operation.
-The `sweeper purge` command accepts optional `-storageClass=<class>` option to purge only files of specified storage class.
+The `sweeper purge` command accepts the optional `-storageClass=<class>` option to purge only files of the specified storage class.
+
+Added configuration option `pool.mover.nfs.multipath` to specify which IP addresses should be advertized to pNFS clients.
+
+Removed obsolete/test code.
 
 ### Poolmanager
 
