@@ -66,6 +66,7 @@ HTML header: <title>dCache 10.2 Release Notes</title>
 
 - Expose user/group quotas via remote quota protocol
 - Java 21 is supported as runtime environment
+- PoC support for firefly network markers
 
 ## Incompatibilities
 
@@ -136,6 +137,15 @@ Removed obsolete/test code.
 
 dCache provides a possibility to specify a command that the pool can use to perform repository checks. This check
 runs parallel to the internal repository health check. Starting from dcache-10.2, an internal check is skipped if the command is specified.
+
+Added optional network fireflies to allow network traffic monitoring by WLHC and ES-Net. The fireflies can be enabled by `pool.enable.firefly=true`
+configuration property. To exclude local traffic from reporting, `pool.firefly.excludes` can be used. Example:
+
+```
+pool.firefly.excludes = a.b.c.d/16, aa:bb:cc:dd:ee:ff/64, v.x.w.z
+```
+
+Where `a.b.c.d/16`, `aa:bb:cc:dd:ee:ff/64` and  `v.x.w.z` are site local IP addresses or subnets.
 
 ### Poolmanager
 
