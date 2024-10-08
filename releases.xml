@@ -205,7 +205,23 @@
         </package>
       </release>
 -->
-      <release version="4" recommended="1">
+      <release version="5" recommended="1">
+        <date>08.10.2024</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>2e5aad20f1cbc0b647fdd1fa2d26937f</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>4b4363d51b7e08ffee1f1172ac26c097</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>c496dd91a08d54a0c6a96f0d43250573</md5sum>
+        </package>
+      </release>
+
+      <release version="4">
         <date>01.10.2024</date>
         <package name="rpm">
           <download-url>-VERSION-1.noarch.rpm</download-url>
@@ -312,7 +328,23 @@
         </package>
       </release>
 -->
-      <release version="10" recommended="1">
+      <release version="11" recommended="1">
+        <date>08.10.2024</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>18440b525ce27ec496fff61080d6c614</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>0ad4acddcdcce77fe740e6ab46b12111</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>1c86783ba35b3aa20dbc60924d536ce0</md5sum>
+        </package>
+      </release>
+
+      <release version="10">
         <date>1.10.2024</date>
         <package name="rpm">
           <download-url>-VERSION-1.noarch.rpm</download-url>
@@ -518,7 +550,23 @@
       </release>
 -->
 
-      <release version="26" recommended="1">
+      <release version="27" recommended="1">
+        <date>8.10.2024</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>4006f5f96adf528ac76a942150879078</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>c7fc131b57abf60b18588994fd0df862</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>019e774c0ae623880285c64994168fe2</md5sum>
+        </package>
+      </release>
+
+      <release version="26">
         <date>01.10.2024</date>
         <package name="rpm">
           <download-url>-VERSION-1.noarch.rpm</download-url>

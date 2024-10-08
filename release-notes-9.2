@@ -79,6 +79,38 @@ Many Thanks to Lars Jansse and Sandro Grizzo for their contributions.
 - If upgrading from 8.2, be sure to read also the release notes for 9.0 and 9.1, important changes are described there. See the [9.2 migration guide](https://github.com/dCache/upgrade-guide/blob/master/UPGRADE92.md) for more complete information
 - With version 9.2.8+, empty and non-existent banfiles will be treated the same
 
+## Release 9.2.27
+
+### CI
+
+Pipeline optimizations.
+
+### pool
+
+Fix double decrement on active hsm requests. This addresses the issue of pools stopping flushing to tape with "Negative number of active requests".
+
+When a thread performing I/O gets interrupted, then an InterruptedIOException might be thrown. A DCAP mover will treat and propagate such an exception as a disk I/O error, thus disabling the pool. This fix reduces false positive disk I/O errors.
+
+
+### Changelog 9.2.26..9.2.27
+
+<!-- git log 9.2.26..9.2.27 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[c2f32fc913](https://github.com/dcache/dcache/commit/c2f32fc9134fd97e48b83934ec7d1bb276947c77)
+:   [maven-release-plugin] prepare release 9.2.27
+
+[d8d5541241](https://github.com/dcache/dcache/commit/d8d5541241594ec1f07c2d8034fcd9080fd64815)
+:   pool: don't treat InterruptedIOException as a disk IO error
+
+[8e376b7181](https://github.com/dcache/dcache/commit/8e376b7181c813cdf92b428163903ebe5606c387)
+:   pool: fix double decrement of hsm requests
+
+[1215548076](https://github.com/dcache/dcache/commit/12155480765a53ef99ed5a44ee486ddad5b3cc72)
+:   ci: split container image registry and repository
+
+[0863dacffa](https://github.com/dcache/dcache/commit/0863dacffaa68ad3492b83122193ef55676fd13d)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 9.2.26
 
 ### bulk

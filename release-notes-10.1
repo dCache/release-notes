@@ -74,6 +74,38 @@ HTML header: <title>dCache 10.1 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 10.1.5
+
+### CI
+
+Pipeline optimizations.
+
+### pool
+
+Fix double decrement on active hsm requests. This addresses the issue of pools stopping flushing to tape with "Negative number of active requests".
+
+When a thread performing I/O gets interrupted, then an InterruptedIOException might be thrown. A DCAP mover will treat and propagate such an exception as a disk I/O error, thus disabling the pool. This fix reduces false positive disk I/O errors.
+
+
+### Changelog 10.1.4..10.1.5
+
+<!-- git log 10.1.4..10.1.5 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[19915761ec](https://github.com/dcache/dcache/commit/19915761ec14bfd972192cd56952435e89dc986a)
+:   [maven-release-plugin] prepare release 10.1.5
+
+[297eac0550](https://github.com/dcache/dcache/commit/297eac05504b778de8db727f0f3daf6ab348a3c9)
+:   pool: don't treat InterruptedIOException as a disk IO error
+
+[8c9ff6bd4a](https://github.com/dcache/dcache/commit/8c9ff6bd4a0aa293e1240b639a263a006f2a35a7)
+:   pool: fix double decrement of hsm requests
+
+[927d9a1a6d](https://github.com/dcache/dcache/commit/927d9a1a6d516803064433b3a4c4e8a93ef74ba7)
+:   ci: split container image registry and repository
+
+[cc5a438b55](https://github.com/dcache/dcache/commit/cc5a438b559e28a4eb64943346d0585a53eed645)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 10.1.4
 
 ### bulk
