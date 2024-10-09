@@ -74,6 +74,7 @@ HTML header: <title>dCache 10.2 Release Notes</title>
 - Dropped gPlazma ARGUS plugin
 - A stage request canceled in the poolmanager will propagate the cancel to pool
 - Pool internal health check is disabled if an external check command is configured.
+- Access to files with QoS 'HSM'-only will be denied, even if they are still available on disks.
 
 
 ## Acknowledgments
@@ -152,6 +153,13 @@ Where `a.b.c.d/16`, `aa:bb:cc:dd:ee:ff/64` and  `v.x.w.z` are site local IP addr
 The `stage-allowed` option in the pool manager is now on `yes` by default.
 When a request in PoolManager that has triggered the stage is canceled, PoolManager will cancel the stage in the pool.
 
+If a pool with the file is offline and a tape copy is available, dCache will trigger the stage and wait until the file is restored on disk.
+However, if the pool becomes available again, the stage request is not interrupted, and the client will wait for the tape. With 10.2 the
+PoolManager will use the online replica to serve the request.
+
+>NOTE: The on-going stage will not be interrupted.
+
+
 ### Resilience
 
 ### Space Manager
@@ -169,6 +177,8 @@ When a request in PoolManager that has triggered the stage is canceled, PoolMana
 ### QoS
 
 The QoS service database name is now configurable.
+
+Access to files with QoS 'HSM'-only will be denied, even if they are still available on disks.
 
 ### WebDAV
 
