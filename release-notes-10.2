@@ -67,6 +67,7 @@ HTML header: <title>dCache 10.2 Release Notes</title>
 - Expose user/group quotas via remote quota protocol
 - Java 21 is supported as runtime environment
 - PoC support for firefly network markers
+- Support of Label-based virtual read-only directories
 
 ## Incompatibilities
 
@@ -104,6 +105,46 @@ None existent QOS name will now longer throw a 500, it will return a 400.
 QOS of type "tape+disk" will no longer throw a 400, it will return the same as "disk+tape".
 
 ### FTP
+## Chimera
+
+Traditional file systems organize data in directories. Directories are
+typically a collection of files whose grouping is based on some of
+the above mentioned criteria. However, each file in a directory can
+belong to several logical groups, such as a special event type or
+experiment condition.
+
+With our previous releases  releases in dCache we
+had have implemented user metadata
+Handling, so that  any type of short string label
+describing raw data, calibrated data or
+detector telemetry can be attached to a
+file via the RESTful API, or via graphical
+dCache-view interface. 
+
+
+With the latest changes in dCaheche now  it is possible to populate  virtual read-only directories with files as soon as the files get the corresponding label.
+
+
+These virtual directories are exposed through NFS and WebDAV protocols via the commands `ls -1 /mnt/.(collection)(labelName)` and `http://localhost:portnumber/.(collection)(labelName)`, respectively.
+
+For example, the following command returns the list of all files labels by blue-bird:
+
+
+ ```ini
+$ ls  -1 /mnt/".(collection)(blue-bird)"/
+
+file_large_bird_1.log-7
+file_large_bird_2.log-7
+file_large_bird_3.log-2
+file_large_bird_3.log-7
+file_large_bird_4.log-7
+file_large_bird_5.log-7
+file_large_bird_6.log-2
+file_large_bird_6.log-7
+$ 
+ ```
+
+To access the file a simple `cat /mnt/".(collection)(yellow)"/file_large_bird_4.log-7` should be used. 
 
 ### gplazma
 
