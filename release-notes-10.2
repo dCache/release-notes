@@ -90,6 +90,9 @@ HTML header: <title>dCache 10.2 Release Notes</title>
 
 ### Cleaner
 
+Cleaner-hsm's admin `info` command now shows information about which pools have currently been instructed to delete files from an attached HSM. These pools are still expected to send a reply concerning success or failure of the deetion.
+Additionally, the pool selection behaviour was changed to only select not already waited for pools for hsm-cleaning.
+
 ### Checksums
 
 ### DCAP
