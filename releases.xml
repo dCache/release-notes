@@ -168,6 +168,33 @@
   </preamble>
 
 
+
+  <series id="server-10.2">
+    <title>server 10.2.x</title>
+    <description>
+	    <p>dCache 10.2 is a Feature Release introducing the following highlights:</p>
+      <ul>
+	      <li>Expose user/group quotas via remote quota protocol.</li>
+	      <li>Java 21 is supported as runtime environment.</li>
+	      <li>PoC support for firefly network markers.</li>
+	      <li>Support of Label-based virtual read-only directories.</li>
+      </ul>
+      <p>Incompatibilities</p>
+      <ul>
+	      <li>Pool Manager partitions by default allowed  to stage.</li>
+	      <li>Dropped gPlazma ARGUS plugin.</li>
+	      <li>A stage request canceled in the poolmanager will propagate the cancel to pool.</li>
+	      <li>Pool internal health check is disabled if an external check command is configured.</li>
+	      <li>Access to files with QoS 'HSM'-only will be denied, even if they are still available on disks.</li>
+      </ul>
+      <p>dCache v10.2 requires a JVM supporting Java 17.</p>
+    </description>
+    <releases>
+	    <release> </release>
+    </releases>
+    </series>
+
+
   <series id="server-10.1">
     <title>server 10.1.x</title>
     <description>
