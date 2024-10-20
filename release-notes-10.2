@@ -85,18 +85,14 @@ HTML header: <title>dCache 10.2 Release Notes</title>
 
 ## Release 10.2.0
 
-### Admin
 
-### Billing
 
 ### Cleaner
 
 Cleaner-hsm's admin `info` command now shows information about which pools have currently been instructed to delete files from an attached HSM. These pools are still expected to send a reply concerning success or failure of the deetion.
 Additionally, the pool selection behaviour was changed to only select not already waited for pools for hsm-cleaning.
 
-### Checksums
 
-### DCAP
 
 ### Frontend
 
@@ -104,7 +100,6 @@ Logic was updated.
 None existent QOS name will now longer throw a 500, it will return a 400. 
 QOS of type "tape+disk" will no longer throw a 400, it will return the same as "disk+tape".
 
-### FTP
 ## Chimera
 
 Traditional file systems organize data in directories. Directories are
@@ -150,27 +145,21 @@ To access the file a simple `cat /mnt/".(collection)(yellow)"/file_large_bird_4.
 
 The gPlazma' argus' plugin was removed due to a lack of usage and the decommissioning of the corresponding EGI-managed infrastructure.
 
-### History
 
-### Hoppingmanager
 
 ### httpd
 
 Fixed PoolManager web representation to generate valid HTML. Updated PoolSelection configuration section to use common css.
 Update the color palette to match (more modern) dcache.org colors.
 
-### Info
 
-### Missing Files
 
 ### NFS
 
 The NFS door has been updated to expose the REPLICA-ONLINE quota via the remote quota protocol, which uses
 UDP protocol. The `nfs.net.rquota.port` property can specify the UDP port number used by the service.
 
-### Pinmanager
 
-### PNFS Manager
 
 ### Pool
 
@@ -205,19 +194,6 @@ PoolManager will use the online replica to serve the request.
 >NOTE: The on-going stage will not be interrupted.
 
 
-### Resilience
-
-### Space Manager
-
-### SRM
-
-### SRM Manager
-
-### Statistics
-
-### Topo
-
-### Transfer Managers
 
 ### QoS
 
@@ -225,9 +201,6 @@ The QoS service database name is now configurable.
 
 Access to files with QoS 'HSM'-only will be denied, even if they are still available on disks.
 
-### WebDAV
-
-### XRootD
 
 ### Zookeeper
 
@@ -236,6 +209,544 @@ Suppress non-fatal errors in the logs
 Updated zookeeper and curator to versions 3.8.4 and 5.7.0
 
 ### Changelog from 10.1.0 to 10.2.0
+
+[2aa172f661](https://github.com/dcache/dcache/commit/2aa172f661053c19b6d2cfedfde856514461bd94)
+:   [maven-release-plugin] prepare for next development iteration
+
+[9f6b619b6b](https://github.com/dcache/dcache/commit/9f6b619b6b972c4c3e92f8a5b64e0669ba73b498)
+:   [maven-release-plugin] prepare release 10.2.0
+
+[e334fb04c0](https://github.com/dcache/dcache/commit/e334fb04c09f5167ccf508c43a8b368a0dcaca02)
+:   http(old): modernize color palette
+
+[53173e10a8](https://github.com/dcache/dcache/commit/53173e10a8b40daf1fdf2734eaf743f62067d648)
+:   build(deps): bump org.eclipse.jetty:jetty-server
+
+[9d3eb6e108](https://github.com/dcache/dcache/commit/9d3eb6e10815ad9c992ffeb64e4a3ee9b4a32510)
+:   build(deps): bump org.eclipse.jetty:jetty-servlets
+
+[1e916a95a9](https://github.com/dcache/dcache/commit/1e916a95a98e6d7ede023d4b51250d5d87a7340c)
+:   dcache: reject access to files with nearline QoS
+
+[2423686780](https://github.com/dcache/dcache/commit/24236867804e74f3660e9076522de9bf7c29a99b)
+:   pool manager: retry request on pool up
+
+[ae3fd77003](https://github.com/dcache/dcache/commit/ae3fd770039bf3ee43945a763c2c1e48fa44689e)
+:   [maven-release-plugin] prepare branch @{releaseLabel}
+
+[2de64addb2](https://github.com/dcache/dcache/commit/2de64addb29a759784a8807bfa3dbc38fc307c91)
+:   webdav: adding listing for files tagged by labels
+
+[daad2ab76f](https://github.com/dcache/dcache/commit/daad2ab76fad534a63cc1c4be1033636a9ec3c96)
+:   pool: fix double decrement of hsm requests
+
+[d0c4ad74df](https://github.com/dcache/dcache/commit/d0c4ad74df1a3d04d39fa0cbe4351cab8e9886ba)
+:   nfs: add remote quota protocol support
+
+[4b7dbd4f28](https://github.com/dcache/dcache/commit/4b7dbd4f28f6acb09e066c565ab1310610e2f846)
+:   pool: add network traffic flow markers
+
+[fb734fb6c6](https://github.com/dcache/dcache/commit/fb734fb6c6f480b02676f86d4b29bb6d819c69ee)
+:   pool: don't treat InterruptedIOException as a disk IO error
+
+[f745948d53](https://github.com/dcache/dcache/commit/f745948d5324b7be9671e6ba5649f32c066f8998)
+:   pool: skip internal repository check if external command provided
+
+[4d7e0de505](https://github.com/dcache/dcache/commit/4d7e0de5057afe20ed1b150fef8ef4971b86d28a)
+:   qos: make database name configurable
+
+[84c3d0be26](https://github.com/dcache/dcache/commit/84c3d0be26497e9f768ccc80eda025fa83bf0bdb)
+:   ci: split container image registry and repository
+
+[4a9305c028](https://github.com/dcache/dcache/commit/4a9305c02825e6d2d58d802e5cee22f3789a9072)
+:   pool: remove fault-injection in dcap mover
+
+[17b79d521b](https://github.com/dcache/dcache/commit/17b79d521bb77ef2dfadc4a8dbaee27c1a5e0b7f)
+:   pool: add property to specity IP addresses exposed to NFS clients
+
+[d3dbba97bc](https://github.com/dcache/dcache/commit/d3dbba97bcf6ec7d24f174124b8aedc099ed2dfa)
+:   dcache-vehicles: remove obsolete comments
+
+[9954491560](https://github.com/dcache/dcache/commit/99544915603ed6b14361c7b07b58f7ec283acca9)
+:   logback: suppress zookeeper warnings
+
+[e1e086ea60](https://github.com/dcache/dcache/commit/e1e086ea6034af75102d3d4d70cdfdbeb37db8ff)
+:   ci: use latest helm chart for postgresql
+
+[d350f45c8d](https://github.com/dcache/dcache/commit/d350f45c8d8e4effbfa99472c4c2214b13175199)
+:   Revert "Create dependabot.yml"
+
+[a212817054](https://github.com/dcache/dcache/commit/a212817054c0458e260a9a3b57cc070a828c7670)
+:   Create dependabot.yml
+
+[cfeed0cc3c](https://github.com/dcache/dcache/commit/cfeed0cc3ce399056472b5361b19dee433b0de4a)
+:   migration: provide default copy behavior per #7623
+
+[be9d1c7ff5](https://github.com/dcache/dcache/commit/be9d1c7ff5f229401c478d00c01bdd7694bb27dc)
+:   pool: update `sweeper purge` command to accept option storage class
+
+[7b2f1a34a8](https://github.com/dcache/dcache/commit/7b2f1a34a80a2e2f630e79be5a59db4ba007508f)
+:   cells: update CellStub#send to return CompletableFuture
+
+[2400de1d01](https://github.com/dcache/dcache/commit/2400de1d01b1f0800f689d41eb1fd0a7fcf70aaa)
+:   scripts: accept java 17-21
+
+[6885af34b1](https://github.com/dcache/dcache/commit/6885af34b16bd957f2b4d6f67216dc7ff923d268)
+:   libs: update aspectj to java-21 compatible version
+
+[6381cc6568](https://github.com/dcache/dcache/commit/6381cc65682c5bbb6c61a2b6ade6a812cda68f0a)
+:   ci: run spotbugs only on master branch
+
+[f260a34c50](https://github.com/dcache/dcache/commit/f260a34c50b05f031c3a2133668e2eef2677cb9a)
+:   poolgroup: error code update
+
+[c2406da578](https://github.com/dcache/dcache/commit/c2406da578c8d8b99e4b7930b12ab870ff766b19)
+:   ci: tests to verify a successful migration request
+
+[b6a528ca20](https://github.com/dcache/dcache/commit/b6a528ca20107f6037306f16aa7985d4f70749a2)
+:   poolmanager: cancel stage when restore is canceled
+
+[f1ba73bc3c](https://github.com/dcache/dcache/commit/f1ba73bc3c3c22405693d7e6f8c42e58d64596d6)
+:   ci:workaround oidc-agent bug
+
+[92e1c67ec3](https://github.com/dcache/dcache/commit/92e1c67ec30e241ebcb0af89d86d0643e00c32c0)
+:   ci: print oidc agent stats
+
+[561e3bf2b0](https://github.com/dcache/dcache/commit/561e3bf2b03826a26dbc9bb9ba1245205fda3429)
+:   pool: include source pool name into `pp ls output`
+
+[ebae424a0d](https://github.com/dcache/dcache/commit/ebae424a0dafc6c9dc7334fe41e97a52d02826ea)
+:   libs: use nfs4j-0.26.0
+
+[c165794462](https://github.com/dcache/dcache/commit/c165794462fefcb5e74ff20327a9a2f22f1f9ad2)
+:   ci: split current/old dcache deployments
+
+[d99c031355](https://github.com/dcache/dcache/commit/d99c031355f87f33175539a5f9d7645d1e95a69f)
+:   bulk: fix broken command `activities`
+
+[d84682eb5a](https://github.com/dcache/dcache/commit/d84682eb5a5fba157906b62d20dc28064699bd4d)
+:   Corrected a few typos
+
+[a0ba728fa8](https://github.com/dcache/dcache/commit/a0ba728fa8cc4ebd4b5915e023658c1b7d9d61c5)
+:   ci: add keycloack and dummy token test
+
+[83297e934e](https://github.com/dcache/dcache/commit/83297e934e2d716c7e0dd31b899f425d4c02030c)
+:   gplazma: multimap fix op regression
+
+[6fe3676e57](https://github.com/dcache/dcache/commit/6fe3676e57ab7ee2e5a1a799069f44152f1ffa79)
+:   ci: use llm to generate release notes
+
+[d74fd8a8af](https://github.com/dcache/dcache/commit/d74fd8a8af4941f99eb66eef165e2021cb22815b)
+:   ci: add minio s3 as tape
+
+[45a6cc15ec](https://github.com/dcache/dcache/commit/45a6cc15eceddabeb1c0cae08e350fee8b165b2a)
+:   bulk: check targets for empty strings
+
+[345edefb8c](https://github.com/dcache/dcache/commit/345edefb8c054145ac4070abf573078bd05d469b)
+:   gitlab: trigger mirroring on pull_request
+
+[d981ebc160](https://github.com/dcache/dcache/commit/d981ebc1609714aeff5f8d339262f097f3426fb4)
+:   nearline-storage: allow retrying of request cancelation
+
+[bb836bef2d](https://github.com/dcache/dcache/commit/bb836bef2da2ae4ba50d3ea41f87a33f4b58854e)
+:   gplazma2-oidc-te: fix invalid initialization of plugin
+
+[12c8fef0f4](https://github.com/dcache/dcache/commit/12c8fef0f48ab2b52cfcba2c08761f3b988ff9d7)
+:   github: add action for atumatic github-release
+
+[09919b7750](https://github.com/dcache/dcache/commit/09919b775052d7eac545986f16370981bcb8b490)
+:   ci: verify file location and migration p2p
+
+[d4c2c75d73](https://github.com/dcache/dcache/commit/d4c2c75d73ea00fbb3296bc6896e2996f2dba4f0)
+:   maven: ensure that we have unique file names to conflicting jars
+
+[60292c7687](https://github.com/dcache/dcache/commit/60292c7687fea7299c19a94846eedfc2955d44c5)
+:   http-old: use common CSS for pool manager configuration section
+
+[8ea0efc76e](https://github.com/dcache/dcache/commit/8ea0efc76ed6f54594a563b316aee2b0fe0ffb34)
+:   namespace: skip files/directories from listings on bad storageinfo
+
+[25412a1c0e](https://github.com/dcache/dcache/commit/25412a1c0e878cf501613637b6c26178f35971bc)
+:   docs: clarify OIDC provider ID and issue claim
+
+[494063afbc](https://github.com/dcache/dcache/commit/494063afbc74811b06a86a314f4f71f88fe2e13f)
+:   build(deps): bump org.webjars:swagger-ui from 3.1.7 to 3.23.11
+
+[ad395dd2f5](https://github.com/dcache/dcache/commit/ad395dd2f527f1fee27649208bf830f7fb82e8df)
+:   github: pull gitlab CI pipeline status every 60s
+
+[10abac183b](https://github.com/dcache/dcache/commit/10abac183b20ebb6a269a9c90a5846e49e0b303d)
+:   gplazma alise initial version of plugin
+
+[ef2dc1e0e5](https://github.com/dcache/dcache/commit/ef2dc1e0e54be95b488cb1d503c54c3edd1d01aa)
+:   common: add issuer URI to OAuthProviderPrincipal
+
+[3cdddc0d01](https://github.com/dcache/dcache/commit/3cdddc0d01f8a928eb7f1da83c40591e430b6cd9)
+:   ci: use installed packages dependencies to detect duplicates
+
+[7ba5b8fffd](https://github.com/dcache/dcache/commit/7ba5b8fffd20177530e40e58caed5a2173812a7c)
+:   libs: drop XACML leftover dependency saxon:saxon
+
+[d6cb3f15f2](https://github.com/dcache/dcache/commit/d6cb3f15f24eed8e4325de41d552ef85da14f0cd)
+:   ci: update webdaav-door path to run in kubernetes
+
+[2ad55888ef](https://github.com/dcache/dcache/commit/2ad55888efca93e2bb7c0a969f4436a8e0886cc2)
+:   ci: option means allow_failure: true :)
+
+[2dde22eb22](https://github.com/dcache/dcache/commit/2dde22eb224a5649910aa3e8de9cd61f015a933a)
+:   ci: add optional (for now) test to catch multiple versions of dependencies
+
+[12a86d520f](https://github.com/dcache/dcache/commit/12a86d520f5cd699498f24a2555f6a80936f69eb)
+:   core: reformat pinmanager spring xml file
+
+[5faa6359b2](https://github.com/dcache/dcache/commit/5faa6359b2573a999e65458ed65bbf45704ca9ac)
+:   build(deps): bump org.springframework:spring-expression
+
+[8fc469086e](https://github.com/dcache/dcache/commit/8fc469086ebd8a324f1c60d44b82b8f09bbbde1f)
+:   ci: drop CVMFS leftovers
+
+[b1c05399ca](https://github.com/dcache/dcache/commit/b1c05399ca721b7f3587782652d5976dc8b7c7e8)
+:   gplazma-pyscript: add mapping functionality (#7639)
+
+[d147cbcba3](https://github.com/dcache/dcache/commit/d147cbcba322858197ebae84e4bd997e14bdbd73)
+:   chimera: remove unused code
+
+[44efb5c1ac](https://github.com/dcache/dcache/commit/44efb5c1ac27ae23116aa67a389b302e4f32e23c)
+:   WLG TAPE REST API: fix handling of frontend.root in release API
+
+[e57606532f](https://github.com/dcache/dcache/commit/e57606532f60f404a660fff8ec020189936f19c3)
+:   test: add test case for adding and querying labels via rest api
+
+[591e361d2b](https://github.com/dcache/dcache/commit/591e361d2bdb921b0a3adc543cb7fb0de993c2a2)
+:   Improved Pyscript Auth Module
+
+[7b2b3dfd10](https://github.com/dcache/dcache/commit/7b2b3dfd10cab244383f3004c6e9636e90ce4282)
+:   gplazma: add gplazma2-jython module for auth using Python (#7627)
+
+[f7796051de](https://github.com/dcache/dcache/commit/f7796051de4d172bf3c7d9cd6ab58711dbf4eb87)
+:   gitlab: mirror tags
+
+[61a75dcea5](https://github.com/dcache/dcache/commit/61a75dcea52ce1ed6b0e8db54b877a1addc84846)
+:   frontend: change tests to use updated variables
+
+[82bf63868c](https://github.com/dcache/dcache/commit/82bf63868cf9c0f478964f8021f85fbb00f0d12e)
+:   qos: add tests, rename tests and clean up
+
+[db160657c4](https://github.com/dcache/dcache/commit/db160657c461a6f3c9326a637062682279a8ba3b)
+:   qos: bad request update and additional qos target
+
+[b772cd54a1](https://github.com/dcache/dcache/commit/b772cd54a1ae45453da86dd87649add89f6e4745)
+:   gplazma2-argus: drop obsolete plugin
+
+[83d591f0a2](https://github.com/dcache/dcache/commit/83d591f0a22536d4749cedc8fda8bc191086f286)
+:   github: change mirroring action
+
+[5658a7a889](https://github.com/dcache/dcache/commit/5658a7a8891bef21bc97f537fa7a70ede33f773b)
+:   ci: use shorter k8s namespace names
+
+[3ada526bf4](https://github.com/dcache/dcache/commit/3ada526bf434b87eddb3bc53e8cbe411d6819750)
+:   ci: more robust collection of billing logs
+
+[183e99fb88](https://github.com/dcache/dcache/commit/183e99fb884eb551473c3a40ec7c8c94d37ac872)
+:   ci: don't explicitly delete kafka collector
+
+[725b3a6523](https://github.com/dcache/dcache/commit/725b3a6523476ddec054a86d4b17cd150f880645)
+:   ci: don't start kafka collector in interactive mode
+
+[94b0bb65eb](https://github.com/dcache/dcache/commit/94b0bb65ebb02ce4639755145c004f56f799021b)
+:   CONTRIBUTING.md: typos, formatting fixes
+
+[8eee558bf4](https://github.com/dcache/dcache/commit/8eee558bf4bd3c2f00cff41e27b749330ad0df99)
+:   Add `CONTRIBUTING.md`
+
+[29ab1b54aa](https://github.com/dcache/dcache/commit/29ab1b54aa593d99fe40b52df388fc5ac65f50af)
+:   poolmanager: enable staging by default
+
+[2cdef22064](https://github.com/dcache/dcache/commit/2cdef22064eafbd1bf63056d3a25f5ba6c0ddeca)
+:   pool manager: log when stage request disallowed by partition configuration
+
+[3fee4baf6a](https://github.com/dcache/dcache/commit/3fee4baf6a41c8e2f9ad4489afd6b3592bf0014b)
+:   dcache-chimera: add active pools to `info`
+
+[6b4ebad205](https://github.com/dcache/dcache/commit/6b4ebad205be73efee296230d172ea928a1824b2)
+:   docs: describe min version ov postgresql
+
+[df1233d40d](https://github.com/dcache/dcache/commit/df1233d40d6e300b16f5ebb9955e72ef8960c87f)
+:   ci: drop centos-7 based wn. drop cvmfs
+
+[d8d934cf52](https://github.com/dcache/dcache/commit/d8d934cf527962e6dcfa20b319b809a048efc906)
+:   ci: use ZCG for containers
+
+[4043dd3a35](https://github.com/dcache/dcache/commit/4043dd3a351e9b9751d63e3959c840065b79af11)
+:   libs: update mina-sshd  to version 2.13.1
+
+[fb1d797962](https://github.com/dcache/dcache/commit/fb1d797962975a8745da4fde5363333705156ec1)
+:   libs: bump zookeeper and curator versions to 3.8.4 and 5.7.0
+
+[0d2629a3a4](https://github.com/dcache/dcache/commit/0d2629a3a4c5cc762126fac8b1ddc5efca7c5e2e)
+:   http(old): fix generated html for pool manager
+
+[fa8a90b80b](https://github.com/dcache/dcache/commit/fa8a90b80b10c03d4f01cdefa735ddbe3cc8e920)
+:   pool: fix missing logging placeholder for nfs write OP
+
+[cce2da5a98](https://github.com/dcache/dcache/commit/cce2da5a98304c77ee7fa8404b057c1d68654ff5)
+:   ci: split el9 wn initialization from s2 tests
+
+[aea6edec50](https://github.com/dcache/dcache/commit/aea6edec50d8dc7a15c3e8968d0824c48cfa0ad1)
+:   Reapply "Fix issue with infinite replicas when replicas > 1"
+
+[cfcc172b3d](https://github.com/dcache/dcache/commit/cfcc172b3d31e2753145168e5febdd9c71ecfa5e)
+:   ci: remove localhost property
+
+[7c4f2f673d](https://github.com/dcache/dcache/commit/7c4f2f673d24aa9b453c5b98c1b611821776564d)
+:   ci: remove comment out command
+
+[3619ce9b9f](https://github.com/dcache/dcache/commit/3619ce9b9fc9b57f8d198066c78217b95957311d)
+:   ci: refactor files
+
+[0b72715fa3](https://github.com/dcache/dcache/commit/0b72715fa3ab287d396b1cc39e09eb4753ce976d)
+:   ci: delete unused file
+
+[d5868b69aa](https://github.com/dcache/dcache/commit/d5868b69aa695c173baef9fe70e475d91f9c44f1)
+:   ci: frontend test classes.
+
+[8b2a8e1c0c](https://github.com/dcache/dcache/commit/8b2a8e1c0c35218a27f8015c8b80932afe2aabd2)
+:   ci: rename test suite
+
+[7f2c24adff](https://github.com/dcache/dcache/commit/7f2c24adff649bd971c6fc5d5e34ceb69dd64465)
+:   ci: make gitlab happy
+
+[8fc59673bb](https://github.com/dcache/dcache/commit/8fc59673bbcc10a309b246023dff26070d3ebdf3)
+:   ci: make gitlab happy
+
+[7dd7c4358b](https://github.com/dcache/dcache/commit/7dd7c4358b1698a51d4c2e9956f1c8f012ee292c)
+:   ci: make gitlab happy
+
+[1fcad4a132](https://github.com/dcache/dcache/commit/1fcad4a132032bbacfd3b8fe581566f6ff55eb84)
+:   ci: make gitlab happy
+
+[3ddca9abdd](https://github.com/dcache/dcache/commit/3ddca9abdd9fd436e45bf7542a8b0c20952da0fe)
+:   ci: renaming and commente back in
+
+[a414f3a2bf](https://github.com/dcache/dcache/commit/a414f3a2bfe5b1b9e23c5a9dc413409f11e82e0d)
+:   ci: renaming and commente back in.
+
+[d2dac63028](https://github.com/dcache/dcache/commit/d2dac63028e1a8a5e2094f055b6bf8b85c693764)
+:   ci: 101
+
+[8d0ff6ca4b](https://github.com/dcache/dcache/commit/8d0ff6ca4b0ed30a1f1a3e319f0991ad23fbf050)
+:   ci: 100th time is the charm.. (for gitlab-ci just in case)
+
+[1806d01690](https://github.com/dcache/dcache/commit/1806d01690867ee810cd6bb2be6656ff77552ef6)
+:   ci: add qos tests and junit report. rename endpoints.
+
+[66a8eb3234](https://github.com/dcache/dcache/commit/66a8eb3234a662ba6a9564ba34cc2976572239d4)
+:   ci: add junit report one last time again 4
+
+[1a2c562496](https://github.com/dcache/dcache/commit/1a2c562496599e2b6c7df31d5be0e4ef97eb282a)
+:   ci: add junit report one last time again 3
+
+[c5f774f226](https://github.com/dcache/dcache/commit/c5f774f2264184e371b541ecc7b6f349ac305305)
+:   ci: add junit report one last time again 2
+
+[6e2e17f494](https://github.com/dcache/dcache/commit/6e2e17f494044b099445e30de17f1abed5c75178)
+:   ci: add junit report one last time again
+
+[87afb895b5](https://github.com/dcache/dcache/commit/87afb895b50fdf9046cc1667e45c31dc67935352)
+:   ci: add junit report one last time
+
+[52efe7db55](https://github.com/dcache/dcache/commit/52efe7db556418ed1c2d9649438a1aaf5968941f)
+:   ci: add junit report one more time yet again
+
+[aea948c922](https://github.com/dcache/dcache/commit/aea948c9225efc51be7d4c234e01e981b741c8f8)
+:   ci: add junit report one more time
+
+[99eba2c3b7](https://github.com/dcache/dcache/commit/99eba2c3b7b6803dc814f927a8e12e765aa2918b)
+:   ci: add junit report yet again
+
+[f7f2fbbcda](https://github.com/dcache/dcache/commit/f7f2fbbcda68c2776d616077684783fb72149f95)
+:   ci: add junit report again
+
+[2b5916229e](https://github.com/dcache/dcache/commit/2b5916229efe5c6325078371e42ba9e91606625e)
+:   ci: add junit report
+
+[dadbc54d20](https://github.com/dcache/dcache/commit/dadbc54d20409e8fa9cde9d8a105871082d9c5a6)
+:   ci: variable name change and update to test classes.
+
+[0d37a3ba53](https://github.com/dcache/dcache/commit/0d37a3ba53bf748578e6fcaddbcf2d42af6abb00)
+:   ci: comment in gitlab-ci sections
+
+[2ce31ab468](https://github.com/dcache/dcache/commit/2ce31ab4684ff4af175b1355123b1d966765bd3c)
+:   ci: add flag for report.
+
+[f1004535cd](https://github.com/dcache/dcache/commit/f1004535cdb4a7b34e0d6daaa7ea0c559c53aa91)
+:   ci: add flag for report.
+
+[274b300731](https://github.com/dcache/dcache/commit/274b3007319068be10363f941f05bc85a6940dd3)
+:   ci: replacing correct variable in poolEndpoint test
+
+[9efa0424e7](https://github.com/dcache/dcache/commit/9efa0424e7a66720891e577404a0e7f7e0984c7e)
+:   ci: copy readme file to container. Add more variables. Get rid of migrationTest txt file.
+
+[2f5c1e2016](https://github.com/dcache/dcache/commit/2f5c1e201603b933eeb7180be94f0c103b83e062)
+:   Revert "Fix issue with infinite replicas when replicas > 1"
+
+[20d9c78e59](https://github.com/dcache/dcache/commit/20d9c78e59f1aae71946870dc30ccd998bf5fd86)
+:   ci: fix comments for qos-policy tests
+
+[2d7350e93d](https://github.com/dcache/dcache/commit/2d7350e93d92e90c6c56b0b3b79b1cc27e0f4dfe)
+:   ci: add upload file capability and check for it. Fix other migration tests.
+
+[069c9388da](https://github.com/dcache/dcache/commit/069c9388daa424d5522f8eeea2d5504e52dc0a13)
+:   ci: add qos-policy http file and variables for pool and qos-policy inside private var client.
+
+[986913c561](https://github.com/dcache/dcache/commit/986913c5614aceac16f7166d21cdd4362f5a5918)
+:   ci: comment out value pair tests for GET request for migration endpoint
+
+[fd9a7ef8d9](https://github.com/dcache/dcache/commit/fd9a7ef8d9bc9058ae4f47576bde34eb00683a02)
+:   ci: fix titles and tests for migration endpoint
+
+[a974d8bfae](https://github.com/dcache/dcache/commit/a974d8bfaea6cc5028b4bf17a976ccc26aa1de4a)
+:   ci: include variables
+
+[eb6d644da7](https://github.com/dcache/dcache/commit/eb6d644da7ad673ee24eb748dd7f950d7710da8a)
+:   ci: Update name yet again
+
+[4a9cc4caee](https://github.com/dcache/dcache/commit/4a9cc4caee533a55ba16d31b6ac3829291a3fd21)
+:   ci: Update correct name of file
+
+[ad439bfe94](https://github.com/dcache/dcache/commit/ad439bfe94cf8ee8fe9bc348e7cb3a86a010d511)
+:   ci: Add stage in ci for pool endpoint request to run in. Add variables, pool http file, migration yml file.
+
+[7ae7109f41](https://github.com/dcache/dcache/commit/7ae7109f4115dd7a7b3f00ce53b10d69cb8814ca)
+:   github: trigger sync on PR
+
+[03a27be538](https://github.com/dcache/dcache/commit/03a27be538d93ae0cb1751f9ca2ed7dd69330497)
+:   nfs: add functionallity to do ls on file labels
+
+[9655c37c45](https://github.com/dcache/dcache/commit/9655c37c45fac4b767ffa3a0fa2b75e021fb00c8)
+:   [maven-release-plugin] prepare for next development iteration
+
+[526c419366](https://github.com/dcache/dcache/commit/526c419366645756d26d3d79c0c96896f1cb90ef)
+:   ci: refactor files
+
+[0b68e41cb6](https://github.com/dcache/dcache/commit/0b68e41cb631ddbd3e1eba08dab76c13701f166b)
+:   ci: delete unused file
+
+[c84ed9fc4c](https://github.com/dcache/dcache/commit/c84ed9fc4c1ff69378bde363fa0386405466074d)
+:   ci: frontend test classes.
+
+[ab742aea5c](https://github.com/dcache/dcache/commit/ab742aea5c25e27fcc5b5c6275bd4432f24e8c46)
+:   ci: rename test suite
+
+[fedf87976e](https://github.com/dcache/dcache/commit/fedf87976e9e3ecc998a03c2ddf60c2c7a917518)
+:   ci: make gitlab happy
+
+[d27d9e6aba](https://github.com/dcache/dcache/commit/d27d9e6aba57066c39044c566d5679b05d9b8b32)
+:   ci: make gitlab happy
+
+[e0534ea46a](https://github.com/dcache/dcache/commit/e0534ea46aa5ca31e037a2744f885c70fb68c9d0)
+:   ci: make gitlab happy
+
+[29f1006ab5](https://github.com/dcache/dcache/commit/29f1006ab5fea067266920796244723b58e3b965)
+:   ci: make gitlab happy
+
+[c411d312fa](https://github.com/dcache/dcache/commit/c411d312fa9bba9630b5213d54b9d328ce8baa07)
+:   ci: renaming and commente back in
+
+[37e77d7ab6](https://github.com/dcache/dcache/commit/37e77d7ab6de43bc518dd2ee853dbab68d61a525)
+:   ci: renaming and commente back in.
+
+[a5bf0749a3](https://github.com/dcache/dcache/commit/a5bf0749a341f730dcf9b68ccde88b0fb6208aef)
+:   ci: 101
+
+[51705c90ca](https://github.com/dcache/dcache/commit/51705c90ca031b595b4b1b34294aa8be6b960c93)
+:   ci: 100th time is the charm.. (for gitlab-ci just in case)
+
+[61caee3182](https://github.com/dcache/dcache/commit/61caee3182388716c30cc5aaa0d8a94433a7d6c2)
+:   ci: add qos tests and junit report. rename endpoints.
+
+[9b993dc0d5](https://github.com/dcache/dcache/commit/9b993dc0d55184d9a995d24ceee50f10187100ee)
+:   ci: add junit report one last time again 4
+
+[465ab125bb](https://github.com/dcache/dcache/commit/465ab125bb56768c65f46bf96e2c62ec005b055b)
+:   ci: add junit report one last time again 3
+
+[f824f720b8](https://github.com/dcache/dcache/commit/f824f720b81cab179c27b2ce43eed658b8de546a)
+:   ci: add junit report one last time again 2
+
+[e75eed331c](https://github.com/dcache/dcache/commit/e75eed331c0618342fe6155b6d55ae36f8b42330)
+:   ci: add junit report one last time again
+
+[406467ab9e](https://github.com/dcache/dcache/commit/406467ab9e54cdd92f0c9a48a88b7185ad222d7e)
+:   ci: add junit report one last time
+
+[6ad655939d](https://github.com/dcache/dcache/commit/6ad655939de0b99ce3246b179d471894388696e7)
+:   ci: add junit report one more time yet again
+
+[76051acd41](https://github.com/dcache/dcache/commit/76051acd41e76f466218cfbff20d4848d89abc46)
+:   ci: add junit report one more time
+
+[7ee17d93ef](https://github.com/dcache/dcache/commit/7ee17d93ef88ad0337020dfdccdf7952a88861f5)
+:   ci: add junit report yet again
+
+[b59a8d6cc8](https://github.com/dcache/dcache/commit/b59a8d6cc8f95c14036247be0b831eb1e0cfa9f1)
+:   ci: add junit report again
+
+[589d1d3ef4](https://github.com/dcache/dcache/commit/589d1d3ef4350e082e9d3ade9c7c747a96594ef7)
+:   ci: add junit report
+
+[9d8471d6e5](https://github.com/dcache/dcache/commit/9d8471d6e533f95d99f424751ffbd2af91d0353f)
+:   ci: variable name change and update to test classes.
+
+[0733143bc5](https://github.com/dcache/dcache/commit/0733143bc53230c7293a5f490e274bbc7a4200b2)
+:   ci: comment in gitlab-ci sections
+
+[f73544b111](https://github.com/dcache/dcache/commit/f73544b11128d85d780adf984cf34cca899bb509)
+:   ci: add flag for report.
+
+[17c1bb33ab](https://github.com/dcache/dcache/commit/17c1bb33abcd0445875ecf5486368d0279af9260)
+:   ci: add flag for report.
+
+[959945e1c6](https://github.com/dcache/dcache/commit/959945e1c6234c3599bc8f1b904fbae7a0a11489)
+:   ci: replacing correct variable in poolEndpoint test
+
+[6dd4058bf6](https://github.com/dcache/dcache/commit/6dd4058bf69f67afb169ddd248b944d7e4422787)
+:   ci: copy readme file to container. Add more variables. Get rid of migrationTest txt file.
+
+[f4a5f4cc2b](https://github.com/dcache/dcache/commit/f4a5f4cc2b879012399b759d0e62ef65a2084ad4)
+:   Revert "Fix issue with infinite replicas when replicas > 1"
+
+[0c1d688c45](https://github.com/dcache/dcache/commit/0c1d688c459ce9adb0e6e75b41690d76e65c1258)
+:   Fix issue with infinite replicas when replicas > 1
+
+[513157afab](https://github.com/dcache/dcache/commit/513157afaba5e9f93d0a2bbd90b63ba2c68ff256)
+:   ci: fix comments for qos-policy tests
+
+[4e5cbf9acd](https://github.com/dcache/dcache/commit/4e5cbf9acdcd91da9635120614eff54224ef222f)
+:   ci: add upload file capability and check for it. Fix other migration tests.
+
+[42bab8322f](https://github.com/dcache/dcache/commit/42bab8322f98c21a8e0141e8a3b7887636c3769d)
+:   ci: add qos-policy http file and variables for pool and qos-policy inside private var client.
+
+[f740e3f27f](https://github.com/dcache/dcache/commit/f740e3f27f0e57d5ea4d2c677940629479db6e2e)
+:   ci: comment out value pair tests for GET request for migration endpoint
+
+[a5ed3cb4a3](https://github.com/dcache/dcache/commit/a5ed3cb4a3ed82797352a1150c620cab0f4184f6)
+:   ci: fix titles and tests for migration endpoint
+
+[fcc8a53134](https://github.com/dcache/dcache/commit/fcc8a53134a9c737c074769bd0fb49a3e421c459)
+:   ci: include variables
+
+[30ca379910](https://github.com/dcache/dcache/commit/30ca379910e30adcc1153565b9a870ebcbd8f39f)
+:   ci: Update name yet again
+
+[8120fbb037](https://github.com/dcache/dcache/commit/8120fbb037d5f1d988d39568098ef019300b341f)
+:   ci: Update correct name of file
+
+[e80ad235ee](https://github.com/dcache/dcache/commit/e80ad235ee0007ae944059550d48bbdf3d5d29ea)
+:   ci: Add stage in ci for pool endpoint request to run in. Add variables, pool http file, migration yml file.
+
 
 <!-- git log 10.1..10.2 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
 
