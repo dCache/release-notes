@@ -80,7 +80,7 @@ HTML header: <title>dCache 10.2 Release Notes</title>
 
 ## Acknowledgments
 
-(tbd, this section uses markdown formatting)
+- Anton Schwarz, Heidelberg University, DESY Summer Stutent Programm
 
 
 ## Release 10.2.0
@@ -89,7 +89,7 @@ HTML header: <title>dCache 10.2 Release Notes</title>
 
 ### Cleaner
 
-Cleaner-hsm's admin `info` command now shows information about which pools have currently been instructed to delete files from an attached HSM. These pools are still expected to send a reply concerning success or failure of the deetion.
+Cleaner-hsm's admin `info` command now shows information about which pools have currently been instructed to delete files from an attached HSM. These pools are still expected to send a reply concerning success or failure of the deletion.
 Additionally, the pool selection behaviour was changed to only select not already waited for pools for hsm-cleaning.
 
 
@@ -108,21 +108,21 @@ the above mentioned criteria. However, each file in a directory can
 belong to several logical groups, such as a special event type or
 experiment condition.
 
-With our previous releases  releases in dCache we
+With our previous releases  releases in dCache, we
 had have implemented user metadata
-Handling, so that  any type of short string label
+handling, so that  any short string label
 describing raw data, calibrated data or
 detector telemetry can be attached to a
 file via the RESTful API, or via graphical
 dCache-view interface. 
 
 
-With the latest changes in dCaheche now  it is possible to populate  virtual read-only directories with files as soon as the files get the corresponding label.
+With the latest changes in dCache, it is now possible to populate virtual read-only directories with files as soon as they get the corresponding label.
 
 
 These virtual directories are exposed through NFS and WebDAV protocols via the commands `ls -1 /mnt/.(collection)(labelName)` and `http://localhost:portnumber/.(collection)(labelName)`, respectively.
 
-For example, the following command returns the list of all files labels by blue-bird:
+For example, the following command returns the list of all files labeled by blue-bird:
 
 
  ```ini
@@ -145,6 +145,7 @@ To access the file a simple `cat /mnt/".(collection)(yellow)"/file_large_bird_4.
 
 The gPlazma' argus' plugin was removed due to a lack of usage and the decommissioning of the corresponding EGI-managed infrastructure.
 
+Added the possibility of prototyping `auth` and `map` plugins in Python.
 
 
 ### httpd
