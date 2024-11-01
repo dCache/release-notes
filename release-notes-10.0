@@ -76,6 +76,26 @@ HTML header: <title>dCache 10.0 Release Notes</title>
 
 Many Thanks to Petter A. Urkedal and Lukas Mansour for their contributions.
 
+## Release 10.0.12
+
+### xroot
+
+Return destination address (that is, the haproxy address) if `xrootd.enable.proxy-protocol=true` is set, instead of the actual door address.
+
+
+### Changelog 10.0.11..10.0.12
+
+<!-- git log 10.0.11..10.0.12 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[699ba968f8](https://github.com/dcache/dcache/commit/699ba968f8d0c8e2749ad0e83f3bb8bfa28df030)
+:   [maven-release-plugin] prepare release 10.0.12
+
+[159a48c761](https://github.com/dcache/dcache/commit/159a48c76137f58aa250dfa1c2246cdb7baa9429)
+:   xroot: handle haproxy and checksum command
+
+[1ceddef66f](https://github.com/dcache/dcache/commit/1ceddef66fcf43203b9c2a255d4d26529bc36b50)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 10.0.11
 
 ### CI

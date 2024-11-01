@@ -74,6 +74,26 @@ HTML header: <title>dCache 10.1 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 10.1.6
+
+### xroot
+
+Return destination address (that is, the haproxy address) if `xrootd.enable.proxy-protocol=true` is set, instead of the actual door address.
+
+
+### Changelog 10.1.5..10.1.6
+
+<!-- git log 10.1.5..10.1.6 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[0c3e0e1b16](https://github.com/dcache/dcache/commit/0c3e0e1b168b5e6798738ee0213674c164ea03fa)
+:   [maven-release-plugin] prepare release 10.1.6
+
+[17b85cc015](https://github.com/dcache/dcache/commit/17b85cc015e66a98443197e141b948eee121f170)
+:   xroot: handle haproxy and checksum command
+
+[13cca9a829](https://github.com/dcache/dcache/commit/13cca9a8295980a2dddde1e5add08a90833d75a5)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 10.1.5
 
 ### CI
