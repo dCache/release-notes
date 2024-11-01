@@ -190,7 +190,27 @@
       <p>dCache v10.2 requires a JVM supporting Java 17.</p>
     </description>
     <releases>
-	    <release> </release>
+      <name>dCache VERSION</name>
+      <download-url-prefix>repo/10.2/dcache</download-url-prefix>
+      <notes-url>release-notes-10.2.shtml</notes-url>
+      <version-prefix>10.2.</version-prefix>
+
+      <release version="0" recommended="1">
+        <date>20.10.2024</date>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>2d68faf8a22d8f96172be715ca94bd35</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>6f93f5212170c55502443576d748467f</md5sum>
+        </package>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>d30cadb154f3afc3da173f2324dea478</md5sum>
+        </package>
+      </release>
+
     </releases>
     </series>
 
