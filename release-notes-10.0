@@ -76,6 +76,26 @@ HTML header: <title>dCache 10.0 Release Notes</title>
 
 Many Thanks to Petter A. Urkedal and Lukas Mansour for their contributions.
 
+## Release 10.0.13
+
+### tape
+
+Users reported 2 day pin lifetime on staged files (which is a default) despite specifying different values. This is now fixed.
+
+
+### Changelog 10.0.12..10.0.13
+
+<!-- git log 10.0.12..10.0.13 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[6286a554bd](https://github.com/dcache/dcache/commit/6286a554bd490c49fc354181eb14e54ca62c41f4)
+:   [maven-release-plugin] prepare release 10.0.13
+
+[deee0f826d](https://github.com/dcache/dcache/commit/deee0f826dd2bf9d1d1d4ea4468d8b0c4da9003c)
+:   tape REST api: additional fix tohandling of prefixed paths
+
+[aa38343e56](https://github.com/dcache/dcache/commit/aa38343e56f69537718aba80587ef1c2e14e122e)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 10.0.12
 
 ### xroot
