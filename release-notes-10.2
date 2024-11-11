@@ -83,6 +83,35 @@ HTML header: <title>dCache 10.2 Release Notes</title>
 - Anton Schwarz, Heidelberg University, DESY Summer Stutent Programm
 
 
+## Release 10.2.2
+
+### bulk
+
+
+This fix has reduced the number 0f  stack traces in logs.
+
+### tape
+
+Users reported 2 day pin lifetime on staged files (which is a default) despite specifying different values.
+This is now fixed.
+
+
+### Changelog 10.2.1..10.2.2
+
+<!-- git log 10.2.1..10.2.2 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[df5eb3b5c7](https://github.com/dcache/dcache/commit/df5eb3b5c7543a8c68cf5bb9d80a8514f71ed34e)
+:   [maven-release-plugin] prepare release 10.2.2
+
+[a1b2a95b69](https://github.com/dcache/dcache/commit/a1b2a95b698cca83abc87776484efd7ae7a7fd59)
+:   tape REST api: additional fix tohandling of prefixed paths
+
+[cac439eebe](https://github.com/dcache/dcache/commit/cac439eebec0202959df1f66bc626ac47b7060a8)
+:   bulk/qos: shutdown executor services when stopped
+
+[92c11c94d3](https://github.com/dcache/dcache/commit/92c11c94d3f9b7ab016a4638bb2670eb0deb49a8)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 10.2.1
 
 ### xroot
