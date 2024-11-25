@@ -76,6 +76,28 @@ HTML header: <title>dCache 10.0 Release Notes</title>
 
 Many Thanks to Petter A. Urkedal and Lukas Mansour for their contributions.
 
+## Release 10.0.14
+
+### cells
+
+When Zookeeper updates core domain infos, dCache will first kill the existing cell tunnels and then later try to read and parse the new value. 
+If the new value is an empty string (for whatever reason), parsing will fail, but a new connection will not be established.
+This now fixed.
+
+
+### Changelog 10.0.13..10.0.14
+
+<!-- git log 10.0.13..10.0.14 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[f5570e31c3](https://github.com/dcache/dcache/commit/f5570e31c32b71abbb8e34b3221a787bca920c79)
+:   [maven-release-plugin] prepare release 10.0.14
+
+[95c4792c1f](https://github.com/dcache/dcache/commit/95c4792c1f61366e3e8f6ff442a91de0cc74d767)
+:   cells: ignore empty core domain uris propagated by zk
+
+[368e8e5502](https://github.com/dcache/dcache/commit/368e8e5502095e18a56bb51831055919a4202502)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 10.0.13
 
 ### tape

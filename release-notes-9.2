@@ -79,6 +79,28 @@ Many Thanks to Lars Jansse and Sandro Grizzo for their contributions.
 - If upgrading from 8.2, be sure to read also the release notes for 9.0 and 9.1, important changes are described there. See the [9.2 migration guide](https://github.com/dCache/upgrade-guide/blob/master/UPGRADE92.md) for more complete information
 - With version 9.2.8+, empty and non-existent banfiles will be treated the same
 
+## Release 9.2.30
+
+### cells
+
+When Zookeeper updates core domain infos, dCache will first kill the existing cell tunnels and then later try to read and parse the new value. 
+If the new value is an empty string (for whatever reason), parsing will fail, but a new connection will not be established.
+This now fixed.
+
+
+### Changelog 9.2.29..9.2.30
+
+<!-- git log 9.2.29..9.2.30 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[8aa2e85a7d](https://github.com/dcache/dcache/commit/8aa2e85a7daafe949a3ee32e3892c05ee7d605ac)
+:   [maven-release-plugin] prepare release 9.2.30
+
+[9ceac4d97c](https://github.com/dcache/dcache/commit/9ceac4d97cbee0f122285a8bc6a68c7c82f8cf5e)
+:   cells: ignore empty core domain uris propagated by zk
+
+[c7b8a50b22](https://github.com/dcache/dcache/commit/c7b8a50b22b73dde5d60c51afa071cb3d2623d80)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 9.2.29
 
 ### tape
