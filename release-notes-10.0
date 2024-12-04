@@ -76,6 +76,26 @@ HTML header: <title>dCache 10.0 Release Notes</title>
 
 Many Thanks to Petter A. Urkedal and Lukas Mansour for their contributions.
 
+## Release 10.0.15
+
+### jvm
+
+Removed default JVM option UseCompressedOops so dCache works with large heap size.
+
+
+### Changelog 10.0.14..10.0.15
+
+<!-- git log 10.0.14..10.0.15 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[11e2ba3530](https://github.com/dcache/dcache/commit/11e2ba35301843d0263bebb6493ac4c519407117)
+:   [maven-release-plugin] prepare release 10.0.15
+
+[f04bc70af4](https://github.com/dcache/dcache/commit/f04bc70af46075b0de1866650129a8a6d9b5a16f)
+:   jvm: drop UseCompressedOops JVM option
+
+[6d31a13780](https://github.com/dcache/dcache/commit/6d31a13780c12b823ec0d455b74439bd7caf5bae)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 10.0.14
 
 ### cells
