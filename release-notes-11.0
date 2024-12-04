@@ -107,6 +107,8 @@ HTML header: <title>dCache 11.0 Release Notes</title>
 
 ### Pool
 
+Pools `set max diskspace` command accepts `%` as unit, which is treated as a percentage of the total disk size under data directory.
+
 ### Poolmanager
 
 ### Resilience
