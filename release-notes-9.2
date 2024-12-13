@@ -79,6 +79,38 @@ Many Thanks to Lars Jansse and Sandro Grizzo for their contributions.
 - If upgrading from 8.2, be sure to read also the release notes for 9.0 and 9.1, important changes are described there. See the [9.2 migration guide](https://github.com/dCache/upgrade-guide/blob/master/UPGRADE92.md) for more complete information
 - With version 9.2.8+, empty and non-existent banfiles will be treated the same
 
+## Release 9.2.32
+
+### bulk
+
+Restore the ability to use absolute paths when using bulk REST API.
+
+### cells
+
+Cells will no longer try to re-establish dead tunnel connections.
+
+### qos
+
+
+### Changelog 9.2.31..9.2.32
+
+<!-- git log 9.2.31..9.2.32 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[3f4b9aca2e](https://github.com/dcache/dcache/commit/3f4b9aca2ea068707b7197c51c5870bbb2d6240f)
+:   [maven-release-plugin] prepare release 9.2.32
+
+[6794baa4c0](https://github.com/dcache/dcache/commit/6794baa4c0572f2ace98467e169c2c6f7cba41a9)
+:   bulk: handle absolute/relative paths in uniform fashion
+
+[2010271998](https://github.com/dcache/dcache/commit/2010271998fbcdb147e6f0d66667dfbdf6bee1fb)
+:   qos: QOS fails with 'Attribute is not defined: QOS_POLICY'
+
+[c8eab52302](https://github.com/dcache/dcache/commit/c8eab52302908985b5ccd4025a976c17a0f874d2)
+:   cells: always try to re-establish dead tunnel, unless stopped
+
+[a4c0df8587](https://github.com/dcache/dcache/commit/a4c0df8587a9db31d9ffca8d6a1ccadb25a748da)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 9.2.31
 
 ### jvm

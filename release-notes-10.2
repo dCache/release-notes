@@ -83,6 +83,38 @@ HTML header: <title>dCache 10.2 Release Notes</title>
 - Anton Schwarz, Heidelberg University, DESY Summer Stutent Programm
 
 
+## Release 10.2.5
+
+### bulk
+
+Restore the ability to use absolute paths when using bulk REST API.
+
+### cells
+
+Cells will no longer try to re-establish dead tunnel connections.
+
+### qos
+
+
+### Changelog 10.2.4..10.2.5
+
+<!-- git log 10.2.4..10.2.5 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[92ad9eb538](https://github.com/dcache/dcache/commit/92ad9eb538165a8dfedbef6c60dc49f9fbacb546)
+:   [maven-release-plugin] prepare release 10.2.5
+
+[f67be3b424](https://github.com/dcache/dcache/commit/f67be3b4240df106e52a166fefb1f93a73520f8a)
+:   bulk: handle absolute/relative paths in uniform fashion
+
+[0265bee3c0](https://github.com/dcache/dcache/commit/0265bee3c09024817698a4482fa4fe9b2928e78f)
+:   qos: QOS fails with 'Attribute is not defined: QOS_POLICY'
+
+[342e010326](https://github.com/dcache/dcache/commit/342e01032601558f9f06b5101bde430b644639ef)
+:   cells: always try to re-establish dead tunnel, unless stopped
+
+[528c0a470d](https://github.com/dcache/dcache/commit/528c0a470d25d40d1b5640b5f28c73df27ecd7e9)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 10.2.4
 
 ### jvm

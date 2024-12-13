@@ -195,7 +195,23 @@
       <notes-url>release-notes-10.2.shtml</notes-url>
       <version-prefix>10.2.</version-prefix>
 
-      <release version="4" recommended="1">
+      <release version="5" recommended="1">
+        <date>13.12.2024</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>c58a09635d53ac6f9202d71f269b5167</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>97e53d2d829d3c0c1e3172716ff5e066</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>e511b72cee102c69ffcb238c9792ac1a</md5sum>
+        </package>
+      </release>
+
+      <release version="4">
         <date>04.12.2024</date>
         <package name="Debian package">
           <download-url>_VERSION-1_all.deb</download-url>
@@ -316,7 +332,23 @@
         </package>
       </release>
 -->
-      <release version="9" recommended="1">
+      <release version="10" recommended="1">
+        <date>13.12.2024</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>92ca03aad54636c4e64dafedb5ac95a6</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>c99181a275f47724b6dab39cc5ccc2a2</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>4810bb9a4c4580e94127479e0f20a6c3</md5sum>
+        </package>
+      </release>
+
+      <release version="9">
         <date>04.12.2024</date>
         <package name="Debian package">
           <download-url>_VERSION-1_all.deb</download-url>
@@ -503,7 +535,23 @@
         </package>
       </release>
 -->
-      <release version="15" recommended="1">
+      <release version="16" recommended="1">
+        <date>13.12.2024</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>ca37cfe868ea5fbdea0dc390bdadf5ec</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>e84c0ae7ab01fd1dbae70fbc9bbcce03</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>9f16418e67dec7611e4006e8ac84eac7</md5sum>
+        </package>
+      </release>
+
+      <release version="15">
         <date>04.12.2024</date>
         <package name="Debian package">
           <download-url>_VERSION-1_all.deb</download-url>
@@ -789,7 +837,23 @@
       </release>
 -->
 
-      <release version="31" recommended="1">
+      <release version="32" recommended="1">
+        <date>13.12.2024</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>571979fb451261aacf49e0e6d2c4c66d</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>fe39c769970f1882a203027953171012</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>79e94bbcdd01c637435f28e547fc5d9f</md5sum>
+        </package>
+      </release>
+
+      <release version="31">
         <date>4.12.2024</date>
         <package name="Debian package">
           <download-url>_VERSION-1_all.deb</download-url>
