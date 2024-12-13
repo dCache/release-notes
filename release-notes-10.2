@@ -91,10 +91,11 @@ Restore the ability to use absolute paths when using bulk REST API.
 
 ### cells
 
-Cells will no longer try to re-establish dead tunnel connections.
+Cells will always try to re-establish dead tunnel connections.
 
 ### qos
 
+This fix will take care of the 'Attribute is not defined: QOS_POLICY' error in logs.
 
 ### Changelog 10.2.4..10.2.5
 
