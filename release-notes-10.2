@@ -83,6 +83,30 @@ HTML header: <title>dCache 10.2 Release Notes</title>
 - Anton Schwarz, Heidelberg University, DESY Summer Stutent Programm
 
 
+## Release 10.2.6
+
+### pool
+
+The pool should not switch to DISABLED mode if a "not enough memory" exception occurs.
+
+This issue has now been fixed, and in such cases, the pool will switch to READ-ONLY mode instead.
+
+#  Description in mark-down; terminate with a line containin only '--'
+
+
+### Changelog 10.2.5..10.2.6
+
+<!-- git log 10.2.5..10.2.6 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[f046d0f8e2](https://github.com/dcache/dcache/commit/f046d0f8e2da16f0c218c8316416d31223cc02ac)
+:   [maven-release-plugin] prepare release 10.2.6
+
+[6d235e37ff](https://github.com/dcache/dcache/commit/6d235e37ff080c178eeac71cb019c0ce639d4a3b)
+:   pool: separate cases for disk error and no space available
+
+[54f4a14873](https://github.com/dcache/dcache/commit/54f4a14873e9a8cad364c1272f62b9cac322a9c5)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 10.2.5
 
 ### bulk

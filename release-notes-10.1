@@ -74,6 +74,30 @@ HTML header: <title>dCache 10.1 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 10.1.11
+
+### pool
+
+The pool should not switch to DISABLED mode if a "not enough memory" exception occurs.
+
+This issue has now been fixed, and in such cases, the pool will switch to READ-ONLY mode instead.
+
+#  Description in mark-down; terminate with a line containin only '--'
+
+
+### Changelog 10.1.10..10.1.11
+
+<!-- git log 10.1.10..10.1.11 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[bf74be92e2](https://github.com/dcache/dcache/commit/bf74be92e25afea58a54655f07f9af732e31f85b)
+:   [maven-release-plugin] prepare release 10.1.11
+
+[d11d88fbd0](https://github.com/dcache/dcache/commit/d11d88fbd092f51fa975737b1119c7fb18b2cb98)
+:   pool: separate cases for disk error and no space available
+
+[cd1fd814f4](https://github.com/dcache/dcache/commit/cd1fd814f409ab647a89a059e163725406d0a6c2)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 10.1.10
 
 ### bulk

@@ -79,6 +79,30 @@ Many Thanks to Lars Jansse and Sandro Grizzo for their contributions.
 - If upgrading from 8.2, be sure to read also the release notes for 9.0 and 9.1, important changes are described there. See the [9.2 migration guide](https://github.com/dCache/upgrade-guide/blob/master/UPGRADE92.md) for more complete information
 - With version 9.2.8+, empty and non-existent banfiles will be treated the same
 
+## Release 9.2.33
+
+### pool
+
+The pool should not switch to DISABLED mode if a "not enough memory" exception occurs.
+
+This issue has now been fixed, and in such cases, the pool will switch to READ-ONLY mode instead.
+
+#  Description in mark-down; terminate with a line containin only '--'
+
+
+### Changelog 9.2.32..9.2.33
+
+<!-- git log 9.2.32..9.2.33 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[6f0f634f06](https://github.com/dcache/dcache/commit/6f0f634f06248fb57e5f686871ebb71a5c354cf7)
+:   [maven-release-plugin] prepare release 9.2.33
+
+[a0f2d89905](https://github.com/dcache/dcache/commit/a0f2d8990562fef3ac12c21b8d1f7aebfcb4c089)
+:   pool: separate cases for disk error and no space available
+
+[2bbba5a459](https://github.com/dcache/dcache/commit/2bbba5a459f297c2e043bd2f65326712a329ce41)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 9.2.32
 
 ### bulk
