@@ -83,6 +83,43 @@ HTML header: <title>dCache 10.2 Release Notes</title>
 - Anton Schwarz, Heidelberg University, DESY Summer Stutent Programm
 
 
+## Release 10.2.7
+
+### billing
+
+
+dcache-billing-indexer can now process compressed files.
+
+### bulk
+
+Setting files having infinite pin to state SKIPPED was prevening  them from being staged if pool goes down.
+
+This is now fixed and the staging of files that happen to be on offline pools works properly.
+
+### cells
+
+The current release fixed race condition  between thread start and flag check, which was shutting down  tunnel  instantly.
+
+
+### Changelog 10.2.6..10.2.7
+
+<!-- git log 10.2.6..10.2.7 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[af9200c84f](https://github.com/dcache/dcache/commit/af9200c84fac72bc1431e95f65d08b598052f11e)
+:   [maven-release-plugin] prepare release 10.2.7
+
+[6277047ffc](https://github.com/dcache/dcache/commit/6277047ffca0ff2e13488cd37ba44cd45c9d7427)
+:   dcache-billing-indexer: add explicit dependency on commons-io
+
+[90984db935](https://github.com/dcache/dcache/commit/90984db935cb3d9abdcb841367cadec23af9710f)
+:   cells: fix race condition between thread start and flag check
+
+[4ea4d6f1b5](https://github.com/dcache/dcache/commit/4ea4d6f1b5e48f92363cd41bbe6222211de07c5c)
+:   Bulk: PinManagerActivity do not set state of files that are pinned indefinitely to SKIPPED
+
+[c87dacb6e4](https://github.com/dcache/dcache/commit/c87dacb6e450b9987cc34de1d99f6b3781483a97)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 10.2.6
 
 ### pool

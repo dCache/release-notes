@@ -74,6 +74,28 @@ HTML header: <title>dCache 10.1 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 10.1.12
+
+### bulk
+
+Setting files having infinite pin to state SKIPPED was prevening  them from being staged if pool goes down.
+
+This is now fixed and the staging of files that happen to be on offline pools works properly.
+
+
+### Changelog 10.1.11..10.1.12
+
+<!-- git log 10.1.11..10.1.12 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[17678b0429](https://github.com/dcache/dcache/commit/17678b042950ffb853f85cac8d48053d91d4b561)
+:   [maven-release-plugin] prepare release 10.1.12
+
+[0d791575f8](https://github.com/dcache/dcache/commit/0d791575f884bea2bc28bd18b141e3defd34d9ad)
+:   Bulk: PinManagerActivity do not set state of files that are pinned indefinitely to SKIPPED
+
+[c7bd310d74](https://github.com/dcache/dcache/commit/c7bd310d7422db2775eb7cce987b69ec01351619)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 10.1.11
 
 ### pool

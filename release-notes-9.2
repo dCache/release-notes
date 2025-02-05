@@ -79,6 +79,28 @@ Many Thanks to Lars Jansse and Sandro Grizzo for their contributions.
 - If upgrading from 8.2, be sure to read also the release notes for 9.0 and 9.1, important changes are described there. See the [9.2 migration guide](https://github.com/dCache/upgrade-guide/blob/master/UPGRADE92.md) for more complete information
 - With version 9.2.8+, empty and non-existent banfiles will be treated the same
 
+## Release 9.2.34
+
+### bulk
+
+Setting files having infinite pin to state SKIPPED was prevening  them from being staged if pool goes down.
+
+This is now fixed and the staging of files that happen to be on offline pools works properly.
+
+
+### Changelog 9.2.33..9.2.34
+
+<!-- git log 9.2.33..9.2.34 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[c85786fcc2](https://github.com/dcache/dcache/commit/c85786fcc25ba48efd24c65caa77a1bb373af823)
+:   [maven-release-plugin] prepare release 9.2.34
+
+[5ef46d8337](https://github.com/dcache/dcache/commit/5ef46d83371e4ed6b31c6880265abd9771992951)
+:   Bulk: PinManagerActivity do not set state of files that are pinned indefinitely to SKIPPED
+
+[cc89918b02](https://github.com/dcache/dcache/commit/cc89918b02c5155d12ad05fdd3517a1b51d63909)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 9.2.33
 
 ### pool
