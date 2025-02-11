@@ -83,6 +83,48 @@ HTML header: <title>dCache 10.2 Release Notes</title>
 - Anton Schwarz, Heidelberg University, DESY Summer Stutent Programm
 
 
+## Release 10.2.8
+
+### pool
+
+Some filesystems miscalculate/report free space in respect tu used space:
+
+
+```
+$ df /dcache/pool-a
+Filesystem        1K-blocks         Used Available Use% Mounted on
+/dev/sda1      558602657792 558397210232 205447560 100% /dcache/pool-a
+
+$ du -s /dcache/pool-a
+554502450484	/dcache/pool-a
+
+$ bc
+558602657792 - 554502450484
+4100207308
+```
+
+
+
+File system reports 200GB of the free space, however, total - real used gives ~4TB.
+
+Thus dCache assumes 4TB and write the file system full... ==> IO error
+
+
+
+
+### Changelog 10.2.7..10.2.8
+
+<!-- git log 10.2.7..10.2.8 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[dfc5d69901](https://github.com/dcache/dcache/commit/dfc5d6990131d1af28ba5428c6d90561041c76b1)
+:   [maven-release-plugin] prepare release 10.2.8
+
+[59a628dcfb](https://github.com/dcache/dcache/commit/59a628dcfb84123605e621dd7c676568985e1410)
+:   pool: add workaround space mismanagementd by XFS (and others?)
+
+[501fc7e628](https://github.com/dcache/dcache/commit/501fc7e6287a55d7d72929cf6ab93505ce0b4308)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 10.2.7
 
 ### billing
