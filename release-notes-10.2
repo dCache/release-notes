@@ -89,6 +89,7 @@ HTML header: <title>dCache 10.2 Release Notes</title>
 
 Some filesystems miscalculate/report free space in respect tu used space:
 
+For example:
 
 ```
 $ df /dcache/pool-a
@@ -109,6 +110,7 @@ File system reports 200GB of the free space, however, total - real used gives ~4
 
 Thus dCache assumes 4TB and write the file system full... ==> IO error
 
+the current release added workaround space mismanagementd by XFS.
 
 
 
