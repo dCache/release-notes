@@ -87,30 +87,14 @@ HTML header: <title>dCache 10.2 Release Notes</title>
 
 ### pool
 
-Some filesystems miscalculate/report free space in respect tu used space:
+Filesystems have an overhead for their own internal data structures.
 
-For example:
+XFS, for example, has an overhead of around 1% of the total disk space. 
 
-```
-$ df /dcache/pool-a
-Filesystem        1K-blocks         Used Available Use% Mounted on
-/dev/sda1      558602657792 558397210232 205447560 100% /dcache/pool-a
+This results in miscalculation of the free space reported by file system and
+the total - real used one, so that dCache assumes that there is more  space available than there is and writes the file system full resulting in IO error.
 
-$ du -s /dcache/pool-a
-554502450484	/dcache/pool-a
-
-$ bc
-558602657792 - 554502450484
-4100207308
-```
-
-
-
-File system reports 200GB of the free space, however, total - real used gives ~4TB.
-
-Thus dCache assumes 4TB and write the file system full... ==> IO error
-
-the current release added workaround space mismanagementd by XFS.
+The current release added workaround space mismanagementd by XFS.
 
 
 
