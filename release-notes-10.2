@@ -83,6 +83,26 @@ HTML header: <title>dCache 10.2 Release Notes</title>
 - Anton Schwarz, Heidelberg University, DESY Summer Stutent Programm
 
 
+## Release 10.2.9
+
+### qos
+
+This fix will take care of the NPE in logs when QOS_POLICY attribute defaults to null.
+
+
+### Changelog 10.2.8..10.2.9
+
+<!-- git log 10.2.8..10.2.9 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[4c0254ddfb](https://github.com/dcache/dcache/commit/4c0254ddfb74ac2fda42e4d9c41f131330fddbd1)
+:   [maven-release-plugin] prepare release 10.2.9
+
+[b679ea08c4](https://github.com/dcache/dcache/commit/b679ea08c4e2e9a21e55624cf9e250439cf89bd3)
+:   qos: Uncaught NullPointerException due to QoS being set to null
+
+[744e4a94f8](https://github.com/dcache/dcache/commit/744e4a94f898a1fe3975a933ebd3f19103d683ce)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 10.2.8
 
 ### pool
