@@ -76,6 +76,26 @@ HTML header: <title>dCache 10.0 Release Notes</title>
 
 Many Thanks to Petter A. Urkedal and Lukas Mansour for their contributions.
 
+## Release 10.0.20
+
+### libs
+
+Update the jetty library to the latest version in the 9.4 series.
+
+
+### Changelog 10.0.19..10.0.20
+
+<!-- git log 10.0.19..10.0.20 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[f8fb2ec3f0](https://github.com/dcache/dcache/commit/f8fb2ec3f0da54186cdd46bae5602bc20fe36329)
+:   [maven-release-plugin] prepare release 10.0.20
+
+[52fcb65df2](https://github.com/dcache/dcache/commit/52fcb65df261923720ef885c9f8f952f32d3dcd7)
+:   libs: use jetty 9.4.57.v20241219
+
+[acd029e72e](https://github.com/dcache/dcache/commit/acd029e72edc305f54f9827e01ea9ba33c376731)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 10.0.19
 
 ### qos
