@@ -76,6 +76,26 @@ HTML header: <title>dCache 10.0 Release Notes</title>
 
 Many Thanks to Petter A. Urkedal and Lukas Mansour for their contributions.
 
+## Release 10.0.21
+
+### jetty
+
+Disable sending Jetty version number.
+
+
+### Changelog 10.0.20..10.0.21
+
+<!-- git log 10.0.20..10.0.21 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[6a9fbae819](https://github.com/dcache/dcache/commit/6a9fbae81958bc66d838ec061637e744a8925bfc)
+:   [maven-release-plugin] prepare release 10.0.21
+
+[4c42985030](https://github.com/dcache/dcache/commit/4c4298503021114ee4c921f65de5ec8da767a108)
+:   jetty: disable sending version number
+
+[a0e5baeaed](https://github.com/dcache/dcache/commit/a0e5baeaede9999969209a389a9d0c2e570e11cf)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 10.0.20
 
 ### libs

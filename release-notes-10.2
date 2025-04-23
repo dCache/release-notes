@@ -83,6 +83,42 @@ HTML header: <title>dCache 10.2 Release Notes</title>
 - Anton Schwarz, Heidelberg University, DESY Summer Stutent Programm
 
 
+## Release 10.2.12
+
+### cells
+
+ Tunnel connections will now be more stable and reliable, reducing unexpected connection failures.
+
+### jetty
+
+Disable sending Jetty version number.
+
+
+### Changelog 10.2.11..10.2.12
+
+<!-- git log 10.2.11..10.2.12 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[d72198756f](https://github.com/dcache/dcache/commit/d72198756fa4fbca69e7c8a0572092c6449791d3)
+:   [maven-release-plugin] prepare release 10.2.12
+
+[1fbfd8f86d](https://github.com/dcache/dcache/commit/1fbfd8f86dc7a8c64915f748001eb21ed2442850)
+:   vehicles: support door requesting multiple checksums
+
+[d059a74583](https://github.com/dcache/dcache/commit/d059a7458366eee468089de3add3ce994bcbb737)
+:   jetty: disable sending version number
+
+[e8554f93ab](https://github.com/dcache/dcache/commit/e8554f93ab48453326e6738a389d952caf74b863)
+:   cells: use core domain endpoint only if hostname resolable
+
+[623f1a12fc](https://github.com/dcache/dcache/commit/623f1a12fc1f0d5d5e8de5b4fdc393d148def9c7)
+:   Changed OpenJDK 11 to 17, because dCache now requires it. Updated dCache version example.
+
+[14ecd2cd48](https://github.com/dcache/dcache/commit/14ecd2cd4849f0208b1f7e8bd3c653f60a15f6b7)
+:   Changing jdk to 17, because dCache now requires it; also, jcmd is in java-17-openjdk-headless
+
+[5986f59f2e](https://github.com/dcache/dcache/commit/5986f59f2e52b096357229ad3e6ec4bdf68551b3)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 10.2.11
 
 ### documentation
