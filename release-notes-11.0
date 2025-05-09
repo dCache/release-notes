@@ -101,6 +101,45 @@ HTML header: <title>dCache 11.0 Release Notes</title>
 
 ### NFS
 
+The  user now has the possibility to dynamically group files with the same label into
+virtual directories independent of the actual file location. These virtual read-only directories
+are dynamically populated with files as soon as the files get the corresponding label. 
+
+
+`$ ls -l /dcache/".(collection)"/AnnaBerthaLudwig` will return the list of all files tagged by AnnaBerthaLudwig
+
+
+```
+report.txt-9
+report.txt-10
+
+```
+
+Where 9 nad 10 are the parent id's.
+
+Files can be downloaded  via:
+
+`cat /dcache/".(collection)"/report.txt-9`
+
+it is also possible to query all existing labels 
+
+````
+ ls -l /dcache/".(collection)"
+```
+
+wil return 
+
+```
+user@user-O:~/dcache$ ls -l   /mnt/".(collection)"/
+total 3
+drwxr-xr-x 13 root root 512 Mai  9 12:06 AnnaBerthaLudwig
+drwxr-xr-x 13 root root 512 Mai  8 12:06 Xray
+drwxr-xr-x 13 root root 512 Mai  8 12:06 1895
+
+```
+
+
+
 ### Pinmanager
 
 ### PNFS Manager
