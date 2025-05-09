@@ -169,6 +169,36 @@
 
 
 
+  <series id="server-11.0">
+    <title>server 11.0.x</title>
+    <description>
+            <p>dCache 11.0 is a Golden Release introducing the following highlights:</p>
+      <ul>
+              <li>It is possible now dynamically group files with the same label into
+		      virtual directories</li>
+              
+              
+      </ul>
+      <p>Incompatibilities</p>
+      <ul>
+              
+      </ul>
+      <p>dCache v11.0 requires a JVM supporting Java 17.</p>
+    </description>
+    <releases>
+
+	    <releases>
+      <name>dCache VERSION</name>
+      <download-url-prefix>repo/11.0/dcache</download-url-prefix>
+      <notes-url>release-notes-11.0.shtml</notes-url>
+      <version-prefix>11.0.</version-prefix>
+
+      <release>
+      </release>
+<releases>
+
+</series>
+
   <series id="server-10.2">
     <title>server 10.2.x</title>
     <description>
