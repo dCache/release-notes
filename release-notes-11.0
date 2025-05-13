@@ -174,7 +174,243 @@ Pools `set max diskspace` command accepts `%` as unit, which is treated as a per
 
 <!-- git log 10.2..11.0 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
 
-(tbd as soon as the branching is done)
+[b8049c371a](https://github.com/dcache/dcache/commit/b8049c371ae53baf7bdfcda49dd908b9a0c75977)
+:   [maven-release-plugin] prepare branch @{releaseLabel}
+
+[b60aba5bcb](https://github.com/dcache/dcache/commit/b60aba5bcbbf156a07f6a8fb5197985fffb50c51)
+:   frontend:make DirectoryListSource Polimorph
+
+[61b7dbfa7b](https://github.com/dcache/dcache/commit/61b7dbfa7bd1dc8b65a50693654da5d77d63d300)
+:   Scitags: Firefly usage and stats (#7778)
+
+[cc1b65ab5b](https://github.com/dcache/dcache/commit/cc1b65ab5bfa300fb625f29f5a00a884971fe5aa)
+:   jetty: disable sending version number
+
+[b75b1a7605](https://github.com/dcache/dcache/commit/b75b1a76052f041a5a2b119ad9c8248bdde4e237)
+:   ci: enable more pynfs NFS tests
+
+[217fed9d8f](https://github.com/dcache/dcache/commit/217fed9d8fd1e80564f019f924581c746bc54905)
+:   ci: enable all pynfs tests related to setattr
+
+[5021255d1d](https://github.com/dcache/dcache/commit/5021255d1d695ef190d87e74745f7fc04d9bef6a)
+:   cells: simplify initialization of LocationManagerConnector
+
+[34658ed0d7](https://github.com/dcache/dcache/commit/34658ed0d7fe32d81910fff012903f5fd5f66123)
+:   Scitags: fallback mechanism (#7775)
+
+[543bfc5711](https://github.com/dcache/dcache/commit/543bfc57112d8e0f659210dc92a25febd2a75b78)
+:   cells: use core domain endpoint only if hostname resolable
+
+[3541affb3d](https://github.com/dcache/dcache/commit/3541affb3d1f6599fec7fe358079d954929ccef6)
+:   Replace jdk 11 with 17, because dCache now requires it; update dCache version in example
+
+[04c71e03b3](https://github.com/dcache/dcache/commit/04c71e03b35c5f2b8d3931fd6a4c01e629de5ec1)
+:   Changing jdk to 17, because dCache now requires it; also, jcmd is in java-17-openjdk-headless
+
+[ec2aa806e5](https://github.com/dcache/dcache/commit/ec2aa806e500aec7dd7157fab1ca53a8707cf3ff)
+:   Revert "ci: use multistage container build to reduce image size"
+
+[1c23511c62](https://github.com/dcache/dcache/commit/1c23511c62fc350a7757384cde27d96354efb301)
+:   pom: use jython-slim
+
+[c3d4db45c3](https://github.com/dcache/dcache/commit/c3d4db45c3ee4405026b67d48c843293470fe510)
+:   ci: use multistage container build to reduce image size
+
+[88f3d566be](https://github.com/dcache/dcache/commit/88f3d566befa1b8d0ef3f0e4bf3fcf1f6cf09478)
+:   ci: use multistage container build to reduce image size
+
+[4da17af73f](https://github.com/dcache/dcache/commit/4da17af73f4d3a97c96cf93839744260585010fa)
+:   github: mirror not sync PR
+
+[e47acf7470](https://github.com/dcache/dcache/commit/e47acf74700fa2f03cddec58e31b49cd93325a5c)
+:   github-sync: fix repo name
+
+[44bee8c24f](https://github.com/dcache/dcache/commit/44bee8c24f6c018856abfd690fd2886810e3b3b1)
+:   github: mirror PRs to gitlab
+
+[36f54db61b](https://github.com/dcache/dcache/commit/36f54db61bb5da8a441d0c29a54daef1ccfcf940)
+:   labels: fixing issue #7727
+
+[65e190f498](https://github.com/dcache/dcache/commit/65e190f4985801172d4f4706f8f44338d57a7c19)
+:   Update webdav.md: add STAGE to table of activities
+
+[23e49b719e](https://github.com/dcache/dcache/commit/23e49b719e56213e4b0400908f8ad3e67f3eed6f)
+:   Update macaroons.md: add STAGE to list of activities
+
+[5b5fd42f66](https://github.com/dcache/dcache/commit/5b5fd42f661e6875d931fb85b2108cf10c5e136b)
+:   book: update descriptions of partition types
+
+[02a3bbb66c](https://github.com/dcache/dcache/commit/02a3bbb66c80dfdc1438b7e63efa04361751d658)
+:   Update hsmcp.rb: do not escape string that is returned to the pool
+
+[f6d6e31dc6](https://github.com/dcache/dcache/commit/f6d6e31dc69c90472b891186809174803e777465)
+:   libs: use jetty 9.4.57.v20241219
+
+[8517165f16](https://github.com/dcache/dcache/commit/8517165f161a5f54f0cc7cdd00a3c28f5a39e284)
+:   doors,pools: extend ProtocolInfo to propagate Scitags to FlowMarkers
+
+[db878cc947](https://github.com/dcache/dcache/commit/db878cc9477e017c0957b664d9fb828027d093f6)
+:   Update gplazma.properties: explain gplazma.oidc.provider options
+
+[0315f6fbe0](https://github.com/dcache/dcache/commit/0315f6fbe01a16490bc88796ffe5baba62cf3883)
+:   book: fix typo
+
+[5c7c0a6eee](https://github.com/dcache/dcache/commit/5c7c0a6eee6f46b07b92dbe91cfdf3464595bab2)
+:   nfs: add improve ChimeraVfs javadoc
+
+[09fb7b1f56](https://github.com/dcache/dcache/commit/09fb7b1f5634366be021e5353398beaa6ba117cc)
+:   build(deps): bump io.netty:netty-handler
+
+[ed2bcad2a7](https://github.com/dcache/dcache/commit/ed2bcad2a7567a4d7bba720fa41436f1811451f1)
+:   libs: update sshd-core to version 2.15.0
+
+[9c97b20034](https://github.com/dcache/dcache/commit/9c97b200340d935dbb168a0a0ab33622dbb1a188)
+:   BUILDING.md: specify the location of system-test logs files
+
+[10c49db78c](https://github.com/dcache/dcache/commit/10c49db78c48f0a176e5ea8dc780da747a83e445)
+:   srm: fix liquibase checksum mismatch
+
+[0a094590b6](https://github.com/dcache/dcache/commit/0a094590b685bcbdc8c2d8e17bd3bbf594d65f08)
+:   CONTRIBUTING: link to style guide
+
+[9f4a464829](https://github.com/dcache/dcache/commit/9f4a464829d1d0634edcdc737901a4b7de368624)
+:   utils: drop extra null check in ImmutableAttributesMap
+
+[5578721ee4](https://github.com/dcache/dcache/commit/5578721ee434445069ea9c56bca7b6770adda76c)
+:   pool:fix outofspace error sending pool into diasbled mode
+
+[466c97e390](https://github.com/dcache/dcache/commit/466c97e39033d718e97c73a38a0b902f4007d537)
+:   qos: Uncaught NullPointerException due to QoS being set to null
+
+[208bfbe64a](https://github.com/dcache/dcache/commit/208bfbe64aed53dba865a497903e83c0573dad89)
+:   pool: add workaround space mismanagementd by XFS (and others?)
+
+[705a6dd636](https://github.com/dcache/dcache/commit/705a6dd63608b726f118fd7552f2da502edd2b72)
+:   billing: database fixes necessitated by Liquibase update
+
+[2440b22277](https://github.com/dcache/dcache/commit/2440b2227727c929132919f569a643083efc9138)
+:   cells: fix race condition between thread start and flag check
+
+[153a018b06](https://github.com/dcache/dcache/commit/153a018b0687e501c1b104e5fb36a2cddb166373)
+:   dcache-billing-indexer: add explicit dependency on commons-io
+
+[68f7ffee9c](https://github.com/dcache/dcache/commit/68f7ffee9c52d75e9404cd3d504cdbe9130a2e1b)
+:   libs: update Liquibase to 4.29.2
+
+[2b5f8bc6b0](https://github.com/dcache/dcache/commit/2b5f8bc6b0792b71006a73c2c45429400cd17f29)
+:   Bulk: PinManagerActivity do not set state of files that are pinned indefinitely to SKIPPED
+
+[76fe850773](https://github.com/dcache/dcache/commit/76fe85077379cde7363faa27a8e7fdf0b39f02ac)
+:   chimera: on shutdown propagate close to DB specific driver
+
+[3b12aa7233](https://github.com/dcache/dcache/commit/3b12aa7233eb85caec1a5748b228d40f25673ce9)
+:   utils: use JFR events to track door interaction with other cells
+
+[693fffa3fc](https://github.com/dcache/dcache/commit/693fffa3fc20c9c2c50a03514198d2431b2aa010)
+:   poolselection: fix typo
+
+[f41cd3e586](https://github.com/dcache/dcache/commit/f41cd3e5868fd7b8c090cbb4ff469d1edd9ccf5b)
+:   migration: new `MigrationModule` option and copy completion message
+
+[bfbf240c1d](https://github.com/dcache/dcache/commit/bfbf240c1d21b73dd4792d1be98eae1f3bc28d86)
+:   pool: separate cases for disk error and no space available
+
+[abe4bd9327](https://github.com/dcache/dcache/commit/abe4bd93270327ddaeb00b8eabcdea04d2dc99a4)
+:   bulk: update message returned when trying to stage a file present on disk
+
+[484e967e1f](https://github.com/dcache/dcache/commit/484e967e1f1ac7c5f588e17d46a58aeba1342ac5)
+:   bulk: handle absolute/relative paths in uniform fashion
+
+[8b9dfb3997](https://github.com/dcache/dcache/commit/8b9dfb399767db4c4483ff107a24eed47f633a61)
+:   qos: QOS fails with 'Attribute is not defined: QOS_POLICY'
+
+[600ed1ff98](https://github.com/dcache/dcache/commit/600ed1ff98acf04d02381279e081ccfda7e4cafc)
+:   cells: always try to re-establish dead tunnel, unless stopped
+
+[289e9f1542](https://github.com/dcache/dcache/commit/289e9f1542214779c5ad9fb80628ef099652737d)
+:   ci: skip maven-release-plugin generated commit messages by release notes
+
+[8c71927df6](https://github.com/dcache/dcache/commit/8c71927df617b3cddbda0ca38f82d7518bcd6497)
+:   pool: allow `max disksize` to be specified as percent of filesystem
+
+[103bfebf20](https://github.com/dcache/dcache/commit/103bfebf209575ca602e5339b47669c22b3842ea)
+:   AI release notes: ignore commits by maven-release-plugin
+
+[59ea69ff01](https://github.com/dcache/dcache/commit/59ea69ff019987bdb30f365b12520b7bc88ef168)
+:   jvm: drop UseCompressedOops JVM option
+
+[b63677e21b](https://github.com/dcache/dcache/commit/b63677e21bb4d70ab7163de0be3c15fef7b7d6f3)
+:   cells: remove backward compatibility 7.0
+
+[69f5c771b5](https://github.com/dcache/dcache/commit/69f5c771b5f6eee0dbb56ed5c09819dc301b0557)
+:   poolmanager: fix typo
+
+[9023ceaee4](https://github.com/dcache/dcache/commit/9023ceaee4a9323c8d5b2b84901462a2c6a26f14)
+:   vehicles: support door requesting multiple checksums
+
+[4b922a1d6d](https://github.com/dcache/dcache/commit/4b922a1d6daa3fa9b4cad6f081e0dd01ac02248a)
+:   docs: diagram on successful write workflow
+
+[30829c96aa](https://github.com/dcache/dcache/commit/30829c96aa1f14b817d2c2e568d5dadc5d84d530)
+:   cells: ignore empty core domain uris propagated by zk
+
+[6a3e89952d](https://github.com/dcache/dcache/commit/6a3e89952dcef551fc16fa7ba04106a29748803f)
+:   docs: update to the minimal dCache installation
+
+[d92fdf159f](https://github.com/dcache/dcache/commit/d92fdf159fb45d320f80b4d6242d189a317896e2)
+:   test releases xml file creation
+
+[47ef9a7735](https://github.com/dcache/dcache/commit/47ef9a77351500a43cc15ce42196dc216fdc0924)
+:   docs: correcting typos in chapter 2
+
+[404dc6dbdb](https://github.com/dcache/dcache/commit/404dc6dbdbb863a83dced1fca14120a8ffd06838)
+:   container: add plugin classpath if defined
+
+[fff8b79e79](https://github.com/dcache/dcache/commit/fff8b79e793322b2e94619428e210aff3f0c4648)
+:   tape REST api: additional fix tohandling of prefixed paths
+
+[5f67bddf57](https://github.com/dcache/dcache/commit/5f67bddf57ddc6c21e28081509e08305396fd70b)
+:   bulk/qos: shutdown executor services when stopped
+
+[e98ab94264](https://github.com/dcache/dcache/commit/e98ab942648f5b9e1eda4e1c08c3b7fe4588b08c)
+:   xroot: handle haproxy and checksum command
+
+[8d83ed59fe](https://github.com/dcache/dcache/commit/8d83ed59fe0193855eafa7bda34cf92f487d7762)
+:   ci: use java-21 for runtime
+
+[cbff12d45d](https://github.com/dcache/dcache/commit/cbff12d45d94c7886334a8117d835d3e29c85005)
+:   chimera: correct a typo
+
+[7e2040ecb8](https://github.com/dcache/dcache/commit/7e2040ecb81a24da4b5b7425d6c8eed213907013)
+:   http(old): modernize color palette
+
+[8254b6727b](https://github.com/dcache/dcache/commit/8254b6727b7b8c39986165465e6fcb39e14bf2eb)
+:   build(deps): bump org.eclipse.jetty:jetty-server
+
+[c18934e22d](https://github.com/dcache/dcache/commit/c18934e22d973923c725ed6c99b096be78466739)
+:   build(deps): bump org.eclipse.jetty:jetty-servlets
+
+[43a6082e70](https://github.com/dcache/dcache/commit/43a6082e704469d4d5bbdcb60a1878aa57be8380)
+:   github: drop branch name manipulations
+
+[703e5e00eb](https://github.com/dcache/dcache/commit/703e5e00eb5a17d95286b06c08759b4d384195fc)
+:   github: keep branch name for regualr push events
+
+[e697949a06](https://github.com/dcache/dcache/commit/e697949a06ed76d3bae3a084d3ccd9ccf2eb881a)
+:   github: use GITHUB_REF_NAME to for pull requests [skip ci]
+
+[cd9c90d230](https://github.com/dcache/dcache/commit/cd9c90d23042ba660d34dfadef461a8c132cef96)
+:   github: mirror pull requests
+
+[f945c3db98](https://github.com/dcache/dcache/commit/f945c3db9875fb5e322aa3f3ede97a229591be81)
+:   pool manager: retry request on pool up
+
+[1a3c12e8b6](https://github.com/dcache/dcache/commit/1a3c12e8b6609b4c0350ca5e6a90c1e25dfa7d4d)
+:   dcache: reject access to files with nearline QoS
+
+[046511bb60](https://github.com/dcache/dcache/commit/046511bb6070b3f7b9e72e9aff6b00724461ee30)
+:   [maven-release-plugin] prepare for next development iteration
+
 
 
 </div>

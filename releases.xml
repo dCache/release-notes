@@ -187,14 +187,14 @@
     </description>
     <releases>
 
-	    <releases>
+
       <name>dCache VERSION</name>
       <download-url-prefix>repo/11.0/dcache</download-url-prefix>
       <notes-url>release-notes-11.0.shtml</notes-url>
       <version-prefix>11.0.</version-prefix>
 
       <release>
-      </release>
+      </release> 
 <releases>
 
 </series>
