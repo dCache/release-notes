@@ -64,40 +64,26 @@ HTML header: <title>dCache 11.0 Release Notes</title>
 
 ## Highlights
 
+- SciTag support
+- Retry stage requests on `pool up`
+
 ## Incompatibilities
+
+- Database automatic schema migration can't downgrade to the earlier schema versions
 
 ## Acknowledgments
 
-(tbd, this section uses markdown formatting)
-
+We want to thank Marian Babik and Onno Zweers for their contributions.
 
 ## Release 11.0
 
 ### Admin
 
-### Billing
+The underlying sshd library is updated.
 
-### Cleaner
+### JFR
 
-### Checksums
-
-### DCAP
-
-### Frontend
-
-### FTP
-
-### gplazma
-
-### History
-
-### Hoppingmanager
-
-### httpd
-
-### Info
-
-### Missing Files
+Java flight recorder will record and display door -> dcache interactions and message round-trip durations.
 
 ### NFS
 
@@ -115,19 +101,19 @@ report.txt-10
 
 ```
 
-Where 9 nad 10 are the parent id's.
+Where 9 and 10 are the parent ids.
 
 Files can be downloaded  via:
 
 `cat /dcache/".(collection)"/report.txt-9`
 
-it is also possible to query all existing labels 
+It is also possible to list all existing labels as:
 
 ````
  ls -l /dcache/".(collection)"
 ```
 
-wil return 
+will return 
 
 ```
 user@user-O:~/dcache$ ls -l   /mnt/".(collection)"/
@@ -138,37 +124,25 @@ drwxr-xr-x 13 root root 512 Mai  8 12:06 1895
 
 ```
 
-
-
-### Pinmanager
-
 ### PNFS Manager
+
+The liquibase version is updated.
 
 ### Pool
 
 Pools `set max diskspace` command accepts `%` as unit, which is treated as a percentage of the total disk size under data directory.
 
+On http upload or TPC-pull the mover will calculate multiple checksums if requested by the client.
+
+The `migration` module can now spread files to a desired number of pools. If no sufficient pools are online, two strategies are available: `wait` and `limit`, which will wait or stop.
+
+If pool space shrinks, then the pool will automatically decrease its size.
+
 ### Poolmanager
 
-### Resilience
-
-### Space Manager
-
-### SRM
-
-### SRM Manager
-
-### Statistics
-
-### Topo
-
-### Transfer Managers
-
-### WebDAV
-
-### XRootD
-
-### Zookeeper
+If a pool with the file is online and a tape copy is available, then dCache will trigger the stage and wait until the file is restored on disk.
+However, if the pool becomes available again, the stage request is not interrupted, and the client will wait for tape. With 11.0 release, the
+poolmanager will retry the request when the pool is up.
 
 ### Changelog from 10.2.0 to 11.0.0
 
@@ -199,7 +173,7 @@ Pools `set max diskspace` command accepts `%` as unit, which is treated as a per
 :   Scitags: fallback mechanism (#7775)
 
 [543bfc5711](https://github.com/dcache/dcache/commit/543bfc57112d8e0f659210dc92a25febd2a75b78)
-:   cells: use core domain endpoint only if hostname resolable
+:   cells: use core domain endpoint only if hostname resolvable
 
 [3541affb3d](https://github.com/dcache/dcache/commit/3541affb3d1f6599fec7fe358079d954929ccef6)
 :   Replace jdk 11 with 17, because dCache now requires it; update dCache version in example
