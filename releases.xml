@@ -193,10 +193,22 @@
       <notes-url>release-notes-11.0.shtml</notes-url>
       <version-prefix>11.0.</version-prefix>
 
-      <release>
+      <release version="0">
+	<date>26.5.2025</date>
+	<package name="rpm">
+		<download-url>-VERSION-1.noarch.rpm</download-url>
+		<md5sum>c4d615dddc8a3ff8837bade447ab48c2</md5sum>
+	</package>
+	<package name="tgz">
+		<download-url>-VERSION.tar.gz</download-url>
+		<md5sum>73540b1c9d49a197a2e5b3bc729cfe29</md5sum>
+	</package>
+	<package name="Debian package">
+		<download-url>_VERSION-1_all.deb</download-url>
+		<md5sum>b26c7296897b94f602d1786d86768c7e</md5sum>
+	</package>
       </release> 
-<releases>
-
+    </releases>
 </series>
 
   <series id="server-10.2">
