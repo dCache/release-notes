@@ -64,7 +64,11 @@ HTML header: <title>dCache 11.1 Release Notes</title>
 
 ## Highlights
 
+- NFSv4.1 Read-delegation support
+
 ## Incompatibilities
+
+- Drop support for nfsv4_1_files layout type
 
 ## Acknowledgments
 
@@ -103,6 +107,12 @@ Now, for each HSM, it can delete files in parallel via multiple pools. Instead o
 ### Missing Files
 
 ### NFS
+
+NFS door supports read-delegation. Read delegations allow the server to delegate OPEN-CLOSE operations to clients if a file is accessed several times. This functionality aims to improve file access latency in workloads like `open->read-close; loop`, which some HPC applications use.
+
+In order to provide delegation-based read access on dCache pools, the `nfsv4_1_files` layout type is no longer supported. Site admins must remove the `lt=nfsv4_1_files` option from nfs door export files.
+
+>NOTE: As the client will not return delegations right after transfer, the NFS movers on pools might stay active even if no applications have opened the file. Moreover, the `transferTime` and `transferSize`  correspond to a file delegation period and do not reflect a single `open->close` cycle.
 
 ### Pinmanager
 
