@@ -120,6 +120,8 @@ In order to provide delegation-based read access on dCache pools, the `nfsv4_1_f
 
 ### Pool
 
+Berkeley DB, which is used to store metadata on pools, by default keeps only 100 files open. On some installations, this causes a slow start, as the number of db files is much larger. Now, the default is increased to 512.
+
 ### Poolmanager
 
 ### Resilience
