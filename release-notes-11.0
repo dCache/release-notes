@@ -75,6 +75,54 @@ HTML header: <title>dCache 11.0 Release Notes</title>
 
 We want to thank Marian Babik and Onno Zweers for their contributions.
 
+## Release 11.0.2
+
+### nfs
+
+NFS door associates transfers with layout- or open- state ids. On state disposal, for example, when client closes a file,
+ transfers shutdown is called, that will remove the transfer when mover is finished. 
+However, if no mover associated with a transfer, then such transfers will stay in the door.
+
+This is now fixed and less orphan transfers in the nfs door.
+
+### pool
+
+As HTTP is a stateless protocol, when Range request is used, then mover has no idea if that was a last block, 
+or client will request yet another chunk. Thus, as long as client it connected, mover will be active, 
+before idle connection removal is triggered. If too many clients do that, then pool might run out of movers.
+
+This is now fixed.
+
+### rest
+
+Now  access to id resource is restricted to admin user.
+
+
+### Changelog 11.0.1..11.0.2
+
+<!-- git log 11.0.1..11.0.2 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[4e507ad182](https://github.com/dcache/dcache/commit/4e507ad182b9fa30abf30eedfdebb9304ea2bc3c)
+:   [maven-release-plugin] prepare release 11.0.2
+
+[d961939c1e](https://github.com/dcache/dcache/commit/d961939c1e67ecfbda7d6c9a04ff95a854745c59)
+:   Bulk: remove skipIfOnline method from PinManagerActivity
+
+[4e6b684036](https://github.com/dcache/dcache/commit/4e6b684036fa7de302557567e145a3e389863c9c)
+:   nfs41: remove transfers with no movers on layout state disposal
+
+[f5d0a6cf65](https://github.com/dcache/dcache/commit/f5d0a6cf653a5bf49e5bf0e32fbc1660aa818f9f)
+:   pool: shutdown mover on "Connection: close" http header
+
+[d38ca8e228](https://github.com/dcache/dcache/commit/d38ca8e2288f9ac24e7be1320f108790984c0055)
+:   REST API: restrict access to id resource to admin user
+
+[09478755db](https://github.com/dcache/dcache/commit/09478755db22bc936b21fa4502462889a77dc265)
+:   ci: fix script execution bit
+
+[c440089a26](https://github.com/dcache/dcache/commit/c440089a2682e2ed970c23b4adf7d2d11236d2b6)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 11.0
 
 ### Admin

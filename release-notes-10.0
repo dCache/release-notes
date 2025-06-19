@@ -76,6 +76,32 @@ HTML header: <title>dCache 10.0 Release Notes</title>
 
 Many Thanks to Petter A. Urkedal and Lukas Mansour for their contributions.
 
+## Release 10.0.22
+
+### rest
+
+Now  access to id resource is restricted to admin user.
+
+
+### Changelog 10.0.21..10.0.22
+
+<!-- git log 10.0.21..10.0.22 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[c484e933c6](https://github.com/dcache/dcache/commit/c484e933c61b3bfa5e4352134b72c0337dd2cfc0)
+:   [maven-release-plugin] prepare release 10.0.22
+
+[3e65dc96cc](https://github.com/dcache/dcache/commit/3e65dc96cc432ad6b6e04dc0dfcd9acd9c60ddc4)
+:   REST API: restrict access to id resource to admin user
+
+[1a334d0bcd](https://github.com/dcache/dcache/commit/1a334d0bcd2ddb66e0e00084fcf81d78a079f85e)
+:   ci: fix igtf rpm signing key
+
+[500dc0c1c3](https://github.com/dcache/dcache/commit/500dc0c1c35fdfce942a1d1e90fcc316a3b34fa8)
+:   ci: don't use egi software repo for CA certs
+
+[6c6d4c8bfc](https://github.com/dcache/dcache/commit/6c6d4c8bfce9f2b73d20ceb5c2171b1131145b4d)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 10.0.21
 
 ### jetty
