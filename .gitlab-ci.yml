@@ -12,8 +12,6 @@ Generate release notes on commit:
     - dnf install -q -y multimarkdown git-core libxslt
     - mkdir -p output
     - |-
-      git --no-pager diff HEAD^ --name-only | grep release-notes- | while read -r file; do
-      echo "Processing $file"
       git --no-pager diff HEAD^^ --name-only | grep release-notes- | while read file; do echo Processing file $file; multimarkdown $file |  xsltproc  release-notes.xsl  - > output/$file.html; done
     - echo "This is a generated file." > output/generated_file.txt
   artifacts:
@@ -29,9 +27,8 @@ Generate release notes:
     - dnf install -q -y multimarkdown git-core libxslt
     - mkdir -p output
     - |-
-      git --no-pager diff HEAD^ --name-only | grep release-notes- | while read -r file; do
       echo "Processing $file"
-      git --no-pager diff HEAD^^ --name-only | grep release-notes- | while read file; do echo Processing file $file; multimarkdown $file |  xsltproc  release-notes.xsl  - > output/$file.html; done
+      for file in release-notes-*; do echo Processing file $file; multimarkdown $file |  xsltproc  release-notes.xsl  - > output/$file.html; done
     - echo "This is a generated file." > output/generated_file.txt
   artifacts:
     paths:
