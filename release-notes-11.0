@@ -131,7 +131,7 @@ The underlying sshd library is updated.
 
 ### JFR
 
-Java flight recorder will record and display door -> dcache interactions and message round-trip durations.
+Java flight recorder will record and display door -&gt; dcache interactions and message round-trip durations.
 
 ### NFS
 
@@ -140,13 +140,12 @@ virtual directories independent of the actual file location. These virtual read-
 are dynamically populated with files as soon as the files get the corresponding label. 
 
 
-`$ ls -l /dcache/".(collection)"/AnnaBerthaLudwig` will return the list of all files tagged by AnnaBerthaLudwig
+`$ ls -l /dcache/".(collection)"/AnnaBerthaLudwig` will return the list of all files tagged by AnnaBerthaLudwig`
 
 
 ```
 report.txt-9
 report.txt-10
-
 ```
 
 Where 9 and 10 are the parent ids.
@@ -157,7 +156,7 @@ Files can be downloaded  via:
 
 It is also possible to list all existing labels as:
 
-````
+```
  ls -l /dcache/".(collection)"
 ```
 
