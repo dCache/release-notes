@@ -1,0 +1,38 @@
+
+stages:
+  - build
+#  - publish
+
+
+# Fedora 42 is used to ensure compatibility with the tools we need
+Generate release notes on commit:
+  stage: build
+  image: fedora:42
+  script:
+    - dnf install -q -y multimarkdown git-core libxslt
+    - mkdir -p output
+    - |-
+      git --no-pager diff HEAD^ --name-only | grep release-notes- | while read -r file; do
+      echo "Processing $file"
+      git --no-pager diff HEAD^^ --name-only | grep release-notes- | while read file; do echo Processing file $file; multimarkdown $file |  xsltproc  release-notes.xsl  - > output/$file.html; done
+    - echo "This is a generated file." > output/generated_file.txt
+  artifacts:
+    paths:
+      - "output/*.html"
+
+# Fedora 42 is used to ensure compatibility with the tools we need
+Generate release notes:
+  stage: build
+  image: fedora:42
+  when: manual
+  script:
+    - dnf install -q -y multimarkdown git-core libxslt
+    - mkdir -p output
+    - |-
+      git --no-pager diff HEAD^ --name-only | grep release-notes- | while read -r file; do
+      echo "Processing $file"
+      git --no-pager diff HEAD^^ --name-only | grep release-notes- | while read file; do echo Processing file $file; multimarkdown $file |  xsltproc  release-notes.xsl  - > output/$file.html; done
+    - echo "This is a generated file." > output/generated_file.txt
+  artifacts:
+    paths:
+      - "output/*.html"
