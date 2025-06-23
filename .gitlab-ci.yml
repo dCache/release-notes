@@ -12,11 +12,10 @@ Generate release notes on commit:
     - dnf install -q -y multimarkdown git-core libxslt
     - mkdir -p output
     - |-
-      git --no-pager diff HEAD^^ --name-only | grep release-notes- | while read file; do echo Processing file $file; multimarkdown $file |  xsltproc  release-notes.xsl  - > output/$file.html; done
-    - echo "This is a generated file." > output/generated_file.txt
+      git --no-pager diff HEAD^^ --name-only | grep release-notes- | while read file; do echo Processing file $file; multimarkdown $file |  xsltproc  release-notes.xsl  - > output/$file.shtml; done
   artifacts:
     paths:
-      - "output/*.html"
+      - "output/*.shtml"
 
 # Fedora 42 is used to ensure compatibility with the tools we need
 # process version 9.x, 1x.x
@@ -29,8 +28,7 @@ Generate release notes:
     - mkdir -p output
     - |-
       echo "Processing $file"
-      for file in release-notes-{9,1?}.[0-9]; do echo Processing file $file; multimarkdown $file |  xsltproc  release-notes.xsl  - > output/$file.html; done
-    - echo "This is a generated file." > output/generated_file.txt
+      for file in release-notes-{9,1?}.[0-9]; do echo Processing file $file; multimarkdown $file |  xsltproc  release-notes.xsl  - > output/$file.shtml; done
   artifacts:
     paths:
-      - "output/*.html"
+      - "output/*.shtml"
