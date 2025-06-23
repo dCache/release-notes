@@ -1,7 +1,7 @@
 
 stages:
   - build
-#  - publish
+  - publish
 
 
 # Fedora 42 is used to ensure compatibility with the tools we need
@@ -32,3 +32,13 @@ Generate release notes:
   artifacts:
     paths:
       - "output/*.shtml"
+
+# Publish the release notes to the website
+Publish release notes:
+  stage: publish
+  tags:
+    - www.dcache.org
+  script:
+    - id
+    - ls /data/www/dcache.org/
+    - ls /data/www/old-dcache.org
