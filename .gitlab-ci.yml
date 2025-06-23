@@ -8,13 +8,12 @@ stages:
 Generate release notes on commit:
   stage: build
   image: fedora:42
-  allow_failure: true
+  allow_failure: true # change to non release-notes files ignored
   script:
     - dnf install -q -y multimarkdown git-core libxslt
     - mkdir -p output
     - |-
       files=`git diff-tree --no-commit-id --name-only -r $CI_COMMIT_SHA | grep release-notes-`
-      echo Changed files: $files
       for file in $files; do echo Processing file $file; multimarkdown $file |  xsltproc  release-notes.xsl  - > output/$file.shtml; done
   artifacts:
     paths:
@@ -39,7 +38,6 @@ Generate release notes:
 # Publish the release notes to the website
 Publish release notes:
   stage: publish
-  when: manual
   tags:
     - www.dcache.org
   script:
