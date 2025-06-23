@@ -12,7 +12,7 @@ Generate release notes on commit:
     - dnf install -q -y multimarkdown git-core libxslt
     - mkdir -p output
     - |-
-      git --no-pager diff HEAD^^ --name-only | grep release-notes- | while read file; do echo Processing file $file; multimarkdown $file |  xsltproc  release-notes.xsl  - > output/$file.shtml; done
+      git diff-tree --no-commit-id --name-only -r $CI_COMMIT_SHA | grep release-notes- | while read file; do echo Processing file $file; multimarkdown $file |  xsltproc  release-notes.xsl  - > output/$file.shtml; done
   artifacts:
     paths:
       - "output/*.shtml"
