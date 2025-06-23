@@ -37,9 +37,8 @@ Generate release notes:
 # Publish the release notes to the website
 Publish release notes:
   stage: publish
+  when: manual
   tags:
     - www.dcache.org
   script:
-    - id
-    - ls /data/www/dcache.org/
-    - ls /data/www/old-dcache.org
+    - cp output/*.shtml /data/www/old-dcache.org/downloads/1.9/.
