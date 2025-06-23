@@ -8,6 +8,7 @@ stages:
 Generate release notes on commit:
   stage: build
   image: fedora:42
+  allow_failure: true
   script:
     - dnf install -q -y multimarkdown git-core libxslt
     - mkdir -p output
