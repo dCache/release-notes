@@ -38,6 +38,8 @@ Generate release notes:
 # Publish the release notes to the website
 Publish release notes:
   stage: publish
+  needs:
+    - Generate release notes on commit
   tags:
     - www.dcache.org
   script:
