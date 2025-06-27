@@ -70,6 +70,7 @@ HTML header: <title>dCache 11.1 Release Notes</title>
 
 - Drop support for nfsv4_1_files layout type
 - Drop admin commands to set/get/list `flags` associated with files.
+- Obsolete `pool.enable.hsm-flag`
 
 ## Acknowledgments
 
@@ -129,6 +130,9 @@ In order to provide delegation-based read access on dCache pools, the `nfsv4_1_f
 ### Pool
 
 Berkeley DB, which is used to store metadata on pools, by default keeps only 100 files open. On some installations, this causes a slow start, as the number of db files is much larger. Now, the default is increased to 512.
+
+On data upload, dCache pool can tell PnfsManager whatever pool's `lfs` mode is `hsm` or `precious`. This functionality is controlled by `pool.enable.hsm-flag` option, which defaults to `false` since 2017.
+This option is now obsolete.
 
 ### Poolmanager
 
