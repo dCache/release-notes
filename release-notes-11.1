@@ -69,6 +69,7 @@ HTML header: <title>dCache 11.1 Release Notes</title>
 ## Incompatibilities
 
 - Drop support for nfsv4_1_files layout type
+- Drop admin commands to set/get/list `flags` associated with files.
 
 ## Acknowledgments
 
@@ -78,6 +79,9 @@ HTML header: <title>dCache 11.1 Release Notes</title>
 ## Release 11.1.0
 
 ### Admin
+
+dCache allowed admins to associate key-value (flags) pairs with files, which were stored in pnfs level-2 (t_lavel_2 table).
+Those flags did not influence the dcache behavior and were invisible to users. This functionality is removed now.
 
 ### Billing
 
