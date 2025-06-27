@@ -86,6 +86,12 @@ Those flags did not influence the dcache behavior and were invisible to users. T
 
 ### Billing
 
+### Chimera
+
+The dCache namespace stored so-called `flags`, key-value pairs associated with files, in the `t_level_2` table. This functionality is removed as it is not being used.
+The `t_level_2` is not touched and stays as-is. The table should be empty for most sites or contain no new records since 2018. Admins are free to truncate the table to
+reclaim the space, if desired.
+
 ### Cleaner
 
 Previously, `cleaner-hsm` would send one delete request per HSM at a time to a single pool each. However, this level of parallelization is not very efficient, especially when deletes time out.
