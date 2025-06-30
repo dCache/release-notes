@@ -75,6 +75,89 @@ HTML header: <title>dCache 11.0 Release Notes</title>
 
 We want to thank Marian Babik and Onno Zweers for their contributions.
 
+## Release 11.0.3
+
+### frontend
+
+dCache has two identify admin role: login attribute and RolePrincipal. 
+As HttpServletRequests#isAdmin checks only the RolePrincipal, attribute based roles are ignored.
+
+This is now fixed.
+### gplazma
+
+Excessive caching of failed login attempts leads to system has been reported.
+
+The current relase fexed that and now following properties could be used to control the overload:
+
+
+`gplazma.authz.loginFailure.cache.size=10000`
+
+When the cache reaches this size, older entries are evicted.
+ Remove the least-recently-used (LRU) entries when that limit is exceeded.
+ important: the cache size is an approximate size not exact.
+
+`gplazma.authz.loginFailure.cache-size-expiry=1`
+
+ timeout cache entry life time. By default  expire entries 1 hour after they are written.
+ If a key is expired due to time, it is gone even if the cache is not full.
+
+`gplazma.authz.loginFailure.cache-size-expiry.unit=HOURS`
+
+timeout cache entry life time unit.
+
+
+The current release fixed `BEARER TOKEN` empty case and the empty token should be rejected.
+
+### tape
+
+dcache tape rest API  returned `ONLINE (or DISK)` locality for incomplete files.
+Return locality `ONLINE` if locality is `NONE` for files w/ zero size.
+
+
+### webdav
+
+
+A bug is fixed that prevented dCaches support for the `X-OC-MTIME` HTTP request header on PUT requests from working. 
+Note that, for this patch to be effective, both the WebDAV doors and all pools that accept such upload requests need to be updated.
+
+
+### Changelog 11.0.2..11.0.3
+
+<!-- git log 11.0.2..11.0.3 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[0e7ddac355](https://github.com/dcache/dcache/commit/0e7ddac3550a6f279c5aa2d47b896dd5c9124969)
+:   [maven-release-plugin] prepare release 11.0.3
+
+[337595fff3](https://github.com/dcache/dcache/commit/337595fff3d0c818a8284b47fbee34e1f7c7abad)
+:   fix broken commit 48a544cb6
+
+[f3f0600c30](https://github.com/dcache/dcache/commit/f3f0600c301b30a27ab5ea6a90d06e79eaef86c3)
+:   gplazma: fix static field for RecordFailedLogins
+
+[6833bed8d2](https://github.com/dcache/dcache/commit/6833bed8d2fcf1427ff9f8005460d0d8adbe1629)
+:   gmplazma: excessive caching of failed login attempts leads to system overload.
+
+[9257700847](https://github.com/dcache/dcache/commit/92577008477b20ff0758a9b8fbc5fcf227571406)
+:   frontend: respect admin role when requested
+
+[20f391353e](https://github.com/dcache/dcache/commit/20f391353e61e703384bf0defc8498182576bcee)
+:   ci: frontend tests cleanup
+
+[f37b5479f9](https://github.com/dcache/dcache/commit/f37b5479f950f5c1d43cdadd90b55d9ec7b7e8da)
+:   webdav: fix X-OC-MTIME support when uploading a file
+
+[87decdf8e7](https://github.com/dcache/dcache/commit/87decdf8e7e45f7e0d14c5fdc1c094e280585884)
+:   ci: publish container image with branch tag
+
+[881266efbd](https://github.com/dcache/dcache/commit/881266efbd61b0fcbf2c01032efe0d01a1ecda73)
+:   dcache tape rest API: return ONLINE (or DISK) locality for incomplete files
+
+[1542fcf417](https://github.com/dcache/dcache/commit/1542fcf417fa828b27fbd333ff7b9d694eece717)
+:   gplazma: check BEARER TOKEN empty case
+
+[96de4016d5](https://github.com/dcache/dcache/commit/96de4016d54e5099eee2257fcfefdc7e112c3f2e)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 11.0.2
 
 ### nfs

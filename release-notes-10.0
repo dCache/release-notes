@@ -76,6 +76,74 @@ HTML header: <title>dCache 10.0 Release Notes</title>
 
 Many Thanks to Petter A. Urkedal and Lukas Mansour for their contributions.
 
+## Release 10.0.23
+
+### gplazma
+
+Excessive caching of failed login attempts leads to system has been reported.
+
+The current relase fexed that and now following properties could be used to control the overload:
+
+
+`gplazma.authz.loginFailure.cache.size=10000`
+
+When the cache reaches this size, older entries are evicted.
+ Remove the least-recently-used (LRU) entries when that limit is exceeded.
+ important: the cache size is an approximate size not exact.
+
+`gplazma.authz.loginFailure.cache-size-expiry=1`
+
+ timeout cache entry life time. By default  expire entries 1 hour after they are written.
+ If a key is expired due to time, it is gone even if the cache is not full.
+
+`gplazma.authz.loginFailure.cache-size-expiry.unit=HOURS`
+
+timeout cache entry life time unit.
+
+
+The current release fixed `BEARER TOKEN` empty case and the empty token should be rejected.
+
+### tape
+
+dcache tape rest API  returned `ONLINE (or DISK)` locality for incomplete files.
+Return locality `ONLINE` if locality is `NONE` for files w/ zero size.
+
+
+### webdav
+
+
+A bug is fixed that prevented dCaches support for the `X-OC-MTIME` HTTP request header on PUT requests from working. 
+Note that, for this patch to be effective, both the WebDAV doors and all pools that accept such upload requests need to be updated.
+
+
+### Changelog 10.0.22..10.0.23
+
+<!-- git log 10.0.22..10.0.23 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[5c64c15210](https://github.com/dcache/dcache/commit/5c64c15210f29dca9182765b6cd2adee380b1619)
+:   [maven-release-plugin] prepare release 10.0.23
+
+[d542a4005a](https://github.com/dcache/dcache/commit/d542a4005aeb83076213077fb408f2d7a83a6bf9)
+:   fix broken commit 48a544cb6
+
+[9e8e6fdad3](https://github.com/dcache/dcache/commit/9e8e6fdad38af69633d210351f468cc7b1c63cc8)
+:   gplazma: fix static field for RecordFailedLogins
+
+[d794eddbde](https://github.com/dcache/dcache/commit/d794eddbdecf18a7cbdffe5b9d547d07c153d739)
+:   gmplazma: excessive caching of failed login attempts leads to system overload.
+
+[0926ddb00e](https://github.com/dcache/dcache/commit/0926ddb00e7a00caef83dbe1b2f7eba55cb932b4)
+:   webdav: fix X-OC-MTIME support when uploading a file
+
+[77be5ef548](https://github.com/dcache/dcache/commit/77be5ef5481a9229329224939295fd06420583b9)
+:   dcache tape rest API: return ONLINE (or DISK) locality for incomplete files
+
+[4351cd8371](https://github.com/dcache/dcache/commit/4351cd8371bbf77cc9da9e050a45e7816936cbcd)
+:   gplazma: check BEARER TOKEN empty case
+
+[96da0f7e55](https://github.com/dcache/dcache/commit/96da0f7e551478004ecc3cedab9a327296b185b6)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 10.0.22
 
 ### rest

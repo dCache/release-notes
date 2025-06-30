@@ -83,6 +83,56 @@ HTML header: <title>dCache 10.2 Release Notes</title>
 - Anton Schwarz, Heidelberg University, DESY Summer Stutent Programm
 
 
+## Release 10.2.14
+
+### frontend
+
+dCache has two identify admin role: login attribute and RolePrincipal. 
+As HttpServletRequests#isAdmin checks only the RolePrincipal, attribute based roles are ignored.
+
+This is now fixed.
+### gplazma
+
+The current release fixed `BEARER TOKEN` empty case and the empty token should be rejected.
+
+### tape
+
+dcache tape rest API  returned `ONLINE (or DISK)` locality for incomplete files.
+Return locality `ONLINE` if locality is `NONE` for files w/ zero size.
+
+
+### webdav
+
+
+A bug is fixed that prevented dCaches support for the `X-OC-MTIME` HTTP request header on PUT requests from working. 
+Note that, for this patch to be effective, both the WebDAV doors and all pools that accept such upload requests need to be updated.
+
+
+### Changelog 10.2.13..10.2.14
+
+<!-- git log 10.2.13..10.2.14 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[a7f41cbea4](https://github.com/dcache/dcache/commit/a7f41cbea437b2bae0d0f3396d5478e7e0c1d1a9)
+:   [maven-release-plugin] prepare release 10.2.14
+
+[7e65671b63](https://github.com/dcache/dcache/commit/7e65671b6312362a330b3aa3797e974b97617600)
+:   frontend: respect admin role when requested
+
+[aa3f3d9398](https://github.com/dcache/dcache/commit/aa3f3d939815c1818f8bccfab50959c2637da83b)
+:   ci: frontend tests cleanup
+
+[3dd3b62a93](https://github.com/dcache/dcache/commit/3dd3b62a934a64aff87a170ff61a3270cace2149)
+:   webdav: fix X-OC-MTIME support when uploading a file
+
+[5bfc5fe8a0](https://github.com/dcache/dcache/commit/5bfc5fe8a0fc2d613d216015651ba59b8dea3c61)
+:   dcache tape rest API: return ONLINE (or DISK) locality for incomplete files
+
+[6313a7f475](https://github.com/dcache/dcache/commit/6313a7f475237767c43ed60114506c344fdd09c7)
+:   gplazma: check BEARER TOKEN empty case
+
+[9b2b5bd5f3](https://github.com/dcache/dcache/commit/9b2b5bd5f37aa3b1ef51fe0a27fe1385ab9257df)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 10.2.13
 
 ### nfs
