@@ -68,9 +68,10 @@ HTML header: <title>dCache 11.1 Release Notes</title>
 
 ## Incompatibilities
 
-- Drop support for nfsv4_1_files layout type
+- Drop support for nfsv4_1_files layout type.
 - Drop admin commands to set/get/list `flags` associated with files.
-- Obsolete `pool.enable.hsm-flag`
+- Obsolete `pool.enable.hsm-flag`.
+- Stop populating of `t_storageinfo` chimera table.
 
 ## Acknowledgments
 
@@ -91,6 +92,8 @@ Those flags did not influence the dcache behavior and were invisible to users. T
 The dCache namespace stored so-called `flags`, key-value pairs associated with files, in the `t_level_2` table. This functionality is removed as it is not being used.
 The `t_level_2` is not touched and stays as-is. The table should be empty for most sites or contain no new records since 2018. Admins are free to truncate the table to
 reclaim the space, if desired.
+
+The storage info of a file is defined by directory tags, such as `OSMTemplate` and `sGroup` or `storage_group` and `file_family`. Additionally, after file is flushed in HSM, the storage info was stored in `t_storageinfo` table. This was required to be able to restore the file with the original storageinfo, even if directory tags are changed. However, the functionality was never used by sites. With release 11.1, dCache stops populating and reading `t_storageinfo` table.
 
 ### Cleaner
 
