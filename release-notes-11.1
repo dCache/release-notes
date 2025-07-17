@@ -124,6 +124,12 @@ Added multimap plugin section in the dCache book.
 
 ### Missing Files
 
+### Monitoring
+
+With release 11.1, dCache comes with an integrated prometheus-exporter that can be enabled by `dcache.enable.prometheus.exporter=true` property. The property `dcache.enable.prometheus.exporter.endpoint`
+controls on which interface and port number the exporter is exposed. The default value is `localhost:9876`. There are not too many metrics available righ now, however, the exporter can be used to monitor
+JVM memory, number of running threads, or number of open files.
+
 ### NFS
 
 NFS door supports read-delegation. Read delegations allow the server to delegate OPEN-CLOSE operations to clients if a file is accessed several times. This functionality aims to improve file access latency in workloads like `open->read-close; loop`, which some HPC applications use.
