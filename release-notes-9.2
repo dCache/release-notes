@@ -79,6 +79,64 @@ Many Thanks to Lars Jansse and Sandro Grizzo for their contributions.
 - If upgrading from 8.2, be sure to read also the release notes for 9.0 and 9.1, important changes are described there. See the [9.2 migration guide](https://github.com/dCache/upgrade-guide/blob/master/UPGRADE92.md) for more complete information
 - With version 9.2.8+, empty and non-existent banfiles will be treated the same
 
+## Release 9.2.40
+
+### quota
+
+
+The current release added protocol compliant return codes on quota exceeded exception.
+
+### restapi
+
+dCache rest api response filtered out fields that had null or default (for that type) values. 
+As the result, for instance, integer filed with 0 value was skipped (so is any filed with null value). 
+
+This is now fixed and Request results returned by dCache rest api contain fields having null or default values.
+
+
+
+
+
+### Changelog 9.2.39..9.2.40
+
+<!-- git log 9.2.39..9.2.40 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[1a827af42a](https://github.com/dcache/dcache/commit/1a827af42adc5f404cc5a23ada3e1f2e711e8025)
+:   [maven-release-plugin] prepare release 9.2.40
+
+[c42c1a20b4](https://github.com/dcache/dcache/commit/c42c1a20b4251b15b4a7d1e7bda4df3cb1f0450a)
+:   dcache rest api: do not filter out fields with default and null values when building json reply object. Enable get/set of OUTPUT quota
+
+[a0640e8b48](https://github.com/dcache/dcache/commit/a0640e8b48e4b1c845ff5b1821e75c5e2d8a3494)
+:   quota: implement protocols specific return codes
+
+[a81aea91b2](https://github.com/dcache/dcache/commit/a81aea91b22ae387b265702b15916b1fee21bb50)
+:   [maven-release-plugin] prepare for next development iteration
+
+## Release 9.2.38
+
+### #
+
+
+### Changelog 9.2.37..9.2.38
+
+<!-- git log 9.2.37..9.2.38 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[5f8af7d3bc](https://github.com/dcache/dcache/commit/5f8af7d3bc9ab304a86d778b67bfc26abc87771d)
+:   [maven-release-plugin] prepare release 9.2.38
+
+[5ce0e0bf23](https://github.com/dcache/dcache/commit/5ce0e0bf23b557317d47c72a16cd68425fe1b8a2)
+:   REST API: restrict access to id resource to admin user
+
+[74c185283f](https://github.com/dcache/dcache/commit/74c185283f121516959a976958b49a0408108d8c)
+:   ci: fix igtf rpm signing key
+
+[74bc31ab99](https://github.com/dcache/dcache/commit/74bc31ab991b07291ce0bef1f595e818cd139ccc)
+:   ci: don't use egi software repo for CA certs
+
+[577b32f862](https://github.com/dcache/dcache/commit/577b32f862104507f59e7dcf751ff919fc761fdd)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 9.2.39
 
 ### gplazma

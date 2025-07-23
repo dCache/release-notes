@@ -75,6 +75,47 @@ HTML header: <title>dCache 11.0 Release Notes</title>
 
 We want to thank Marian Babik and Onno Zweers for their contributions.
 
+## Release 11.0.4
+
+### qos
+
+DataBase name is now configurable.
+
+### quota
+
+
+The current release added protocol compliant return codes on quota exceeded exception.
+
+### restapi
+
+dCache rest api response filtered out fields that had null or default (for that type) values. 
+As the result, for instance, integer filed with 0 value was skipped (so is any filed with null value). 
+
+This is now fixed and Request results returned by dCache rest api contain fields having null or default values.
+
+
+
+
+
+### Changelog 11.0.3..11.0.4
+
+<!-- git log 11.0.3..11.0.4 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[e586987b52](https://github.com/dcache/dcache/commit/e586987b522d58b19aa9dc7d5c580835b836bcb4)
+:   [maven-release-plugin] prepare release 11.0.4
+
+[e95887c3b4](https://github.com/dcache/dcache/commit/e95887c3b453619506b9ca3456011930542ca9d3)
+:   dcache rest api: do not filter out fields with default and null values when building json reply object. Enable get/set of OUTPUT quota
+
+[1764dcc66d](https://github.com/dcache/dcache/commit/1764dcc66dfe7125f54dfd333af5edaa383f580c)
+:   qos: make db name configurable
+
+[d6456b3c6b](https://github.com/dcache/dcache/commit/d6456b3c6bb8303c77be039d248e8c57d4fdb12a)
+:   quota: implement protocols specific return codes
+
+[07e89a1cf3](https://github.com/dcache/dcache/commit/07e89a1cf3a33ae65e9ac0366f2443538ff8e768)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 11.0.3
 
 ### frontend

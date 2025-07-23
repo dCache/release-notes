@@ -75,6 +75,64 @@ HTML header: <title>dCache 10.1 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 10.1.18
+
+### quota
+
+
+The current release added protocol compliant return codes on quota exceeded exception.
+
+### restapi
+
+dCache rest api response filtered out fields that had null or default (for that type) values. 
+As the result, for instance, integer filed with 0 value was skipped (so is any filed with null value). 
+
+This is now fixed and Request results returned by dCache rest api contain fields having null or default values.
+
+
+
+
+
+### Changelog 10.1.17..10.1.18
+
+<!-- git log 10.1.17..10.1.18 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[3b4f8839a9](https://github.com/dcache/dcache/commit/3b4f8839a9bfc9c33530a2150ba0b285d6e9d6ce)
+:   [maven-release-plugin] prepare release 10.1.18
+
+[a88957b459](https://github.com/dcache/dcache/commit/a88957b4592d07225c39cb82e7e2eaf57d44fe4a)
+:   dcache rest api: do not filter out fields with default and null values when building json reply object. Enable get/set of OUTPUT quota
+
+[ba0cb38bef](https://github.com/dcache/dcache/commit/ba0cb38bef712f9e30162fe9c5eebbd94b1903e0)
+:   quota: implement protocols specific return codes
+
+[b4fc440eb0](https://github.com/dcache/dcache/commit/b4fc440eb06bab8ac95949f60a09cc0b02d75972)
+:   [maven-release-plugin] prepare for next development iteration
+
+## Release 10.1.16
+
+### #
+
+
+### Changelog 10.1.15..10.1.16
+
+<!-- git log 10.1.15..10.1.16 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[c112f98266](https://github.com/dcache/dcache/commit/c112f98266b24ecd34cdbb787a7455b6540ea91c)
+:   [maven-release-plugin] prepare release 10.1.16
+
+[ef04dd8b1e](https://github.com/dcache/dcache/commit/ef04dd8b1e28233e51a0fc74e728af65b91f3f4b)
+:   REST API: restrict access to id resource to admin user
+
+[aed8ffda06](https://github.com/dcache/dcache/commit/aed8ffda060a6df0149076f1c3d28c0e896fab31)
+:   ci: fix igtf rpm signing key
+
+[44764a5ab6](https://github.com/dcache/dcache/commit/44764a5ab667d2942ed9ce772a3fee0d683d4bdf)
+:   ci: don't use egi software repo for CA certs
+
+[9256fba2a4](https://github.com/dcache/dcache/commit/9256fba2a4cf15e33034863bcf397876e8544947)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 10.1.17
 
 ### gplazma

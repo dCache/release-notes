@@ -83,6 +83,109 @@ HTML header: <title>dCache 10.2 Release Notes</title>
 - Anton Schwarz, Heidelberg University, DESY Summer Stutent Programm
 
 
+## Release 10.2.15
+
+### gplazma
+
+Excessive caching of failed login attempts leads to system has been reported.
+
+The current relase fexed that and now following properties could be used to control the overload:
+
+`gplazma.authz.loginFailure.cache.size=10000`
+
+When the cache reaches this size, older entries are evicted. Remove the least-recently-used (LRU) entries when that limit is exceeded. important: the cache size is an approximate size not exact.
+
+`gplazma.authz.loginFailure.cache-size-expiry=1`
+
+timeout cache entry life time. By default expire entries 1 hour after they are written. If a key is expired due to time, it is gone even if the cache is not full.
+
+`gplazma.authz.loginFailure.cache-size-expiry.unit=HOURS`
+
+timeout cache entry life time unit.
+
+The current release fixed `BEARER TOKEN` empty case and the empty token should be rejected.
+
+### qos
+
+DataBase name is now configurable.
+
+### quota
+
+
+The current release added protocol compliant return codes on quota exceeded exception.
+
+### restapi
+
+dCache rest api response filtered out fields that had null or default (for that type) values. 
+As the result, for instance, integer filed with 0 value was skipped (so is any filed with null value). 
+
+This is now fixed and Request results returned by dCache rest api contain fields having null or default values.
+
+
+
+
+
+### Changelog 10.2.14..10.2.15
+
+<!-- git log 10.2.14..10.2.15 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[b3675112c2](https://github.com/dcache/dcache/commit/b3675112c21de7289119bc4454b7fc8bfedb64ab)
+:   [maven-release-plugin] prepare release 10.2.15
+
+[c8d68baf72](https://github.com/dcache/dcache/commit/c8d68baf72dff4571e4dc436ff1d677da75cfaa1)
+:   dcache rest api: do not filter out fields with default and null values when building json reply object. Enable get/set of OUTPUT quota
+
+[ff0914304b](https://github.com/dcache/dcache/commit/ff0914304bd243910792da37f35b77cc0f218587)
+:   qos: make db name configurable
+
+[199d7f9706](https://github.com/dcache/dcache/commit/199d7f9706a882a88348dc842003d8238687dfea)
+:   quota: implement protocols specific return codes
+
+[e88c8e9034](https://github.com/dcache/dcache/commit/e88c8e90346c5140210ca4aa3a240a67032efc7a)
+:   fix broken commit 48a544cb6
+
+[2b026d479a](https://github.com/dcache/dcache/commit/2b026d479a0077703198ee7831a2e3efb94e5472)
+:   gplazma: fix static field for RecordFailedLogins
+
+[23711de315](https://github.com/dcache/dcache/commit/23711de315c39e1e47aa6bfbb6f7bf64d6638a61)
+:   gmplazma: excessive caching of failed login attempts leads to system overload.
+
+[6a032c391e](https://github.com/dcache/dcache/commit/6a032c391efd511e426813cba9f1fabf2f951cef)
+:   [maven-release-plugin] prepare for next development iteration
+
+## Release 10.2.13
+
+### #
+
+
+### Changelog 10.2.12..10.2.13
+
+<!-- git log 10.2.12..10.2.13 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[a72695408e](https://github.com/dcache/dcache/commit/a72695408e69be2c19327e0bdb4ef80948e0cafa)
+:   [maven-release-plugin] prepare release 10.2.13
+
+[26cdaaeddb](https://github.com/dcache/dcache/commit/26cdaaeddb932e60d08822d172729333f370232c)
+:   Bulk: remove skipIfOnline method from PinManagerActivity
+
+[d5d33fdafe](https://github.com/dcache/dcache/commit/d5d33fdafe7c1d0a5a4692df8052d734bafa41e9)
+:   nfs41: remove transfers with no movers on layout state disposal
+
+[772adf47af](https://github.com/dcache/dcache/commit/772adf47af23066c9a4e25a8be6bdd744e1ca9a0)
+:   pool: shutdown mover on "Connection: close" http header
+
+[2132e66310](https://github.com/dcache/dcache/commit/2132e66310129948470c858d278365a569e50315)
+:   REST API: restrict access to id resource to admin user
+
+[9edc2c45e4](https://github.com/dcache/dcache/commit/9edc2c45e401c02625cf2041b829e963cdfd3e63)
+:   ci: fix igtf rpm signing key
+
+[782f6ddce8](https://github.com/dcache/dcache/commit/782f6ddce86a39d2bf8a9d6c998462299d5415af)
+:   ci: don't use egi software repo for CA certs
+
+[2f1c57b5ea](https://github.com/dcache/dcache/commit/2f1c57b5ea5c39b475dd94b6392f0e8ab0bde855)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 10.2.14
 
 ### frontend
