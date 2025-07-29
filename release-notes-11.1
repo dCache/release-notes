@@ -72,6 +72,7 @@ HTML header: <title>dCache 11.1 Release Notes</title>
 - Drop admin commands to set/get/list `flags` associated with files.
 - Obsolete `pool.enable.hsm-flag`.
 - Stop populating of `t_storageinfo` chimera table.
+- Removed Legacy admin shell
 
 ## Acknowledgments
 
@@ -84,6 +85,9 @@ HTML header: <title>dCache 11.1 Release Notes</title>
 
 dCache allowed admins to associate key-value (flags) pairs with files, which were stored in pnfs level-2 (t_lavel_2 table).
 Those flags did not influence the dcache behavior and were invisible to users. This functionality is removed now.
+
+The ssh admin interface could start the legacy shell with an alternative way to address dCache cells (cd vs. \c). This functionality
+is removed now. Any custom scripts that might depend on such functionality must be updated.
 
 ### Billing
 
