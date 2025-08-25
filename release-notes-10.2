@@ -71,7 +71,7 @@ HTML header: <title>dCache 10.2 Release Notes</title>
 
 ## Incompatibilities
 
-- Pool Manager partitions by default allowed  to stage
+- Pool Manager partitions by default are allowed  to stage
 - Dropped gPlazma ARGUS plugin
 - A stage request canceled in the poolmanager will propagate the cancel to pool
 - Pool internal health check is disabled if an external check command is configured.
@@ -80,7 +80,7 @@ HTML header: <title>dCache 10.2 Release Notes</title>
 
 ## Acknowledgments
 
-- Anton Schwarz, Heidelberg University, DESY Summer Stutent Programm
+- Anton Schwarz, Heidelberg University, DESY Summer Student Program
 
 
 ## Release 10.2.15
@@ -88,22 +88,22 @@ HTML header: <title>dCache 10.2 Release Notes</title>
 ### gplazma
 
 Excessive caching of failed login attempts leads to system has been reported.
-
-The current relase fexed that and now following properties could be used to control the overload:
+The current release has introduced a property that could be used to control the cache size:
 
 `gplazma.authz.loginFailure.cache.size=10000`
 
-When the cache reaches this size, older entries are evicted. Remove the least-recently-used (LRU) entries when that limit is exceeded. important: the cache size is an approximate size not exact.
+When that limit is exceeded, the oldest cache entry is removed.
+> Important: the cache size is approximate, not exact.
+
+In addition, the cache of failed logins can be evicted based on time. By default, entries expire 1 hour after they are written.
+If a key expires due to time, it is gone even if the cache is not full. The expiry time can be adjusted by:
 
 `gplazma.authz.loginFailure.cache-size-expiry=1`
-
-timeout cache entry life time. By default expire entries 1 hour after they are written. If a key is expired due to time, it is gone even if the cache is not full.
-
 `gplazma.authz.loginFailure.cache-size-expiry.unit=HOURS`
 
 timeout cache entry life time unit.
 
-The current release fixed `BEARER TOKEN` empty case and the empty token should be rejected.
+The current release fixed the `BEARER TOKEN` empty case, and the empty token should be rejected.
 
 ### qos
 
@@ -112,7 +112,7 @@ DataBase name is now configurable.
 ### quota
 
 
-The current release added protocol compliant return codes on quota exceeded exception.
+The current release added protocol-compliant return codes on quota-exceeded exceptions.
 
 ### restapi
 
