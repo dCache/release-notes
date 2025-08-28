@@ -79,6 +79,50 @@ Many Thanks to Lars Jansse and Sandro Grizzo for their contributions.
 - If upgrading from 8.2, be sure to read also the release notes for 9.0 and 9.1, important changes are described there. See the [9.2 migration guide](https://github.com/dCache/upgrade-guide/blob/master/UPGRADE92.md) for more complete information
 - With version 9.2.8+, empty and non-existent banfiles will be treated the same
 
+## Release 9.2.41
+
+### pool
+
+The wrandom partition ignored pool gap, thus can select a full pull.
+This is now fixed and full pulls are skipped by wrandom partition.
+
+
+Correct lastAccess and creationTime are now displayed by sweeper ls and thus replica lifetimes reported by dCache REST Api.
+
+
+### tape
+
+REST API Reponse checks the `error` field
+and considers request failed if the field is present (ignoring that it has null value).
+
+This is now fixed and no null error is reported.
+
+
+### Changelog 9.2.40..9.2.41
+
+<!-- git log 9.2.40..9.2.41 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[f1a384ef85](https://github.com/dcache/dcache/commit/f1a384ef851d61898f99dd17e4b1498aedc5c3ac)
+:   [maven-release-plugin] prepare release 9.2.41
+
+[596f42548c](https://github.com/dcache/dcache/commit/596f42548c37284ad53bed333c6a403be2f5308c)
+:   poolmanager: update wrandom partition to respect gap
+
+[aaecf869f0](https://github.com/dcache/dcache/commit/aaecf869f0afe940fe1da2be24089368b0f90760)
+:   WLCG tape API: do not report empty fields in json responses
+
+[13805e7213](https://github.com/dcache/dcache/commit/13805e72130d74fa8ddade30d5ab30c67591c632)
+:   bulk: remove residual code having to do with delay_clear
+
+[6e42da17cd](https://github.com/dcache/dcache/commit/6e42da17cd1a60fe21159d2a44c81520d2ed7064)
+:   pool: define replocas' lastAccessTime and creationTime on start up when repository is not present
+
+[dbfec1c005](https://github.com/dcache/dcache/commit/dbfec1c005e478563e3620534e2f976d3f848e26)
+:   ci: stop using bitnami images
+
+[8ef66c7c93](https://github.com/dcache/dcache/commit/8ef66c7c93bc6d7d99e916286bd5efb7574d3714)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 9.2.40
 
 ### quota

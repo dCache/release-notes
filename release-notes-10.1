@@ -75,6 +75,50 @@ HTML header: <title>dCache 10.1 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 10.1.19
+
+### pool
+
+The wrandom partition ignored pool gap, thus can select a full pull.
+This is now fixed and full pulls are skipped by wrandom partition.
+
+
+Correct lastAccess and creationTime are now displayed by sweeper ls and thus replica lifetimes reported by dCache REST Api.
+
+
+### tape
+
+REST API Reponse checks the `error` field
+and considers request failed if the field is present (ignoring that it has null value).
+
+This is now fixed and no null error is reported.
+
+
+### Changelog 10.1.18..10.1.19
+
+<!-- git log 10.1.18..10.1.19 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[a2487bf7f9](https://github.com/dcache/dcache/commit/a2487bf7f973018faabf7e6e57ec93e3555d9d56)
+:   [maven-release-plugin] prepare release 10.1.19
+
+[3cb487a1c0](https://github.com/dcache/dcache/commit/3cb487a1c0f7f75a22f59bf9ce0bac8f8f1ecae3)
+:   poolmanager: update wrandom partition to respect gap
+
+[97018e144c](https://github.com/dcache/dcache/commit/97018e144c0d934844223624c0e951c1087ef612)
+:   WLCG tape API: do not report empty fields in json responses
+
+[bcedae5368](https://github.com/dcache/dcache/commit/bcedae5368c40ff082e78681ba81da4d9ec6f7c0)
+:   bulk: remove residual code having to do with delay_clear
+
+[1b34b33e23](https://github.com/dcache/dcache/commit/1b34b33e23c82f245e6ebf2b59098dea9df482e5)
+:   pool: define replocas' lastAccessTime and creationTime on start up when repository is not present
+
+[103bde6627](https://github.com/dcache/dcache/commit/103bde6627134f77b8247d78af8ca27bf7b3515e)
+:   ci: stop using bitnami images
+
+[240add297a](https://github.com/dcache/dcache/commit/240add297a276f84ee032ec3d3912a7921f433e4)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 10.1.18
 
 ### quota

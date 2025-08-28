@@ -75,6 +75,62 @@ HTML header: <title>dCache 11.0 Release Notes</title>
 
 We want to thank Marian Babik and Onno Zweers for their contributions.
 
+## Release 11.0.5
+
+### pool
+
+The wrandom partition ignored pool gap, thus can select a full pull.
+This is now fixed and full pulls are skipped by wrandom partition.
+
+
+Correct lastAccess and creationTime are now displayed by sweeper ls and thus replica lifetimes reported by dCache REST Api.
+
+
+### tape
+
+REST API Reponse checks the `error` field
+and considers request failed if the field is present (ignoring that it has null value).
+
+This is now fixed and no null error is reported.
+
+
+### Changelog 11.0.4..11.0.5
+
+<!-- git log 11.0.4..11.0.5 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[e207a29289](https://github.com/dcache/dcache/commit/e207a29289f84181f6840bd1316e4c045900a5df)
+:   [maven-release-plugin] prepare release 11.0.5
+
+[4167885444](https://github.com/dcache/dcache/commit/4167885444a941d055a3bcf559b53497d11c8847)
+:   poolmanager: update wrandom partition to respect gap
+
+[3b10266eb9](https://github.com/dcache/dcache/commit/3b10266eb982d9d7d224ec569e3a868545cbd3ee)
+:   WLCG tape API: do not report empty fields in json responses
+
+[afcaa9843f](https://github.com/dcache/dcache/commit/afcaa9843f2d08dcec0f6130fdf7d22de39ccf04)
+:   bulk: remove residual code having to do with delay_clear
+
+[a569bc68e8](https://github.com/dcache/dcache/commit/a569bc68e87775ce3fa15f77fc322a1c3c91dddc)
+:   pool: define replocas' lastAccessTime and creationTime on start up when repository is not present
+
+[0c2246a627](https://github.com/dcache/dcache/commit/0c2246a627c5765552583fb9d7be18ea4644f44d)
+:   ci: consume billing kafka messages from the beginning
+
+[eb3034f315](https://github.com/dcache/dcache/commit/eb3034f315822bd28c3c8435b0b891a21cb0acb7)
+:   ci: use minio helm chart from charts.min.io
+
+[1a1e6b300f](https://github.com/dcache/dcache/commit/1a1e6b300fad748afa81ddc307727b953978a575)
+:   ci: don't use bitnami helm charts for kafka and zookeeper
+
+[1e90a14eca](https://github.com/dcache/dcache/commit/1e90a14ecab049aaca8616776765da1919ff8633)
+:   ci: don't use bitnami helm chart for postgresql
+
+[ee5ec1ba7a](https://github.com/dcache/dcache/commit/ee5ec1ba7a091258fe044d9f9a90cc7809f43ce2)
+:   ci: don't use bitnami images for kubectl commands
+
+[c87be5deb0](https://github.com/dcache/dcache/commit/c87be5deb0dd5eb9c1a05c6c3b902ade8d169f9d)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 11.0.4
 
 ### qos
