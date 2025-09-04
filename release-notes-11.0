@@ -371,6 +371,18 @@ If a pool with the file is online and a tape copy is available, then dCache will
 However, if the pool becomes available again, the stage request is not interrupted, and the client will wait for tape. With 11.0 release, the
 poolmanager will retry the request when the pool is up.
 
+### SciTags
+
+The `SciTag` support is enhanced with the experiment ID and activity. There is a set of new configuration options to enable and fine tune the behaviour:
+
+```
+pool.enable.firefly=false
+pool.firefly.destination=<transfer’s endpoint>
+pool.firefly.excludes=a.b.c.d/16
+pool.firefly.vo-mapping=atlas:2, cms:3, lsst:9
+pool.firefly.storage-statistics=false
+```
+
 ### Changelog from 10.2.0 to 11.0.0
 
 <!-- git log 10.2..11.0 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
