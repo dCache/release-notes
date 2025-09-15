@@ -76,7 +76,7 @@ HTML header: <title>dCache 11.1 Release Notes</title>
 
 ## Acknowledgments
 
-(tbd, this section uses markdown formatting)
+We thank Tino Reichardt for his contribution.
 
 
 ## Release 11.1.0
@@ -101,7 +101,7 @@ The storage info of a file is defined by directory tags, such as `OSMTemplate` a
 
 ### Cleaner
 
-Previously, `cleaner-hsm` would send one delete request per HSM at a time to a single pool each. However, this level of parallelization is not very efficient, especially when deletes time out.
+Previously, `cleaner-hsm` would send one delete request per HSM at a time to a single pool each. However, this level of parallelization is not very efficient, especially when the delete times out.
 Now, for each HSM, it can delete files in parallel via multiple pools. Instead of waiting for one delete request batch per HSM to finish or time out, it will send further delete requests for that HSM to other pools connected to it on successive `cleaner-hsm` runs. By decreasing the time between successive runs, the number of parallel cleaning pools is increased (as long as there are available pools).
 
 ### Checksums
@@ -123,6 +123,8 @@ Added multimap plugin section in the dCache book.
 ### Hoppingmanager
 
 ### httpd
+
+The pool  and pool group usage pages have been updated to display data volumes in a human-readable form.
 
 ### Info
 
