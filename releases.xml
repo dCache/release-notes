@@ -167,7 +167,42 @@
     <br/>
   </preamble>
 
+  <series id="server-11.1">
+    <title>server 11.1.x</title>
+    <description>
+            <p>dCache 11.1 is a Feature Release introducing the following highlights:</p>
+      <ul>
+              <li>NFSv4.1 Read-delegation support</li>
 
+
+      </ul>
+      <p>Incompatibilities</p>
+       <ul>
+              <li>Drop support for nfsv4_1_files layout type.</li>
+              <li>Drop admin commands to set/get/list `flags` associated with files.</li>
+              <li>Absolete `pool.enable.hsm-flag`.</li>
+              <li>Stop populating of `t_storageinfo` chimera table.</li>
+              <li>Removed Legacy admin shell</li>
+      </ul>
+
+
+      
+      <p>dCache v11.1 requires a JVM supporting Java 17.</p>
+    </description>
+    <releases>
+
+
+      <name>dCache VERSION</name>
+      <download-url-prefix>repo/11.1/dcache</download-url-prefix>
+      <notes-url>release-notes-11.1.shtml</notes-url>
+      <version-prefix>11.1.</version-prefix>
+
+      <release>
+    
+      </release>
+
+    </releases>
+    </series>
 
   <series id="server-11.0">
     <title>server 11.0.x</title>
@@ -180,10 +215,9 @@
               
       </ul>
       <p>Incompatibilities</p>
-      <ul>
-              
-      </ul>
-      <p>dCache v11.0 requires a JVM supporting Java 17.</p>
+             
+      
+      <p>dCache v11.1 requires a JVM supporting Java 17.</p>
     </description>
     <releases>
 
