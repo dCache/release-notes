@@ -195,13 +195,31 @@
       <name>dCache VERSION</name>
       <download-url-prefix>repo/11.1/dcache</download-url-prefix>
       <notes-url>release-notes-11.1.shtml</notes-url>
-      <version-prefix>11.1.</version-prefix>
+      <verision-prefix>11.1.</version-prefix>
 
       <release>
     
       </release>
 
-    </releases>
+    
+
+      <release version="0" recommended="1">
+        <date>19.9.2025</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>85c6e32e17f0466820a38e47b704a856</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>368947eff03092b7fb74dbdce9b4ddb2</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>9b9f0b00170af187e138968c35a02081</md5sum>
+        </package>
+      </release>
+
+     </releases> 
     </series>
 
   <series id="server-11.0">
