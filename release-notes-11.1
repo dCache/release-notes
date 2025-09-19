@@ -89,7 +89,7 @@ Those flags did not influence the dcache behavior and were invisible to users. T
 The ssh admin interface could start the legacy shell with an alternative way to address dCache cells (cd vs. \c). This functionality
 is removed now. Any custom scripts that might depend on such functionality must be updated.
 
-### Billing
+
 
 ### Chimera
 
@@ -104,31 +104,27 @@ The storage info of a file is defined by directory tags, such as `OSMTemplate` a
 Previously, `cleaner-hsm` would send one delete request per HSM at a time to a single pool each. However, this level of parallelization is not very efficient, especially when the delete times out.
 Now, for each HSM, it can delete files in parallel via multiple pools. Instead of waiting for one delete request batch per HSM to finish or time out, it will send further delete requests for that HSM to other pools connected to it on successive `cleaner-hsm` runs. By decreasing the time between successive runs, the number of parallel cleaning pools is increased (as long as there are available pools).
 
-### Checksums
+
 
 ### DCAP
 
 Removed the capability of  associating a checksum as a key-value pair on upload. The checksum had never been used by dCache or exposed to users.
 
-### Frontend
 
-### FTP
+
+
 
 ### gplazma
 
 Added multimap plugin section in the dCache book.
 
-### History
 
-### Hoppingmanager
 
 ### httpd
 
 The pool  and pool group usage pages have been updated to display data volumes in a human-readable form.
 
-### Info
 
-### Missing Files
 
 ### Monitoring
 
@@ -144,9 +140,9 @@ In order to provide delegation-based read access on dCache pools, the `nfsv4_1_f
 
 >NOTE: As the client will not return delegations right after transfer, the NFS movers on pools might stay active even if no applications have opened the file. Moreover, the `transferTime` and `transferSize`  correspond to a file delegation period and do not reflect a single `open->close` cycle.
 
-### Pinmanager
 
-### PNFS Manager
+
+
 
 ### Pool
 
@@ -155,33 +151,292 @@ Berkeley DB, which is used to store metadata on pools, by default keeps only 100
 On data upload, dCache pool can tell PnfsManager whatever pool's `lfs` mode is `hsm` or `precious`. This functionality is controlled by `pool.enable.hsm-flag` option, which defaults to `false` since 2017.
 This option is now obsolete.
 
-### Poolmanager
 
-### Resilience
-
-### Space Manager
-
-### SRM
-
-### SRM Manager
-
-### Statistics
-
-### Topo
-
-### Transfer Managers
-
-### WebDAV
-
-### XRootD
-
-### Zookeeper
 
 ### Changelog from 11.0.0 to 11.1.0
 
 <!-- git log 11.0..11.1 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
 
-(tbd as soon as the branching is done)
+[7cec96cf27](https://github.com/dcache/dcache/commit/7cec96cf2780437013d118906180567b0d499180)
+:   build(deps): bump io.netty:netty-codec-http
+
+[c23fd18b50](https://github.com/dcache/dcache/commit/c23fd18b5007a5fb82264fbbe52046762687a83a)
+:   qos: don't shadow fields from super class in ReplicaStateAdjuster
+
+[2e12f1dca2](https://github.com/dcache/dcache/commit/2e12f1dca29feeed1dc6352f166aad2d1282a444)
+:   qos-adjuster: use pnfsid for internal bookkeeping
+
+[ef27b1f9c7](https://github.com/dcache/dcache/commit/ef27b1f9c7c0c46dd8365a4bf3076e2fd3917d59)
+:   qos: disable dynamic replica reduction
+
+[a6b7237387](https://github.com/dcache/dcache/commit/a6b723738709917dc0f031ca3a6923c65a1a7ba6)
+:   chimera: reduce number of internal location copies
+
+[acf6cc0762](https://github.com/dcache/dcache/commit/acf6cc07626d9bb1ddf30ed85c2c0c04f2a71b04)
+:   Human readable sizes for Webadmin Interface
+
+[38ac3d0e13](https://github.com/dcache/dcache/commit/38ac3d0e13bc1651041346d691186698b5370ac0)
+:   WLCG tape API: do not report empty fields in json responses
+
+[74b01b98ab](https://github.com/dcache/dcache/commit/74b01b98abb6dc69d05abeb11d929bc4b5121c9b)
+:   poolmanager: fix wrandom patrition loop
+
+[a778f9763c](https://github.com/dcache/dcache/commit/a778f9763cbce8ba3876d4eaf3a440e02c4c4040)
+:   poolmanager: update wrandom partition to respect gap
+
+[5f0e7be8e8](https://github.com/dcache/dcache/commit/5f0e7be8e8bf288b35ed3a418c40a45af1e63276)
+:   bulk: remove residual code having to do with delay_clear
+
+[6b5438f4b5](https://github.com/dcache/dcache/commit/6b5438f4b536dd77c659661132bbf96b44e00471)
+:   build(deps): bump org.bouncycastle:bcpkix-jdk18on from 1.78 to 1.78.1 (#7861)
+
+[5f922dd51e](https://github.com/dcache/dcache/commit/5f922dd51e9a5b98be16b7aee572cf2e4d67675a)
+:   Revert "libs: update jackson to version 2.18.3"
+
+[9b19f5fca2](https://github.com/dcache/dcache/commit/9b19f5fca23c31d07291a676bd961917f7dfdfc8)
+:   omnisession: add support for role attribute
+
+[c735ee9258](https://github.com/dcache/dcache/commit/c735ee9258b70e4571247db5a37912422dfc6c70)
+:   ci: consume billing kafka messages from the beginning
+
+[8e052af8b7](https://github.com/dcache/dcache/commit/8e052af8b75f41ea2c5d1a6bb87e29f9106abe7b)
+:   ci: use minio helm chart from charts.min.io
+
+[d15becab64](https://github.com/dcache/dcache/commit/d15becab641f62233e60cd4dee1959ffeb2c3ef3)
+:   ci: don't use bitnami helm charts for kafka and zookeeper
+
+[b4db67e462](https://github.com/dcache/dcache/commit/b4db67e462b7334c74192af5309f8aa93ba7128c)
+:   ci: don't use bitnami helm chart for postgresql
+
+[80b45777ec](https://github.com/dcache/dcache/commit/80b45777ec1e6dc0aec8aa14b98fc2547ee2e5c8)
+:   ci: don't use bitnami images for kubectl commands
+
+[fa1987338b](https://github.com/dcache/dcache/commit/fa1987338b633922c5e2534e5f4ad37e10a0afc6)
+:   pool: move QoSMessageHandler#SYSTEM_OWNER into StickyRecord
+
+[1239271d25](https://github.com/dcache/dcache/commit/1239271d258808b6381faa95b20c4a69715fda98)
+:   namespace: raise alarm if storage class misconfigured
+
+[c01a82fb05](https://github.com/dcache/dcache/commit/c01a82fb05b89a16b4b02d8796b23154a0423a7f)
+:   pool: define replocas' lastAccessTime and creationTime on start up when repository is not present
+
+[dfc4f69574](https://github.com/dcache/dcache/commit/dfc4f6957408c685f7161aa709132022c6f732b5)
+:   ci: add gpg to almalinux 10 installation
+
+[5ef4e2bb6a](https://github.com/dcache/dcache/commit/5ef4e2bb6ae57c111d6d2139f87d8c816a8a234d)
+:   ci: use almalinux:10-minimal as a standard image
+
+[2008cde212](https://github.com/dcache/dcache/commit/2008cde21267c8af1a69c0afdbb14ec7804d7c43)
+:   ssh: drop legacy shell
+
+[e5b8a66450](https://github.com/dcache/dcache/commit/e5b8a6645005c099398a4f94450f5139292c8a9e)
+:   ci: ignore netty-tcnative-boringssl-static duplicates
+
+[2a0716d7be](https://github.com/dcache/dcache/commit/2a0716d7be39727e5fc0a22e13b13d378a1032c0)
+:   libs: update netty version to 4.2.3
+
+[ef4d8b8e08](https://github.com/dcache/dcache/commit/ef4d8b8e0848adff3588abdc71e68777a20eb2d9)
+:   vehicles: remove legacy PoolModifyPersistencyMessage
+
+[08ca0d0f7e](https://github.com/dcache/dcache/commit/08ca0d0f7eae1200235b6a736de4fe14840ddf54)
+:   pool: expose receiving from pool state in `rep ls`
+
+[d96d0c132e](https://github.com/dcache/dcache/commit/d96d0c132ee8eeae54f23bf325b9b9a2521e36fc)
+:   runtime: enable prometheus exporter
+
+[9f5d209816](https://github.com/dcache/dcache/commit/9f5d2098167d2cf635113f90880e657e98f1e985)
+:   ci: adding variable admin_role to environment
+
+[aeabefe0c6](https://github.com/dcache/dcache/commit/aeabefe0c6295e08af9c676d1d090a588e9109ab)
+:   frontend: organization of swagger
+
+[8dcf074205](https://github.com/dcache/dcache/commit/8dcf074205744a8d1be1879f70409699609503d1)
+:   cells: stop using deprecated ThreadGroup methods
+
+[5a4adf3d42](https://github.com/dcache/dcache/commit/5a4adf3d4246d5f702289ea0a802b8bd6205a9d2)
+:   auth: add DesiredRole#toString
+
+[cab11e7486](https://github.com/dcache/dcache/commit/cab11e7486ab74cac8596267eaf0fda6136c7ac1)
+:   qos: make db name configurable
+
+[36d6a5ef8a](https://github.com/dcache/dcache/commit/36d6a5ef8a1a886eb06118386d9e8963253e77c1)
+:   dcache rest api: do not filter out fields with default and null values when building json reply object. Enable get/set of OUTPUT quota
+
+[8de56cb839](https://github.com/dcache/dcache/commit/8de56cb83948d6d55062845e69a15a896fd8ca42)
+:   voms: accept only FQANs that match VO name
+
+[8353e67690](https://github.com/dcache/dcache/commit/8353e6769052b4eb1215f7176c5192c8ed83866a)
+:   ci: adding migration endpoint tests to the gitlab pipeline
+
+[4d22cb12aa](https://github.com/dcache/dcache/commit/4d22cb12aa7bc20fd2b8be5fd047640971a5b77c)
+:   quota: implement protocols specific return codes
+
+[b68a2d6ae7](https://github.com/dcache/dcache/commit/b68a2d6ae76391f140ac5e39b227f10f9a259ee6)
+:   ci: adding qos endpoint tests to the gitlab pipeline
+
+[e09d70a568](https://github.com/dcache/dcache/commit/e09d70a568ada9c56eb8f99a0b6a983f73de0b0b)
+:   chimera: stop populating and querying t_storageinfo table
+
+[47cc2bc55a](https://github.com/dcache/dcache/commit/47cc2bc55a8667f533053118dd0bb447e4ea8906)
+:   nfs: add admin command to list current delegations
+
+[f5f92781c0](https://github.com/dcache/dcache/commit/f5f92781c00f4e31f4ef0c742b9e5c6ddb1f7db7)
+:   fix broken commit 48a544cb6
+
+[2842808071](https://github.com/dcache/dcache/commit/284280807199a6259159eb98ca67e5c15b538da6)
+:   pnfsmanager: drop support for file flags and handling of pnfs level-2
+
+[75617d45e0](https://github.com/dcache/dcache/commit/75617d45e00daea1b2a98b0a68c327c4aceaba2e)
+:   gplazma: fix static field for RecordFailedLogins
+
+[a406b1b82d](https://github.com/dcache/dcache/commit/a406b1b82d95d97b97ba5b49d877bfe25ba32702)
+:   gplazma: update link to IGTFInfo file format
+
+[ce93ab1799](https://github.com/dcache/dcache/commit/ce93ab1799cc7c800c357d260655c61453bf7fb4)
+:   pool: drop pool.enable.hsm-flag
+
+[dee4ee71f4](https://github.com/dcache/dcache/commit/dee4ee71f4d93f1bd64082ec4846600d2d4c7a90)
+:   pnfsmanager: drop flags set/get/delete commands
+
+[7cbd21ae26](https://github.com/dcache/dcache/commit/7cbd21ae266eac810adca5e7f664d8e8188384ba)
+:   dcap: drop checksum string as flags
+
+[bcde31a09f](https://github.com/dcache/dcache/commit/bcde31a09f877e9e7488e7be24870bc4c52873dd)
+:   admin: remove set/get flags command and derivates
+
+[1a5b83d78b](https://github.com/dcache/dcache/commit/1a5b83d78b58b3414f94119f913a055d7342bf16)
+:   ci: publish container image with branch tag
+
+[48a544cb69](https://github.com/dcache/dcache/commit/48a544cb694a6a8995a8d966891d33cdc4105d6b)
+:   gmplazma: excessive caching of failed login attempts leads to system overload.
+
+[71b18ee76e](https://github.com/dcache/dcache/commit/71b18ee76ef8ef2c8f06e7bffe801eef30ac2fc9)
+:   frontend: refactor to camel case to keep naming convention consistent between tests
+
+[d6e7dc671a](https://github.com/dcache/dcache/commit/d6e7dc671a9cff13f98fc62e45dca83341ce84a9)
+:   ci: tests to check staging functionality
+
+[28b76ef158](https://github.com/dcache/dcache/commit/28b76ef158519c69cd1fbdb3008cc679d851d521)
+:   container: use almalinux-10 minimal as it produces smaller images
+
+[2a77534942](https://github.com/dcache/dcache/commit/2a7753494292fd178639ff909d0d72a8ccd3a82f)
+:   gplazma: check BEARER TOKEN empty case
+
+[7dc561d58f](https://github.com/dcache/dcache/commit/7dc561d58f9f4ad7a1254b09d6dec2d512275f9f)
+:   frontend: respect admin role when requested
+
+[bec50c40cf](https://github.com/dcache/dcache/commit/bec50c40cf59612faf63e033114b04f8fc7b9aaa)
+:   chimera: fix string representation of Stat
+
+[196f8c9cce](https://github.com/dcache/dcache/commit/196f8c9cce0e0d5412d7ca4d31864be8b72d8ee7)
+:   webdav: fix X-OC-MTIME support when uploading a file
+
+[ee57075247](https://github.com/dcache/dcache/commit/ee57075247b0dd96043258ad126db56f89e7ff82)
+:   Removal of random README file
+
+[5332c10f19](https://github.com/dcache/dcache/commit/5332c10f19a234a48ebf7d83e18ed67eab989171)
+:   dcache tape rest API: return ONLINE (or DISK) locality for incomplete files
+
+[9db7e752c5](https://github.com/dcache/dcache/commit/9db7e752c5f3a0afa9223a210f3dbfe46c24e6f8)
+:   pool: change default number of open files by Berkeley DB
+
+[af20384b1a](https://github.com/dcache/dcache/commit/af20384b1aa909de0bc8243b3fdf79ffe8cb77aa)
+:   libs: drop unused dependency
+
+[bafadec421](https://github.com/dcache/dcache/commit/bafadec421d1b9073afa48721576640229a0d246)
+:   Revert "chimera: fix string representation of Stat"
+
+[d8269db15e](https://github.com/dcache/dcache/commit/d8269db15e4c5059b08dbf1a3bf6f9dad424aef2)
+:   Reapply "gplazma2: drop unsupported org.reflections library"
+
+[ca8a492385](https://github.com/dcache/dcache/commit/ca8a492385e518fbdd42cce098e62acd6390c006)
+:   container: avoid epmty entry in the classpath
+
+[2595222ca0](https://github.com/dcache/dcache/commit/2595222ca0eae1472eb8955b89e21f33933b3e12)
+:   chimera: fix string representation of Stat
+
+[e731648a3a](https://github.com/dcache/dcache/commit/e731648a3afc555df47f3883eceefae13261b269)
+:   chimera: add 'stat' command to shell
+
+[00e680d4bf](https://github.com/dcache/dcache/commit/00e680d4bf1fe3855ab36ae704bb33fbbf9185dd)
+:   ci: frontend tests cleanup
+
+[1d27fbb9e4](https://github.com/dcache/dcache/commit/1d27fbb9e44587f395bde26e3e7088620a490e70)
+:   libs: switch t nfs4j-0.27.1
+
+[893734557e](https://github.com/dcache/dcache/commit/893734557e2e48ef5c6934059b134bfe2ca6747d)
+:   docs: add multimap plugin section
+
+[d0cc39c403](https://github.com/dcache/dcache/commit/d0cc39c403c8f3e3d2a61839e3e540b6bd8073aa)
+:   nfs: update proxy to use flex_files layout driver
+
+[7266edd31a](https://github.com/dcache/dcache/commit/7266edd31ac8799794ab2244adf93c2b34cb824e)
+:   pnfs: drop nfsv4_1_files layout type support
+
+[7284974e6d](https://github.com/dcache/dcache/commit/7284974e6d9ea47330780445e40559ded3d9f8c2)
+:   nfs4: libs update to nfs4j-0.27.0
+
+[5b57c61b98](https://github.com/dcache/dcache/commit/5b57c61b98ee31c5e10ac797fb8b6305b1921365)
+:   book: describe hsm-cleaner parallelization
+
+[0eff1a062c](https://github.com/dcache/dcache/commit/0eff1a062cef6c058c27c3f952690ad3f94dacc4)
+:   REST API: restrict access to id resource to admin user
+
+[8be70fb7b8](https://github.com/dcache/dcache/commit/8be70fb7b8f531ba53dd8cf086ec4c1dcaab88eb)
+:   Revert "gplazma2: drop unsupported org.reflections library"
+
+[cd6ea4fae8](https://github.com/dcache/dcache/commit/cd6ea4fae89c283b29d2874e5d3b140d52cd8f4e)
+:   cleaner: allow multiple pools per hsm to be cleaned in parallel
+
+[41a07b64fb](https://github.com/dcache/dcache/commit/41a07b64fb49c49dfb27303ac95520d1bd887b09)
+:   libs: update jackson to version 2.18.3
+
+[42144b3544](https://github.com/dcache/dcache/commit/42144b35445ff3e19085b37448f5d6913e1557d3)
+:   gplazma2: drop unsupported org.reflections library
+
+[40f72e4508](https://github.com/dcache/dcache/commit/40f72e450856e9b17aeb77054dc1298aed479774)
+:   nfs41: unconditionally remote transfers associated with dead clients
+
+[046b83e912](https://github.com/dcache/dcache/commit/046b83e9123dcee5b37f207a5fbd1cd2668bdce0)
+:   pool: shutdown mover on "Connection: close" http header
+
+[fd4b899110](https://github.com/dcache/dcache/commit/fd4b8991101c349c2381886c5c3f0864097dcc6d)
+:   nfs41: remove transfers with no movers on layout state disposal
+
+[7fefd91353](https://github.com/dcache/dcache/commit/7fefd91353157208ec9d5e849e8904be607b6fd9)
+:   pom: update exec-maven-plugin to 3.5.0
+
+[eee28545f2](https://github.com/dcache/dcache/commit/eee28545f271c2a66ca991f2d757aae296037f5d)
+:   libs: update aspectj version to 1.9.24
+
+[3f3bdce14a](https://github.com/dcache/dcache/commit/3f3bdce14a146f733e2608559c3f03a684a61e23)
+:   ci: fix script execution bit
+
+[4391b28fec](https://github.com/dcache/dcache/commit/4391b28fec88001cad6c102dfc89719f018bfa82)
+:   frontend: add listing all existing labels
+
+[5696faa7d0](https://github.com/dcache/dcache/commit/5696faa7d051c808bbafc1b24847f016a99d427d)
+:   ci: fix igtf rpm signing key
+
+[40bb21acaa](https://github.com/dcache/dcache/commit/40bb21acaa639174f68339ebd1bd0ded0e1c3268)
+:   ci: collect k8s events before logs
+
+[111f60ca52](https://github.com/dcache/dcache/commit/111f60ca52be6d7c3ae64a1a16cd7773dfdf51b3)
+:   ci: collect k8s events
+
+[6814424adb](https://github.com/dcache/dcache/commit/6814424adb7d9d4732fa46da2d9aab97ee28d7ab)
+:   ci: disable unsupported pynfs tests
+
+[f18d3cd646](https://github.com/dcache/dcache/commit/f18d3cd6467ee2c3a99de4c9c81b575dc21752ad)
+:   ci: don't use egi software repo for CA certs
+
+[ef40ce10c5](https://github.com/dcache/dcache/commit/ef40ce10c5646777d0f3e02afab7bb43886f38c7)
+:   Bulk: remove skipIfOnline method from PinManagerActivity
+
+[0b30436285](https://github.com/dcache/dcache/commit/0b30436285c07777b7a7472004ab78bb9b294750)
+:   [maven-release-plugin] prepare for next development iteration
+
+
 
 
 </div>
