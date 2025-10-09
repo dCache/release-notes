@@ -79,6 +79,32 @@ Many Thanks to Lars Jansse and Sandro Grizzo for their contributions.
 - If upgrading from 8.2, be sure to read also the release notes for 9.0 and 9.1, important changes are described there. See the [9.2 migration guide](https://github.com/dCache/upgrade-guide/blob/master/UPGRADE92.md) for more complete information
 - With version 9.2.8+, empty and non-existent banfiles will be treated the same
 
+## Release 9.2.42
+
+### poolmanager
+
+Motivation:
+This fix takes care of the infinite loop conflict in wrandom partition which was introduced by commit 778f97.
+
+### qos
+
+
+### Changelog 9.2.41..9.2.42
+
+<!-- git log 9.2.41..9.2.42 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[2c3863b284](https://github.com/dcache/dcache/commit/2c3863b284467755670522e6a198ea37a0cd27cf)
+:   [maven-release-plugin] prepare release 9.2.42
+
+[8283767071](https://github.com/dcache/dcache/commit/82837670719d047abf6e3ab1ca78aa80499b33c0)
+:   poolmanager: fix wrandom partition
+
+[a3572290bf](https://github.com/dcache/dcache/commit/a3572290bf3f6cd466d4fb9f1d612dca9e91e961)
+:   qos: disable dynamic replica reduction
+
+[45b0aeac69](https://github.com/dcache/dcache/commit/45b0aeac6928c36d27ba3ee186923224b26c3497)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 9.2.41
 
 ### pool

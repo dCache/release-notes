@@ -79,6 +79,41 @@ HTML header: <title>dCache 11.1 Release Notes</title>
 We thank Tino Reichardt for his contribution.
 
 
+## Release 11.1.1
+
+### gplazma
+
+To ensure consistent role enforcement across dCache, GPlazma will now set the RolePrincipal whenever the role attribute is present.
+
+### nfs
+
+To reduce log clutter for our admins, the NFS client workaround message was downgraded in severity.
+
+### poolmanager
+
+Motivation:
+This fix takes care of the infinite loop conflict in wrandom partition which was introduced by commit 778f97.
+
+
+### Changelog 11.1.0..11.1.1
+
+<!-- git log 11.1.0..11.1.1 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[36c1ef7007](https://github.com/dcache/dcache/commit/36c1ef70072db42d029f992959c4b0cc8a31bda8)
+:   [maven-release-plugin] prepare release 11.1.1
+
+[3880ee9414](https://github.com/dcache/dcache/commit/3880ee9414ecccd927b552bcb50185b4682bcc61)
+:   gplazma: enforce RolePrincipal if Role attribute is set
+
+[3d56b4a07c](https://github.com/dcache/dcache/commit/3d56b4a07c9a10def847f0f6a54e43df2e816763)
+:   nfs: lower nfs-client workaround message
+
+[7fa54b3bbc](https://github.com/dcache/dcache/commit/7fa54b3bbc6501d66af74e84ae6ca5253d55a303)
+:   poolmanager: fix wrandom partition
+
+[ad13fcc946](https://github.com/dcache/dcache/commit/ad13fcc946767808258d0fb51fdc7f7e9a3d459f)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 11.1.0
 
 ### Admin

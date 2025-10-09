@@ -75,6 +75,32 @@ HTML header: <title>dCache 10.1 Release Notes</title>
 (tbd, this section uses markdown formatting)
 
 
+## Release 10.1.20
+
+### poolmanager
+
+Motivation:
+This fix takes care of the infinite loop conflict in wrandom partition which was introduced by commit 778f97.
+
+### qos
+
+
+### Changelog 10.1.19..10.1.20
+
+<!-- git log 10.1.19..10.1.20 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[549541cc0f](https://github.com/dcache/dcache/commit/549541cc0f144f59fc020cd32d6ef7969bdbad89)
+:   [maven-release-plugin] prepare release 10.1.20
+
+[0a585b50d6](https://github.com/dcache/dcache/commit/0a585b50d6398ccb23196658282e154f500e3ede)
+:   poolmanager: fix wrandom partition
+
+[887d582f97](https://github.com/dcache/dcache/commit/887d582f97a3be891c76af34d83f7a87cb30bd4d)
+:   qos: disable dynamic replica reduction
+
+[7282c84a25](https://github.com/dcache/dcache/commit/7282c84a258f15e491f145fd7e80f0dc241f950d)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 10.1.19
 
 ### pool

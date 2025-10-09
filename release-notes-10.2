@@ -83,6 +83,46 @@ HTML header: <title>dCache 10.2 Release Notes</title>
 - Anton Schwarz, Heidelberg University, DESY Summer Student Program
 
 
+## Release 10.2.17
+
+### gplazma
+
+To ensure consistent role enforcement across dCache, GPlazma will now set the RolePrincipal whenever the role attribute is present.
+
+### nfs
+
+To reduce log clutter for our admins, the NFS client workaround message was downgraded in severity.
+
+### poolmanager
+
+Motivation:
+This fix takes care of the infinite loop conflict in wrandom partition which was introduced by commit 778f97.
+
+### qos
+
+
+### Changelog 10.2.16..10.2.17
+
+<!-- git log 10.2.16..10.2.17 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[f742ac9eda](https://github.com/dcache/dcache/commit/f742ac9eda5178f57376a5c20d03ad53ca242d6d)
+:   [maven-release-plugin] prepare release 10.2.17
+
+[45d78ca891](https://github.com/dcache/dcache/commit/45d78ca891866c406d5fc472be8e024b1580513f)
+:   gplazma: enforce RolePrincipal if Role attribute is set
+
+[ca9e08f92f](https://github.com/dcache/dcache/commit/ca9e08f92f242de4dfe792d65c7b8760211048a6)
+:   nfs: lower nfs-client workaround message
+
+[7f4861c335](https://github.com/dcache/dcache/commit/7f4861c335b2868b649bbc7d80375873fff8c24b)
+:   poolmanager: fix wrandom partition
+
+[d8dd3a5c69](https://github.com/dcache/dcache/commit/d8dd3a5c69ba6b57c3873d6454f31162b8d1ea65)
+:   qos: disable dynamic replica reduction
+
+[5810f231ec](https://github.com/dcache/dcache/commit/5810f231ec9357dc46092611195fea7c772e42c5)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 10.2.16
 
 ### pool
