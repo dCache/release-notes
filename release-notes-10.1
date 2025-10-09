@@ -79,11 +79,11 @@ HTML header: <title>dCache 10.1 Release Notes</title>
 
 ### poolmanager
 
-Motivation:
 This fix takes care of the infinite loop conflict in wrandom partition which was introduced by commit 778f97.
 
 ### qos
 
+To avoid race conditions between PIN and UNPIN operations during message processing in migration moves, qos will now skip unpinning unless performed by the scanner.
 
 ### Changelog 10.1.19..10.1.20
 

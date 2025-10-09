@@ -80,11 +80,11 @@ Many Thanks to Petter A. Urkedal and Lukas Mansour for their contributions.
 
 ### poolmanager
 
-Motivation:
 This fix takes care of the infinite loop conflict in wrandom partition which was introduced by commit 778f97.
 
 ### qos
 
+To avoid race conditions between PIN and UNPIN operations during message processing in migration moves, qos will now skip unpinning unless performed by the scanner.
 
 ### Changelog 10.0.25..10.0.26
 
