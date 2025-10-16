@@ -75,6 +75,26 @@ HTML header: <title>dCache 11.0 Release Notes</title>
 
 We want to thank Marian Babik and Onno Zweers for their contributions.
 
+## Release 11.0.7
+
+### pool
+
+To trace why files change tier states from PRECIOUS to CACHED more logging was added during this state change.
+
+
+### Changelog 11.0.6..11.0.7
+
+<!-- git log 11.0.6..11.0.7 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[5630de0bc5](https://github.com/dcache/dcache/commit/5630de0bc500cf7e1b4cc3888a7a3b725fc109ba)
+:   [maven-release-plugin] prepare release 11.0.7
+
+[3e3f9a8825](https://github.com/dcache/dcache/commit/3e3f9a8825462c38eb82b62f7ed7c9ba8e869e57)
+:   pool: log at warn when files state in pool change
+
+[b564ed47b5](https://github.com/dcache/dcache/commit/b564ed47b5846de23dbfc60a003b3604070b889f)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 11.0.6
 
 ### gplazma

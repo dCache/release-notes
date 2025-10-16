@@ -76,6 +76,26 @@ HTML header: <title>dCache 10.0 Release Notes</title>
 
 We want to thank Petter A. Urkedal and Lukas Mansour for their contributions.
 
+## Release 10.0.27
+
+### documentation
+
+Update cleaner cell name to replace obsolete references to `cleaner` with `cleaner-disk`.
+
+
+### Changelog 10.0.26..10.0.27
+
+<!-- git log 10.0.26..10.0.27 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[9019f95417](https://github.com/dcache/dcache/commit/9019f9541714ca286edfa5559358d6e9e830f2b3)
+:   [maven-release-plugin] prepare release 10.0.27
+
+[4d9205983b](https://github.com/dcache/dcache/commit/4d9205983b38142a140f64220b137bb9810507f9)
+:   docs: fix references to old 'cleaner' service
+
+[99e4181508](https://github.com/dcache/dcache/commit/99e4181508e9a1a728894f5cae57e62a243aebb8)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 10.0.26
 
 ### poolmanager

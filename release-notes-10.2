@@ -83,6 +83,33 @@ HTML header: <title>dCache 10.2 Release Notes</title>
 - We want to thank Anton Schwarz for his contribution.
 
 
+## Release 10.2.18
+
+### documentation
+
+Update cleaner cell name to replace obsolete references to `cleaner` with `cleaner-disk`.
+
+### pool
+
+To trace why files change tier states from PRECIOUS to CACHED more logging was added during this state change.
+
+
+### Changelog 10.2.17..10.2.18
+
+<!-- git log 10.2.17..10.2.18 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[deff7bddcf](https://github.com/dcache/dcache/commit/deff7bddcfb62b6eb6c00eef0cec32c9456276cd)
+:   [maven-release-plugin] prepare release 10.2.18
+
+[5f93447903](https://github.com/dcache/dcache/commit/5f93447903c05dcaeee45a70e2f7f37a6ffa0d6c)
+:   docs: fix references to old 'cleaner' service
+
+[eb6b199801](https://github.com/dcache/dcache/commit/eb6b199801a19fb095fbe6292752cc6cb49b6d16)
+:   pool: log at warn when files state in pool change
+
+[b555b257e8](https://github.com/dcache/dcache/commit/b555b257e8810965f78ccae94011fa5ed5be395d)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 10.2.17
 
 ### gplazma
