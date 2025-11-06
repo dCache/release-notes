@@ -75,6 +75,34 @@ HTML header: <title>dCache 11.0 Release Notes</title>
 
 We want to thank Marian Babik and Onno Zweers for their contributions.
 
+## Release 11.0.8
+
+### documentation
+
+Update cleaner cell name to replace obsolete references to `cleaner` with `cleaner-disk`.
+
+### pool
+
+The current release fixed the typo `local` vs. `remote` as a resukt the 
+correct endpoint is reported in the billing.
+
+
+### Changelog 11.0.7..11.0.8
+
+<!-- git log 11.0.7..11.0.8 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[eda01b1a7d](https://github.com/dcache/dcache/commit/eda01b1a7d3b9501e5ec4baa7470bc4868640bf2)
+:   [maven-release-plugin] prepare release 11.0.8
+
+[8364d2c774](https://github.com/dcache/dcache/commit/8364d2c774486f49e63b753fd564e607e424f46a)
+:   docs: fix references to old 'cleaner' service
+
+[9afe6ba454](https://github.com/dcache/dcache/commit/9afe6ba454aab1db754f10f9d5f869fd5f6d78bc)
+:   pool: fix mover's local endpoint reported by a mover
+
+[cc15320a7b](https://github.com/dcache/dcache/commit/cc15320a7bb8fb7af1ccd487f2899573e672e727)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 11.0.7
 
 ### pool
