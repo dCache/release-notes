@@ -83,6 +83,73 @@ HTML header: <title>dCache 10.2 Release Notes</title>
 - We want to thank Anton Schwarz for his contribution.
 
 
+## Release 10.2.20
+
+### gplazma
+
+The  banfile only bans user if there is only one `ban foo:bar` line is present (one line per alias).
+This is now fixed.
+
+### pool
+
+TPC-HTTP remote endpoint validation now is  performed based on local trusted store and host name.
+
+### webdav
+
+WebDAV was returning  500 on unauthorized attempt to rename resource, no this is fixed and 
+403 on unauthorized attempt to rename resource will be returned.
+
+
+### Changelog 10.2.19..10.2.20
+
+<!-- git log 10.2.19..10.2.20 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[cee93e4b19](https://github.com/dcache/dcache/commit/cee93e4b1907ed753ae9880159f8c78802e4abf7)
+:   [maven-release-plugin] prepare release 10.2.20
+
+[4ff8fe324c](https://github.com/dcache/dcache/commit/4ff8fe324c1f32a92fd6054b2ee2f9411650db33)
+:   webdav: return 403 on unauthorized attempt to rename resource
+
+[35d4965eff](https://github.com/dcache/dcache/commit/35d4965eff82bb1eb8ed113836ac9dad5a51d9d7)
+:   gplazma: fix banfile plugin
+
+[1367d50aa4](https://github.com/dcache/dcache/commit/1367d50aa42302a176d0869fe3a0d2d6b34520fc)
+:   pool: use SSLTrustManagerWithHostnameChecking to initialize CAnL
+
+[bb9fe431db](https://github.com/dcache/dcache/commit/bb9fe431db0c7c855a65d667b00ce9ade84891e3)
+:   ci: stop using voms server
+
+[32974dfbb3](https://github.com/dcache/dcache/commit/32974dfbb3352305c2d5dcb8a4051fc202cb1f93)
+:   transfermanagers: complete removal of DB support
+
+[ceb1deb7b9](https://github.com/dcache/dcache/commit/ceb1deb7b97883c04bf56d2004107d8770b0717a)
+:   [maven-release-plugin] prepare for next development iteration
+
+### Changelog 10.2.19..10.2.20
+
+<!-- git log 10.2.19..10.2.20 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[cee93e4b19](https://github.com/dcache/dcache/commit/cee93e4b1907ed753ae9880159f8c78802e4abf7)
+:   [maven-release-plugin] prepare release 10.2.20
+
+[4ff8fe324c](https://github.com/dcache/dcache/commit/4ff8fe324c1f32a92fd6054b2ee2f9411650db33)
+:   webdav: return 403 on unauthorized attempt to rename resource
+
+[35d4965eff](https://github.com/dcache/dcache/commit/35d4965eff82bb1eb8ed113836ac9dad5a51d9d7)
+:   gplazma: fix banfile plugin
+
+[1367d50aa4](https://github.com/dcache/dcache/commit/1367d50aa42302a176d0869fe3a0d2d6b34520fc)
+:   pool: use SSLTrustManagerWithHostnameChecking to initialize CAnL
+
+[bb9fe431db](https://github.com/dcache/dcache/commit/bb9fe431db0c7c855a65d667b00ce9ade84891e3)
+:   ci: stop using voms server
+
+[32974dfbb3](https://github.com/dcache/dcache/commit/32974dfbb3352305c2d5dcb8a4051fc202cb1f93)
+:   transfermanagers: complete removal of DB support
+
+[ceb1deb7b9](https://github.com/dcache/dcache/commit/ceb1deb7b97883c04bf56d2004107d8770b0717a)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 10.2.19
 
 ### pool

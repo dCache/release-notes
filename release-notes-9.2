@@ -79,6 +79,30 @@ We want to thank Lars Jansse and Sandro Grizzo for their contributions.
 - If upgrading from 8.2, be sure to read also the release notes for 9.0 and 9.1, important changes are described there. See the [9.2 migration guide](https://github.com/dCache/upgrade-guide/blob/master/UPGRADE92.md) for more complete information
 - With version 9.2.8+, empty and non-existent banfiles will be treated the same
 
+## Release 9.2.44
+
+### gplazma
+
+The  banfile only bans user if there is only one `ban foo:bar` line is present (one line per alias).
+This is now fixed.
+
+
+### Changelog 9.2.43..9.2.44
+
+<!-- git log 9.2.43..9.2.44 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[9a4a26e517](https://github.com/dcache/dcache/commit/9a4a26e5175395d4d93155fb009f1f2e4f9df355)
+:   [maven-release-plugin] prepare release 9.2.44
+
+[723b7abe99](https://github.com/dcache/dcache/commit/723b7abe99301674bd76a56e1bc8eeda24ba3326)
+:   gplazma: fix banfile plugin
+
+[a0ae9e3db0](https://github.com/dcache/dcache/commit/a0ae9e3db073da7b3a99d19b0f941180b7f3c128)
+:   ci: stop using voms server
+
+[d80a9d80b4](https://github.com/dcache/dcache/commit/d80a9d80b4970584a963e816cb90f17e898cd354)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 9.2.43
 
 ### documentation

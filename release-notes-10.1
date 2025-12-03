@@ -72,6 +72,33 @@ HTML header: <title>dCache 10.1 Release Notes</title>
 
 ## Acknowledgments
 
+## Release 10.1.22
+
+### gplazma
+
+The  banfile only bans user if there is only one `ban foo:bar` line is present (one line per alias).
+This is now fixed.
+
+
+### Changelog 10.1.21..10.1.22
+
+<!-- git log 10.1.21..10.1.22 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[6a3822c8ab](https://github.com/dcache/dcache/commit/6a3822c8ab788ad12eefe74fd4ced645c3ac3b07)
+:   [maven-release-plugin] prepare release 10.1.22
+
+[358113eeb4](https://github.com/dcache/dcache/commit/358113eeb4894a95fb977870dcce4d5416a262a4)
+:   gplazma: fix banfile plugin
+
+[563e501acb](https://github.com/dcache/dcache/commit/563e501acb39dd17621be3145c93eb841353eb4c)
+:   ci: stop using voms server
+
+[abd011a396](https://github.com/dcache/dcache/commit/abd011a396d30eaa80f2c822e87c32c57fec8eec)
+:   transfermanagers: complete removal of DB support
+
+[44debf3cec](https://github.com/dcache/dcache/commit/44debf3ceced2037fe39cdeaf97cfaa4505c4544)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 10.1.21
 
 ### documentation

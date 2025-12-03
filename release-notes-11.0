@@ -75,6 +75,48 @@ HTML header: <title>dCache 11.0 Release Notes</title>
 
 We want to thank Marian Babik and Onno Zweers for their contributions.
 
+## Release 11.0.9
+
+### gplazma
+
+The  banfile only bans user if there is only one `ban foo:bar` line is present (one line per alias).
+This is now fixed.
+
+### pool
+
+TPC-HTTP remote endpoint validation now is  performed based on local trusted store and host name.
+
+### webdav
+
+WebDAV was returning  500 on unauthorized attempt to rename resource, no this is fixed and 
+403 on unauthorized attempt to rename resource will be returned.
+
+
+### Changelog 11.0.8..11.0.9
+
+<!-- git log 11.0.8..11.0.9 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[965c69edb5](https://github.com/dcache/dcache/commit/965c69edb5ce0de7afdc5bf03d1bf53f96605f7b)
+:   [maven-release-plugin] prepare release 11.0.9
+
+[d9bb34fc4e](https://github.com/dcache/dcache/commit/d9bb34fc4ea1f6373dcdd0b344394369d489aa7b)
+:   webdav: return 403 on unauthorized attempt to rename resource
+
+[c2ae582107](https://github.com/dcache/dcache/commit/c2ae5821074d20ad95ff420d812a663c9a01d6c9)
+:   gplazma: fix banfile plugin
+
+[ae300ead1d](https://github.com/dcache/dcache/commit/ae300ead1d7e6a7677873e42952617b8e61f2e7b)
+:   pool: use SSLTrustManagerWithHostnameChecking to initialize CAnL
+
+[87e88107b2](https://github.com/dcache/dcache/commit/87e88107b2b6a06acb6666fcf7f5701506af0317)
+:   ci: stop using voms server
+
+[dba257f5c1](https://github.com/dcache/dcache/commit/dba257f5c14e5a3c1e390f9bbf2e4f93cd20b15d)
+:   transfermanagers: complete removal of DB support
+
+[e8daadb344](https://github.com/dcache/dcache/commit/e8daadb34485865cdd01668e63e23f4ac1cca0fe)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 11.0.8
 
 ### documentation
