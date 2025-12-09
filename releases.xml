@@ -197,7 +197,23 @@
       <notes-url>release-notes-11.1.shtml</notes-url>
       <version-prefix>11.1.</version-prefix>
 
-      <release version="4" recommended="1">
+      <release version="5" recommended="1">
+        <date>09.12.2025</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>61fdc070bbd2ec155e7a4c2b3020de2a</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>efadcfb0b076935ac882579f50e987f5</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>78791ef22b07241fc9c39795acc922f2</md5sum>
+        </package>
+      </release>
+
+      <release version="4">
         <date>03.12.2025</date>
         <package name="Debian package">
           <download-url>_VERSION-1_all.deb</download-url>
@@ -303,7 +319,23 @@
       <notes-url>release-notes-11.0.shtml</notes-url>
       <version-prefix>11.0.</version-prefix>
 
-      <release version="9" recommended="1">
+      <release version="10" recommended="1">
+        <date>09.12.2025</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>104fa8b17d6a5ccaca64b82aaea7bada</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>01645ce591d10f71d013bc325ab8e6dd</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>c2c5d6281dc54c27bc95d8ad732a1e04</md5sum>
+        </package>
+      </release>
+
+      <release version="9">
         <date>03.12.2025</date>
         <package name="Debian package">
           <download-url>_VERSION-1_all.deb</download-url>
@@ -475,7 +507,23 @@
       <notes-url>release-notes-10.2.shtml</notes-url>
       <version-prefix>10.2.</version-prefix>
 
-      <release version="20" recommended="1">
+      <release version="21" recommended="1">
+        <date>09.12.2025</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>332eeb7f9f85f72adbe34ffaa993ec5f</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>2bd77afcb5b5250773386735782f77ef</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>166f23d0402b65f610b6d1d9d6506715</md5sum>
+        </package>
+      </release>
+
+      <release version="20">
         <date>03.12.2025</date>
         <package name="Debian package">
           <download-url>_VERSION-1_all.deb</download-url>
@@ -852,7 +900,23 @@
         </package>
       </release>
 -->
-      <release version="22" recommended="1">
+      <release version="23" recommended="1">
+        <date>9.12.2025</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>02817258879a316eb61d3f862ab16d30</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>b8858cd7848a0529a96fa2eb1d6fe9f6</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>22bc4c4b09faab5d099106ac7f28f5ac</md5sum>
+        </package>
+      </release>
+
+      <release version="22">
         <date>3.12.2025</date>
         <package name="Debian package">
           <download-url>_VERSION-1_all.deb</download-url>
@@ -1725,7 +1789,23 @@
       </release>
 -->
 
-      <release version="44" recommended="1">
+      <release version="45" recommended="1">
+        <date>09.12.2025</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>91526f42595f2644f98b54beaeade3d5</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>5a5211333c2628e4b8ea163daeef65f4</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>de6b56e18836ee73b8d391e724a5fbab</md5sum>
+        </package>
+      </release>
+
+      <release version="44">
         <date>03.12.2025</date>
         <package name="Debian package">
           <download-url>_VERSION-1_all.deb</download-url>

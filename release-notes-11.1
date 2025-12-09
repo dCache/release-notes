@@ -79,6 +79,44 @@ HTML header: <title>dCache 11.1 Release Notes</title>
 We want to thank Tino Reichardt for his contribution.
 
 
+## Release 11.1.5
+
+### common
+
+Elliptic curve keys are supported now.
+ 
+### spacemanager
+
+
+The since dCache have migrated to liquibase4, some incomatibilies have been observed in srm and spacemanager db schema migrations.
+
+    1) new way of calculating checksums (with vs without spaces)
+
+    2) liqubase uses id+author to identify changesets. In case of collisions the behaviour is unpredictable, in particular, with liquibase 4.xx the wrong changeset is selected for validation.
+
+
+This is now fixed and  srm and space manager databases can be migrated without issues.
+
+
+
+### Changelog 11.1.4..11.1.5
+
+<!-- git log 11.1.4..11.1.5 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[2cec53487e](https://github.com/dcache/dcache/commit/2cec53487ed038c8df9e7c293945c9b6fe231eda)
+:   [maven-release-plugin] prepare release 11.1.5
+
+[b32c31cebf](https://github.com/dcache/dcache/commit/b32c31cebf7417fc379b424eb683f5279a4e1589)
+:   srm,spacemanager: fix liquibase migration checksum mismatch
+
+[e5bfd0ef0f](https://github.com/dcache/dcache/commit/e5bfd0ef0fafed3b873a7ecbd7c3bf517e1e7c8d)
+:   common-security: add workaround bouncycastle EC algorithm name mismatch
+
+[481e3dbc95](https://github.com/dcache/dcache/commit/481e3dbc955d94058b5036519696d2e6d50b2055)
+:   [maven-release-plugin] prepare for next development iteration
+
+
+
 ## Release 11.1.4
 
 ### gplazma
