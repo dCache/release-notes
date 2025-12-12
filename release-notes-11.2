@@ -64,10 +64,11 @@ HTML header: <title>dCache 11.2 Release Notes</title>
 
 ## Highlights
 
+- NFS reag performance improvement
 
 ## Incompatibilities
 
-- Xrootd PrepareRequest will return `Unsupported`
+- Xrootd PrepareRequest will return `Unsupported`.
 
 ## Acknowledgments
 
@@ -95,12 +96,15 @@ The NFS door has been updated to use the original NFS request credentials when P
 
 ### Pool
 
+The NFS mover has been updated to use `zero-copy` to reduce memory copies when data is sent to a client during READ.
+This provides up to a 20% increase in data throughput for data-intensive applications.
+
 ### Xrootd
 
-Up to version 11.2.0 on Xrootd request `prepare`, which supped to trigger staging, dCache will
+Up to version 11.2.0 on Xrootd request `prepare`, which is supposed to trigger staging, dCache will
 respond with OK without performing any actions. Thus, any access to a file on tape will trigger
-stage and potentially block. This behavior is now change, so that `prepare` request will fail with
-error `Unsupported`. The users who need staging should use TAPE-REST-API.
+a stage and potentially block. This behavior is now changed, so that the `prepare` request will fail with
+the error `Unsupported`. Users who need staging should use the TAPE-REST-API.
 
 
 ### Changelog from 11.0.0 to 11.1.0
