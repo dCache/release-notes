@@ -75,6 +75,26 @@ HTML header: <title>dCache 10.1 Release Notes</title>
 
 
 
+## Release 10.1.24
+
+### bulk
+
+Catch and ignore BulkRequestNotFoundException when retrieving request by ID.
+
+
+### Changelog 10.1.23..10.1.24
+
+<!-- git log 10.1.23..10.1.24 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[12525bf851](https://github.com/dcache/dcache/commit/12525bf851311d9da77cfd312184ddd8be46a9ce)
+:   [maven-release-plugin] prepare release 10.1.24
+
+[c5ff9275e6](https://github.com/dcache/dcache/commit/c5ff9275e6ea95cbc0c2db2b8a93e835d55ef3ef)
+:   bulk: avoid spamming log file when requests have already been cleared due to auto-clear flag
+
+[6ae462d325](https://github.com/dcache/dcache/commit/6ae462d32553c9c45fa432e95bed2823ca9a63db)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 10.1.23
 
 ### common

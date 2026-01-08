@@ -79,6 +79,26 @@ HTML header: <title>dCache 11.1 Release Notes</title>
 We want to thank Tino Reichardt for his contribution.
 
 
+## Release 11.1.6
+
+### bulk
+
+Catch and ignore BulkRequestNotFoundException when retrieving request by ID.
+
+
+### Changelog 11.1.5..11.1.6
+
+<!-- git log 11.1.5..11.1.6 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[e40731041a](https://github.com/dcache/dcache/commit/e40731041a3818f49b4011d4442ced5213b705a1)
+:   [maven-release-plugin] prepare release 11.1.6
+
+[c53010fdf8](https://github.com/dcache/dcache/commit/c53010fdf8bdce733482c9ccc0a27d0a083a6273)
+:   bulk: avoid spamming log file when requests have already been cleared due to auto-clear flag
+
+[a1b127f5b5](https://github.com/dcache/dcache/commit/a1b127f5b56c70963b48aaa109dd52cba95ff5e8)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 11.1.5
 
 ### common

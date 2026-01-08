@@ -76,6 +76,26 @@ HTML header: <title>dCache 10.0 Release Notes</title>
 
 We want to thank Petter A. Urkedal and Lukas Mansour for their contributions.
 
+## Release 10.0.30
+
+### bulk
+
+Catch and ignore BulkRequestNotFoundException when retrieving request by ID.
+
+
+### Changelog 10.0.29..10.0.30
+
+<!-- git log 10.0.29..10.0.30 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[5921d7312b](https://github.com/dcache/dcache/commit/5921d7312bd0585d0f3e86ffbbcb4f748f3af91f)
+:   [maven-release-plugin] prepare release 10.0.30
+
+[659b8d25c9](https://github.com/dcache/dcache/commit/659b8d25c96405d974f699f32985052678b12564)
+:   bulk: avoid spamming log file when requests have already been cleared due to auto-clear flag
+
+[74184a0f8a](https://github.com/dcache/dcache/commit/74184a0f8a43938a4f8ae56c4c0877ccf2474a52)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 10.0.27
 
 ### documentation
