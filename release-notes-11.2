@@ -117,6 +117,19 @@ The NFS door has been updated to use the original NFS request credentials when P
 The NFS mover has been updated to use `zero-copy` to reduce memory copies when data is sent to a client during READ.
 This provides up to a 20% increase in data throughput for data-intensive applications.
 
+
+Introduce hot file replication mechanism on pools, where the pool itself tiggers replication of 
+hot (popular) files. When the number of in-flight transfers for a file reaches certain configurable
+threshold, the pool invokes the migration module to create a pre-defined configurable number of
+replicas on other pools in the same pool group.
+Added `hot file` replication feature to automatically detect and replicate heavily-requested files
+to other available pools in the same group.
+Added `hotfile` commands to the pool admin interface to enable customization of parameters affecting
+hot file replication.
+New boolean configuration file property `pool.hotfile.monitoring.enable` (set true to enable hot
+file replication).
+
+
 ### Xrootd
 
 Up to version 11.2.0 on Xrootd request `prepare`, which is supposed to trigger staging, dCache will
