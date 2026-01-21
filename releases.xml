@@ -1439,6 +1439,23 @@
         </package>
       </release>
 -->
+
+		<release version="30" recommended="1">
+        <date>08.01.2026</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>fb9c5b7b92a09a3f36bb18ffc9adb157</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>9d74a9ececc7b26aad9d9fc287397ec2</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>c71a1bfb298b7c909500f99ae8b0395e</md5sum>
+        </package>
+      </release>
+		
       <release version="27" recommended="1">
         <date>16.10.2025</date>
         <package name="Debian package">
