@@ -167,6 +167,64 @@
     <br/>
   </preamble>
 
+<series id="server-11.2">
+    <title>server 11.2.x</title>
+    <description>
+            <p>dCache 11.2 is a Golden Release introducing the following highlights:</p>
+      <ul>
+              <li> NFS reag performance improvement</li>
+	      <li> Kafka logging for billing</li>
+              <li>Introduce hot file replication mechanism on pools, where the pool itself tiggers replication of hot (popular) files</li>
+
+      </ul>
+      <p>Incompatibilities</p>
+       <ul>
+              
+              <li>Xrootd PrepareRequest will return Unsupported</li>
+
+	 </ul>
+
+
+
+      <p>dCache v11.2 requires a JVM supporting Java 17.</p>
+    </description>
+     <releases>
+
+
+      <name>dCache VERSION</name>
+      <download-url-prefix>repo/11.2/dcache</download-url-prefix>
+      <notes-url>release-notes-11.2.shtml</notes-url>
+      <version-prefix>11.2.</version-prefix>
+
+      <release version="0" recommended="1">
+        <date>21.1.2026</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>10be62b09ded327da2bd95dcf0d11121</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>f51e9a79d4f22b46f6a219b2efb6ccd4</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>812562179983cef7f12fa5b072442bf3</md5sum>
+        </package>
+      </release>
+
+      
+
+
+     </releases>      
+
+
+
+</series>
+     
+
+
+
+
   <series id="server-11.1">
     <title>server 11.1.x</title>
     <description>
@@ -211,6 +269,12 @@
           <download-url>-VERSION.tar.gz</download-url>
           <md5sum>556bb7d0b882fc383105b62bcacc2770</md5sum>
         </package>
+
+
+      <name>dCache VERSION</name>
+      <download-url-prefix>repo/11.1/dcache</download-url-prefix>
+      <notes-url>release-notes-11.1.shtml</notes-url>
+      <version-prefix>11.1.</version-prefix>
       </release>
 
       <release version="5">
