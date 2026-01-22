@@ -79,6 +79,41 @@ We want to thank Lars Jansse and Sandro Grizzo for their contributions.
 - If upgrading from 8.2, be sure to read also the release notes for 9.0 and 9.1, important changes are described there. See the [9.2 migration guide](https://github.com/dCache/upgrade-guide/blob/master/UPGRADE92.md) for more complete information
 - With version 9.2.8+, empty and non-existent banfiles will be treated the same
 
+## Release 9.2.47
+
+### bulk
+
+Log files spamming is improved.
+
+### common
+
+Current release fixed the  bug where webdav and frontend door access log files would fail to log requests that trigger certain failures in dCache.
+
+### webdav
+
+An open-ended range like `bytes=0-`` produced an invalid header like `bytes=0-null`, resulting in no data being transferred.
+This is now fixed.
+
+
+### Changelog 9.2.46..9.2.47
+
+<!-- git log 9.2.46..9.2.47 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[a7c3ec5ec4](https://github.com/dcache/dcache/commit/a7c3ec5ec42824f9ceacbd98cb37745c7b4b4770)
+:   [maven-release-plugin] prepare release 9.2.47
+
+[4265b6cb32](https://github.com/dcache/dcache/commit/4265b6cb3246c63358038e19cbf7f017858237cd)
+:   webdav: fix range header formatting in relay request
+
+[620a5a49cb](https://github.com/dcache/dcache/commit/620a5a49cba3d76243f2ddd9c376be11b1ddab0a)
+:   common: increase robustness of access log file
+
+[a1daf07875](https://github.com/dcache/dcache/commit/a1daf078754e103028dba2c096415c1a6147e46d)
+:   bulk: catch another place generating verbose logging
+
+[959606e9ce](https://github.com/dcache/dcache/commit/959606e9cee27e9ffbd02be99389d2154ce5ad9b)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 9.2.46
 
 ### bulk

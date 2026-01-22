@@ -83,6 +83,41 @@ HTML header: <title>dCache 10.2 Release Notes</title>
 - We want to thank Anton Schwarz for his contribution.
 
 
+## Release 10.2.23
+
+### bulk
+
+Log files spamming is improved.
+
+### common
+
+Current release fixed the  bug where webdav and frontend door access log files would fail to log requests that trigger certain failures in dCache.
+
+### webdav
+
+An open-ended range like `bytes=0-`` produced an invalid header like `bytes=0-null`, resulting in no data being transferred.
+This is now fixed.
+
+
+### Changelog 10.2.22..10.2.23
+
+<!-- git log 10.2.22..10.2.23 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[3c065dd605](https://github.com/dcache/dcache/commit/3c065dd6053a0d7d465d5a49b38903b57f752ebb)
+:   [maven-release-plugin] prepare release 10.2.23
+
+[a91b65bc2b](https://github.com/dcache/dcache/commit/a91b65bc2b71c0743332a17caa6b460177783491)
+:   bulk: catch another place generating verbose logging
+
+[27c4e7fa91](https://github.com/dcache/dcache/commit/27c4e7fa9195fae3557385d3b17e27d7235fbd46)
+:   webdav: fix range header formatting in relay request
+
+[c3f73d27a6](https://github.com/dcache/dcache/commit/c3f73d27a62bae8c922d91d8fbb3d9792bc8e216)
+:   common: increase robustness of access log file
+
+[95d4dd0bd2](https://github.com/dcache/dcache/commit/95d4dd0bd2a4b155df13784b22fa1ce050dd8360)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 10.2.22
 
 ### bulk

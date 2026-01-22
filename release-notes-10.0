@@ -76,6 +76,26 @@ HTML header: <title>dCache 10.0 Release Notes</title>
 
 We want to thank Petter A. Urkedal and Lukas Mansour for their contributions.
 
+## Release 10.0.31
+
+### common
+
+Current release fixed the  bug where webdav and frontend door access log files would fail to log requests that trigger certain failures in dCache.
+
+
+### Changelog 10.0.30..10.0.31
+
+<!-- git log 10.0.30..10.0.31 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[c1fad836b1](https://github.com/dcache/dcache/commit/c1fad836b182be3aff8512be676a1bafa074197e)
+:   [maven-release-plugin] prepare release 10.0.31
+
+[a284e6fcfa](https://github.com/dcache/dcache/commit/a284e6fcfa821b5221feb945c7be8e40d264ab49)
+:   common: increase robustness of access log file
+
+[84dfda35b1](https://github.com/dcache/dcache/commit/84dfda35b190d3a18a745b41376ada08cef96df4)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 10.0.30
 
 ### bulk

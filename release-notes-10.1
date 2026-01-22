@@ -75,6 +75,33 @@ HTML header: <title>dCache 10.1 Release Notes</title>
 
 
 
+## Release 10.1.25
+
+### bulk
+
+Log files spamming is improved.
+
+### common
+
+Current release fixed the  bug where webdav and frontend door access log files would fail to log requests that trigger certain failures in dCache.
+
+
+### Changelog 10.1.24..10.1.25
+
+<!-- git log 10.1.24..10.1.25 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[9a87cd7614](https://github.com/dcache/dcache/commit/9a87cd76143f11653ee840d4482215aed9260838)
+:   [maven-release-plugin] prepare release 10.1.25
+
+[3211a469a7](https://github.com/dcache/dcache/commit/3211a469a7e9ca39991f7b3289b9533f37dcabe5)
+:   common: increase robustness of access log file
+
+[960e5f4b95](https://github.com/dcache/dcache/commit/960e5f4b950935b51a30d27f11e379561cabdba6)
+:   bulk: catch another place generating verbose logging
+
+[16dd3ba4d6](https://github.com/dcache/dcache/commit/16dd3ba4d6b443b62dc9205b135c63b23a9ddb28)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 10.1.24
 
 ### bulk
