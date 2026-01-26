@@ -72,19 +72,11 @@ HTML header: <title>dCache 11.2 Release Notes</title>
 
 - Xrootd PrepareRequest will return `Unsupported`.
 
-## Acknowledgments
-
-
-
 ## Release 11.2.0
-
-### Admin
 
 ### Billing
 
 The transferTag is used by clients to label transfers with activity-specific information, such as experiment ID and workflow ID. This information is currently provided by XRootD and HTTP clients, and can be used by monitoring systems to identify data flows. Starting version 11.2.0 dCache includes transferTag information into the generated JSON records.
-
-
 
 A Kafka producer operates asynchronously by default: when an application calls send(), the record is placed into an internal buffer and the call typically returns immediately, without waiting for broker acknowledgements.
 
@@ -95,18 +87,6 @@ In dCache, this behavior poses a risk when Kafka is unavailable, as transfer eve
 To enable kafka for billing service the folowwing property in `billing.properties` should be enabled 
 `(one-of?true|false|${dcache.billing.enable.kafka})billing.enable.kafka`.
 
-
-### Chimera
-
-### Cleaner
-
-### DCAP
-
-### gplazma
-
-### httpd
-
-### Monitoring
 
 ### NFS
 
