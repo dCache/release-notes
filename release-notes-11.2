@@ -76,15 +76,15 @@ HTML header: <title>dCache 11.2 Release Notes</title>
 
 ### Billing
 
-The transferTag is used by clients to label transfers with activity-specific information, such as experiment ID and workflow ID. This information is currently provided by XRootD and HTTP clients, and can be used by monitoring systems to identify data flows. Starting version 11.2.0 dCache includes transferTag information into the generated JSON records.
+Starting with version 11.2.0 dCache adds transferTag information to the generated JSON records. The transferTag is used by clients to label transfers with activity-specific information, such as experiment ID and workflow ID. This information is currently provided by XRootD and HTTP clients, and can be used by monitoring systems to identify data flows. 
 
 A Kafka producer operates asynchronously by default: when an application calls send(), the record is placed into an internal buffer and the call typically returns immediately, without waiting for broker acknowledgements.
 
 However, asynchronous operation does not guarantee fully non-blocking behavior. Under certain conditions—such as broker unavailability, missing topic metadata, or exhausted producer buffers—the producer may block or fail synchronously. These edge cases are a common source of confusion and can lead to unexpected application failures.
 
-In dCache, this behavior poses a risk when Kafka is unavailable, as transfer events may not be marked as successful if Kafka reporting fails, potentially causing service instability or crashes. To mitigate this risk, Kafka logging has been relocated to the non-blocking Billing service and disabled in other dCache components that may block on Kafka availability. As a result, Kafka cluster outages no longer impact the stability of dCache processes.
+In dCache, this behavior poses a risk when Kafka is unavailable, as transfer events may not be marked as successful if Kafka reporting fails, potentially causing service instability or crashes. To mitigate this risk, the Kafka logging has been relocated to the non-blocking Billing service and disabled in other dCache components that may block on Kafka availability. As a result, Kafka cluster outages no longer impact the stability of dCache processes.
 
-To enable kafka for billing service the folowwing property in `billing.properties` should be enabled 
+To enable kafka for billing service the folowing property in `billing.properties` should be enabled 
 `(one-of?true|false|${dcache.billing.enable.kafka})billing.enable.kafka`.
 
 
@@ -95,7 +95,7 @@ The NFS door has been updated to use the original NFS request credentials when P
 ### Pool
 
 The NFS mover has been updated to use `zero-copy` to reduce memory copies when data is sent to a client during READ.
-This provides up to a 20% increase in data throughput for data-intensive applications.
+This gives up to a 20% increase in data throughput for data-intensive applications.
 
 
 Introduce hot file replication mechanism on pools, where the pool itself tiggers replication of 
@@ -112,9 +112,11 @@ file replication).
 
 ### Xrootd
 
-Up to version 11.2.0 on Xrootd request `prepare`, which is supposed to trigger staging, dCache will
-respond with OK without performing any actions. Thus, any access to a file on tape will trigger
-a stage and potentially block. This behavior is now changed, so that the `prepare` request will fail with
+The Xrootd protocol provides a mechanism to trigger file stage via `prepare` request. 
+Up to version 11.2.0 dCache responded with `OK` to Xrootd `prepare` request which, depending 
+on the client application logic, may enable subsequent open calls on files that are not 
+availble in cache, potentially leading to blocking the client application due to large tape access latencies
+and cause inefficient access to tape resource.  This behavior is now changed, so that the `prepare` request will fail with
 the error `Unsupported`. Users who need staging should use the TAPE-REST-API.
 
 
