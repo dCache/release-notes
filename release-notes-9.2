@@ -66,18 +66,18 @@ HTML header: <title>dCache 9.2 Release Notes</title>
 
 - Performance improvements for the concurrent directory creation and removal
 
-## Acknowledgments
-
-We want to thank Lars Jansse and Sandro Grizzo for their contributions.
-
 ## Incompatibilities
 
-- prior to version 9.2 dCache NFSv4.1 door will publish only `nfs4_1_files` layout. Now on
+- Prior to version 9.2 dCache NFSv4.1 door will publish only `nfs4_1_files` layout. Now on
   the door publishes all available layout types
-- dropped reference count tracking for directory tags
-- dropped support of java options `chimera_soft_update` and `chimera_lazy_wcc` in favor of `chimera.attr-consistency` property
+- Dropped reference count tracking for directory tags
+- Dropped support of java options `chimera_soft_update` and `chimera_lazy_wcc` in favor of `chimera.attr-consistency` property
 - If upgrading from 8.2, be sure to read also the release notes for 9.0 and 9.1, important changes are described there. See the [9.2 migration guide](https://github.com/dCache/upgrade-guide/blob/master/UPGRADE92.md) for more complete information
 - With version 9.2.8+, empty and non-existent banfiles will be treated the same
+
+## Acknowledgments
+
+We want to thank Lars Jansse and Sandro Grizzo for their contributions
 
 ## Release 9.2.47
 
