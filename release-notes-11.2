@@ -72,6 +72,46 @@ HTML header: <title>dCache 11.2 Release Notes</title>
 
 - Xrootd PrepareRequest will return `Unsupported`.
 
+## Release 11.2.1
+
+### #
+
+### pool
+
+No fireflies for webdav is now fixed. The TransferLifeCycle accepts now  https as protocol that needs fireflys.
+
+### restapi
+
+With upgrade of jackson dependencies for 11.x handling of Optional datatype started to fail like so:
+
+"Unable to interpret JSON: Java 8 optional type java.util.Optional<java.lang.Double>..."
+
+when calling rest api to query pool information. This is now fixed.
+
+
+
+### Changelog 11.2.0..11.2.1
+
+<!-- git log 11.2.0..11.2.1 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[3c04cd263d](https://github.com/dcache/dcache/commit/3c04cd263dc57130ea07dd94d7c84ccb2872149a)
+:   [maven-release-plugin] prepare release 11.2.1
+
+[175f39bf9a](https://github.com/dcache/dcache/commit/175f39bf9aaf8997f59f3bc24f863cfbfc5afc00)
+:   dcache cli: fix issue with printing pool size when max diskspace is set in percentage
+
+[f321f1eeb4](https://github.com/dcache/dcache/commit/f321f1eeb44f078ec79c4b060d5abad772176fb3)
+:   http/tpc: add support for ArchiveMetadata header
+
+[e80671c94a](https://github.com/dcache/dcache/commit/e80671c94a24e02ca1ac489a5fe5fe4682ac9d8a)
+:    rest api: add support for Java8 Optional data type
+
+[7100800aa4](https://github.com/dcache/dcache/commit/7100800aa4fe1062b82d49e639e406f246c995c3)
+:   pool: send firefly for https transfers
+
+[08e32fb45d](https://github.com/dcache/dcache/commit/08e32fb45dea07521e1ab65ef11c8edcbffa11c6)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 11.2.0
 
 ### Billing

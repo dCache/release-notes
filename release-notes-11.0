@@ -75,6 +75,36 @@ HTML header: <title>dCache 11.0 Release Notes</title>
 
 We want to thank Marian Babik and Onno Zweers for their contributions.
 
+## Release 11.0.13
+
+### #
+
+### restapi
+
+With upgrade of jackson dependencies for 11.x handling of Optional datatype started to fail like so:
+
+"Unable to interpret JSON: Java 8 optional type java.util.Optional<java.lang.Double>..."
+
+when calling rest api to query pool information. This is now fixed.
+
+
+
+### Changelog 11.0.12..11.0.13
+
+<!-- git log 11.0.12..11.0.13 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[7c3b4e67b8](https://github.com/dcache/dcache/commit/7c3b4e67b8fe4d8e826a947a81d540bf0cb8dec7)
+:   [maven-release-plugin] prepare release 11.0.13
+
+[85a509227b](https://github.com/dcache/dcache/commit/85a509227b90d8fe9de70abdc9f17f213b429078)
+:   dcache cli: fix issue with printing pool size when max diskspace is set in percentage
+
+[2e33dcd6f1](https://github.com/dcache/dcache/commit/2e33dcd6f1ee89bb0f4ebb1704d36ae06c24e858)
+:    rest api: add support for Java8 Optional data type
+
+[e8e2311d52](https://github.com/dcache/dcache/commit/e8e2311d52e459eec9894bd8842cb4cfe3968df1)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 11.0.12
 
 ### bulk
