@@ -67,9 +67,22 @@ HTML header: <title>dCache 12.0 Release Notes</title>
 
 ## Incompatibilities
 
+- Removed SRM and SRM server functionality.
+
 ## Release 12.0.0
 
 ### Billing
+
+### Frontend
+
+Update REST API to allow space reservations:
+
+```
+ curl -X POST \
+      'https://dcache-frontent-endpoint:3881/api/v1/space/tokens?accessLatency=online&retentionPolicy=replica&minSize=8192&description=foobar' \
+        -d ''
+    {"sizeInBytes":8192,"description":"foobar","id":8}
+```
 
 ### NFS
 
@@ -79,9 +92,9 @@ HTML header: <title>dCache 12.0 Release Notes</title>
 
 Added `dcache pool benchmark` command that executes pre-defined fio benchmark for all pools on the host.
 
-### SRM Client
+### SRM / SRM Client
 
-The srm client is excluded from the project build process.
+The SRM server and SRM client are excluded from the project build and test process.
 
 ### Xrootd
 
