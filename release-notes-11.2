@@ -74,6 +74,83 @@ HTML header: <title>dCache 11.2 Release Notes</title>
 
 ## Release 11.2.2
 
+### common
+
+This PR updates firefly sending semantics to use existing configuration variables while preserving default behavior.
+
+   ` pool.enable.firefly=true`: continue sending fireflies to the transfer flow destination (UDP 10514).
+   ` pool.firefly.destination unset`: no extra copy is sent.
+   ` pool.firefly.destination set`: send one additional copy to that destination.
+
+The configured pool.firefly.destination accepts:
+
+    `host (defaults to UDP 10514)`
+    `host:port (explicit port override)`
+
+
+WAN SciTag support for remote HTTP(S) TPC movers has been added.
+
+
+### namespace
+
+Many parts in dcache expected that files access latency and retention policy are always defined. 
+The namespace fallbacks to default values, if there are no explicit tags are defined. However,
+ there is shortcat tha skips default values if WriteToken tag is specified. 
+The lately introduces Archivemetadata is a functionality that directry affected by this behaviour:
+
+`java.lang.IllegalStateException: Attribute is not defined: RETENTION_POLICY`.
+
+This is now fixed.
+
+
+### nfs4j
+
+nfs4j has been upgraded to 0.27.2 with server-side-copy now  handling unsupported case of async copy.
+
+### pool
+
+Often admins want to know the expected I/O rates that a pool can provide. The desired benchmarks can be hart to configure.
+ This, it makes sense to provide a 'good starting point' with dcache.
+
+Now we have the command `dcache pool benchmark` for simple test to benchmark pools filesystem
+
+
+### Changelog 11.2.1..11.2.2
+
+<!-- git log 11.2.1..11.2.2 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[362231d363](https://github.com/dcache/dcache/commit/362231d3635123dce813c2ecf44e9ae71c32ada4)
+:   [maven-release-plugin] prepare release 11.2.2
+
+[f6b018450c](https://github.com/dcache/dcache/commit/f6b018450cd458ff4b840275b6fb3ba83d45da78)
+:   script: add `dcache pool benchmark` command
+
+[47ab4da4e4](https://github.com/dcache/dcache/commit/47ab4da4e414c3dd50ee6da9b3993e16048fa203)
+:   Add WAN SciTag support for remote HTTP(S) TPC movers
+
+[376b2104bd](https://github.com/dcache/dcache/commit/376b2104bd4e8cf991c066b278249568fc01f3ba)
+:   Merge pull request #8039 from ShawnMcKee/fix/firefly-sci-tag-boundary-fqan-fallback
+
+[9f4b114ed6](https://github.com/dcache/dcache/commit/9f4b114ed6aa335c5c4d80439399bad03160686f)
+:   Firefly: address PR review comments
+
+[3eaec9e29a](https://github.com/dcache/dcache/commit/3eaec9e29ab8bb447e7cdf84bf192e6adb31eb14)
+:   Firefly: send additional copy to configured collector
+
+[65a61e394c](https://github.com/dcache/dcache/commit/65a61e394c7a74ef9271cd5976157cc868791c86)
+:   pom: update nfs4j to 0.27.2
+
+[e6b2b4bbfb](https://github.com/dcache/dcache/commit/e6b2b4bbfbdf5540486ff0bf2553d5c0ed2137b9)
+:   namespace: ensure that access latency and retention policy are always defined
+
+[0b3f22fb52](https://github.com/dcache/dcache/commit/0b3f22fb52003f3a8bd9e00f3d2a99cb68b58dc9)
+:   build(deps): bump org.apache.zookeeper:zookeeper from 3.8.4 to 3.8.6
+
+[f845197194](https://github.com/dcache/dcache/commit/f845197194903ec18c2dcf8a17788276e9ef40b7)
+:   [maven-release-plugin] prepare for next development iteration
+
+## Release 11.2.2
+
 ### #
 
 
