@@ -69,6 +69,10 @@ HTML header: <title>dCache 12.0 Release Notes</title>
 
 - Removed SRM and SRM server functionality.
 
+## Acknowledgments
+
+We want to thank Shawn McKee for his contributions.
+
 ## Release 12.0.0
 
 ### Billing
