@@ -196,7 +196,23 @@
       <notes-url>release-notes-11.2.shtml</notes-url>
       <version-prefix>11.2.</version-prefix>
 
-      <release version="2" recommended="1">
+      <release version="3" recommended="1">
+        <date>25.3.2026</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>9416e413419b150be81a5903bf9eb453</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>86ea3ff303cd4861e9cd307aefd20703</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>1b926c205a7ce2e3f88e1bbb06e23ef7</md5sum>
+        </package>
+      </release>
+
+      <release version="2">
         <date>19.3.2026</date>
         <package name="Debian package">
           <download-url>_VERSION-1_all.deb</download-url>

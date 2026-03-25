@@ -76,6 +76,48 @@ HTML header: <title>dCache 11.2 Release Notes</title>
 
 We want to thank Shawn McKee for his contributions.
 
+## Release 11.2.3
+
+### firefly
+
+The current release fixes severel issues for firefly including SciTag WAN TPC marker generation and validation.
+
+### pool
+
+Hot file migration destination pools are now prioritized, and match network and protocol requirements of the file request that triggered the migration.
+
+
+### Changelog 11.2.2..11.2.3
+
+<!-- git log 11.2.2..11.2.3 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[63491dcc6c](https://github.com/dcache/dcache/commit/63491dcc6c6f00e690eb84fa644dc2ad18900ebc)
+:   [maven-release-plugin] prepare release 11.2.3
+
+[c5cfdc1525](https://github.com/dcache/dcache/commit/c5cfdc152587d5f6ecad8d0ad53796126b0e3f94)
+:   pool: enhance migration pool choice logic
+
+[77426b981d](https://github.com/dcache/dcache/commit/77426b981d26c463a77546d55547019d245f969e)
+:   pool: fix failing unit tests
+
+[ec4c2489c5](https://github.com/dcache/dcache/commit/ec4c2489c55941b8e9997201517629e5615c8a5f)
+:   firefly: address latest PR 8044 inline feedback
+
+[a660c4eb20](https://github.com/dcache/dcache/commit/a660c4eb2042bd7c4672b26a5e8914f2c3e68851)
+:   firefly: address PR 8044 review fixes
+
+[2eca0648f7](https://github.com/dcache/dcache/commit/2eca0648f715337ea57e278a23648cea5ae3bbfa)
+:   xrootd: fix logSciTagsRequest called before cell address initialization
+
+[4aea8bf9a7](https://github.com/dcache/dcache/commit/4aea8bf9a7f8510a5fb24aaa5a435022e395261e)
+:   Fix SciTag WAN TPC marker generation and validation
+
+[2f1d03c42b](https://github.com/dcache/dcache/commit/2f1d03c42b8e9a8e5782593e302d6836c99d5aa1)
+:   pool: exclude p2p requests from numberOfRequestsFor count
+
+[5a227a2fbf](https://github.com/dcache/dcache/commit/5a227a2fbfbd2e9481ca26600cca08da21e6bc0f)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 11.2.2
 
 ### common
