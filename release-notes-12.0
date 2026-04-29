@@ -92,6 +92,8 @@ Update REST API to allow space reservations:
 
 ### Pool
 
+If the pool identifies that the underlying repository operates in READ-ONLY mode, then all running checksum scrubbing processes will be stopped.
+
 ### Scripts
 
 Added `dcache pool benchmark` command that executes pre-defined fio benchmark for all pools on the host.
