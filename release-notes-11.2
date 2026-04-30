@@ -71,7 +71,7 @@ HTML header: <title>dCache 11.2 Release Notes</title>
 ## Incompatibilities
 
 - Xrootd PrepareRequest will return `Unsupported`.
-- Frontend und webdav doors enforce request limiters
+- Frontend and webdav doors enforce request limiters by default.
 
 ## Acknowledgments
 
@@ -333,7 +333,7 @@ Define the duration of the observation window for counting errors, and how long 
 
 Control how long a blocked client remains in the blocked list without activity before being automatically removed.
 
-The same set of properties exists for frontend door with prefix `forntend`.
+The same set of properties applies to the frontend door, with the prefix `frontend`.
 
 ### NFS
 
