@@ -71,6 +71,7 @@ HTML header: <title>dCache 11.2 Release Notes</title>
 ## Incompatibilities
 
 - Xrootd PrepareRequest will return `Unsupported`.
+- Frontend und webdav doors enforce request limiters
 
 ## Acknowledgments
 
@@ -289,6 +290,50 @@ In dCache, this behavior poses a risk when Kafka is unavailable, as transfer eve
 To enable kafka for billing service the folowing property in `billing.properties` should be enabled 
 `(one-of?true|false|${dcache.billing.enable.kafka})billing.enable.kafka`.
 
+### Frontend / Webdav
+
+A request-rate-limiting mechanism has been introduced for the Jetty-based WebDAV and Frontend doors to improve resilience against misbehaving or abusive clients. Previously, the system assumed well-behaved clients, which could allow even a single client to overwhelm the service. The new implementation adds a Jetty handler layer that tracks request outcomes and enforces both global and per-client rate limits using configurable thresholds backed by in-memory caches and rate limiting controls. Clients exceeding these limits receive HTTP 429 responses and may be temporarily blocked. Administrators can reset blocked clients via new admin commands. Several configuration properties have been added to control request rates, error thresholds, blocking windows, and limits on blocked clients, providing flexible protection against denial-of-service scenarios.
+
+The request rate limiter is controlled through a set of configuration properties that define how aggressively clients are throttled or blocked, both globally and individually:
+
+**webdav.limits.max-blocked-clients**
+Sets the maximum number of clients that can be tracked as blocked at any given time. This prevents unbounded memory usage if many clients are misbehaving simultaneously.
+
+#### Global rate limiting
+
+**webdav.limits.rate.overall**
+
+Defines the total request rate allowed across all clients combined. This acts as a system-wide throttle to protect the service under heavy load.
+
+#### Per-client rate limiting
+
+**webdav.limits.rate.per-client.fractions**
+
+Specifies how much of the global rate each individual client is allowed to consume (typically as a fraction of the overall rate).
+
+**webdav.limits.rate.per-client.block.window.time**
+**webdav.limits.rate.per-client.block.window.time.units**
+
+Define how long a client remains blocked after exceeding its rate limit.
+
+#### Error-based blocking
+
+**webdav.limits.error.max-allowed**
+The maximum number of failed or problematic requests a client may generate within a time window before being blocked.
+
+**webdav.limits.error.block.window.time**
+**webdav.limits.error.block.window.time.units**
+
+Define the duration of the observation window for counting errors, and how long a client is blocked once the threshold is exceeded.
+
+#### Blocked client management
+
+**webdav.limits.blocked-clients.idle-time**
+**webdav.limits.blocked-clients.idle-time.units**
+
+Control how long a blocked client remains in the blocked list without activity before being automatically removed.
+
+The same set of properties exists for frontend door with prefix `forntend`.
 
 ### NFS
 
