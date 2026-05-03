@@ -83,6 +83,57 @@ HTML header: <title>dCache 10.2 Release Notes</title>
 - We want to thank Anton Schwarz for his contribution.
 
 
+## Release 10.2.25
+
+### alarm
+
+It has been reported that alarm server is vulnerable to RCE attack due to unprotected object deserialization.
+This is fixed now.
+
+### bulk
+
+dCache now  replies w/ 413 Entity Too Large code when various bulk request limits are exceeded.
+
+### chimera
+
+
+File creation with non basic attributes is now an atomic operation, as the namespace provided can implement it as `create+set attr`. 
+If the initial file attributes doesn't allow set attribute operation, then such create request will fail.
+
+thei is now fixed and  he initial, non basic attributes can be applied on create.
+
+### rpm
+
+dCache can run with java 17 as well as java 21. However, if a side decided to run dcache with java21, the RPM will pull java17 as dependency anyway.
+
+If java is not installed, rpm will pull java17. If java21 is already installed, then no extra java packages will be pulled.
+
+
+### Changelog 10.2.24..10.2.25
+
+<!-- git log 10.2.24..10.2.25 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[466b5045f7](https://github.com/dcache/dcache/commit/466b5045f768d1ce069919b09ccb8484d98d9bc2)
+:   [maven-release-plugin] prepare release 10.2.25
+
+[b1b8a84af6](https://github.com/dcache/dcache/commit/b1b8a84af67915b4b0974b002714b7c3fc7e17b3)
+:   chimera: applying attributes to newly created file should skip permission check
+
+[351ff6dd16](https://github.com/dcache/dcache/commit/351ff6dd16753c5dc281f6930b0cf65c508e8987)
+:   ci: use custom k8s deployment for minio
+
+[7db3bac3ba](https://github.com/dcache/dcache/commit/7db3bac3babe9001051b124751920a3807ed2aae)
+:   bulk: report 413 Entity Too Large is limits on bulk requests are exceeded
+
+[1831f88644](https://github.com/dcache/dcache/commit/1831f88644b5b762f79bea38f2e29413a1c202af)
+:   alarms: use HardenedLoggingEventInputStream to address possible RCE when deseriaizing log messages
+
+[ac1a1cd2a5](https://github.com/dcache/dcache/commit/ac1a1cd2a55d4e81b32da257c54b85a1e37508ca)
+:   rpm: make package require java17 or java21
+
+[f706e98789](https://github.com/dcache/dcache/commit/f706e98789c017f31a6ec08e43074c45ce83cb7f)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 10.2.24
 
 ### nfs4j

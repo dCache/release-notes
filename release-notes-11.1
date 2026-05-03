@@ -79,6 +79,60 @@ HTML header: <title>dCache 11.1 Release Notes</title>
 We want to thank Tino Reichardt for his contribution.
 
 
+## Release 11.1.10
+
+### alarm
+
+It has been reported that alarm server is vulnerable to RCE attack due to unprotected object deserialization.
+This is fixed now.
+
+### bulk
+
+dCache now  replies w/ 413 Entity Too Large code when various bulk request limits are exceeded.
+
+### chimera
+
+
+File creation with non basic attributes is now an atomic operation, as the namespace provided can implement it as `create+set attr`. 
+If the initial file attributes doesn't allow set attribute operation, then such create request will fail.
+
+thei is now fixed and  he initial, non basic attributes can be applied on create.
+
+### rpm
+
+dCache can run with java 17 as well as java 21. However, if a side decided to run dcache with java21, the RPM will pull java17 as dependency anyway.
+
+If java is not installed, rpm will pull java17. If java21 is already installed, then no extra java packages will be pulled.
+
+
+### Changelog 11.1.9..11.1.10
+
+<!-- git log 11.1.9..11.1.10 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[173ec270e4](https://github.com/dcache/dcache/commit/173ec270e4f7468531fdb932fb5b1f8e7e02ab51)
+:   [maven-release-plugin] prepare release 11.1.10
+
+[b859292afc](https://github.com/dcache/dcache/commit/b859292afc769fff42eb8e5c0d9947a50452bba2)
+:   chimera: applying attributes to newly created file should skip permission check
+
+[e1636c83a3](https://github.com/dcache/dcache/commit/e1636c83a3d49754cca2c4928dc54139e62cc7fe)
+:   ci: use custom k8s deployment for minio
+
+[ffc2e22b79](https://github.com/dcache/dcache/commit/ffc2e22b796b5a56dba500a85aed77596f668b00)
+:   ci: skip git clone it sources are not needed
+
+[76930fd807](https://github.com/dcache/dcache/commit/76930fd8070968cd81108125e4f2a3e5098a520d)
+:   bulk: report 413 Entity Too Large is limits on bulk requests are exceeded
+
+[19fa4dc4a0](https://github.com/dcache/dcache/commit/19fa4dc4a0959fdd6726948cb6061a0561837de6)
+:   alarms: use HardenedLoggingEventInputStream to address possible RCE when deseriaizing log messages
+
+[c578f28831](https://github.com/dcache/dcache/commit/c578f28831a7efb1bff42da613d9f88af22ddf0f)
+:   rpm: make package require java17 or java21
+
+[71d94e419d](https://github.com/dcache/dcache/commit/71d94e419d2849933d72b448f4484df2710d570e)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 11.1.9
 
 ### nfs4j

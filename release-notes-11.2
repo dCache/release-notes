@@ -77,6 +77,128 @@ HTML header: <title>dCache 11.2 Release Notes</title>
 
 We want to thank Shawn McKee for his contributions.
 
+## Release 11.2.4
+
+### alarm
+
+It has been reported that alarm server is vulnerable to RCE attack due to unprotected object deserialization.
+This is fixed now.
+
+### bulk
+
+dCache now  replies w/ 413 Entity Too Large code when various bulk request limits are exceeded.
+
+### chimera
+
+
+File creation with non basic attributes is now an atomic operation, as the namespace provided can implement it as `create+set attr`. 
+If the initial file attributes doesn't allow set attribute operation, then such create request will fail.
+
+thei is now fixed and  he initial, non basic attributes can be applied on create.
+
+If tag is only created without any content then ResultSet#getBinaryStream return null as a stream which will trigger NPE.
+
+This is now fixed.
+
+### gplazma
+
+
+
+READ_METADATA operations are authorized for requestors without read access if the requestor provides a token with the storage.poll claim.
+
+### pool
+
+It is desirable to have a single admin command to display the values of both hot-file migration parameters (replicas and threshold).
+
+It is also desirable to see quickly whether the hot file migration facility is enabled on a given pool.
+
+Now there are have been added two ne commands:
+
+The addition of a pool command `hotfile show`  (replicas=3  threshold=5) to MigrationModule.
+The hot file replication enablement status has been added to the pool section of `info -a`.
+
+
+
+
+Firefly `onStart` marker for `MoverProtocol-based` transfers has been added.
+
+While only tests, these files use an obsolete property name `pool.hotfile.monitoring.enable`,
+ and could cause/perpetuate confusion and errors in user configuration.
+
+`pool.hotfile.monitoring.enable` changed to `pool.hotfile.replication.enable` in all cases.
+
+### rpm
+
+dCache can run with java 17 as well as java 21. However, if a side decided to run dcache with java21, the RPM will pull java17 as dependency anyway.
+
+If java is not installed, rpm will pull java17. If java21 is already installed, then no extra java packages will be pulled.
+
+### tape
+
+While testing storage.poll scope it was observed that querying file locality imposes requirement of `DOWNLOAD` activity to be available
+ in the list of allowed activities in OIDC scope claim. This is unnecessary and complicates handling of `storage.poll`.
+
+`DOWNLOAD` activity is no longer required to query file locality. This allows implementation of `storage.poll` as `READ_METADATA` activity
+
+
+### Changelog 11.2.3..11.2.4
+
+<!-- git log 11.2.3..11.2.4 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[72eeeae7c7](https://github.com/dcache/dcache/commit/72eeeae7c77a39b8b78b53161a8a7c07bc8df0a2)
+:   [maven-release-plugin] prepare release 11.2.4
+
+[d14e394698](https://github.com/dcache/dcache/commit/d14e394698d044d0de5950c27d7c61565e569924)
+:   chimera: applying attributes to newly created file should skip permission check
+
+[1c7b7adf5a](https://github.com/dcache/dcache/commit/1c7b7adf5a4cc7bafa862ff2aa1c6b546394f09b)
+:   ci: use custom k8s deployment for minio
+
+[451c5a3815](https://github.com/dcache/dcache/commit/451c5a3815483c71189558bd3374b454be93cf58)
+:   ci: skip git clone it sources are not needed
+
+[9b4b56f48a](https://github.com/dcache/dcache/commit/9b4b56f48a2003d69ed3dbbb259d4ff73f81fce2)
+:   chimera: fix reading of empty tags
+
+[cdc2a07854](https://github.com/dcache/dcache/commit/cdc2a078546e37f77ddf8cfa4182438ed79e2f42)
+:   bulk: report 413 Entity Too Large is limits on bulk requests are exceeded
+
+[0b6b21c5f8](https://github.com/dcache/dcache/commit/0b6b21c5f8bfe21392738c6cd16312b547c204e8)
+:   gplazma2-oidc: Add and test support for `storage.poll` WLCG claim
+
+[3474d2e7a7](https://github.com/dcache/dcache/commit/3474d2e7a7a5186076ff1effd22cf816df46e75f)
+:   tape rest API: remove AccessMask.READ_DATA requirement when querying for file attributes for file locality
+
+[423e79a774](https://github.com/dcache/dcache/commit/423e79a774476116de512ba1ee687ce3c6cdc51c)
+:   alarms: use HardenedLoggingEventInputStream to address possible RCE when deseriaizing log messages
+
+[5877bb383c](https://github.com/dcache/dcache/commit/5877bb383c3e2852c99d600eb177dd3c720dd53a)
+:   scripts: fix double rw definition in FIO benchmark script
+
+[db2a697322](https://github.com/dcache/dcache/commit/db2a697322c8d0ef5358a2063037b057ee15ff32)
+:   pool: New `hotfile show` command, and show enablement status with `info -a` (#8067)
+
+[f7563db3c5](https://github.com/dcache/dcache/commit/f7563db3c5f063cef0c1401721c44d4d299dd9e8)
+:   pool: emit firefly onStart marker from RemoteHttpDataTransferProtocol
+
+[07a898d8c1](https://github.com/dcache/dcache/commit/07a898d8c1a8f2f7a939736a4c080c6511805f6b)
+:   libs: update apache-curator to 5.9.0
+
+[faec79f06a](https://github.com/dcache/dcache/commit/faec79f06ab25a4d1ba08cb259f82348ddbd0652)
+:   pool: Improve logging for hot file replication
+
+[4c74631875](https://github.com/dcache/dcache/commit/4c74631875db300ab250d16585273515cb1f03bb)
+:   pool: Fix properties tests to use the correct property
+
+[cec1e72438](https://github.com/dcache/dcache/commit/cec1e724384076eb4a6385144add35ca431184ef)
+:   build(deps): bump io.netty:netty-codec-http
+
+[593be28945](https://github.com/dcache/dcache/commit/593be289457f64fc4facc4c0969908a7745c383d)
+:   rpm: make package require java17 or java21
+
+[6f18dc1158](https://github.com/dcache/dcache/commit/6f18dc115824330f5c1e81ffd879fa460c5c40c3)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 11.2.3
 
 ### firefly

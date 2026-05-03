@@ -75,6 +75,57 @@ HTML header: <title>dCache 11.0 Release Notes</title>
 
 We want to thank Marian Babik and Onno Zweers for their contributions.
 
+## Release 11.0.15
+
+### alarm
+
+It has been reported that alarm server is vulnerable to RCE attack due to unprotected object deserialization.
+This is fixed now.
+
+### bulk
+
+dCache now  replies w/ 413 Entity Too Large code when various bulk request limits are exceeded.
+
+### chimera
+
+
+File creation with non basic attributes is now an atomic operation, as the namespace provided can implement it as `create+set attr`. 
+If the initial file attributes doesn't allow set attribute operation, then such create request will fail.
+
+thei is now fixed and  he initial, non basic attributes can be applied on create.
+
+### rpm
+
+dCache can run with java 17 as well as java 21. However, if a side decided to run dcache with java21, the RPM will pull java17 as dependency anyway.
+
+If java is not installed, rpm will pull java17. If java21 is already installed, then no extra java packages will be pulled.
+
+
+### Changelog 11.0.14..11.0.15
+
+<!-- git log 11.0.14..11.0.15 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[cecebb46c1](https://github.com/dcache/dcache/commit/cecebb46c1fe03bcd3f9bd14fe88657580d79a9d)
+:   [maven-release-plugin] prepare release 11.0.15
+
+[83621315fc](https://github.com/dcache/dcache/commit/83621315fc58b97e4acd28ff8350a917bb8ace32)
+:   chimera: applying attributes to newly created file should skip permission check
+
+[96c8868737](https://github.com/dcache/dcache/commit/96c88687371999d05db625535b6f4f1927628350)
+:   ci: use custom k8s deployment for minio
+
+[ba1eb5a904](https://github.com/dcache/dcache/commit/ba1eb5a90471ef54c8ee1af43dd645259293a3b4)
+:   bulk: report 413 Entity Too Large is limits on bulk requests are exceeded
+
+[9019f513ce](https://github.com/dcache/dcache/commit/9019f513ce7c8c521652cc5df26600be6a2167ed)
+:   alarms: use HardenedLoggingEventInputStream to address possible RCE when deseriaizing log messages
+
+[1a951a2afb](https://github.com/dcache/dcache/commit/1a951a2afb9559a6845f0d1a70b64ae8c40dcf34)
+:   rpm: make package require java17 or java21
+
+[6d23bce0c8](https://github.com/dcache/dcache/commit/6d23bce0c87a26a68936ade76bed68e3ec270e12)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 11.0.14
 
 ### nfs4j
