@@ -8,26 +8,38 @@ HTML header: <title>dCache 12.0 Release Notes</title>
                    integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous"/>
              <!--link type="text/css" rel="stylesheet" href="jquery.tocify.css" /-->
              <style type="text/css">
-             h5 {
-                 font-size: 15px;
-                 font-style: italic;
-                 margin-top: 20px;
-             }
-             body {
-                 padding-top: 20px;
-             }
-             @media (max-width: 767px) {
-                 #toc {
-                     position: relative;
-                     width: 100%;
-                     margin: 0px 0px 20px 0px;
-                 }
-             }
-             @media print {
-                 #toc {
-                     display: none;
-                 }
-             }
+                h5 {
+                    font-size: 15px;
+                    font-style: italic;
+                    margin-top: 20px;
+                }
+                body {
+                    padding-top: 20px;
+                }
+                @media (max-width: 767px) {
+                    #toc {
+                        position: relative;
+                        width: 100%;
+                        margin: 0px 0px 20px 0px;
+                    }
+                }
+                @media print {
+                    #toc {
+                        display: none;
+                    }
+                }
+                dl {
+                    display: grid;
+                    grid-template-columns: max-content 1fr;
+                    row-gap: 6px;
+                    column-gap: 10px;
+                }
+                dt {
+                    font-weight: bold;
+                }
+                dd {
+                    margin: 0;
+                }
              </style>
 
 <div class="container">
