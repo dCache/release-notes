@@ -80,6 +80,7 @@ HTML header: <title>dCache 12.0 Release Notes</title>
 ## Incompatibilities
 
 - Removed SRM and SRM server functionality.
+- Removed NIS support
 
 ## Acknowledgments
 
@@ -99,6 +100,9 @@ Update REST API to allow space reservations:
         -d ''
     {"sizeInBytes":8192,"description":"foobar","id":8}
 ```
+### gPlazma
+
+Removed the NIS plugin as sites are (hopefully) not using it anymore.
 
 ### NFS
 
