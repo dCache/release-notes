@@ -89,6 +89,28 @@ HTML header: <title>dCache 11.2 Release Notes</title>
 
 We want to thank Shawn McKee for his contributions.
 
+## Release 11.2.5
+
+### nfs
+
+Under high network congestion dCache can fail to send RPC frame marker and put the NFS client into unrecoverable state. 
+
+The current release upgrades oncrpc4j with bugfix release, such that more stable operation under high network congestion are possible.
+
+
+### Changelog 11.2.4..11.2.5
+
+<!-- git log 11.2.4..11.2.5 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[2903b30497](https://github.com/dcache/dcache/commit/2903b3049740ca70b13f7a8565e1bbfa28df3c53)
+:   [maven-release-plugin] prepare release 11.2.5
+
+[1ed94f3577](https://github.com/dcache/dcache/commit/1ed94f3577f75784cf98b520c2e0803f763f3d77)
+:   pom: use bugfix release oncrpc4j-3.4.3
+
+[b5deccbe94](https://github.com/dcache/dcache/commit/b5deccbe94465a4ae4f3f7ec37da61e809334fff)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 11.2.4
 
 ### alarm
