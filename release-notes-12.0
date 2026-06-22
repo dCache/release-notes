@@ -90,6 +90,10 @@ We want to thank Shawn McKee for his contributions.
 
 ### Billing
 
+### Cells
+
+The cell command `route find`, in addition to the regular cell routing output, also displays TOPIC routes.
+
 ### Frontend
 
 Update REST API to allow space reservations:
@@ -100,6 +104,9 @@ Update REST API to allow space reservations:
         -d ''
     {"sizeInBytes":8192,"description":"foobar","id":8}
 ```
+
+Respond with the `Retry-After` HTTP header when the client hits the rate limit.
+
 ### gPlazma
 
 Removed the NIS plugin as sites are (hopefully) not using it anymore.
@@ -112,14 +119,21 @@ If the pool identifies that the underlying repository operates in READ-ONLY mode
 
 ### Scripts
 
-Added `dcache pool benchmark` command that executes pre-defined fio benchmark for all pools on the host.
+Added `dcache pool benchmark` command that executes a predefined fio benchmark for all pools on the host.
 
 ### SRM / SRM Client
 
 The SRM server and SRM client are excluded from the project build and test process.
 
+### WebDAV
+
+Respond with the `Retry-After` HTTP header when the client hits the rate limit.
+
 ### Xrootd
 
+### Zookeeper
+
+Updated the apache-curator library, which is used to implement zookeepr-related functionality, such as leader election.
 
 ### Changelog from 11.2.0 to 12.0.0
 
