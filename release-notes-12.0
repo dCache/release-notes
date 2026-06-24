@@ -83,6 +83,7 @@ HTML header: <title>dCache 12.0 Release Notes</title>
 - Removed NIS support
 
 ## Acknowledgments
+ Niklas Edmundsson
 
 We want to thank Shawn McKee for his contributions.
 
@@ -126,6 +127,11 @@ Added `dcache pool benchmark` command that executes a predefined fio benchmark f
 The SRM server and SRM client are excluded from the project build and test process.
 
 ### WebDAV
+
+The browser now handles downloads natively via a temporary anchor element, showing its own progress indicator immediately upon initiation.
+Users can select multiple files and download them all at once from the context menu.
+Short-lived Macaroon tokens are generated automatically for authenticated downloads where HTTP Basic credentials cannot be passed to the browser. Certificate-based sessions are unaffected.
+The shared-files view, including subdirectories, now uses the same download logic as the main namespace view.
 
 Respond with the `Retry-After` HTTP header when the client hits the rate limit.
 
