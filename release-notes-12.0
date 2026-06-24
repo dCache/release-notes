@@ -129,6 +129,79 @@ The SRM server and SRM client are excluded from the project build and test proce
 
 Respond with the `Retry-After` HTTP header when the client hits the rate limit.
 
+
+### dCache-view
+
+This release adds **OIDC Authorization Code Flow** support to the dcache-view web interface.
+
+Users can now log in to dcache-view using their institutional identity via  for example **Keycloak (Helmholtz AAI)**.  
+
+---
+
+
+## Configuration Changes
+
+### 1. `etc/dcache.conf` — Frontend OIDC Settings
+
+Add or verify the following properties:
+
+```properties
+# OIDC client credentials
+frontend.authn.oidc.client-id=1234
+frontend.authn.oidc.client-secret=OSwvvbbF26vioqGkeKVXy4IV7QHFbmUv
+frontend.authn.oidc.token-url=https://keycloak.desy.de/auth/realms/dcache-dev/protocol/openid-connect/token
+
+# dcache-view UI settings
+frontend.static!dcache-view.endpoints.webdav=https://localhost:2881/
+frontend.static!dcache-view.oidc-authz-endpoint-list=https://keycloak.desy.de/auth/realms/dcache-dev/protocol/openid-connect/auth
+frontend.static!dcache-view.oidc-client-id-list=1234
+frontend.static!dcache-view.oidc-provider-name-list=Helmholtz%20AAI(Keycloak)
+frontend.static!dcache-view.oidc-authz-redirect-url=https://localhost:3881/api/v1/auth/callback
+frontend.static!dcache-view.oidc-authz-endpoint-extra=-
+
+```
+
+---
+
+### 2. `etc/gplazma.conf` — gPlazma Authentication Stack
+
+Ensure the following plugins are configured in the correct stages:
+
+```
+# Auth stage — verify OIDC token
+auth optional oidc
+
+# Map stage — resolve identity to local user
+map optional multimap gplazma.multimap.file=/pathtodcache/dcache/packages/system-test/target/dcache/etc/multimap-id-to-username.conf
+
+```
+
+
+---
+
+### 3. `etc/multimap-id-to-username.conf` — Identity Mappings
+
+Map OIDC subject identifiers to local usernames and Unix attributes:
+
+```
+# Keycloak identity
+oidc:47055fee-1@keycloak    username:usernameoidc uid:1000 gid:1000,true
+
+
+---
+
+### 4. `etc/grid-security/storage-authzdb` — Authorization
+
+Verify the file starts with `version 2.1` and contains the following entries:
+
+```
+version 2.1
+
+authorize username:usernameoidc read-write  1000  1000  /  /
+```
+
+---
+
 ### Xrootd
 
 ### Zookeeper
