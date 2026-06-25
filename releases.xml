@@ -167,6 +167,54 @@
     <br/>
   </preamble>
 
+
+
+<series id="server-12.0">
+    <title>server 12.0.x</title>
+    <description>
+            <p>dCache 12.0 is a Feature Release introducing the following highlights:</p>
+      <ul>
+              <li>OIDC Authorization Code Flow </li>
+              <li/>
+              <li/>
+
+      </ul>
+      <p>Incompatibilities</p>
+       <ul>
+
+        <li> Removed SRM and SRM server functionality</li>
+        <li> Removed NIS suppor</li>
+              
+
+       </ul>
+      
+
+       <p>dCache v12.0 requires a JVM supporting Java 17.</p>
+    </description>
+     <releases>
+       <name>dCache VERSION</name>
+      <download-url-prefix>repo/12.0/dcache</download-url-prefix>
+      <notes-url>release-notes-12.0.shtml</notes-url>
+      <version-prefix>12.0.</version-prefix>
+     <release>
+     <release version="1" recommended="1">
+        <date>2026.06.25</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>b882c14940fcc135ca29eea7308c9fa6</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>dd7d30d12dd946e7467324adf38c9d87</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>028c3259e4eb290f968db7294e1aa247</md5sum>
+        </package>
+      </release>
+    </releases>
+    </series>
+
 <series id="server-11.2">
     <title>server 11.2.x</title>
     <description>
