@@ -80,7 +80,8 @@ HTML header: <title>dCache 12.0 Release Notes</title>
 ## Incompatibilities
 
 - Removed SRM and SRM server functionality.
-- Removed NIS support
+- Removed NIS support.
+- Removed the `gridmap-file` gPlazma plugin. Sites must migrate to the `multimap` plugin.
 
 ## Acknowledgments
 
@@ -111,6 +112,8 @@ Respond with the `Retry-After` HTTP header when the client hits the rate limit.
 
 Removed the NIS plugin as sites are (hopefully) not using it anymore.
 
+The `gridmap-file` plugin has been removed. It was redundant with the `multimap` plugin, which covers all the same use cases. A conversion script to migrate existing gridmap files to multimap format is provided in the documentation.
+
 ### NFS
 
 ### Pool
@@ -120,6 +123,30 @@ If the pool identifies that the underlying repository operates in READ-ONLY mode
 ### Scripts
 
 Added `dcache pool benchmark` command that executes a predefined fio benchmark for all pools on the host.
+
+### Pool Manager
+
+dCache now supports zone-aware pool selection. Zones are useful in multi-site deployments to direct traffic to pools that are geographically or topologically closest to the client.
+
+All protocol doors (WebDAV, NFS, FTP, xrootd, etc.) propagate their zone tag through transfer messages to the pool manager. The pool manager then applies best-effort ("soft") filtering — preferring pools in the same zone as the requesting door, with automatic fallback to the full pool list if no eligible pool in the correct zone is found.
+
+Zone-aware routing applies to:
+
+- **Read and write selection**
+- **Pool-to-pool (p2p) transfers** — destination pools are filtered by zone in all partition types
+- **Staging** — files recalled from tape land in a pool in the client's zone where possible; if the selected stage pool is not a read pool, a p2p copy to the client's zone is triggered automatically
+
+To enable zones, assign a `zone` tag to pools and doors in the pool manager configuration:
+
+```
+psu set pool <poolname> -zone=<zonename>
+```
+
+And in the layout file for doors:
+
+```
+<door>.zone=<zonename>
+```
 
 ### SRM / SRM Client
 
@@ -134,6 +161,12 @@ The shared-files view, including subdirectories, now uses the same download logi
 
 Respond with the `Retry-After` HTTP header when the client hits the rate limit.
 
+dCache now supports RFC 9530 for HTTP content digest negotiation. RFC 9530 supersedes RFC 3230 and introduces `Want-Repr-Digest` / `Repr-Digest` headers. WLCG transfer tools such as FTS are adopting RFC 9530, so this change is required for compatibility.
+
+- Clients sending `Want-Repr-Digest` receive a `Repr-Digest` response header from both the WebDAV door and pool HTTP movers.
+- TPC Pull: outgoing GET and HEAD requests include both `Want-Repr-Digest` and `Want-Digest`.
+- TPC Push: the `Repr-Digest` (or `Digest` as fallback) from incoming COPY requests is forwarded to the destination PUT.
+- TPC Passive: `Repr-Digest` values on incoming PUT requests are verified against the pool checksum.
 
 ### dCache-view
 
@@ -211,7 +244,17 @@ authorize username:usernameoidc read-write  1000  1000  /  /
 
 ### Zookeeper
 
-Updated the apache-curator library, which is used to implement zookeepr-related functionality, such as leader election.
+Updated the apache-curator library, which is used to implement zookeeper-related functionality, such as leader election.
+
+TLS encryption is now supported for connections between dCache and ZooKeeper. The feature uses the standard dCache PEM certificate files (`hostcert.pem`, `hostkey.pem`, `ca-certificates.pem`) already used by other services, rather than separate JKS or PKCS12 keystores. The CRL and OCSP modes are shared with the rest of dCache via the existing `dcache.authn.crl-mode` and `dcache.authn.ocsp-mode` properties.
+
+To enable TLS for ZooKeeper, add the following to your layout or `dcache.conf`:
+
+```ini
+dcache.zookeeper.tls.enabled = true
+```
+
+The connection will use the host certificate and trust store already configured for the domain. See the dCache Book (config-zookeeper) for full details.
 
 ### Changelog from 11.2.0 to 12.0.0
 
