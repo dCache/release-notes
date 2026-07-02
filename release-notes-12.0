@@ -76,6 +76,10 @@ HTML header: <title>dCache 12.0 Release Notes</title>
 
 ## Highlights
 
+- Zone-aware pool selection (PoC) – dCache now supports directing clients to pools closest to them geographically or topologically, useful in multi-site deployments
+
+- OIDC Authorization Code Flow support in dCache View (PoC)
+
 
 ## Incompatibilities
 
