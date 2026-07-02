@@ -260,6 +260,379 @@ The connection will use the host certificate and trust store already configured 
 
 <!-- git log 11.2..12.0 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
 
+[3281c7787b](https://github.com/dcache/dcache/commit/3281c7787b9a7ce403bef17036732d3d46746169)
+:   [maven-release-plugin] prepare for next development iteration
+
+[c28772832a](https://github.com/dcache/dcache/commit/c28772832a5a7cda33ebdb2b82e44b7b844ecb72)
+:   [maven-release-plugin] prepare release 12.0.1
+
+[dd38dab26d](https://github.com/dcache/dcache/commit/dd38dab26d1a844904f6a3773887dad286f3b2ff)
+:   Revert "clean for tagging 12.0.0 again"
+
+[c74e35d1b1](https://github.com/dcache/dcache/commit/c74e35d1b113b6242ec5755b25f9ad033a7a354e)
+:   Revert "clean for tagging 12.0.0 againin all pom"
+
+[4410ac739d](https://github.com/dcache/dcache/commit/4410ac739d7321c7a08035178fa99c34b5e72582)
+:   Revert "[maven-release-plugin] prepare release 12.0.0"
+
+[72b9197b12](https://github.com/dcache/dcache/commit/72b9197b129d709624d02b892167868e72d2d791)
+:   Revert "[maven-release-plugin] prepare for next development iteration"
+
+[aa10998a7c](https://github.com/dcache/dcache/commit/aa10998a7cf896ffa60c74116e2200e2829d5d01)
+:   [maven-release-plugin] prepare for next development iteration
+
+[2cbaa88b1f](https://github.com/dcache/dcache/commit/2cbaa88b1f71ed85fc5477c0b2260911ac52ab68)
+:   [maven-release-plugin] prepare release 12.0.0
+
+[abdc782dd5](https://github.com/dcache/dcache/commit/abdc782dd579fa0e3c54ea4db6c6f3b32495fd5b)
+:   clean for tagging 12.0.0 againin all pom
+
+[0708d0e582](https://github.com/dcache/dcache/commit/0708d0e5824ae6e4f5dbaf5e47024add2707602f)
+:   clean for tagging 12.0.0 again
+
+[d85d1d9b0d](https://github.com/dcache/dcache/commit/d85d1d9b0d173255782d698bc5932e84854c508b)
+:   ci: fix upload_container job
+
+[17dc34d0ee](https://github.com/dcache/dcache/commit/17dc34d0ee5a842baeeb8f59437f85dfa50d0a8a)
+:   [maven-release-plugin] prepare for next development iteration
+
+[efe0874f91](https://github.com/dcache/dcache/commit/efe0874f91e7d3898ca644ba0b8e0f6982c7227b)
+:   [maven-release-plugin] prepare release 12.0.0
+
+[be2582453b](https://github.com/dcache/dcache/commit/be2582453bb55878b505e7eabc1078138a5fb209)
+:   [maven-release-plugin] prepare branch @{releaseLabel}
+
+[a1eb1de879](https://github.com/dcache/dcache/commit/a1eb1de879af769dbc0f3958ebf09fcf7685ab56)
+:   pom: change project dependency for dcache-view Fix the following issue with dcache-view version
+
+[7960bb578e](https://github.com/dcache/dcache/commit/7960bb578eadb830a9c5b229f078fe8a25d2567c)
+:   front: first version of working draft for code flow, works for download and delete
+
+[9a9162f836](https://github.com/dcache/dcache/commit/9a9162f83670a4fb58987253783eb129f639885d)
+:   complete HttpExtHeader conversion
+
+[46e184d527](https://github.com/dcache/dcache/commit/46e184d52729167733cd3dba8bb38ce3da80a47f)
+:   webdav: use util HttpExtHeader record instead of hardcoding Digest header values
+
+[b20368c27b](https://github.com/dcache/dcache/commit/b20368c27bbd522d0e3e2e7be0017773510cd7ac)
+:   webdav: add support for rfc9530 Http Headers
+
+[bd0cde7971](https://github.com/dcache/dcache/commit/bd0cde79717c8b87ca4f27c56f4f961e66ab2531)
+:   httpd: restore some of the legacy color scheme and table layout
+
+[b6e2a9fe7f](https://github.com/dcache/dcache/commit/b6e2a9fe7f5d788449872960990942396e7d4f14)
+:   REST API: add domains resource.
+
+[5ff074d3a0](https://github.com/dcache/dcache/commit/5ff074d3a0e8dfa934c3a4db76c219003a0c3148)
+:   webdav/frontend: update rate limiter to respond with Retry-After header
+
+[43e2222153](https://github.com/dcache/dcache/commit/43e222215384b6fdbc3fc42c464ca04ce0ed0b90)
+:   pom: use bugfix release oncrpc4j-3.4.3
+
+[d6c7a7af41](https://github.com/dcache/dcache/commit/d6c7a7af413a009e5c948b2c291645ecdb9ff613)
+:   build(deps): bump io.netty:netty-codec-haproxy
+
+[e6e297035f](https://github.com/dcache/dcache/commit/e6e297035f265d27621291455bb93e97e4a6fca4)
+:   build(deps): bump io.netty:netty-handler
+
+[3248b35b58](https://github.com/dcache/dcache/commit/3248b35b585397c1b4de22605c29680169a9b21a)
+:   frontend: delete the option heather for CORS
+
+[5740466181](https://github.com/dcache/dcache/commit/57404661813987f89ea6ba43581e1604af3841ed)
+:   poolmanager: filter staging pools by zone
+
+[77fa2a89ab](https://github.com/dcache/dcache/commit/77fa2a89ab815631d10d8a1b075d5486750d6959)
+:   poolmanager: zone based p2p destination selection in partitions
+
+[c9e701b457](https://github.com/dcache/dcache/commit/c9e701b45794f507e04bf8d467b4aa5831bcc804)
+:   poolmanager: select pool by zone logic in PoolMonitorV5
+
+[18b370737b](https://github.com/dcache/dcache/commit/18b370737b9362ce83fdd0a8e760a3f434e8229e)
+:   Revert "Merge branch 'zones'"
+
+[bcaf8604d4](https://github.com/dcache/dcache/commit/bcaf8604d43354af84ebd9d4a3f8bbf9960dbce2)
+:   poolmanager: filter staging pools by zone
+
+[32cd45a444](https://github.com/dcache/dcache/commit/32cd45a444d071b56c04556e6d2130bc225deec7)
+:   poolmanager: filter staging pools by zone
+
+[ef4cd77f93](https://github.com/dcache/dcache/commit/ef4cd77f93f33162caf6a4ac105e46c02028b20c)
+:   poolmanager: zone based p2p destination selection in partitions
+
+[fd99f2c0cc](https://github.com/dcache/dcache/commit/fd99f2c0cc8a24fb4ec8cd32dbf9d55f1eb6e10d)
+:   poolmanager: select pool by zone logic in PoolMonitorV5
+
+[2de6db1531](https://github.com/dcache/dcache/commit/2de6db1531152b2dad3ae7232fa90c364950d749)
+:   webdav: remove custom workaround of milton error handling
+
+[6064bb7895](https://github.com/dcache/dcache/commit/6064bb78958e0ffe729f75ea3b4b15634a5ba645)
+:   pool: use java14 record type to implement QueueStat
+
+[4f080d5b92](https://github.com/dcache/dcache/commit/4f080d5b922dea4da65979740cf594b14a6c2f0a)
+:   dcacheview: nodejs downgrade to previous version
+
+[47c9c355c7](https://github.com/dcache/dcache/commit/47c9c355c7e1615253db603833744691de90b9a2)
+:   dcacheview:upgrade node,js version
+
+[b61c738810](https://github.com/dcache/dcache/commit/b61c738810c3a16e563a441c23b941ab128fc11b)
+:   clean unused comments
+
+[54c05d1303](https://github.com/dcache/dcache/commit/54c05d130336f908767489c72982b52525b673d5)
+:   door: fix npe in setZone
+
+[dc0e8d2812](https://github.com/dcache/dcache/commit/dc0e8d2812462c41a3885ec3b0e6194302524350)
+:   correct the limmit
+
+[1329f83f54](https://github.com/dcache/dcache/commit/1329f83f54ea4149065188ee3f77b51672ad8f9e)
+:      dcacheview: moving dcache-view into dcache
+
+[76d7be5083](https://github.com/dcache/dcache/commit/76d7be5083a97f8aed9736cce88245f916f0ee15)
+:   Motivation: The recent implementation of zone based pool selection needs documentation
+
+[f1c6da0eca](https://github.com/dcache/dcache/commit/f1c6da0eca31c720682550c266da8cedc33cd30b)
+:   Motivation: Zones are useful in multi site deployments to easily direct reads and writes to pools that are closest to the client. The current implementation of Zones only made pools aware of their zone. Doors, messages and transfers also need to carry the information of the zone they originate from to enable zoneaware reads and writes
+
+[6f3d0f99a6](https://github.com/dcache/dcache/commit/6f3d0f99a68615a99d14a51221a711cef9a6caaa)
+:   packages: drop dependency on gplazma2-nis (fixes commit 0d6166a07b)
+
+[0d6166a07b](https://github.com/dcache/dcache/commit/0d6166a07b762a2921ea295a10338f1f0479ef15)
+:   gplazma: drop nis support
+
+[be579f9f43](https://github.com/dcache/dcache/commit/be579f9f439109430a5a6942ec582d82b37113c8)
+:   build(deps): bump io.netty:netty-transport-native-epoll
+
+[aec5a72e94](https://github.com/dcache/dcache/commit/aec5a72e948d9af8db34e5d3700abd9bfe28545f)
+:   build(deps): bump org.postgresql:postgresql from 42.3.9 to 42.7.11
+
+[3045a52717](https://github.com/dcache/dcache/commit/3045a52717a99d71c06e81eb49c0bd80c945080d)
+:   build(deps): bump io.netty:netty-codec-http
+
+[0505cdb46a](https://github.com/dcache/dcache/commit/0505cdb46a18d37166622775d7f7242384861893)
+:   test: fix unit test broken by commit 6e8e1e3448
+
+[6e8e1e3448](https://github.com/dcache/dcache/commit/6e8e1e34484aa4a919446d97c57900fd9673e151)
+:   cells: add custom DelegatingCuratorFramework
+
+[8c80adbf7d](https://github.com/dcache/dcache/commit/8c80adbf7d7d4e841cd6282b0df296f8b5c79532)
+:   Motivation: The Gridmap file plugin is redundant because the Multimap Plugin does the same as per Issue #7659 "drop gridmap-file support".
+
+[dfad263a21](https://github.com/dcache/dcache/commit/dfad263a21a80d3b6d549d6b06c76e421fc2ca3c)
+:   pool: stop automatic scrubber on repository read-only event
+
+[c670b570b9](https://github.com/dcache/dcache/commit/c670b570b9ae85315882c7e218640be7d22f6733)
+:   Motivation: The recently added imlementation of TLS support for ZooKeeper used jks/p12 files while the rest of dCache uses .pem
+
+[69702638ee](https://github.com/dcache/dcache/commit/69702638eeff29bbaba1cd0f39f421f66ae76053)
+:   chimera: applying attributes to newly created file should skip permission check
+
+[bd588fdc95](https://github.com/dcache/dcache/commit/bd588fdc950fe7f52f167cdc0683fa049a33dd21)
+:   ci: use custom k8s deployment for minio
+
+[34c4cedc59](https://github.com/dcache/dcache/commit/34c4cedc59677569e66870566323e604e86bd936)
+:   ci: skip git clone it sources are not needed
+
+[3850e3654c](https://github.com/dcache/dcache/commit/3850e3654cbbbd1864f9e6a114c5a586cb2e3922)
+:   cells: update `route find` command to support topics
+
+[2452055701](https://github.com/dcache/dcache/commit/2452055701f593bf1995e73ed833597535ad7575)
+:   code coverage: replace strict JaCoCo COPY with conditional staging
+
+[6682edadd9](https://github.com/dcache/dcache/commit/6682edadd9cca7dc6acec5d23281ab9f133b6ff4)
+:   chimera: fix reading of empty tags
+
+[2d72aa23ad](https://github.com/dcache/dcache/commit/2d72aa23ade45492486ef3b386fa66da64dca61a)
+:   pom: update aspect4j to java25 capable 1.9.25
+
+[cbd374aad9](https://github.com/dcache/dcache/commit/cbd374aad9989256175218d01601a5ab89929e7d)
+:   bulk: report 413 Entity Too Large is limits on bulk requests are exceeded
+
+[3d892cc638](https://github.com/dcache/dcache/commit/3d892cc6386015ae5dde8e087e3d18919586f536)
+:   Motivation: The configuration of TLS encryption for domain-domain communication is not well documented. This has led to confusion among users.
+
+[b394a1aecb](https://github.com/dcache/dcache/commit/b394a1aecbf6af06ff45205e27a1b6a107538c5a)
+:   domain: Add TLS support for ZooKeeper connections
+
+[c093b7772c](https://github.com/dcache/dcache/commit/c093b7772cbd04b07c7a673224e8719d98d5fead)
+:   gplazma2-oidc: Add and test support for `storage.poll` WLCG claim
+
+[fd91c54812](https://github.com/dcache/dcache/commit/fd91c54812d5ed2ab501a54b9db5e0b0281a937e)
+:   tape rest API: remove AccessMask.READ_DATA requirement when querying for file attributes for file locality
+
+[59aeed7b3e](https://github.com/dcache/dcache/commit/59aeed7b3ed7eb3c7c2c185059dc237e97afe261)
+:   alarms: use HardenedLoggingEventInputStream to address possible RCE when deseriaizing log messages
+
+[1ec7074c7e](https://github.com/dcache/dcache/commit/1ec7074c7e94c81c909e1265c8bd7a4817c73117)
+:   scripts: fix double rw definition in FIO benchmark script
+
+[2a0ada323e](https://github.com/dcache/dcache/commit/2a0ada323e5fb6f36be4119fa564d0bcb28b6e9a)
+:   code coverage: add integrational coverage
+
+[8819c24523](https://github.com/dcache/dcache/commit/8819c2452312df97837f51484a2d3a138ed89492)
+:   pool: Address Copilot review comments on `hotfile show`
+
+[670fc3b051](https://github.com/dcache/dcache/commit/670fc3b0519895887fd7e105e495a31ee328846f)
+:   ci: move keycloack-deployment.yaml into .ci/k8s directory
+
+[07fb84092b](https://github.com/dcache/dcache/commit/07fb84092b0bb50741926b55f093c3420afbae24)
+:   pool: emit firefly onStart marker from RemoteHttpDataTransferProtocol
+
+[b656f9a53d](https://github.com/dcache/dcache/commit/b656f9a53d087b1f854024b982fd420ed5fb08ec)
+:   libs: update apache-curator to 5.9.0
+
+[8528738964](https://github.com/dcache/dcache/commit/85287389644f7d86314830bcac44d276e9689c5d)
+:   pool: New `hotfile show` command, and show enablement status with `info -a`
+
+[46aae42c27](https://github.com/dcache/dcache/commit/46aae42c274a8bee2d5938c0ac5d9eb19d5f8350)
+:   pom: upgrade of libraries
+
+[e846f1a9e3](https://github.com/dcache/dcache/commit/e846f1a9e378b58b4f72334fe03d37ddb59a7c08)
+:   docs/dev: add historical plans and work summaries for future reference.
+
+[fea6122834](https://github.com/dcache/dcache/commit/fea6122834c842a3ef5744bfc146ff3c8e7d1b36)
+:   pool: Fix properties tests to use the correct property
+
+[ab9db28eff](https://github.com/dcache/dcache/commit/ab9db28eff8ab50d992beec3278fed7118517fa1)
+:   pool: Improve logging for hot file replication
+
+[787d08edb9](https://github.com/dcache/dcache/commit/787d08edb90f5bd7cbefa4403d0acdd74d2aebd3)
+:   qos-policy: update to QoS policy API
+
+[5fe6ec98bd](https://github.com/dcache/dcache/commit/5fe6ec98bd902b71b09d9172e84620148d44dd2d)
+:   rpm: make package require java17 or java21
+
+[ec61a1912f](https://github.com/dcache/dcache/commit/ec61a1912f43309cefda12da777b7bf429ca8da2)
+:   build(deps): bump io.netty:netty-codec-http
+
+[1c651355a6](https://github.com/dcache/dcache/commit/1c651355a68d868576f41a43b414bf1df2a72b07)
+:   httpd: fix generated pool group usage urls
+
+[e98233ec86](https://github.com/dcache/dcache/commit/e98233ec86894c500832fa662b260c112540fd19)
+:   pom: drop dependency on patch plugin
+
+[f4cad99e7c](https://github.com/dcache/dcache/commit/f4cad99e7c24e6624d6335d23e5dd0e3323fc4f5)
+:   docs: frontend chapter updates
+
+[8d870cfbe3](https://github.com/dcache/dcache/commit/8d870cfbe399343adf2a5dcc2582657bba12ec95)
+:   pool: fix failing unit tests
+
+[9094d5997f](https://github.com/dcache/dcache/commit/9094d5997f3242f9482a9ac07d656d159c9297c9)
+:   pool: enhance migration pool choice logic
+
+[2e0e589347](https://github.com/dcache/dcache/commit/2e0e589347d7a950d60e2a81b602fca1101523f9)
+:   dev: Instructions for GitHub Copilot CLI, plugins, and agents
+
+[d0be76403d](https://github.com/dcache/dcache/commit/d0be76403d48774ad6fc2f015d904137f96a87b0)
+:   firefly: address latest PR 8044 inline feedback
+
+[e726a98198](https://github.com/dcache/dcache/commit/e726a98198a50bbc032453b5e190720ba90ef714)
+:   Revert "pool: enhance migration pool choice logic"
+
+[358360c278](https://github.com/dcache/dcache/commit/358360c278b6759f6507fc82f67ef7a09c15a7f6)
+:   pool: enhance migration pool choice logic
+
+[9195703028](https://github.com/dcache/dcache/commit/9195703028979891891ff2e6cf91a5d73c69d7d5)
+:   pool: exclude p2p requests from numberOfRequestsFor count
+
+[db228398b8](https://github.com/dcache/dcache/commit/db228398b8fe14414dacec3e990faddc1fb9708e)
+:   firefly: address PR 8044 review fixes
+
+[40b7775e2c](https://github.com/dcache/dcache/commit/40b7775e2c36c2ba961c69043a3a62a523ad7cda)
+:   util: remove unused code
+
+[5cef4f7080](https://github.com/dcache/dcache/commit/5cef4f70803731ba1fc7eea817f5774d363f5da5)
+:   xrootd: fix logSciTagsRequest called before cell address initialization
+
+[cfa848240d](https://github.com/dcache/dcache/commit/cfa848240d5300fa03efd3cbc374038f079d83d4)
+:   Fix SciTag WAN TPC marker generation and validation
+
+[3ef41d6070](https://github.com/dcache/dcache/commit/3ef41d60700b07ff0c1566520d413ccd4dcd7650)
+:   src: skip SRM when building and testing dCache
+
+[a0b6cda1bc](https://github.com/dcache/dcache/commit/a0b6cda1bc1d9555ad79d8b7cadd7cc46e0ddfe3)
+:   frontend: add space reservations functionality
+
+[88a9be1857](https://github.com/dcache/dcache/commit/88a9be18578fd2876a1db62756597888783f67cc)
+:   Add WAN SciTag support for remote HTTP(S) TPC movers
+
+[f093502a02](https://github.com/dcache/dcache/commit/f093502a02ce21f31edb2be42280b448b7e782be)
+:   Update CITATION.cff with affiliation as authors
+
+[9cde193aa1](https://github.com/dcache/dcache/commit/9cde193aa103e636ac178ddbffcd397b39cbc8aa)
+:   Firefly: address PR review comments
+
+[68d51cb1e5](https://github.com/dcache/dcache/commit/68d51cb1e5f9cc4758abf91e0a4af31675db156f)
+:   Firefly: send additional copy to configured collector
+
+[76dee8f81e](https://github.com/dcache/dcache/commit/76dee8f81e5e9386222fa7ccb73bf0cae0b69e03)
+:   docs: QoS chapter inconsistencies fix
+
+[1a16d61c36](https://github.com/dcache/dcache/commit/1a16d61c3610fb44b6eb7dca2b8472a090225839)
+:   Address PR review feedback for SciTag parsing and VO mapping
+
+[5ac31f6d4e](https://github.com/dcache/dcache/commit/5ac31f6d4e9a5904126459b08f01b914e62a72b0)
+:   Add SciTag debug logging for WebDAV and xrootd doors
+
+[5038ab473c](https://github.com/dcache/dcache/commit/5038ab473c974fbba5f5436d467a3d622337b62c)
+:   Require both endpoints to match firefly excludes
+
+[9f883f77c8](https://github.com/dcache/dcache/commit/9f883f77c8ee341d0c2bb0af83685f67d60a89ab)
+:   Fix firefly experiment-id resolution for SciTag and FQAN fallback
+
+[2e61583af7](https://github.com/dcache/dcache/commit/2e61583af75cc89a244023cd016648dd9ad8133a)
+:   script: add `dcache pool benchmark` command
+
+[6537358ef6](https://github.com/dcache/dcache/commit/6537358ef613c5540981990760068d1a9ebfdcbc)
+:   build(deps): bump org.apache.zookeeper:zookeeper from 3.8.4 to 3.8.6
+
+[5acd486b27](https://github.com/dcache/dcache/commit/5acd486b27588b380a10e804afdc608a08eb70cf)
+:   namespace: ensure that access latency and retention policy are always defined
+
+[45b9e77923](https://github.com/dcache/dcache/commit/45b9e77923901167ac578f5ad44863579b0061a0)
+:   common-security: remove historic garbage
+
+[80c12dae9e](https://github.com/dcache/dcache/commit/80c12dae9e4c259cfffaee774f8c90604fd17f3b)
+:   pom: update nfs4j to 0.27.2
+
+[6f00b7bf91](https://github.com/dcache/dcache/commit/6f00b7bf91186638973014a8204db1d76caceb05)
+:   build(deps): bump com.fasterxml.jackson.core:jackson-core
+
+[488e648faf](https://github.com/dcache/dcache/commit/488e648fafb7343804bf55b1e3308bac57132303)
+:   ci: move junit test report into run_ut_with_coverage job
+
+[a106a79559](https://github.com/dcache/dcache/commit/a106a79559807094744a350dabeb5b8c62df3c62)
+:   ci: use version 9.2.40 for compatibility test
+
+[b82ea31b1c](https://github.com/dcache/dcache/commit/b82ea31b1cca63ee4d1ed0ba05390f1c3373a13c)
+:   pool: send firefly for https transfers
+
+[dd8db3ef25](https://github.com/dcache/dcache/commit/dd8db3ef25ca0e6e0d7faa337254a5228016843c)
+:    rest api: add support for Java8 Optional data type
+
+[91de69d0f8](https://github.com/dcache/dcache/commit/91de69d0f8060fd82176f9b5934cc67f01346346)
+:   dcache cli: fix issue with printing pool size when max diskspace is set in percentage
+
+[a93e7cd714](https://github.com/dcache/dcache/commit/a93e7cd714bd2288aca01f91ba3f1009868ca29d)
+:   docs: update installation requirements and instructions
+
+[13ee819efd](https://github.com/dcache/dcache/commit/13ee819efd8574dddae84d6d82d397c61812ece9)
+:   src: disable SRM-client build in CI pipeline
+
+[324abc2203](https://github.com/dcache/dcache/commit/324abc220336979ce60ca0d180a2a9d07931427e)
+:   lib: update mina-sshd to 2.17.1
+
+[1731eae972](https://github.com/dcache/dcache/commit/1731eae972bdf4db8bfdca993808c72064ba3468)
+:   http/tpc: add support for ArchiveMetadata header
+
+[4997c2f55a](https://github.com/dcache/dcache/commit/4997c2f55ac88c8479310da4d1fd4af316bfdfdf)
+:   code coverage: centralize JaCoCo version
+
+[148ab3f75e](https://github.com/dcache/dcache/commit/148ab3f75ed1d10295d2c047824f47228c6113e4)
+:   code coverage: implement JaCoCo report generation in CI
+
+[bebaeee564](https://github.com/dcache/dcache/commit/bebaeee5648b22367f91f4a2e1379bf932d0a2ab)
+:   [maven-release-plugin] prepare for next development iteration
+
+
 
 
 
