@@ -237,7 +237,7 @@ Map OIDC subject identifiers to local usernames and Unix attributes:
 oidc:47055fee-1@keycloak    username:usernameoidc uid:1000 gid:1000,true
 
 
----
+```
 
 ### 4. `etc/grid-security/storage-authzdb` — Authorization
 
