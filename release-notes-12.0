@@ -91,6 +91,73 @@ HTML header: <title>dCache 12.0 Release Notes</title>
 
 We want to thank Shawn McKee  and Niklas Edmundsson for the contributions.
 
+## Release 12.0.2
+
+### admin
+
+`rep ls` could crash the admin command with an IllegalStateException when a replica's access latency or retention policy attribute was not set 
+(e.g. left undefined after an interrupted attribute update). The affected replicas are now safely skipped instead of crashing the command.
+
+This is now fixed.
+
+### nfs
+
+ If mover start message got lost then NFS door will fall into an infinite retry loop as it will wait for mover to start.
+This is now fixed.
+
+
+### pool
+
+The initialization time for hot file migration jobs in large repositories is vastly reduced.
+
+### transfer
+
+The current release restores ability to define alternative/additional checksum.
+
+
+### Changelog 12.0.1..12.0.2
+
+<!-- git log 12.0.1..12.0.2 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[597bf4de94](https://github.com/dcache/dcache/commit/597bf4de94bde5bfc8de9604ff749e0b16a686d7)
+:   [maven-release-plugin] prepare release 12.0.2
+
+[9eb1393f12](https://github.com/dcache/dcache/commit/9eb1393f12282679fa6efaf04c1ec48589ccabcb)
+:   libs: drop custom milton2 version
+
+[3fc9fd86a6](https://github.com/dcache/dcache/commit/3fc9fd86a6ab054d14551a9a5f104af345b80f00)
+:   libs: use xrootd4j-4.6.2
+
+[d8b3f9be6c](https://github.com/dcache/dcache/commit/d8b3f9be6c237d32040806d34edd31a1bc399ca3)
+:   libs: use Sleepycat from maven central
+
+[d9cba2193e](https://github.com/dcache/dcache/commit/d9cba2193ec5f1e8b0525d3996b8dd8391a35f28)
+:   pom: explicitly specify maven central to enforce the search order
+
+[2abeecaccb](https://github.com/dcache/dcache/commit/2abeecaccb59864e0c81ed0cfd488b0c913a0ea7)
+:   dcache-nearline-plugin-archetype: use latest plugin release for testing
+
+[9c08f87bc3](https://github.com/dcache/dcache/commit/9c08f87bc389d7c30c37c3cf6e4057f774dac4ff)
+:   gplazma2-ldap: drop dependency on ldap4testing
+
+[c9001bb424](https://github.com/dcache/dcache/commit/c9001bb424ceeb37fa670d692a0000a586332031)
+:   rep ls: fix crash when access latency or retention policy is undefined
+
+[581c5411aa](https://github.com/dcache/dcache/commit/581c5411aa14b1da81e719f5b1c0fe9fc6821dc0)
+:   pool: Address slow initialization of hot file migration jobs
+
+[62ae3750c1](https://github.com/dcache/dcache/commit/62ae3750c1d332454d76d7b6ec63570f576ebf3f)
+:   Transfer: remove TransferTest that is wrong
+
+[48d661baa9](https://github.com/dcache/dcache/commit/48d661baa97ee63cc1db7b8e8d751c209620ec9c)
+:   transfer: restore ability to define alternative/additional checksum
+
+[7e043397e5](https://github.com/dcache/dcache/commit/7e043397e5e3bc0b4a75526fa5f220307a7fac02)
+:   nfs: restart pool selection process on timeout for reads
+
+[3281c7787b](https://github.com/dcache/dcache/commit/3281c7787b9a7ce403bef17036732d3d46746169)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 12.0.1
 
 ### Billing
