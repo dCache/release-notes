@@ -83,21 +83,21 @@ HTML header: <title>dCache 12.1 Release Notes</title>
 
 ## Incompatibilities
 
-## Release 12.0.0
+- files' last access time enabled by default
+
+## Release 12.1.0
 
 ### Billing
 
 ### NFS
 
+### PnfsManager
+
+Site admins often need to find files that haven't been accessed for some time. Usually such information requires a merge of namespace and
+billing information. However, dCache can maintain the last access time of files, which is disabled by default. With this version,
+the `atime gap` is set to 604800 (7x24x3600) seconds, which will update files' atime if last access was more than a week.
+
 ### Pool
-
-### Scripts
-
-Added `dcache pool benchmark` command that executes pre-defined fio benchmark for all pools on the host.
-
-### SRM Client
-
-The srm client is excluded from the project build process.
 
 ### Xrootd
 
