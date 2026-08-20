@@ -83,13 +83,38 @@ HTML header: <title>dCache 12.1 Release Notes</title>
 
 ## Incompatibilities
 
-- files' last access time enabled by default
+- Files' last access time is enabled by default.
+- The `systemd` services are now started with even more restrictions.
 
 ## Release 12.1.0
 
 ### Billing
 
 ### NFS
+
+### Packaging
+
+The `systemd` services are now started with even more restrictions:
+
+```
+PrivateTmp=yes
+ProtectClock=yes
+ProtectControlGroups=yes
+ProtectHostname=yes
+ProtectKernelLogs=yes
+ProtectKernelModules=yes
+ProtectKernelTunables=yes
+ProtectProc=invisible
+RemoveIPC=yes
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX AF_NETLINK
+RestrictNamespaces=yes
+RestrictRealtime=yes
+SystemCallArchitectures=native
+UMask=0027
+KeyringMode=private
+LockPersonality=yes
+MemoryDenyWriteExecute=no
+```
 
 ### PnfsManager
 
