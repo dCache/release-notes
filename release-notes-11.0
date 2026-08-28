@@ -87,6 +87,51 @@ HTML header: <title>dCache 11.0 Release Notes</title>
 
 We want to thank Marian Babik and Onno Zweers for their contributions.
 
+## Release 11.0.16
+
+### xroot
+
+Upgraded  to 4.6.2 with new major release with bug fixes and enhancements.
+
+
+
+### Changelog 11.0.15..11.0.16
+
+<!-- git log 11.0.15..11.0.16 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[fc8ab67307](https://github.com/dcache/dcache/commit/fc8ab673075621dbc1a75c1579d5b315904ae513)
+:   [maven-release-plugin] prepare release 11.0.16
+
+[40ae7b39d2](https://github.com/dcache/dcache/commit/40ae7b39d20c94f90de8137bb02812d745db4f38)
+:   gplazma2-ldap: drop dependency on ldap4testing
+
+[c6ce0d4a4d](https://github.com/dcache/dcache/commit/c6ce0d4a4d6416a49fdce3cb0105c3c95ac005a7)
+:   build: fix missing resources caused by specification of resources
+
+[fe420d13e6](https://github.com/dcache/dcache/commit/fe420d13e66315e8d258ef9cdfdd07f6862c0790)
+:   build: remove vestigial SMC configuration from `pom.xml` files
+
+[aa18d04bf4](https://github.com/dcache/dcache/commit/aa18d04bf4060e0e1d021bb7868d94324ba62f67)
+:   build: Update SMC library and corresponding maven plugin
+
+[9958df1a22](https://github.com/dcache/dcache/commit/9958df1a22c79266ee82a94fc43c9dfff978c222)
+:   pom: add thirdparty repos hosted by dcache.org nexus
+
+[7249aec57a](https://github.com/dcache/dcache/commit/7249aec57a613d208939a58ba5678b8516b077a5)
+:   libs: use xrootd4j-4.6.2
+
+[ce026705ab](https://github.com/dcache/dcache/commit/ce026705abcfaebaed9a4ac97b3232c6a477bd03)
+:   libs: use Sleepycat from maven central
+
+[bc101bdfb5](https://github.com/dcache/dcache/commit/bc101bdfb5087df13f0d53fd90577374d72c0ef9)
+:   dcache-nearline-plugin-archetype: use latest plugin release for testing
+
+[1262c6f6dc](https://github.com/dcache/dcache/commit/1262c6f6dc0f2a7fa056710224910e4194d3a98d)
+:   pom: explicitly specify maven central to enforce the search order
+
+[3a51ac2109](https://github.com/dcache/dcache/commit/3a51ac21092df95a050b2816f9bd62287e3a22ae)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 11.0.15
 
 ### alarm
