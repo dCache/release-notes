@@ -87,6 +87,25 @@ HTML header: <title>dCache 11.0 Release Notes</title>
 
 We want to thank Marian Babik and Onno Zweers for their contributions.
 
+## Release 11.0.17
+
+### gPlazma
+
+Enforce OpenSSL SHA1 mode during certificate hash calculation in gplazma2-voms to ensure consistent hash generation across environments.
+
+### Changelog 11.0.16..11.0.17
+
+<!-- git log 11.0.16..11.0.17 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[b879af3811](https://github.com/dcache/dcache/commit/b879af3811ed053a4de0bbe3f6d024ed0dc54e04)
+:   [maven-release-plugin] prepare release 11.0.17
+
+[20e51d9466](https://github.com/dcache/dcache/commit/20e51d94669e005c1745351fc447eed3adf66619)
+:   gplazma2-voms: enforce openssl SHA1 mode for certificate hash calculation
+
+[6c5be65c01](https://github.com/dcache/dcache/commit/6c5be65c0184aa6b61913dfa072722e9f43b598f)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 11.0.16
 
 ### xroot

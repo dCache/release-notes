@@ -89,6 +89,41 @@ HTML header: <title>dCache 11.2 Release Notes</title>
 
 We want to thank Shawn McKee for his contributions.
 
+## Release 11.2.7
+
+### Dependencies
+
+Update the CaNL (EMI CA Naming Library) dependency to version 2.9.0.
+### gPlazma
+
+Enforce OpenSSL SHA1 mode during certificate hash calculation in gplazma2-voms to ensure consistent hash generation across environments.
+Remove the ldap4testing dependency from gplazma2-ldap to clean up unused testing libraries.
+### Security
+
+Add a workaround in common-security for Bouncy Castle Elliptic Curve (EC) algorithm name mismatches.
+
+### Changelog 11.2.6..11.2.7
+
+<!-- git log 11.2.6..11.2.7 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[1e3d077f71](https://github.com/dcache/dcache/commit/1e3d077f71e18a6e509b1b6d0f8e0c6c74959326)
+:   [maven-release-plugin] prepare release 11.2.7
+
+[b3ec0da4f6](https://github.com/dcache/dcache/commit/b3ec0da4f6800a43bd1160de85c74a4870bf220d)
+:   gplazma2-voms: enforce openssl SHA1 mode for certificate hash calculation
+
+[572034cee6](https://github.com/dcache/dcache/commit/572034cee6964d8f7920b1fda35345560c96c997)
+:   libs: update CaNL to 2.9.0
+
+[b7daae35c9](https://github.com/dcache/dcache/commit/b7daae35c9923a763b43c0650d9295535d3e5be1)
+:   common-security: add workaround bouncycastle EC algorithm name mismatch
+
+[5faabf7998](https://github.com/dcache/dcache/commit/5faabf7998a1b80fd31b5cfde412e7d0c50c5188)
+:   gplazma2-ldap: drop dependency on ldap4testing
+
+[b4a16f04d9](https://github.com/dcache/dcache/commit/b4a16f04d93a6097bc90c79355e5102fff23d18f)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 11.2.6
 
 ### admin
