@@ -91,6 +91,43 @@ HTML header: <title>dCache 12.0 Release Notes</title>
 
 We want to thank Shawn McKee and Niklas Edmundsson for their contributions.
 
+## Release 12.0.3
+
+### Dependencies
+
+Update the CaNL (EMI CA Naming Library) dependency to version 2.9.0. 
+### gPlazma
+
+ Enforce OpenSSL SHA1 mode during certificate hash calculation in gplazma2-voms to ensure consistent hash generation across environments. 
+### HTTP
+
+Fix buildGenericWantDigest to comply with RFC 9530 Digest header formatting (issue 8191).
+### Security
+
+Add a workaround in common-security for Bouncy Castle Elliptic Curve (EC) algorithm name mismatches. 
+
+### Changelog 12.0.2..12.0.3
+
+<!-- git log 12.0.2..12.0.3 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[b0b97b791a](https://github.com/dcache/dcache/commit/b0b97b791a0ddb0fa2708138a1a09c66463ee9af)
+:   [maven-release-plugin] prepare release 12.0.3
+
+[30f6fef5fc](https://github.com/dcache/dcache/commit/30f6fef5fc051b8e79cbf12da5a0b8b0c2182ddd)
+:   utils: fix buildGenericWantDigest for RFC9530 (issue8191)
+
+[b1e58db159](https://github.com/dcache/dcache/commit/b1e58db15946025261a6c8f01f5989ffef54c7c4)
+:   gplazma2-voms: enforce openssl SHA1 mode for certificate hash calculation
+
+[644c93e035](https://github.com/dcache/dcache/commit/644c93e03533d18502341490b4601509f58fa3dc)
+:   libs: update CaNL to 2.9.0
+
+[baf916ab6f](https://github.com/dcache/dcache/commit/baf916ab6ff74ea7d401f31d7c68fba0ad47dd39)
+:   common-security: add workaround bouncycastle EC algorithm name mismatch
+
+[12174dcb79](https://github.com/dcache/dcache/commit/12174dcb79a9ff732746e2fb4841cb8c98c2974a)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 12.0.2
 
 ### admin
