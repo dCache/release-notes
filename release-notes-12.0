@@ -89,7 +89,7 @@ HTML header: <title>dCache 12.0 Release Notes</title>
 
 ## Acknowledgments
 
-We want to thank Shawn McKee  and Niklas Edmundsson for the contributions.
+We want to thank Shawn McKee and Niklas Edmundsson for their contributions.
 
 ## Release 12.0.2
 
@@ -102,18 +102,17 @@ This is now fixed.
 
 ### nfs
 
- If mover start message got lost then NFS door will fall into an infinite retry loop as it will wait for mover to start.
+If the mover start message is lost, the NFS door will enter an infinite retry loop while waiting for the mover to start.
 This is now fixed.
 
 
 ### pool
 
-The initialization time for hot file migration jobs in large repositories is vastly reduced.
+The initialisation time for hot file migration jobs in large repositories is vastly reduced.
 
 ### transfer
 
-The current release restores ability to define alternative/additional checksum.
-
+The current release restores the ability to define an alternative/additional checksum.
 
 ### Changelog 12.0.1..12.0.2
 
@@ -257,7 +256,7 @@ Users can now log in to dcache-view using their institutional identity via  for 
 
 ## Configuration Changes
 
-### 1. `etc/dcache.conf` — Frontend OIDC Settings
+### 1. `/etc/dcache.conf` — Frontend OIDC Settings
 
 Add or verify the following properties:
 
@@ -317,8 +316,6 @@ authorize username:usernameoidc read-write  1000  1000  /  /
 ```
 
 ---
-
-### Xrootd
 
 ### Zookeeper
 
