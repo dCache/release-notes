@@ -89,6 +89,72 @@ HTML header: <title>dCache 11.2 Release Notes</title>
 
 We want to thank Shawn McKee for his contributions.
 
+## Release 11.2.8
+
+### billing
+
+Billing records sent by doors now include the mover information (transfer statistics, duration, pool metrics). Previously this information was attached only after the billing notification had already been sent.
+
+### gPlazma
+
+Fixed parsing of VOMS FQANs that refer to the root group of a VO (e.g. `/vo`).
+
+### jetty
+
+   The per-client and global request rate limiters of the HTTP-based services have been disabled, as their behaviour did not match admins' expectations. Rate limiting now applies only to authentication failures. See #8102.
+
+### mover
+
+The NFS door no longer gets stuck when a mover redirect arrives before the reply to the mover start request, or when that reply is lost. The door now re-sends the mover start request to obtain the mover ID.
+
+### xrootd
+
+- Certificate hash calculation now always uses SHA-1.
+
+- Updated xrootd4j to version 2.6.5.
+
+- The xrootd door now supports the xroot `ping` request.
+
+- The xrootd door now implements the xroot `prepare` request.
+
+
+### Changelog 11.2.7..11.2.8
+
+<!-- git log 11.2.7..11.2.8 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[51af12d853](https://github.com/dcache/dcache/commit/51af12d8539338cd77e28761ff3a52c6fbc5ea8a)
+:   [maven-release-plugin] prepare release 11.2.8
+
+[e55f9fa1b5](https://github.com/dcache/dcache/commit/e55f9fa1b5ec67551e6266b3027c04cab3055416)
+:   transfer: fix missing mover info before sending billing notification
+
+[ed8969190e](https://github.com/dcache/dcache/commit/ed8969190e1a5c4ce1bbe2adcd4de4c67ba1ef10)
+:   retry mover start if redirect arrives before moverId
+
+[d4157c3abb](https://github.com/dcache/dcache/commit/d4157c3abb8d1a14e658ce2739e89dd7c5f5ad9f)
+:   pom: bump xtootd4j version to 2.6.5
+
+[f09f1cd45f](https://github.com/dcache/dcache/commit/f09f1cd45f57e7fbfcc60dfd338f07f6bb0e2fba)
+:   xrootd: implement "ping" call
+
+[f79a97903f](https://github.com/dcache/dcache/commit/f79a97903f1e0f26ae99cf3a444a599c1981c3d0)
+:   xrootd: implement prepare function
+
+[a0831c73c3](https://github.com/dcache/dcache/commit/a0831c73c3f180bc30f657bd17a61908eb0437d4)
+:   jetty: drop per-client and global rate limiter
+
+[aa0b70f3a5](https://github.com/dcache/dcache/commit/aa0b70f3a5114c6b56772549f5c1fddaac9bd8c0)
+:   xroot: enforce SHA1 for certificate hash calculation
+
+[34a0fbcb06](https://github.com/dcache/dcache/commit/34a0fbcb06204a5c931a953673ab3e4094769eaa)
+:   ci: fix the PR checks failing
+
+[f71b7cfa88](https://github.com/dcache/dcache/commit/f71b7cfa88d0615e583d605a7cb46ed3a1879591)
+:   voms: fix FQAN parsing for root /vo group
+
+[6b3b6b265d](https://github.com/dcache/dcache/commit/6b3b6b265d8469f074eeb705828f8f068e92c852)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 11.2.7
 
 ### Dependencies

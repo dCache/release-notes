@@ -87,6 +87,29 @@ HTML header: <title>dCache 11.0 Release Notes</title>
 
 We want to thank Marian Babik and Onno Zweers for their contributions.
 
+## Release 11.0.18
+
+### xrootd
+
+- Certificate hash calculation now always uses SHA-1.
+
+
+### Changelog 11.0.17..11.0.18
+
+<!-- git log 11.0.17..11.0.18 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[e18606b88c](https://github.com/dcache/dcache/commit/e18606b88c3f698e81dbc3f8bf4405d0ac500250)
+:   [maven-release-plugin] prepare release 11.0.18
+
+[f973ec4b17](https://github.com/dcache/dcache/commit/f973ec4b17000d80d9fcc1cf4bd052fb7a8bdf15)
+:   xroot: enforce SHA1 for certificate hash calculation
+
+[8a3af757cc](https://github.com/dcache/dcache/commit/8a3af757cc3eab64955fbec47b280c26791af12f)
+:   ci: fix the PR checks failing
+
+[278a47b9ed](https://github.com/dcache/dcache/commit/278a47b9ed86ff4a6203c569da11d9cfb3dd3d0d)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 11.0.17
 
 ### gPlazma
