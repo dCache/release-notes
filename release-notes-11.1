@@ -91,6 +91,31 @@ HTML header: <title>dCache 11.1 Release Notes</title>
 We want to thank Tino Reichardt for his contribution.
 
 
+## Release 11.1.14
+
+### NFS
+
+he NFS door could accumulate orphaned transfers (shown as
+`WriteTransfer null@N/A`) when pool selection failed during a pNFS
+LAYOUTGET, for example due to stage protection or an attempt to
+overwrite an existing file. Because the client received a permission
+error, it never issued a LAYOUTRETURN, so the transfer was never
+removed. Such pool-less transfers are now removed from the door when
+LAYOUTGET fails with a permission error.
+
+### Changelog 11.1.13..11.1.14
+
+<!-- git log 11.1.13..11.1.14 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[9af61c9cfa](https://github.com/dcache/dcache/commit/9af61c9cfab4471c46ae9d95cc5eace877561751)
+:   [maven-release-plugin] prepare release 11.1.14
+
+[80c6332876](https://github.com/dcache/dcache/commit/80c633287645c9105b8771a65305e4499d22470b)
+:   nfs: remove transfer from the door list if pool selection failed
+
+[b977a88d7d](https://github.com/dcache/dcache/commit/b977a88d7d0583f135242dce44322c6b893f5f81)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 11.1.13
 
 ### xrootd

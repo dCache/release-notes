@@ -89,6 +89,39 @@ HTML header: <title>dCache 11.2 Release Notes</title>
 
 We want to thank Shawn McKee for his contributions.
 
+## Release 11.2.9
+
+### NFS
+
+he NFS door could accumulate orphaned transfers (shown as
+`WriteTransfer null@N/A`) when pool selection failed during a pNFS
+LAYOUTGET, for example due to stage protection or an attempt to
+overwrite an existing file. Because the client received a permission
+error, it never issued a LAYOUTRETURN, so the transfer was never
+removed. Such pool-less transfers are now removed from the door when
+LAYOUTGET fails with a permission error.
+The NFS door now enforces share-deny semantics for files opened for
+writing: while a file is open for write, any further open of that file,
+for reading or writing, is rejected with a permission error. Previously,
+concurrent writers to a newly created file could end up producing two
+replicas with the same PNFS ID but different content.
+
+### Changelog 11.2.8..11.2.9
+
+<!-- git log 11.2.8..11.2.9 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[5a98aad29c](https://github.com/dcache/dcache/commit/5a98aad29c7a46150daac06c4686d77dd67fa09f)
+:   [maven-release-plugin] prepare release 11.2.9
+
+[e2a17cc8f5](https://github.com/dcache/dcache/commit/e2a17cc8f5f52345032dee8c496652d6bf1628f0)
+:   nfs: deny any concurrent access to a file opened for write
+
+[bad6a2d956](https://github.com/dcache/dcache/commit/bad6a2d956269f20a5d07e07d7821d0e7a745734)
+:   nfs: remove transfer from the door list if pool selection failed
+
+[4ea1697225](https://github.com/dcache/dcache/commit/4ea16972250492159067ac9b8fe57c00f304931b)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 11.2.8
 
 ### billing
