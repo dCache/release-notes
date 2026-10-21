@@ -80,6 +80,8 @@ HTML header: <title>dCache 12.1 Release Notes</title>
 
 ## Highlights
 
+- Beta support for S3 interface
+
 
 ## Incompatibilities
 
@@ -135,6 +137,28 @@ billing information. However, dCache can maintain the last access time of files,
 the `atime gap` is set to 604800 (7x24x3600) seconds, which will update files' atime if last access was more than a week.
 
 ### Pool
+
+### S3
+
+dCache now provides an **S3 door** (`dcache-s3`), letting S3 clients use dCache
+as an S3-compatible object store.  By default, the s3-door listens on port 9000.
+File access granted based on Unix permissions. The objects with  forward slash ('/')
+in the names are mapped as files with subdirectories. On object removal, the created
+subdirectories are left behind.
+
+Integration with gPlazma:
+
+File `/etc/dcache/s3-keys.conf`:
+```
+AKIASYSTEMTEST system-test-secret
+```
+
+File `/etc/dcache/multi-mapfile`
+```
+s3:AKIASYSTEMTEST username:tigran uid:1 gid:2,true
+```
+
+The new "The S3 Service" chapter in The Book covers setup and limitations.
 
 ### SRM
 
