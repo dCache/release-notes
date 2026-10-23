@@ -87,6 +87,26 @@ HTML header: <title>dCache 11.0 Release Notes</title>
 
 We want to thank Marian Babik and Onno Zweers for their contributions.
 
+## Release 11.0.19
+
+### xrootd
+
+This release fixes the compatibility with recently released xrootd clients.
+
+
+### Changelog 11.0.18..11.0.19
+
+<!-- git log 11.0.18..11.0.19 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[3f26e9b749](https://github.com/dcache/dcache/commit/3f26e9b749e3f76ff841d4509a1bccb37aad4c7e)
+:   [maven-release-plugin] prepare release 11.0.19
+
+[c84cdef169](https://github.com/dcache/dcache/commit/c84cdef169428c4cb2490584593b7d7aa6c31a58)
+:   pom: use xrootd4j-4.6.7
+
+[b831081782](https://github.com/dcache/dcache/commit/b831081782d2621915750f4a0394a7bb2a312010)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 11.0.18
 
 ### xrootd

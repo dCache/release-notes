@@ -91,6 +91,29 @@ HTML header: <title>dCache 12.0 Release Notes</title>
 
 We want to thank Shawn McKee and Niklas Edmundsson for their contributions.
 
+## Release 12.0.6
+
+### xrootd
+
+This release fixes the compatibility with recently released xrootd clients.
+
+
+### Changelog 12.0.5..12.0.6
+
+<!-- git log 12.0.5..12.0.6 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[896be5f4e2](https://github.com/dcache/dcache/commit/896be5f4e28cf6ce914dfa86e96d78441fbcfff3)
+:   [maven-release-plugin] prepare release 12.0.6
+
+[035e543a57](https://github.com/dcache/dcache/commit/035e543a5713aa61e8e5ddc5309dcecfb9dafe1b)
+:   pom: use xrootd4j-4.6.7
+
+[b0bf926d49](https://github.com/dcache/dcache/commit/b0bf926d49b66160a13f722f1cc55f2683ff353e)
+:   xrootd: improve handling of prepare options
+
+[24624d3022](https://github.com/dcache/dcache/commit/24624d30220e986ea3bcb21eafb67ac0399991f3)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 12.0.5
 
 ### NFS
