@@ -89,6 +89,63 @@ HTML header: <title>dCache 11.2 Release Notes</title>
 
 We want to thank Shawn McKee for his contributions.
 
+## Release 11.2.11
+
+### cells
+
+
+
+With the fix in current release core domains no longer install default routes to other
+ core domains and messages sent to a topic are delivered only once. No more duplicate billing records in setups with multiple core domains.
+
+### pool
+
+The passive endpoint of an HTTP-TPC transfer receives now the same SciTag as the active pool, so both sides record the same 
+transferTag in billing and can emit matching flow markers. Transfers without a tag are unchanged.
+
+
+ dCache relays on redirects. If pool can't discover it's IP addresses, then it should fail.
+Now  pool never rns if IP addresses are not available.
+
+
+
+The commit 4759b3f ("pool: don't scan flush/restore/remove queue to get stats") introduced lock-free nearline subsistem queue statistics to improve the queue query throughout. However, the change missed the case where queue state and stats must be updated atomically. Thus, tape pools under heavy load might run into double accounting when many requests are canceled of removed files have been in the flush queue.
+
+This is now fixed and  queue statistics can no longer go negative and pools no longer gets stuck.
+
+### xrootd
+
+
+DNS servers might be unresponsive. Thus, if dCache tries to resolve the IP addresses or query DNS for reverse lookup, then it performance depends on DNS latency.
+This is now fixed and there is  less dependency on DNS latency.
+
+
+
+### Changelog 11.2.10..11.2.11
+
+<!-- git log 11.2.10..11.2.11 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[b68980db4e](https://github.com/dcache/dcache/commit/b68980db4e674f2e65b40970cbe32586bc32d197)
+:   [maven-release-plugin] prepare release 11.2.11
+
+[badda49281](https://github.com/dcache/dcache/commit/badda492815fb45813d41a27348a6cb19b3a139b)
+:   xrootd: reduce number of DNS requests
+
+[23949531f4](https://github.com/dcache/dcache/commit/23949531f4f6666d5bc97d44baefe53edeb011ae)
+:   pool: propagate SciTag to remote party in HTTP-TPC transfers
+
+[0e5f5b7600](https://github.com/dcache/dcache/commit/0e5f5b76002edc0729bc310c1683ac074f0f31d5)
+:   cells: announce correct domain role on outbound core tunnels
+
+[1fb64b5faa](https://github.com/dcache/dcache/commit/1fb64b5faa4ac53273ef82b3276327b5c4790c6e)
+:   [maven-release-plugin] prepare for next development iteration
+
+[88e391f09e](https://github.com/dcache/dcache/commit/88e391f09ea331b70ff4a1d15919b9c1bd4c33a5)
+:   pool: make nearline request lifecycle transitions atomic
+
+[196c3ee753](https://github.com/dcache/dcache/commit/196c3ee753e064ce78a3b294fe65b3ac05c2a402)
+:   pool: fail pool startup if we can't identify pool's IPs
+
 ## Release 11.2.10
 
 ### xrootd
