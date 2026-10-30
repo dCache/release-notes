@@ -168,6 +168,45 @@
   </preamble>
 
 
+<series id="server-12.1">
+    <title>server 12.1.x</title>
+    <description>
+      <p>dCache 12.1 is a Feature Release introducing the following highlights:</p>
+      <ul>
+        <li>Beta support for S3 interface</li>
+      </ul>
+      <p>Incompatibilities</p>
+      <ul>
+        <li>Files' last access time is enabled by default.</li>
+        <li>The `systemd` services are now started with even more restrictions.</li>
+      </ul>
+      <p>dCache v12.1 requires a JVM supporting Java 17.</p>
+    </description>
+    <releases>
+      <name>dCache VERSION</name>
+      <download-url-prefix>repo/12.1/dcache</download-url-prefix>
+      <notes-url>release-notes-12.1.shtml</notes-url>
+      <version-prefix>12.1.</version-prefix>
+
+      <release version="0" recommended="1">
+        <date>30.10.2026</date>
+        <package name="Debian package">
+          <download-url>_VERSION-1_all.deb</download-url>
+          <md5sum>55702de36a7c39fc7f54cc01d4bab250</md5sum>
+        </package>
+        <package name="rpm">
+          <download-url>-VERSION-1.noarch.rpm</download-url>
+          <md5sum>3999b8e1c02503863eca82f8e70401ea</md5sum>
+        </package>
+        <package name="tgz">
+          <download-url>-VERSION.tar.gz</download-url>
+          <md5sum>6b44c8bd566ae367595769457af329d6</md5sum>
+        </package>
+      </release>
+
+   </releases>
+</series>
+
 
 <series id="server-12.0">
     <title>server 12.0.x</title>
