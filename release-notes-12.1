@@ -156,6 +156,77 @@ The new "The S3 Service" chapter in The Book covers setup and limitations.
 
 The SRM support is completely removed from the dCache code base.
 
+### dcache-view
+
+
+## OIDC code flow login (dcache-view-2)
+
+dcache-view supports login with an OIDC provider using the authorization code flow.
+Auto-discovery of OIDC authorization/token endpoints from the issuers well-known document is enabled now.
+Admins only need to configure the OIDC issuer URL (plus client id and
+secret) for a provider; the authorization and token endpoints are
+resolved automatically and stay correct even if the provider changes.
+
+ Users can now log out of dCache View. If they logged in through an OIDC
+provider, they are logged out there as well and then return to dCache View. For this to
+work, the dCache View address must be allowed as a return address after logout in the
+provider's settings. Otherwise, users are only logged out of dCache.
+
+
+### 1. Frontend
+
+```
+frontend.authn.oidc.client-id = <client-id>
+frontend.authn.oidc.client-secret = <client-secret>
+frontend.authn.oidc.issuer = <issuer>
+frontend.static!dcache-view.oidc-provider-name-list = <provider-name>
+frontend.static!dcache-view.oidc-client-id-list = <client-id>
+```
+
+The frontend finds the authorization and token endpoints from the issuer
+(OIDC discovery, `<issuer>/.well-known/openid-configuration`).
+
+Register this redirect URI with the OIDC provider:
+
+```
+<dcache-view-origin>/api/v1/auth/callback
+```
+
+For several providers, give space-separated values in the same order, and set
+`frontend.static!dcache-view.oidc-issuer-list` to the list of issuers.
+
+### 2. gPlazma provider
+
+```
+gplazma.oidc.provider!<op-name> = <issuer> -suppress=audience
+```
+
+### 3. gplazma.conf
+
+```
+auth    optional    oidc
+map     sufficient  multimap
+session sufficient  authzdb
+```
+
+The multimap plugin reads `etc/multi-mapfile` by default. Another file can be set with
+`gplazma.multimap.file=<path>` on the `map` line.
+
+### 4. Mapping (multi-mapfile)
+
+```
+oidc:<subject-id>@<op-name> username:<username> uid:<uid> group:<group> gid:<gid>,true
+```
+
+The subject ID appears in the dCache log after a first login attempt:
+`OidcSubjectPrincipal[<subject-id>@<op-name>]`.
+
+### 5. Authorization (storage-authzdb)
+
+```
+authorize <username> read-write <uid> <gid> / / /
+```
+
 ### Changelog from 12.0.0 to 12.1.0
 
 <!-- git log 12.0..12.1 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
