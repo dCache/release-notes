@@ -159,7 +159,7 @@ The SRM support is completely removed from the dCache code base.
 ### dcache-view
 
 
-## OIDC code flow login (dcache-view-2)
+#### OIDC code flow login (dcache-view-2)
 
 dcache-view supports login with an OIDC provider using the authorization code flow.
 Auto-discovery of OIDC authorization/token endpoints from the issuers well-known document is enabled now.
@@ -173,7 +173,7 @@ work, the dCache View address must be allowed as a return address after logout i
 provider's settings. Otherwise, users are only logged out of dCache.
 
 
-### 1. Frontend
+#### 1. Frontend
 
 ```
 frontend.authn.oidc.client-id = <client-id>
@@ -195,13 +195,13 @@ Register this redirect URI with the OIDC provider:
 For several providers, give space-separated values in the same order, and set
 `frontend.static!dcache-view.oidc-issuer-list` to the list of issuers.
 
-### 2. gPlazma provider
+#### 2. gPlazma provider
 
 ```
 gplazma.oidc.provider!<op-name> = <issuer> -suppress=audience
 ```
 
-### 3. gplazma.conf
+#### 3. gplazma.conf
 
 ```
 auth    optional    oidc
@@ -212,7 +212,7 @@ session sufficient  authzdb
 The multimap plugin reads `etc/multi-mapfile` by default. Another file can be set with
 `gplazma.multimap.file=<path>` on the `map` line.
 
-### 4. Mapping (multi-mapfile)
+#### 4. Mapping (multi-mapfile)
 
 ```
 oidc:<subject-id>@<op-name> username:<username> uid:<uid> group:<group> gid:<gid>,true
@@ -221,7 +221,7 @@ oidc:<subject-id>@<op-name> username:<username> uid:<uid> group:<group> gid:<gid
 The subject ID appears in the dCache log after a first login attempt:
 `OidcSubjectPrincipal[<subject-id>@<op-name>]`.
 
-### 5. Authorization (storage-authzdb)
+#### 5. Authorization (storage-authzdb)
 
 ```
 authorize <username> read-write <uid> <gid> / / /
