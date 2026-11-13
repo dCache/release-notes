@@ -75,34 +75,69 @@ HTML header: <title>dCache 12.1 Release Notes</title>
 </div>
 
 ## Highlights
-
+ 
 - Beta support for S3 interface
-
+- Capacity reporting in NFS and xrootd doors
+- Mutual TLS for domain tunnels
+- Multiple OIDC providers in dCache View
 
 ## Incompatibilities
-
+ 
+- Java 21 is now required; Java 21 to 25 are supported.
+- Removed file hopping. Sites must migrate to permanent migration jobs.
+- Removed the remaining SRM services and code.
+- Kafka: starting 11.2 billing cell cans send billing records to katka. Since 12.1 this is the only option.
 - Files' last access time is enabled by default.
 - The `systemd` services are now started with even more restrictions.
-- Java 21 is now required. Starting with dCache 12.1, the minimum supported Java version is 21. Before upgrading, install a Java 21 (or newer, up to 25) runtime.
-
+- The `frontend.authn.oidc.token-url` property has no default value.
 
 ## Acknowledgments
-
+ 
 We want to thank Jerome Pansanel and Geonmo Ryu for their contributions.
-
+ 
 ## Release 12.1.0
-
+ 
+### Admin shell
+ 
+The `\s` command takes a `#<zone>` suffix, e.g. `\s pool*#<zone> rep ls`, to target only cells in that zone.
+Domains register their zone in ZooKeeper at startup when `dcache.zone` is set.
+ 
+### Cells
+ 
+Core domains can now require a client certificate for tunnel connections (`dcache.broker.channel.require-client-auth=true`).
+A remote domain or pool that doesn't present a valid cert can't connect. Optionally, the certificate CNs that are
+allowed to connect can be restricted with `dcache.broker.channel.allowed-cn.file` (default `/etc/dcache/tunnel-allowed-cn.conf`).
+They are stored in ZooKeeper and checked after the TLS handshake. Connections from other CNs are rejected and never
+added to the shard tunnel list.
+ 
+### Chimera
+ 
+New pnfsids are generated as time-ordered UUIDv7, which improves insert performance of the namespace
+database. Existing pnfsids are unchanged.
+ 
 ### Httpd
-
+ 
 Since dCache version 11.0, we have changed the look and feel of the admin pages.
 Not all admins like that change. Starting with version 12.1, we allow the creation
 of custom styles with the option to default back to the old style.
 The new config property `httpd.look-and-feel` is introduced with values `classic` and `new`.
-
+ 
+### Kafka
+ 
+Since dCache 11.2, Kafka events are sent by the billing service only. With this release, the unused
+Kafka producers are removed from doors, pools and transfermanagers, and their `*.enable.kafka` and
+`*.kafka.*` properties are obsolete. Use `billing.enable.kafka` and `billing.kafka.*` instead.
+ 
+### NFS and xrootd
+ 
+Both doors can now report real capacity to clients, e.g. for `df` or `xrdfs spaceinfo`. The new property
+`dcache.capacity.source` accepts `namespace` (fixed 1 EiB, the default), `pools` (space of the pools the
+path is written to) or `reservation` (space of the path's `WriteToken` reservation).
+ 
 ### Packaging
-
+ 
 The `systemd` services are now started with even more restrictions:
-
+ 
 ```
 PrivateTmp=yes
 ProtectClock=yes
@@ -122,39 +157,78 @@ KeyringMode=private
 LockPersonality=yes
 MemoryDenyWriteExecute=no
 ```
-
+ 
+Note that dCache now has a private `/tmp`, and files it creates are no longer world-readable.
+ 
 ### PnfsManager
-
+ 
 Site admins often need to find files that haven't been accessed for some time. Usually such information requires a merge of namespace and
-billing information. However, dCache can maintain the last access time of files, which is disabled by default. With this version,
-the `atime gap` is set to 604800 (7x24x3600) seconds, which will update files' atime if last access was more than a week.
-
-
+billing information. However, dCache can maintain the last access time of files, which was disabled by default. With this version,
+`pnfsmanager.atime-gap` defaults to 604800 (7x24x3600) seconds, so a file's atime is updated if its last access was more than a week ago.
+To restore the previous behaviour, set `pnfsmanager.atime-gap=-1`.
+ 
+### Pool
+ 
+File hopping is removed: `ReplicationHandler`, the `hoppingmanager` service, `PoolMgrReplicateFileMsg` and the
+related commands (`set replication`) are gone. `pool.destination.replicate` and `pool.destination.replicate.ip`
+are now obsolete. The Book has a new guide, "Replacing file hopping", on using permanent migration jobs instead.
+Layouts that still define `hoppingmanager` must be updated.
+ 
+Stopping a pool through systemd no longer causes a backtrace or a slow shutdown. PoolManager now correctly
+shows the pool as `disabled(...,dead)`.
+ 
+### PoolManager
+ 
+Zone-aware P2P now copies files to a pool in the client's zone, worked out from the client's IP address
+through zone-aware NetUnits. Before, it used the door's zone.
+ 
+### REST API
+ 
+GET responses now carry a `Last-Modified` header showing when the data was last refreshed. It was added to
+the monitoring info services first, then to all REST resources, and is documented in the Book. This is useful
+for Prometheus (Issue 8151).
+ 
+Mover listings now include the client IP, UID, DN and GIDs. This replaces parsing `mover ls -u` over SSH (Issue 8181).
+ 
+Fixed a 500 error on `/api/v1/cells`, caused by a stray `@Autowired` field left over from the Last-Modified work.
+ 
 ### S3
-
+ 
 dCache now provides an **S3 door** (`dcache-s3`), letting S3 clients use dCache
 as an S3-compatible object store.  By default, the s3-door listens on port 9000.
 File access granted based on Unix permissions. The objects with  forward slash ('/')
 in the names are mapped as files with subdirectories. On object removal, the created
-subdirectories are left behind.
-
+subdirectories are left behind. Multipart uploads and `RestoreObject` for tape files are supported.
+ 
 Integration with gPlazma:
-
+ 
 File `/etc/dcache/s3-keys.conf`:
 ```
 AKIASYSTEMTEST system-test-secret
 ```
-
+ 
 File `/etc/dcache/multi-mapfile`
 ```
 s3:AKIASYSTEMTEST username:tigran uid:1 gid:2,true
 ```
-
+ 
 The new "The S3 Service" chapter in The Book covers setup and limitations.
-
+ 
 ### SRM
-
-The SRM support is completely removed from the dCache code base.
+ 
+Following the removal of SRM in 12.0, the remaining SRM code and the `srm` and `srmmanager` services
+are removed from the dCache code base.
+ 
+### WebDAV
+ 
+The retry loop for the checksum race condition is back, but it only runs for requests that ask for a digest,
+so listings are fast again.
+ 
+### Xrootd
+ 
+Since version 11.2, the xrootd door rejected `prepare` requests with `Unsupported`. Now `prepare` stages
+and pins custodial files, and `evict` releases the pin. The pin lifetime is set by `xrootd.pin.lifetime`
+(default 12 hours).
 
 ### dcache-view
 
