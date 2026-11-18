@@ -4,10 +4,11 @@ stages:
   - publish
 
 
-# Fedora 42 is used to ensure compatibility with the tools we need
+# Fedora 44 is used to ensure compatibility with the tools we need.
+# Supported until about mid-2027; move to a newer release before then.
 Generate release notes on commit:
   stage: build
-  image: fedora:42
+  image: fedora:44
   allow_failure: true # change to non release-notes files ignored
   script:
     - dnf install -q -y multimarkdown git-core libxslt
@@ -19,11 +20,12 @@ Generate release notes on commit:
     paths:
       - "output/*.shtml"
 
-# Fedora 42 is used to ensure compatibility with the tools we need
+# Fedora 44 is used to ensure compatibility with the tools we need.
+# Supported until about mid-2027; move to a newer release before then.
 # process version 9.x, 1x.x
 Generate release notes:
   stage: build
-  image: fedora:42
+  image: fedora:44
   when: manual
   script:
     - dnf install -q -y multimarkdown git-core libxslt
