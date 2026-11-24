@@ -95,6 +95,61 @@ HTML header: <title>dCache 12.1 Release Notes</title>
  
 We want to thank Jerome Pansanel and Geonmo Ryu for their contributions.
  
+## Release 12.1.1
+
+### Changes affecting multiple services
+
+The dCache RPM now requires Java 21 (`jre-21-headless`). dCache 12.1 needs Java 21 to run, but the RPM still allowed installation on hosts with only Java 17, where dCache then failed to start with `UnsupportedClassVersionError`.
+
+The properties of the hoppingmanager service, removed in 12.1, are now marked obsolete: `dcache check-config` and domain startup warn if they are still set.
+
+The properties `gplazma.gridmap.file`, `frontend.authn.oidc.redirect-url` and `frontend.authn.oidc.redirect-url-host`, removed in 12.0, are now marked obsolete: `dcache check-config` and domain startup warn if they are still set and suggest what to use instead. See [#8319](https://github.com/dCache/dcache/issues/8319).
+
+### bulk
+
+Recursive bulk requests (e.g. DELETE with `expandDirectories=ALL`) on large directory trees could stay in RUNNING state forever, with "Available permits for directory listing" dropping to 0. A single such request also blocked directory listing for all other requests. Directory listings are now queued and started as soon as a permit is free, so these requests complete with the default `bulk.limits.dir-list-semaphore`, which now only limits the number of concurrent listings sent to PnfsManager. The service info output shows the new counter "Directory listings waiting for permit". See [#8062](https://github.com/dCache/dcache/issues/8062).
+
+### frontend
+
+Files and links deleted through the REST API, and therefore through dCacheView, now produce a `remove` billing record, as in the other doors. The record names the requesting user, also when an admin deletes using the admin role. Records are sent to the topic set by the new property `frontend.service.billing.topic` (default `BillingTopic`). See [#8246](https://github.com/dCache/dcache/issues/8246).
+
+The properties `frontend.authn.oidc.client-id` and `frontend.authn.oidc.client-secret` no longer default to the credentials of a real OAuth application; both are now empty. Sites using OIDC code-flow login that relied on these defaults must set their own client credentials, otherwise login fails after the upgrade.
+
+
+### Changelog 12.1.0..12.1.1
+
+<!-- git log 12.1.0..12.1.1 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[0b485bded6](https://github.com/dcache/dcache/commit/0b485bded6f30f740ce89d56126f4a83b46b20f7)
+:   [maven-release-plugin] prepare release 12.1.1
+
+[e1fb0434bb](https://github.com/dcache/dcache/commit/e1fb0434bb74584a3540ceb9c9f96b95e7881f03)
+:   [skip-ci] frontend: do not ship OIDC client credentials as defaults
+
+[63a782c9c8](https://github.com/dcache/dcache/commit/63a782c9c8acc743624ad937accc15e33cde205c)
+:   config: mark hoppingmanager properties as obsolete
+
+[42e34c7ed8](https://github.com/dcache/dcache/commit/42e34c7ed82ff301c22c6e6ac1a56d25e7671185)
+:   config: mark properties dropped in 12.0 as obsolete
+
+[edae125061](https://github.com/dcache/dcache/commit/edae1250613470a8f5b2de8c51a297cee23ac58a)
+:   bulk: fix deadlock in recursive directory expansion
+
+[f591fe94d5](https://github.com/dcache/dcache/commit/f591fe94d54d331d66bf22f005f3a297422e20c1)
+:   ci: drop population of voms related certificates
+
+[bcb0430d77](https://github.com/dcache/dcache/commit/bcb0430d775b3e1ecdd19c1105c118585849bbce)
+:   frontend: send a billing record when a file is deleted
+
+[a5657bbcdf](https://github.com/dcache/dcache/commit/a5657bbcdf8560c08615924392ef33256ad9ded3)
+:   packages: require Java 21 in RPM
+
+[438e907f99](https://github.com/dcache/dcache/commit/438e907f99b14fb1114daa9dedb7367f27531567)
+:   agents: Update required Java version to 21 or newer
+
+[e15d9bfb8c](https://github.com/dcache/dcache/commit/e15d9bfb8cfca6bdf71bc17c019f008bba0756c7)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 12.1.0
  
 ### Admin shell

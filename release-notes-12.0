@@ -91,6 +91,48 @@ HTML header: <title>dCache 12.0 Release Notes</title>
 
 We want to thank Shawn McKee and Niklas Edmundsson for their contributions.
 
+## Release 12.0.8
+
+### Changes affecting multiple services
+
+The properties `gplazma.gridmap.file`, `frontend.authn.oidc.redirect-url` and `frontend.authn.oidc.redirect-url-host`, removed in 12.0, are now marked obsolete: `dcache check-config` and domain startup warn if they are still set and suggest what to use instead. See [#8319](https://github.com/dCache/dcache/issues/8319).
+
+### bulk
+
+Recursive bulk requests (e.g. DELETE with `expandDirectories=ALL`) on large directory trees could stay in RUNNING state forever, with "Available permits for directory listing" dropping to 0. A single such request also blocked directory listing for all other requests. Directory listings are now queued and started as soon as a permit is free, so these requests complete with the default `bulk.limits.dir-list-semaphore`, which now only limits the number of concurrent listings sent to PnfsManager. The service info output shows the new counter "Directory listings waiting for permit". See [#8062](https://github.com/dCache/dcache/issues/8062).
+
+### frontend
+
+Files and links deleted through the REST API, and therefore through dCacheView, now produce a `remove` billing record, as in the other doors. The record names the requesting user, also when an admin deletes using the admin role. Records are sent to the topic set by the new property `frontend.service.billing.topic` (default `BillingTopic`). See [#8246](https://github.com/dCache/dcache/issues/8246).
+
+The properties `frontend.authn.oidc.client-id` and `frontend.authn.oidc.client-secret` no longer default to the credentials of a real OAuth application; both are now empty. Sites using OIDC code-flow login that relied on these defaults must set their own client credentials, otherwise login fails after the upgrade.
+
+
+### Changelog 12.0.7..12.0.8
+
+<!-- git log 12.0.7..12.0.8 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[b57c8eb733](https://github.com/dcache/dcache/commit/b57c8eb733ccfaa8b4f5a6010fc8fc14e8f4dd98)
+:   [maven-release-plugin] prepare release 12.0.8
+
+[42373b9cbd](https://github.com/dcache/dcache/commit/42373b9cbd3cc97ceac88fc7c11441d79c964be1)
+:   [skip-ci] frontend: do not ship OIDC client credentials as defaults
+
+[843903fcd4](https://github.com/dcache/dcache/commit/843903fcd480a0f1569c23bb30a06d63ef4c50c1)
+:   config: mark properties dropped in 12.0 as obsolete
+
+[59982a54a8](https://github.com/dcache/dcache/commit/59982a54a8b05d7d963a89c5bf10c5f4d3c60972)
+:   bulk: fix deadlock in recursive directory expansion
+
+[df62bfcf21](https://github.com/dcache/dcache/commit/df62bfcf21a182844c0161491e391b12fbd56faf)
+:   ci: drop population of voms related certificates
+
+[3ffc94fb52](https://github.com/dcache/dcache/commit/3ffc94fb525cea9b152510be5ae1a75239ce3a31)
+:   frontend: send a billing record when a file is deleted
+
+[ee5ebcee7b](https://github.com/dcache/dcache/commit/ee5ebcee7bc709d20f04bf943b97dadc8c74c2bc)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 12.0.7
 
 ### cells

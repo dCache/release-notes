@@ -89,6 +89,36 @@ HTML header: <title>dCache 11.2 Release Notes</title>
 
 We want to thank Shawn McKee for his contributions.
 
+## Release 11.2.12
+
+### bulk
+
+Recursive bulk requests (e.g. DELETE with `expandDirectories=ALL`) on large directory trees could stay in RUNNING state forever, with "Available permits for directory listing" dropping to 0. A single such request also blocked directory listing for all other requests. Directory listings are now queued and started as soon as a permit is free, so these requests complete with the default `bulk.limits.dir-list-semaphore`, which now only limits the number of concurrent listings sent to PnfsManager. The service info output shows the new counter "Directory listings waiting for permit". See [#8062](https://github.com/dCache/dcache/issues/8062).
+
+### frontend
+
+Files and links deleted through the REST API, and therefore through dCacheView, now produce a `remove` billing record, as in the other doors. The record names the requesting user, also when an admin deletes using the admin role. Records are sent to the topic set by the new property `frontend.service.billing.topic` (default `BillingTopic`). See [#8246](https://github.com/dCache/dcache/issues/8246).
+
+
+### Changelog 11.2.11..11.2.12
+
+<!-- git log 11.2.11..11.2.12 -no-merges -format='[%h](https://github.com/dcache/dcache/commit/%H)%n:   %s%n' -->
+
+[1b7761c181](https://github.com/dcache/dcache/commit/1b7761c181e334b06a19a2c8870e2fe1c1f0e3e9)
+:   [maven-release-plugin] prepare release 11.2.12
+
+[e78d2bbbec](https://github.com/dcache/dcache/commit/e78d2bbbecd54a0fb4071549a835c33a6c1acdc2)
+:   bulk: fix deadlock in recursive directory expansion
+
+[50739205d6](https://github.com/dcache/dcache/commit/50739205d623c57bdc4aba49964de3fa36b4caf0)
+:   ci: drop population of voms related certificates
+
+[c0ea3e0497](https://github.com/dcache/dcache/commit/c0ea3e0497333491eac8cc03305cd7e943beda5e)
+:   frontend: send a billing record when a file is deleted
+
+[1b3dd6b51a](https://github.com/dcache/dcache/commit/1b3dd6b51ab0816fde01590551e2690dceb466d0)
+:   [maven-release-plugin] prepare for next development iteration
+
 ## Release 11.2.11
 
 ### cells
